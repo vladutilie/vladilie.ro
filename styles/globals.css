@@ -1,3 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Quicksand:wght@600&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply font-quicksand;
+        @apply text-2xl;
+        @apply text-gray-800;
+    }
+
+    h2 {
+        @apply font-quicksand;
+        @apply text-xl;
+        @apply text-gray-700;
+    }
+
+    h3 {
+        @apply font-quicksand;
+        @apply text-base;
+        @apply text-gray-600;
+    }
+
+
+    p {
+        @apply text-gray-800;
+    }
+
+    span {
+        @apply text-sm;
+        @apply text-gray-500;
+    }
+
+    a {
+        @apply text-blue-500;
+        @apply outline-blue-500;
+    }
+
+    @screen sm {
+        h1 {
+            @apply text-3xl;
+        }
+
+        h2 {
+            @apply text-2xl;
+        }
+
+        h3 {
+            @apply text-lg;
+        }
+    }
+}
