@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import { Hero, Navbar, Projects } from '../src/components';
+import { FeaturedServices, Hero, Navbar, Projects } from '../src/components';
 
 const Home: NextPage = () => {
   return (
@@ -13,6 +13,7 @@ const Home: NextPage = () => {
 
       <main className='container mx-auto flex max-w-3xl flex-col gap-y-10 px-4'>
         <Hero />
+        <FeaturedServices />
         <Projects />
       </main>
     </>
