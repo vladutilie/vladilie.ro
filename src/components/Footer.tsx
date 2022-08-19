@@ -1,85 +1,56 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { Vercel } from '../technologies';
+import { Page } from '../types/Page.type';
+import { PAGES, SOCIAL_LINKS } from '../utils/constants';
+
+const firstCol: Page[] = [PAGES.HOME as Page, PAGES.ABOUT as Page, PAGES.BLOG as Page, PAGES.CASE_STUDIES as Page];
+const secondCol: Page[] = [
+  SOCIAL_LINKS.GITHUB as Page,
+  SOCIAL_LINKS.INSTAGRAM as Page,
+  SOCIAL_LINKS.LINKEDIN as Page,
+  SOCIAL_LINKS.TWITTER as Page,
+  SOCIAL_LINKS.WORDPRESS as Page
+];
+const thirdCol: Page[] = [PAGES.TOOLS as Page, PAGES.BOOKS as Page, PAGES.BOARDGAMES as Page, PAGES.QUOTES as Page];
 
 export const Footer: React.FC = () => {
+  const { pathname } = useRouter();
+
   return (
     <footer className='container mx-auto mt-16 flex max-w-3xl flex-col gap-y-10 p-4'>
       <hr />
 
       <div className='flex w-full flex-wrap justify-between'>
         <ul className='w-1/2 md:w-auto'>
-          <li>
-            <Link href=''>
-              <a>Home</a>
-            </Link>
-          </li>
-          <li>
-            <Link href=''>
-              <a>About</a>
-            </Link>
-          </li>
-          <li>
-            <Link href=''>
-              <a>Blog</a>
-            </Link>
-          </li>
-          <li>
-            <Link href=''>
-              <a>Case studies</a>
-            </Link>
-          </li>
+          {firstCol.map(({ href, label }: Page, idx: number) => (
+            <li key={idx}>
+              <Link href={href}>
+                <a className={`${pathname === href ? 'text-blue-400' : ''}`}>{label}</a>
+              </Link>
+            </li>
+          ))}
         </ul>
 
         <ul className='w-1/2 md:w-auto'>
-          <li>
-            <Link href={process.env.NEXT_PUBLIC_GITHUB as string}>
-              <a target='_blank'>GitHub</a>
-            </Link>
-          </li>
-          <li>
-            <Link href={process.env.NEXT_PUBLIC_INSTAGRAM as string}>
-              <a target='_blank'>Instagram</a>
-            </Link>
-          </li>
-          <li>
-            <Link href={process.env.NEXT_PUBLIC_LINKEDIN as string}>
-              <a target='_blank'>LinkedIn</a>
-            </Link>
-          </li>
-          <li>
-            <Link href={process.env.NEXT_PUBLIC_NEO4J as string}>
-              <a target='_blank'>Neo4j</a>
-            </Link>
-          </li>
-          <li>
-            <Link href={process.env.NEXT_PUBLIC_TWITTER as string}>
-              <a target='_blank'>Twitter</a>
-            </Link>
-          </li>
-          <li>
-            <Link href={process.env.NEXT_PUBLIC_WORDPRESS as string}>
-              <a target='_blank'>WordPress</a>
-            </Link>
-          </li>
+          {secondCol.map(({ href, label }: Page, idx: number) => (
+            <li key={idx}>
+              <Link href={href}>
+                <a target='_blank'>{label}</a>
+              </Link>
+            </li>
+          ))}
         </ul>
 
         <ul className='w-1/2 md:w-auto'>
-          <li>
-            <Link href=''>
-              <a>Books</a>
-            </Link>
-          </li>
-          <li>
-            <Link href=''>
-              <a>Boardgames</a>
-            </Link>
-          </li>
-          <li>
-            <Link href=''>
-              <a>Quotes</a>
-            </Link>
-          </li>
+          {thirdCol.map(({ href, label }: Page, idx: number) => (
+            <li key={idx}>
+              <Link href={href}>
+                <a className={`${pathname === href ? 'text-blue-400' : ''}`}>{label}</a>
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
 
