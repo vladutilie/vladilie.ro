@@ -36,7 +36,7 @@ import {
 export const Projects: React.FC = () => {
   return (
     <section className='flex flex-col gap-y-3'>
-      <h3>Projects I've built &amp; technologies</h3>
+      <h3>Projects I've built &amp; used technologies</h3>
       {/* https://codepen.io/paulobrien/pen/GROOOVQ */}
       <div className='projects relative flex h-14 items-center overflow-x-hidden'>
         <div className='project-stack absolute flex shrink-0 animate-slide justify-around'>
