@@ -11,8 +11,6 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <Navbar />
-
       <main className='container mx-auto flex max-w-3xl flex-col gap-y-10 px-4'>
         <Hero />
         <Projects />
