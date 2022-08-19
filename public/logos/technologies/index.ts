@@ -16,3 +16,4 @@ export { SQLite } from './SQLite';
 export { Supabase } from './Supabase';
 export { TailwindCSS } from './TailwindCSS';
 export { TypeScript } from './TypeScript';
+export { Vercel } from './Vercel';
