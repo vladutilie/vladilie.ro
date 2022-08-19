@@ -10,8 +10,8 @@ import TEDxZorilor from '../../public/logos/projects/tedxzorilor.png';
 import TablouriColorate from '../../public/logos/projects/tablouri-colorate.png';
 import TransilvaniaCar from '../../public/logos/projects/transilvaniacar.png';
 import eBikerNation from '../../public/logos/projects/ebikernation.png';
-import { BookTruck } from '../../public/logos/projects/BookTruck';
-import { EBikeRent } from '../../public/logos/projects/E-BikeRent';
+import { BookTruck } from '../icons/BookTruck';
+import { EBikeRent } from '../icons/E-BikeRent';
 import {
   CSS,
   GitHub,
@@ -31,7 +31,7 @@ import {
   Supabase,
   TailwindCSS,
   TypeScript
-} from '../../public/logos/technologies';
+} from '../technologies';
 
 export const Projects: React.FC = () => {
   return (
