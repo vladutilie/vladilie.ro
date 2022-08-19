@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Vercel } from '../../public/logos/technologies';
+import { Vercel } from '../technologies';
 
 export const Footer: React.FC = () => {
   return (
