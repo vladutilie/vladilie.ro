@@ -1,15 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import AerLiber from '../../public/logos/projects/aerliber.png';
-import COSPol from '../../public/logos/projects/cospol.png';
-import CartilePeFata from '../../public/logos/projects/cartile-pe-fata.png';
-import ContaDocs from '../../public/logos/projects/contadocs.png';
-import GraphStars from '../../public/logos/projects/graphstars.png';
-import TEDxZorilor from '../../public/logos/projects/tedxzorilor.png';
-import TablouriColorate from '../../public/logos/projects/tablouri-colorate.png';
-import TransilvaniaCar from '../../public/logos/projects/transilvaniacar.png';
-import eBikerNation from '../../public/logos/projects/ebikernation.png';
+import AerLiber from '../../public/projects/aerliber.png';
+import COSPol from '../../public/projects/cospol.png';
+import CartilePeFata from '../../public/projects/cartile-pe-fata.png';
+import ContaDocs from '../../public/projects/contadocs.png';
+import GraphStars from '../../public/projects/graphstars.png';
+import TEDxZorilor from '../../public/projects/tedxzorilor.png';
+import TablouriColorate from '../../public/projects/tablouri-colorate.png';
+import TransilvaniaCar from '../../public/projects/transilvaniacar.png';
+import eBikerNation from '../../public/projects/ebikernation.png';
 import { BookTruck } from '../icons/BookTruck';
 import { EBikeRent } from '../icons/E-BikeRent';
 import {
