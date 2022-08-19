@@ -82,3 +82,17 @@
     width: 5%;
     z-index: 2;
 }
+
+footer ul {
+    @apply flex;
+    @apply flex-col;
+    @apply gap-y-2;
+}
+
+footer ul li a {
+    @apply text-gray-400;
+}
+
+footer ul li a:hover {
+    @apply underline;
+}
