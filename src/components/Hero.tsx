@@ -68,7 +68,7 @@ export const Hero: React.FC = () => {
       </div>
 
       <div className='w-56'>
-        <Image src={vlad} alt={process.env.NEXT_PUBLIC_SITE_NAME} className='rounded-full' />
+        <Image src={vlad} alt={process.env.NEXT_PUBLIC_SITE_NAME} className='rounded-full' placeholder='blur' />
       </div>
     </section>
   );
