@@ -1,3 +1,4 @@
+export { FeaturedServices } from './FeaturedServices';
 export { Footer } from './Footer';
 export { Hero } from './Hero';
 export { Layout } from './Layout';
