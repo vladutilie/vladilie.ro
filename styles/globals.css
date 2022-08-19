@@ -20,7 +20,7 @@
 
     h3 {
         @apply font-quicksand;
-        @apply text-base;
+        @apply text-lg;
         @apply text-gray-600;
     }
 
@@ -49,7 +49,36 @@
         }
 
         h3 {
-            @apply text-lg;
+            @apply text-xl;
         }
     }
+}
+
+.projects:hover .project-stack {
+    animation-play-state: paused;
+}
+
+.projects::before {
+    background-image: linear-gradient(to right,
+            rgba(244, 244, 245, 1) 0%,
+            rgba(244, 244, 245, 0) 100%);
+    content: "";
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    width: 5%;
+    z-index: 2;
+}
+
+.projects::after {
+    background-image: linear-gradient(to left,
+            rgba(244, 244, 245, 1) 0%,
+            rgba(244, 244, 245, 0) 100%);
+    content: "";
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    width: 5%;
+    z-index: 2;
 }
