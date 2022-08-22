@@ -12,7 +12,7 @@ export const Book: React.FC<BookType> = ({ title, author, cover, state, link }) 
           <div className='relative h-20 w-12'>
             <Image src={cover} alt={title} objectFit='contain' layout='fill' />
             <div
-              className={`absolute -right-1 z-10 flex h-5 w-5 items-center justify-center rounded-full p-1 ${
+              className={`absolute -right-1 flex h-5 w-5 items-center justify-center rounded-full p-1 ${
                 BookState.Reading === state
                   ? 'bg-yellow-400' // Reading
                   : BookState.Favorite === state
