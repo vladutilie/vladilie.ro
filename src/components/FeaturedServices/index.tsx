@@ -1,7 +1,7 @@
 import { FeaturedServiceType } from '../../types/FeaturedService.type';
 import { FeaturedService } from './FeaturedService';
-import ContaDocs from '../../../public/projects/contadocs.png';
-import GraphStars from '../../../public/projects/graphstars.png';
+import ContaDocs from '../../../public/assets/images/contadocs.png';
+import GraphStars from '../../../public/assets/images/graphstars.png';
 
 const services: FeaturedServiceType[] = [
   {
