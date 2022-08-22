@@ -14,7 +14,7 @@ export const Hero: React.FC = () => {
           soul in every project to get the best of it. I&apos;m a{' '}
           <strong>
             <Link href={process.env.NEXT_PUBLIC_NEO4J as string}>
-              <a target='_blank'>
+              <a target='_blank' className='hover:underline'>
                 Neo4j <Arrow className='inline w-3 fill-blue-500' />
               </a>
             </Link>{' '}
@@ -23,7 +23,7 @@ export const Hero: React.FC = () => {
           {', '}a <strong>NextJS</strong> fan, an enthusiastic of <strong>JavaScript</strong> development technologies
           and a nostalgic <strong>WordPress</strong> lover. I&apos;m also the maintainer of{' '}
           <Link href='https://cartilepefata.ro'>
-            <a target='_blank'>
+            <a target='_blank' className='hover:underline'>
               <strong>Cărțile pe Față</strong>
               <Arrow className='ml-1 inline w-3 fill-blue-500' />
             </a>
