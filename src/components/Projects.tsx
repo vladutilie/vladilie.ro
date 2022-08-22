@@ -1,15 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import AerLiber from '../../public/projects/aerliber.png';
-import COSPol from '../../public/projects/cospol.png';
-import CartilePeFata from '../../public/projects/cartile-pe-fata.png';
-import ContaDocs from '../../public/projects/contadocs.png';
-import GraphStars from '../../public/projects/graphstars.png';
-import TEDxZorilor from '../../public/projects/tedxzorilor.png';
-import TablouriColorate from '../../public/projects/tablouri-colorate.png';
-import TransilvaniaCar from '../../public/projects/transilvaniacar.png';
-import eBikerNation from '../../public/projects/ebikernation.png';
+import AerLiber from '../../public/assets/images/aerliber.png';
+import COSPol from '../../public/assets/images/cospol.png';
+import CartilePeFata from '../../public/assets/images/cartile-pe-fata.png';
+import ContaDocs from '../../public/assets/images/contadocs.png';
+import GraphStars from '../../public/assets/images/graphstars.png';
+import TEDxZorilor from '../../public/assets/images/tedxzorilor.png';
+import TablouriColorate from '../../public/assets/images/tablouri-colorate.png';
+import TransilvaniaCar from '../../public/assets/images/transilvaniacar.png';
+import eBikerNation from '../../public/assets/images/ebikernation.png';
 import { BookTruck } from '../icons/BookTruck';
 import { EBikeRent } from '../icons/E-BikeRent';
 import {
@@ -36,7 +36,7 @@ import {
 export const Projects: React.FC = () => {
   return (
     <section className='flex flex-col gap-y-3'>
-      <h3>Projects I've built &amp; used technologies</h3>
+      <h3>Projects I&apos;ve built &amp; used technologies</h3>
       {/* https://codepen.io/paulobrien/pen/GROOOVQ */}
       <div className='projects relative flex h-14 items-center overflow-x-hidden'>
         <div className='project-stack absolute flex shrink-0 animate-slide justify-around'>
