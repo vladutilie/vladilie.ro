@@ -1,3 +1,4 @@
+export { Arrow } from './Arrow';
 export { Github } from './Github';
 export { Instagram } from './Instagram';
 export { LinkedIn } from './LinkedIn';
