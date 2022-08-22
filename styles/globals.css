@@ -101,3 +101,7 @@ footer ul li a:hover {
     @apply opacity-100;
     @apply ml-6;
 }
+
+.featured:hover>div>div>p {
+    @apply underline;
+}
