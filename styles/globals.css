@@ -96,3 +96,8 @@ footer ul li a {
 footer ul li a:hover {
     @apply underline;
 }
+
+.dev-tool:hover>div>svg {
+    @apply opacity-100;
+    @apply ml-6;
+}
