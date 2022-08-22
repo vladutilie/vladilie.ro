@@ -1,6 +1,10 @@
 export { Arrow } from './Arrow';
+export { Done } from './Done';
+export { Favorite } from './Favorite';
 export { Github } from './Github';
+export { Glasses } from './Glasses';
 export { Instagram } from './Instagram';
 export { LinkedIn } from './LinkedIn';
 export { Twitter } from './Twitter';
+export { Wishlist } from './Wishlist';
 export { WordPress } from './WordPress';
