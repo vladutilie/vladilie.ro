@@ -37,7 +37,7 @@
     },
     {
       "category": "development",
-      "description": "A client application to help me work with Neo4j.",
+      "description": "An open source program for accessing the World Wide Web and running Web-based applications.",
       "logo": "/assets/images/chrome.svg",
       "name": "Chrome",
       "url": "https://www.google.com/chrome/"
