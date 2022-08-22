@@ -1,0 +1,60 @@
+{
+  "tools": [
+    {
+      "category": "development",
+      "description": "Uses the OS virtualization to provide software as containers.",
+      "logo": "/assets/images/docker.svg",
+      "name": "Docker",
+      "url": "https://docker.com"
+    },
+    {
+      "category": "development",
+      "description": "Creates a beautiful and extensible experience for command-line interface users.",
+      "logo": "/assets/images/hyper.svg",
+      "name": "Hyper",
+      "url": "https://hyper.is/"
+    },
+    {
+      "category": "development",
+      "description": "A client application to help me work with Neo4j.",
+      "logo": "/assets/images/neo4jdesktop.svg",
+      "name": "Neo4j Desktop",
+      "url": "https://neo4j.com/docs/desktop-manual/current/"
+    },
+    {
+      "category": "development",
+      "description": "An API platform for building and using APIs.",
+      "logo": "/assets/images/postman.svg",
+      "name": "Postman",
+      "url": "https://postman.com"
+    },
+    {
+      "category": "development",
+      "description": "A code editor redefined and optimized for building and debugging modern web and cloud applications.",
+      "logo": "/assets/images/vscode.svg",
+      "name": "Visual Studio Code",
+      "url": "https://code.visualstudio.com/"
+    },
+    {
+      "category": "development",
+      "description": "A client application to help me work with Neo4j.",
+      "logo": "/assets/images/chrome.svg",
+      "name": "Chrome",
+      "url": "https://www.google.com/chrome/"
+    },
+    {
+      "category": "communication",
+      "description": "An unexpected focus on privacy, combined with all of the features you expect.",
+      "logo": "/assets/images/signal.svg",
+      "name": "Signal",
+      "url": "https://signal.org"
+    },
+    {
+      "category": "communication",
+      "description": "Slack is a messaging program designed specifically for the office, but has also been adopted for personal use.",
+      "logo": "/assets/images/slack.svg",
+      "name": "Slack",
+      "url": "https://slack.com"
+    }
+  ]
+}
