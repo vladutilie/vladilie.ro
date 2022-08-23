@@ -1,0 +1,204 @@
+{
+  "boardgames": [
+    {
+      "age": "12+",
+      "duration": "45",
+      "image": "https://cf.geekdo-images.com/zGLFwx-YVwoSFkKQ9hr4cw__imagepagezoom/img/jpSmHQ2qRTEKv3w_PVY_yWjsoYU=/fit-in/1200x900/filters:no_upscale():strip_icc()/pic1882656.jpg",
+      "link": "",
+      "name": "Activity",
+      "players": "3-16",
+      "state": "Own",
+      "tags": ["Action/Dexterity", "Card game", "Party game"]
+    },
+    {
+      "age": "7+",
+      "duration": "60",
+      "image": "https://cf.geekdo-images.com/MQQmnWV5XnCjYav7g42iLQ__imagepage/img/reQW8rOYM16Xk0kxumI7JE93r7M=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3214285.jpg",
+      "link": "",
+      "name": "Alias",
+      "players": "4-12",
+      "state": "Own",
+      "tags": ["Party game", "Trivia", "Word game"]
+    },
+    {
+      "age": "11+",
+      "duration": "30",
+      "image": "https://cf.geekdo-images.com/4E4zyun0230LVq1XjHnazA__imagepage/img/LYTX2qNCCxcVG3HWV68yx6F8f1A=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4926067.jpg",
+      "link": "",
+      "name": "Party Alias",
+      "players": "4-24",
+      "state": "Own",
+      "tags": ["Humor", "Party game", "Racing", "Trivia", "Word game"]
+    },
+    {
+      "age": "8+",
+      "duration": "30-45",
+      "image": "https://cf.geekdo-images.com/aPSHJO0d0XOpQR5X-wJonw__imagepage/img/q4uWd2nXGeEkKDR8Cc3NhXG9PEU=/fit-in/900x600/filters:no_upscale():strip_icc()/pic6973671.png",
+      "link": "",
+      "name": "Azul",
+      "players": "2-4",
+      "state": "Own",
+      "tags": ["Abstract strategy", "Puzzle", "Renaissance"]
+    },
+    {
+      "age": "12+",
+      "duration": "90",
+      "image": "https://cf.geekdo-images.com/eWZsv7izrULEQfbsYERmEw__imagepage/img/0NyNWhKveEO5Vw3lott_LTULve4=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4134942.png",
+      "link": "",
+      "name": "Catan Histories: Rise of the Inkas",
+      "players": "3-4",
+      "state": "Own",
+      "tags": ["Negotiation"]
+    },
+    {
+      "age": "10+",
+      "duration": "75",
+      "image": "https://cf.geekdo-images.com/bLDPA2gNUob2WyAst4yubQ__imagepage/img/61jW00nZD4gDU3UPCHJ1abaABb0=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4526596.jpg",
+      "link": "",
+      "name": "Catan: Big Box",
+      "players": "1-6",
+      "state": "Own",
+      "tags": ["Civilization", "Negotiation"]
+    },
+    {
+      "age": "6+",
+      "duration": "20",
+      "image": "https://cf.geekdo-images.com/YH5C06snaoJtDqKjwMROPw__imagepage/img/zC1J50A0Ohr0s1UR5eJhky2XxuM=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5140451.jpg",
+      "link": "",
+      "name": "Jenga",
+      "players": "1-8",
+      "state": "Own",
+      "tags": ["Action/Dexterity", "Party game"]
+    },
+    {
+      "age": "8+",
+      "duration": "45",
+      "image": "https://cf.geekdo-images.com/S3ybV1LAp-8SnHIXLLjVqA__imagepage/img/kIBu-2Ljb_ml5n-S8uIbE6ehGFc=/fit-in/900x600/filters:no_upscale():strip_icc()/pic1534148.jpg",
+      "link": "",
+      "name": "Pandemic",
+      "players": "2-4",
+      "state": "Own",
+      "tags": ["Medical"]
+    },
+    {
+      "age": "10+",
+      "duration": "30-60",
+      "image": "https://cf.geekdo-images.com/ri8mcs_j26dGRxA5e2xITQ__imagepage/img/YYBlFGsMP_nWjujKZJd7FXoepMo=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4496800.jpg",
+      "link": "",
+      "name": "Saboteur: The lost mines",
+      "players": "3-9",
+      "state": "Own",
+      "tags": ["Card game", "Deduction", "Fantasy", "Maze"]
+    },
+    {
+      "age": "8+",
+      "duration": "30-60",
+      "image": "https://cf.geekdo-images.com/0K1AOciqlMVUWFPLTJSiww__imagepage/img/pC5hC440R46jn4EpfdYV5rL4VOc=/fit-in/900x600/filters:no_upscale():strip_icc()/pic66668.jpg",
+      "link": "",
+      "name": "Ticket to Ride: Europe",
+      "players": "2-5",
+      "state": "Own",
+      "tags": ["Trains"]
+    },
+    {
+      "age": "10+",
+      "duration": "20",
+      "image": "https://cf.geekdo-images.com/98LnQShydr11OBKS46xY-Q__imagepage/img/zMKI-BwvaWQiVVwg91Pb5P56uN8=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5687013.jpg",
+      "link": "",
+      "name": "The Crew: The Quest for Planet Nine",
+      "players": "2-5",
+      "state": "Own",
+      "tags": ["Card game", "Science Fiction", "Space Exploration"]
+    },
+    {
+      "age": "18+",
+      "duration": "20-60",
+      "image": "https://cf.geekdo-images.com/d1RGD6HdWfX6loyZU23DDw__imagepage/img/O564mGmk2t2hQbmUHm3Xi97EVQ0=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3303204.jpg",
+      "link": "",
+      "name": "Shit Happens",
+      "players": "2-8",
+      "state": "Own",
+      "tags": ["Card game", "Party game"]
+    },
+    {
+      "age": "18+",
+      "duration": "15-60",
+      "image": "https://cf.geekdo-images.com/NOqCGA7cwOlkkRm4b2LiQg__imagepage/img/SFjefyiP3Uj1PxXgPkVUwk6y_1o=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4207170.png",
+      "link": "",
+      "name": "Shit Happens: 50 Shades of Shit",
+      "players": "2-99",
+      "state": "Own",
+      "tags": ["Card game", "Party game"]
+    },
+    {
+      "age": "10+",
+      "duration": "20",
+      "image": "https://cf.geekdo-images.com/V7WQjhAh0AatPXTYOrXtCQ__imagepage/img/aY1TC_Wu1Lp8suwWdcTx8_hU-6U=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4766499.png",
+      "link": "",
+      "name": "Love Letter",
+      "players": "2-6",
+      "state": "Own",
+      "tags": ["Card game", "Deduction", "Renaissance"]
+    },
+    {
+      "age": "12+",
+      "duration": "20",
+      "image": "https://cf.geekdo-images.com/NPnm8Pz2-uvMsbeptOX0fw__imagepage/img/_b94gdpszYq8uoNhvt7r3FQIvoQ=/fit-in/900x600/filters:no_upscale():strip_icc()/pic208686.jpg",
+      "link": "",
+      "name": "Black Stories",
+      "players": "2-15",
+      "state": "Own",
+      "tags": ["Card game", "Deduction", "Horror", "Humor", "Murder/Mystery", "Party game"]
+    },
+    {
+      "age": "8+",
+      "duration": "40-80",
+      "image": "https://cf.geekdo-images.com/KVLeGFlhzRVDHILRABi-Vg__imagepage/img/AQwNP0Hy9p33qpG2n_F7-ixgh-Q=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5643225.png",
+      "link": "",
+      "name": "Small World of Warcraft",
+      "players": "2-5",
+      "state": "Wish",
+      "tags": ["Fantasy", "Fighting", "Territory building", "Video game theme"]
+    },
+    {
+      "age": "10+",
+      "duration": "30",
+      "image": "https://cf.geekdo-images.com/RvFVTEpnbb4NM7k0IF8V7A__imagepage/img/zruHYxY2_jx-796WgsDj7hitidQ=/fit-in/900x600/filters:no_upscale():strip_icc()/pic860217.jpg",
+      "link": "",
+      "name": "7 Wonders",
+      "players": "2-7",
+      "state": "Wish",
+      "tags": ["Ancient", "Card game", "City building", "Civilization", "Economic"]
+    },
+    {
+      "age": "13+",
+      "duration": "45-75",
+      "image": "https://cf.geekdo-images.com/hYP-VIJGRFR8yB78-UN7Rg__imagepage/img/1X9-5PelilGBlFjFaGQKtLrVcAI=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5154610.jpg",
+      "link": "",
+      "name": "Mind MGMT: The Psychic Espionage \"Game.\"",
+      "players": "1-5",
+      "state": "Wish",
+      "tags": ["Comic book/strip", "Deduction", "Fantasy", "Science fiction", "Spies/Secret agents"]
+    },
+    {
+      "age": "14+",
+      "duration": "40",
+      "image": "https://cf.geekdo-images.com/-19XPXmTn9QyyvqwpcFkBw__imagepage/img/vjX_WFkkpegt2ccx5NUUX7XqYZ0=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5231006.jpg",
+      "link": "",
+      "name": "Marvel United",
+      "players": "1-4",
+      "state": "Wish",
+      "tags": ["Card game", "Comic book/strip", "Fighting"]
+    },
+    {
+      "age": "10+",
+      "duration": "180",
+      "image": "https://cf.geekdo-images.com/WRGh4wJ9Yyc-OrLqyow_Dw__imagepage/img/v6PsLRlbsHPdB7ppizSVQmlnuwc=/fit-in/900x600/filters:no_upscale():strip_icc()/pic1886306.png",
+      "link": "",
+      "name": "Cashflow",
+      "players": "2-6",
+      "state": "Wish",
+      "tags": ["Economic", "Educational", "Math", "Number"]
+    }
+  ]
+}
