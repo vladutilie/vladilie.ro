@@ -6,14 +6,14 @@ import { Page } from '../types/Page.type';
 import { PAGES, SOCIAL_LINKS } from '../utils/constants';
 
 const firstCol: Page[] = [PAGES.HOME as Page, PAGES.ABOUT as Page, PAGES.BLOG as Page, PAGES.CASE_STUDIES as Page];
-const secondCol: Page[] = [
+const secondCol: Page[] = [PAGES.TOOLS as Page, PAGES.BOOKS as Page, PAGES.BOARDGAMES as Page];
+const thirdCol: Page[] = [
   SOCIAL_LINKS.GITHUB as Page,
   SOCIAL_LINKS.INSTAGRAM as Page,
   SOCIAL_LINKS.LINKEDIN as Page,
   SOCIAL_LINKS.TWITTER as Page,
   SOCIAL_LINKS.WORDPRESS as Page
 ];
-const thirdCol: Page[] = [PAGES.TOOLS as Page, PAGES.BOOKS as Page, PAGES.BOARDGAMES as Page, PAGES.QUOTES as Page];
 
 export const Footer: React.FC = () => {
   const { pathname } = useRouter();
@@ -37,7 +37,7 @@ export const Footer: React.FC = () => {
           {secondCol.map(({ href, label }: Page, idx: number) => (
             <li key={idx}>
               <Link href={href}>
-                <a target='_blank'>{label}</a>
+                <a className={`${pathname === href ? 'text-blue-400' : ''}`}>{label}</a>
               </Link>
             </li>
           ))}
@@ -47,7 +47,7 @@ export const Footer: React.FC = () => {
           {thirdCol.map(({ href, label }: Page, idx: number) => (
             <li key={idx}>
               <Link href={href}>
-                <a className={`${pathname === href ? 'text-blue-400' : ''}`}>{label}</a>
+                <a target='_blank'>{label}</a>
               </Link>
             </li>
           ))}
