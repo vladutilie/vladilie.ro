@@ -4,13 +4,20 @@ import Link from 'next/link';
 import { Done, Favorite, Glasses, Wishlist } from '../icons';
 import { Book as BookType, BookState } from '../types/Book.type';
 
-export const Book: React.FC<BookType> = ({ title, author, cover, state, link }) => {
+export const Book: React.FC<BookType> = ({ title, author, cover, state, link, blurDataUrl }) => {
   return (
     <Link href={link}>
       <a className='w-full p-2 transition-transform hover:scale-105 md:w-1/2' target='_blank'>
         <div className='flex w-full items-center gap-x-4 rounded-md bg-white p-4'>
           <div className='relative h-20 w-12'>
-            <Image src={cover} alt={title} objectFit='contain' layout='fill' />
+            <Image
+              src={cover}
+              alt={title}
+              objectFit='contain'
+              layout='fill'
+              placeholder='blur'
+              blurDataURL={`data:image/jpeg;base64,${blurDataUrl}`}
+            />
             <div
               className={`absolute -right-1 flex h-5 w-5 items-center justify-center rounded-full p-1 ${
                 BookState.Reading === state

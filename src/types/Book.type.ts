@@ -6,9 +6,10 @@ export enum BookState {
 }
 
 export type Book = {
-  title: string;
   author: string;
+  blurDataUrl: string;
   cover: string;
-  state: BookState;
   link: string;
+  state: BookState;
+  title: string;
 };
