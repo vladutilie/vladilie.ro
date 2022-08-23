@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Boardgame as BoardgameType } from '../types/Boardgame.type';
 import { Duration, Players } from '../icons';
 
-export const Boardgame: React.FC<BoardgameType> = ({ age, duration, image, name, players, link }) => (
+export const Boardgame: React.FC<BoardgameType> = ({ age, blurDataUrl, duration, image, name, players, link }) => (
   <Link href={link}>
     <a className='h-52 w-full p-2 transition-transform hover:scale-105 md:w-1/3' target='_blank'>
       <div className='flex h-full flex-col gap-y-4 rounded-md bg-white'>
@@ -14,7 +14,14 @@ export const Boardgame: React.FC<BoardgameType> = ({ age, duration, image, name,
         </div>
 
         <div className='relative h-20 w-full'>
-          <Image src={image} alt={name} objectFit='contain' layout='fill' />
+          <Image
+            alt={name}
+            blurDataURL={`data:image/png;base64,${blurDataUrl}`}
+            layout='fill'
+            objectFit='contain'
+            placeholder='blur'
+            src={image}
+          />
         </div>
 
         <div className='flex justify-between px-2'>

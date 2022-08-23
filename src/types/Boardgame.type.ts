@@ -5,6 +5,7 @@ export enum BoardgameState {
 
 export type Boardgame = {
   age: string;
+  blurDataUrl: string;
   duration: string;
   image: string;
   name: string;
