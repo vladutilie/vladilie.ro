@@ -1,3 +1,4 @@
+export { Boardgame } from './Boardgame';
 export { FeaturedServices } from './FeaturedServices';
 export { Footer } from './Footer';
 export { Hero } from './Hero';
