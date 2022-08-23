@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
-import { Book } from '../src/components/Book';
+import { Book } from '../src/components';
 import { Book as BookType, BookState } from '../src/types/Book.type';
 import { readData } from '../src/utils/readData';
 
@@ -63,8 +63,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       completed: books.filter(({ state }) => state === BookState.Completed),
       favorites: books.filter(({ state }) => state === BookState.Favorite),
       wishing: books.filter(({ state }) => state === BookState.Wish)
-    },
-    revalidate: 60 * 60
+    }
   };
 };
 
