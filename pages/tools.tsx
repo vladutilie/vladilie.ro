@@ -16,15 +16,15 @@ const Tools: NextPage<Props> = ({ tools, categories }) => (
       <title>{[process.env.NEXT_PUBLIC_SITE_NAME, 'Tools'].join(' - ')}</title>
     </Head>
 
-    <main className='container mx-auto flex max-w-3xl flex-col px-4'>
-      <h2>Software tools</h2>
-      <p className='mt-3'>
-        I can&apos;t do magic by myself, but the right software tools in the right hands are doing a great job.
-      </p>
+    <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4'>
+      <div className='flex flex-col gap-y-3'>
+        <h2>Software tools</h2>
+        <p>I can&apos;t do magic by myself, but the right software tools in the right hands are doing a great job.</p>
+      </div>
 
       <div className='flex flex-col'>
-        {categories.map((category) => (
-          <div key={category} className='mt-16 flex flex-col gap-y-4'>
+        {categories.map((category: string) => (
+          <div key={category} className='mb-8 flex flex-col gap-y-4'>
             <h2 className='capitalize'>{category}</h2>
             <ul className='flex flex-col gap-y-10'>
               {tools[category].map((tool) => (
