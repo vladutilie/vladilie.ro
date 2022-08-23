@@ -18,11 +18,13 @@ const Books: NextPage<Props> = ({ reading, favorites, completed, wishing }) => (
       <title>{[process.env.NEXT_PUBLIC_SITE_NAME, 'Books'].join(' - ')}</title>
     </Head>
 
-    <main className='container mx-auto flex max-w-3xl flex-col px-4'>
-      <h2>Books</h2>
-      <p className='mt-3'>My book collection. A travel through my knowledge and stories along life.</p>
+    <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4'>
+      <div className='flex flex-col gap-y-3'>
+        <h2>Books</h2>
+        <p>My book collection. A travel through my knowledge and stories along life.</p>
+      </div>
 
-      <div className='mt-8'>
+      <div>
         <h3>Currently reading</h3>
         <div className='mt-4 flex w-full flex-wrap'>
           {reading.map((book: BookType, idx: number) => (
@@ -31,7 +33,7 @@ const Books: NextPage<Props> = ({ reading, favorites, completed, wishing }) => (
         </div>
       </div>
 
-      <div className='mt-8'>
+      <div>
         <h3>Read</h3>
         <div className='mt-4 flex w-full flex-wrap'>
           {[...favorites, ...completed].map((book: BookType, idx: number) => (
@@ -40,7 +42,7 @@ const Books: NextPage<Props> = ({ reading, favorites, completed, wishing }) => (
         </div>
       </div>
 
-      <div className='mt-8'>
+      <div>
         <h3>Wishlist</h3>
         <div className='mt-4 flex w-full flex-wrap'>
           {wishing.map((book: BookType, idx: number) => (
