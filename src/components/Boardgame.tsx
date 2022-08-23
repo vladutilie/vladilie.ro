@@ -16,7 +16,7 @@ export const Boardgame: React.FC<BoardgameType> = ({ age, blurDataUrl, duration,
         <div className='relative h-20 w-full'>
           <Image
             alt={name}
-            blurDataURL={`data:image/png;base64,${blurDataUrl}`}
+            blurDataURL={`data:image/png,${blurDataUrl}`}
             layout='fill'
             objectFit='contain'
             placeholder='blur'

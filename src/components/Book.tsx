@@ -12,7 +12,7 @@ export const Book: React.FC<BookType> = ({ title, author, cover, state, link, bl
           <div className='relative h-20 w-12'>
             <Image
               alt={title}
-              blurDataURL={`data:image/jpeg;base64,${blurDataUrl}`}
+              blurDataURL={`data:image/jpeg,${blurDataUrl}`}
               layout='fill'
               objectFit='contain'
               placeholder='blur'
