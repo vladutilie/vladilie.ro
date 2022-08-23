@@ -11,12 +11,12 @@ export const Book: React.FC<BookType> = ({ title, author, cover, state, link, bl
         <div className='flex w-full items-center gap-x-4 rounded-md bg-white p-4'>
           <div className='relative h-20 w-12'>
             <Image
-              src={cover}
               alt={title}
-              objectFit='contain'
-              layout='fill'
-              placeholder='blur'
               blurDataURL={`data:image/jpeg;base64,${blurDataUrl}`}
+              layout='fill'
+              objectFit='contain'
+              placeholder='blur'
+              src={cover}
             />
             <div
               className={`absolute -right-1 flex h-5 w-5 items-center justify-center rounded-full p-1 ${
