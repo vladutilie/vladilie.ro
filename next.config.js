@@ -2,7 +2,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['i.gr-assets.com', 'images-na.ssl-images-amazon.com']
+    domains: ['i.gr-assets.com', 'images-na.ssl-images-amazon.com', 'cf.geekdo-images.com']
   },
   webpack(config) {
     config.module.rules.push({
