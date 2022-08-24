@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import { FeaturedServices, Hero, Navbar, Projects } from '../src/components';
+import { FeaturedServices, Hero, Projects } from '../src/components';
 
 const Home: NextPage = () => (
   <>
