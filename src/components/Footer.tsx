@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
     <footer className='container mx-auto mt-16 flex max-w-3xl flex-col gap-y-10 p-4'>
       <hr />
 
-      <div className='flex w-full flex-wrap justify-between'>
+      <div className='flex w-full flex-wrap justify-between gap-y-2'>
         <ul className='w-1/2 md:w-auto'>
           {firstCol.map(({ href, label }: Page, idx: number) => (
             <li key={idx}>
