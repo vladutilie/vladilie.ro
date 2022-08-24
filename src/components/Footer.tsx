@@ -5,7 +5,13 @@ import Image from 'next/image';
 import { Page } from '../types';
 import { PAGES, SOCIAL_LINKS } from '../utils/constants';
 
-const firstCol: Page[] = [PAGES.HOME as Page, PAGES.ABOUT as Page, PAGES.BLOG as Page, PAGES.CASE_STUDIES as Page];
+const firstCol: Page[] = [
+  PAGES.HOME as Page,
+  PAGES.ABOUT as Page,
+  PAGES.BLOG as Page,
+  PAGES.CASE_STUDIES as Page,
+  PAGES.COLOPHON as Page
+];
 const secondCol: Page[] = [PAGES.TOOLS as Page, PAGES.BOOKS as Page, PAGES.BOARDGAMES as Page];
 const thirdCol: Page[] = [
   SOCIAL_LINKS.GITHUB as Page,
