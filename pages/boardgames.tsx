@@ -39,7 +39,7 @@ const Boardgames: NextPage<Props> = ({ boardgames, categories }) => {
   return (
     <>
       <Head>
-        <title>{[process.env.NEXT_PUBLIC_SITE_NAME, 'Tools'].join(' - ')}</title>
+        <title>{[process.env.NEXT_PUBLIC_SITE_NAME, 'Board games'].join(' - ')}</title>
       </Head>
 
       <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4'>
