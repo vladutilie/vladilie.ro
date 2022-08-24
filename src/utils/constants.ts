@@ -5,6 +5,7 @@ export const PAGES: Pages = {
   ABOUT: { label: 'About', href: '/about' },
   BLOG: { label: 'Blog', href: '/blog' },
   CASE_STUDIES: { label: 'Case studies', href: '/case-studies' },
+  COLOPHON: { label: 'Colophon', href: '/colophon' },
   TOOLS: { label: 'Tools', href: '/tools' },
   BOOKS: { label: 'Books', href: '/books' },
   BOARDGAMES: { label: 'Board games', href: '/boardgames' }
