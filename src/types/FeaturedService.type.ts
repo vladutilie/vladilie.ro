@@ -1,6 +1,6 @@
 import { StaticImageData } from 'next/image';
 
-export type FeaturedServiceType = {
+export type FeaturedService = {
   image: StaticImageData;
   title: string;
   url: string;
