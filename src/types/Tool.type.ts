@@ -1,4 +1,4 @@
-export type ToolType = {
+export type Tool = {
   category: string;
   description: string;
   logo: any;
