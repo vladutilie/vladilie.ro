@@ -1,4 +1,4 @@
-type PageType = 'HOME' | 'ABOUT' | 'BLOG' | 'CASE_STUDIES' | 'TOOLS' | 'BOOKS' | 'BOARDGAMES' | 'QUOTES';
+type PageType = 'HOME' | 'ABOUT' | 'BLOG' | 'CASE_STUDIES' | 'COLOPHON' | 'TOOLS' | 'BOOKS' | 'BOARDGAMES' | 'QUOTES';
 type SocialType = 'GITHUB' | 'INSTAGRAM' | 'LINKEDIN' | 'TWITTER' | 'WORDPRESS';
 
 export type Page = { label: string; href: string };
