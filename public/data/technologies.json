@@ -1,0 +1,137 @@
+{
+  "technologies": [
+    {
+      "blurDataUrl": "LVL4,QRk~Kxus$j[o$aen_oy%MRj",
+      "height": 40,
+      "image": "/assets/images/css.svg",
+      "name": "CSS",
+      "width": 40
+    },
+    {
+      "blurDataUrl": "LUJkZQs:E2WqIUWB-;ofo#kC~WV@",
+      "height": 40,
+      "image": "/assets/images/github.svg",
+      "name": "GitHub",
+      "width": 40
+    },
+    {
+      "blurDataUrl": "LQP#+@R*UaxZFKj[$jWBADjs%MS4",
+      "height": 40,
+      "image": "/assets/images/html.svg",
+      "name": "HTML",
+      "width": 40
+    },
+    {
+      "blurDataUrl": "LTLz]et8.8o#WBxut7t6~qRiMxxa",
+      "height": 40,
+      "image": "/assets/images/jquery.svg",
+      "name": "JQuery",
+      "width": 166
+    },
+    {
+      "blurDataUrl": "LqHoE|ay?bj[NGj[t7fQ~qj@xtj[",
+      "height": 40,
+      "image": "/assets/images/mongodb.svg",
+      "name": "MongoDB",
+      "width": 18
+    },
+    {
+      "blurDataUrl": "LGO:nfE,Tfr=.T=txCJCx^bbZ}V@",
+      "height": 40,
+      "image": "/assets/images/mysql.svg",
+      "name": "MySQL",
+      "width": 58
+    },
+    {
+      "blurDataUrl": "LbI$+rIv}]xZNajebVW+^ibUjbxJ",
+      "height": 40,
+      "image": "/assets/images/neo4j.svg",
+      "name": "Neo4j",
+      "width": 40
+    },
+    {
+      "blurDataUrl": "LYPqmng~l-m-rsiwf+bbdBiwaeae",
+      "height": 40,
+      "image": "/assets/images/nestjs.svg",
+      "name": "NestJS",
+      "width": 40
+    },
+    {
+      "blurDataUrl": "LQEfNPae_3ogWCoft7WB_3WC~ps:",
+      "height": 40,
+      "image": "/assets/images/nextjs.svg",
+      "name": "NextJS",
+      "width": 40
+    },
+    {
+      "blurDataUrl": "LIPQB9E0^,~X?cR%R%xvnTxuE09Y",
+      "height": 40,
+      "image": "/assets/images/nodejs.svg",
+      "name": "NodeJS",
+      "width": 65
+    },
+    {
+      "blurDataUrl": "LVL4pTRjxuM{xuofxu%M~qWVWARj",
+      "height": 40,
+      "image": "/assets/images/php.svg",
+      "name": "PHP",
+      "width": 80
+    },
+    {
+      "blurDataUrl": "LOJIFeoe~UE20fM|Rjxt?GxaWYR*",
+      "height": 40,
+      "image": "/assets/images/postgresql.svg",
+      "name": "PostgreSQL",
+      "width": 40
+    },
+    {
+      "blurDataUrl": "LTMtQ|M{IoM|-;j[t7of~qM{Rie.",
+      "height": 40,
+      "image": "/assets/images/prisma.svg",
+      "name": "Prisma",
+      "width": 128
+    },
+    {
+      "blurDataUrl": "LKM8pUf6}So#xuj[ofay=vkCivaK",
+      "height": 40,
+      "image": "/assets/images/reactjs.svg",
+      "name": "ReactJS",
+      "width": 45
+    },
+    {
+      "blurDataUrl": "LKMHfN0oGdyZyDEMo}%M?H$$VXeS",
+      "height": 40,
+      "image": "/assets/images/sqlite.svg",
+      "name": "SQLite",
+      "width": 86
+    },
+    {
+      "blurDataUrl": "LlKfA}kV=#i{o|S0jG$l}vaejGoy",
+      "height": 40,
+      "image": "/assets/images/supabase.svg",
+      "name": "Supabase",
+      "width": 38
+    },
+    {
+      "blurDataUrl": "LWLYH5f6}*ozoz$xofI]t8oe,,WB",
+      "height": 40,
+      "image": "/assets/images/tailwindcss.svg",
+      "name": "TailwindCSS",
+      "width": 65
+    },
+    {
+      "blurDataUrl": "L5CRHk035a5b06?E?EM|07kX~1n2",
+      "height": 40,
+      "image": "/assets/images/typescript.svg",
+      "name": "TypeScript",
+      "width": 41
+    },
+    {
+      "blurDataUrl": "LpI=GXfj~pj[~qj[j[j[ofj[IUay",
+      "height": 40,
+      "image": "/assets/images/vercel.svg",
+      "name": "Vercel",
+      "width": 41
+    }
+  ]
+}
