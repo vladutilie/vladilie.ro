@@ -1,0 +1,92 @@
+{
+  "projects": [
+    {
+      "blurDataUrl": "c6P${=9e%%_2o}o#pyxVI9?vShIUM_ba%h",
+      "height": 48,
+      "image": "/assets/images/booktruck.svg",
+      "link": "https://booktruck.ro",
+      "name": "BookTruck",
+      "width": 126
+    },
+    {
+      "blurDataUrl": "cHM%.j?a?c~qIoD*EMx]ROR*xuoextt6NH",
+      "height": 50,
+      "image": "/assets/images/cartile-pe-fata.png",
+      "link": "https://cartilepefata.ro",
+      "name": "Cărțile pe față",
+      "width": 40
+    },
+    {
+      "blurDataUrl": "cTNAeoD%RQ%Mf+bH~qWCWAoft7WBD%xut7",
+      "height": 50,
+      "image": "/assets/images/transilvaniacar.png",
+      "link": "https://transilvaniacar.com",
+      "name": "TransilvaniaCar",
+      "width": 250
+    },
+    {
+      "blurDataUrl": "cNM@yQf8~P?Eoe$|I_oeM{%LWCV@Rkayxt",
+      "height": 50,
+      "image": "/assets/images/contadocs.png",
+      "link": "https://contadocs.ro",
+      "name": "Contadocs",
+      "width": 85
+    },
+    {
+      "blurDataUrl": "cIMat=3GGa$R$8nP~T$JrW_2InS4xZRPt8",
+      "height": 50,
+      "image": "/assets/images/graphstars.png",
+      "link": "https://graphstars.com",
+      "name": "GraphStars",
+      "width": 119
+    },
+    {
+      "blurDataUrl": "cINmm6%$--_3M{R+_NMwMzkCt7aeoeoeo#",
+      "height": 50,
+      "image": "/assets/images/tablouri-colorate.png",
+      "link": "https://tablouricolorate.ro",
+      "name": "TablouriColorate",
+      "width": 385
+    },
+    {
+      "blurDataUrl": "cINmm6%$--_3M{R+_NMwMzkCt7aeoeoeo#",
+      "height": 50,
+      "image": "/assets/images/tedxzorilor.png",
+      "link": "https://tedxzorilor.com",
+      "name": "TEDxZorilor",
+      "width": 236
+    },
+    {
+      "blurDataUrl": "cRNm.uX2RVtQWBn,^-RlbCxcoNNFW9t6t8",
+      "height": 50,
+      "image": "/assets/images/ebikernation.png",
+      "link": "https://ebikernation.ro",
+      "name": "eBikerNation",
+      "width": 168
+    },
+    {
+      "blurDataUrl": "cRN,;:D$IVxuayjc^-ogoat8ofR%M_%2t9",
+      "height": 48,
+      "image": "/assets/images/e-bikerent.svg",
+      "link": "https://e-bikerent.ro",
+      "name": "E-Bike Rent",
+      "width": 120
+    },
+    {
+      "blurDataUrl": "cKNTg$D*?w%$NGng?cad9F=?xvI]9wtQ$z",
+      "height": 50,
+      "image": "/assets/images/aerliber.png",
+      "link": "https://aerliber.ro",
+      "name": "Aer liber",
+      "width": 53
+    },
+    {
+      "blurDataUrl": "cCI#AV%23B?bRj-p~q9FRP-;ozRj?b-;xu",
+      "height": 50,
+      "image": "/assets/images/cospol.png",
+      "link": "https://cospol.upt.ro",
+      "name": "COSPol",
+      "width": 204
+    }
+  ]
+}
