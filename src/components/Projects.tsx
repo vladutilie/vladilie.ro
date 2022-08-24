@@ -1,17 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import AerLiber from '../../public/assets/images/aerliber.png';
-import COSPol from '../../public/assets/images/cospol.png';
-import CartilePeFata from '../../public/assets/images/cartile-pe-fata.png';
-import ContaDocs from '../../public/assets/images/contadocs.png';
-import GraphStars from '../../public/assets/images/graphstars.png';
-import TEDxZorilor from '../../public/assets/images/tedxzorilor.png';
-import TablouriColorate from '../../public/assets/images/tablouri-colorate.png';
-import TransilvaniaCar from '../../public/assets/images/transilvaniacar.png';
-import eBikerNation from '../../public/assets/images/ebikernation.png';
-import { BookTruck } from '../icons/BookTruck';
-import { EBikeRent } from '../icons/E-BikeRent';
 import {
   CSS,
   GitHub,
@@ -32,257 +21,48 @@ import {
   TailwindCSS,
   TypeScript
 } from '../technologies';
+import { Project } from '../types/Project.type';
 
-export const Projects: React.FC = () => {
+export const Projects: React.FC<{ projects: Project[] }> = ({ projects }) => {
   return (
     <section className='flex flex-col gap-y-3'>
       <h3>Projects I&apos;ve built &amp; used technologies</h3>
       {/* https://codepen.io/paulobrien/pen/GROOOVQ */}
       <div className='projects relative flex h-14 items-center overflow-x-hidden'>
         <div className='project-stack absolute flex shrink-0 animate-slide justify-around'>
-          <Link href='https://booktruck.ro'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <BookTruck className='flex-inline h-12 opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0' />
-            </a>
-          </Link>
-
-          <Link href='https://cartilepefata.ro'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='Cărțile pe Față logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={CartilePeFata}
-                width={40}
-              />
-            </a>
-          </Link>
-
-          <Link href='https://transilvaniacar.com'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='TransilvaniaCar logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={TransilvaniaCar}
-                width={250}
-              />
-            </a>
-          </Link>
-          <Link href='https://contadocs.ro'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='Contadocs logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={ContaDocs}
-                width={85}
-              />
-            </a>
-          </Link>
-          <Link href='https://graphstars.com'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='GraphStars logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={GraphStars}
-                width={119}
-              />
-            </a>
-          </Link>
-          <Link href='https://tablouricolorate.ro'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='TablouriColorate logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={TablouriColorate}
-                width={385}
-              />
-            </a>
-          </Link>
-          <Link href='https://tedxzorilor.com'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='TEDxZorilor logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={TEDxZorilor}
-                width={236}
-              />
-            </a>
-          </Link>
-          <Link href='https://ebikernation.ro'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='eBikerNation logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={eBikerNation}
-                width={168}
-              />
-            </a>
-          </Link>
-          <Link href='https://e-bikerent.ro'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <EBikeRent className='flex-inline h-12 opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0' />
-            </a>
-          </Link>
-          <Link href='https://aerliber.ro'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='Aer liber logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={AerLiber}
-                width={53}
-              />
-            </a>
-          </Link>
-          <Link href='https://cospol.upt.ro'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='COSPol logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={COSPol}
-                width={204}
-              />
-            </a>
-          </Link>
+          {projects.map(({ blurDataUrl, height, image, link, name, width }: any) => (
+            <Link key={name} href={link}>
+              <a className='flex-inline min-w-max self-center px-6' target='_blank'>
+                <Image
+                  alt={`${name} logo`}
+                  className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
+                  height={height}
+                  placeholder='blur'
+                  blurDataURL={`data:image/jpeg,${blurDataUrl}`}
+                  src={image}
+                  width={width}
+                />
+              </a>
+            </Link>
+          ))}
         </div>
 
         <div className='project-stack absolute flex shrink-0 translate-x-1/2 animate-slide2 justify-around'>
-          <Link href='https://booktruck.ro'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <BookTruck className='flex-inline h-12 opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0' />
-            </a>
-          </Link>
-
-          <Link href='https://cartilepefata.ro'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='Cărțile pe Față logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={CartilePeFata}
-                width={40}
-              />
-            </a>
-          </Link>
-
-          <Link href='https://transilvaniacar.com'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='TransilvaniaCar logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={TransilvaniaCar}
-                width={250}
-              />
-            </a>
-          </Link>
-          <Link href='https://contadocs.ro'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='Contadocs logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={ContaDocs}
-                width={85}
-              />
-            </a>
-          </Link>
-          <Link href='https://graphstars.com'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='GraphStars logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={GraphStars}
-                width={119}
-              />
-            </a>
-          </Link>
-          <Link href='https://tablouricolorate.ro'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='TablouriColorate logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={TablouriColorate}
-                width={385}
-              />
-            </a>
-          </Link>
-          <Link href='https://tedxzorilor.com'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='TEDxZorilor logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={TEDxZorilor}
-                width={236}
-              />
-            </a>
-          </Link>
-          <Link href='https://ebikernation.ro'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='eBikerNation logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={eBikerNation}
-                width={168}
-              />
-            </a>
-          </Link>
-          <Link href='https://e-bikerent.ro'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <EBikeRent className='inline-block opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0' />
-            </a>
-          </Link>
-          <Link href='https://aerliber.ro'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='Aer liber logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={AerLiber}
-                width={53}
-              />
-            </a>
-          </Link>
-          <Link href='https://cospol.upt.ro'>
-            <a className='flex-inline min-w-max self-center px-6' target='_blank'>
-              <Image
-                alt='COSPol logo'
-                className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
-                height={50}
-                placeholder='blur'
-                src={COSPol}
-                width={204}
-              />
-            </a>
-          </Link>
+          {projects.map(({ blurDataUrl, height, image, link, name, width }: any) => (
+            <Link key={name} href={link}>
+              <a className='flex-inline min-w-max self-center px-6' target='_blank'>
+                <Image
+                  alt={`${name} logo`}
+                  className='opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0'
+                  height={height}
+                  placeholder='blur'
+                  blurDataURL={`data:image/jpeg,${blurDataUrl}`}
+                  src={image}
+                  width={width}
+                />
+              </a>
+            </Link>
+          ))}
         </div>
       </div>
 
