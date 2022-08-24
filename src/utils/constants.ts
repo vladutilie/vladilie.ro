@@ -7,7 +7,7 @@ export const PAGES: Pages = {
   CASE_STUDIES: { label: 'Case studies', href: '/case-studies' },
   TOOLS: { label: 'Tools', href: '/tools' },
   BOOKS: { label: 'Books', href: '/books' },
-  BOARDGAMES: { label: 'Boardgames', href: '/boardgames' }
+  BOARDGAMES: { label: 'Board games', href: '/boardgames' }
 };
 
 export const SOCIAL_LINKS: Socials = {
