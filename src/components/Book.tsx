@@ -2,7 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Done, Favorite, Glasses, Wishlist } from '../icons';
-import { Book as BookType, BookState } from '../types/Book.type';
+import { Book as BookType } from '../types';
+import { BookState } from '../types/Book.type';
 
 export const Book: React.FC<BookType> = ({ title, author, cover, state, link, blurDataUrl }) => {
   return (

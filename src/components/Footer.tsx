@@ -1,8 +1,8 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import Image from 'next/image';
 
-import { Vercel } from '../technologies';
-import { Page } from '../types/Page.type';
+import { Page } from '../types';
 import { PAGES, SOCIAL_LINKS } from '../utils/constants';
 
 const firstCol: Page[] = [PAGES.HOME as Page, PAGES.ABOUT as Page, PAGES.BLOG as Page, PAGES.CASE_STUDIES as Page];
@@ -59,8 +59,15 @@ export const Footer: React.FC = () => {
           &copy; {`${new Date().getFullYear()} ${process.env.NEXT_PUBLIC_SITE_NAME}`}
         </p>
         <Link href='https://vercel.app'>
-          <a className='flex items-center gap-x-1 text-xs font-semibold text-black'>
-            Powered by <Vercel className='inline h-3' />
+          <a className='flex items-center gap-x-1 text-xs font-semibold text-black' target='_blank'>
+            Powered by{' '}
+            <Image
+              alt='Vercel'
+              className='inline h-3'
+              height={12}
+              src='/assets/images/vercel-logotype.svg'
+              width={53}
+            />
           </a>
         </Link>
       </div>

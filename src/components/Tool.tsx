@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Arrow } from '../icons';
-import { ToolType } from '../types/Tool.type';
+import { Tool as ToolType } from '../types';
 
 export const Tool: React.FC<ToolType> = ({ logo, name, description, url }) => {
   return (

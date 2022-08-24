@@ -3,7 +3,8 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
 import { Boardgame } from '../src/components';
-import { Boardgame as BoardgameType, BoardgameState } from '../src/types/Boardgame.type';
+import { Boardgame as BoardgameType } from '../src/types';
+import { BoardgameState } from '../src/types/Boardgame.type';
 import { readData } from '../src/utils/readData';
 
 type Props = {

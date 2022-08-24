@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Boardgame as BoardgameType } from '../types/Boardgame.type';
+import { Boardgame as BoardgameType } from '../types';
 import { Duration, Players } from '../icons';
 
 export const Boardgame: React.FC<BoardgameType> = ({ age, blurDataUrl, duration, image, name, players, link }) => (

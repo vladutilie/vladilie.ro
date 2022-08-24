@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
-import { ToolType } from '../src/types/Tool.type';
+import { Tool as ToolType } from '../src/types';
 import { readData } from '../src/utils/readData';
 import { Tool } from '../src/components';
 

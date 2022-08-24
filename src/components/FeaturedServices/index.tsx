@@ -1,5 +1,6 @@
-import { FeaturedServiceType } from '../../types/FeaturedService.type';
 import { FeaturedService } from './FeaturedService';
+import { FeaturedService as FeaturedServiceType } from '../../types';
+
 import ContaDocs from '../../../public/assets/images/contadocs.png';
 import GraphStars from '../../../public/assets/images/graphstars.png';
 

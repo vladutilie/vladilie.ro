@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { FeaturedServiceType } from '../../types/FeaturedService.type';
+import { FeaturedService as FeaturedServiceType } from '../../types';
 import { Arrow } from '../../icons';
 
 export const FeaturedService: React.FC<FeaturedServiceType> = ({ image, title, url, description }) => {
