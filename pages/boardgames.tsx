@@ -48,7 +48,7 @@ const Boardgames: NextPage<Props> = ({ boardgames, categories }) => {
           <h2>Board games</h2>
           <p>
             Beyond learning and working, I also ensure myself fun experiences. Here are my board games I play with
-            friends.
+            friends and dear ones.
           </p>
         </div>
 
