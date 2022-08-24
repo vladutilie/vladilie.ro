@@ -26,7 +26,6 @@ const Home: NextPage<Props> = ({ projects, technologies }) => (
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const { projects } = await readData<Props>('/public/data/projects.json');
   const { technologies } = await readData<Props>('/public/data/technologies.json');
-  console.log(technologies);
 
   return {
     props: {
