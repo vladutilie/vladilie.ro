@@ -59,10 +59,18 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
   return {
     props: {
-      reading: books.filter(({ state }) => state === BookState.Reading),
-      completed: books.filter(({ state }) => state === BookState.Completed),
-      favorites: books.filter(({ state }) => state === BookState.Favorite),
-      wishing: books.filter(({ state }) => state === BookState.Wish)
+      reading: books
+        .filter(({ state }: BookType) => state === BookState.Reading)
+        .sort((a: BookType, b: BookType) => (a.title > b.title ? 1 : -1)),
+      completed: books
+        .filter(({ state }: BookType) => state === BookState.Completed)
+        .sort((a: BookType, b: BookType) => (a.title > b.title ? 1 : -1)),
+      favorites: books
+        .filter(({ state }: BookType) => state === BookState.Favorite)
+        .sort((a: BookType, b: BookType) => (a.title > b.title ? 1 : -1)),
+      wishing: books
+        .filter(({ state }: BookType) => state === BookState.Wish)
+        .sort((a: BookType, b: BookType) => (a.title > b.title ? 1 : -1))
     }
   };
 };
