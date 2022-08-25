@@ -8,7 +8,7 @@ import { PAGES, SOCIAL_LINKS } from '../utils/constants';
 const firstCol: Page[] = [
   PAGES.HOME as Page,
   PAGES.ABOUT as Page,
-  PAGES.BLOG as Page,
+  // PAGES.BLOG as Page,
   PAGES.CASE_STUDIES as Page,
   PAGES.COLOPHON as Page
 ];
