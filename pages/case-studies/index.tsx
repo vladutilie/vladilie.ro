@@ -19,11 +19,15 @@ const CaseStudies: NextPage<Props> = ({ caseStudies }) => {
           <h2>Case studies</h2>
         </div>
 
-        <div className='gap-y- flex flex-col gap-y-2'>
-          {caseStudies.map((caseStudy: CaseStudyType, idx: number) => (
-            <CaseStudy key={idx} {...caseStudy} />
-          ))}
-        </div>
+        {caseStudies.length ? (
+          <div className='gap-y- flex flex-col gap-y-2'>
+            {caseStudies.map((caseStudy: CaseStudyType, idx: number) => (
+              <CaseStudy key={idx} {...caseStudy} />
+            ))}
+          </div>
+        ) : (
+          <p>There are no Case studies for now. Stay close.</p>
+        )}
       </main>
     </>
   );
@@ -31,7 +35,7 @@ const CaseStudies: NextPage<Props> = ({ caseStudies }) => {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const caseStudies = await getCaseStudies();
-  const props: Props = { caseStudies: [...caseStudies, ...caseStudies] };
+  const props: Props = { caseStudies };
 
   return { props };
 };
