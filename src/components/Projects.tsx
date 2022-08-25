@@ -11,7 +11,7 @@ export const Projects: React.FC<Props> = ({ projects, technologies }) => {
       {/* https://codepen.io/paulobrien/pen/GROOOVQ */}
       <div className='projects relative flex h-14 items-center overflow-x-hidden'>
         <div className='project-stack absolute flex shrink-0 animate-slide justify-around'>
-          {projects.map(({ blurDataUrl, height, image, link, name, width }: any) => (
+          {projects.map(({ blurDataUrl, height, image, link, name, width }: Project) => (
             <Link key={name} href={link}>
               <a className='flex-inline min-w-max self-center px-6' target='_blank'>
                 <Image
@@ -29,7 +29,7 @@ export const Projects: React.FC<Props> = ({ projects, technologies }) => {
         </div>
 
         <div className='project-stack absolute flex shrink-0 translate-x-1/2 animate-slide2 justify-around'>
-          {projects.map(({ blurDataUrl, height, image, link, name, width }: any) => (
+          {projects.map(({ blurDataUrl, height, image, link, name, width }: Project) => (
             <Link key={name} href={link}>
               <a className='flex-inline min-w-max self-center px-6' target='_blank'>
                 <Image
@@ -47,7 +47,7 @@ export const Projects: React.FC<Props> = ({ projects, technologies }) => {
         </div>
       </div>
 
-      <div className='projects relative flex h-10 items-center overflow-x-hidden'>
+      <div className='projects relative flex h-10 items-center overflow-hidden'>
         <div className='project-stack absolute flex shrink-0 animate-slide-slow justify-around'>
           {technologies.map(({ blurDataUrl, height, image, name, width }: Technology) => (
             <div key={name} className='flex-inline min-w-max self-center px-3'>
