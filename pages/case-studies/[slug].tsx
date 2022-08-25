@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter';
@@ -7,13 +8,11 @@ import readingTime from 'reading-time';
 import { format } from 'timeago.js';
 
 import { CaseStudy } from '../../src/types';
-import { getCaseStudy } from '../../src/utils/getCaseStudy';
+import { getCaseStudies } from '../../src/utils/getCaseStudies';
 import { readCaseStudy } from '../../src/utils/readCaseStudy';
 import { MDXComponents } from '../../src/components/MDXComponents';
 
-type Props = CaseStudy & {
-  source: MDXRemoteSerializeResult;
-};
+type Props = CaseStudy & { source: MDXRemoteSerializeResult };
 
 const CaseStudy: React.FC<Props> = ({ title, description, date, source, readingTime }) => {
   return (
@@ -24,7 +23,13 @@ const CaseStudy: React.FC<Props> = ({ title, description, date, source, readingT
 
       <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4'>
         <div className='flex flex-col gap-y-3'>
-          <h1>{title}</h1>
+          <h1>
+            {' '}
+            <Link href='/case-studies'>
+              <a>Case studies</a>
+            </Link>{' '}
+            &gt; {title}
+          </h1>
           <span>
             {format(date)} &bull; {readingTime}
           </span>
@@ -37,7 +42,7 @@ const CaseStudy: React.FC<Props> = ({ title, description, date, source, readingT
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getCaseStudy();
+  const posts = await getCaseStudies();
 
   return {
     paths: posts.map(({ slug }) => ({ params: { slug } })),
