@@ -5,7 +5,7 @@ import matter from 'gray-matter';
 
 import type { CaseStudy } from '../types';
 
-export const getCaseStudy = async (): Promise<CaseStudy[]> => {
+export const getCaseStudies = async (): Promise<CaseStudy[]> => {
   const result: CaseStudy[] = [];
   const dir = path.join(process.cwd(), './public/data/case-studies');
   const caseStudies = await fs.readdir(dir);
