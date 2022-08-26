@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
+import { NextSeo } from 'next-seo';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter';
@@ -11,15 +11,17 @@ import { CaseStudy } from '../../src/types';
 import { getCaseStudies } from '../../src/utils/getCaseStudies';
 import { readCaseStudy } from '../../src/utils/readCaseStudy';
 import { MDXComponents } from '../../src/components/MDXComponents';
+import { PAGES } from '../../src/utils/constants';
 
 type Props = CaseStudy & { source: MDXRemoteSerializeResult };
 
 const CaseStudy: React.FC<Props> = ({ title, description, date, source, readingTime }) => {
   return (
     <>
-      <Head>
-        <title>{[process.env.NEXT_PUBLIC_SITE_NAME, 'Case study', title].join(' - ')}</title>
-      </Head>
+      <NextSeo
+        title={[process.env.NEXT_PUBLIC_SITE_NAME, PAGES.CASE_STUDIES?.label, title].join(' - ')}
+        description={description}
+      />
 
       <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4'>
         <div className='flex flex-col gap-y-3'>
