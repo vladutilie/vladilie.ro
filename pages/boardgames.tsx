@@ -1,17 +1,14 @@
-import type { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
 import { useEffect, useState } from 'react';
+import type { GetStaticProps, NextPage } from 'next';
+import { NextSeo } from 'next-seo';
 
 import { Boardgame } from '../src/components';
 import { Boardgame as BoardgameType } from '../src/types';
 import { BoardgameState } from '../src/types/Boardgame.type';
 import { readData } from '../src/utils/readData';
+import { PAGES } from '../src/utils/constants';
 
-type Props = {
-  boardgames: BoardgameType[];
-  categories: string[];
-};
-
+type Props = { boardgames: BoardgameType[]; categories: string[] };
 const Boardgames: NextPage<Props> = ({ boardgames, categories }) => {
   const [activeCat, setActiveCat] = useState<string>();
   const [bgList, setBgList] = useState<BoardgameType[]>(boardgames);
@@ -39,9 +36,10 @@ const Boardgames: NextPage<Props> = ({ boardgames, categories }) => {
 
   return (
     <>
-      <Head>
-        <title>{[process.env.NEXT_PUBLIC_SITE_NAME, 'Board games'].join(' - ')}</title>
-      </Head>
+      <NextSeo
+        title={[process.env.NEXT_PUBLIC_SITE_NAME, PAGES.BOARDGAMES?.label].join(' - ')}
+        description='Beyond learning and working, I also ensure myself fun experiences. Here are my board games I play with friends and dear ones.'
+      />
 
       <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4'>
         <div className='flex flex-col gap-y-3'>
