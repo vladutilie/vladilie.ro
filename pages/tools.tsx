@@ -1,20 +1,18 @@
 import type { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 
 import { Tool as ToolType } from '../src/types';
 import { readData } from '../src/utils/readData';
 import { Tool } from '../src/components';
+import { PAGES } from '../src/utils/constants';
 
-type Props = {
-  tools: { [key: string]: ToolType[] };
-  categories: string[];
-};
-
+type Props = { tools: { [key: string]: ToolType[] }; categories: string[] };
 const Tools: NextPage<Props> = ({ tools, categories }) => (
   <>
-    <Head>
-      <title>{[process.env.NEXT_PUBLIC_SITE_NAME, 'Tools'].join(' - ')}</title>
-    </Head>
+    <NextSeo
+      title={[process.env.NEXT_PUBLIC_SITE_NAME, PAGES.TOOLS?.label].join(' - ')}
+      description="I can't do magic by myself, but the right software tools in the right hands are doing a great job."
+    />
 
     <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4'>
       <div className='flex flex-col gap-y-3'>
