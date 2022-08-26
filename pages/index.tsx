@@ -1,26 +1,16 @@
 import type { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
 
 import { FeaturedServices, Hero, Projects } from '../src/components';
 import { Project, Technology } from '../src/types';
 import { readData } from '../src/utils/readData';
 
-type Props = {
-  projects: Project[];
-  technologies: Technology[];
-};
+type Props = { projects: Project[]; technologies: Technology[] };
 const Home: NextPage<Props> = ({ projects, technologies }) => (
-  <>
-    <Head>
-      <title>{[process.env.NEXT_PUBLIC_SITE_NAME, process.env.NEXT_PUBLIC_SITE_SUBTITLE].join(' - ')}</title>
-    </Head>
-
-    <main className='container mx-auto flex max-w-3xl flex-col gap-y-10 px-4'>
-      <Hero />
-      <FeaturedServices />
-      <Projects projects={projects} technologies={technologies} />
-    </main>
-  </>
+  <main className='container mx-auto flex max-w-3xl flex-col gap-y-10 px-4'>
+    <Hero />
+    <FeaturedServices />
+    <Projects projects={projects} technologies={technologies} />
+  </main>
 );
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
