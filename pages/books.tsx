@@ -1,8 +1,9 @@
 import { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 
 import { Book } from '../src/components';
 import { Book as BookType, BookState } from '../src/types/Book.type';
+import { PAGES } from '../src/utils/constants';
 import { readData } from '../src/utils/readData';
 
 type Props = {
@@ -14,9 +15,10 @@ type Props = {
 
 const Books: NextPage<Props> = ({ reading, favorites, completed, wishing }) => (
   <>
-    <Head>
-      <title>{[process.env.NEXT_PUBLIC_SITE_NAME, 'Books'].join(' - ')}</title>
-    </Head>
+    <NextSeo
+      title={[process.env.NEXT_PUBLIC_SITE_NAME, PAGES.BOOKS?.label].join(' - ')}
+      description='My book collection. A travel through my knowledge and stories along life.'
+    />
 
     <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4'>
       <div className='flex flex-col gap-y-3'>
