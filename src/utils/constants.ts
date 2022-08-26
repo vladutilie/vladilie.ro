@@ -18,3 +18,6 @@ export const SOCIAL_LINKS: Socials = {
   TWITTER: { label: 'Twitter', href: process.env.NEXT_PUBLIC_TWITTER as string },
   WORDPRESS: { label: 'WordPress', href: process.env.NEXT_PUBLIC_WORDPRESS as string }
 };
+
+export const SEO_DESCRIPTION =
+  'Neo4j Certified Professional, NextJS fan, enthusiastic of JavaScript development technologies and nostalgic WordPress lover.';
