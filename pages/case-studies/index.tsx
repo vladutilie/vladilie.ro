@@ -1,18 +1,19 @@
 import type { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 
 import { CaseStudy } from '../../src/components';
 import { CaseStudy as CaseStudyType } from '../../src/types';
+import { PAGES } from '../../src/utils/constants';
 import { getCaseStudies } from '../../src/utils/getCaseStudies';
 
 type Props = { caseStudies: CaseStudyType[] };
-
 const CaseStudies: NextPage<Props> = ({ caseStudies }) => {
   return (
     <>
-      <Head>
-        <title>{[process.env.NEXT_PUBLIC_SITE_NAME, 'Case studies'].join(' - ')}</title>
-      </Head>
+      <NextSeo
+        title={[process.env.NEXT_PUBLIC_SITE_NAME, PAGES.CASE_STUDIES?.label].join(' - ')}
+        description='The case studies about my work.'
+      />
 
       <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4'>
         <div className='flex flex-col gap-y-3'>
