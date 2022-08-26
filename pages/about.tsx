@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
+import { NextSeo } from 'next-seo';
 
 import { PAGES } from '../src/utils/constants';
 
@@ -34,9 +34,10 @@ const About: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>{[process.env.NEXT_PUBLIC_SITE_NAME, 'About'].join(' - ')}</title>
-      </Head>
+      <NextSeo
+        title={[process.env.NEXT_PUBLIC_SITE_NAME, PAGES.ABOUT?.label].join(' - ')}
+        description='Here you can find some professional and personal details about me.'
+      />
 
       <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4'>
         <div className='flex flex-col gap-y-3'>
