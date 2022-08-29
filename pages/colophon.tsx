@@ -28,6 +28,10 @@ const Colophon: NextPage = () => (
           <a target='_blank'>NextJS</a>
         </Link>{' '}
         (all pages statically generated),{' '}
+        <Link href='https://planetscale.com/'>
+          <a target='_blank'>PlanetScale</a>
+        </Link>
+        ,{' '}
         <Link href='https://mdxjs.com'>
           <a target='_blank'>MDX</a>
         </Link>
