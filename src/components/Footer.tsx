@@ -12,7 +12,7 @@ const firstCol: Page[] = [
   PAGES.CASE_STUDIES as Page,
   PAGES.COLOPHON as Page
 ];
-const secondCol: Page[] = [PAGES.TOOLS as Page, PAGES.BOOKS as Page, PAGES.BOARDGAMES as Page];
+const secondCol: Page[] = [PAGES.USES as Page, PAGES.BOOKS as Page, PAGES.BOARDGAMES as Page];
 const thirdCol: Page[] = [
   SOCIAL_LINKS.GITHUB as Page,
   SOCIAL_LINKS.INSTAGRAM as Page,

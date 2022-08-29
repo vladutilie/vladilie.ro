@@ -7,16 +7,16 @@ import { Tool } from '../src/components';
 import { PAGES } from '../src/utils/constants';
 
 type Props = { tools: { [key: string]: ToolType[] }; categories: string[] };
-const Tools: NextPage<Props> = ({ tools, categories }) => (
+const Uses: NextPage<Props> = ({ tools, categories }) => (
   <>
     <NextSeo
-      title={[process.env.NEXT_PUBLIC_SITE_NAME, PAGES.TOOLS?.label].join(' - ')}
+      title={[process.env.NEXT_PUBLIC_SITE_NAME, PAGES.USES?.label].join(' - ')}
       description="I can't do magic by myself, but the right software tools in the right hands are doing a great job."
     />
 
     <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4'>
       <div className='flex flex-col gap-y-3'>
-        <h2>Software tools</h2>
+        <h2>Uses</h2>
         <p>I can&apos;t do magic by myself, but the right software tools in the right hands are doing a great job.</p>
       </div>
 
@@ -53,4 +53,4 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   return { props: { tools, categories } };
 };
 
-export default Tools;
+export default Uses;
