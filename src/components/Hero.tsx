@@ -22,8 +22,6 @@ export const Hero: React.FC = () => {
       });
 
       function updateLocation({ lat, lng }: { lat: number; lng: number }) {
-        console.log('Latitude is :', lat);
-        console.log('Longitude is :', lng);
         fetch('/api/settings', {
           method: 'POST',
           headers: new Headers({ 'Content-Type': 'application/json' }),
