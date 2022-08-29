@@ -6,15 +6,18 @@
     "start": "next start"
   },
   "dependencies": {
+    "@prisma/client": "4.2.1",
     "gray-matter": "^4.0.3",
     "next": "latest",
     "next-mdx-remote": "^4.1.0",
     "next-seo": "^5.5.0",
+    "prisma": "^4.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-syntax-highlighter": "^15.5.0",
     "reading-time": "^1.5.0",
     "sharp": "^0.30.7",
+    "swr": "^1.3.0",
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {
