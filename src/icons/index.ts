@@ -6,6 +6,7 @@ export { Github } from './Github';
 export { Glasses } from './Glasses';
 export { Instagram } from './Instagram';
 export { LinkedIn } from './LinkedIn';
+export { Quotes } from './Quotes';
 export { Players } from './Players';
 export { Polywork } from './Polywork';
 export { Twitter } from './Twitter';
