@@ -6,7 +6,8 @@ module.exports = {
       'i.gr-assets.com',
       'images-na.ssl-images-amazon.com',
       'cf.geekdo-images.com',
-      'gcdahtftlmucxetygvev.supabase.co'
+      'gcdahtftlmucxetygvev.supabase.co',
+      'gravatar.com'
     ]
   },
   webpack(config) {
