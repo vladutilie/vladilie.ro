@@ -105,3 +105,77 @@ footer ul li a:hover {
 .featured:hover>div>div>p {
     @apply underline;
 }
+
+#technology-JavaScript:hover {
+    @apply bg-yellow-400/[.08] border-yellow-400/[.5];
+}
+
+#technology-TypeScript:hover,
+#technology-NextJS:hover {
+    @apply bg-blue-600/[.08] border-blue-600/[.5];
+}
+
+#technology-NodeJS:hover {
+    @apply bg-green-900/[.08] border-green-900/[.5];
+}
+
+#technology-NestJS:hover {
+    @apply bg-rose-600/[.08] border-rose-600/[.5];
+}
+
+#technology-PHP:hover {
+    @apply bg-slate-500/[.08] border-slate-500/[.5];
+}
+
+#technology-Neo4j:hover,
+#technology-TailwindCSS:hover {
+    @apply bg-sky-500/[.08] border-sky-500/[.5];
+}
+
+#technology-MongoDB:hover {
+    @apply bg-green-500/[.08] border-green-500/[.5];
+}
+
+#technology-MySQL:hover {
+    @apply bg-amber-500/[.08] border-amber-500/[.5];
+}
+
+#technology-PostgreSQL:hover {
+    @apply bg-cyan-700/[.08] border-cyan-700/[.5];
+}
+
+#technology-SQLite:hover {
+    @apply bg-sky-900/[.08] border-sky-900/[.5];
+}
+
+#technology-Prisma:hover {
+    @apply bg-indigo-500/[.08] border-indigo-500/[.5];
+}
+
+#technology-Supabase:hover {
+    @apply bg-emerald-400/[.08] border-emerald-400/[.5];
+}
+
+#technology-ReactJS:hover {
+    @apply bg-cyan-500/[.08] border-cyan-500/[.5];
+}
+
+#technology-CSS3:hover {
+    @apply bg-blue-700/[.08] border-blue-700/[.5];
+}
+
+#technology-HTML5:hover {
+    @apply bg-orange-500/[.08] border-orange-500/[.5];
+}
+
+#technology-jQuery:hover {
+    @apply bg-sky-300/[.08] border-sky-300/[.5];
+}
+
+#technology-GitHub:hover {
+    @apply bg-indigo-600/[.08] border-indigo-600/[.5];
+}
+
+#technology-Vercel:hover {
+    @apply bg-pink-600/[.08] border-pink-600/[.5];
+}
