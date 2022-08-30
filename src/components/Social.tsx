@@ -18,7 +18,7 @@ export const Social: React.FC = () => {
       {links.map(({ url, Icon }) => (
         <li key={url}>
           <Link href={url}>
-            <a>
+            <a target='_blank'>
               <Icon className='transition-all duration-300 hover:fill-blue-500' />
             </a>
           </Link>
