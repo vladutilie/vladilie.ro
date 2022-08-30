@@ -7,6 +7,7 @@ export { Glasses } from './Glasses';
 export { Instagram } from './Instagram';
 export { LinkedIn } from './LinkedIn';
 export { Players } from './Players';
+export { Polywork } from './Polywork';
 export { Twitter } from './Twitter';
 export { Wishlist } from './Wishlist';
 export { WordPress } from './WordPress';
