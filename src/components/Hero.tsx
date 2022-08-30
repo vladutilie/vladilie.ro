@@ -5,8 +5,9 @@ import { useRouter } from 'next/router';
 import useSWR from 'swr';
 
 import vlad from '../../public/assets/images/vlad-ilie.jpg';
-import { Arrow, Github, Instagram, LinkedIn, Twitter, WordPress } from '../icons';
+import { Arrow } from '../icons';
 import { fetcher } from '../utils/fetcher';
+import { Social } from './';
 
 export const Hero: React.FC = () => {
   const { query } = useRouter();
@@ -64,44 +65,7 @@ export const Hero: React.FC = () => {
           )}{' '}
           and tomorrow I can be somewhere else.
         </p>
-
-        <ul className='flex gap-x-2'>
-          <li>
-            <Link href={process.env.NEXT_PUBLIC_GITHUB as string}>
-              <a>
-                <Github className='hover:fill-blue-500' />
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href={process.env.NEXT_PUBLIC_INSTAGRAM as string}>
-              <a>
-                <Instagram className='hover:fill-blue-500' />
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href={process.env.NEXT_PUBLIC_LINKEDIN as string}>
-              <a>
-                <LinkedIn className='hover:fill-blue-500' />
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href={process.env.NEXT_PUBLIC_TWITTER as string}>
-              <a>
-                <Twitter className='hover:fill-blue-500' />
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href={process.env.NEXT_PUBLIC_WORDPRESS as string}>
-              <a>
-                <WordPress className='hover:fill-blue-500' />
-              </a>
-            </Link>
-          </li>
-        </ul>
+        <Social />
       </div>
 
       <div className='w-56'>
