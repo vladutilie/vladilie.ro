@@ -45,6 +45,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         }
       }
 
+      console.info('Google API', result);
+
       const currentLocation = `${result.locality}, ${result.administrative_area_level_1}`;
       await prisma.settings.upsert({
         where: { name: 'location' },
