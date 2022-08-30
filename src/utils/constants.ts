@@ -16,7 +16,8 @@ export const SOCIAL_LINKS: Socials = {
   INSTAGRAM: { label: 'Instagram', href: process.env.NEXT_PUBLIC_INSTAGRAM as string },
   LINKEDIN: { label: 'LinkedIn', href: process.env.NEXT_PUBLIC_LINKEDIN as string },
   TWITTER: { label: 'Twitter', href: process.env.NEXT_PUBLIC_TWITTER as string },
-  WORDPRESS: { label: 'WordPress', href: process.env.NEXT_PUBLIC_WORDPRESS as string }
+  WORDPRESS: { label: 'WordPress', href: process.env.NEXT_PUBLIC_WORDPRESS as string },
+  POLYWORK: { label: 'Polywork', href: process.env.NEXT_PUBLIC_POLYWORK as string }
 };
 
 export const SEO_DESCRIPTION =

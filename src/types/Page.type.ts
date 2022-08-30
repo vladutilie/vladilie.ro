@@ -1,5 +1,5 @@
 type PageType = 'HOME' | 'ABOUT' | 'BLOG' | 'CASE_STUDIES' | 'COLOPHON' | 'USES' | 'BOOKS' | 'BOARDGAMES' | 'QUOTES';
-type SocialType = 'GITHUB' | 'INSTAGRAM' | 'LINKEDIN' | 'TWITTER' | 'WORDPRESS';
+type SocialType = 'GITHUB' | 'INSTAGRAM' | 'LINKEDIN' | 'TWITTER' | 'WORDPRESS' | 'POLYWORK';
 
 export type Page = { label: string; href: string };
 

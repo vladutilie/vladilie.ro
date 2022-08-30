@@ -18,7 +18,8 @@ const thirdCol: Page[] = [
   SOCIAL_LINKS.INSTAGRAM as Page,
   SOCIAL_LINKS.LINKEDIN as Page,
   SOCIAL_LINKS.TWITTER as Page,
-  SOCIAL_LINKS.WORDPRESS as Page
+  SOCIAL_LINKS.WORDPRESS as Page,
+  SOCIAL_LINKS.POLYWORK as Page
 ];
 
 export const Footer: React.FC = () => {
