@@ -11,7 +11,7 @@ export const Technologies: React.FC<{ technologies: Technology[] }> = ({ technol
           <div
             key={name}
             id={`technology-${name}`}
-            className='flex cursor-pointer items-center gap-x-2 rounded-full border px-3 py-1.5 opacity-75 transition-all hover:opacity-100'
+            className='flex cursor-pointer items-center gap-x-2 rounded-full border px-3 py-1.5 text-sm opacity-75 transition-all hover:opacity-100'
           >
             <div className='relative' style={{ width, height }}>
               <Image alt={`${name} logo`} height={height} src={image} width={width} title={name} />
