@@ -24,10 +24,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
       const request = await fetch(url, { headers: new Headers({ 'Content-Type': 'application/json' }) });
 
-      const result: { [k: string]: string } = {
-        locality: 'Cluj-Napoca',
-        administrative_area_level_1: 'CJ'
-      };
+      const result: { [k: string]: string } = {};
+
       // Kudos to https://gist.github.com/AmirHossein/92a0597b5f723b19c648?permalink_comment_id=4016401#gistcomment-4016401
       if (request.statusText === 'OK') {
         const response = await request.json();
@@ -45,9 +43,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         }
       }
 
-      console.info('Google API', result);
-
-      const currentLocation = `${result.locality}, ${result.administrative_area_level_1}`;
+      const currentLocation = result.locality
+        ? `${result.locality}, ${result.administrative_area_level_1}`
+        : `${result.administrative_area_level_2}, ${result.country}`;
       await prisma.settings.upsert({
         where: { name: 'location' },
         update: { value: currentLocation },
