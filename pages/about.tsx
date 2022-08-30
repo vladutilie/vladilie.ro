@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
-import type { NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 
 import { PAGES } from '../src/utils/constants';
+import { Testimonials } from '../src/components/Testimonials';
+import { Testimonial } from '../src/types/Testimonial.type';
+import { readData } from '../src/utils/readData';
 
-const About: NextPage = () => {
+type Props = { testimonials: Testimonial[] };
+const About: NextPage<Props> = ({ testimonials }) => {
   const [message, setMessage] = useState<string>();
 
   useEffect(() => {
@@ -98,9 +102,17 @@ const About: NextPage = () => {
             </div>
           </div>
         </div>
+
+        <Testimonials testimonials={testimonials} />
       </main>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const { testimonials } = await readData<Props>('/public/data/testimonials.json');
+
+  return { props: { testimonials } };
 };
 
 export default About;
