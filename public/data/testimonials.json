@@ -1,0 +1,44 @@
+{
+  "testimonials": [
+    {
+      "author": "Mihai Ciufudean",
+      "company": "Icey Design",
+      "hash": "",
+      "position": "CEO",
+      "text": "I have worked with Vlăduț Ilie many times on some development projects, when I encounter a problem in codding, the thought takes me directly to him, compared to other programmers he empathizes with the person who has that problem and helps him with all his heart, quickly and qualitatively. I even proposed him to be in my team, so we would work together when I have a project or even custom-made platforms. I recommend with all my confidence.",
+      "url": "https://icey.ro"
+    },
+    {
+      "author": "Alex Bordei",
+      "company": "",
+      "hash": "b3b1153b0cf5111e9ffbc081a3a44197",
+      "position": "Full-Stack Web Developer",
+      "text": "Vladut este tipul de dezvoltator pe care il vrei pentru proiectul tau. Este sincer, open-minded, energic si are o atitudine pozitiva tot timpul. Am lucrat impreuna in cadrul mai multor proiecte si am ramas fascinat de degajarea, implicarea, si profesionalismul lui. De fiecare data cand am de dezvoltat un proiect de WordPress, Laravel sau o aplicatie de mobil cu React.js si tehnologii native PWA, Vladut este omul la care apelez, si ma bucur din plin de o colaborare cu adevarat faina.",
+      "url": "https://alexbordei.ro"
+    },
+    {
+      "author": "Nicolas Gramnea",
+      "company": "",
+      "hash": "",
+      "position": "",
+      "text": "Vladut is very talented and passionate about his job. He was doing his best to undertand my needs.....even if I had no idea what I really wanted. He was patient with me and always there to answer my questions. If you&apos;re looking for a dedicated developer who care about his clients, I highly encourage you to try Vlad services. You won&apos;t go wrong with him.",
+      "url": ""
+    },
+    {
+      "author": "Ion Panfilii",
+      "company": "COSPol",
+      "hash": "",
+      "position": "Former Chairman",
+      "text": "Working with Vlăduț was a really amazing experience, because of his methodical and professional way of doing things. His well formulated questions related to the structure and design of the product, during our scheduled meetings, and his following suggestions and proper work has allowed us to obtain the best result. Therefore, I would strongly recommend Vlăduț as the right person for building the most suitable site for your company or NGO.",
+      "url": "https://cospol.upt.ro"
+    },
+    {
+      "author": "Andrei Serchis",
+      "company": "Serchis Creative",
+      "hash": "",
+      "position": "Director",
+      "text": "Working with Vlăduț was a delight. He listened to my needs in a professional way and converted them into clear, easy-to-manage tasks that we could both work on. We kept our Skype calls at a weekly pace, but we managed to touch base and progress as if we were chatting daily. I would definitely work with him again and I strongly encourage his recent passion for freelancing!",
+      "url": "https://serchis.com"
+    }
+  ]
+}
