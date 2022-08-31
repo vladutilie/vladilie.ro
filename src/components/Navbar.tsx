@@ -60,7 +60,7 @@ export const Navbar: React.FC = () => {
       </nav>
 
       <div
-        className={`fixed -top-3 left-0 flex h-screen w-full items-center justify-center bg-zinc-100/90 text-xl transition-transform ${
+        className={`fixed -top-3 left-0 flex h-screen w-full items-center justify-center bg-zinc-100/90 text-xl transition-transform md:hidden ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         onClick={toggleMobileMenu}
