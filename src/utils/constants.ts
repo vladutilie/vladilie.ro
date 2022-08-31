@@ -8,7 +8,8 @@ export const PAGES: Pages = {
   COLOPHON: { label: 'Colophon', href: '/colophon' },
   USES: { label: 'Uses', href: '/uses' },
   BOOKS: { label: 'Books', href: '/books' },
-  BOARDGAMES: { label: 'Board games', href: '/boardgames' }
+  BOARDGAMES: { label: 'Board games', href: '/boardgames' },
+  INSPIRATION: { label: 'Inspiration', href: '/inspiration' }
 };
 
 export const SOCIAL_LINKS: Socials = {
