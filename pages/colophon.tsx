@@ -11,7 +11,7 @@ const Colophon: NextPage = () => (
       description="The tech stack is NextJS (all pages statically generated), MDX, Tailwind CSS, TypeScript and it's deployed on Vercel."
     />
 
-    <main className='container mx-auto flex max-w-3xl flex-col gap-y-3 px-4'>
+    <main className='container mx-auto flex max-w-3xl flex-col gap-y-3 px-4 pt-28'>
       <h2>Colophon</h2>
       <p>
         This website is inspired by{' '}

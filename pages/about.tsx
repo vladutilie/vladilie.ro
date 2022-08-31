@@ -43,7 +43,7 @@ const About: NextPage<Props> = ({ testimonials }) => {
         description='Here you can find some professional and personal details about me.'
       />
 
-      <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4'>
+      <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4 pt-28'>
         <div className='flex flex-col gap-y-3'>
           <h2>About me</h2>
           <p>{message} Here you can find some professional and personal details about me.</p>

@@ -23,7 +23,7 @@ const CaseStudy: React.FC<Props> = ({ title, description, date, source, readingT
         description={description}
       />
 
-      <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4'>
+      <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4 pt-28'>
         <div className='flex flex-col gap-y-3'>
           <h1>
             {' '}

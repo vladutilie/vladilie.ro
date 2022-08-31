@@ -6,7 +6,7 @@ import { readData } from '../src/utils/readData';
 
 type Props = { projects: Project[]; technologies: Technology[] };
 const Home: NextPage<Props> = ({ projects, technologies }) => (
-  <main className='container mx-auto flex max-w-3xl flex-col gap-y-10 px-4'>
+  <main className='container mx-auto flex max-w-3xl flex-col gap-y-10 px-4 pt-28'>
     <Hero />
     <FeaturedServices />
     <Projects projects={projects} />
