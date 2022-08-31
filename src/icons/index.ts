@@ -1,4 +1,5 @@
 export { Arrow } from './Arrow';
+export { BurgerMenu } from './BurgerMenu';
 export { Done } from './Done';
 export { Duration } from './Duration';
 export { Favorite } from './Favorite';
