@@ -6,3 +6,4 @@ export type { Page } from './Page.type';
 export type { Project } from './Project.type';
 export type { Technology } from './Technology.type';
 export type { Tool } from './Tool.type';
+export type { Reaction } from './Reaction.type';
