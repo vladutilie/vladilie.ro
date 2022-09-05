@@ -1,19 +1,12 @@
 import { useEffect } from 'react';
-import useSWR from 'swr';
 import { format } from 'timeago.js';
+
 import { usePollIfInView } from '../hooks/usePollIfInView';
 import { usePostViews } from '../hooks/usePostViews';
-import { fetcher } from '../utils/fetcher';
 import { LoadingDots } from './LoadingDots';
 
-type Props = {
-  date: string;
-  readingTime: string;
-  slug: string;
-};
+type Props = { date: string; readingTime: string; slug: string };
 export const PostMeta: React.FC<Props> = ({ date, readingTime, slug }) => {
-  //const { data } = useSWR(`/api/views/${slug}`, fetcher);
-
   const interval = 5000;
   const { shouldPoll, intersectionRef } = usePollIfInView(interval);
 
@@ -41,7 +34,7 @@ export const PostMeta: React.FC<Props> = ({ date, readingTime, slug }) => {
   return (
     <div>
       <span>{format(date)} &bull; </span>
-      <span ref={intersectionRef}>{viewsIsError || viewsIsLoading ? <LoadingDots /> : views?.toString()} views</span>
+      <span ref={intersectionRef}>{viewsIsError || viewsIsLoading ? <LoadingDots /> : views?.toString()} views </span>
       <span>&bull; {readingTime}</span>
     </div>
   );
