@@ -11,14 +11,27 @@ datasource db {
   referentialIntegrity = "prisma"
 }
 
-model PostMeta {
-  slug      String   @id @unique
-  views     BigInt   @default(0)
-  likes     BigInt   @default(0)
-  loves     BigInt   @default(0)
-  awards    BigInt   @default(0)
-  bookmarks BigInt   @default(0)
+model PostCounter {
+  slug   String @id @unique
+  views  BigInt @default(0)
+  likes  BigInt @default(0)
+  loves  BigInt @default(0)
+  awards BigInt @default(0)
+  wows   BigInt @default(0)
+
+  @@map("post_counters")
+}
+
+model Session {
+  id        String   @id @unique
+  likes     Boolean  @default(false)
+  loves     Boolean  @default(false)
+  awards    Boolean  @default(false)
+  wows      Boolean  @default(false)
   createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@map("sessions")
 }
 
 model Settings {
