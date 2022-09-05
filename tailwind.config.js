@@ -20,6 +20,18 @@ module.exports = {
         slide2: {
           from: { transform: 'translateX(100%)' },
           to: { transform: 'translateX(0%)' }
+        },
+        loading: {
+          '0%': {
+            opacity: '.2'
+          },
+          '20%': {
+            opacity: '1',
+            transform: 'translateX(1px)'
+          },
+          to: {
+            opacity: '.2'
+          }
         }
       },
       boxShadow: ({ theme }) => ({
