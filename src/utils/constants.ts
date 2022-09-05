@@ -1,3 +1,4 @@
+import { Reaction } from '../types';
 import { Pages, Socials } from '../types/Page.type';
 
 export const PAGES: Pages = {
@@ -23,3 +24,5 @@ export const SOCIAL_LINKS: Socials = {
 
 export const SEO_DESCRIPTION =
   'Neo4j Certified Professional, NextJS fan, enthusiastic of JavaScript development technologies and nostalgic WordPress lover.';
+
+export const REACTIONS: Reaction[] = ['likes', 'loves', 'awards', 'wows'];
