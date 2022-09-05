@@ -38,7 +38,7 @@ export const BackToTop: React.FC = () => {
 
   return (
     <button
-      className={`fixed bottom-8 right-8 z-10 transition-all duration-300 ${
+      className={`fixed bottom-8 right-8 z-10 bg-blue-500/80 transition-all duration-300 hover:bg-blue-500 ${
         showButton ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
       }`}
       onClick={scrollToTop}

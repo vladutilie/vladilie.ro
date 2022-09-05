@@ -56,7 +56,6 @@
 
 button {
     @apply rounded-md;
-    @apply bg-blue-500/80;
     @apply px-4 py-2;
     @apply text-white;
     @apply transition-transform;
@@ -65,7 +64,6 @@ button {
 
 button:hover {
     @apply -translate-y-px;
-    @apply bg-blue-500;
     @apply shadow-md shadow-blue-500/50;
 }
 
