@@ -5,17 +5,17 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
-import { format } from 'timeago.js';
 
 import { CaseStudy } from '../../src/types';
 import { getCaseStudies } from '../../src/utils/getCaseStudies';
 import { readCaseStudy } from '../../src/utils/readCaseStudy';
 import { MDXComponents } from '../../src/components/MDXComponents';
 import { PAGES } from '../../src/utils/constants';
+import { PostMeta } from '../../src/components';
 
 type Props = CaseStudy & { source: MDXRemoteSerializeResult };
 
-const CaseStudy: React.FC<Props> = ({ title, description, date, source, readingTime }) => {
+const CaseStudy: React.FC<Props> = ({ title, description, date, source, readingTime, slug }) => {
   return (
     <>
       <NextSeo
@@ -32,9 +32,7 @@ const CaseStudy: React.FC<Props> = ({ title, description, date, source, readingT
             </Link>{' '}
             &gt; {title}
           </h1>
-          <span>
-            {format(date)} &bull; {readingTime}
-          </span>
+          <PostMeta date={date} readingTime={readingTime} slug={slug} />
         </div>
 
         <MDXRemote {...source} components={MDXComponents} />
