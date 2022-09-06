@@ -12,6 +12,7 @@ import { readCaseStudy } from '../../src/utils/readCaseStudy';
 import { MDXComponents } from '../../src/components/MDXComponents';
 import { PAGES } from '../../src/utils/constants';
 import { PostMeta } from '../../src/components';
+import { Reactions } from '../../src/components/Reactions';
 
 type Props = CaseStudy & { source: MDXRemoteSerializeResult };
 
@@ -33,6 +34,7 @@ const CaseStudy: React.FC<Props> = ({ title, description, date, source, readingT
             &gt; {title}
           </h1>
           <PostMeta date={date} readingTime={readingTime} slug={slug} />
+          <Reactions slug={slug} />
         </div>
 
         <MDXRemote {...source} components={MDXComponents} />
