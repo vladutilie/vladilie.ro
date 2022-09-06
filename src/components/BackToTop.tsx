@@ -41,6 +41,7 @@ export const BackToTop: React.FC = () => {
       className={`fixed bottom-8 right-8 z-10 bg-blue-500/80 transition-all duration-300 hover:bg-blue-500 ${
         showButton ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
       }`}
+      type='button'
       onClick={scrollToTop}
     >
       <svg viewBox='0 0 24 24' role='presentation' className='h-5 w-5 fill-white md:hidden'>

@@ -37,13 +37,7 @@ export const Navbar: React.FC = () => {
             </a>
           </Link>
 
-          <button
-            aria-label='Collapse menu'
-            name='Collapse menu'
-            type='button'
-            className='md:hidden'
-            onClick={toggleMobileMenu}
-          >
+          <button aria-label='Collapse menu' name='Collapse menu' className='md:hidden' onClick={toggleMobileMenu}>
             <BurgerMenu className='w-5 fill-gray-600' />
           </button>
         </div>

@@ -54,7 +54,7 @@
     }
 }
 
-button {
+button[type="button"] {
     @apply rounded-md;
     @apply px-4 py-2;
     @apply text-white;
@@ -62,7 +62,7 @@ button {
     @apply shadow-md;
 }
 
-button:hover {
+button[type="button"]:hover {
     @apply -translate-y-px;
     @apply shadow-md shadow-blue-500/50;
 }
