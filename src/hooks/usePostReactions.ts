@@ -1,35 +1,39 @@
-import React from 'react';
+import { useState } from 'react';
 import { useDebounce } from 'react-use';
 import useSWR, { SWRConfiguration } from 'swr';
 
+import { Reaction } from '../types';
+
 const API_URL = `/api/reactions`;
 
-type MetricsPayload = {
-  likes: number;
-  currentUserLikes: number;
+type Payload = {
+  counter: { likes: number; loves: number; awards: number; wows: number };
+  session: { likes: boolean; loves: boolean; awards: boolean; wows: boolean };
 };
 
-async function getPostLikes(slug: string): Promise<MetricsPayload> {
-  const res = await fetch(API_URL + `/${slug}`);
+const getPostLikes = async (slug: string): Promise<Payload> => {
+  const res = await fetch(`${API_URL}/${slug}`);
+
   if (!res.ok) {
     throw new Error('An error occurred while fetching the data.');
   }
-  return res.json();
-}
 
-async function updatePostLikes(slug: string, count: number): Promise<MetricsPayload> {
-  const res = await fetch(API_URL + `/${slug}`, {
+  return await res.json();
+};
+
+const updatePostLikes = async (slug: string, reaction: Reaction): Promise<Payload> => {
+  const res = await fetch(`${API_URL}/${slug}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ count })
+    body: JSON.stringify({ reaction })
   });
 
   if (!res.ok) {
     throw new Error('An error occurred while posting the data.');
   }
 
-  return res.json();
-}
+  return await res.json();
+};
 
 // A custom hook to abstract away fetching and updating a user's likes
 export const usePostLikes = (slug: string, config?: SWRConfiguration) => {
@@ -38,11 +42,13 @@ export const usePostLikes = (slug: string, config?: SWRConfiguration) => {
     ...config
   });
 
-  const [batchedLikes, setBatchedLikes] = React.useState(0);
+  const [reaction, setReaction] = useState<Reaction>();
+  const [batchedLikes, setBatchedLikes] = useState<{ [key: Reaction | string]: boolean }>();
 
-  const increment = () => {
-    // Prevent the user from liking more than 3 times
-    if (!data || data.currentUserLikes >= 3) {
+  const react = (reaction: Reaction) => {
+    setReaction(reaction);
+    // Prevent the user from liking again if already liked.
+    if (!data || true === data.session[reaction]) {
       return;
     }
 
@@ -51,34 +57,42 @@ export const usePostLikes = (slug: string, config?: SWRConfiguration) => {
     // while we update the database
     mutate(
       {
-        likes: data.likes + 1,
-        currentUserLikes: data.currentUserLikes + 1
+        counter: {
+          ...data?.counter,
+          [reaction]: Number(data?.counter?.[reaction]) + 1
+        },
+        session: {
+          ...data?.session,
+          [reaction]: true
+        }
       },
       false
     );
 
     // use local state and debounce to batch updates
-    setBatchedLikes(batchedLikes + 1);
+    setBatchedLikes({ [reaction]: true });
   };
 
   useDebounce(
     () => {
-      if (batchedLikes === 0) return;
+      if (reaction) {
+        if (false === batchedLikes?.[reaction]) return;
 
-      // update the database and use the data updatePostLikes returns to update
-      // the local cache with database data
-      mutate(updatePostLikes(slug, batchedLikes));
-      setBatchedLikes(0);
+        // update the database and use the data updatePostLikes returns to update
+        // the local cache with database data
+        mutate(updatePostLikes(slug, reaction));
+        setBatchedLikes({ [reaction]: false });
+      }
     },
     1000,
-    [batchedLikes]
+    [batchedLikes, reaction]
   );
 
   return {
-    currentUserLikes: data?.currentUserLikes,
-    likes: data?.likes,
+    session: data?.session,
+    counter: data?.counter,
     isLoading: !error && !data,
     isError: !!error,
-    increment
+    react
   };
 };
