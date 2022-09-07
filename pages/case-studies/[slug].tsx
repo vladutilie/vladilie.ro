@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
@@ -26,13 +25,7 @@ const CaseStudy: React.FC<Props> = ({ title, description, date, source, readingT
 
       <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4 pt-28'>
         <div className='flex flex-col gap-y-3'>
-          <h1>
-            {' '}
-            <Link href='/case-studies'>
-              <a>Case studies</a>
-            </Link>{' '}
-            &gt; {title}
-          </h1>
+          <h1>{title}</h1>
           <PostMeta date={date} readingTime={readingTime} slug={slug} />
           <Reactions slug={slug} />
         </div>
