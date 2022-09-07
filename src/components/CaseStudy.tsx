@@ -14,9 +14,9 @@ export const CaseStudy: React.FC<CaseStudyType> = ({ title, description, date, s
         <h3>{title}</h3>
 
         <div>
-          <span>{format(date)} &bull; </span>
+          <span>{format(date)} · </span>
           <span>{isError || isLoading ? <LoadingDots /> : views} views </span>
-          <span>&bull; {readingTime}</span>
+          <span>· {readingTime}</span>
         </div>
 
         <span>{description}</span>
