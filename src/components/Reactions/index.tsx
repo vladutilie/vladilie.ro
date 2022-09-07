@@ -10,7 +10,7 @@ const reactions: { reaction: ReactionType; emoji: ReactionEmoji }[] = [
   { reaction: 'wows', emoji: '😲' }
 ];
 export const Reactions: React.FC<{ slug: string }> = ({ slug }) => {
-  const { counter, session, isLoading, react } = usePostLikes(slug);
+  const { counter, session, react } = usePostLikes(slug);
 
   return (
     <div className='flex gap-x-3'>
