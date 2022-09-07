@@ -24,6 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     req.headers['x-forwarded-for'] ||
     // Fallback for localhost or non Vercel deployments
     '0.0.0.0';
+  console.log({ ipAddress });
 
   const ipHash = createHash('md5')
     .update(ipAddress + process.env.IP_ADDRESS_SALT!, 'utf8')
