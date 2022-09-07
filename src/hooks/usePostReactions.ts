@@ -88,11 +88,5 @@ export const usePostLikes = (slug: string, config?: SWRConfiguration) => {
     [batchedLikes, reaction]
   );
 
-  return {
-    session: data?.session,
-    counter: data?.counter,
-    isLoading: !error && !data,
-    isError: !!error,
-    react
-  };
+  return { session: data?.session, counter: data?.counter, react };
 };
