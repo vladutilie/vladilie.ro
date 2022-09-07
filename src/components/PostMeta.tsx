@@ -3,7 +3,7 @@ import { format } from 'timeago.js';
 
 import { usePollIfInView } from '../hooks/usePollIfInView';
 import { usePostViews } from '../hooks/usePostViews';
-import { LoadingDots } from './LoadingDots';
+import { LoadingDots } from './';
 
 type Props = { date: string; readingTime: string; slug: string };
 export const PostMeta: React.FC<Props> = ({ date, readingTime, slug }) => {
@@ -33,9 +33,9 @@ export const PostMeta: React.FC<Props> = ({ date, readingTime, slug }) => {
 
   return (
     <div>
-      <span>{format(date)} &bull; </span>
+      <span>{format(date)} · </span>
       <span ref={intersectionRef}>{viewsIsError || viewsIsLoading ? <LoadingDots /> : views?.toString()} views </span>
-      <span>&bull; {readingTime}</span>
+      <span>· {readingTime}</span>
     </div>
   );
 };
