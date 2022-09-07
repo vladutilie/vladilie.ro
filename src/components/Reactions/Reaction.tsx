@@ -1,5 +1,6 @@
 import { Reaction as ReactionType } from '../../types';
 import { ReactionEmoji } from '../../types/Reaction.type';
+import { LoadingDots } from '../LoadingDots';
 
 type Props = {
   reaction: ReactionType;
@@ -26,7 +27,7 @@ export const Reaction: React.FC<Props> = ({ reaction, emoji, session, counter, r
       onClick={() => react(reaction)}
     >
       {emoji}
-      <span className='text-xs'>{counter}</span>
+      {counter ? <span className='text-xs'>{counter}</span> : <LoadingDots />}
     </button>
   );
 };
