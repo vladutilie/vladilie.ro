@@ -13,7 +13,7 @@ export const Reactions: React.FC<{ slug: string }> = ({ slug }) => {
   const { counter, session, react } = usePostLikes(slug);
 
   return (
-    <div className='flex gap-x-3'>
+    <div className='flex flex-wrap gap-3'>
       {reactions.map(({ reaction, emoji }) => (
         <Reaction
           key={reaction}
