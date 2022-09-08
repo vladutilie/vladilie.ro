@@ -25,10 +25,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   if ('POST' === req.method) {
+    const isLive = 'undefined' !== typeof req.headers['x-forwarded-for'];
+
     const post = await prisma.postCounter.upsert({
       where: { slug },
-      create: { slug, views: 1 },
-      update: { views: { increment: 1 } }
+      create: { slug, views: 0 },
+      update: { views: { increment: isLive ? 1 : 0 } }
     });
 
     return res.status(200).json(post?.views || 1);
