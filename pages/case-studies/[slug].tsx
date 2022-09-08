@@ -1,25 +1,28 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { NextSeo } from 'next-seo';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { serialize } from 'next-mdx-remote/serialize';
-import matter from 'gray-matter';
-import readingTime from 'reading-time';
+import { GetStaticProps } from 'next';
+import { ArticleJsonLd, NextSeo } from 'next-seo';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 
-import { CaseStudy } from '../../src/types';
-import { getCaseStudies } from '../../src/utils/getCaseStudies';
-import { readCaseStudy } from '../../src/utils/readCaseStudy';
-import { MDXComponents } from '../../src/components/MDXComponents';
 import { PAGES } from '../../src/utils/constants';
 import { PostMeta } from '../../src/components';
 import { Reactions } from '../../src/components/Reactions';
+import { allCaseStudies, CaseStudy } from 'contentlayer/generated';
 
-type Props = CaseStudy & { source: MDXRemoteSerializeResult };
+const CaseStudy: React.FC<CaseStudy> = ({ title, description, body, date, slug, readingTime }) => {
+  const MDXContent = useMDXComponent(body.code);
 
-const CaseStudy: React.FC<Props> = ({ title, description, date, source, readingTime, slug }) => {
   return (
     <>
       <NextSeo
         title={[process.env.NEXT_PUBLIC_SITE_NAME, PAGES.CASE_STUDIES?.label, title].join(' - ')}
+        description={description}
+      />
+      <ArticleJsonLd
+        type='Article'
+        url={`${process.env.NEXT_PUBLIC_SITE_URL}/case-studies/${slug}`}
+        title={title}
+        images={[]}
+        datePublished={date}
+        authorName={process.env.NEXT_PUBLIC_SITE_NAME}
         description={description}
       />
 
@@ -30,40 +33,25 @@ const CaseStudy: React.FC<Props> = ({ title, description, date, source, readingT
           <Reactions slug={slug} />
         </div>
 
-        <MDXRemote {...source} components={MDXComponents} />
+        <MDXContent />
       </main>
     </>
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getCaseStudies();
+export const getStaticPaths = () => ({
+  paths: allCaseStudies.map((caseStudy: CaseStudy) => ({ params: { slug: caseStudy.slug } })),
+  fallback: false
+});
 
-  return {
-    paths: posts.map(({ slug }) => ({ params: { slug } })),
-    fallback: false
-  };
-};
+export const getStaticProps: GetStaticProps = ({ params }) => {
+  const caseStudies = allCaseStudies.find((caseStudy: CaseStudy) => caseStudy.slug === params?.slug);
 
-export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const slug = params?.slug as string;
+  if (!caseStudies) {
+    return { notFound: true };
+  }
 
-  const postContent = await readCaseStudy(slug);
-  const {
-    content,
-    data: { title, description, date }
-  } = matter(postContent);
-
-  return {
-    props: {
-      source: await serialize(content),
-      readingTime: readingTime(content).text,
-      title,
-      description,
-      date,
-      slug
-    }
-  };
+  return { props: { ...caseStudies } };
 };
 
 export default CaseStudy;
