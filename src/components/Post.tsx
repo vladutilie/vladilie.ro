@@ -4,6 +4,7 @@ import { format } from 'timeago.js';
 import { LoadingDots } from './';
 import { type Post as PostType } from '../../.contentlayer/generated';
 import { usePostViews } from '../hooks/usePostViews';
+import { numberFormat } from 'src/utils/numberFormat';
 
 export const Post: React.FC<PostType> = ({ title, description, date, slug, readingTime }) => {
   const { views, isLoading, isError } = usePostViews(slug);
@@ -16,7 +17,7 @@ export const Post: React.FC<PostType> = ({ title, description, date, slug, readi
         <div>
           <span>{format(date)}</span>
           <span> · {readingTime} · </span>
-          <span>{isError || isLoading ? <LoadingDots /> : views} views </span>
+          <span>{isError || isLoading ? <LoadingDots /> : numberFormat(Number(views))} views </span>
         </div>
 
         <span>{description}</span>

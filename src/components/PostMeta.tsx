@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { format } from 'timeago.js';
 
+import { numberFormat } from 'src/utils/numberFormat';
 import { usePollIfInView } from '../hooks/usePollIfInView';
 import { usePostViews } from '../hooks/usePostViews';
 import { LoadingDots } from './';
@@ -34,7 +35,9 @@ export const PostMeta: React.FC<Props> = ({ date, readingTime, slug }) => {
   return (
     <div>
       <span>{format(date)} · </span>
-      <span ref={intersectionRef}>{viewsIsError || viewsIsLoading ? <LoadingDots /> : views?.toString()} views </span>
+      <span ref={intersectionRef}>
+        {viewsIsError || viewsIsLoading ? <LoadingDots /> : numberFormat(Number(views))} views{' '}
+      </span>
       <span>· {readingTime}</span>
     </div>
   );

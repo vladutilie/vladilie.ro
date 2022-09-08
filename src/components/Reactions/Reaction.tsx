@@ -1,6 +1,6 @@
-import { Reaction as ReactionType } from '../../types';
-import { ReactionEmoji } from '../../types/Reaction.type';
+import { Reaction as ReactionType, ReactionEmoji } from '../../types';
 import { LoadingDots } from '../LoadingDots';
+import { numberFormat } from 'src/utils/numberFormat';
 
 type Props = {
   reaction: ReactionType;
@@ -27,7 +27,7 @@ export const Reaction: React.FC<Props> = ({ reaction, emoji, session, counter, r
       onClick={() => react(reaction)}
     >
       {emoji}
-      {'undefined' !== typeof counter ? <span className='text-xs'>{counter}</span> : <LoadingDots />}
+      {'undefined' !== typeof counter ? <span className='text-xs'>{numberFormat(counter)}</span> : <LoadingDots />}
     </button>
   );
 };
