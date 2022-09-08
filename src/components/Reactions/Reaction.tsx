@@ -27,7 +27,7 @@ export const Reaction: React.FC<Props> = ({ reaction, emoji, session, counter, r
       onClick={() => react(reaction)}
     >
       {emoji}
-      {counter ? <span className='text-xs'>{counter}</span> : <LoadingDots />}
+      {'undefined' !== typeof counter ? <span className='text-xs'>{counter}</span> : <LoadingDots />}
     </button>
   );
 };
