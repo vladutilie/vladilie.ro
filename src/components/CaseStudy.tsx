@@ -10,13 +10,13 @@ export const CaseStudy: React.FC<CaseStudyType> = ({ title, description, date, s
 
   return (
     <Link href={`/case-studies/${slug}`}>
-      <a className='flex flex-col gap-y-2 rounded-md p-4 transition-all hover:scale-105 hover:bg-white'>
+      <a className='flex flex-col gap-y-2 rounded-md p-2 transition-all hover:scale-105 hover:bg-white'>
         <h3>{title}</h3>
 
         <div>
-          <span>{format(date)} · </span>
+          <span>{format(date)}</span>
+          <span> · {readingTime} · </span>
           <span>{isError || isLoading ? <LoadingDots /> : views} views </span>
-          <span>· {readingTime}</span>
         </div>
 
         <span>{description}</span>
