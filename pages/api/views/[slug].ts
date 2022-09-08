@@ -29,10 +29,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const post = await prisma.postCounter.upsert({
       where: { slug },
-      create: { slug, views: 0 },
+      create: { slug, views: 1 },
       update: { views: { increment: isLive ? 1 : 0 } }
     });
-
     return res.status(200).json(post?.views || 1);
   }
 }
