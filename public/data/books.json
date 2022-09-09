@@ -2,6 +2,15 @@
   "books": [
     {
       "author": "Robert T. Kiyosaki",
+      "blurDataUrl": "c6CFe_NND%p|IuadH=E3-:-OItjr?aNMM_",
+      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1565374547i/15821582.jpg",
+      "link": "https://www.goodreads.com/book/show/15821582-cadranul-banilor-ghidul-unui-tat-bogat-pentru-libertate-financiar",
+      "state": "Reading",
+
+      "title": "Cadranul banilor"
+    },
+    {
+      "author": "Robert T. Kiyosaki",
       "blurDataUrl": "cdJbBV.8.SpyxvWYu6RjWF-oM{w[I[aJRj",
       "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1490719459i/34723545._SY180_.jpg",
       "link": "https://www.goodreads.com/book/show/34723545-un-iq-financiar-mai-bun",
