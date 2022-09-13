@@ -20,7 +20,6 @@ const secondCol: Page[] = [
 ];
 const thirdCol: Page[] = [
   SOCIAL_LINKS.GITHUB as Page,
-  SOCIAL_LINKS.INSTAGRAM as Page,
   SOCIAL_LINKS.LINKEDIN as Page,
   SOCIAL_LINKS.TWITTER as Page,
   SOCIAL_LINKS.WORDPRESS as Page,
