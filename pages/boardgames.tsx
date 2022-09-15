@@ -74,7 +74,7 @@ const Boardgames: NextPage<Props> = ({ boardgames, categories }) => {
 
         {listItems.own && (
           <div className='flex flex-wrap'>
-            <h3 className='basis-full'>Own</h3>
+            <h3 className='basis-full'>Own ({bgList.filter((bg) => bg.state === BoardgameState.Own).length})</h3>
             {bgList
               .filter((bg) => bg.state === BoardgameState.Own)
               .sort((a, b) => (a.name > b.name ? 1 : -1))
@@ -86,7 +86,7 @@ const Boardgames: NextPage<Props> = ({ boardgames, categories }) => {
 
         {listItems.wish && (
           <div className='flex flex-wrap'>
-            <h3 className='basis-full'>Wishlist</h3>
+            <h3 className='basis-full'>Wishlist ({bgList.filter((bg) => bg.state === BoardgameState.Wish).length})</h3>
             {bgList
               .filter((bg) => bg.state === BoardgameState.Wish)
               .sort((a, b) => (a.name > b.name ? 1 : -1))
