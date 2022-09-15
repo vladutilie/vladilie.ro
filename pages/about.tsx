@@ -40,13 +40,14 @@ const About: NextPage<Props> = ({ testimonials }) => {
     <>
       <NextSeo
         title={[process.env.NEXT_PUBLIC_SITE_NAME, PAGES.ABOUT?.label].join(' - ')}
-        description='Here you can find some professional and personal details about me.'
+        description='Here you can find some details about me.'
       />
 
       <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4 pt-28'>
         <div className='flex flex-col gap-y-3'>
           <h2>About me</h2>
-          <p>{message} Here you can find some professional and personal details about me.</p>
+          <h3>{message}</h3>
+          <p>Here you can find some details about me.</p>
         </div>
 
         <div className='flex w-full flex-col gap-x-4 gap-y-8 md:flex-row'>
@@ -54,50 +55,54 @@ const About: NextPage<Props> = ({ testimonials }) => {
             <div>
               <h2>♡ Life so far...</h2>
               <ul className='mt-4 list-disc space-y-2 pl-4'>
-                <li>Breathing since 1994</li>
-                <li>Got my first PC in 2006, an IBM Pentium III, a gift from an uncle in Timișoara</li>
-                <li>2008 brought me the first line of code</li>
-                <li>Got my first award from Oracle, SQL Highschool Course in 2013</li>
-                <li>Moved in Timișoara for studies</li>
-                <li>Got my engineering degree in 2017</li>
-                <li>Moved in Cluj-Napoca for a master&apos;s degree in business, never finished</li>
-                <li>And started freelance</li>
+                <li>Breathing since 1994.</li>
+                <li>Got my first PC in 2006, an IBM Pentium III, a gift from an uncle in Timișoara.</li>
+                <li>2008 brought me the first line of code.</li>
+                <li>Got my first award from Oracle, SQL Highschool Course in 2013.</li>
+                <li>Moved in Timișoara for studies.</li>
+                <li>Got my engineering degree in 2017.</li>
                 <li>
-                  Passionate about{' '}
-                  <Link href={PAGES.BOOKS?.href as string}>
-                    <a>books</a>
-                  </Link>
-                  ,{' '}
-                  <Link href={PAGES.BOARDGAMES?.href as string}>
-                    <a>board games</a>
-                  </Link>
-                  , hiking, nature and a bit of puzzles.
+                  Moved in Cluj-Napoca for a master&apos;s degree in{' '}
+                  <abbr title='Business Modelling and Distributed Computing' className='cursor-help'>
+                    BMDC
+                  </abbr>
+                  . Never finished.
                 </li>
+                <li>And started freelance.</li>
               </ul>
             </div>
           </div>
 
           <div className='flex w-full flex-col gap-y-8 md:w-1/2'>
             <div>
-              <h2>💻 Preferred technologies</h2>
+              <h2>⛰ Passionate about...</h2>
               <ul className='mt-4 list-disc space-y-2 pl-4'>
-                <li>TypeScript</li>
-                <li>NodeJS</li>
-                <li>Neo4j</li>
-                <li>TailwindCSS</li>
-                <li>Prisma</li>
+                <li>technology,</li>
+                <li>
+                  <abbr title='internationalization'>i18n</abbr> &amp; localization,
+                </li>
+                <li>
+                  <Link href={PAGES.BOOKS?.href as string}>
+                    <a>books</a>
+                  </Link>
+                  ,
+                </li>
+                <li>
+                  <Link href={PAGES.BOARDGAMES?.href as string}>
+                    <a>board games</a>
+                  </Link>
+                  ,
+                </li>
+                <li>hiking, nature and</li>
+                <li>a bit of 🧩 puzzles.</li>
               </ul>
             </div>
 
             <div>
-              <h2>🖱 I also use...</h2>
+              <h2>💭 Thinking about...</h2>
               <ul className='mt-4 list-disc space-y-2 pl-4'>
-                <li>NextJS, NestJS</li>
-                <li>Supabase</li>
-                <li>PostgreSQL, MongoDB, MySQL</li>
-                <li>PHP</li>
-                <li>WordPress</li>
-                <li>and other related technologies</li>
+                <li>a better world and</li>
+                <li>ecology and sustainability</li>
               </ul>
             </div>
           </div>
