@@ -63,7 +63,7 @@ export const Hero: React.FC = () => {
               📍<em>{data?.currentLocation}</em>
             </>
           )}{' '}
-          and tomorrow I can be somewhere else.
+          and tomorrow I might be somewhere else.
         </p>
         <Social />
       </div>
