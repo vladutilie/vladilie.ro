@@ -79,7 +79,7 @@ const About: NextPage<Props> = ({ testimonials }) => {
               <ul className='mt-4 list-disc space-y-2 pl-4'>
                 <li>technology,</li>
                 <li>
-                  <abbr title='internationalization'>i18n</abbr> &amp; localization,
+                  sw <abbr title='internationalization'>i18n</abbr> &amp; localization,
                 </li>
                 <li>
                   <Link href={PAGES.BOOKS?.href as string}>
