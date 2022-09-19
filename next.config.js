@@ -9,7 +9,8 @@ const nextConfig = {
       'images-na.ssl-images-amazon.com',
       'cf.geekdo-images.com',
       'gcdahtftlmucxetygvev.supabase.co',
-      'gravatar.com'
+      'gravatar.com',
+      'unavatar.io'
     ]
   },
   webpack(config) {
