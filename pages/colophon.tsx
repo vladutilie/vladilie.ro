@@ -1,8 +1,16 @@
 import type { NextPage } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { NextSeo } from 'next-seo';
 
 import { PAGES } from '../src/utils/constants';
+
+const links = [
+  { link: 'https://nikolovlazar.com', name: 'Nikolov Lazar' },
+  { link: 'https://jahir.dev', name: 'Jahir Fiquitiva' },
+  { link: 'https://delba.dev', name: 'Delba de Oliveira' },
+  { link: 'https://jimramsden.com', name: 'Jim Ramsden' }
+];
 
 const Colophon: NextPage = () => (
   <>
@@ -57,6 +65,29 @@ const Colophon: NextPage = () => (
         </Link>
         .
       </p>
+
+      <p>
+        These sites also inspired parts of my website or people I admire and try to thank them by putting them on my
+        &quot;wall of fame&quot; 🙏🏻.
+      </p>
+
+      <ul className='flex flex-wrap'>
+        {links.map(({ link, name }) => (
+          <li key={name} className='w-full p-2 md:w-1/3'>
+            <Link href={link}>
+              <a target='_blank' className='flex items-center gap-2 hover:underline'>
+                <Image
+                  alt={name}
+                  height={24}
+                  src={`https://unavatar.io/microlink/${link.replace('https://', '')}`}
+                  width={24}
+                />
+                {name}
+              </a>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </main>
   </>
 );
