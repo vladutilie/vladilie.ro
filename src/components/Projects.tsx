@@ -21,6 +21,7 @@ export const Projects: React.FC<{ projects: Project[] }> = ({ projects }) => {
                   blurDataURL={`data:image/jpeg,${blurDataUrl}`}
                   src={image}
                   width={width}
+                  priority
                 />
               </a>
             </Link>
