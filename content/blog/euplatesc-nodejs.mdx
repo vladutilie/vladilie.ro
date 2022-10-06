@@ -1,0 +1,158 @@
+---
+title: 'Bibliotecă EuPlătesc pentru Node.js (Romanian)'
+type: Post
+description: Cum am dezvoltat un modul pentru Node.js al unui serviciu de plată online cu o documentație și un API slab făcute.
+date: October 6, 2022 20:00:00
+language: ro
+---
+
+Nu de puține ori mi-a fost dat să integrez API-ul de la serviciul de plăți online <a href="https://euplatesc.ro" target="_blank">EuPlătesc</a> în proiectele pe care le-am întreprins.
+Bine, trebuie să recunosc, EuPlătesc a fost printre primele servicii pe care le-am recomandat clienților atunci când le-am propus astfel de soluții.
+A fost ca o plăcere vinovată din partea mea.
+Dar asta doar pentru că atât mi-am bătut capul când am făcut prima integrare a API-ului de la EuPlătesc, încât m-am convins că următoarea integrare o să fie simplă.
+Și așa am tot continuat să recomand acest serviciu viitorilor clienți.
+
+## Intro
+
+Pentru cei ce nu știu, documentația și API-ul în sine de la EuPlătesc nu respectă vreun standard.
+Fără a fi rău, din păcate par a fi scrise de un elev de liceu care își dă atestatul la informatică.
+Dar să trecem peste asta, acum există biblioteca `euplatesc` pentru Node.js publicată pe npmjs.com și pe Github Packages, nu mai contează ce se află în spatele ei.
+
+Astfel, „după lupte seculare, care au durat aproape treizeci de ani”, am reușit să implementez în bibliotecă, API-ul EuPlătesc în întregime și este și documentat pe măsură.
+Bineînțeles este într-o fază beta și sunt așteptate cu drag și câteva teste și eventual raportări de probleme din partea publicului.
+
+## Generare legătură de inițiere de plată recurentă
+
+Hai să încercăm și un exemplu de utilizare, mai exact voi folosi biblioteca pentru a genera o legătură de plată recurentă.
+
+### 1. Inițiere proiect
+
+Voi începe prin a crea un director nou pentru proiectul meu:
+
+```sh
+$ cd ~/www
+$ mkdir euplatesc-recurrent-payment
+$ cd euplatesc-recurrent-payment
+```
+
+Inițiez proiectul și instalez pachetul `euplatesc`:
+
+```sh
+$ npm init -y
+$ npm install euplatesc
+```
+
+sau dacă folosești `yarn`:
+
+```sh
+$ yarn init -y
+$ yarn add euplatesc
+```
+
+### 2. Instanțiere EuPlătesc
+
+Și voi crea fișierul index.js unde voi instanția un obiect EuPlătesc:
+
+```js showLineNumbers title="index.js"
+const { EuPlatesc } = require('euplatesc');
+
+const epClient = new EuPlatesc({
+  merchantId: '123456',
+  secretKey: '987654',
+  testMode: true
+});
+```
+
+După cum se observă, am setat instanța mea în modul test.
+Asta înseamnă că nu am neapărat nevoie de `merchantId` și `secretKey` reale, ne vom juca mai departe cu datele de test (care vor fi setate automat de bibliotecă 🙌🏼), iar pentru a genera doar o legătură de plată nu avem nevoie de un cont real.
+
+### 3. Definire parametri metodă `paymentUrl`
+
+Mai departe voi defini o constantă de parametri pe care o voi transmite mai departe metodei de generare legătură de plată:
+
+```js showLineNumbers title="index.js" {8-11}
+const date = new Date();
+const data = {
+  amount: 1,
+  currency: 'RON',
+  invoiceId: '00016',
+  // dacă folosești diacritice în orderDescription, vei avea surprize 🎁
+  orderDescription: 'Campanie de donatii pentru BookTruck',
+  frequency: {
+    days: 30,
+    expiresAt: new Date(date.setFullYear(date.getFullYear() + 1))
+  }
+};
+```
+
+De notat faptul că această plată va fi una recurentă, automată la 30 de zile până în anul viitor când va expira, așa cum am setat în liniile 8-11.
+
+<span>
+  🎁 Glumesc, dar algoritmii de calculare a semnăturii nu se înțeleg cu diacriticele 🤷🏻‍♂️ și vei vedea în locul paginii de
+  plată un mesaj de genul:
+</span>
+
+```txt
+Incorrect signature.
+Redirecting...
+Array ( [Ammount] => 1.00 [Currency] => RON [InvoiceID] => 00016 [OrderDesc] => Campanie de donații pentru BookTruck [MerchantID] => testaccount [TranTimeStamp] => 20221006200725 [Nonce] => 6987594dfe4e62e6217b46f4e7eaa02e [RECUR_FREQ] => 30 [RECUR_EXP] => 20231006 )
+B332D594566571A72EE06B7DC3A04528
+```
+
+### 4. Apelare metodă `paymentUrl`
+
+În final apelez metoda `paymentUrl` într-un bloc `try-catch`\* și voi obține legătura de plată către platforma euplatesc.ro (vezi comentariul de la linia 4):
+
+```js showLineNumbers title="index.js" {4}
+try {
+  const { paymentUrl } = ep.paymentUrl(data);
+  console.log(paymentUrl);
+  // https://secure.euplatesc.ro/tdsprocess/tranzactd.php?amount=1.00&curr=RON&invoice_id=00016&order_desc=Campanie+de+donatii+pentru+BookTruck&merch_id=testaccount&timestamp=20221006200159&nonce=0da1459243140a81821c9749c1f960f9&recurent_freq=30&recurent_exp=20231006&fp_hash=6375E870C7760ACB7B7DD06A7DD1FFED&recurent=Base
+} catch (e) {
+  console.error(e);
+}
+```
+
+Astfel am generat o legătură care va conduce utilizatorul pe pagina de plată euplatesc.ro unde va continua plata cu cardul.
+
+\* Este posibil ca dacă te joci cu parametri să primești anumite excepții sau în pagina de plată să apară un mesaj de eroare.
+Îți recomand să urmărești cu atenție <a href='https://www.npmjs.com/package/euplatesc' target='_blank'>documentația bibliotecii</a> sau dacă vrei să te încumeți, chiar și pe cea oferită de EuPlătesc din panoul lor de control.
+
+### Tot codul
+
+Cuprins în 26 de linii:
+
+```js showLineNumbers title="index.js"
+const { EuPlatesc } = require('euplatesc');
+
+const ep = new EuPlatesc({
+  merchantId: '123456',
+  secretKey: '987654',
+  testMode: true
+});
+
+const date = new Date();
+const data = {
+  amount: 1,
+  currency: 'RON',
+  invoiceId: '00016',
+  orderDescription: 'Campanie de donatii pentru BookTruck',
+  frequency: {
+    days: 30,
+    expiresAt: new Date(date.setFullYear(date.getFullYear() + 1))
+  }
+};
+
+try {
+  const { paymentUrl } = ep.paymentUrl(data);
+  console.log(paymentUrl);
+} catch (e) {
+  console.error(e);
+}
+```
+
+## Concluzii
+
+Prin dezvoltarea acestei biblioteci mi-am ușurat munca și tare sper că nu doar mie și de-acum în colo voi evita, în proiectele viitoare, toată nebunia de calcule de semnături, verificări de hash-uri, câmpuri care trebuie să vină neapărat după alte câmpuri într-un obiect, etc.
+
+Am luat în vizor și alte servicii care nu au dezvoltate biblioteci pentru Node.js și pe care mi-ar plăcea să le dezvolt. Aici intră LibraPay, Oblio, poate serviciile de curierat.
