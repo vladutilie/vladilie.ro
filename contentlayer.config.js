@@ -11,6 +11,7 @@ export const Post = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
+    modified: { type: 'date', required: false },
     description: { type: 'string', required: true }
   },
   computedFields: {
@@ -26,6 +27,7 @@ export const CaseStudy = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
+    modified: { type: 'date', required: false },
     description: { type: 'string', required: true }
   },
   computedFields: {
