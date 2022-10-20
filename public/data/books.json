@@ -1,6 +1,14 @@
 {
   "books": [
     {
+      "author": "Gabriel Liiceanu",
+      "blurDataUrl": "U~KeT5t7ofof~Vf6j[ays:RkayayIoaybHfQ",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1540825838l/42527927._SY475_.jpg",
+      "link": "https://www.goodreads.com/book/show/42527927-a-tept-nd-o-alt-omenire",
+      "state": "Wish",
+      "title": "Așteptând o altă omenire"
+    },
+    {
       "author": "Benjamin Graham",
       "blurDataUrl": "M:L}a2j[~pa}-:j[fPj[fRj@RQj[oeayof",
       "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1538736375i/42185955.jpg",
