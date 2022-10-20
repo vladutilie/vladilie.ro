@@ -2,20 +2,28 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import prisma from '../../src/utils/prisma';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<{ currentLocation: string } | string>) {
+type Response = { currentLocation?: string; error?: string };
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   const { method } = req;
 
   if ('GET' === method) {
-    const settings = await prisma.settings.findUnique({ where: { name: 'location' } });
+    try {
+      const settings = await prisma.settings.findUnique({ where: { name: 'location' } });
 
-    return res.status(200).json({ currentLocation: settings?.value || 'Cluj-Napoca, Cluj' });
+      return res.status(200).json({ currentLocation: settings?.value || 'Cluj-Napoca, Cluj' });
+    } catch (_error) {
+      return res
+        .status(500)
+        .json({ error: 'The connection to database cannot be established.', currentLocation: 'Cluj-Napoca, RO' });
+    }
   }
 
   if ('POST' === method) {
     const { lat, lng, updateLocationKey } = req.body;
 
     if (process.env.UPDATE_LOCATION_KEY !== updateLocationKey) {
-      return res.status(403).send('Forbidden');
+      return res.status(403).json({ error: 'Forbidden' });
     }
 
     try {
@@ -56,7 +64,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     } catch (error) {
       console.error('POST /api/settings ERROR', error);
 
-      return res.status(500).json('Internal server error.');
+      return res.status(500).json({ error: 'Internal server error.' });
     }
   }
 }
