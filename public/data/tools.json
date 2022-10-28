@@ -2,7 +2,7 @@
   "tools": [
     {
       "category": "development",
-      "description": "Uses the OS virtualization to provide software as containers.",
+      "description": "Uses OS virtualization to provide software as containers.",
       "logo": "/assets/images/docker.svg",
       "name": "Docker",
       "url": "https://docker.com"
@@ -37,7 +37,7 @@
     },
     {
       "category": "development",
-      "description": "An open source program for accessing the World Wide Web and running Web-based applications.",
+      "description": "An open-source program for accessing the World Wide Web and running Web-based applications.",
       "logo": "/assets/images/chrome.svg",
       "name": "Chrome",
       "url": "https://www.google.com/chrome/"

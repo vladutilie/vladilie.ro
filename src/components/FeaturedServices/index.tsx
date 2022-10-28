@@ -24,7 +24,7 @@ const services: FeaturedServiceType[] = [
 export const FeaturedServices: React.FC = () => {
   return (
     <section className='flex flex-col gap-y-4'>
-      <h3>Featured services</h3>
+      <h3>Featured Services</h3>
 
       <ul className='flex flex-col gap-y-4'>
         {services.map(({ image, title, url, description }: FeaturedServiceType, idx) => (

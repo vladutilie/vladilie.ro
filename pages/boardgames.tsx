@@ -45,7 +45,7 @@ const Boardgames: NextPage<Props> = ({ boardgames, categories }) => {
         <div className='flex flex-col gap-y-3'>
           <h2>Board games</h2>
           <p>
-            Beyond learning and working, I also ensure myself fun experiences. Here are my board games I play with
+            Beyond learning and working, I also ensure myself fun experiences. Here are my board-games I play with
             friends and dear ones.
           </p>
         </div>

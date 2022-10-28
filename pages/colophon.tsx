@@ -47,11 +47,11 @@ const Colophon: NextPage = () => (
         <Link href='https://tailwindcss.com' target='_blank'>
           Tailwind CSS
         </Link>
-        ,{' '}
+        , and{' '}
         <Link href='https://www.typescriptlang.org' target='_blank'>
           TypeScript
         </Link>{' '}
-        and it&apos;s deployed on{' '}
+        , deployed on{' '}
         <Link href='https://vercel.com' target='_blank'>
           Vercel
         </Link>
@@ -59,7 +59,7 @@ const Colophon: NextPage = () => (
       </p>
 
       <p>
-        The source code can be found on{' '}
+        The source code is on{' '}
         <Link href='https://github.com/vladutilie/vladilie.ro' target='_blank'>
           GitHub
         </Link>
@@ -67,7 +67,7 @@ const Colophon: NextPage = () => (
       </p>
 
       <p>
-        These sites also inspired parts of my website or people I admire and try to thank them by putting them on my
+        These sites also inspired parts of my website or people I admire, and try to thank them by putting them on my
         &quot;wall of fame&quot; 🙏🏻.
       </p>
 
