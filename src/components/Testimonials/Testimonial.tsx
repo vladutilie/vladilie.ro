@@ -14,10 +14,11 @@ export const Testimonial: React.FC<TestimonialType> = ({ author, company, hash, 
       <div className='flex items-center gap-x-2'>
         <div className='relative h-6 w-6'>
           <Image
-            src={`https://gravatar.com/avatar/${hash}`}
             alt={author}
-            fill
             className='rounded-full object-contain'
+            fill
+            src={`https://gravatar.com/avatar/${hash}`}
+            sizes='24px'
           />
         </div>
         <p className='text-gray-400'>
