@@ -59,10 +59,10 @@ const About: NextPage<Props> = ({ testimonials }) => {
                 <li>Got my first PC in 2006, an IBM Pentium III, a gift from an uncle in Timișoara.</li>
                 <li>2008 brought me the first line of code.</li>
                 <li>Got my first award from Oracle, SQL Highschool Course in 2013.</li>
-                <li>Moved in Timișoara for studies.</li>
+                <li>Moved to Timișoara for my studies.</li>
                 <li>Got my engineering degree in 2017.</li>
                 <li>
-                  Moved in Cluj-Napoca for a master&apos;s degree in{' '}
+                  Moved to Cluj-Napoca for a master&apos;s degree in{' '}
                   <abbr title='Business Modelling and Distributed Computing' className='cursor-help'>
                     BMDC
                   </abbr>
