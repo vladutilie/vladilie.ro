@@ -10,7 +10,7 @@ const services: FeaturedServiceType[] = [
     title: 'ContaDocs - Digitize accounting',
     url: 'https://contadocs.ro',
     description:
-      'If you are an accountant this application can make your job easier. Just add companies you are doing accounting for in your dashboard and let your customers know the link where they can login with their phone number and upload their invoices and statements.'
+      'If you are an accountant, this application can make your job easier. Just add companies you are doing accounting for in your dashboard and let your customers know the link where they can log in with their phone numbers and upload their invoices and statements.'
   },
   {
     image: GraphStars,
