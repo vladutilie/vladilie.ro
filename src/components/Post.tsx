@@ -10,18 +10,19 @@ export const Post: React.FC<PostType> = ({ title, description, date, slug, readi
   const { views, isLoading, isError } = usePostViews(slug);
 
   return (
-    <Link href={`/blog/${slug}`}>
-      <a className='flex flex-col gap-y-2 rounded-md p-2 transition-all hover:scale-105 hover:bg-white'>
-        <h3>{title}</h3>
+    <Link
+      href={`/blog/${slug}`}
+      className='flex flex-col gap-y-2 rounded-md p-2 transition-all hover:scale-105 hover:bg-white'
+    >
+      <h3>{title}</h3>
 
-        <div>
-          <span>{format(date)}</span>
-          <span> · {readingTime} · </span>
-          <span>{isError || isLoading ? <LoadingDots /> : numberFormat(Number(views))} views </span>
-        </div>
+      <div>
+        <span>{format(date)}</span>
+        <span> · {readingTime} · </span>
+        <span>{isError || isLoading ? <LoadingDots /> : numberFormat(Number(views))} views </span>
+      </div>
 
-        <span>{description}</span>
-      </a>
+      <span>{description}</span>
     </Link>
   );
 };

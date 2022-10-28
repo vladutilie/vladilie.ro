@@ -82,16 +82,10 @@ const About: NextPage<Props> = ({ testimonials }) => {
                   sw <abbr title='internationalization'>i18n</abbr> &amp; localization,
                 </li>
                 <li>
-                  <Link href={PAGES.BOOKS?.href as string}>
-                    <a>books</a>
-                  </Link>
-                  ,
+                  <Link href={PAGES.BOOKS?.href as string}>books</Link>,
                 </li>
                 <li>
-                  <Link href={PAGES.BOARDGAMES?.href as string}>
-                    <a>board games</a>
-                  </Link>
-                  ,
+                  <Link href={PAGES.BOARDGAMES?.href as string}>board games</Link>,
                 </li>
                 <li>hiking, nature and</li>
                 <li>a bit of 🧩 puzzles.</li>

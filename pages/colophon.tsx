@@ -23,8 +23,8 @@ const Colophon: NextPage = () => (
       <h2>Colophon</h2>
       <p>
         This website is inspired by{' '}
-        <Link href='https://nikolovlazar.com/'>
-          <a target='_blank'>Lazar Nikolov</a>
+        <Link href='https://nikolovlazar.com/' target='_blank'>
+          Lazar Nikolov
         </Link>
         {"'s "}
         design and developed by {process.env.NEXT_PUBLIC_SITE_NAME}.
@@ -32,36 +32,36 @@ const Colophon: NextPage = () => (
 
       <p>
         The tech stack is{' '}
-        <Link href='https://nextjs.org'>
-          <a target='_blank'>NextJS</a>
+        <Link href='https://nextjs.org' target='_blank'>
+          NextJS
         </Link>{' '}
         (all pages statically generated),{' '}
-        <Link href='https://planetscale.com/'>
-          <a target='_blank'>PlanetScale</a>
+        <Link href='https://planetscale.com/' target='_blank'>
+          PlanetScale
         </Link>
         ,{' '}
-        <Link href='https://mdxjs.com'>
-          <a target='_blank'>MDX</a>
+        <Link href='https://mdxjs.com' target='_blank'>
+          MDX
         </Link>
         ,{' '}
-        <Link href='https://tailwindcss.com'>
-          <a target='_blank'>Tailwind CSS</a>
+        <Link href='https://tailwindcss.com' target='_blank'>
+          Tailwind CSS
         </Link>
         ,{' '}
-        <Link href='https://www.typescriptlang.org'>
-          <a target='_blank'>TypeScript</a>
+        <Link href='https://www.typescriptlang.org' target='_blank'>
+          TypeScript
         </Link>{' '}
         and it&apos;s deployed on{' '}
-        <Link href='https://vercel.com'>
-          <a target='_blank'>Vercel</a>
+        <Link href='https://vercel.com' target='_blank'>
+          Vercel
         </Link>
         .
       </p>
 
       <p>
         The source code can be found on{' '}
-        <Link href='https://github.com/vladutilie/vladilie.ro'>
-          <a target='_blank'>GitHub</a>
+        <Link href='https://github.com/vladutilie/vladilie.ro' target='_blank'>
+          GitHub
         </Link>
         .
       </p>
@@ -74,16 +74,14 @@ const Colophon: NextPage = () => (
       <ul className='flex flex-wrap'>
         {links.map(({ link, name }) => (
           <li key={name} className='w-full p-2 md:w-1/3'>
-            <Link href={link}>
-              <a target='_blank' className='flex items-center gap-2 hover:underline'>
-                <Image
-                  alt={name}
-                  height={24}
-                  src={`https://unavatar.io/microlink/${link.replace('https://', '')}`}
-                  width={24}
-                />
-                {name}
-              </a>
+            <Link href={link} target='_blank' className='flex items-center gap-2 hover:underline'>
+              <Image
+                alt={name}
+                height={24}
+                src={`https://unavatar.io/microlink/${link.replace('https://', '')}`}
+                width={24}
+              />
+              {name}
             </Link>
           </li>
         ))}

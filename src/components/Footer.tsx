@@ -25,8 +25,8 @@ export const Footer: React.FC = () => {
         <ul className='w-1/2 md:w-auto'>
           {firstCol.map(({ href, label }: Page, idx: number) => (
             <li key={idx}>
-              <Link href={href}>
-                <a className={`${pathname === href ? 'text-blue-400' : ''}`}>{label}</a>
+              <Link href={href} className={`${pathname === href ? 'text-blue-400' : ''}`}>
+                {label}
               </Link>
             </li>
           ))}
@@ -35,8 +35,8 @@ export const Footer: React.FC = () => {
         <ul className='w-1/2 md:w-auto'>
           {secondCol.map(({ href, label }: Page, idx: number) => (
             <li key={idx}>
-              <Link href={href}>
-                <a className={`${pathname === href ? 'text-blue-400' : ''}`}>{label}</a>
+              <Link href={href} className={`${pathname === href ? 'text-blue-400' : ''}`}>
+                {label}
               </Link>
             </li>
           ))}
@@ -45,8 +45,8 @@ export const Footer: React.FC = () => {
         <ul className='w-1/2 md:w-auto'>
           {thirdCol.map(({ href, label }: Page, idx: number) => (
             <li key={idx}>
-              <Link href={href}>
-                <a target='_blank'>{label}</a>
+              <Link href={href} target='_blank'>
+                {label}
               </Link>
             </li>
           ))}
@@ -57,17 +57,13 @@ export const Footer: React.FC = () => {
         <p className='text-sm text-gray-400'>
           &copy; {`${new Date().getFullYear()} ${process.env.NEXT_PUBLIC_SITE_NAME}`}
         </p>
-        <Link href='https://vercel.app'>
-          <a className='flex items-center gap-x-1 text-xs font-semibold text-black' target='_blank'>
-            Powered by{' '}
-            <Image
-              alt='Vercel'
-              className='inline h-3'
-              height={12}
-              src='/assets/images/vercel-logotype.svg'
-              width={53}
-            />
-          </a>
+        <Link
+          href='https://vercel.app'
+          className='flex items-center gap-x-1 text-xs font-semibold text-black'
+          target='_blank'
+        >
+          Powered by{' '}
+          <Image alt='Vercel' className='inline h-3' height={12} src='/assets/images/vercel-logotype.svg' width={53} />
         </Link>
       </div>
     </footer>
