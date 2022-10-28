@@ -19,6 +19,7 @@ export const Boardgame: React.FC<BoardgameType> = ({ age, blurDataUrl, duration,
           className='object-contain'
           fill
           placeholder='blur'
+          sizes='100px'
           src={image}
         />
       </div>

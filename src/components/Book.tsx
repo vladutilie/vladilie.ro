@@ -16,6 +16,7 @@ export const Book: React.FC<BookType> = ({ title, author, cover, state, link, bl
             className='object-contain'
             fill
             placeholder='blur'
+            sizes='50px'
             src={cover}
           />
           <div
