@@ -38,20 +38,20 @@ export const Hero: React.FC = () => {
         <h1 className='text-center md:text-left'>Hi there, Vlad here!</h1>
         <p className='mt-3 mb-4 leading-7'>
           I&apos;m a <strong>Software Engineer</strong> based in Romania, I love to juggle with technologies and put my
-          soul in every project to get the best of it.{' '}
+          soul into every project to get the best out of it.{' '}
           <strong>
             <Link href={process.env.NEXT_PUBLIC_NEO4J as string} target='_blank' className='hover:underline'>
               Neo4j <Arrow className='inline w-3 fill-blue-500' />
             </Link>{' '}
             Certified Professional
           </strong>
-          {', '} <strong>NextJS</strong> fan, enthusiastic of <strong>JavaScript</strong> development technologies,
-          nostalgic <strong>WordPress</strong> lover and the maintainer of{' '}
+          {', '} <strong>NextJS</strong> fan, enthusiastic about <strong>JavaScript</strong> technologies, nostalgic{' '}
+          <strong>WordPress</strong> lover, and the maintainer of{' '}
           <Link href='https://cartilepefata.ro' target='_blank' className='hover:underline'>
             <strong>Cărțile pe Față</strong>
             <Arrow className='ml-1 inline w-3 fill-blue-500' />
           </Link>{' '}
-          website network. I also like to travel around the country and that&apos;s why now I am in{' '}
+          websites. I also like to travel around the country, so now I am in{' '}
           {!data ? (
             <Image
               alt='loading'
@@ -65,7 +65,7 @@ export const Hero: React.FC = () => {
               📍<em>{data?.currentLocation}</em>
             </>
           )}{' '}
-          and tomorrow I might be somewhere else.
+          , and tomorrow I might be somewhere else.
         </p>
         <Social />
       </div>
