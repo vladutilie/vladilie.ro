@@ -37,7 +37,7 @@ export const Hero: React.FC = () => {
       <div className='w-full md:w-2/3'>
         <h1 className='text-center md:text-left'>Hi there, Vlad here!</h1>
         <p className='mt-3 mb-4 leading-7'>
-          I&apos;m a <strong>Software Engineer</strong> based in Romania, I love to juggle with technologies and put my
+          I&apos;m a <strong>Software Engineer</strong> based in Romania, love to juggle with technologies and put my
           soul into every project to get the best out of it.{' '}
           <strong>
             <Link href={process.env.NEXT_PUBLIC_NEO4J as string} target='_blank' className='hover:underline'>
