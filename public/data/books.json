@@ -1,6 +1,14 @@
 {
   "books": [
     {
+      "author": "Evan Hahn",
+      "blurDataUrl": "cJLEE300D*niV@x]_N4oRiS%W=Ri%NayM{",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1623865258l/58354955._SX318_.jpg",
+      "link": "https://www.goodreads.com/book/show/58354955-express-in-action",
+      "state": "Reading",
+      "title": "Express in Action"
+    },
+    {
       "author": "Gabriel Liiceanu",
       "blurDataUrl": "U~KeT5t7ofof~Vf6j[ays:RkayayIoaybHfQ",
       "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1540825838l/42527927._SY475_.jpg",
