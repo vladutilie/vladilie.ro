@@ -1,6 +1,22 @@
 {
   "books": [
     {
+      "author": "Boris Cherny",
+      "blurDataUrl": "MUQ9+eRj_NRj%M-=kCMxWBay-=M_IAxua{",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1556575755l/45362865._SX318_.jpg",
+      "link": "https://www.goodreads.com/book/show/45362865-programming-typescript",
+      "state": "Reading",
+      "title": "Programming TypeScript"
+    },
+    {
+      "author": "Evan Hahn",
+      "blurDataUrl": "cJLEE300D*niV@x]_N4oRiS%W=Ri%NayM{",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1623865258l/58354955._SX318_.jpg",
+      "link": "https://www.goodreads.com/book/show/58354955-express-in-action",
+      "state": "Completed",
+      "title": "Express in Action"
+    },
+    {
       "author": "Gabriel Liiceanu",
       "blurDataUrl": "U~KeT5t7ofof~Vf6j[ays:RkayayIoaybHfQ",
       "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1540825838l/42527927._SY475_.jpg",
@@ -15,22 +31,6 @@
       "link": "https://www.goodreads.com/book/show/42185955-investitorul-inteligent",
       "state": "Reading",
       "title": "The Intelligent Investor"
-    },
-    {
-      "author": "Robert T. Kiyosaki",
-      "blurDataUrl": "c6CFe_NND%p|IuadH=E3-:-OItjr?aNMM_",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1565374547i/15821582.jpg",
-      "link": "https://www.goodreads.com/book/show/15821582-cadranul-banilor-ghidul-unui-tat-bogat-pentru-libertate-financiar",
-      "state": "Completed",
-      "title": "Cadranul banilor"
-    },
-    {
-      "author": "Robert T. Kiyosaki",
-      "blurDataUrl": "cdJbBV.8.SpyxvWYu6RjWF-oM{w[I[aJRj",
-      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1490719459i/34723545._SY180_.jpg",
-      "link": "https://www.goodreads.com/book/show/34723545-un-iq-financiar-mai-bun",
-      "state": "Completed",
-      "title": "Un IQ financiar mai bun"
     },
     {
       "author": "Scott Belsky",
@@ -55,14 +55,6 @@
       "link": "https://www.goodreads.com/book/show/15821539-cel-mai-bogat-om-din-babilon",
       "state": "Wish",
       "title": "Cel mai bogat om din Babilon"
-    },
-    {
-      "author": "Robert T. Kiyosaki",
-      "blurDataUrl": "cEFq,o$c06~VnfRY%KnfJE0NV?Jp1AV?={",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1609009898i/20742204.jpg",
-      "link": "https://www.goodreads.com/book/show/20742204-tat-bogat-tat-s-rac-educa-ia-financiar-n-familie",
-      "state": "Completed",
-      "title": "Tată bogat, tată sărac."
     },
     {
       "author": "Gabriel Liiceanu",

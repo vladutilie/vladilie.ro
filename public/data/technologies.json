@@ -14,14 +14,14 @@
     },
     {
       "height": 20,
-      "image": "/assets/images/nextjs.svg",
-      "name": "NextJS",
+      "image": "/assets/images/nodejs.svg",
+      "name": "NodeJS",
       "width": 20
     },
     {
       "height": 20,
-      "image": "/assets/images/nodejs.svg",
-      "name": "NodeJS",
+      "image": "/assets/images/nextjs.svg",
+      "name": "NextJS",
       "width": 20
     },
     {

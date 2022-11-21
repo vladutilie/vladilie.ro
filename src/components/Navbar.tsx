@@ -31,10 +31,8 @@ export const Navbar: React.FC = () => {
         className={`flex w-full max-w-3xl flex-col items-center justify-between gap-y-4 rounded-2xl bg-zinc-100/95 px-4 py-3 shadow-surface-glass backdrop-blur will-change-transform md:flex-row [@supports(backdrop-filter:blur(0px))]:bg-white/[3%]`}
       >
         <div className='flex w-full items-center justify-between md:w-auto'>
-          <Link href='/'>
-            <a className='inline'>
-              <h3>{process.env.NEXT_PUBLIC_SITE_NAME?.split(' ')[0]}</h3>
-            </a>
+          <Link href='/' className='inline'>
+            <h3>{process.env.NEXT_PUBLIC_SITE_NAME?.split(' ')[0]}</h3>
           </Link>
 
           <button aria-label='Collapse menu' name='Collapse menu' className='md:hidden' onClick={toggleMobileMenu}>
@@ -45,8 +43,8 @@ export const Navbar: React.FC = () => {
         <ul className='hidden gap-x-4 font-quicksand font-semibold md:flex md:text-lg'>
           {pages.map(({ href, label }: Page) => (
             <li key={label}>
-              <Link href={href}>
-                <a className='hover:underline'>{label}</a>
+              <Link href={href} className='hover:underline'>
+                {label}
               </Link>
             </li>
           ))}
@@ -62,9 +60,7 @@ export const Navbar: React.FC = () => {
         <ul className='space-y-4 font-quicksand font-semibold'>
           {pages.map(({ href, label }: Page) => (
             <li key={label} className='border-b border-gray-600 px-8 pb-4 text-center'>
-              <Link href={href}>
-                <a>{label}</a>
-              </Link>
+              <Link href={href}>{label}</Link>
             </li>
           ))}
         </ul>

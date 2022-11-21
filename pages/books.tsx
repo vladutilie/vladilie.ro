@@ -23,7 +23,7 @@ const Books: NextPage<Props> = ({ reading, favorites, completed, wishing }) => (
     <main className='container mx-auto flex max-w-3xl flex-col gap-y-8 px-4 pt-28'>
       <div className='flex flex-col gap-y-3'>
         <h2>Books</h2>
-        <p>My book collection. A travel through my knowledge and stories along life.</p>
+        <p>My book collection. A journey through my knowledge and stories along life.</p>
       </div>
 
       <div>

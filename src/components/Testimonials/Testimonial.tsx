@@ -13,15 +13,21 @@ export const Testimonial: React.FC<TestimonialType> = ({ author, company, hash, 
 
       <div className='flex items-center gap-x-2'>
         <div className='relative h-6 w-6'>
-          <Image src={`https://gravatar.com/avatar/${hash}`} alt={author} layout='fill' className='rounded-full' />
+          <Image
+            alt={author}
+            className='rounded-full object-contain'
+            fill
+            src={`https://gravatar.com/avatar/${hash}`}
+            sizes='24px'
+          />
         </div>
         <p className='text-gray-400'>
           {author}{' '}
           {company && position ? (
             <>
               {'\u2014'} {position} at{' '}
-              <Link href={url as string}>
-                <a target='_blank'>{company}</a>
+              <Link href={url as string} target='_blank'>
+                {company}
               </Link>
             </>
           ) : (
