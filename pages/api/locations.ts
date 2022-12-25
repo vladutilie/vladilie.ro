@@ -4,14 +4,19 @@ import prisma from '../../src/utils/prisma';
 
 type Response = { currentLocation?: string; error?: string };
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method } = req;
 
   if ('GET' === method) {
     try {
-      const settings = await prisma.settings.findUnique({ where: { name: 'location' } });
+      const { takeLastOne } = req.query;
 
-      return res.status(200).json({ currentLocation: settings?.value || 'Cluj-Napoca, Cluj' });
+      const location = await prisma.locations.findMany({
+        orderBy: { lastVisitAt: 'desc' },
+        ...(takeLastOne ? { take: 1 } : {})
+      });
+
+      return res.status(200).json(location);
     } catch (_error) {
       return res
         .status(500)
@@ -54,15 +59,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       const currentLocation = result.locality
         ? `${result.locality}, ${result.administrative_area_level_1}`
         : `${result.administrative_area_level_2}, ${result.country}`;
-      await prisma.settings.upsert({
-        where: { name: 'location' },
-        update: { value: currentLocation },
-        create: { name: 'location', value: currentLocation }
+
+      await prisma.locations.upsert({
+        where: { name: currentLocation },
+        update: { visitCounter: { increment: 1 }, lastVisitAt: new Date() },
+        create: { name: currentLocation }
       });
 
       return res.status(200).json({ currentLocation });
     } catch (error) {
-      console.error('POST /api/settings ERROR', error);
+      console.error('POST /api/locations ERROR', error);
 
       return res.status(500).json({ error: 'Internal server error.' });
     }

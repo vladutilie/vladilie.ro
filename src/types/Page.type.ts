@@ -7,7 +7,8 @@ type PageType =
   | 'USES'
   | 'BOOKS'
   | 'BOARDGAMES'
-  | 'INSPIRATION';
+  | 'INSPIRATION'
+  | 'LOCATIONS';
 type SocialType = 'GITHUB' | 'LINKEDIN' | 'TWITTER' | 'WORDPRESS' | 'POLYWORK';
 
 export type Page = { label: string; href: string };
