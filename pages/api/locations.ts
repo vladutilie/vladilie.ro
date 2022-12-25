@@ -59,7 +59,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const currentLocation = result.locality
         ? `${result.locality}, ${result.administrative_area_level_1}`
         : `${result.administrative_area_level_2}, ${result.country}`;
-      console.log(currentLocation);
 
       await prisma.locations.upsert({
         where: { name: currentLocation },
