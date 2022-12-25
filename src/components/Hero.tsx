@@ -5,13 +5,13 @@ import { useRouter } from 'next/router';
 import useSWR from 'swr';
 
 import vlad from '../../public/assets/images/vlad-ilie.jpg';
-import { Arrow } from '../icons';
 import { fetcher } from '../utils/fetcher';
 import { Social } from './';
+import { PAGES } from 'src/utils/constants';
 
 export const Hero: React.FC = () => {
   const { query } = useRouter();
-  const { data } = useSWR('/api/settings', fetcher);
+  const { data } = useSWR('/api/locations?takeLastOne=yep', fetcher);
 
   useEffect(() => {
     if (query.updateLocationKey) {
@@ -23,7 +23,7 @@ export const Hero: React.FC = () => {
       });
 
       function updateLocation({ lat, lng }: { lat: number; lng: number }) {
-        fetch('/api/settings', {
+        fetch('/api/locations', {
           method: 'POST',
           headers: new Headers({ 'Content-Type': 'application/json' }),
           body: JSON.stringify({ lat, lng, updateLocationKey: query.updateLocationKey })
@@ -68,9 +68,7 @@ export const Hero: React.FC = () => {
               height={20}
             />
           ) : (
-            <>
-              📍<em>{data?.currentLocation}</em>
-            </>
+            <Link href={PAGES.LOCATIONS?.href as string}>📍 {data[0].name}</Link>
           )}
           {', and tomorrow I might be somewhere else.'}
         </p>
