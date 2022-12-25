@@ -68,7 +68,7 @@ export const Hero: React.FC = () => {
               height={20}
             />
           ) : (
-            <Link href={PAGES.LOCATIONS?.href as string}>📍 {data[0].name}</Link>
+            <Link href={PAGES.LOCATIONS?.href as string}>📍 {data?.[0]?.name || 'Romania'}</Link>
           )}
           {', and tomorrow I might be somewhere else.'}
         </p>
