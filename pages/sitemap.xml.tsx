@@ -1,8 +1,12 @@
 import { GetServerSidePropsContext } from 'next';
 
 import { PAGES } from 'src/utils/constants';
-import { allPosts, type Post as PostType } from '../.contentlayer/generated';
-import { allCaseStudies, type CaseStudy as CaseStudyType } from '../.contentlayer/generated';
+import {
+  allPosts,
+  type Post as PostType,
+  allCaseStudies,
+  type CaseStudy as CaseStudyType
+} from '../.contentlayer/generated';
 
 const generateSiteMap = () => {
   const blogPosts = allPosts.map(({ slug, date, modified }: PostType) => ({
@@ -26,6 +30,7 @@ const generateSiteMap = () => {
     { slug: PAGES.USES?.href as string, date },
     { slug: PAGES.BOOKS?.href as string, date },
     { slug: PAGES.BOARDGAMES?.href as string, date },
+    { slug: PAGES.LOCATIONS?.href as string, date },
     ...blogPosts,
     ...caseStudies
   ];
@@ -48,16 +53,14 @@ const generateSiteMap = () => {
 
 function SiteMap() {}
 
-export async function getServerSideProps({ res }: GetServerSidePropsContext) {
+export const getServerSideProps = async ({ res }: GetServerSidePropsContext) => {
   const sitemap = generateSiteMap();
 
   res.setHeader('Content-Type', 'text/xml');
   res.write(sitemap);
   res.end();
 
-  return {
-    props: {}
-  };
-}
+  return { props: {} };
+};
 
 export default SiteMap;
