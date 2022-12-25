@@ -9,9 +9,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   if ('GET' === method) {
     try {
-      const settings = await prisma.settings.findUnique({ where: { name: 'location' } });
+      const location = await prisma.locations.findMany({ orderBy: { lastVisitAt: 'desc' }, take: 1 });
 
-      return res.status(200).json({ currentLocation: settings?.value || 'Cluj-Napoca, Cluj' });
+      return res.status(200).json({ currentLocation: location[0].name || 'Cluj-Napoca, Cluj' });
     } catch (_error) {
       return res
         .status(500)
@@ -54,15 +54,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       const currentLocation = result.locality
         ? `${result.locality}, ${result.administrative_area_level_1}`
         : `${result.administrative_area_level_2}, ${result.country}`;
-      await prisma.settings.upsert({
-        where: { name: 'location' },
-        update: { value: currentLocation },
-        create: { name: 'location', value: currentLocation }
+      await prisma.locations.upsert({
+        where: { name: currentLocation },
+        update: { visitCounter: { increment: 1 }, lastVisitAt: new Date() },
+        create: { name: currentLocation }
       });
 
       return res.status(200).json({ currentLocation });
     } catch (error) {
-      console.error('POST /api/settings ERROR', error);
+      console.error('POST /api/locations ERROR', error);
 
       return res.status(500).json({ error: 'Internal server error.' });
     }
