@@ -4,14 +4,19 @@ import prisma from '../../src/utils/prisma';
 
 type Response = { currentLocation?: string; error?: string };
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method } = req;
 
   if ('GET' === method) {
     try {
-      const location = await prisma.locations.findMany({ orderBy: { lastVisitAt: 'desc' }, take: 1 });
+      const { takeLastOne } = req.query;
 
-      return res.status(200).json({ currentLocation: location[0].name || 'Cluj-Napoca, Cluj' });
+      const location = await prisma.locations.findMany({
+        orderBy: { lastVisitAt: 'desc' },
+        ...(takeLastOne ? { take: 1 } : {})
+      });
+
+      return res.status(200).json(location);
     } catch (_error) {
       return res
         .status(500)
@@ -54,6 +59,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       const currentLocation = result.locality
         ? `${result.locality}, ${result.administrative_area_level_1}`
         : `${result.administrative_area_level_2}, ${result.country}`;
+      console.log(currentLocation);
+
       await prisma.locations.upsert({
         where: { name: currentLocation },
         update: { visitCounter: { increment: 1 }, lastVisitAt: new Date() },
