@@ -40,16 +40,23 @@ export const Hero: React.FC = () => {
           I&apos;m a <strong>Software Engineer</strong> based in Romania, love to juggle with technologies and put my
           soul into every project to get the best out of it.{' '}
           <strong>
-            <Link href={process.env.NEXT_PUBLIC_NEO4J as string} target='_blank' className='hover:underline'>
-              Neo4j <Arrow className='inline w-3 fill-blue-500' />
+            <Link
+              href={process.env.NEXT_PUBLIC_NEO4J as string}
+              target='_blank'
+              className="after:content-['_↗'] hover:underline"
+            >
+              Neo4j
             </Link>{' '}
             Certified Professional
           </strong>
           {', '} <strong>NextJS</strong> fan, enthusiastic about <strong>JavaScript</strong> technologies, nostalgic{' '}
           <strong>WordPress</strong> lover, and the maintainer of{' '}
-          <Link href='https://cartilepefata.ro' target='_blank' className='hover:underline'>
-            <strong>Cărțile pe Față</strong>
-            <Arrow className='ml-1 inline w-3 fill-blue-500' />
+          <Link
+            href='https://cartilepefata.ro'
+            target='_blank'
+            className="font-semibold after:content-['_↗'] hover:underline"
+          >
+            Cărțile pe Față
           </Link>{' '}
           websites. I also like to travel around the country, so now I am in{' '}
           {!data ? (
@@ -64,8 +71,8 @@ export const Hero: React.FC = () => {
             <>
               📍<em>{data?.currentLocation}</em>
             </>
-          )}{' '}
-          , and tomorrow I might be somewhere else.
+          )}
+          {', and tomorrow I might be somewhere else.'}
         </p>
         <Social />
       </div>
