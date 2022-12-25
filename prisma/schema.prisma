@@ -1,14 +1,10 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["referentialIntegrity"]
+  provider = "prisma-client-js"
 }
 
 datasource db {
-  provider             = "mysql"
-  url                  = env("DATABASE_URL")
-  referentialIntegrity = "prisma"
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 model PostCounter {
@@ -28,13 +24,16 @@ model Session {
   loves     Boolean  @default(false)
   awards    Boolean  @default(false)
   wows      Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
 
   @@map("sessions")
 }
 
-model Settings {
-  name  String @id
-  value String
+model Locations {
+  name         String   @id @unique
+  visitCounter Int      @default(1) @map("visit_counter")
+  lastVisitAt  DateTime @default(now()) @map("last_visit_at")
+
+  @@map("locations")
 }
