@@ -15,11 +15,13 @@ export const Hero: React.FC = () => {
 
   useEffect(() => {
     if (query.updateLocationKey) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        updateLocation({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        });
+      navigator.geolocation.getCurrentPosition(({ coords }) => {
+        if (window.confirm(`Actualizezi locația?`)) {
+          updateLocation({
+            lat: coords.latitude,
+            lng: coords.longitude
+          });
+        }
       });
 
       function updateLocation({ lat, lng }: { lat: number; lng: number }) {
