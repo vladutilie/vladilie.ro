@@ -87,6 +87,7 @@ const About: NextPage<Props> = ({ testimonials }) => {
                 <li>
                   <Link href={PAGES.BOARDGAMES?.href as string}>board games</Link>,
                 </li>
+                <li>sudoku,</li>
                 <li>hiking, nature and</li>
                 <li>a bit of 🧩 puzzles.</li>
               </ul>
