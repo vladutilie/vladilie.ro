@@ -1,6 +1,14 @@
 {
   "testimonials": [
     {
+      "author": "Alex",
+      "company": "Alex TAG",
+      "hash": "3b4c4639abbc5fa38946c704cfe0b867",
+      "position": "CEO",
+      "text": "Pe parcursul migrației site-ului moldoveni.co.uk din Laravel în WordPress, mi-a făcut plăcere să lucrez alături de Vlăduț, care a jucat un rol crucial în acest proiect. Fiind prima mea interacțiune cu Laravel, un framework de PHP, expertiza lui Vlăduț a fost absolut neprețuită. M-a îndrumat cu răbdare și claritate, explicându-mi particularitățile Laravel și ajutându-mă să înțeleg mai bine funcționarea acestui framework. M-a impresionat nu numai nivelul său de cunoștințe, dar și abilitatea de a face informațiile accesibile și ușor de înțeles, în ciuda complexității lor tehnice.",
+      "url": "https://alextag.ro"
+    },
+    {
       "author": "Mihai Ciufudean",
       "company": "Icey Design",
       "hash": "fcea4ac3fefcc2194daa310c0c9493d1",
