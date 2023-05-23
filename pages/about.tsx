@@ -87,17 +87,11 @@ const About: NextPage<Props> = ({ testimonials }) => {
                 <li>
                   <Link href={PAGES.BOARDGAMES?.href as string}>board games</Link>,
                 </li>
+                <li>folk,</li>
                 <li>sudoku,</li>
+                <li>ecology and sustainability,</li>
                 <li>hiking, nature and</li>
                 <li>a bit of 🧩 puzzles.</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2>💭 Thinking about...</h2>
-              <ul className='mt-4 list-disc space-y-2 pl-4'>
-                <li>a better world and</li>
-                <li>ecology and sustainability</li>
               </ul>
             </div>
           </div>
