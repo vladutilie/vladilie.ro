@@ -19,8 +19,8 @@ export const Reactions: React.FC<{ slug: string }> = ({ slug }) => {
           key={reaction}
           reaction={reaction}
           emoji={emoji}
-          session={session?.[reaction]}
-          counter={counter?.[reaction]}
+          session={!!session?.[reaction]}
+          counter={Number(counter?.[reaction])}
           react={react}
         />
       ))}
