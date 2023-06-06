@@ -1,0 +1,10 @@
+# Block all crawlers for /panel
+User-agent: *
+Disallow: /data
+Disallow: /assets
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+Sitemap: https://vladilie.ro/sitemap.xml
