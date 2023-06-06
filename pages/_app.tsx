@@ -12,6 +12,7 @@ function VladIlie({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <link rel='icon' href='/assets/images/favicon.ico' />
+        <meta name='google-site-verification' content='Skw9d5BjwW9jYkVIi4YMMU4Hr5a_9GiCRKWflaKhOFo' />
       </Head>
 
       <NextSeo
