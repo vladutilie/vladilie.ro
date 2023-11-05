@@ -4,13 +4,13 @@ const { withContentlayer } = require('next-contentlayer');
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [
-      'i.gr-assets.com',
-      'images-na.ssl-images-amazon.com',
-      'cf.geekdo-images.com',
-      'gcdahtftlmucxetygvev.supabase.co',
-      'gravatar.com',
-      'unavatar.io'
+    remotePatterns: [
+      {  protocol: 'https', hostname: 'i.gr-assets.com' },
+      {  protocol: 'https', hostname: 'images-na.ssl-images-amazon.com' },
+      {  protocol: 'https', hostname: 'cf.geekdo-images.com' },
+      {  protocol: 'https', hostname: 'gcdahtftlmucxetygvev.supabase.co' },
+      {  protocol: 'https', hostname: 'gravatar.com' },
+      {  protocol: 'https', hostname: 'unavatar.io' },
     ]
   },
   webpack(config) {
