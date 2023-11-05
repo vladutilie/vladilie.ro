@@ -37,7 +37,7 @@ export const Hero: React.FC = () => {
   return (
     <section className='flex flex-col-reverse items-center gap-x-4 gap-y-10 md:flex-row'>
       <div className='w-full md:w-2/3'>
-        <h1 className='text-center md:text-left'>Hi there, Vlad here!</h1>
+        <h1 className='text-center md:text-left'>Hi there, Vlad here! 👋</h1>
         <p className='mt-3 mb-4 leading-7'>
           I&apos;m a <strong>Software Engineer</strong> based in Romania, love to juggle with technologies and put my
           soul into every project to get the best out of it.{' '}
