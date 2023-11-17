@@ -18,7 +18,11 @@ export const ThemeSwitcher: React.FC = () => {
   }, []);
 
   if (!mounted) {
-    return null;
+    return (
+      <div className='flex h-10 w-10 items-center justify-center'>
+        <Image src={sun} width={24} height={24} alt='moon' />
+      </div>
+    );
   }
 
   return (
