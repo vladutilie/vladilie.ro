@@ -1,0 +1,17 @@
+{
+  "navbar": {
+    "about": "Despre",
+    "education": "Educație",
+    "skills": "Experiență",
+    "projects": "Proiecte",
+    "testimonials": "Testimoniale",
+    "services": "Servicii",
+    "contact": "Contact",
+    "switch-theme": "Schimbă temă"
+  },
+  "homepage": {
+    "hero": {
+      "hello": "Salut, aici Vlad {emoji}"
+    }
+  }
+}
