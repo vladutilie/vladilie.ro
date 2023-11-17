@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-slate-800;
+    @apply my-2.5;
+  }
+
+  h1 {
+    @apply text-4xl;
+    @apply font-bold;
+    @apply text-gray-800;
+    @apply transition-colors dark:text-gray-50;
+  }
+
+  p {
+    @apply text-base;
+    @apply text-gray-600;
+    @apply transition-colors dark:text-gray-300;
+  }
+
+  a {
+    @apply text-blue-450;
+    @apply transition-colors;
+  }
+
+  a:hover {
+    @apply text-blue-500;
+  }
+
+  @screen lg {
+    h1 {
+      @apply text-6xl;
+    }
+  }
+}
