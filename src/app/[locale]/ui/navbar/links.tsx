@@ -1,7 +1,8 @@
-import { Link } from '@/navigation';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/navigation';
 
 import { ThemeSwitcher } from './theme-switcher';
+import { LangChanger } from './lang-changer';
 
 export const Links: React.FC<{ isMobile?: boolean }> = ({ isMobile = false }) => {
   const t = useTranslations('navbar');
@@ -47,7 +48,9 @@ export const Links: React.FC<{ isMobile?: boolean }> = ({ isMobile = false }) =>
       <li className='before:absolute before:left-0 before:w-full before:border-b before:dark:border-gray-600 md:before:hidden'>
         <ThemeSwitcher />
       </li>
-      <li>L</li>
+      <li>
+        <LangChanger />
+      </li>
     </ul>
   );
 };
