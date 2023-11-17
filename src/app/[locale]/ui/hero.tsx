@@ -7,7 +7,7 @@ import { SocialMedia } from './social-media';
 import { Pin } from '../ui/icons';
 import vlad from '@/../public/images/vlad-ilie.jpg';
 
-export const Hero: React.FC = () => {
+export const Hero: React.FC<{ location: string }> = ({ location }) => {
   const t = useTranslations('homepage.hero');
 
   return (
@@ -29,7 +29,7 @@ export const Hero: React.FC = () => {
                   {chunk}
                 </a>
               ),
-              city: 'Cluj-Napocăn',
+              city: location,
               locations: (chunk: ReactNode) => <Link href={'/location'}>{chunk}</Link>
             })}
           </p>
@@ -38,7 +38,7 @@ export const Hero: React.FC = () => {
         <div className='flex flex-col gap-y-2'>
           <div className='flex gap-x-2'>
             <Pin />
-            <p>Cluj-Napoca, CJ, România</p>
+            <p>{location}</p>
           </div>
 
           <div className='flex items-center gap-x-2'>
