@@ -1,7 +1,7 @@
 import { Link } from '@/navigation';
 import { useTranslations } from 'next-intl';
 
-import { ThemeSwitcher } from '../theme-switcher';
+import { ThemeSwitcher } from './theme-switcher';
 
 export const Links: React.FC<{ isMobile?: boolean }> = ({ isMobile = false }) => {
   const t = useTranslations('navbar');
