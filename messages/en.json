@@ -7,12 +7,15 @@
     "testimonials": "Testimonials",
     "services": "Services",
     "contact": "Contact",
-    "switch-theme": "Switch theme"
+    "switch-theme": "Switch theme",
+    "change-language": "Change language",
+    "change-language-to": "Schimbă limba în {lang}"
   },
   "homepage": {
     "hero": {
       "hello": "Hi there, Vlad here {emoji}",
-      "about": "I'm a <strong>Software Engineer</strong> based in Romania, love to juggle with technologies and put my soul into every project to get the best out of it. <strong><neo4j>Neo4j</neo4j> Certified Professional</strong>, NextJS fan, enthusiastic about JavaScript technologies, nostalgic <strong>WordPress</strong> lover, and the maintainer of <strong><cpf>Cărțile pe Față</cpf></strong> websites. I also like to travel around the country, so now I am in <locations>{city}</locations>, and tomorrow I might be somewhere else."
+      "about": "I'm a <strong>Software Engineer</strong> based in Romania, love to juggle with technologies and put my soul into every project to get the best out of it. <strong><neo4j>Neo4j</neo4j> Certified Professional</strong>, NextJS fan, enthusiastic about JavaScript technologies, nostalgic <strong>WordPress</strong> lover, and the maintainer of <strong><cpf>Cărțile pe Față</cpf></strong> websites. I also like to travel around the country, so now I am in <locations>{city}</locations>, and tomorrow I might be somewhere else.",
+      "available": "Available for new projects"
     }
   }
 }
