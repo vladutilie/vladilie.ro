@@ -3782,14 +3782,14 @@ next-contentlayer@^0.3.4:
     "@contentlayer/core" "0.3.4"
     "@contentlayer/utils" "0.3.4"
 
-next-intl@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-3.0.3.tgz#9b3fc26bd005446adde3f443251d45e283c25743"
-  integrity sha512-ENR6Aji0ECZ5KbVcv/ZZA+ZCHjhUTEmprqWODXmKH9cShYMVclvJKxwrhujL0NmwTAa0B0ScHacVnoBTO8VEPg==
+next-intl@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-3.1.0.tgz#4ade834caa301edf8bcb0c80004cef2daf22332f"
+  integrity sha512-ZbQeJO0RcORFljtNjQmbXRnyS4KwiI0DCMemdIl0OmwoI3PWSpJojE/0hmy6RRZJHEtrWQnpS+afCBpvqgii+A==
   dependencies:
     "@formatjs/intl-localematcher" "^0.2.32"
     negotiator "^0.6.3"
-    use-intl "^3.0.3"
+    use-intl "^3.1.0"
 
 next-seo@^6.4.0:
   version "6.4.0"
@@ -5321,10 +5321,10 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-use-intl@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/use-intl/-/use-intl-3.0.3.tgz#8e58a7f26ab656790a85bc155be826e9448fd3a0"
-  integrity sha512-A0y58ru45Vzw+kdmUoYfEd2EULg32c2v/9Y+jMQgEDivKg2naMtKtzxe4wx0f0FXVmFZj3pMjNtDL5QG3SudUA==
+use-intl@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/use-intl/-/use-intl-3.1.0.tgz#cf75cda4c492b09f2119492810863da0d312d0e8"
+  integrity sha512-PT6g2BISl93vzkUlbEPG6WN6ztOe75F+d3flxCzn4MpHEDdiDwlc6WpNcoOnlIfxEQvYKr66zDA0QrJAEB8yAQ==
   dependencies:
     "@formatjs/ecma402-abstract" "^1.11.4"
     intl-messageformat "^9.3.18"
