@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-
 import { Link } from '@/navigation';
+
 import { SocialMedia } from './social-media';
 import { Pin } from '../ui/icons';
 import vlad from '@/../public/images/vlad-ilie.jpg';
@@ -48,7 +48,7 @@ export const Hero: React.FC = () => {
                 <span className='relative inline-flex h-3 w-3 rounded-full bg-green-500' />
               </span>
             </div>
-            <p>Available for new projects</p>
+            <p>{t('available')}</p>
           </div>
         </div>
 
