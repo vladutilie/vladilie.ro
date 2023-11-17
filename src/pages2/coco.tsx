@@ -1,9 +1,9 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
-import { FeaturedServices, Hero, Projects, Technologies } from '../src/components';
-import { Project, Technology } from '../src/types';
-import { readData } from '../src/utils/readData';
+import { FeaturedServices, Hero, Projects, Technologies } from '../components';
+import { Project, Technology } from '../types';
+import { readData } from '../utils/readData';
 
 type Props = { projects: Project[]; technologies: Technology[] };
 const Home: NextPage<Props> = ({ projects, technologies }) => (

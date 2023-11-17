@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
 
-import { PAGES } from '../src/utils/constants';
+import { PAGES } from '../utils/constants';
 
 const links = [
   { link: 'https://nikolovlazar.com', name: 'Nikolov Lazar' },

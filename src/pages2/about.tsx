@@ -3,10 +3,10 @@ import type { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 
-import { PAGES } from '../src/utils/constants';
-import { Testimonials } from '../src/components/Testimonials';
-import { Testimonial } from '../src/types/Testimonial.type';
-import { readData } from '../src/utils/readData';
+import { PAGES } from '../utils/constants';
+import { Testimonials } from '../components/Testimonials';
+import { Testimonial } from '../types/Testimonial.type';
+import { readData } from '../utils/readData';
 
 type Props = { testimonials: Testimonial[] };
 const About: NextPage<Props> = ({ testimonials }) => {

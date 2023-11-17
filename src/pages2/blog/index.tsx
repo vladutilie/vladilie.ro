@@ -3,7 +3,7 @@ import { NextSeo, BreadcrumbJsonLd } from 'next-seo';
 
 import { Post } from 'src/components';
 import { PAGES } from 'src/utils/constants';
-import { allPosts, type Post as PostType } from '../../.contentlayer/generated';
+import { allPosts, type Post as PostType } from '../../../.contentlayer/generated';
 
 type Props = { posts: PostType[] };
 const Posts: NextPage<Props> = ({ posts }) => {

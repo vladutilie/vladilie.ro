@@ -6,7 +6,7 @@ import {
   type Post as PostType,
   allCaseStudies,
   type CaseStudy as CaseStudyType
-} from '../.contentlayer/generated';
+} from '../../.contentlayer/generated';
 
 const generateSiteMap = () => {
   const blogPosts = allPosts.map(({ slug, date, modified }: PostType) => ({

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import prisma from '../../../src/utils/prisma';
+import prisma from '../../../utils/prisma';
 
 // For BigInt serialization
 // @ts-ignore

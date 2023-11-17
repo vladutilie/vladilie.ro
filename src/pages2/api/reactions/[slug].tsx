@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createHash } from 'crypto';
 
-import prisma from '../../../src/utils/prisma';
-import { Reaction } from '../../../src/types';
-import { REACTIONS } from '../../../src/utils/constants';
+import prisma from '../../../utils/prisma';
+import { Reaction } from '../../../types';
+import { REACTIONS } from '../../../utils/constants';
 
 // For BigInt serialization
 // @ts-ignore

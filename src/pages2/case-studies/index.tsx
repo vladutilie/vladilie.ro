@@ -1,9 +1,9 @@
 import type { GetStaticProps, NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
-import { CaseStudy } from '../../src/components';
-import { PAGES } from '../../src/utils/constants';
-import { allCaseStudies, type CaseStudy as CaseStudyType } from '../../.contentlayer/generated';
+import { CaseStudy } from '../../components';
+import { PAGES } from '../../utils/constants';
+import { allCaseStudies, type CaseStudy as CaseStudyType } from '../../../.contentlayer/generated';
 
 type Props = { caseStudies: CaseStudyType[] };
 const CaseStudies: NextPage<Props> = ({ caseStudies }) => (

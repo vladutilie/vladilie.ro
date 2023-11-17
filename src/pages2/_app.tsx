@@ -2,8 +2,8 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { NextSeo } from 'next-seo';
 
-import { Layout } from '../src/components';
-import { SEO_DESCRIPTION } from '../src/utils/constants';
+import { Layout } from '../components';
+import { SEO_DESCRIPTION } from '../utils/constants';
 
 import '../styles/globals.css';
 

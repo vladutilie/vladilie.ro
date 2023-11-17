@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
-import { Boardgame } from '../src/components';
-import { Boardgame as BoardgameType } from '../src/types';
-import { BoardgameState } from '../src/types/Boardgame.type';
-import { readData } from '../src/utils/readData';
-import { PAGES } from '../src/utils/constants';
+import { Boardgame } from '../components';
+import { Boardgame as BoardgameType } from '../types';
+import { BoardgameState } from '../types/Boardgame.type';
+import { readData } from '../utils/readData';
+import { PAGES } from '../utils/constants';
 
 type Props = { boardgames: BoardgameType[]; categories: string[] };
 const Boardgames: NextPage<Props> = ({ boardgames, categories }) => {

@@ -1,10 +1,10 @@
 import { GetStaticProps, NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
-import { Book } from '../src/components';
-import { Book as BookType, BookState } from '../src/types/Book.type';
-import { PAGES } from '../src/utils/constants';
-import { readData } from '../src/utils/readData';
+import { Book } from '../components';
+import { Book as BookType, BookState } from '../types/Book.type';
+import { PAGES } from '../utils/constants';
+import { readData } from '../utils/readData';
 
 type Props = {
   reading: BookType[];

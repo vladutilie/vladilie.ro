@@ -1,10 +1,10 @@
 import type { GetStaticProps, NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
-import { Tool as ToolType } from '../src/types';
-import { readData } from '../src/utils/readData';
-import { Tool } from '../src/components';
-import { PAGES } from '../src/utils/constants';
+import { Tool as ToolType } from '../types';
+import { readData } from '../utils/readData';
+import { Tool } from '../components';
+import { PAGES } from '../utils/constants';
 
 type Props = { tools: { [key: string]: ToolType[] }; categories: string[] };
 const Uses: NextPage<Props> = ({ tools, categories }) => (

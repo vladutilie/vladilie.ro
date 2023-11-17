@@ -1,24 +1,23 @@
-import { GetStaticProps } from 'next';
+import { NextPage, type GetStaticProps } from 'next';
 import { ArticleJsonLd, NextSeo } from 'next-seo';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
-import { PAGES } from '../../src/utils/constants';
-import { PostMeta } from '../../src/components';
-import { Reactions } from '../../src/components/Reactions';
-import { allCaseStudies, CaseStudy } from 'contentlayer/generated';
+import { allPosts, type Post } from '../../../.contentlayer/generated';
+import { PAGES } from 'src/utils/constants';
+import { PostMeta, Reactions } from 'src/components';
 
-const CaseStudy: React.FC<CaseStudy> = ({ title, description, body, date, slug, readingTime }) => {
+const BlogPost: NextPage<Post> = ({ title, description, body, date, slug, readingTime }) => {
   const MDXContent = useMDXComponent(body.code);
 
   return (
     <>
       <NextSeo
-        title={[process.env.NEXT_PUBLIC_SITE_NAME, PAGES.CASE_STUDIES?.label, title].join(' - ')}
+        title={[process.env.NEXT_PUBLIC_SITE_NAME, PAGES.BLOG?.label, title].join(' - ')}
         description={description}
       />
       <ArticleJsonLd
-        type='Article'
-        url={`${process.env.NEXT_PUBLIC_SITE_URL}/case-studies/${slug}`}
+        type='Blog'
+        url={`${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`}
         title={title}
         images={[]}
         datePublished={date}
@@ -31,27 +30,27 @@ const CaseStudy: React.FC<CaseStudy> = ({ title, description, body, date, slug, 
           <h1>{title}</h1>
           <PostMeta date={date} readingTime={readingTime} slug={slug} />
           <Reactions slug={slug} />
-        </div>
 
-        <MDXContent />
+          <MDXContent />
+        </div>
       </main>
     </>
   );
 };
 
 export const getStaticPaths = () => ({
-  paths: allCaseStudies.map((caseStudy: CaseStudy) => ({ params: { slug: caseStudy.slug } })),
+  paths: allPosts.map((post: Post) => ({ params: { slug: post.slug } })),
   fallback: false
 });
 
 export const getStaticProps: GetStaticProps = ({ params }) => {
-  const caseStudies = allCaseStudies.find((caseStudy: CaseStudy) => caseStudy.slug === params?.slug);
+  const post = allPosts.find((post: Post) => post.slug === params?.slug);
 
-  if (!caseStudies) {
+  if (!post) {
     return { notFound: true };
   }
 
-  return { props: { ...caseStudies } };
+  return { props: { ...post } };
 };
 
-export default CaseStudy;
+export default BlogPost;
