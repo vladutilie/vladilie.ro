@@ -20,10 +20,18 @@
     @apply transition-colors dark:text-gray-50;
   }
 
+  h2 {
+    @apply text-3xl;
+    @apply font-semibold;
+    @apply text-gray-800;
+    @apply transition-colors dark:text-gray-50;
+  }
+
   p {
     @apply text-base;
     @apply text-gray-600;
     @apply transition-colors dark:text-gray-300;
+    @apply my-2;
   }
 
   a {
@@ -38,6 +46,10 @@
   @screen lg {
     h1 {
       @apply text-6xl;
+    }
+
+    h2 {
+      @apply text-5xl;
     }
   }
 }
