@@ -16,6 +16,18 @@
       "hello": "Hi there, Vlad here {emoji}",
       "about": "I'm a <strong>Software Engineer</strong> based in Romania, love to juggle with technologies and put my soul into every project to get the best out of it. <strong><neo4j>Neo4j</neo4j> Certified Professional</strong>, NextJS fan, enthusiastic about JavaScript technologies, nostalgic <strong>WordPress</strong> lover, and the maintainer of <strong><cpf>Cărțile pe Față</cpf></strong> websites. I also like to travel around the country, so now I am in <locations>{city}</locations>, and tomorrow I might be somewhere else.",
       "available": "Available for new projects"
+    },
+    "about": {
+      "tag": "About me",
+      "title": "More about me",
+      "p1": "For the past five years, I have been working with JavaScript-based technologies with a focus on NextJS, NodeJS, and Tailwind CSS. This period was marked by the development and integration of a diverse spectrum of solutions for databases, storage, user management, and data analysis.",
+      "p2": "I have worked with startups, helping to create MVPs and take them to market. At the same time, I cultivated personal SaaS projects in which I invested creativity and innovation.",
+      "p3": "In the web sphere, I have taken responsibility for the maintenance of WordPress sites with the commitment to ensure their smooth operation. In addition, I am involved pro-bono in maintaining the infrastructure of the Cultural Association Carțile pe Față.",
+      "p4": "I am involved in the WordPress community in various ways: I am a General Translation Editor (GTE) in Romania, and I contribute to removing the language barrier and facilitating access to WordPress for a wider audience. Also, through my involvement in the WP-Translations PRO team, I promote high-quality translations. I also contribute to other open-source software localization on various platforms like Crowdin, Weblate, Transifex, Lokalise, and even GitHub.",
+      "p5": "I maintain the \"euplatesc\" NPM library for the integration of the EuPlătesc payment service.",
+      "p6": "I am attracted to projects that have a significant impact on society, especially in areas such as the environment, education, activism, and NGOs. I am determined to put technology at the service of great causes and help build a better future for all.",
+      "see-more": "See more ˅",
+      "see-less": "See less ˄"
     }
   }
 }
