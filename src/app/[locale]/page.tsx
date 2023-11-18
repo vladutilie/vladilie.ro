@@ -1,5 +1,6 @@
 import prisma from '@/utils/prisma';
 import { Hero } from './ui/hero';
+import { About } from './ui/about';
 
 const getLocation = async (): Promise<string> => {
   const location = await prisma.locations.findFirst({
@@ -20,6 +21,7 @@ export default async function Home() {
   return (
     <>
       <Hero location={location} />
+      <About />
     </>
   );
 }
