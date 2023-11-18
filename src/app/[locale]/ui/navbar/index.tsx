@@ -25,7 +25,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`sticky top-0 z-20 w-full transition-all duration-500 ${
+      className={`fixed top-0 z-20 w-full transition-all duration-500 ${
         isBlurredBg || '/' !== pathname
           ? 'shadow-surface-glass backdrop-blur will-change-transform [@supports(backdrop-filter:blur(0px))]:bg-white/[30%] dark:[@supports(backdrop-filter:blur(0px))]:bg-gray-950/[30%]'
           : ''
