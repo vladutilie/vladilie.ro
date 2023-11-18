@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import vlad from '@/../public/images/vlad-ilie.jpg';
 
 export const About: React.FC = () => {
   const t = useTranslations('homepage.about');
@@ -9,14 +11,16 @@ export const About: React.FC = () => {
 
   return (
     <section className='bg-gray-50 transition-colors dark:bg-slate-900'>
-      <div className='container mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-16 md:py-20 2xl:py-24'>
-        <div className='col-span-2 text-center'>
+      <div className='container mx-auto grid max-w-7xl grid-cols-3 gap-8 px-4 py-16 md:py-20 2xl:py-24'>
+        <div className='col-span-3 text-center'>
           <span className='rounded-xl bg-gray-600 px-4 py-1 text-sm text-gray-200'>{t('tag')}</span>
         </div>
 
-        <div className='col-span-2 mx-auto md:col-span-1'>poză</div>
+        <div className='col-span-3 mx-auto self-center lg:col-span-1'>
+          <Image src={vlad} alt='Vlad Ilie' width={400} height={400} className='rounded-full' placeholder='blur' />
+        </div>
 
-        <div className='col-span-2 flex flex-col md:col-span-1'>
+        <div className='col-span-3 flex flex-col lg:col-span-2'>
           <h2>{t('title')}</h2>
 
           <div className='relative'>
