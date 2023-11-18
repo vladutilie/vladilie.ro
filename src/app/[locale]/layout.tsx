@@ -28,7 +28,7 @@ export default function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className='transition-colors dark:bg-gray-950'>
+      <body className='overflow-x-hidden transition-colors dark:bg-gray-950'>
         <NextIntlClientProvider locale={locale} messages={messages} timeZone='Europe/Bucharest'>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
             <Navbar />
