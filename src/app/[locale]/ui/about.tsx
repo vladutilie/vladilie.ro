@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+
+import { NavLinks } from '@/lib/constants';
 import vlad from '@/../public/images/vlad-ilie.jpg';
 
 export const About: React.FC = () => {
@@ -10,7 +12,7 @@ export const About: React.FC = () => {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <section className='bg-gray-50 transition-colors dark:bg-slate-900'>
+    <section id={NavLinks.About} className='bg-gray-50 transition-colors dark:bg-slate-900'>
       <div className='container mx-auto grid max-w-7xl grid-cols-3 gap-8 px-4 py-16 md:py-20 2xl:py-24'>
         <div className='col-span-3 text-center'>
           <span className='rounded-xl bg-gray-600 px-4 py-1 text-sm text-gray-200'>{t('tag')}</span>
