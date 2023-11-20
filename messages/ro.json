@@ -2,10 +2,11 @@
   "navbar": {
     "about": "Despre",
     "education": "Educație",
-    "skills": "Experiență",
+    "experience": "Experiență",
     "projects": "Proiecte",
     "testimonials": "Testimoniale",
     "services": "Servicii",
+    "blog": "Blog",
     "contact": "Contact",
     "switch-theme": "Schimbă temă",
     "change-language": "Schimbă limba",

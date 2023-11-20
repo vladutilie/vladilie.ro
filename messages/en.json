@@ -2,10 +2,11 @@
   "navbar": {
     "about": "About",
     "education": "Education",
-    "skills": "Skills",
+    "experience": "Experience",
     "projects": "Projects",
     "testimonials": "Testimonials",
     "services": "Services",
+    "blog": "Blog",
     "contact": "Contact",
     "switch-theme": "Switch theme",
     "change-language": "Change language",
