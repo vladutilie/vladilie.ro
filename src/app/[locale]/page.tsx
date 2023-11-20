@@ -1,6 +1,7 @@
-import prisma from '@/utils/prisma';
 import { Hero } from './ui/hero';
 import { About } from './ui/about';
+import { Education } from './ui/education/';
+import prisma from '@/utils/prisma';
 
 const getLocation = async (): Promise<string> => {
   const location = await prisma.locations.findFirst({
@@ -22,6 +23,7 @@ export default async function Home() {
     <>
       <Hero location={location} />
       <About />
+      <Education />
     </>
   );
 }
