@@ -28,6 +28,33 @@
       "p6": "Sunt atras de proiecte care au un impact semnificativ asupra societății, în special în domenii precum mediul, educația, activismul și ONG-urile. Sunt hotărât să pun tehnologia în slujba unor cauze mari și să ajut la construirea unui viitor mai bun pentru toți.",
       "see-more": "Vezi mai mult ˅",
       "see-less": "Vezi mai puțin ˄"
+    },
+    "education": {
+      "tag": "Educație",
+      "neo4j": {
+        "title": "Profesionist certificat Neo4j",
+        "subtitle": "Neo4j",
+        "interval": "2022",
+        "description": "Împins de entuziasmul unui proiect bazat pe recomandări de informații relaționale, am urmat și absolvit cursurile GraphAcademy oferite de Neo4j. Certificatul este disponibil <url>aici</url>."
+      },
+      "bachelor-degree": {
+        "title": "Diplomă de licență",
+        "subtitle": "Universitatea Politehnica Timișoara | România",
+        "interval": "2013-2017",
+        "description": "Am urmat cursurile de zi ale Facultății de Automatică și Calculatoare din cadrul universității, studiind Automatică și Informatică Aplicată timp de 4 ani."
+      },
+      "oracle": {
+        "title": "Arhitectura și programarea bazelor de date cu SQL",
+        "subtitle": "Liceul Teoretic \"Mihai Viteazul\" | Caracal, România",
+        "interval": "2009-2013",
+        "description": "În timpul liceului, am participat la un curs intensiv oferit de Oracle. Acesta a reprezentat nu doar o oportunitate de a-mi dezvolta abilități tehnice solide, dar și un pas semnificativ în direcția pasiunii mele pentru tehnologia informației."
+      },
+      "high-school": {
+        "title": "Liceu",
+        "subtitle": "Liceul Teoretic \"Mihai Viteazul\" | Caracal, România",
+        "interval": "2009-2013",
+        "description": "Am studiat matematica și informatica intensiv."
+      }
     }
   }
 }

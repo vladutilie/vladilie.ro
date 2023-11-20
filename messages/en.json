@@ -28,6 +28,33 @@
       "p6": "I am attracted to projects that have a significant impact on society, especially in areas such as the environment, education, activism, and NGOs. I am determined to put technology at the service of great causes and help build a better future for all.",
       "see-more": "See more ˅",
       "see-less": "See less ˄"
+    },
+    "education": {
+      "tag": "Education",
+      "neo4j": {
+        "title": "Neo4j Certified Professional",
+        "subtitle": "Neo4j",
+        "interval": "2022",
+        "description": "Driven by the excitement of a project based on relational information recommendations, I took and graduated from the GraphAcademy courses offered by Neo4j. The certificate is available <url>here</url>."
+      },
+      "bachelor-degree": {
+        "title": "Bachelor degree",
+        "subtitle": "Politehnica University Timișoara | Romania",
+        "interval": "2013-2017",
+        "description": "I attended the full-time courses of the Faculty of Automation and Computers within the university, studying Automation and Applied Informatics for four years."
+      },
+      "oracle": {
+        "title": "Database Design and Programming with SQL",
+        "subtitle": "\"Mihai Viteazul\" Theoretical High School | Caracal, Romania",
+        "interval": "2012-2013",
+        "description": "During high school, I took a crash course offered by Oracle. It was not only an opportunity to develop my solid technical skills, but also a significant step in the direction of my passion for information technology."
+      },
+      "high-school": {
+        "title": "High School",
+        "subtitle": "\"Mihai Viteazul\" High School | Caracal, Romania",
+        "interval": "2009-2013",
+        "description": "I studied mathematics and computer science intensively."
+      }
     }
   }
 }
