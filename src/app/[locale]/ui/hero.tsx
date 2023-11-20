@@ -36,7 +36,7 @@ export const Hero: React.FC<{ location: string }> = ({ location }) => {
         </div>
 
         <div className='flex flex-col gap-y-2'>
-          <div className='flex gap-x-2'>
+          <div className='flex items-center gap-x-2'>
             <Pin />
             <p>{location}</p>
           </div>
