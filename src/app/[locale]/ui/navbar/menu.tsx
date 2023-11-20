@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from '@/navigation';
 
 import { Burger, Logo } from '../icons';
@@ -8,6 +8,20 @@ import { Links } from './links';
 
 export const Menu: React.FC = () => {
   const [displayMenu, setDisplayMenu] = useState(false);
+
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar && !sidebar.contains(event.target) && displayMenu) {
+        window.document.body.style.overflowY = '';
+        setDisplayMenu(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [displayMenu]);
 
   const handleMenu = (state = true): void => {
     if (state) {
@@ -24,7 +38,8 @@ export const Menu: React.FC = () => {
       <Links />
 
       <aside
-        className={`fixed right-0 top-0 z-20 flex h-screen w-full max-w-sm origin-right flex-col gap-y-4 bg-white p-4 transition dark:bg-gray-950 ${
+        id='sidebar'
+        className={`fixed right-0 top-0 z-40 flex h-screen w-full max-w-sm origin-right flex-col gap-y-4 bg-white p-4 transition dark:bg-gray-950 ${
           displayMenu ? '-translate-x-0 opacity-100 md:hidden' : 'translate-x-full opacity-0'
         }`}
       >
@@ -41,7 +56,9 @@ export const Menu: React.FC = () => {
         <Links isMobile />
       </aside>
 
-      <div className={displayMenu ? 'fixed inset-0 z-10 bg-gray-900/10 opacity-100 backdrop-blur-sm md:hidden' : ''} />
+      <div
+        className={displayMenu ? 'fixed inset-0 z-30 h-screen w-full bg-gray-900/10 backdrop-blur-sm md:hidden' : ''}
+      />
 
       <button className='md:hidden' onClick={() => handleMenu()}>
         <Burger />
