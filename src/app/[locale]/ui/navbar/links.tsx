@@ -5,7 +5,7 @@ import { LangChanger } from './lang-changer';
 import { scrollTo } from '@/lib/utils';
 import { NavLinks } from '@/lib/constants';
 
-export const Links: React.FC<{ isMobile?: boolean }> = ({ isMobile = false }) => {
+export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = ({ isMobile = false, closeMenu }) => {
   const t = useTranslations('navbar');
 
   return (
@@ -18,7 +18,12 @@ export const Links: React.FC<{ isMobile?: boolean }> = ({ isMobile = false }) =>
         <li
           className={`cursor-pointer transition-colors hover:text-blue-500 ${!idx ? 'pt-4 md:pt-0' : ''}`}
           key={idx}
-          onClick={() => scrollTo(item)}
+          onClick={() => {
+            scrollTo(item);
+            if (isMobile && closeMenu) {
+              closeMenu();
+            }
+          }}
         >
           {t(item)}
         </li>

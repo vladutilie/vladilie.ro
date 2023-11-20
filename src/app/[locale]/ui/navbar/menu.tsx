@@ -53,7 +53,7 @@ export const Menu: React.FC = () => {
           </button>
         </header>
 
-        <Links isMobile />
+        <Links isMobile closeMenu={() => handleMenu(false)} />
       </aside>
 
       <div
