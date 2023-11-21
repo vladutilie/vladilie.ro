@@ -1,6 +1,8 @@
 import { Hero } from './ui/hero';
 import { About } from './ui/about';
 import { Education } from './ui/education/';
+import { Experience } from './ui/experience';
+
 import prisma from '@/utils/prisma';
 
 const getLocation = async (): Promise<string> => {
@@ -24,6 +26,7 @@ export default async function Home() {
       <Hero location={location} />
       <About />
       <Education />
+      <Experience />
     </>
   );
 }
