@@ -56,6 +56,9 @@
         "interval": "2009-2013",
         "description": "I studied mathematics and computer science intensively."
       }
+    },
+    "experience": {
+      "tag": "Experience"
     }
   }
 }
