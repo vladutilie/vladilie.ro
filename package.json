@@ -10,7 +10,7 @@
     "contentlayer": "^0.3.4",
     "next": "14.0.3",
     "next-contentlayer": "^0.3.4",
-    "next-intl": "^3.1.0",
+    "next-intl": "^3.1.2",
     "next-seo": "^6.4.0",
     "next-themes": "^0.2.1",
     "prisma": "^5.6.0",
@@ -25,9 +25,9 @@
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {
-    "@types/node": "^20.9.2",
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "18.2.15",
+    "@types/node": "^20.9.3",
+    "@types/react": "^18.2.38",
+    "@types/react-dom": "18.2.16",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.54.0",
     "eslint-config-next": "14.0.3",
@@ -35,7 +35,7 @@
     "prettier": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.7",
     "tailwindcss": "^3.3.5",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.2"
   },
   "prettier": {
     "singleQuote": true,
