@@ -3,7 +3,6 @@ const { withContentlayer } = require('next-contentlayer');
 const withNextIntl = require('next-intl/plugin')('./src/i18n.ts');
 
 const nextConfig = {
-  reactStrictMode: true,
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'i.gr-assets.com' },
