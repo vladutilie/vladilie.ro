@@ -1,7 +1,7 @@
 export const NavLinks = {
   About: 'about',
   Education: 'education',
-  Experience: 'experience',
+  Skills: 'skills',
   Projects: 'projects',
   Services: 'services',
   Blog: 'blog',

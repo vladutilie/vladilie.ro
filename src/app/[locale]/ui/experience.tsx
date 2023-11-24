@@ -44,14 +44,16 @@ const technologies: { name: string; image: StaticImport; url: string }[] = [
 ];
 
 export const Experience: React.FC = () => {
-  const t = useTranslations('homepage.experience');
+  const t = useTranslations('homepage.skills');
 
   return (
-    <section id={NavLinks.Experience} className='bg-gray-50 transition-colors dark:bg-slate-900'>
+    <section id={NavLinks.Skills} className='bg-gray-50 transition-colors dark:bg-slate-900'>
       <div className='container mx-auto grid max-w-7xl grid-cols-4 gap-8 px-4 py-16 sm:grid-cols-5 md:grid-cols-7 md:py-20 lg:grid-cols-10 2xl:py-24'>
         <div className='col-span-4 text-center sm:col-span-5 md:col-span-7 lg:col-span-10'>
           <span className='rounded-xl bg-gray-600 px-4 py-1 text-sm text-gray-200'>{t('tag')}</span>
         </div>
+
+        <p className='col-span-4 text-center sm:col-span-5 md:col-span-7 lg:col-span-10'>{t('description')}</p>
 
         {technologies.map(({ name, image, url }) => (
           <a
