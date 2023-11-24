@@ -2,7 +2,7 @@
   "navbar": {
     "about": "Despre",
     "education": "Educație",
-    "experience": "Experiență",
+    "skills": "Abilități",
     "projects": "Proiecte",
     "testimonials": "Testimoniale",
     "services": "Servicii",
@@ -57,8 +57,12 @@
         "description": "Am studiat matematica și informatica intensiv."
       }
     },
-    "experience": {
-      "tag": "Experiență"
+    "skills": {
+      "tag": "Abilități",
+      "description": "Tehnologiile pe care le folosesc și cu care m-am format ca dezvoltator software de-a lungul timpului:"
+    },
+    "sw-l10n": {
+      "tag": "Localizare software"
     }
   }
 }

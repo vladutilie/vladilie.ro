@@ -2,7 +2,7 @@
   "navbar": {
     "about": "About",
     "education": "Education",
-    "experience": "Experience",
+    "skills": "Skills",
     "projects": "Projects",
     "testimonials": "Testimonials",
     "services": "Services",
@@ -57,8 +57,12 @@
         "description": "I studied mathematics and computer science intensively."
       }
     },
-    "experience": {
-      "tag": "Experience"
+    "skills": {
+      "tag": "Skills",
+      "description": "The technologies I use and trained with as a software developer over time:"
+    },
+    "sw-l10n": {
+      "tag": "Software localization"
     }
   }
 }
