@@ -7,7 +7,6 @@ export const WordPress2 = (props: SVGProps<SVGSVGElement>) => (
     height={63}
     preserveAspectRatio='xMinYMin meet'
     viewBox='0 0 256 255'
-    className='grayscale transition-transform group-hover:scale-110'
     {...props}
   >
     <path
