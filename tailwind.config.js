@@ -7,7 +7,8 @@ module.exports = {
       colors: { blue: { 450: '#3598db' } },
       animation: {
         slide: 'slide 50s linear infinite',
-        slide2: 'slide2 50s linear infinite'
+        slide2: 'slide2 50s linear infinite',
+        'text-bg': 'bg-animate 3s ease infinite'
       },
       keyframes: {
         slide: {
@@ -19,16 +20,13 @@ module.exports = {
           to: { transform: 'translateX(0%)' }
         },
         loading: {
-          '0%': {
-            opacity: '.2'
-          },
-          '20%': {
-            opacity: '1',
-            transform: 'translateX(1px)'
-          },
-          to: {
-            opacity: '.2'
-          }
+          '0%': { opacity: '.2' },
+          '20%': { opacity: '1', transform: 'translateX(1px)' },
+          to: { opacity: '.2' }
+        },
+        'bg-animate': {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%;' }
         }
       },
       boxShadow: ({ theme }) => ({
