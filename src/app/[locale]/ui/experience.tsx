@@ -28,7 +28,11 @@ const technologies: { name: string; image: StaticImport; url: string }[] = [
   { name: 'NestJS', image: nestjs, url: 'https://nestjs.com' },
   { name: 'NextJS', image: nextjs, url: 'https://nextjs.org' },
   { name: 'PHP', image: <PHP />, url: 'https://php.net' },
-  { name: 'WordPress', image: <WordPress2 />, url: 'https://wordpress.org' },
+  {
+    name: 'WordPress',
+    image: <WordPress2 className='grayscale transition-transform group-hover:scale-110' />,
+    url: 'https://wordpress.org'
+  },
 
   { name: 'MySQL', image: <MySQL />, url: 'https://mysql.com' },
   { name: 'PostgreSQL', image: postgresql, url: 'https://postgresql.org' },
