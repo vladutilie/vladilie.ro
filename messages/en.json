@@ -62,7 +62,18 @@
       "description": "The technologies I use and trained with as a software developer over time:"
     },
     "sw-l10n": {
-      "tag": "Software localization"
+      "title": "Software localization",
+      "description": "Software projects that I translated into Romanian.",
+      "cron-job": "For over 15 years, it has been providing the heartbeat for tens of thousands of websites and executes millions of cronjobs every day.",
+      "discourse": "Open-source forum software that powers over 20,000 online communities of all shapes and sizes.",
+      "homebrew": "Homebrew installs the stuff you need that Apple (or your Linux system) didn't. It can be used to install macOS apps, fonts, plugins, and other non-open-source software.",
+      "poedit": "A powerful and intuitive translation editor for Windows, macOS, and Linux, used by over 66,000 people every month.",
+      "tldraw": "A collaborative digital whiteboard. You can use tldraw to create a drop-in whiteboard for your product or as the foundation on which to build your own infinite canvas applications.",
+      "weblate": "Hosted service and standalone tool with tight version control integration. Used by over 2,500 software projects and companies in over 165 countries.",
+      "wordpress": "Since 2019, I have been a General Translation Editor providing translations into Romanian for WordPress Core, themes, plugins, mobile apps, and secondary WordPress websites.",
+      "wp-cli": "WP-CLI is the command-line interface for WordPress. You can update plugins, configure multisite installations and much more, without using a web browser.",
+      "wp-translations": "I am part of the WP-Translations.PRO team and providing translations into Romanian and proofreading strings for companies like Yoast, MailPoet, Polylang, ThemeIsle.",
+      "quote": "<contact>Drop me a line</contact> if you need a quote regarding your project translations into Romanian."
     }
   }
 }
