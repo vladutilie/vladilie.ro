@@ -2,6 +2,7 @@ import { Hero } from './ui/hero';
 import { About } from './ui/about';
 import { Education } from './ui/education/';
 import { Experience } from './ui/experience';
+import { SoftwareLocalization } from './ui/sw-l10n';
 
 import prisma from '@/utils/prisma';
 
@@ -27,6 +28,7 @@ export default async function Home() {
       <About />
       <Education />
       <Experience />
+      <SoftwareLocalization />
     </>
   );
 }
