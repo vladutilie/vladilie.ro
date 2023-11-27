@@ -4,10 +4,8 @@ export const locales = ['en', 'ro'] as const;
 
 export const pathnames = {
   '/': '/',
-  '/location': {
-    en: '/locations',
-    ro: '/locatii'
-  },
+  '/location': { en: '/locations', ro: '/locatii' },
+  '/projects': { en: '/projects', ro: '/proiecte' },
   '/blog': '/blog'
 } satisfies Pathnames<typeof locales>;
 
