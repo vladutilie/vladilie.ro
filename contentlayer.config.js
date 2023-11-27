@@ -20,15 +20,19 @@ export const Post = defineDocumentType(() => ({
   }
 }));
 
-export const CaseStudy = defineDocumentType(() => ({
-  name: 'CaseStudy',
+export const Project = defineDocumentType(() => ({
+  name: 'Project',
   contentType: 'mdx',
-  filePathPattern: 'case-studies/*.mdx',
+  filePathPattern: 'projects/*.mdx',
   fields: {
     title: { type: 'string', required: true },
-    date: { type: 'date', required: true },
-    modified: { type: 'date', required: false },
-    description: { type: 'string', required: true }
+    locale: { type: 'enum', options: ['en', 'ro'], default: 'en', required: true },
+    featuredImage: { type: 'string', required: true },
+    base64Image: { type: 'string', required: true },
+    description: { type: 'string', required: true },
+    technologies: { type: 'list', of: { type: 'string' }, required: true },
+    website: { type: 'string', required: false },
+    date: { type: 'date', required: true }
   },
   computedFields: {
     slug: { type: 'string', resolve: (post) => post._raw.sourceFileName.replace(/\.mdx$/, '') },
@@ -38,8 +42,6 @@ export const CaseStudy = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Post, CaseStudy],
-  mdx: {
-    rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]]
-  }
+  documentTypes: [Post, Project],
+  mdx: { rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]] }
 });
