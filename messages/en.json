@@ -61,6 +61,10 @@
       "tag": "Skills",
       "description": "The technologies I use and trained with as a software developer over time:"
     },
+    "projects": {
+      "tag": "Projects",
+      "description": "Outstanding projects I have implemented:"
+    },
     "sw-l10n": {
       "title": "Software localization",
       "description": "Software projects that I translated into Romanian.",
