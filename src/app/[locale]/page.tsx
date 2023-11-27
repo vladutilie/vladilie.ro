@@ -2,15 +2,13 @@ import { Hero } from './ui/hero';
 import { About } from './ui/about';
 import { Education } from './ui/education/';
 import { Experience } from './ui/experience';
+import { Projects } from './ui/projects';
 import { SoftwareLocalization } from './ui/sw-l10n';
 
 import prisma from '@/utils/prisma';
 
 const getLocation = async (): Promise<string> => {
-  const location = await prisma.locations.findFirst({
-    orderBy: { lastVisitAt: 'desc' },
-    take: 1
-  });
+  const location = await prisma.locations.findFirst({ orderBy: { lastVisitAt: 'desc' }, take: 1 });
 
   if (!location) {
     return 'Cluj-Napoca, CJ, RO';
@@ -28,6 +26,7 @@ export default async function Home() {
       <About />
       <Education />
       <Experience />
+      <Projects />
       <SoftwareLocalization />
     </>
   );
