@@ -3,7 +3,7 @@ import { NextSeo } from 'next-seo';
 
 import { CaseStudy } from '../../components';
 import { PAGES } from '../../utils/constants';
-import { allCaseStudies, type CaseStudy as CaseStudyType } from '../../../.contentlayer/generated';
+import { allProjects, type Project as CaseStudyType } from '../../../.contentlayer/generated';
 
 type Props = { caseStudies: CaseStudyType[] };
 const CaseStudies: NextPage<Props> = ({ caseStudies }) => (
@@ -34,5 +34,5 @@ const CaseStudies: NextPage<Props> = ({ caseStudies }) => (
 export default CaseStudies;
 
 export const getStaticProps: GetStaticProps<Props> = () => {
-  return { props: { caseStudies: allCaseStudies } };
+  return { props: { caseStudies: allProjects } };
 };

@@ -1,21 +1,11 @@
 import { GetServerSidePropsContext } from 'next';
 
 import { PAGES } from 'src/utils/constants';
-import {
-  allPosts,
-  type Post as PostType,
-  allCaseStudies,
-  type CaseStudy as CaseStudyType
-} from '../../.contentlayer/generated';
+import { allPosts, type Post as PostType } from '../../.contentlayer/generated';
 
 const generateSiteMap = () => {
   const blogPosts = allPosts.map(({ slug, date, modified }: PostType) => ({
     slug: `/blog/${slug}`,
-    date,
-    modified
-  }));
-  const caseStudies = allCaseStudies.map(({ slug, date, modified }: CaseStudyType) => ({
-    slug: `/case-studies/${slug}`,
     date,
     modified
   }));
@@ -31,8 +21,7 @@ const generateSiteMap = () => {
     { slug: PAGES.BOOKS?.href as string, date },
     { slug: PAGES.BOARDGAMES?.href as string, date },
     { slug: PAGES.LOCATIONS?.href as string, date },
-    ...blogPosts,
-    ...caseStudies
+    ...blogPosts
   ];
 
   return `<?xml version="1.0" encoding="UTF-8"?>

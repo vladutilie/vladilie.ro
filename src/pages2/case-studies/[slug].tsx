@@ -5,9 +5,9 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import { PAGES } from '../../utils/constants';
 import { PostMeta } from '../../components';
 import { Reactions } from '../../components/Reactions';
-import { allCaseStudies, CaseStudy } from 'contentlayer/generated';
+import { allProjects, Project } from 'contentlayer/generated';
 
-const CaseStudy: React.FC<CaseStudy> = ({ title, description, body, date, slug, readingTime }) => {
+const CaseStudy: React.FC<Project> = ({ title, description, body, date, slug, readingTime }) => {
   const MDXContent = useMDXComponent(body.code);
 
   return (
@@ -40,12 +40,12 @@ const CaseStudy: React.FC<CaseStudy> = ({ title, description, body, date, slug, 
 };
 
 export const getStaticPaths = () => ({
-  paths: allCaseStudies.map((caseStudy: CaseStudy) => ({ params: { slug: caseStudy.slug } })),
+  paths: allProjects.map((caseStudy: Project) => ({ params: { slug: caseStudy.slug } })),
   fallback: false
 });
 
 export const getStaticProps: GetStaticProps = ({ params }) => {
-  const caseStudies = allCaseStudies.find((caseStudy: CaseStudy) => caseStudy.slug === params?.slug);
+  const caseStudies = allProjects.find((caseStudy: Project) => caseStudy.slug === params?.slug);
 
   if (!caseStudies) {
     return { notFound: true };
