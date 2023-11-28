@@ -14,8 +14,8 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className='bg-gray-50 dark:bg-slate-900'>
-      <div className='container mx-auto grid max-w-7xl grid-cols-3 px-4 py-16 md:py-20 2xl:py-24'>
-        <div className='flex flex-col gap-y-4'>
+      <div className='container mx-auto grid max-w-7xl grid-cols-3 gap-4 px-4 py-16 md:py-20 2xl:py-24'>
+        <div className='col-span-3 flex flex-col gap-y-4 md:col-span-1'>
           <Logo />
           <div>
             <h5 className='my-0 text-sm font-medium'>{process.env.NEXT_PUBLIC_COMPANY_NAME}</h5>
@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <ul className='flex flex-col gap-y-1.5'>
+        <ul className='col-span-3 flex flex-col gap-y-1.5 md:col-span-1'>
           {Object.values(Pages).map((page) => (
             <li key={page}>
               <Link href={`/${page}`}>{t(`${page}.title`)}</Link>
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
           ))}
         </ul>
 
-        <ul className='flex flex-col gap-y-1.5'>
+        <ul className='col-span-3 flex flex-col gap-y-1.5 md:col-span-1'>
           <li>
             <Link href='/terms'>{t('terms.title')}</Link>
           </li>
