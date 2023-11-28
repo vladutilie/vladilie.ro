@@ -79,5 +79,36 @@
       "wp-translations": "Fac parte din echipa WP-Translations.PRO și ofer traduceri în limba română și corecții pentru companii precum Yoast, MailPoet, Polylang, ThemeIsle.",
       "quote": "<contact>Scrie-mi</contact> dacă ai nevoie de o ofertă cu privire la traducerile proiectului tău în limba română."
     }
+  },
+  "blog": {
+    "title": "Blog"
+  },
+  "projects": {
+    "title": "Proiecte"
+  },
+  "contact": {
+    "title": "Contact"
+  },
+  "colophon": {
+    "title": "Colofon"
+  },
+  "uses": {
+    "title": "Utilizări"
+  },
+  "books": {
+    "title": "Cărți"
+  },
+  "boardgames": {
+    "title": "Jocuri de societate"
+  },
+  "terms": {
+    "title": "Termeni și condiții"
+  },
+  "privacy": {
+    "title": "Politică de confidențialitate"
+  },
+  "footer": {
+    "vat-id": "CUI: {vatId}",
+    "trade-reg-no": "Nr.reg.com.: {regNo}"
   }
 }

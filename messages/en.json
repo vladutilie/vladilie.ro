@@ -79,5 +79,36 @@
       "wp-translations": "I am part of the WP-Translations.PRO team and providing translations into Romanian and proofreading strings for companies like Yoast, MailPoet, Polylang, ThemeIsle.",
       "quote": "<contact>Drop me a line</contact> if you need a quote regarding your project translations into Romanian."
     }
+  },
+  "blog": {
+    "title": "Blog"
+  },
+  "projects": {
+    "title": "Projects"
+  },
+  "contact": {
+    "title": "Contact"
+  },
+  "colophon": {
+    "title": "Colophon"
+  },
+  "uses": {
+    "title": "Uses"
+  },
+  "books": {
+    "title": "Books"
+  },
+  "boardgames": {
+    "title": "Boardgames"
+  },
+  "terms": {
+    "title": "Terms and conditions"
+  },
+  "privacy": {
+    "title": "Privacy policy"
+  },
+  "footer": {
+    "vat-id": "VAT ID: {vatId}",
+    "trade-reg-no": "Tr.reg.no: {regNo}"
   }
 }
