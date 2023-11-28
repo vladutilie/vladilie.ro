@@ -1,5 +1,7 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
-import { Link } from '@/navigation';
+import { Link, usePathname, useRouter } from '@/navigation';
 
 import { ThemeSwitcher } from './theme-switcher';
 import { LangChanger } from './lang-changer';
@@ -8,6 +10,8 @@ import { NavLinks, Pages } from '@/lib/constants';
 
 export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = ({ isMobile = false, closeMenu }) => {
   const t = useTranslations('navbar');
+  const pathname = usePathname();
+  const { replace } = useRouter();
 
   return (
     <ul
@@ -20,9 +24,14 @@ export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = (
           className={`cursor-pointer transition-colors hover:text-blue-500 ${!idx ? 'pt-4 md:pt-0' : ''}`}
           key={idx}
           onClick={() => {
-            scrollTo(item);
-            if (isMobile && closeMenu) {
-              closeMenu();
+            if (pathname !== '/') {
+              // @ts-ignore
+              replace(`/#${item}`);
+            } else {
+              scrollTo(item);
+              if (isMobile && closeMenu) {
+                closeMenu();
+              }
             }
           }}
         >
