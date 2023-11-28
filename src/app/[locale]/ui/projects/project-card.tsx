@@ -15,10 +15,13 @@ export const ProjectCard: React.FC<Project & { idx: number }> = ({ idx, ...proje
     >
       <div className='relative aspect-video w-full lg:h-80'>
         <Image
-          src={project.featuredImage}
           alt={project.title}
-          fill
+          blurDataURL={project.base64Image}
           className='rounded-xl object-cover shadow-lg transition-transform duration-500 md:hover:scale-105'
+          fill
+          placeholder='blur'
+          src={project.featuredImage}
+          sizes='(max-width: 768px) 100vw, 50vw'
         />
       </div>
     </div>
