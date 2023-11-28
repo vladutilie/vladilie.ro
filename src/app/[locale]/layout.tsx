@@ -3,8 +3,9 @@ import { NextIntlClientProvider, useMessages } from 'next-intl';
 
 import './globals.css';
 import { locales } from '@/navigation';
-import { Navbar } from './ui/navbar';
 import { ThemeProvider } from './ui/theme-provider';
+import { Navbar } from './ui/navbar';
+import { Footer } from './ui/footer';
 
 export const metadata = {
   title: process.env.NEXT_PUBLIC_SITE_NAME,
@@ -33,6 +34,7 @@ export default function LocaleLayout({
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
             <Navbar />
             {children}
+            <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
