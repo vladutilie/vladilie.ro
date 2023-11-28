@@ -83,7 +83,8 @@
   "blog": {
     "title": "Blog",
     "search-placeholder": "Tastează și caută...",
-    "views": "{count, plural, =0 {0 vizualizări} =1 {o vizualizare} few {# vizualizări} other {# de vizualizări}}"
+    "views": "{count, plural, =0 {0 vizualizări} =1 {o vizualizare} few {# vizualizări} other {# de vizualizări}}",
+    "no-posts": "Momentan nu există articole. Rămâi aproape."
   },
   "projects": {
     "title": "Proiecte"
