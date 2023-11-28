@@ -39,6 +39,12 @@
     @apply transition-colors dark:text-gray-50;
   }
 
+  h5 {
+    @apply text-lg;
+    @apply text-gray-800;
+    @apply transition-colors dark:text-gray-50;
+  }
+
   p {
     @apply text-base;
     @apply text-gray-600;
@@ -70,6 +76,10 @@
 
     h4 {
       @apply text-3xl;
+    }
+
+    h5 {
+      @apply text-2xl;
     }
   }
 
