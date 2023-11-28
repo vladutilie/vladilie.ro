@@ -81,7 +81,9 @@
     }
   },
   "blog": {
-    "title": "Blog"
+    "title": "Blog",
+    "search-placeholder": "Tastează și caută...",
+    "views": "{count, plural, =0 {0 vizualizări} =1 {o vizualizare} few {# vizualizări} other {# de vizualizări}}"
   },
   "projects": {
     "title": "Proiecte"

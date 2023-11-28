@@ -81,7 +81,9 @@
     }
   },
   "blog": {
-    "title": "Blog"
+    "title": "Blog",
+    "search-placeholder": "Type and search...",
+    "views": "{count, plural, =0 {0 views} =1 {1 view} other {# views}}."
   },
   "projects": {
     "title": "Projects"
