@@ -26,9 +26,9 @@ export const Footer: React.FC = () => {
         </div>
 
         <ul className='flex flex-col gap-y-1.5'>
-          {Pages.map(({ i18nKey, url }) => (
-            <li key={url}>
-              <Link href={url}>{t(`${i18nKey}.title`)}</Link>
+          {Object.values(Pages).map((page) => (
+            <li key={page}>
+              <Link href={`/${page}`}>{t(`${page}.title`)}</Link>
             </li>
           ))}
         </ul>

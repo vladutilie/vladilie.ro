@@ -1,9 +1,10 @@
 import { useTranslations } from 'next-intl';
+import { Link } from '@/navigation';
 
 import { ThemeSwitcher } from './theme-switcher';
 import { LangChanger } from './lang-changer';
 import { scrollTo } from '@/lib/utils';
-import { NavLinks } from '@/lib/constants';
+import { NavLinks, Pages } from '@/lib/constants';
 
 export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = ({ isMobile = false, closeMenu }) => {
   const t = useTranslations('navbar');
@@ -28,6 +29,16 @@ export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = (
           {t(item)}
         </li>
       ))}
+      <li>
+        <Link href={`/${Pages.Blog}`} className='text-inherit'>
+          {t(Pages.Blog)}
+        </Link>
+      </li>
+      <li>
+        <Link href={`/${Pages.Contact}`} className='text-inherit'>
+          {t(Pages.Contact)}
+        </Link>
+      </li>
       <li className='hidden h-6 w-0.5 bg-gray-100 md:block' />
       <li className='before:absolute before:left-0 before:w-full before:border-b before:dark:border-gray-600 md:before:hidden'>
         <ThemeSwitcher />
