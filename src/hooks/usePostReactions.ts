@@ -1,10 +1,12 @@
+'use client';
+
 import { useState } from 'react';
 import { useDebounce } from 'react-use';
 import useSWR, { SWRConfiguration } from 'swr';
 
-import { Reaction } from '../types';
-
 const API_URL = `/api/reactions`;
+
+export type Reaction = { reaction: 'likes' | 'loves' | 'awards' | 'wows'; emoji: '👍' | '❤️' | '🏆' | '😲' };
 
 type Payload = {
   counter: { likes: number; loves: number; awards: number; wows: number };
@@ -21,7 +23,7 @@ const getPostLikes = async (slug: string): Promise<Payload> => {
   return await res.json();
 };
 
-const updatePostLikes = async (slug: string, reaction: Reaction): Promise<Payload> => {
+const updatePostLikes = async (slug: string, reaction: Reaction['reaction']): Promise<Payload> => {
   const res = await fetch(`${API_URL}/${slug}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -42,10 +44,10 @@ export const usePostLikes = (slug: string, config?: SWRConfiguration) => {
     ...config
   });
 
-  const [reaction, setReaction] = useState<Reaction>();
-  const [batchedLikes, setBatchedLikes] = useState<{ [key: Reaction | string]: boolean }>();
+  const [reaction, setReaction] = useState<Reaction['reaction']>();
+  const [batchedLikes, setBatchedLikes] = useState<{ [key: Reaction['reaction'] | string]: boolean }>();
 
-  const react = (reaction: Reaction) => {
+  const react = (reaction: Reaction['reaction']) => {
     setReaction(reaction);
     // Prevent the user from liking again if already liked.
     if (!data || true === data.session[reaction]) {
@@ -57,14 +59,8 @@ export const usePostLikes = (slug: string, config?: SWRConfiguration) => {
     // while we update the database
     mutate(
       {
-        counter: {
-          ...data?.counter,
-          [reaction]: Number(data?.counter?.[reaction]) + 1
-        },
-        session: {
-          ...data?.session,
-          [reaction]: true
-        }
+        counter: { ...data?.counter, [reaction]: Number(data?.counter?.[reaction]) + 1 },
+        session: { ...data?.session, [reaction]: true }
       },
       false
     );
