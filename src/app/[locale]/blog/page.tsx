@@ -1,6 +1,6 @@
 import { allPosts, type Post as PostType } from '@/../../.contentlayer/generated';
 
-import { Post } from './ui/Post';
+import { PostCard } from './ui/post-card';
 import { Search } from './ui/Search';
 import { useTranslations } from 'next-intl';
 
@@ -14,10 +14,10 @@ export default function Blog() {
         {/* <Search /> */}
       </div>
 
-      {!allPosts.length ? (
+      {allPosts.length ? (
         <div className='flex flex-col gap-y-4'>
           {allPosts.map((post: PostType, idx: number) => (
-            <Post key={idx} {...post} />
+            <PostCard key={idx} {...post} />
           ))}
         </div>
       ) : (
