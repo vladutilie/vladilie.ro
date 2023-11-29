@@ -13,7 +13,7 @@ export default function Post({ params: { slug } }: { params: { slug: string } })
   const MDXContent = useMDXComponent(post.body.code);
 
   return (
-    <article className='container mx-auto max-w-4xl px-4 py-16 md:py-32'>
+    <article className='container mx-auto max-w-4xl px-4 py-24 md:py-32'>
       <PostHeader {...post} />
       <MDXContent />
     </article>
