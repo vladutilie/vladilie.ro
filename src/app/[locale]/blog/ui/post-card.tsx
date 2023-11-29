@@ -9,7 +9,7 @@ import { type Post as PostType } from '@/../../.contentlayer/generated';
 import { usePostViews } from '@/hooks/usePostViews';
 import { numberFormat } from '@/utils/numberFormat';
 
-export const Post: React.FC<PostType> = ({ title, description, date, slug, readingTime }) => {
+export const PostCard: React.FC<PostType> = ({ title, description, date, slug, readingTime }) => {
   const t = useTranslations('blog');
   const { views, isLoading, isError } = usePostViews(slug);
 
