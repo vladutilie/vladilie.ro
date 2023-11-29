@@ -10,9 +10,11 @@ export const Post = defineDocumentType(() => ({
   filePathPattern: 'blog/*.mdx',
   fields: {
     title: { type: 'string', required: true },
-    date: { type: 'date', required: true },
-    modified: { type: 'date', required: false },
-    description: { type: 'string', required: true }
+    locale: { type: 'enum', options: ['en', 'ro'], default: 'en', required: true },
+    featuredImage: { type: 'string', required: true },
+    blurDataImage: { type: 'string', required: true },
+    description: { type: 'string', required: true },
+    date: { type: 'date', required: true }
   },
   computedFields: {
     slug: { type: 'string', resolve: (post) => post._raw.sourceFileName.replace(/\.mdx$/, '') },
