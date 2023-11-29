@@ -11,7 +11,7 @@ import { usePollIfInView } from '@/hooks/usePollIfInView';
 import { usePostViews } from '@/hooks/usePostViews';
 import { LoadingDots } from './loading-dots';
 
-type Props = { date: string; readingTime: string; slug: string };
+type Props = { date: string; readingTime: number; slug: string };
 
 export const PostMeta: React.FC<Props> = ({ date, readingTime, slug }) => {
   const locale = useLocale();
@@ -52,7 +52,7 @@ export const PostMeta: React.FC<Props> = ({ date, readingTime, slug }) => {
       <span ref={intersectionRef}>
         {viewsIsError || viewsIsLoading ? <LoadingDots /> : t('views', { count: numberFormat(Number(views)) })}
       </span>
-      <span> · {readingTime}</span>
+      <span> · {t('reading-time', { minutes: Math.ceil(readingTime) })}</span>
     </div>
   );
 };

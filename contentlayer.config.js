@@ -18,7 +18,7 @@ export const Post = defineDocumentType(() => ({
   },
   computedFields: {
     slug: { type: 'string', resolve: (post) => post._raw.sourceFileName.replace(/\.mdx$/, '') },
-    readingTime: { type: 'string', resolve: (post) => readingTime(post.body.raw).text }
+    readingTime: { type: 'number', resolve: (post) => readingTime(post.body.raw).minutes }
   }
 }));
 
@@ -38,7 +38,7 @@ export const Project = defineDocumentType(() => ({
   },
   computedFields: {
     slug: { type: 'string', resolve: (post) => post._raw.sourceFileName.replace(/\.mdx$/, '') },
-    readingTime: { type: 'string', resolve: (post) => readingTime(post.body.raw).text }
+    readingTime: { type: 'number', resolve: (post) => readingTime(post.body.raw).minutes }
   }
 }));
 
