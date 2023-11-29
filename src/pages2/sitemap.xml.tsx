@@ -4,14 +4,13 @@ import { PAGES } from 'src/utils/constants';
 import { allPosts, type Post as PostType } from '../../.contentlayer/generated';
 
 const generateSiteMap = () => {
-  const blogPosts = allPosts.map(({ slug, date, modified }: PostType) => ({
+  const blogPosts = allPosts.map(({ slug, date }: PostType) => ({
     slug: `/blog/${slug}`,
-    date,
-    modified
+    date
   }));
 
   const date = new Date().toISOString();
-  const pages: { slug: string; date: string; modified?: string }[] = [
+  const pages: { slug: string; date: string }[] = [
     { slug: PAGES.HOME?.href as string, date },
     { slug: PAGES.ABOUT?.href as string, date },
     { slug: PAGES.BLOG?.href as string, date },
@@ -28,9 +27,9 @@ const generateSiteMap = () => {
       <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      ${pages
        .map(
-         ({ slug, date, modified }) => `<url>
+         ({ slug, date }) => `<url>
           <loc>${`${process.env.NEXT_PUBLIC_SITE_URL}${slug}`}</loc>
-            <lastmod>${modified || date}</lastmod>
+            <lastmod>${date}</lastmod>
             <priority>1.0</priority>
           </url>
         `

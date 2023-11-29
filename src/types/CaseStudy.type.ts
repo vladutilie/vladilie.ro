@@ -3,5 +3,5 @@ export type CaseStudy = {
   description: string;
   date: string;
   slug: string;
-  readingTime: string;
+  readingTime: number;
 };

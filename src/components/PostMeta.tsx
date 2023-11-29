@@ -6,7 +6,7 @@ import { usePollIfInView } from '../hooks/usePollIfInView';
 import { usePostViews } from '../hooks/usePostViews';
 import { LoadingDots } from './';
 
-type Props = { date: string; readingTime: string; slug: string };
+type Props = { date: string; readingTime: number; slug: string };
 export const PostMeta: React.FC<Props> = ({ date, readingTime, slug }) => {
   const interval = 5000;
   const { shouldPoll, intersectionRef } = usePollIfInView(interval);
