@@ -6,7 +6,7 @@ import { Reactions } from './reactions';
 
 export const PostHeader: React.FC<Post> = async ({ title, blurDataImage, featuredImage, slug, date, readingTime }) => (
   <div className='flex flex-col gap-y-4'>
-    <div className='relative h-96 w-full'>
+    <div className='relative h-40 w-full sm:h-96'>
       <Image
         alt={title}
         blurDataURL={blurDataImage}
