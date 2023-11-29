@@ -11,7 +11,7 @@ export const Hero: React.FC<{ location: string }> = ({ location }) => {
   const t = useTranslations('homepage.hero');
 
   return (
-    <section className='container mx-auto grid max-w-7xl grid-cols-6 gap-8 px-4 py-16 md:py-32'>
+    <section className='container mx-auto grid max-w-7xl grid-cols-6 gap-8 px-4 py-20 md:py-32'>
       <div className='order-last col-span-6 flex flex-col gap-y-8 md:order-first md:col-span-4'>
         <div className='flex flex-col gap-y-4'>
           <h1>{t('hello', { emoji: '👋' })}</h1>
