@@ -84,7 +84,8 @@
     "title": "Blog",
     "search-placeholder": "Type and search...",
     "views": "{count, plural, =0 {0 views} =1 {1 view} other {# views}}",
-    "no-posts": "There are no blog posts for now. Stay close."
+    "no-posts": "There are no blog posts for now. Stay close.",
+    "reading-time": "{minutes} min read"
   },
   "projects": {
     "title": "Projects"
