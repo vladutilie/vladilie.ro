@@ -15,15 +15,17 @@ export const PostCard: React.FC<PostType> = ({ title, description, date, slug, r
   const { views, isLoading, isError } = usePostViews(slug);
 
   return (
-    <Link href={{ pathname: '/blog/[slug]', params: { slug } }} className='flex flex-col'>
-      <h2 className='my-0 text-lg'>{title}</h2>
+    <li>
+      <Link href={{ pathname: '/blog/[slug]', params: { slug } }} className='flex flex-col'>
+        <h2 className='my-0 text-lg'>{title}</h2>
 
-      <span className='text-sm text-gray-400'>
-        {`${format(date, locale)} · ${t('reading-time', { minutes: Math.ceil(readingTime) })} · `}
-        {isError || isLoading ? <LoadingDots /> : t('views', { count: numberFormat(Number(views)) })}
-      </span>
+        <span className='text-sm text-gray-400'>
+          {`${format(date, locale)} · ${t('reading-time', { minutes: Math.ceil(readingTime) })} · `}
+          {isError || isLoading ? <LoadingDots /> : t('views', { count: numberFormat(Number(views)) })}
+        </span>
 
-      <span className='text-sm text-gray-400'>{description}</span>
-    </Link>
+        <span className='text-sm text-gray-400'>{description}</span>
+      </Link>
+    </li>
   );
 };
