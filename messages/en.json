@@ -94,7 +94,10 @@
     "title": "Contact"
   },
   "colophon": {
-    "title": "Colophon"
+    "title": "Colophon",
+    "p1": "My website's design is inspired by <url>Sagar Shah</url>.",
+    "p2": "The technology stack used consists of <nextjs>NextJS</nextjs>, <planet>PlanetScale</planet>, <mdx>MDX</mdx>, <tailwind>Tailwind CSS</tailwind>, and <typescript>TypeScript</typescript>, deployed on <vercel>Vercel</vercel>.",
+    "p3": "The source code is open-sourced on <new>GitHub</new>. You can find the old version on <old>this branch</old>."
   },
   "uses": {
     "title": "Uses"

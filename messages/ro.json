@@ -94,7 +94,10 @@
     "title": "Contact"
   },
   "colophon": {
-    "title": "Colofon"
+    "title": "Colofon",
+    "p1": "Designul site-ului meu este inspirat de <url>Sagar Shah</url>.",
+    "p2": "Stiva tehnologică folosită este formată din <nextjs>NextJS</nextjs>, <planet>PlanetScale</planet>, <mdx>MDX</mdx>, <tailwind>Tailwind CSS</tailwind> și <typescript>TypeScript</typescript>, lansat pe <vercel>Vercel</vercel>.",
+    "p3": "Codul sursă este disponibil pe <new>GitHub</new>. Poți găsi versiunea veche pe <old>această ramură</old>."
   },
   "uses": {
     "title": "Utilizări"
