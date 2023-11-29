@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { format } from 'timeago.js';
 import { Link } from '@/navigation';
 
@@ -11,6 +11,7 @@ import { numberFormat } from '@/utils/numberFormat';
 
 export const PostCard: React.FC<PostType> = ({ title, description, date, slug, readingTime }) => {
   const t = useTranslations('blog');
+  const locale = useLocale();
   const { views, isLoading, isError } = usePostViews(slug);
 
   return (
@@ -18,7 +19,7 @@ export const PostCard: React.FC<PostType> = ({ title, description, date, slug, r
       <h2 className='my-0 text-lg'>{title}</h2>
 
       <span className='text-sm text-gray-400'>
-        {`${format(date)} · ${readingTime} · `}
+        {`${format(date, locale)} · ${t('reading-time', { minutes: Math.ceil(readingTime) })} · `}
         {isError || isLoading ? <LoadingDots /> : t('views', { count: numberFormat(Number(views)) })}
       </span>
 
