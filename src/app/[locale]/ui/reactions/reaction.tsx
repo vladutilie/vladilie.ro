@@ -27,6 +27,6 @@ export const Reaction: React.FC<Props> = ({ reaction, emoji, session, counter, r
     onClick={() => react(reaction)}
   >
     {emoji}
-    {'number' === typeof counter ? <span className='text-xs'>{numberFormat(counter)}</span> : <LoadingDots />}
+    {'undefined' !== typeof counter ? <span className='text-xs'>{numberFormat(counter)}</span> : <LoadingDots />}
   </button>
 );
