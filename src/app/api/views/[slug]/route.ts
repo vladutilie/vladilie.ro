@@ -1,5 +1,3 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-
 import prisma from '@/utils/prisma';
 
 // For BigInt serialization
@@ -8,7 +6,7 @@ BigInt.prototype.toJSON = function () {
   return this.toString();
 };
 
-export async function GET(request: NextApiRequest, { params: { slug } }: { params: { slug: string } }) {
+export async function GET(_r: Request, { params: { slug } }: { params: { slug: string } }) {
   const post = await prisma.postCounter.findUnique({ where: { slug } });
 
   return Response.json(post?.views || 1);
@@ -16,12 +14,13 @@ export async function GET(request: NextApiRequest, { params: { slug } }: { param
 
 // TODO: Test this method and fix it if needed.
 export async function POST(request: Request, { params: { slug } }: { params: { slug: string } }) {
-  const isLive = 'undefined' !== typeof request.headers.get('x-forwarded-for');
+  const ip = request.headers.get('x-forwarded-for');
+  const isLive = 'undefined' !== typeof ip && '::1' !== ip;
 
   const post = await prisma.postCounter.upsert({
     where: { slug },
-    create: { slug, views: 1 },
-    update: { views: { increment: isLive ? 1 : 0 } }
+    update: { views: { increment: isLive ? 1 : 0 } },
+    create: { slug, views: 1 }
   });
 
   return Response.json(post?.views || 1);
