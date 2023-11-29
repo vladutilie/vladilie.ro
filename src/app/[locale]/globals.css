@@ -1,4 +1,5 @@
 @tailwind base;
+@import './ui/syntax-highlighting.css';
 @tailwind components;
 @tailwind utilities;
 
@@ -81,6 +82,22 @@
     h5 {
       @apply text-2xl;
     }
+  }
+
+  article h1 {
+    @apply text-4xl;
+  }
+
+  article h2 {
+    @apply text-3xl;
+  }
+
+  article h3 {
+    @apply text-2xl;
+  }
+
+  article h4 {
+    @apply text-xl;
   }
 
   /* For Webkit-based browsers (Chrome, Safari and Opera) */
