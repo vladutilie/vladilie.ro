@@ -30,10 +30,31 @@ model Session {
   @@map("sessions")
 }
 
-model Locations {
+model Location {
   name         String   @id @unique
   visitCounter Int      @default(1) @map("visit_counter")
   lastVisitAt  DateTime @default(now()) @map("last_visit_at")
 
   @@map("locations")
+}
+
+model Book {
+  id         Int       @id @default(autoincrement())
+  title      String    @db.VarChar(191)
+  author     String    @db.VarChar(30)
+  cover      String    @db.VarChar(191)
+  blurData   String    @map("blur_data") @db.VarChar(1000)
+  link       String    @db.VarChar(191)
+  state      BookState @default(Reading)
+  isFavorite Boolean   @default(false) @map("is_favorite")
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @default(now()) @updatedAt @map("updated_at")
+
+  @@map("books")
+}
+
+enum BookState {
+  Reading
+  Completed
+  Wish
 }
