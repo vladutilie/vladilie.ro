@@ -100,10 +100,15 @@
     "p3": "The source code is open-sourced on <new>GitHub</new>. You can find the old version on <old>this branch</old>."
   },
   "uses": {
-    "title": "Uses"
+    "title": "Uses",
+    "description": "I can't do magic by myself, but the right software tools in the right hands are doing a great job."
   },
   "books": {
-    "title": "Books"
+    "title": "Books",
+    "description": "A part of my book collection. A journey through my knowledge and stories along life.",
+    "currently-reading": "Curently reading 📖",
+    "read": "Read 📚",
+    "wishlist": "Wishlist 🧞‍♂️"
   },
   "boardgames": {
     "title": "Boardgames"

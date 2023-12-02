@@ -100,10 +100,15 @@
     "p3": "Codul sursă este disponibil pe <new>GitHub</new>. Poți găsi versiunea veche pe <old>această ramură</old>."
   },
   "uses": {
-    "title": "Utilizări"
+    "title": "Utilizări",
+    "description": "Nu pot face magie de unul singur, dar instrumentele software potrivite în mâinile potrivite fac o treabă grozavă."
   },
   "books": {
-    "title": "Cărți"
+    "title": "Cărți",
+    "description": "O parte din colecția mea de cărți. O călătorie prin cunoștințele și poveștile vieții mele.",
+    "currently-reading": "Acum citesc 📖",
+    "read": "Citite 📚",
+    "wishlist": "Listă de dorințe 🧞‍♂️"
   },
   "boardgames": {
     "title": "Jocuri de societate"
