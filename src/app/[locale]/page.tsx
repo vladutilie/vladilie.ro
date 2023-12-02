@@ -8,7 +8,7 @@ import { SoftwareLocalization } from './ui/sw-l10n';
 import prisma from '@/utils/prisma';
 
 const getLocation = async (): Promise<string> => {
-  const location = await prisma.locations.findFirst({ orderBy: { lastVisitAt: 'desc' }, take: 1 });
+  const location = await prisma.location.findFirst({ orderBy: { lastVisitAt: 'desc' }, take: 1 });
 
   if (!location) {
     return 'Cluj-Napoca, CJ, RO';
