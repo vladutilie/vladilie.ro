@@ -58,3 +58,25 @@ enum BookState {
   Completed
   Wish
 }
+
+model Boardgame {
+  id        Int            @id @default(autoincrement())
+  name      String         @db.VarChar(50)
+  duration  String         @db.VarChar(7)
+  age       String         @db.VarChar(5)
+  players   String         @db.VarChar(5)
+  image     String         @db.VarChar(191)
+  blurData  String         @map("blur_data") @db.VarChar(1000)
+  link      String         @db.VarChar(191)
+  state     BoardgameState @default(Own)
+  tags      String         @db.VarChar(100)
+  createdAt DateTime       @default(now()) @map("created_at")
+  updatedAt DateTime       @default(now()) @updatedAt @map("updated_at")
+
+  @@map("boardgames")
+}
+
+enum BoardgameState {
+  Own
+  Wishlist
+}
