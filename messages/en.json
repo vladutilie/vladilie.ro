@@ -111,7 +111,12 @@
     "wishlist": "Wishlist 🧞‍♂️"
   },
   "boardgames": {
-    "title": "Boardgames"
+    "title": "Boardgames",
+    "description": "Beyond learning and working, I also ensure myself fun experiences. Here are the board games I play with friends and dear ones.",
+    "all-categories": "All",
+    "own": "Own ({count})",
+    "wishlist": "Wishlist ({count})",
+    "age": "Age: {age}"
   },
   "terms": {
     "title": "Terms and conditions"

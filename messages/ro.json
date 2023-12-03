@@ -111,7 +111,12 @@
     "wishlist": "Listă de dorințe 🧞‍♂️"
   },
   "boardgames": {
-    "title": "Jocuri de societate"
+    "title": "Jocuri de societate",
+    "description": "Dincolo de a învăța și de a lucra, îmi asigur și experiențe distractive. Iată jocurile de societate pe care le joc cu prietenii și cei dragi.",
+    "all-categories": "Toate",
+    "own": "Dețin ({count})",
+    "wishlist": "Îmi doresc ({count})",
+    "age": "Vârstă: {age}"
   },
   "terms": {
     "title": "Termeni și condiții"
