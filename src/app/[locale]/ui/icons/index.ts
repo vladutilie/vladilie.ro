@@ -1,4 +1,5 @@
 export { Burger } from './burger.icon';
+export { Commit } from './commit.icon';
 export { ExpressJS } from './expressjs.icon';
 export { GitHub } from './github.icon';
 export { LinkedIn } from './linkedin.icon';
