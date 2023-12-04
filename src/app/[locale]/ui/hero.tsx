@@ -4,10 +4,10 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/navigation';
 
 import { SocialMedia } from './social-media';
-import { Pin } from '../ui/icons';
+import { Commit, Pin } from '../ui/icons';
 import vlad from '@/../public/images/vlad-ilie.jpg';
 
-export const Hero: React.FC<{ location: string }> = ({ location }) => {
+export const Hero: React.FC<{ location: string; commits: number }> = ({ location, commits }) => {
   const t = useTranslations('homepage.hero');
 
   return (
@@ -38,7 +38,7 @@ export const Hero: React.FC<{ location: string }> = ({ location }) => {
         <div className='flex flex-col gap-y-2'>
           <div className='flex items-center gap-x-2'>
             <Pin />
-            <p>{location}</p>
+            <p className='my-0'>{location}</p>
           </div>
 
           <div className='flex items-center gap-x-2'>
@@ -48,7 +48,19 @@ export const Hero: React.FC<{ location: string }> = ({ location }) => {
                 <span className='relative inline-flex h-3 w-3 rounded-full bg-green-500' />
               </span>
             </div>
-            <p>{t('available')}</p>
+            <p className='my-0'>{t('available')}</p>
+          </div>
+
+          <div className='flex items-center gap-x-2'>
+            <Commit />
+            <p className='my-0'>
+              {t.rich('commits', {
+                count: commits,
+                commits: (chunk: ReactNode): JSX.Element => (
+                  <code className='rounded bg-gray-400 p-0.5 text-gray-50'>{chunk}</code>
+                )
+              })}
+            </p>
           </div>
         </div>
 
