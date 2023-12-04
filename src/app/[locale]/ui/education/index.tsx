@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 
+import { Tag } from '../tag';
 import { Stage } from './stage';
 import { NavLinks } from '@/lib/constants';
 
@@ -11,7 +12,7 @@ export const Education: React.FC = () => {
   return (
     <section id={NavLinks.Education} className='container mx-auto max-w-7xl px-4 py-16 md:py-20 2xl:py-24'>
       <div className='col-span-3 text-center'>
-        <span className='rounded-xl bg-gray-600 px-4 py-1 text-sm text-gray-200'>{t('tag')}</span>
+        <Tag label={t('tag')} />
       </div>
 
       <div className='relative pt-12'>
