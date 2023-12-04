@@ -25,3 +25,10 @@ export const SEO_DESCRIPTION =
   'Neo4j Certified Professional, NextJS fan, enthusiastic of JavaScript development technologies and nostalgic WordPress lover.';
 
 export const REACTIONS: Reaction[] = ['likes', 'loves', 'awards', 'wows'];
+
+export const ContactServices = {
+  CustomDevelopment: 'custom-development',
+  LandingPage: 'landing-page',
+  Maintenance: 'maintenance',
+  JobOpportunity: 'job-opportunity'
+} as const;
