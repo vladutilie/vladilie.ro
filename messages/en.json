@@ -91,7 +91,28 @@
     "title": "Projects"
   },
   "contact": {
-    "title": "Contact"
+    "title": "Contact",
+    "description": "Tell me more about your project and let's start a discussion.",
+    "form": {
+      "first-name": "First name",
+      "last-name": "Last name",
+      "email": "Email",
+      "phone": "Phone",
+      "service": "Needed service",
+      "choose-service": "Choose...",
+      "service-custom-developmemt": "Custom development",
+      "service-landing-page": "Landing page",
+      "service-maintenance": "Maintenance",
+      "service-job-opportunity": "Job opportunity",
+      "budget": "Budget",
+      "budget-value": "€{value}K",
+      "message": "Message",
+      "required-field": "This field is required.",
+      "submit": "Submit",
+      "please-wait": "Please wait...",
+      "message-sent": "Thank you! 🙏🏻 Your message has been sent.",
+      "send-failed": "Unfortunately, the submission failed. Please try again."
+    }
   },
   "colophon": {
     "title": "Colophon",

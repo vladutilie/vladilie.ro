@@ -91,7 +91,28 @@
     "title": "Proiecte"
   },
   "contact": {
-    "title": "Contact"
+    "title": "Contact",
+    "description": "Spune-mi mai multe despre proiectul tău și hai să pornim o discuție.",
+    "form": {
+      "first-name": "Prenume",
+      "last-name": "Nume",
+      "email": "Email",
+      "phone": "Telefon",
+      "service": "Serviciu necesar",
+      "choose-service": "Alege...",
+      "service-custom-developmemt": "Dezvoltare personalizată",
+      "service-landing-page": "Pagină de prezentare",
+      "service-maintenance": "Mentenanță",
+      "service-job-opportunity": "Oportunitate de job",
+      "budget": "Buget",
+      "budget-value": "{value} 000 EUR",
+      "message": "Mesaj",
+      "required-field": "Acest câmp este obligatoriu.",
+      "submit": "Trimite",
+      "please-wait": "Te rog așteaptă...",
+      "message-sent": "Mulțumesc! 🙏🏻 Mesajul tău a fost trimis.",
+      "send-failed": "Din păcate trimiterea a eșuat. Te rog reîncearcă."
+    }
   },
   "colophon": {
     "title": "Colofon",
@@ -107,8 +128,8 @@
     "title": "Cărți",
     "description": "O parte din colecția mea de cărți. O călătorie prin cunoștințele și poveștile vieții mele.",
     "currently-reading": "Acum citesc 📖",
-    "read": "Citite 📚",
-    "wishlist": "Listă de dorințe 🧞‍♂️"
+    "read": "Am citit 📚",
+    "wishlist": "Vreau să citesc 🧞‍♂️"
   },
   "boardgames": {
     "title": "Jocuri de societate",
