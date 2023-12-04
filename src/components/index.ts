@@ -1,6 +1,4 @@
 export { BackToTop } from './BackToTop';
-export { Boardgame } from './Boardgame';
-export { Book } from './Book';
 export { CaseStudy } from './CaseStudy';
 export { FeaturedServices } from './FeaturedServices';
 export { Footer } from './Footer';
