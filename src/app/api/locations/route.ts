@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache';
 
 export async function GET(): Promise<Response> {
   try {
-    const locations = await prisma.locations.findMany({
+    const locations = await prisma.location.findMany({
       orderBy: { lastVisitAt: 'desc' }
     });
 
@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
       ? `${result.locality}, ${result.administrative_area_level_1}, ${result.country}`
       : `${result.administrative_area_level_2}, ${result.country}`;
 
-    await prisma.locations.upsert({
+    await prisma.location.upsert({
       where: { name: currentLocation },
       update: { visitCounter: { increment: 1 }, lastVisitAt: new Date() },
       create: { name: currentLocation }
