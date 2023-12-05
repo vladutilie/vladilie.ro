@@ -131,26 +131,11 @@
     "description": "I can't do magic by myself, but the right software tools in the right hands are doing a great job.",
     "environment": {
       "title": "🗄️ Working environment",
-      "desk": {
-        "name": "Manually adjustable desk",
-        "description": "1600x800x36 mm, black"
-      },
-      "chair": {
-        "name": "2 x Notus chair",
-        "description": "Ergonomic chair with mesh"
-      },
-      "laptop-stand": {
-        "name": "Laptop stand",
-        "description": "Portable, height adjustable, folding"
-      },
-      "monitors-support": {
-        "name": "Desk support for 2 monitors",
-        "description": "Gas spring, A+ SMLC24, 17-32 inch"
-      },
-      "mousepad": {
-        "name": "Mousepad Floston WORLD",
-        "description": "900x400x3 mm"
-      },
+      "desk": { "name": "Manually adjustable desk", "description": "1600x800x36 mm, black" },
+      "chair": { "name": "2 x Notus chair", "description": "Ergonomic chair with mesh" },
+      "laptop-stand": { "name": "Laptop stand", "description": "Portable, height adjustable, folding" },
+      "monitors-support": { "name": "Desk support for 2 monitors", "description": "Gas spring, A+ SMLC24, 17-32 inch" },
+      "mousepad": { "name": "Mousepad Floston WORLD", "description": "900x400x3 mm" },
       "lamp": "FORSÅ lamp, nickel-plated"
     },
     "hardware": {
@@ -159,10 +144,7 @@
         "name": "MacBook Pro 15 Retina with Touch Bar",
         "description": "2019, Coffee Lake 8-core i9 2.3GHz, 16GB DDR4, 512GB SSD, Radeon Pro 560X 4GB"
       },
-      "monitors": {
-        "name": "2 x Monitor LED LG",
-        "description": "27 inch, 4K, 60Hz"
-      },
+      "monitors": { "name": "2 x Monitor LED LG", "description": "27 inch, 4K, 60Hz" },
       "mouse": "Mouse Apple Magic 2",
       "keyboard": "Keyboard Mac LOGITECH MX Keys",
       "mic": "Microphone VONYX CMS300B"
@@ -204,12 +186,6 @@
   "privacy": {
     "title": "Privacy policy"
   },
-  "footer": {
-    "vat-id": "VAT ID: {vatId}",
-    "trade-reg-no": "Tr.reg.no: {regNo}"
-  },
-  "not-found": {
-    "title": "404 Error",
-    "description": "The page you are looking for does not exist."
-  }
+  "footer": { "vat-id": "VAT ID: {vatId}", "trade-reg-no": "Tr.reg.no: {regNo}" },
+  "not-found": { "title": "404 Error", "description": "The page you are looking for does not exist." }
 }

@@ -131,26 +131,14 @@
     "description": "Nu pot face magie de unul singur, dar instrumentele software potrivite în mâinile potrivite fac o treabă grozavă.",
     "environment": {
       "title": "🗄️ Mediu de lucru",
-      "desk": {
-        "name": "Birou ajustabil manual pe înălțime",
-        "description": "1600x800x36 mm, negru"
-      },
-      "chair": {
-        "name": "2 x scaun Notus",
-        "description": "Scaun ergonomic cu mesh"
-      },
-      "laptop-stand": {
-        "name": "Stand laptop",
-        "description": "Portabil, ajustabil pe înălțime, pliabil"
-      },
+      "desk": { "name": "Birou ajustabil manual pe înălțime", "description": "1600x800x36 mm, negru" },
+      "chair": { "name": "2 x scaun Notus", "description": "Scaun ergonomic cu mesh" },
+      "laptop-stand": { "name": "Stand laptop", "description": "Portabil, ajustabil pe înălțime, pliabil" },
       "monitors-support": {
         "name": "Suport de birou pentru 2 monitoare",
         "description": "Arc cu gaz, A+ SMLC24, 17-32 țoli"
       },
-      "mousepad": {
-        "name": "Mousepad Floston WORLD",
-        "description": "900x400x3 mm"
-      },
+      "mousepad": { "name": "Mousepad Floston WORLD", "description": "900x400x3 mm" },
       "lamp": "Veioză FORSÅ, nichelată"
     },
     "hardware": {
@@ -159,10 +147,7 @@
         "name": "MacBook Pro 15 Retina cu Touch Bar",
         "description": "2019, Coffee Lake 8-core i9 2.3GHz, 16GB DDR4, 512GB SSD, Radeon Pro 560X 4GB"
       },
-      "monitors": {
-        "name": "2 x monitor LED LG",
-        "description": "27 țoli, 4K, 60Hz"
-      },
+      "monitors": { "name": "2 x monitor LED LG", "description": "27 țoli, 4K, 60Hz" },
       "mouse": "Maus Apple Magic 2",
       "keyboard": "Tastatură Mac LOGITECH MX Keys",
       "mic": "Microfon VONYX CMS300B"
@@ -204,12 +189,6 @@
   "privacy": {
     "title": "Politică de confidențialitate"
   },
-  "footer": {
-    "vat-id": "CUI: {vatId}",
-    "trade-reg-no": "Nr.reg.com.: {regNo}"
-  },
-  "not-found": {
-    "title": "Eroare 404",
-    "description": "Pagina pe care o cauți nu există."
-  }
+  "footer": { "vat-id": "CUI: {vatId}", "trade-reg-no": "Nr.reg.com.: {regNo}" },
+  "not-found": { "title": "Eroare 404", "description": "Pagina pe care o cauți nu există." }
 }
