@@ -81,6 +81,11 @@
       "quote": "<contact>Drop me a line</contact> if you need a quote regarding your project translations into Romanian."
     }
   },
+  "locations": {
+    "title": "Location history",
+    "description": "Places I've been, worked from or visited. Since December 2022 🎁.",
+    "visited": "Visited: {visitCounter, plural, =0 {0 times} =1 {1 time} other {# times}} · Last visit: <lastVisit>{lastVisitAt}</lastVisit>"
+  },
   "blog": {
     "title": "Blog",
     "search-placeholder": "Type and search...",

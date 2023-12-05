@@ -81,6 +81,11 @@
       "quote": "<contact>Scrie-mi</contact> dacă ai nevoie de o ofertă cu privire la traducerile proiectului tău în limba română."
     }
   },
+  "locations": {
+    "title": "Istoric locații",
+    "description": "Locuri în care am fost, din care am lucrat sau pe care le-am vizitat. Din decembrie 2022 🎁.",
+    "visited": "{visitCounter, plural, =1 {Vizitat: o dată} few {Vizitat de: # ori} other {Vizitat de: # de ori}} · Ultima vizită: <lastVisit>{lastVisitAt}</lastVisit>"
+  },
   "blog": {
     "title": "Blog",
     "search-placeholder": "Tastează și caută...",
