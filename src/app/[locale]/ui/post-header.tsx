@@ -1,10 +1,17 @@
 import Image from 'next/image';
-import { Post } from 'contentlayer/generated';
+import { Post, Project } from 'contentlayer/generated';
 
 import { PostMeta } from './post-meta';
 import { Reactions } from './reactions';
 
-export const PostHeader: React.FC<Post> = async ({ title, blurDataImage, featuredImage, slug, date, readingTime }) => (
+export const PostHeader: React.FC<Post | Project> = async ({
+  title,
+  blurDataImage,
+  featuredImage,
+  slug,
+  date,
+  readingTime
+}) => (
   <div className='flex flex-col gap-y-4'>
     <div className='relative h-40 w-full sm:h-96'>
       <Image
