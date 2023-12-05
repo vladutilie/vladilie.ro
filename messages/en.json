@@ -154,5 +154,9 @@
   "footer": {
     "vat-id": "VAT ID: {vatId}",
     "trade-reg-no": "Tr.reg.no: {regNo}"
+  },
+  "not-found": {
+    "title": "404 Error",
+    "description": "The page you are looking for does not exist."
   }
 }

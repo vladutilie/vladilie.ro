@@ -154,5 +154,9 @@
   "footer": {
     "vat-id": "CUI: {vatId}",
     "trade-reg-no": "Nr.reg.com.: {regNo}"
+  },
+  "not-found": {
+    "title": "Eroare 404",
+    "description": "Pagina pe care o cauți nu există."
   }
 }
