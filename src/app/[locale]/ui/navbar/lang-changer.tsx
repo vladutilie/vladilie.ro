@@ -12,7 +12,7 @@ export const LangChanger: React.FC = () => {
 
   return (
     <div className='flex items-center justify-between'>
-      <span className='transition-colors md:hidden'>{t('change-language')}</span>
+      <span className='md:hidden'>{t('change-language')}</span>
 
       <Link
         // @ts-ignore

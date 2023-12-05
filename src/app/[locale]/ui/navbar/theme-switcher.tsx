@@ -27,7 +27,7 @@ export const ThemeSwitcher: React.FC = () => {
 
   return (
     <div className='flex items-center justify-between'>
-      <span className='transition-colors md:hidden'>{t('switch-theme')}</span>
+      <span className='md:hidden'>{t('switch-theme')}</span>
       <button
         className='relative flex items-center justify-center gap-x-2 overflow-hidden p-2'
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}

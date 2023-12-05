@@ -21,7 +21,7 @@ export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = (
     >
       {Object.values(NavLinks).map((item, idx) => (
         <li
-          className={`cursor-pointer transition-colors hover:text-blue-500 ${!idx ? 'pt-4 md:pt-0' : ''}`}
+          className={`cursor-pointer hover:text-blue-500 ${!idx ? 'pt-4 md:pt-0' : ''}`}
           key={idx}
           onClick={() => {
             if (isMobile && closeMenu) {
