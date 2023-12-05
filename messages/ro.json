@@ -128,7 +128,60 @@
   },
   "uses": {
     "title": "Utilizări",
-    "description": "Nu pot face magie de unul singur, dar instrumentele software potrivite în mâinile potrivite fac o treabă grozavă."
+    "description": "Nu pot face magie de unul singur, dar instrumentele software potrivite în mâinile potrivite fac o treabă grozavă.",
+    "environment": {
+      "title": "🗄️ Mediu de lucru",
+      "desk": {
+        "name": "Birou ajustabil manual pe înălțime",
+        "description": "1600x800x36 mm, negru"
+      },
+      "chair": {
+        "name": "2 x scaun Notus",
+        "description": "Scaun ergonomic cu mesh"
+      },
+      "laptop-stand": {
+        "name": "Stand laptop",
+        "description": "Portabil, ajustabil pe înălțime, pliabil"
+      },
+      "monitors-support": {
+        "name": "Suport de birou pentru 2 monitoare",
+        "description": "Arc cu gaz, A+ SMLC24, 17-32 țoli"
+      },
+      "mousepad": {
+        "name": "Mousepad Floston WORLD",
+        "description": "900x400x3 mm"
+      },
+      "lamp": "Veioză FORSÅ, nichelată"
+    },
+    "hardware": {
+      "title": "💻 Hardware",
+      "macbook": {
+        "name": "MacBook Pro 15 Retina cu Touch Bar",
+        "description": "2019, Coffee Lake 8-core i9 2.3GHz, 16GB DDR4, 512GB SSD, Radeon Pro 560X 4GB"
+      },
+      "monitors": {
+        "name": "2 x monitor LED LG",
+        "description": "27 țoli, 4K, 60Hz"
+      },
+      "mouse": "Maus Apple Magic 2",
+      "keyboard": "Tastatură Mac LOGITECH MX Keys",
+      "mic": "Microfon VONYX CMS300B"
+    },
+    "software": {
+      "title": "🤖 Software",
+      "vscode": {
+        "name": "Visual Studio Code",
+        "description": "Extensii: EditorConfig for VS Code, ESLint, GitHub Actions, GitLens, i18n Ally, MDX, Package Json Upgrade, PHP_CodeSniffer, Prettier, Prisma, Sort lines, Tailwind CSS IntelliSense, vscode-icons, WordPress Snippets"
+      },
+      "postman": "Postman",
+      "chrome": {
+        "name": "Google Chrome",
+        "description": "Extensii: AdBlock, GoFullPage - Full Page Screen Capture, Grammarly, JSON Viewer, React Developer Tools, SWR DevTools, Tab Suspender, Xdebug helper"
+      },
+      "neo4j": "Neo4j Desktop",
+      "signal": "Signal",
+      "slack": "Slack"
+    }
   },
   "books": {
     "title": "Cărți",

@@ -128,7 +128,60 @@
   },
   "uses": {
     "title": "Uses",
-    "description": "I can't do magic by myself, but the right software tools in the right hands are doing a great job."
+    "description": "I can't do magic by myself, but the right software tools in the right hands are doing a great job.",
+    "environment": {
+      "title": "🗄️ Working environment",
+      "desk": {
+        "name": "Manually adjustable desk",
+        "description": "1600x800x36 mm, black"
+      },
+      "chair": {
+        "name": "2 x Notus chair",
+        "description": "Ergonomic chair with mesh"
+      },
+      "laptop-stand": {
+        "name": "Laptop stand",
+        "description": "Portable, height adjustable, folding"
+      },
+      "monitors-support": {
+        "name": "Desk support for 2 monitors",
+        "description": "Gas spring, A+ SMLC24, 17-32 inch"
+      },
+      "mousepad": {
+        "name": "Mousepad Floston WORLD",
+        "description": "900x400x3 mm"
+      },
+      "lamp": "FORSÅ lamp, nickel-plated"
+    },
+    "hardware": {
+      "title": "💻 Hardware",
+      "macbook": {
+        "name": "MacBook Pro 15 Retina with Touch Bar",
+        "description": "2019, Coffee Lake 8-core i9 2.3GHz, 16GB DDR4, 512GB SSD, Radeon Pro 560X 4GB"
+      },
+      "monitors": {
+        "name": "2 x Monitor LED LG",
+        "description": "27 inch, 4K, 60Hz"
+      },
+      "mouse": "Mouse Apple Magic 2",
+      "keyboard": "Keyboard Mac LOGITECH MX Keys",
+      "mic": "Microphone VONYX CMS300B"
+    },
+    "software": {
+      "title": "🤖 Software",
+      "vscode": {
+        "name": "Visual Studio Code",
+        "description": "Extensions: EditorConfig for VS Code, ESLint, GitHub Actions, GitLens, i18n Ally, MDX, Package Json Upgrade, PHP_CodeSniffer, Prettier, Prisma, Sort lines, Tailwind CSS IntelliSense, vscode-icons, WordPress Snippets"
+      },
+      "postman": "Postman",
+      "chrome": {
+        "name": "Google Chrome",
+        "description": "Extensions: AdBlock, GoFullPage - Full Page Screen Capture, Grammarly, JSON Viewer, React Developer Tools, SWR DevTools, Tab Suspender, Xdebug helper"
+      },
+      "neo4j": "Neo4j Desktop",
+      "signal": "Signal",
+      "slack": "Slack"
+    }
   },
   "books": {
     "title": "Books",
