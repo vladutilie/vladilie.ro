@@ -1,4 +1,5 @@
 import { useLocale, useTranslations } from 'next-intl';
+import { Link } from '@/navigation';
 
 import { NavLinks } from '@/lib/constants';
 import { allProjects } from '@/../.contentlayer/generated';
@@ -21,6 +22,13 @@ export const Projects: React.FC = () => {
       {projects.map((project, idx) => (
         <ProjectCard {...project} key={idx} idx={idx} />
       ))}
+
+      <Link
+        href='/projects'
+        className='self-center rounded-xl bg-blue-450 px-4 py-2 font-semibold text-white hover:text-white'
+      >
+        {t('see-all')}
+      </Link>
     </section>
   );
 };

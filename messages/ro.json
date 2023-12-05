@@ -62,7 +62,7 @@
       "tag": "Abilități",
       "description": "Tehnologiile pe care le folosesc și cu care m-am format ca dezvoltator software de-a lungul timpului:"
     },
-    "projects": { "tag": "Proiecte" },
+    "projects": { "tag": "Proiecte", "see-all": "Vezi toate proiectele" },
     "sw-l10n": {
       "title": "Localizare software",
       "description": "Proiecte software pe care le-am tradus în limba română.",
