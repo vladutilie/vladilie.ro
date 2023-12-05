@@ -24,14 +24,14 @@ export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = (
           className={`cursor-pointer transition-colors hover:text-blue-500 ${!idx ? 'pt-4 md:pt-0' : ''}`}
           key={idx}
           onClick={() => {
+            if (isMobile && closeMenu) {
+              closeMenu();
+            }
             if (pathname !== '/') {
               // @ts-ignore
               replace(`/#${item}`);
             } else {
               scrollTo(item);
-              if (isMobile && closeMenu) {
-                closeMenu();
-              }
             }
           }}
         >
@@ -39,12 +39,20 @@ export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = (
         </li>
       ))}
       <li>
-        <Link href={`/${Pages.Blog}`} className='text-inherit'>
+        <Link
+          className='text-inherit'
+          href={`/${Pages.Blog}`}
+          onClick={() => (isMobile && closeMenu ? closeMenu() : null)}
+        >
           {t(Pages.Blog)}
         </Link>
       </li>
       <li>
-        <Link href={`/${Pages.Contact}`} className='text-inherit'>
+        <Link
+          className='text-inherit'
+          href={`/${Pages.Contact}`}
+          onClick={() => (isMobile && closeMenu ? closeMenu() : null)}
+        >
           {t(Pages.Contact)}
         </Link>
       </li>
