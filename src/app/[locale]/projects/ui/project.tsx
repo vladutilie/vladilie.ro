@@ -20,7 +20,7 @@ export const Project: React.FC<ProjectT> = ({
   return (
     <Link
       href={{ pathname: '/projects/[slug]', params: { slug } }}
-      className='col-span-6 rounded-lg border sm:col-span-3 lg:col-span-2'
+      className='col-span-6 rounded-lg border bg-gray-50 dark:border-slate-800 dark:bg-slate-900 sm:col-span-3 lg:col-span-2'
     >
       <div className='relative h-52 border-b'>
         <Image
