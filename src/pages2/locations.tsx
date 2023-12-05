@@ -2,13 +2,13 @@ import { NextPage } from 'next';
 import useSWR from 'swr';
 import { NextSeo } from 'next-seo';
 import { format } from 'timeago.js';
-import { Locations } from '@prisma/client';
+import { Location } from '@prisma/client';
 
 import { fetcher } from 'src/utils/fetcher';
 import { PAGES } from 'src/utils/constants';
 
 const Locations: NextPage = () => {
-  const { data } = useSWR<Locations[]>('/api/locations', fetcher);
+  const { data } = useSWR<Location[]>('/api/locations', fetcher);
 
   return (
     <>
