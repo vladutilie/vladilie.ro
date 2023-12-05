@@ -50,7 +50,7 @@ export default async function Boardgames() {
 
   return (
     <main className='container mx-auto max-w-7xl gap-8 px-4 py-20 md:py-32'>
-      <h2>{t('title')}</h2>
+      <h1>{t('title')}</h1>
       <p>{t('description')}</p>
 
       <Categories list={categories} />

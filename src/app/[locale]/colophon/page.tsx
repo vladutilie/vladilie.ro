@@ -6,7 +6,7 @@ export default function Colophon() {
 
   return (
     <main className='container mx-auto max-w-7xl gap-8 px-4 py-32'>
-      <h2>{t('title')}</h2>
+      <h1>{t('title')}</h1>
       <p>
         {t.rich('p1', {
           url: (chunk: ReactNode): JSX.Element => (
