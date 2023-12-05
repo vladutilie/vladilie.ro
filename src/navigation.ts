@@ -8,6 +8,7 @@ export const pathnames = {
   '/blog': '/blog',
   '/blog/[slug]': '/blog/[slug]',
   '/projects': { en: '/projects', ro: '/proiecte' },
+  '/projects/[slug]': { en: '/projects/[slug]', ro: '/proiecte/[slug]' },
   '/contact': '/contact',
   '/colophon': { en: '/colophon', ro: '/colofon' },
   '/uses': { en: '/uses', ro: '/utilizari' },
