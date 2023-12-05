@@ -30,7 +30,7 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
                 </a>
               ),
               city: location,
-              locations: (chunk: ReactNode) => <Link href={'/location'}>{chunk}</Link>
+              locations: (chunk: ReactNode) => <Link href={'/locations'}>{chunk}</Link>
             })}
           </p>
         </div>
