@@ -4,10 +4,10 @@ import { PostCard } from './ui/post-card';
 import { Search } from './ui/Search';
 import { useTranslations } from 'next-intl';
 
-export default function Blog() {
+export default function Blog({ params: { locale } }: { params: { locale: string } }) {
   const t = useTranslations('blog');
+  const posts = allPosts.filter(({ locale: l }) => l === locale);
 
-  // TODO: Filter posts by locale.
   return (
     <main className='container mx-auto flex max-w-7xl flex-col gap-8 px-4 py-20 md:py-32'>
       <div className='flex items-center justify-between gap-x-4'>
@@ -15,9 +15,9 @@ export default function Blog() {
         {/* <Search /> */}
       </div>
 
-      {allPosts.length ? (
+      {posts.length ? (
         <ul className='flex flex-col gap-y-4'>
-          {allPosts.map((post: PostType, idx: number) => (
+          {posts.map((post: PostType, idx: number) => (
             <PostCard key={idx} {...post} />
           ))}
         </ul>
