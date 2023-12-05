@@ -9,7 +9,7 @@ export const Project: React.FC<ProjectT> = ({
   title,
   locale,
   featuredImage,
-  base64Image,
+  blurDataImage,
   description,
   date,
   slug,
@@ -25,7 +25,7 @@ export const Project: React.FC<ProjectT> = ({
       <div className='relative h-52 border-b'>
         <Image
           alt={title}
-          blurDataURL={base64Image}
+          blurDataURL={blurDataImage}
           className='rounded-t-lg object-cover'
           fill
           placeholder='blur'

@@ -30,7 +30,7 @@ export const Project = defineDocumentType(() => ({
     title: { type: 'string', required: true },
     locale: { type: 'enum', options: ['en', 'ro'], default: 'en', required: true },
     featuredImage: { type: 'string', required: true },
-    base64Image: { type: 'string', required: true },
+    blurDataImage: { type: 'string', required: true },
     description: { type: 'string', required: true },
     technologies: { type: 'list', of: { type: 'string' }, required: true },
     website: { type: 'string', required: false },

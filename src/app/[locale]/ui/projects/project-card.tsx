@@ -16,7 +16,7 @@ export const ProjectCard: React.FC<Project & { idx: number }> = ({ idx, ...proje
       <div className='relative aspect-video w-full lg:h-80'>
         <Image
           alt={project.title}
-          blurDataURL={project.base64Image}
+          blurDataURL={project.blurDataImage}
           className='rounded-xl object-cover shadow-lg transition-transform duration-500 md:hover:scale-105'
           fill
           placeholder='blur'
