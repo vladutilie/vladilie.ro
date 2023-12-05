@@ -62,10 +62,7 @@
       "tag": "Abilități",
       "description": "Tehnologiile pe care le folosesc și cu care m-am format ca dezvoltator software de-a lungul timpului:"
     },
-    "projects": {
-      "tag": "Proiecte",
-      "description": "Proiecte remarcabile pe care le-am implementat:"
-    },
+    "projects": { "tag": "Proiecte" },
     "sw-l10n": {
       "title": "Localizare software",
       "description": "Proiecte software pe care le-am tradus în limba română.",
@@ -94,7 +91,10 @@
     "reading-time": "{minutes} min de citit"
   },
   "projects": {
-    "title": "Proiecte"
+    "title": "Proiecte",
+    "description": "Proiecte remarcabile pe care le-am implementat:",
+    "no-projects": "Momentan nu sunt articole despre proiecte.  🤷🏻‍♂️",
+    "reading-time": "{minutes} min de citit"
   },
   "contact": {
     "title": "Contact",

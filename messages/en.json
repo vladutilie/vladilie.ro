@@ -62,10 +62,7 @@
       "tag": "Skills",
       "description": "The technologies I use and trained with as a software developer over time:"
     },
-    "projects": {
-      "tag": "Projects",
-      "description": "Outstanding projects I have implemented:"
-    },
+    "projects": { "tag": "Projects" },
     "sw-l10n": {
       "title": "Software localization",
       "description": "Software projects that I translated into Romanian.",
@@ -94,7 +91,10 @@
     "reading-time": "{minutes} min read"
   },
   "projects": {
-    "title": "Projects"
+    "title": "Projects",
+    "description": "Outstanding projects I have implemented:",
+    "no-projects": "There are currently no articles about projects. 🤷🏻‍♂️",
+    "reading-time": "{minutes} min read"
   },
   "contact": {
     "title": "Contact",
