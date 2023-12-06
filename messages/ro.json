@@ -184,10 +184,83 @@
     "age": "Vârstă: {age}"
   },
   "terms": {
-    "title": "Termeni și condiții"
+    "title": "Termeni și condiții",
+    "last-update": "Ultima actualizare: 6 decembrie 2023",
+    "welcome": "Bine ai venit pe site-ul meu!",
+    "cap1": {
+      "title": "1. Acceptarea Termenilor și Condițiilor",
+      "p1": "Accesând sau utilizând acest site web, ești de acord să respecți și să te supui tuturor termenilor și condițiilor prezentate mai jos. Dacă nu ești de acord cu acești termeni, te rog să nu utilizezi acest site."
+    },
+    "cap2": {
+      "title": "2. Drepturi de autor",
+      "p1": "Conținutul acestui site, inclusiv, dar fără a se limita la text, imagini, grafică, video și alte materiale, este protejat de drepturile de autor și alte legi privind proprietatea intelectuală.",
+      "p2": "Sunt excluse de la acești termeni acele resurse ale căror sursă este precizată în mod expres."
+    },
+    "cap3": {
+      "title": "3. Utilizarea site-ului",
+      "p1": "Utilizarea acestui site este permisă în scopuri legale și conforme cu acești termeni. Nu ai voie să utilizezi acest site în scopuri ilegale sau interzise de legi și regulamente aplicabile."
+    },
+    "cap4": {
+      "title": "4. Informații personale",
+      "p1": "Prin utilizarea acestui site, ești de acord cu colectarea și utilizarea informațiilor personale în conformitate cu Politica de Confidențialitate a site-ului."
+    },
+    "cap5": {
+      "title": "5. Limitări de răspundere",
+      "p1": "Site-ul este furnizat „așa cum este”, fără nicio garanție, fie expresă, fie implicită. Nu ne asumăm nicio răspundere pentru pierderi sau daune rezultate din utilizarea sau incapacitatea de a utiliza acest site."
+    },
+    "cap6": {
+      "title": "6. Modificări ale Termenilor și Condițiilor",
+      "p1": "Îmi rezerv dreptul de a modifica acești termeni și condiții în orice moment, fără notificare prealabilă. Este responsabilitatea ta să verifici periodic aceste modificări."
+    },
+    "cap7": {
+      "title": "7. Legislație aplicabilă",
+      "p1": "Acești termeni și condiții sunt guvernați de legislația română și orice litigiu legat de acești termeni va fi soluționat în instanțele competente din România."
+    },
+    "cap8": {
+      "title": "Contact",
+      "p1": "Pentru întrebări sau preocupări legate de acești termeni și condiții, te rog să mă contactezi prin intermediul formularului de contact.",
+      "p2": "Mulțumesc pentru vizitarea site-ului meu! 🙏🏻"
+    }
   },
   "privacy": {
-    "title": "Politică de confidențialitate"
+    "title": "Politică de confidențialitate",
+    "last-update": "Ultima actualizare: 6 decembrie 2023",
+    "welcome": "Bine ai venit pe site-ul meu!",
+    "cap1": {
+      "title": "1. Informații colectate",
+      "p1": "Atunci când utilizezi formularul de contact de pe site-ul meu, îți solicit să furnizezi următoarele informații: prenume, nume, adresă de email, număr de telefon, mesaj.",
+      "p2": "Aceste informații sunt colectate exclusiv în scopul oferirii de servicii sau răspunsului la întrebările și solicitările tale.",
+      "p3": "Pe măsură ce navighezi pe site-ul meu, pot fi colectate automat informații non-personale, cum ar fi adresele IP, tipul de browser, paginile vizitate și altele, în scopuri statistice și de îmbunătățire a experienței utilizatorilor."
+    },
+    "cap2": {
+      "title": "2. Scopuri și utilizarea informațiilor",
+      "p1": "Informațiile personale colectate sunt utilizate în principal în următoarele scopuri:",
+      "p2": " - Pentru a răspunde la solicitările și întrebările tale",
+      "p3": " - Pentru a furniza serviciile solicitate",
+      "p4": " - Pentru a te informa despre modificări sau actualizări ale serviciilor mele",
+      "p5": " - În scopuri statistice și de analiză pentru îmbunătățirea site-ului meu"
+    },
+    "cap3": {
+      "title": "3. Păstrarea și securitatea informațiilor",
+      "p1": "Informațiile tale personale vor fi păstrate doar atât cât este necesar pentru scopurile specificate în această politică. Mă angajez să implementăm măsuri de securitate adecvate pentru a proteja informațiile împotriva accesului neautorizat sau a utilizării incorecte."
+    },
+    "cap4": {
+      "title": "4. Partajarea informațiilor",
+      "p1": "Nu voi partaja, vinde sau transfera informațiile tale personale terților fără consimțământul tău explicit, cu excepția cazurilor în care legea o cere."
+    },
+    "cap5": {
+      "title": "5. Drepturile tale",
+      "p1": "Ai dreptul să soliciți acces la informațiile tale personale, să le corectezi sau să le ștergi. Pentru orice solicitare în acest sens, te rog să mă contactezi prin intermediul formularului de contact."
+    },
+    "cap6": {
+      "title": "6. Modificări ale Politicii de Confidențialitate",
+      "p1": "Îmi rezerv dreptul de a modifica această Politică de Confidențialitate în orice moment. Orice modificări vor fi publicate pe această pagină, iar utilizarea continuă a site-ului după aceste modificări constituie acceptarea acestora."
+    },
+    "cap7": {
+      "title": "Contact",
+      "p1": "Pentru întrebări sau nelămuriri legate de această Politică de Confidențialitate, te rog să mă contactezi prin intermediul formularului de contact.",
+      "p2": "Îți mulțumesc pentru încrederea acordată! 😌"
+    }
   },
   "footer": { "vat-id": "CUI: {vatId}", "trade-reg-no": "Nr.reg.com.: {regNo}" },
   "not-found": { "title": "Eroare 404", "description": "Pagina pe care o cauți nu există." }

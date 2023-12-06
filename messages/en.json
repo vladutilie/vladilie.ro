@@ -181,10 +181,83 @@
     "age": "Age: {age}"
   },
   "terms": {
-    "title": "Terms and conditions"
+    "title": "Terms and conditions",
+    "last-update": "Last updated: December 6, 2023",
+    "welcome": "Welcome to my website!",
+    "cap1": {
+      "title": "1. Acceptance of Terms",
+      "p1": "By accessing or using this website, you agree to comply with and be bound by all the terms and conditions outlined below. If you do not agree with these terms, please refrain from using this site."
+    },
+    "cap2": {
+      "title": "2. Copyright",
+      "p1": "The content of this website, including but not limited to text, images, graphics, video, and other materials, is protected by copyright and other intellectual property laws.",
+      "p2": "Excluded from these terms are those resources whose source is expressly stated."
+    },
+    "cap3": {
+      "title": "3. Use of the site",
+      "p1": "The use of this site is permitted for lawful purposes and in accordance with these terms. You may not use this site for any illegal or prohibited purposes under applicable laws and regulations."
+    },
+    "cap4": {
+      "title": "4. Personal information",
+      "p1": "By using this site, you agree to the collection and use of personal information as outlined in the Privacy Policy of the site."
+    },
+    "cap5": {
+      "title": "5. Limitation of liability",
+      "p1": "The site is provided \"as is\", without any warranties, whether expressed or implied. I do not assume any liability for losses or damages resulting from the use or inability to use this site."
+    },
+    "cap6": {
+      "title": "6. Changes to Terms and Conditions",
+      "p1": "I reserve the right to modify these terms and conditions at any time without prior notice. It is your responsibility to periodically review these changes."
+    },
+    "cap7": {
+      "title": "7. Applicable law",
+      "p1": "These terms and conditions are governed by the laws of Romania, and any dispute related to these terms will be resolved in the competent courts of Romania."
+    },
+    "cap8": {
+      "title": "Contact",
+      "p1": "For questions or concerns about these terms and conditions, please contact me via the contact form.",
+      "p2": "Thanks for visiting my site! 🙏🏻"
+    }
   },
   "privacy": {
-    "title": "Privacy policy"
+    "title": "Privacy policy",
+    "last-update": "Last updated: December 6, 2023",
+    "welcome": "Welcome to my website!",
+    "cap1": {
+      "title": "1. Information collected",
+      "p1": "When you use the contact form on my website, I request the following information: first name, last name, email address, phone number, message.",
+      "p2": "These details are collected solely for the purpose of providing services or responding to your inquiries and requests.",
+      "p3": "As you navigate my website, certain non-personal information may be collected automatically, including IP addresses, browser type, pages visited, and others, for statistical purposes and to enhance user experience."
+    },
+    "cap2": {
+      "title": "2. Purposes and use of information",
+      "p1": "The personally identifiable information collected is primarily used for the following purposes:",
+      "p2": " - To respond to your inquiries and questions",
+      "p3": " - To provide the requested services",
+      "p4": " - To inform you about changes or updates to my services",
+      "p5": " - For statistical and analytical purposes to improve my website"
+    },
+    "cap3": {
+      "title": "3. Retention and security of information",
+      "p1": "Your personal information will be retained only as long as necessary for the purposes specified in this policy. I am committed to implementing adequate security measures to protect information against unauthorized access or misuse."
+    },
+    "cap4": {
+      "title": "4. Sharing of information",
+      "p1": "I will not share, sell, or transfer your personal information to third parties without your explicit consent, except where required by law."
+    },
+    "cap5": {
+      "title": "5. Your rights",
+      "p1": "You have the right to request access to, correct or delete your personal information. For any request in this regard, please contact me through the contact form."
+    },
+    "cap6": {
+      "title": "6. Changes to the Privacy Policy",
+      "p1": "I reserve the right to modify this Privacy Policy at any time. Any changes will be posted on this page, and your continued use of the site after these changes constitutes acceptance."
+    },
+    "cap7": {
+      "title": "Contact",
+      "p1": "For questions or concerns about this Privacy Policy, please contact me via the contact form.",
+      "p2": "Thank you for placing your trust in me! 😌"
+    }
   },
   "footer": { "vat-id": "VAT ID: {vatId}", "trade-reg-no": "Tr.reg.no: {regNo}" },
   "not-found": { "title": "404 Error", "description": "The page you are looking for does not exist." }
