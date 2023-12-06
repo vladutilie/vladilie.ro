@@ -3944,14 +3944,14 @@ next-contentlayer@^0.3.4:
     "@contentlayer/core" "0.3.4"
     "@contentlayer/utils" "0.3.4"
 
-next-intl@^3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-3.2.2.tgz#ead1f4b3f47fad8c8aa87d76d6bd5d0f63155a89"
-  integrity sha512-OM5TRccppaDCVMBVxsquQj0BtV011dDdTyX0bDahd4Y00Q+/fSLG13NU59/T1Qo5WQcs/71EpwdnLJ1N0hCC1w==
+next-intl@^3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-3.2.5.tgz#18a2f44e1e15f8b2f4d2ab2eee854ca7d5acde6f"
+  integrity sha512-/rbGKtn//H8rJZYCnr13ku87RNAh6FIUCR43QU40OHRUqVYLZYzhuyI5ij8oqKWO7EZKpCtmPhldbSsN1AJaSQ==
   dependencies:
     "@formatjs/intl-localematcher" "^0.2.32"
     negotiator "^0.6.3"
-    use-intl "^3.2.2"
+    use-intl "^3.2.5"
 
 next-seo@^6.4.0:
   version "6.4.0"
@@ -4311,10 +4311,10 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
-prettier-plugin-tailwindcss@^0.5.7:
-  version "0.5.7"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.5.7.tgz#d05dc42c6f2167e3bf2c20e9f71a1fff4232b5d9"
-  integrity sha512-4v6uESAgwCni6YF6DwJlRaDjg9Z+al5zM4JfngcazMy4WEf/XkPS5TEQjbD+DZ5iNuG6RrKQLa/HuX2SYzC3kQ==
+prettier-plugin-tailwindcss@^0.5.9:
+  version "0.5.9"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.5.9.tgz#fdc2bd95a02b64702ebd2d6c7ddd300198de3cc6"
+  integrity sha512-9x3t1s2Cjbut2QiP+O0mDqV3gLXTe2CgRlQDgucopVkUdw26sQi53p/q4qvGxMLBDfk/dcTV57Aa/zYwz9l8Ew==
 
 prettier@^3.1.0:
   version "3.1.0"
@@ -5420,10 +5420,10 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-use-intl@^3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/use-intl/-/use-intl-3.2.2.tgz#b3a098494e83e3ec7bdfddadc1df75fa030bdf55"
-  integrity sha512-dF5Ptc7ESwrDRGCulKTMLnHS19YHtagp1rNWsYgvgsvdObWhmavvIhj3R+f2F1it5p5WenLnKrSFC06sLnbdzg==
+use-intl@^3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/use-intl/-/use-intl-3.2.5.tgz#856a49396c2bb88e752cd7e21c5434013817c52b"
+  integrity sha512-H4LTOR9iN8pSFuczc4AilqCKvr5c9EFtZmUX7eCnVqLT4a0bOBd0d2FVCH8IVv529V/Zo85IidxNjuxdFUDwXQ==
   dependencies:
     "@formatjs/ecma402-abstract" "^1.11.4"
     intl-messageformat "^9.3.18"
