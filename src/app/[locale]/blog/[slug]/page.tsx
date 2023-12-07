@@ -1,8 +1,44 @@
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { getTranslations } from 'next-intl/server';
 import { allPosts, type Post } from 'contentlayer/generated';
+import { getPathname } from '@/navigation';
 
 import { PostHeader } from '../../ui/post-header';
-import { PostContent } from '@/app/[locale]/ui/post-content';
+import { PostContent } from '../../ui/post-content';
+
+export async function generateMetadata({
+  params: { locale, slug }
+}: {
+  params: { locale: 'en' | 'ro'; slug: string };
+}): Promise<Metadata> {
+  const post = allPosts.find((p: Post) => p.slug === slug && p.locale === locale);
+  const t = await getTranslations('projects');
+  const commonFields = { title: `${post?.title} | ${t('title')}`, description: post?.description };
+
+  return {
+    ...commonFields,
+    keywords: post?.keywords,
+    openGraph: {
+      ...commonFields,
+      url: `${getPathname({ href: '/blog', locale })}/${slug}`,
+      siteName: process.env.NEXT_PUBLIC_SITE_NAME,
+      images: [
+        { url: post?.featuredImage!, alt: post?.title },
+        { url: '/images/social-card.png', width: 1200, height: 630, alt: 'Social card' }
+      ],
+      locale,
+      type: 'website'
+    },
+    twitter: {
+      ...commonFields,
+      card: 'summary_large_image',
+      creator: '@vladilie94',
+      creatorId: '66733656',
+      images: [post?.featuredImage!, '/images/social-card.png']
+    }
+  };
+}
 
 export default function Post({ params: { slug, locale } }: { params: { slug: string; locale: string } }) {
   const post = allPosts.find((p: Post) => p.slug === slug && p.locale === locale);

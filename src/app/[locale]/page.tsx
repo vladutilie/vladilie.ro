@@ -1,11 +1,39 @@
+import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+import { getPathname } from '@/navigation';
+
 import { Hero } from './ui/hero';
 import { About } from './ui/about';
 import { Education } from './ui/education/';
 import { Experience } from './ui/experience';
 import { Projects } from './ui/projects';
 import { SoftwareLocalization } from './ui/sw-l10n';
-
 import prisma from '@/utils/prisma';
+
+export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
+  const t = await getTranslations('homepage.metadata');
+  const commonFields = { title: `${process.env.NEXT_PUBLIC_SITE_NAME} | ${t('title')}`, description: t('description') };
+
+  return {
+    ...commonFields,
+    keywords: t('keywords'),
+    openGraph: {
+      ...commonFields,
+      url: getPathname({ href: '/', locale }),
+      siteName: process.env.NEXT_PUBLIC_SITE_NAME,
+      images: [{ url: '/images/social-card.png', width: 1200, height: 630 }],
+      locale,
+      type: 'website'
+    },
+    twitter: {
+      ...commonFields,
+      card: 'summary_large_image',
+      creator: '@vladilie94',
+      creatorId: '66733656',
+      images: ['/images/social-card.png']
+    }
+  };
+}
 
 const getLocation = async (): Promise<string> => {
   const location = await prisma.location.findFirst({ orderBy: { lastVisitAt: 'desc' }, take: 1 });

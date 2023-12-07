@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 
@@ -7,14 +8,20 @@ import { ThemeProvider } from './ui/theme-provider';
 import { Navbar } from './ui/navbar';
 import { Footer } from './ui/footer';
 
-export const metadata = {
-  title: process.env.NEXT_PUBLIC_SITE_NAME,
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/favicon.ico'
-  }
-};
+export function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Metadata {
+  const title = { template: `%s | ${process.env.NEXT_PUBLIC_SITE_NAME}`, default: process.env.NEXT_PUBLIC_SITE_NAME! };
+
+  return {
+    title,
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL!),
+    alternates: { canonical: 'ro' === locale ? '/ro' : '/', languages: { 'en-US': '/', 'ro-RO': '/ro' } },
+    verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SEARCH_CONSOLE_ID },
+
+    // Keep the title template for child pages format.
+    openGraph: { title },
+    twitter: { title }
+  };
+}
 
 export default function LocaleLayout({
   children,
