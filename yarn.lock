@@ -1042,10 +1042,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.15.tgz#20ae1ec80c57ee844b469f968a1cd511d4088b29"
   integrity sha512-XnjpaI8Bgc3eBag2Aw4t2Uj/49lLBSStHWfqKvIuXD7FIrZyMLWp8KuAFHAqxMZYTF9l08N1ctUn9YNybZJVmQ==
 
-"@types/node@^20.10.3":
-  version "20.10.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.10.3.tgz#4900adcc7fc189d5af5bb41da8f543cea6962030"
-  integrity sha512-XJavIpZqiXID5Yxnxv3RUDKTN5b81ddNC3ecsA0SoFXz/QU8OGBwZGMomiq0zw+uuqbL/krztv/DINAQ/EV4gg==
+"@types/node@^20.10.4":
+  version "20.10.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.10.4.tgz#b246fd84d55d5b1b71bf51f964bd514409347198"
+  integrity sha512-D08YG6rr8X90YB56tSIuBaddy/UXAA9RKJoFvrsnogAum/0pmjkgi4+2nx96A330FmioegBWmEYQ+syqCFaveg==
   dependencies:
     undici-types "~5.26.4"
 
@@ -3968,14 +3968,14 @@ next-contentlayer@^0.3.4:
     "@contentlayer/core" "0.3.4"
     "@contentlayer/utils" "0.3.4"
 
-next-intl@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-3.3.0.tgz#97c82b64a560a3228b785d20d732ced0f4fe9e93"
-  integrity sha512-PFPlR+lyw+ap8Rlx/OjU1mDnUmyFh/ZkCyU90uqqK6bz1+fodoBHVRuBzL1XQtbg7LxNepEfTsAZXi8yWg3nCw==
+next-intl@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-3.3.1.tgz#ec8352e8687bfc9352cb89d7739f2b00e4136d82"
+  integrity sha512-/NXy0txAZihat2dkuTrrLWgQUkuJTIu7up1R+xXZbCj4mJX+1OkoRnt/BhhszqcOW6CkmfYfkAG8q7LoI5cOUw==
   dependencies:
     "@formatjs/intl-localematcher" "^0.2.32"
     negotiator "^0.6.3"
-    use-intl "^3.3.0"
+    use-intl "^3.3.1"
 
 next-seo@^6.4.0:
   version "6.4.0"
@@ -5444,10 +5444,10 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-use-intl@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/use-intl/-/use-intl-3.3.0.tgz#033381b5d6a362ef3086542c8d0cfadf90f90cb7"
-  integrity sha512-E56tPDC3CKj1Bu+zIa5DiPqv9734OIqht80RWew2cBeuuxSCvuI2b9hMi/o4vDcKNEA5BXnZMsxdsgmNWAR3UA==
+use-intl@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/use-intl/-/use-intl-3.3.1.tgz#b250c54054f77560c796c1cb36d6956d826b767b"
+  integrity sha512-BAFmkbUvtU/9AnAM5fzc/mqz+KIsWGNJ1bJ9bxYB5UHvlxU5qTamYgPa8ZO94V7tOpAFFSskL3sPKKlknZLXlA==
   dependencies:
     "@formatjs/ecma402-abstract" "^1.11.4"
     intl-messageformat "^9.3.18"
