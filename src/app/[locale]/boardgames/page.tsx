@@ -3,8 +3,8 @@ import { Boardgame, BoardgameState } from '@prisma/client';
 import { getTranslations } from 'next-intl/server';
 import { getPathname } from '@/navigation';
 
-import prisma from '@/utils/prisma';
-import { readData } from '@/utils/readData';
+import prisma from '@/lib/prisma';
+import { readData } from '@/lib/readData';
 import { Categories } from './ui/categories';
 import { List } from './ui/list';
 

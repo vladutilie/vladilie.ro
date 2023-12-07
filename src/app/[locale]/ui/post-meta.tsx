@@ -6,7 +6,7 @@ import { format, register } from 'timeago.js';
 import roFunc from 'timeago.js/lib/lang/ro';
 import enFunc from 'timeago.js/lib/lang/en_US';
 
-import { numberFormat } from 'src/utils/numberFormat';
+import { numberFormat } from '@/lib/numberFormat';
 import { usePollIfInView } from '@/hooks/usePollIfInView';
 import { usePostViews } from '@/hooks/usePostViews';
 import { LoadingDots } from './loading-dots';

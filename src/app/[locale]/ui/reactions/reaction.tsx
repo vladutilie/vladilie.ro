@@ -1,6 +1,6 @@
 'use client';
 
-import { numberFormat } from 'src/utils/numberFormat';
+import { numberFormat } from '@/lib/numberFormat';
 import type { Reaction as ReactionT } from '@/hooks/usePostReactions';
 import { LoadingDots } from '../loading-dots';
 

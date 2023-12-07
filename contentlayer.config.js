@@ -2,7 +2,7 @@ import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import rehypePrettyCode from 'rehype-pretty-code';
 import readingTime from 'reading-time';
 
-import { rehypePrettyCodeOptions } from './src/utils/rehypePrettyCode';
+import { rehypeOptions } from './src/lib/rehypeOptions';
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -47,5 +47,5 @@ export const Project = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Post, Project],
-  mdx: { rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]] }
+  mdx: { rehypePlugins: [[rehypePrettyCode, rehypeOptions]] }
 });

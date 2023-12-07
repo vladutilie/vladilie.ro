@@ -1,7 +1,7 @@
 import { number, object, string } from 'yup';
 
 import { Inputs } from './inputs.type';
-import { ContactServices } from '@/utils/constants';
+import { ContactServices } from '@/lib/constants';
 
 export const ContactSchema = object<Inputs>({
   firstName: string().trim().min(4).max(20).required(),

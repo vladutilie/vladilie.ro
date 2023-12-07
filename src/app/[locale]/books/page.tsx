@@ -3,8 +3,8 @@ import { type Book as BookT, BookState } from '@prisma/client';
 import { getTranslations } from 'next-intl/server';
 import { getPathname } from '@/navigation';
 
-import prisma from '@/utils/prisma';
-import { readData } from '@/utils/readData';
+import prisma from '@/lib/prisma';
+import { readData } from '@/lib/readData';
 import { Book } from './ui/book';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {

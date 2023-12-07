@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { ContactServices } from '@/utils/constants';
+import { ContactServices } from '@/lib/constants';
 import { sendMail } from './action';
 
 type Inputs = {

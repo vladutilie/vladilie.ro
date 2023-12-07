@@ -8,7 +8,7 @@ import { Education } from './ui/education/';
 import { Experience } from './ui/experience';
 import { Projects } from './ui/projects';
 import { SoftwareLocalization } from './ui/sw-l10n';
-import prisma from '@/utils/prisma';
+import prisma from '@/lib/prisma';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
   const t = await getTranslations('homepage.metadata');

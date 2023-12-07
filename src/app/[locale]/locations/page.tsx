@@ -6,7 +6,7 @@ import roFunc from 'timeago.js/lib/lang/ro';
 import enFunc from 'timeago.js/lib/lang/en_US';
 import { getPathname } from '@/navigation';
 
-import prisma from '@/utils/prisma';
+import prisma from '@/lib/prisma';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
   const t = await getTranslations('locations');

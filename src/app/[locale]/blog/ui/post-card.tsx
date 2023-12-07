@@ -7,7 +7,7 @@ import { type Post as PostT } from 'contentlayer/generated';
 
 import { LoadingDots } from '../../ui/loading-dots';
 import { usePostViews } from '@/hooks/usePostViews';
-import { numberFormat } from '@/utils/numberFormat';
+import { numberFormat } from '@/lib/numberFormat';
 
 export const PostCard: React.FC<PostT> = ({ title, description, date, slug, readingTime }) => {
   const t = useTranslations('blog');
