@@ -8,4 +8,4 @@ export default createMiddleware({
   localePrefix: 'as-needed'
 });
 
-export const config = { matcher: ['/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml).*)'] };
+export const config = { matcher: ['/((?!api|_next/static|_next/image|images/*|favicon.ico|sitemap.xml).*)'] };
