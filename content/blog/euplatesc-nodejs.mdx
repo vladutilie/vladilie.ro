@@ -1,24 +1,26 @@
 ---
-title: 'Bibliotecă EuPlătesc pentru Node.js (Romanian)'
+title: 'Bibliotecă EuPlătesc pentru Node.js'
+locale: ro
+featuredImage: https://gcdahtftlmucxetygvev.supabase.co/storage/v1/object/public/vladilie.ro-media/euplatesc-nodejs.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAIAAAC+zks0AAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAvElEQVR4nGOICA+aO3f2kkULb924efLYyVOnzty8cefchYtPHz95+vgJg6qKopiogLSklIWp2Y4tO/bvP3jzxp31m7Zcv3b91o2bDIGBgVFRUeXl5VOmTGlsbGxrrL9+7fr8+fNXrlz5//9/kLS9vf2+ffv+w8CJEydyc3O3bNly4sQJhvb6mhvXrsDlINIvX76cPXvBmTMXGc6fPL564SI06RMnTkANP7h3N5r09WvXV65c+eXLl////wMArFCaHaOpA1kAAAAASUVORK5CYII=
+description: Cum am dezvoltat un modul pentru Node.js al unui serviciu de plată online cu o documentație și un API slab scrise. 👎
 type: Post
-description: Cum am dezvoltat un modul pentru Node.js al unui serviciu de plată online cu o documentație și un API slab făcute.
+keywords: [euplatesc,nodejs,integrare,javascript,api,gateway]
 date: October 6, 2022 20:00:00
 ---
 
-Nu de puține ori mi-a fost dat să integrez API-ul de la serviciul de plăți online <a href="https://euplatesc.ro" target="_blank">EuPlătesc</a> în proiectele pe care le-am întreprins.
-Bine, trebuie să recunosc, EuPlătesc a fost printre primele servicii pe care le-am recomandat clienților atunci când le-am propus astfel de soluții.
-A fost ca o plăcere vinovată din partea mea.
-Dar asta doar pentru că atât mi-am bătut capul când am făcut prima integrare a API-ului de la EuPlătesc, încât m-am convins că următoarea integrare o să fie simplă.
-Și așa am tot continuat să recomand acest serviciu viitorilor clienți.
+Nu de puține ori mi-a fost dat să integrez API-ul de la serviciul de plăți online <a href="https://euplatesc.ro" target="_blank" className="after:content-['_↗']">EuPlătesc</a> în proiectele pe care le-am întreprins.
+De obicei, în rândul proiectelor pentru clienții din România, EuPlătesc a fost printre primele servicii pe care le-am recomandat clienților atunci când le-am propus astfel de soluții.
+Și așa am tot cochetat cu API-ul lor, până când am creat această bibliotecă pentru Node.js pentru a-mi ușura mie munca, în primul rând, și apoi pentru a oferi înapoi un plus valoare, sper eu, comunității de programatori din România.
 
 ## Intro
 
 Pentru cei ce nu știu, documentația și API-ul în sine de la EuPlătesc nu respectă vreun standard.
-Fără a fi rău, din păcate par a fi scrise de un elev de liceu care își dă atestatul la informatică.
-Dar să trecem peste asta, acum există biblioteca `euplatesc` pentru Node.js publicată pe npmjs.com și pe Github Packages, nu mai contează ce se află în spatele ei.
+Fără a fi rău, atât documentația cât și API-ul în sine, din păcate, par să fi fost scrise de un elev de liceu care și-a dat atestatul la informatică.
+Dar să trecem peste asta, tot răul spre bine, acum există biblioteca `euplatesc` pentru Node.js publicată pe <a href="https://www.npmjs.com/package/euplatesc" taget="_blank">npmjs.com</a> și pe <a href="https://github.com/vladutilie/euplatesc/pkgs/npm/euplatesc" target="_blank">Github Packages</a> 🎉.
 
-Astfel, „după lupte seculare, care au durat aproape treizeci de ani”, am reușit să implementez în bibliotecă, API-ul EuPlătesc în întregime și este și documentat pe măsură.
-Bineînțeles este într-o fază beta și sunt așteptate cu drag și câteva teste și eventual raportări de probleme din partea publicului.
+Astfel, „după lupte seculare, care au durat aproape...”, am reușit să implementez în bibliotecă API-ul EuPlătesc în întregime și este și documentată pe măsură.
+Bineînțeles sunt așteptate cu drag și câteva teste și eventual raportări de probleme din partea celor care o folosesc.
 
 ## Generare legătură de inițiere de plată recurentă
 
@@ -69,8 +71,10 @@ Asta înseamnă că nu am neapărat nevoie de `merchantId` și `secretKey` reale
 
 Mai departe voi defini o constantă de parametri pe care o voi transmite mai departe metodei de generare legătură de plată:
 
-```js showLineNumbers title="index.js" {8-11}
+```js showLineNumbers title="index.js" {9-12}
 const date = new Date();
+const nextYear = new Date(date.setFullYear(date.getFullYear() + 1));
+
 const data = {
   amount: 1,
   currency: 'RON',
@@ -79,17 +83,14 @@ const data = {
   orderDescription: 'Campanie de donatii pentru BookTruck',
   frequency: {
     days: 30,
-    expiresAt: new Date(date.setFullYear(date.getFullYear() + 1))
+    expiresAt: nextYear
   }
 };
 ```
 
-De notat faptul că această plată va fi una recurentă, automată la 30 de zile până în anul viitor când va expira, așa cum am setat în liniile 8-11.
+De notat faptul că această plată va fi una recurentă, automată la 30 de zile până în anul viitor când va expira, așa cum am setat în liniile 9-12.
 
-<span>
-  🎁 Glumesc, dar algoritmii de calculare a semnăturii nu se înțeleg cu diacriticele 🤷🏻‍♂️ și vei vedea în locul paginii de
-  plată un mesaj de genul:
-</span>
+🎁 Glumesc, dar algoritmii de calculare a semnăturii nu se înțeleg cu diacriticele 🤷🏻‍♂️ și vei vedea în locul paginii de plată un mesaj de genul:
 
 ```txt
 Incorrect signature.
@@ -119,7 +120,7 @@ Astfel am generat o legătură care va conduce utilizatorul pe pagina de plată 
 
 ### Tot codul
 
-Cuprins în 26 de linii:
+Cuprins în 28 de linii:
 
 ```js showLineNumbers title="index.js"
 const { EuPlatesc } = require('euplatesc');
@@ -131,6 +132,8 @@ const ep = new EuPlatesc({
 });
 
 const date = new Date();
+const nextYear = new Date(date.setFullYear(date.getFullYear() + 1));
+
 const data = {
   amount: 1,
   currency: 'RON',
@@ -138,7 +141,7 @@ const data = {
   orderDescription: 'Campanie de donatii pentru BookTruck',
   frequency: {
     days: 30,
-    expiresAt: new Date(date.setFullYear(date.getFullYear() + 1))
+    expiresAt: nextYear
   }
 };
 
@@ -153,5 +156,6 @@ try {
 ## Concluzii
 
 Prin dezvoltarea acestei biblioteci mi-am ușurat munca și tare sper că nu doar mie și de-acum în colo voi evita, în proiectele viitoare, toată nebunia de calcule de semnături, verificări de hash-uri, câmpuri care trebuie să vină neapărat după alte câmpuri într-un obiect, etc.
+Cunoscătorii știu despre ce vorbesc.
 
 Am luat în vizor și alte servicii care nu au dezvoltate biblioteci pentru Node.js și pe care mi-ar plăcea să le dezvolt. Aici intră LibraPay, Oblio, poate serviciile de curierat.
