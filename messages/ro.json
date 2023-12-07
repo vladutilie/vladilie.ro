@@ -1,5 +1,7 @@
 {
   "navbar": {
+    "go-to-homepage-al": "Mergi la prima pagină",
+    "burger-menu-al": "Meniu burger",
     "about": "Despre",
     "education": "Educație",
     "skills": "Abilități",
@@ -13,11 +15,18 @@
     "change-language-to": "Change language to {lang}"
   },
   "homepage": {
+    "metadata": {
+      "title": "Inginer software · Lucrez cu NodeJS, WordPress, Neo4j",
+      "description": "Construiesc soluții software dedicate cu JavaScript, WordPress, Neo4j, Tailwind CSS și multe alte platforme și tehnologii conexe.",
+      "keywords": "vlad,ilie,software,inginer,web developer,wordpress,nodejs,nextjs,tailwind,javascript"
+    },
     "hero": {
       "hello": "Salut, aici Vlad {emoji}",
       "about": "Sunt <strong>Inginer Software</strong> și locuiesc în România. Iubesc să jonglez cu tehnologiile și pun suflet în fiecare proiect pentru a obține tot ce este mai bun din el. <strong>Profesionist certificat <neo4j>Neo4j</neo4j></strong>, fan NextJS, entuziast al tehnologiilor JavaScript, nostalgic iubitor de <strong>WordPress</strong>, și întreținător al site-urilor web <strong><cpf>Cărțile pe Față</cpf></strong>. Îmi place și să călătoresc prin țară, de aceea acum mă aflu în <locations>{city}</locations>, iar mâine aș putea fi în altă parte.",
       "available": "Disponibil pentru proiecte noi",
-      "commits": "{count, plural, =0 {<commits>0</commits> comiteri} =1 {<commits>1</commits> comitere} few {<commits>#</commits> comiteri} other {<commits>#</commits> de comiteri}} în ultimele 7 zile"
+      "commits": "{count, plural, =0 {<commits>0</commits> comiteri} =1 {<commits>1</commits> comitere} few {<commits>#</commits> comiteri} other {<commits>#</commits> de comiteri}} în ultimele 7 zile",
+      "link-to-al": "Legătură către {socialNetwork}",
+      "neo4j-certificate": "Legătură către certificatul Neo4j"
     },
     "about": {
       "tag": "Despre mine",
@@ -79,11 +88,16 @@
     }
   },
   "locations": {
+    "metadata": { "keywords": "lucru de la distanță,locuri,românia,locație,istoric,cluj-napoca" },
     "title": "Istoric locații",
     "description": "Locuri în care am fost, din care am lucrat sau pe care le-am vizitat. Din decembrie 2022 🎁.",
     "visited": "{visitCounter, plural, =1 {Vizitat: o dată} few {Vizitat de: # ori} other {Vizitat de: # de ori}} · Ultima vizită: <lastVisit>{lastVisitAt}</lastVisit>"
   },
   "blog": {
+    "metadata": {
+      "description": "Articole despre pasiunile mele, hobby-uri și tehnologie.",
+      "keywords": "blog,articole,tehnologie,pasiune,hobby"
+    },
     "title": "Blog",
     "search-placeholder": "Tastează și caută...",
     "views": "{count, plural, =0 {0 vizualizări} =1 {o vizualizare} few {# vizualizări} other {# de vizualizări}}",
@@ -91,12 +105,16 @@
     "reading-time": "{minutes} min de citit"
   },
   "projects": {
+    "metadata": { "keywords": "proiecte,tehnologii,wordpress,nextjs,nodejs,neo4j,javascript,baze de date,dezvoltare" },
     "title": "Proiecte",
     "description": "Proiecte remarcabile pe care le-am implementat:",
     "no-projects": "Momentan nu sunt articole despre proiecte.  🤷🏻‍♂️",
     "reading-time": "{minutes} min de citit"
   },
   "contact": {
+    "metadata": {
+      "keywords": "contact,discută,proiect nou,servicii dezvoltare software,mentenanță,wordpress,javascript"
+    },
     "title": "Contact",
     "description": "Spune-mi mai multe despre proiectul tău și hai să pornim o discuție.",
     "form": {
@@ -121,12 +139,17 @@
     }
   },
   "colophon": {
+    "metadata": {
+      "description": "Despre cum a fost construit site-ul, stiva de tehnologii folosite și codul sursă.",
+      "keywords": "colofon,design,cod sursă site,nextjs,planetscale,mdx,tailwind,typescript,vercel"
+    },
     "title": "Colofon",
     "p1": "Designul site-ului meu este inspirat de <url>Sagar Shah</url>.",
     "p2": "Stiva tehnologică folosită este formată din <nextjs>NextJS</nextjs>, <planet>PlanetScale</planet>, <mdx>MDX</mdx>, <tailwind>Tailwind CSS</tailwind> și <typescript>TypeScript</typescript>, lansat pe <vercel>Vercel</vercel>.",
     "p3": "Codul sursă este disponibil pe <new>GitHub</new>. Poți găsi versiunea veche pe <old>această ramură</old>."
   },
   "uses": {
+    "metadata": { "keywords": "mediu de lucru,programe software,lucru la distanță,birou,echipament,instrumente" },
     "title": "Utilizări",
     "description": "Nu pot face magie de unul singur, dar instrumentele software potrivite în mâinile potrivite fac o treabă grozavă.",
     "environment": {
@@ -169,6 +192,7 @@
     }
   },
   "books": {
+    "metadata": { "keywords": "cărți,listă cărți,lectură,ce să citești,recomandări cărți" },
     "title": "Cărți",
     "description": "O parte din colecția mea de cărți. O călătorie prin cunoștințele și poveștile vieții mele.",
     "currently-reading": "Acum citesc 📖",
@@ -176,6 +200,7 @@
     "wishlist": "Vreau să citesc 🧞‍♂️"
   },
   "boardgames": {
+    "metadata": { "keywords": "jocuri de societate,azul,pandemic,ticket to ride,zestrea" },
     "title": "Jocuri de societate",
     "description": "Dincolo de a învăța și de a lucra, îmi asigur și experiențe distractive. Iată jocurile de societate pe care le joc cu prietenii și cei dragi.",
     "all-categories": "Toate",
@@ -184,6 +209,10 @@
     "age": "Vârstă: {age}"
   },
   "terms": {
+    "metadata": {
+      "description": "Despre utilizarea site-ului, informațiile personale, limitări de răspundere și legislația aplicabilă.",
+      "keywords": "termeni,condiții,utilizare site,informații personale,limitări de răspundere,legislație aplicabilă"
+    },
     "title": "Termeni și condiții",
     "last-update": "Ultima actualizare: 6 decembrie 2023",
     "welcome": "Bine ai venit pe site-ul meu!",
@@ -223,6 +252,10 @@
     }
   },
   "privacy": {
+    "metadata": {
+      "description": "Despre informațiile colectate, utilizarea, securitatea, partajarea lor și drepturile tale.",
+      "keywords": "politică,confidențialitate,informații colectate,utilizare informații,securitate,drepturi utilizator"
+    },
     "title": "Politică de confidențialitate",
     "last-update": "Ultima actualizare: 6 decembrie 2023",
     "welcome": "Bine ai venit pe site-ul meu!",
@@ -262,6 +295,11 @@
       "p2": "Îți mulțumesc pentru încrederea acordată! 😌"
     }
   },
-  "footer": { "vat-id": "CUI: {vatId}", "trade-reg-no": "Nr.reg.com.: {regNo}" },
+  "footer": {
+    "vat-id": "CUI: {vatId}",
+    "trade-reg-no": "Nr.reg.com.: {regNo}",
+    "sal-al": "Detalii Soluționarea alternativă a litigiilor",
+    "sol-al": "Soluționarea online a litigiilor"
+  },
   "not-found": { "title": "Eroare 404", "description": "Pagina pe care o cauți nu există." }
 }

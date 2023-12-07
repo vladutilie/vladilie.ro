@@ -1,5 +1,7 @@
 {
   "navbar": {
+    "go-to-homepage-al": "Go to homepage",
+    "burger-menu-al": "Burger menu",
     "about": "About",
     "education": "Education",
     "skills": "Skills",
@@ -13,11 +15,18 @@
     "change-language-to": "Schimbă limba în {lang}"
   },
   "homepage": {
+    "metadata": {
+      "title": "Software Engineer · Work with NodeJS, WordPress, Neo4j",
+      "description": "I build dedicated software solutions with JavaScript, WordPress, Neo4j, Tailwind CSS, and many other related platforms and technologies.",
+      "keywords": "vlad,ilie,software,engineer,web developer,wordpress,nodejs,nextjs,tailwind,javascript"
+    },
     "hero": {
       "hello": "Hi there, Vlad here {emoji}",
       "about": "I'm a <strong>Software Engineer</strong> based in Romania, love to juggle with technologies and put my soul into every project to get the best out of it. <strong><neo4j>Neo4j</neo4j> Certified Professional</strong>, NextJS fan, enthusiastic about JavaScript technologies, nostalgic <strong>WordPress</strong> lover, and the maintainer of <strong><cpf>Cărțile pe Față</cpf></strong> websites. I also like to travel around the country, so now I am in <locations>{city}</locations>, and tomorrow I might be somewhere else.",
       "available": "Available for new projects",
-      "commits": "{count, plural, =0 {<commits>0</commits> commits} =1 {<commits>1</commits> commit} other {<commits>#</commits> commits}} in the last 7 days"
+      "commits": "{count, plural, =0 {<commits>0</commits> commits} =1 {<commits>1</commits> commit} other {<commits>#</commits> commits}} in the last 7 days",
+      "link-to-al": "Link to {socialNetwork}",
+      "neo4j-certificate": "Link to the Neo4j Certificate"
     },
     "about": {
       "tag": "About me",
@@ -79,11 +88,16 @@
     }
   },
   "locations": {
+    "metadata": { "keywords": "remote work,places,romania,location,history,cluj-napoca" },
     "title": "Location history",
     "description": "Places I've been, worked from or visited. Since December 2022 🎁.",
     "visited": "Visited: {visitCounter, plural, =0 {0 times} =1 {1 time} other {# times}} · Last visit: <lastVisit>{lastVisitAt}</lastVisit>"
   },
   "blog": {
+    "metadata": {
+      "description": "Articles about my passions, hobbies and technology.",
+      "keywords": "blog,posts,technology,passion,hobby"
+    },
     "title": "Blog",
     "search-placeholder": "Type and search...",
     "views": "{count, plural, =0 {0 views} =1 {1 view} other {# views}}",
@@ -91,12 +105,16 @@
     "reading-time": "{minutes} min read"
   },
   "projects": {
+    "metadata": { "keywords": "projects,technologies,wordpress,nextjs,nodejs,neo4j,javascript,database,development" },
     "title": "Projects",
     "description": "Outstanding projects I have implemented:",
     "no-projects": "There are currently no articles about projects. 🤷🏻‍♂️",
     "reading-time": "{minutes} min read"
   },
   "contact": {
+    "metadata": {
+      "keywords": "contact,discuss,new project,software development services,maintenance,wordpress,javascript"
+    },
     "title": "Contact",
     "description": "Tell me more about your project and let's start a discussion.",
     "form": {
@@ -121,12 +139,17 @@
     }
   },
   "colophon": {
+    "metadata": {
+      "description": "About how the site was built, the technology stack used and the source code.",
+      "keywords": "colophon,design,site source code,nextjs,planetscale,mdx,tailwind,typescript,vercel"
+    },
     "title": "Colophon",
     "p1": "My website's design is inspired by <url>Sagar Shah</url>.",
     "p2": "The technology stack used consists of <nextjs>NextJS</nextjs>, <planet>PlanetScale</planet>, <mdx>MDX</mdx>, <tailwind>Tailwind CSS</tailwind>, and <typescript>TypeScript</typescript>, deployed on <vercel>Vercel</vercel>.",
     "p3": "The source code is open-sourced on <new>GitHub</new>. You can find the old version on <old>this branch</old>."
   },
   "uses": {
+    "metadata": { "keywords": "working environment,software,remote work,desk,equipment,tools" },
     "title": "Uses",
     "description": "I can't do magic by myself, but the right software tools in the right hands are doing a great job.",
     "environment": {
@@ -166,6 +189,7 @@
     }
   },
   "books": {
+    "metadata": { "keywords": "books,book list,reading,what to read,book recommendation" },
     "title": "Books",
     "description": "A part of my book collection. A journey through my knowledge and stories along life.",
     "currently-reading": "Curently reading 📖",
@@ -173,6 +197,7 @@
     "wishlist": "Wishlist 🧞‍♂️"
   },
   "boardgames": {
+    "metadata": { "keywords": "boardgames,azul,pandemic,ticket to ride,zestrea" },
     "title": "Boardgames",
     "description": "Beyond learning and working, I also ensure myself fun experiences. Here are the board games I play with friends and dear ones.",
     "all-categories": "All",
@@ -181,6 +206,10 @@
     "age": "Age: {age}"
   },
   "terms": {
+    "metadata": {
+      "description": "About site use, personal information, limitations of liability and applicable law.",
+      "keywords": "terms,conditions,site use,personal information,limitations of liability,applicable legislation"
+    },
     "title": "Terms and conditions",
     "last-update": "Last updated: December 6, 2023",
     "welcome": "Welcome to my website!",
@@ -220,6 +249,10 @@
     }
   },
   "privacy": {
+    "metadata": {
+      "description": "About information collected, its use, security, sharing and your rights.",
+      "keywords": "policy,privacy,information collected,information use,security,user rights"
+    },
     "title": "Privacy policy",
     "last-update": "Last updated: December 6, 2023",
     "welcome": "Welcome to my website!",
@@ -259,6 +292,11 @@
       "p2": "Thank you for placing your trust in me! 😌"
     }
   },
-  "footer": { "vat-id": "VAT ID: {vatId}", "trade-reg-no": "Tr.reg.no: {regNo}" },
+  "footer": {
+    "vat-id": "VAT ID: {vatId}",
+    "trade-reg-no": "Tr.reg.no: {regNo}",
+    "sal-al": "Details Alternative Dispute Resolution",
+    "sol-al": "Online dispute resolution"
+  },
   "not-found": { "title": "404 Error", "description": "The page you are looking for does not exist." }
 }
