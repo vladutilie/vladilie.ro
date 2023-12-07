@@ -15,7 +15,7 @@ export const Boardgame: React.FC<BoardgameT> = ({ age, blurData, duration, image
     >
       <div className='flex h-full flex-col gap-y-4 rounded-md bg-gray-50 dark:bg-slate-800'>
         <div className='flex h-12 items-center justify-between rounded-t-md bg-gray-200 px-2 dark:bg-slate-900'>
-          <h3 className='w-4/6 text-sm'>{name.length > 34 ? `${name.slice(0, 34)}...` : name}</h3>
+          <h4 className='w-4/6 text-sm text-gray-600'>{name.length > 34 ? `${name.slice(0, 34)}...` : name}</h4>
           <span className='w-2/6 text-right text-sm'>{t('age', { age })}</span>
         </div>
 
