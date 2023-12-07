@@ -14,6 +14,7 @@ export const Post = defineDocumentType(() => ({
     featuredImage: { type: 'string', required: true },
     blurDataImage: { type: 'string', required: true },
     description: { type: 'string', required: true },
+    keywords: { type: 'list', of: { type: 'string' }, required: true },
     date: { type: 'date', required: true }
   },
   computedFields: {
@@ -32,6 +33,7 @@ export const Project = defineDocumentType(() => ({
     featuredImage: { type: 'string', required: true },
     blurDataImage: { type: 'string', required: true },
     description: { type: 'string', required: true },
+    keywords: { type: 'list', of: { type: 'string' }, required: true },
     technologies: { type: 'list', of: { type: 'string' }, required: true },
     website: { type: 'string', required: false },
     date: { type: 'date', required: true }
