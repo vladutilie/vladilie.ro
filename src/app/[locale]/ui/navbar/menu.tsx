@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Link } from '@/navigation';
 
 import { Burger, Logo } from '../icons';
@@ -8,6 +9,7 @@ import { Links } from './links';
 
 export const Menu: React.FC = () => {
   const [displayMenu, setDisplayMenu] = useState(false);
+  const t = useTranslations('navbar');
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
@@ -44,7 +46,7 @@ export const Menu: React.FC = () => {
         }`}
       >
         <header className='flex items-center justify-between'>
-          <Link href='/'>
+          <Link href='/' aria-label={t('go-to-homepage-al')}>
             <Logo />
           </Link>
 
@@ -60,7 +62,7 @@ export const Menu: React.FC = () => {
         className={displayMenu ? 'fixed inset-0 z-30 h-screen w-full bg-gray-900/10 backdrop-blur-sm md:hidden' : ''}
       />
 
-      <button className='md:hidden' onClick={() => handleMenu()}>
+      <button className='md:hidden' onClick={() => handleMenu()} aria-label={t('burger-menu-al')}>
         <Burger />
       </button>
     </div>

@@ -6,8 +6,8 @@ import { Link } from '@/navigation';
 
 import { Logo } from './icons';
 import { Pages } from '@/lib/constants';
-import sol from '@/../public/images/anpc-sol.webp';
 import sal from '@/../public/images/anpc-sal.webp';
+import sol from '@/../public/images/anpc-sol.webp';
 
 export const Footer: React.FC = () => {
   const t = useTranslations();
@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <ul className='col-span-3 flex flex-col gap-y-1.5 md:col-span-1'>
+        <ul className='col-span-3 flex flex-col gap-y-2 md:col-span-1'>
           {Object.values(Pages).map((page) => (
             <li key={page}>
               <Link href={`/${page}`}>{t(`${page}.title`)}</Link>
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
           ))}
         </ul>
 
-        <ul className='col-span-3 flex flex-col gap-y-1.5 md:col-span-1'>
+        <ul className='col-span-3 flex flex-col gap-y-2 md:col-span-1'>
           <li>
             <Link href='/terms'>{t('terms.title')}</Link>
           </li>
@@ -46,9 +46,9 @@ export const Footer: React.FC = () => {
             </a>
           </li>
           <li>
-            <a href='https://anpc.ro/ce-este-sal' target='_blank'>
+            <a href='https://anpc.ro/ce-este-sal' target='_blank' aria-label={t('footer.sal-al')}>
               <Image
-                src={sol}
+                src={sal}
                 alt=''
                 placeholder='blur'
                 width={250}
@@ -58,9 +58,13 @@ export const Footer: React.FC = () => {
             </a>
           </li>
           <li>
-            <a href='https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO' target='_blank'>
+            <a
+              href='https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO'
+              target='_blank'
+              aria-label={t('footer.sol-al')}
+            >
               <Image
-                src={sal}
+                src={sol}
                 alt=''
                 placeholder='blur'
                 width={250}

@@ -1,14 +1,16 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-
+import { useTranslations } from 'next-intl';
 import { usePathname, Link } from '@/navigation';
+
 import { Logo } from '../icons';
 import { Menu } from './menu';
 
 export const Navbar: React.FC = () => {
   const [isBlurredBg, setIsBlurredBg] = useState(false);
   const pathname = usePathname();
+  const t = useTranslations('navbar');
 
   useEffect(() => {
     function handleScroll() {
@@ -32,7 +34,7 @@ export const Navbar: React.FC = () => {
       }`}
     >
       <div className='container mx-auto flex max-w-7xl items-center justify-between gap-x-8 p-4'>
-        <Link href='/'>
+        <Link href='/' aria-label={t('go-to-homepage-al')}>
           <Logo />
         </Link>
 

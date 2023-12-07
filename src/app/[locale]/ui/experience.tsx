@@ -64,14 +64,14 @@ export const Experience: React.FC = () => {
             key={name}
             href={url}
             target='_blank'
-            className='group flex flex-col items-center justify-end gap-y-2 text-sm text-gray-400'
+            className='group flex flex-col items-center justify-end gap-y-2 text-sm text-gray-600'
           >
             {isValidElement(image) ? (
               image
             ) : (
               <Image
                 src={image}
-                alt={name}
+                alt={`Logo ${name}`}
                 className='max-h-[64px] grayscale transition-transform group-hover:scale-110 group-hover:grayscale-0'
               />
             )}

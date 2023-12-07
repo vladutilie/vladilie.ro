@@ -20,7 +20,12 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
             {t.rich('about', {
               strong: (chunk: ReactNode): JSX.Element => <strong>{chunk}</strong>,
               neo4j: (chunk: ReactNode): JSX.Element => (
-                <a href={process.env.NEXT_PUBLIC_NEO4J} target='_blank' className="after:content-['_↗']">
+                <a
+                  href={process.env.NEXT_PUBLIC_NEO4J}
+                  target='_blank'
+                  className="after:content-['_↗']"
+                  title={t('neo4j-certificate')}
+                >
                   {chunk}
                 </a>
               ),
