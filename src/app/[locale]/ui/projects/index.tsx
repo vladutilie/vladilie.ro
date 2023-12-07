@@ -1,8 +1,8 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/navigation';
+import { allProjects } from 'contentlayer/generated';
 
 import { NavLinks } from '@/lib/constants';
-import { allProjects } from '@/../.contentlayer/generated';
 import { ProjectCard } from './project-card';
 
 export const Projects: React.FC = () => {
