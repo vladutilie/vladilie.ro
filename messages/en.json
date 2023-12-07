@@ -26,7 +26,8 @@
       "available": "Available for new projects",
       "commits": "{count, plural, =0 {<commits>0</commits> commits} =1 {<commits>1</commits> commit} other {<commits>#</commits> commits}} in the last 7 days",
       "link-to-al": "Link to {socialNetwork}",
-      "neo4j-certificate": "Link to the Neo4j Certificate"
+      "neo4j-certificate": "Neo4j Certificate",
+      "location-history": "Location history"
     },
     "about": {
       "tag": "About me",

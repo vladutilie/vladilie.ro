@@ -31,6 +31,7 @@ export const Education: React.FC = () => {
                     href='https://graphacademy.neo4j.com/certificates/d03b95acad8d8f00a601355f8b420dc8c8361fefad256e9a369549db7d35bec2.pdf'
                     target='_blank'
                     className="after:content-['_↗']"
+                    title={t('neo4j.title')}
                   >
                     {chunk}
                   </a>

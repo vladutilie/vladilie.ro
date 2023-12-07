@@ -30,12 +30,21 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
                 </a>
               ),
               cpf: (chunk: ReactNode) => (
-                <a href='https://cartilepefata.ro' target='_blank' className="after:content-['_↗']">
+                <a
+                  href='https://cartilepefata.ro'
+                  target='_blank'
+                  className="after:content-['_↗']"
+                  title='Cărțile pe Față'
+                >
                   {chunk}
                 </a>
               ),
               city: location,
-              locations: (chunk: ReactNode) => <Link href={'/locations'}>{chunk}</Link>
+              locations: (chunk: ReactNode) => (
+                <Link href={'/locations'} title={t('location-history')}>
+                  {chunk}
+                </Link>
+              )
             })}
           </p>
         </div>
@@ -73,7 +82,15 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
       </div>
 
       <div className='col-span-6 place-self-center md:col-span-2'>
-        <Image src={vlad} alt='Vlad Ilie' width={400} height={400} className='rounded-full' placeholder='blur' />
+        <Image
+          src={vlad}
+          alt='Vlad Ilie'
+          priority={true}
+          width={400}
+          height={400}
+          className='rounded-full'
+          placeholder='blur'
+        />
       </div>
     </section>
   );

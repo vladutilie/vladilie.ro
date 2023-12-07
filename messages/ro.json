@@ -26,7 +26,8 @@
       "available": "Disponibil pentru proiecte noi",
       "commits": "{count, plural, =0 {<commits>0</commits> comiteri} =1 {<commits>1</commits> comitere} few {<commits>#</commits> comiteri} other {<commits>#</commits> de comiteri}} în ultimele 7 zile",
       "link-to-al": "Legătură către {socialNetwork}",
-      "neo4j-certificate": "Legătură către certificatul Neo4j"
+      "neo4j-certificate": "Certificat Neo4j",
+      "location-history": "Istoric locații"
     },
     "about": {
       "tag": "Despre mine",
