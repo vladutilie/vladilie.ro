@@ -1,9 +1,9 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { format } from 'timeago.js';
+import { type Project as ProjectT } from 'contentlayer/generated';
 
 import { Link } from '@/navigation';
-import { type Project as ProjectT } from '@/../.contentlayer/generated';
 
 export const Project: React.FC<ProjectT> = ({
   title,

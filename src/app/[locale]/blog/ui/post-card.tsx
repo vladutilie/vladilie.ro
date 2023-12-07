@@ -3,13 +3,13 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { format } from 'timeago.js';
 import { Link } from '@/navigation';
+import { type Post as PostT } from 'contentlayer/generated';
 
 import { LoadingDots } from '../../ui/loading-dots';
-import { type Post as PostType } from '@/../../.contentlayer/generated';
 import { usePostViews } from '@/hooks/usePostViews';
 import { numberFormat } from '@/utils/numberFormat';
 
-export const PostCard: React.FC<PostType> = ({ title, description, date, slug, readingTime }) => {
+export const PostCard: React.FC<PostT> = ({ title, description, date, slug, readingTime }) => {
   const t = useTranslations('blog');
   const locale = useLocale();
   const { views, isLoading, isError } = usePostViews(slug);
