@@ -7,7 +7,7 @@ import { NavLinks } from '@/lib/constants';
 
 export const Education: React.FC = () => {
   const t = useTranslations('homepage.education');
-  const keys = ['neo4j', 'bachelor-degree', 'oracle', 'high-school'] as const;
+  const keys = ['neo4j', 'bachelor-degree', 'oracle' /*, 'high-school'*/] as const;
 
   return (
     <section id={NavLinks.Education} className='container mx-auto max-w-7xl px-4 py-16 md:py-20 2xl:py-24'>
