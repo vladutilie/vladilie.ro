@@ -18,7 +18,7 @@ import wptranslations from '@/../../public/images/sw-l10n/wp-translations.pro.pn
 
 const localizedSw: { name: string; logo: StaticImport; darkLogo?: StaticImport; url: string; i18nKey: string }[] = [
   { name: 'Cron-job.org', logo: cronjob, darkLogo: cronjobWhite, url: 'https://cron-job.org', i18nKey: 'cron-job' },
-  { name: 'Discourse', logo: discourse, darkLogo: discourseWhite, url: 'https://brew.sh', i18nKey: 'discourse' },
+  { name: 'Discourse', logo: discourse, darkLogo: discourseWhite, url: 'https://discourse.org', i18nKey: 'discourse' },
   { name: 'Homebrew', logo: homebrew, url: 'https://brew.sh', i18nKey: 'homebrew' },
   { name: 'Poedit', logo: poedit, url: 'https://poedit.net', i18nKey: 'poedit' },
   { name: 'tldraw', logo: tldraw, url: 'https://tldraw.com', i18nKey: 'tldraw' },
