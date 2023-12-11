@@ -1,29 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { ContactServices } from '@/lib/constants';
+import { Services } from './services.enum';
 import { sendMail } from './action';
-
-type Inputs = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  service: string;
-  budget?: number;
-  message: string;
-};
+import { Inputs } from './inputs.type';
 
 export const Form: React.FC = () => {
-  const t = useTranslations('contact.form');
   const [state, setState] = useState<{ isLoading: boolean; response: string; success: boolean }>({
     isLoading: false,
     response: '',
     success: false
   });
+  const t = useTranslations('contact.form');
 
   const {
     register,
@@ -32,7 +23,7 @@ export const Form: React.FC = () => {
     formState: { errors },
     reset
   } = useForm<Inputs>({
-    values: { firstName: '', lastName: '', email: '', phone: '', service: '', budget: 1, message: '' }
+    values: { firstName: '', lastName: '', email: '', phone: '', budget: 1, message: '' }
   });
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -118,22 +109,28 @@ export const Form: React.FC = () => {
             !watch('service') ? 'text-gray-500' : ''
           }`}
           id='service'
+          defaultValue=''
         >
           <option value='' hidden disabled>
             {t('choose-service')}
           </option>
-          <option value={ContactServices.CustomDevelopment}>{t('service-custom-developmemt')}</option>
-          <option value={ContactServices.LandingPage}>{t('service-landing-page')}</option>
-          <option value={ContactServices.Maintenance}>{t('service-maintenance')}</option>
-          <option value={ContactServices.JobOpportunity}>{t('service-job-opportunity')}</option>
+          <option value={Services.CustomDevelopment}>{t('service-custom-developmemt')}</option>
+          <option value={Services.LandingPage}>{t('service-landing-page')}</option>
+          <option value={Services.SwI18nL10n}>{t('sw-i18n-l10n')}</option>
+          <option value={Services.Maintenance}>{t('service-maintenance')}</option>
+          <option value={Services.JobOpportunity}>{t('service-job-opportunity')}</option>
+          <option value={Services.JustSayHi}>{t('just-say-hi')}</option>
         </select>
         {errors.service && <span className='text-xs text-red-400'>{t('required-field')}</span>}
       </div>
 
-      {watch('service') && ContactServices.JobOpportunity !== watch('service') ? (
+      {watch('service') && ![Services.JobOpportunity, Services.JustSayHi].includes(watch('service') as Services) ? (
         <div className='col-span-2 flex flex-col'>
           <label htmlFor='budget' className='text-sm text-gray-400'>
-            {t('budget')} <span className='font-semibold'>{t('budget-value', { value: watch('budget') })}</span>
+            {t.rich('budget', {
+              amount: watch('budget'),
+              strong: (chunk: ReactNode): JSX.Element => <span className='font-semibold'>{chunk}</span>
+            })}
           </label>
           <input
             {...register('budget', { required: true })}
