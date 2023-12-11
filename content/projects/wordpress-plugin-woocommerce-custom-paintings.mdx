@@ -1,76 +1,78 @@
 ---
-title: WordPress plugin for WooCommerce custom paintings
+title: WordPress plugin for WooCommerce custom products
 locale: en
 featuredImage: https://gcdahtftlmucxetygvev.supabase.co/storage/v1/object/public/vladilie.ro-media/wordpress-plugin-woocommerce-custom-paintings/tablouricolorate-poster.jpeg
-base64Image: asd
-description: How ReactJS fits into the WordPress frontend for custom painting products in WooCommerce.
-technologies: [wordpress, reactjs]
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAmElEQVR4nGO4dxcE3r179/v3z7t37509c/r///83r13dsmDuq1evGG7dvPn79+//SODz1697t23bNHfOm7dvGV69evX////fYACRvnXzRl9fz7efv948fcLw7t27////fwMDiPTVK5eK83J+/PmzrK2ZASIK0Q0x4Mr5c3lpKW/evn16+zYDssV/wOzlHW0qDAwWDAzGDAwAajSZZYaVdA0AAAAASUVORK5CYII=
+description: How ReactJS fits into the WordPress front end for WooCommerce custom products.
+technologies: [ReactJS, JavaScript, REST API, PHP, WordPress, WooCommerce]
+keywords: [wordpress plugin,woocommerce custom products,upload photo in woocommerce custom product]
 website: https://tablouricolorate.ro
 date: August 25, 2022 12:30:16
 ---
 
-- Project type: WordPress plugin
-- Technologies: ReactJS, MaterialUI, WP REST API
-- Client industry: Printed products
-- Client request: Allow the customers to customize their printings with personal photos.
-- Goal: Implement a solution with a friendly UI, a better UX, fast and letting the users choose all the options for customizing thei photos.
-
 ### About the client/business
 
-[TablouriColorate](https://tablouricolorate.ro) is a small business based in Târgu Mureș, Romania, with expertise in custom printing products.
-They print photos on canvas material and help their customers to create their custom products in the most innovative, simple, and fun way possible.
+    <a href="https://tablouricolorate.ro" target="_blank" rel="noopener">TablouriColorate</a> is a dynamic small business based in Târgu Mureș, Romania, specializing in custom printing products.
+With a focus on printing photos on canvas materials, they strive to assist customers in creating personalized products in an innovative, simple, and enjoyable manner.
 
 ### The problem
 
-After a migration from a custom e-commerce limited platform to WooCommerce, the main challenge was to create a way that the customers can create their custom products while having more options to choose and customize their photos like choosing where to upload the picture from (either device or social media), painting size, finishing, packaging, photo filters, and retouching services.
-The WooCommerce market was a bit limited in this direction, so the best solution was to implement a custom plugin that allows all of these.
+Following a migration from a limited custom e-commerce platform to WooCommerce, the primary challenge was enabling customers to customize their products with more options.
+These included selecting the source for photo uploads (device or social media: Facebook, Instagram), choosing painting size, finishing, packaging, applying photo filters, and opting for retouching services.
+All of these features had to have a pleasant and interactive user interface.
+Besides these, all these things should have had considerable speed and performance.
+Despite the benefits of WooCommerce, it posed limitations in this direction.
+The solution?
+Develop a custom WordPress plugin with a ReactJS integration to address these specific needs.
 
-### My custom plugin
+### The evolution of my custom plugin
 
-This is where my custom WordPress plugin takes the stage.
-An earlier version of it was based on jQuery, but unfortunately, it turned out to be really slow when users were uploading their photos.
-How many users, and that many photo sizes, so it was a bit frustrating.
-The next journey was to rewrite this plugin and introduce something new, like a ReactJS interface.
-Said and done.
-I have rewritten the plugin and started to develop a ReactJS application.
-After some magic tricks, the solution was done, faster and very nicely designed.
+This is where my custom WordPress plugin has taken the stage.
+An initial version of the plugin, was based on jQuery, faced performance issues during photo uploads due to the diverse needs of users.
+Determined to improve the user experience, I embarked on a journey to rewrite the plugin, introducing a ReactJS interface.
+The result? A faster, elegantly designed solution that seamlessly integrated into the WooCommerce platform.
 
-### Show results
+I have used the <a href="https://mui.com" target="_blank" rel="noopener">MUI</a> components and the WooCommerce API.
 
-<video
-  autoPlay
-  loop
-  controls
-  preload='none'
-  playsInline
-  poster='https://gcdahtftlmucxetygvev.supabase.co/storage/v1/object/public/vladilie.ro-media/wordpress-plugin-woocommerce-custom-paintings/tablouricolorate-poster.jpeg'
->
-  <source
-    src='https://gcdahtftlmucxetygvev.supabase.co/storage/v1/object/public/vladilie.ro-media/wordpress-plugin-woocommerce-custom-paintings/tablouricolorate-preview.mp4'
-    type='video/mp4'
-  />
-</video>
+### Showcasing results
 
-The proposed solution seemed to perfectly fit for TablouriColorate and after that, we have gone further and "complicated" things a bit.
-I have implemented another similar page for posters, banners, and stickers and a nice thing was a page for customized photo collages.
-It lets the user upload many photos in the same frame in 8 different patterns like the below:
+    <video
+          autoPlay
+          loop
+          controls
+          preload='none'
+          playsInline
+          poster='https://gcdahtftlmucxetygvev.supabase.co/storage/v1/object/public/vladilie.ro-media/wordpress-plugin-woocommerce-custom-paintings/tablouricolorate-poster.jpeg'
+        >
+          <source
+              src='https://gcdahtftlmucxetygvev.supabase.co/storage/v1/object/public/vladilie.ro-media/wordpress-plugin-woocommerce-custom-paintings/tablouricolorate-preview.mp4'
+              type='video/mp4'
+            />
+          </video>
 
-<div className='flex flex-col md:flex-row gap-2'>
+Impressed with the success, we expanded our scope, implementing similar pages for posters, banners, stickers, and even customized photo collages.
+The latter allows users to upload multiple photos in the same frame using eight different patterns.
+
+    <div className='flex flex-col md:flex-row gap-2'>
+          <img
+              className='w-full md:w-1/2'
+              src='https://gcdahtftlmucxetygvev.supabase.co/storage/v1/object/public/vladilie.ro-media/wordpress-plugin-woocommerce-custom-paintings/photo-collage.png'
+              alt='Customized photo collage'
+            />
+
     <img
-      className='w-full md:w-1/2'
-      src='https://gcdahtftlmucxetygvev.supabase.co/storage/v1/object/public/vladilie.ro-media/wordpress-plugin-woocommerce-custom-paintings/photo-collage.png'
-      alt='Customized photo collage'
-    />
+            className='w-full md:w-1/2'
+            src='https://gcdahtftlmucxetygvev.supabase.co/storage/v1/object/public/vladilie.ro-media/wordpress-plugin-woocommerce-custom-paintings/photo-collage-2.png'
+            alt='Customized photo collage'
+          />
 
-    <img
-      className='w-full md:w-1/2'
-      src='https://gcdahtftlmucxetygvev.supabase.co/storage/v1/object/public/vladilie.ro-media/wordpress-plugin-woocommerce-custom-paintings/photo-collage-2.png'
-      alt='Customized photo collage'
-    />
+          </div>
 
-</div>
+### Conclusion
 
-### Some technical details
+The WordPress plugin adheres to the official <a href="https://developer.wordpress.org/coding-standards/wordpress-coding-standards/" target="_blank" rel="noopener">WordPress Coding Standards (WPCS)</a> guidelines.
+The ReactJS application was developed as a standalone application and seamlessly integrated into the plugin directory.
+Leveraging MaterialUI elements and Webpack ensured a smooth development process.
 
-The WordPress plugin was developed following the official WPCS guidelines, and the ReactJS application was implemented as a standalone application, built on moved in the plugin directory.
-For the ReactJS application, I used the MaterialUI elements and Webpack.
+In conclusion, the collaboration with TablouriColorate showcases the power of technology in enhancing user experiences.
+The journey from a slow jQuery-based solution to a fast and aesthetically pleasing ReactJS application illustrates the commitment to innovation and client satisfaction.
