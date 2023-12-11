@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Project } from 'contentlayer/generated';
+import { Link } from '@/navigation';
 
 import { Tag } from '../tag';
 
@@ -13,7 +14,10 @@ export const ProjectCard: React.FC<Project & { idx: number }> = ({ idx, ...proje
         1 === idx % 2 ? 'md:rounded-r-xl md:rounded-tl-none' : 'md:rounded-l-xl md:rounded-tr-none'
       }`}
     >
-      <div className='relative aspect-video w-full lg:h-80'>
+      <Link
+        href={{ pathname: '/projects/[slug]', params: { slug: project.slug } }}
+        className='relative aspect-video w-full lg:h-80'
+      >
         <Image
           alt={project.title}
           blurDataURL={project.blurDataImage}
@@ -23,7 +27,7 @@ export const ProjectCard: React.FC<Project & { idx: number }> = ({ idx, ...proje
           src={project.featuredImage}
           sizes='(max-width: 768px) 100vw, 50vw'
         />
-      </div>
+      </Link>
     </div>
 
     <div
@@ -31,7 +35,12 @@ export const ProjectCard: React.FC<Project & { idx: number }> = ({ idx, ...proje
         1 === idx % 2 ? 'md:rounded-br-none md:rounded-tl-xl' : 'md:rounded-r-xl md:rounded-bl-none'
       }`}
     >
-      <p className='text-xl font-semibold'>{project.title}</p>
+      <Link
+        href={{ pathname: '/projects/[slug]', params: { slug: project.slug } }}
+        className='text-xl font-semibold text-gray-800 hover:text-gray-800'
+      >
+        {project.title}
+      </Link>
       <p className='text-gray-500'>{project.description}</p>
       <ul className='flex flex-wrap gap-2'>
         {project.technologies.map((label) => (
