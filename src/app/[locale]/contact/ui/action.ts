@@ -4,12 +4,16 @@ import { SubmitHandler } from 'react-hook-form';
 
 import { Inputs } from './inputs.type';
 import { ContactSchema } from '@/app/[locale]/contact/ui/contact.schema';
+import { getTranslations } from 'next-intl/server';
 
 export const sendMail: SubmitHandler<Inputs> = async (data) => {
+  const t = await getTranslations('contact.form');
+
   try {
     const name = [data.firstName, data.lastName].join(' ');
+    const budget = Number(data.budget) * 1000;
 
-    ContactSchema.validateSync({ ...data, budget: Number(data.budget) * 1000 });
+    const body = ContactSchema.validateSync({ ...data, budget });
 
     const request = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
@@ -22,7 +26,13 @@ export const sendMail: SubmitHandler<Inputs> = async (data) => {
         sender: { email: data.email, name },
         to: [{ email: process.env.EMAIL, name: process.env.NEXT_PUBLIC_SITE_NAME }],
         templateId: Number(process.env.BREVO_TEMPLATE_ID),
-        params: { name, service: data.service, budget: data.budget, content: data.message, phone: data.phone }
+        params: {
+          name,
+          service: t(data.service),
+          budget: new Intl.NumberFormat('ro-RO', { style: 'currency', currency: 'EUR' }).format(budget),
+          content: data.message,
+          phone: data.phone
+        }
       })
     });
 
