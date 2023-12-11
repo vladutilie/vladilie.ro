@@ -68,7 +68,7 @@ export default async function Uses() {
             return (
               <li key={item[0]}>
                 <p className='inline'>{t(item[0])}</p>
-                <span className='block text-sm text-gray-400'>{t(item[1])}</span>
+                <span className='block text-sm text-gray-500'>{t(item[1])}</span>
               </li>
             );
           }
@@ -88,7 +88,7 @@ export default async function Uses() {
             return (
               <li key={item[0]}>
                 <p className='inline'>{t(item[0])}</p>
-                <span className='block text-sm text-gray-400'>{t(item[1])}</span>
+                <span className='block text-sm text-gray-500'>{t(item[1])}</span>
               </li>
             );
           }
@@ -108,7 +108,7 @@ export default async function Uses() {
             return (
               <li key={item[0]}>
                 <p className='inline'>{t(item[0])}</p>
-                <span className='block text-sm text-gray-400'>{t(item[1])}</span>
+                <span className='block text-sm text-gray-500'>{t(item[1])}</span>
               </li>
             );
           }

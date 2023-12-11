@@ -43,7 +43,7 @@ export const Form: React.FC = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='grid max-w-md grid-cols-2 gap-4'>
       <div className='col-span-2 flex flex-col sm:col-span-1'>
-        <label htmlFor='firstName' className={`text-sm ${errors.firstName ? 'text-red-400' : 'text-gray-400'}`}>
+        <label htmlFor='firstName' className={`text-sm ${errors.firstName ? 'text-red-400' : 'text-gray-500'}`}>
           {t('first-name')}
         </label>
         <input
@@ -57,7 +57,7 @@ export const Form: React.FC = () => {
       </div>
 
       <div className='col-span-2 flex flex-col sm:col-span-1'>
-        <label htmlFor='lastName' className={`text-sm ${errors.lastName ? 'text-red-400' : 'text-gray-400'}`}>
+        <label htmlFor='lastName' className={`text-sm ${errors.lastName ? 'text-red-400' : 'text-gray-500'}`}>
           {t('last-name')}
         </label>
         <input
@@ -71,7 +71,7 @@ export const Form: React.FC = () => {
       </div>
 
       <div className='col-span-2 flex flex-col sm:col-span-1'>
-        <label htmlFor='email' className={`text-sm ${errors.email ? 'text-red-400' : 'text-gray-400'}`}>
+        <label htmlFor='email' className={`text-sm ${errors.email ? 'text-red-400' : 'text-gray-500'}`}>
           {t('email')}
         </label>
         <input
@@ -86,7 +86,7 @@ export const Form: React.FC = () => {
       </div>
 
       <div className='col-span-2 flex flex-col sm:col-span-1'>
-        <label htmlFor='phone' className={`text-sm ${errors.phone ? 'text-red-400' : 'text-gray-400'}`}>
+        <label htmlFor='phone' className={`text-sm ${errors.phone ? 'text-red-400' : 'text-gray-500'}`}>
           {t('phone')}
         </label>
         <input
@@ -100,7 +100,7 @@ export const Form: React.FC = () => {
       </div>
 
       <div className='col-span-2 flex flex-col'>
-        <label htmlFor='service' className={`text-sm ${errors.service ? 'text-red-400' : 'text-gray-400'}`}>
+        <label htmlFor='service' className={`text-sm ${errors.service ? 'text-red-400' : 'text-gray-500'}`}>
           {t('service')}
         </label>
         <select
@@ -126,7 +126,7 @@ export const Form: React.FC = () => {
 
       {watch('service') && ![Services.JobOpportunity, Services.JustSayHi].includes(watch('service') as Services) ? (
         <div className='col-span-2 flex flex-col'>
-          <label htmlFor='budget' className='text-sm text-gray-400'>
+          <label htmlFor='budget' className='text-sm text-gray-500'>
             {t.rich('budget', {
               amount: watch('budget'),
               strong: (chunk: ReactNode): JSX.Element => <span className='font-semibold'>{chunk}</span>
@@ -145,7 +145,7 @@ export const Form: React.FC = () => {
       ) : null}
 
       <div className='col-span-2 flex flex-col'>
-        <label htmlFor='message' className={`text-sm ${errors.message ? 'text-red-400' : 'text-gray-400'}`}>
+        <label htmlFor='message' className={`text-sm ${errors.message ? 'text-red-400' : 'text-gray-500'}`}>
           {t('message')}
         </label>
         <textarea

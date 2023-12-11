@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
         <div className='col-span-3 flex flex-col gap-y-4 md:col-span-1'>
           <Logo />
           <div>
-            <h5 className='my-0 text-sm font-medium'>{process.env.NEXT_PUBLIC_COMPANY_NAME}</h5>
+            <p className='my-0 text-sm font-medium'>{process.env.NEXT_PUBLIC_COMPANY_NAME}</p>
             <p className='my-0 text-sm'>{process.env.NEXT_PUBLIC_ADDRESS}</p>
             <p className='my-0 text-sm'>{t('footer.vat-id', { vatId: process.env.NEXT_PUBLIC_VAT_ID })}</p>
             <p className='my-0 text-sm'>{t('footer.trade-reg-no', { regNo: process.env.NEXT_PUBLIC_REG_NO })}</p>
