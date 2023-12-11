@@ -56,7 +56,7 @@ export default async function Locations({ params: { locale } }: { params: { loca
         {locations.map(({ name, visitCounter, lastVisitAt }) => (
           <div key={name}>
             <h3 className='my-0 text-xl'>{name}</h3>
-            <div className='text-sm text-gray-400'>
+            <div className='text-sm text-gray-500'>
               {t.rich('visited', {
                 visitCounter,
                 lastVisitAt,

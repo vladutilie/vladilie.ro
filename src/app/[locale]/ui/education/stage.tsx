@@ -18,9 +18,9 @@ export const Stage: React.FC<Props> = ({ title, subtitle, label, description, is
           }`}
         />
         <h3 className='my-0'>{title}</h3>
-        <p className='mt-0 font-semibold text-gray-400'>{subtitle}</p>
+        <p className='mt-0 font-semibold text-gray-500'>{subtitle}</p>
         <span className='rounded-full bg-blue-450 px-4 py-2 text-xs font-semibold text-white'>{label}</span>
-        <p className='text-gray-400'>{description}</p>
+        <p className='text-gray-500'>{description}</p>
       </div>
     </div>
 

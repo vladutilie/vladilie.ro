@@ -75,7 +75,7 @@ export const Footer: React.FC = () => {
           </li>
         </ul>
 
-        <p className='col-span-3 mt-4 border-t pt-4 text-center text-sm text-gray-400'>
+        <p className='col-span-3 mt-4 border-t pt-4 text-center text-sm text-gray-500'>
           &copy; {`2019 - ${new Date().getFullYear()} ${process.env.NEXT_PUBLIC_SITE_NAME}`}
         </p>
       </div>

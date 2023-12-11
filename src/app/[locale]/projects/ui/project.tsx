@@ -36,9 +36,9 @@ export const Project: React.FC<ProjectT> = ({
 
       <div className='flex flex-col px-4 py-2'>
         <h2 className='line-clamp-1 text-xl'>{title}</h2>
-        <p className='line-clamp-2 text-sm text-gray-400'>{description}</p>
+        <p className='line-clamp-2 text-sm text-gray-500'>{description}</p>
 
-        <div className='flex justify-between text-xs text-gray-400'>
+        <div className='flex justify-between text-xs text-gray-500'>
           <span>{t('reading-time', { minutes: Math.ceil(readingTime) })}</span>
           <span>{format(date, locale)}</span>
         </div>

@@ -37,7 +37,7 @@ export const ProjectCard: React.FC<{
           {name}
         </a>
       </h4>
-      <p className='my-0 text-sm text-gray-400'>{t(i18nKey)}</p>
+      <p className='my-0 text-sm text-gray-600'>{t(i18nKey)}</p>
     </div>
   );
 };

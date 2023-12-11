@@ -32,7 +32,7 @@ export const ProjectCard: React.FC<Project & { idx: number }> = ({ idx, ...proje
       }`}
     >
       <p className='text-xl font-semibold'>{project.title}</p>
-      <p className='text-gray-400'>{project.description}</p>
+      <p className='text-gray-500'>{project.description}</p>
       <ul className='flex flex-wrap gap-2'>
         {project.technologies.map((label) => (
           <li key={label}>

@@ -19,12 +19,12 @@ export const PostCard: React.FC<PostT> = ({ title, description, date, slug, read
       <Link href={{ pathname: '/blog/[slug]', params: { slug } }} className='flex flex-col'>
         <h2 className='my-0 text-lg'>{title}</h2>
 
-        <span className='text-sm text-gray-400'>
+        <span className='text-sm text-gray-500'>
           {`${format(date, locale)} · ${t('reading-time', { minutes: Math.ceil(readingTime) })} · `}
           {isError || isLoading ? <LoadingDots /> : t('views', { count: numberFormat(Number(views)) })}
         </span>
 
-        <span className='text-sm text-gray-400'>{description}</span>
+        <span className='text-sm text-gray-500'>{description}</span>
       </Link>
     </li>
   );
