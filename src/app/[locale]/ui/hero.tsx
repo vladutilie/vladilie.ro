@@ -71,7 +71,7 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
               {t.rich('commits', {
                 count: commits,
                 commits: (chunk: ReactNode): JSX.Element => (
-                  <code className='rounded bg-gray-400 p-0.5 text-gray-50'>{chunk}</code>
+                  <code className='rounded bg-gray-500 p-0.5 text-gray-50'>{chunk}</code>
                 )
               })}
             </p>

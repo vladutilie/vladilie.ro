@@ -7,6 +7,6 @@ export const Logo = (props: SVGProps<SVGSVGElement>) => (
       d='m782 .5-314 677H328.5L0 .5h214L398.5 379 569 .5zm205 677H803V.5h184z'
       className='fill-[#141a1a] transition-colors duration-300 dark:fill-white'
     />
-    <path d='M1250 677.5V521h-184v156.5z' className='fill-blue-450' />
+    <path d='M1250 677.5V521h-184v156.5z' className='fill-blue-600' />
   </svg>
 );

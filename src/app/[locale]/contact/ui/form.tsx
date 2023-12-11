@@ -161,7 +161,7 @@ export const Form: React.FC = () => {
         disabled={state.isLoading}
         type='submit'
         value={state.isLoading ? t('please-wait') : t('submit')}
-        className='justify-self-start rounded-xl bg-blue-450 px-4 py-2 font-semibold text-white disabled:bg-blue-450/50'
+        className='justify-self-start rounded-xl bg-blue-600 px-4 py-2 font-semibold text-white disabled:bg-blue-600/50'
       />
 
       {state.success ? (

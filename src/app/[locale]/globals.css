@@ -54,7 +54,7 @@
   }
 
   a {
-    @apply text-blue-450;
+    @apply text-blue-600;
   }
 
   a:hover {

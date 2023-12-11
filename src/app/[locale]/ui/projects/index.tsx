@@ -25,7 +25,7 @@ export const Projects: React.FC = () => {
 
       <Link
         href='/projects'
-        className='self-center rounded-xl bg-blue-450 px-4 py-2 font-semibold text-white hover:text-white'
+        className='self-center rounded-xl bg-blue-600 px-4 py-2 font-semibold text-white hover:text-white'
       >
         {t('see-all')}
       </Link>
