@@ -1,0 +1,93 @@
+---
+title: Site de prezentare și de strângere de fonduri pentru BookTruck
+locale: ro
+featuredImage: https://res.cloudinary.com/vladilie-ro/image/upload/v1702312046/projects/site-prezentare-strangere-fonduri-booktruck/hja42tde489lrwp6gtqz.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAuUlEQVR4nGMIaZoU0jAxtnlKQMOEyJapCZ0zYzqmxbZOSemdG9I0ieHfz8+vH9xeNWXS2aMH///5dujU8eNnT3x99+zPj/f//3xj+P3tw76d6/0djSUZGLavX75gw+aMtkkfXz1BSN+7dXx6V0JrRerFI5uu7d6ytqJsdWnx/98fQdL//3z7/e3Dx3fP37168vTGxac3Lr579eTdqye/v32ASv/88u7i6aMXTx89c/wQnPz55d3/P98ATc2Hyw6ARn0AAAAASUVORK5CYII=
+description: Implementare design Adobe XD cu NextJS și Tailwind CSS. Integrare EuPlătesc, Brevo, i18n și alte servicii externe.
+technologies: [NextJS, Tailwind CSS, HeadlessUI, EuPlătesc, Brevo, Formik, Cloudinary, i18n]
+keywords: [booktruck,cărțile pe față,site prezentare,strângere fonduri]
+website: https://booktruck.ro
+date: December 11, 2023 18:40:55
+---
+
+## Introducere
+
+Pe <a href="https://victormiron.com" title="Site-ul lui Victor Miron" target="_blank" rel="noopener" className="after:content-['_↗']">Victor Miron</a> l-am cunoscut în decembrie 2016 la un eveniment în Timișoara la care a vorbit, evident, despre cărți.
+Atunci aflasem pentru prima dată despre <a href="https://cartilepefata.ro" title="Site-ul Cărțile pe față" target="_blank" rel="noopener" className="after:content-['_↗']">Asociația culturală Cărțile pe față</a>, despre promovarea lecturii și misiunea lui Victor de a avea un impact în ridicarea procentului de cărți citite de români într-un an.
+Cam de 3 ani știam atunci despre voluntariat, activând în <a href="https://ligaac.ro" title="Site-ul Liga AC" target="_blank" rel="noopener" className="after:content-['_↗']">Liga AC</a> din cadrul Facultății de Automatică și Calculatoare, facultate pe care o urmam.
+Chiar și cu acea experiență în voluntariat, am luat legătura cu Victor, timid și i-am propus să-l ajut cu diverse prin asociația pe care o fondase.
+
+Astfel am participat cluburile de lectură ale Cărțile pe față, „Vocea cititorului”, iar edițiile <a href="https://www.facebook.com/events/802888169892442/?active_tab=discussion" title="Pagină eveniment Facebook" target="_blank" rel="noopener" className="after:content-['_↗']">#3</a> și <a href="https://www.facebook.com/events/129070054341063/?active_tab=discussion" title="Pagină eveniment Facebook" target="_blank" rel="noopener" className="after:content-['_↗']">#4</a> le-am co-organizat.
+
+Timpul a trecut și odată cu mutarea mea în Cluj-Napoca am preluat încet partea de infrastructură IT a asociației.
+
+## Design
+
+        <a href="https://xd.adobe.com/view/b594b14b-16fc-460e-9ac7-acbb35ecfcc9-e0c7" title="Design BookTruck în Adobe XD" target="_blank" rel="noopener" className="after:content-['_↗']">Design-ul</a> pe care l-am urmat și pe care l-am adaptat ușor, a fost realizat în Adobe XD de o persoană specializată din Cluj-Napoca.
+
+Spun că l-am adaptat ușor pentru că am schimbat familia de fonturi din cauză că fontul din design, „Clab” nu accepta diacritice, iar site-ul urma să fie multilingv, limba română fiind una dintre limbi.
+Și cum îmi place mie să spun mereu „nu există limba română fără diacritice”, l-am înlocuit cu cel implicit din Tailwind.
+Apoi animațiile de pe butoane la `hover` nu le-am putut implementa la acea vreme și nici <del>nu sunt un vreun zeu CSS</del> nu am vrut să insist 😁.
+
+                <video
+                                        autoPlay
+                                        loop
+                                        controls
+                                        preload='none'
+                                        playsInline
+                                        poster='https://res.cloudinary.com/vladilie-ro/image/upload/v1702312046/projects/site-prezentare-strangere-fonduri-booktruck/hja42tde489lrwp6gtqz.webp'
+                                >
+                                        <source
+                                                        src='https://res.cloudinary.com/vladilie-ro/video/upload/v1702328248/projects/site-prezentare-strangere-fonduri-booktruck/ql0ogpf7vtyjz5gts5pb.mp4'
+                                                        type='video/mp4'
+                                                />
+                                        </video>
+
+## Tehnologie
+
+Site-ul <a href="https://booktruck.ro" title="Site-ul BookTruck" target="_blank" rel="noopener" className="after:content-['_↗']">BookTruck</a> a fost printre primele mele site-uri realizate cu <a href="https://nextjs.org" title="Site-ul NextJS" target="_blank" rel="noopener" className="after:content-['_↗']">NextJS</a> (început cu versiunea 12.1.1 în 7 martie 2022), framework React, și Tailwind CSS.
+Până acum nu l-am migrat către `App Router`, încă este pe structura `Pages Router`.
+Probabil voi face asta la un moment dat.
+
+Am folosit <a href="https://vercel.com" title="Site-ul Vercel" target="_blank" rel="noopener" className="after:content-['_↗']">Vercel</a> pentru lansarea site-ului.
+
+## Formular de donații
+
+Furnizorul de servicii ales pentru plățile online ale donațiilor a fost <a href="https://euplatesc.ro" title="Site-ul EuPlătesc" target="_blank" rel="noopener" className="after:content-['_↗']">euplatesc.ro</a>.
+Probabil este furnizorul de plăți din România cu cele mai mici comisioane și cred că în topul celor mai utilizați.
+Evident, pentru integrarea API-ului am folosit biblioteca npm pe care am dezvoltat-o pentru Node.js și despre care am scris <a href="/ro/blog/euplatesc-nodejs" title="Articol despre Biblioteca EuPlătesc pentru Node.js">un articol</a> pe blog.
+Donația poate fi singulară sau recurentă (o dată pe lună) pe o perioadă de 5 ani cu posibilitate, bineînțeles, de anulare.
+De asemenea, în formularul de donație există și informații pentru a efectua direct un transfer bancar către Cărțile pe față.
+Iar pentru utilizatorii străini există posibilitatea de a <a href="https://www.paypal.com/donate/?hosted_button_id=WNGBETHCMVHJJ" title="Pagină de donații PayPal pentru Cărțile pe față" target="_blank" rel="noopener" className="after:content-['_↗']">dona prin PayPal</a>.
+
+## Hartă interactivă
+
+Un lucru de care sunt mândru, este <a href="https://booktruck.cartilepefata.ro/doneaza-carti" title="Pagina de donare cărți BookTruck" target="_blank" rel="noopener" className="after:content-['_↗']">harta SVG</a> cu județe și centre de donare de cărți.
+Se poate da clic pe fiecare județ și apoi va apărea sub hartă o listă cu centrele și datele de contact în care se pot dona cărți din județul respectiv.
+Harta pare foarte flexibilă și m-am gândit să o fac și mai interesantă la un moment dat.
+Am reușit să o pun în perspectivă și să încep să desenez niște săgeți dintre județul Cluj către celelalte.
+Momentan nu este disponibilă aceasă versiune, dar sper că în curând o voi termina.
+                <img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1702368617/projects/site-prezentare-strangere-fonduri-booktruck/hfuvaou0eykivtofy5se.webp" alt="Harta României cu județe și centre de donare cărți pentru BookTruck" />
+
+## Formular de înscriere ca voluntar
+
+Pentru formularul de înscriere ca voluntar am folosit biblioteca <a href="https://formik.org" title="Site-ul Formik" target="_blank" rel="noopener" className="after:content-['_↗']">Formik</a>, iar validarea am făcut-o cu o schemă <a href="https://www.npmjs.com/package/yup" title="Pagina bibliotecii Yup" target="_blank" rel="noopener" className="after:content-['_↗']">Yup</a>.
+La trimiterea formularului, acesta execută o cerere către o rută de API prin care se trimite un email prin serivciul Brevo (fost Sendinblue) pe care l-am integrat și, bineînțeles, face și o validare cu Turnstile de la Cloudflare, un fel de CAPTCHA de la Google.
+Așa se evită spam-ul făcut de boți.
+
+## Galerie foto
+
+O altă pagină interesantă este galeria de poze care a fost inspirată de galeria conferinței „<a href="https://nextjsconf-pics.vercel.app" title="Galeria foto a conferinței NextJS 2022" target="_blank" rel="noopener" className="after:content-['_↗']">Next.js Conf 2022</a>”.
+Chestia faină care-mi place la ea este că fiecare poză are o legătură unică ce poate fi partajată pe rețelele sociale.
+Iar pentru poze și legăturile lor URL nu a fost nevoie de o bază de date.
+De fapt, tot site-ul în sine nu are o bază de date.
+Pozele sunt preluate cu biblioteca <a href="https://cloudinary.com" title="Site-ul Cloudinary" target="_blank" rel="noopener" className="after:content-['_↗']">`cloudinary`</a> din platforma lor și servite din CDN-ul lor.
+Acest lucru se face o singură dată la `build` când site-ul este generat static.
+Pentru animațiile din galerie am folosit biblioteca <a href="https://www.framer.com/motion" title="Pagina Framer Motion" target="_blank" rel="noopener" className="after:content-['_↗']">framer-motion</a>.
+
+## Concluzie
+
+În altă ordine de idei site-ul își atinge scopul în fiecare zi, oamenii donează pentru Cărțile pe față, BookTruck-urile rulează kilometri către școlile din județul Cluj, dar și spre evenimentele din restul țării.
+De asemenea sunt tot mai multe cereri de voluntariat, oamenii se implică și crește impactul în rândul copiiilor care nu au acces la cărți.
+
+Așa am pus tehnologia să lucreze pentru o cauză nobilă. 😌
