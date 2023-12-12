@@ -4,8 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { allPosts, type Post } from 'contentlayer/generated';
 import { getPathname } from '@/navigation';
 
-import { PostHeader } from '../../ui/post-header';
-import { PostContent } from '../../ui/post-content';
+import { Header, Content, Footer } from '../../ui/post';
 
 export async function generateMetadata({
   params: { locale, slug }
@@ -49,8 +48,9 @@ export default function Post({ params: { slug, locale } }: { params: { slug: str
 
   return (
     <article className='container mx-auto max-w-4xl px-4 py-24 md:py-32'>
-      <PostHeader {...post} />
-      <PostContent content={post.body.code} />
+      <Header {...post} />
+      <Content content={post.body.code} />
+      <Footer {...post} />
     </article>
   );
 }
