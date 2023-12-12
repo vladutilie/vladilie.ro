@@ -1,8 +1,7 @@
 export const NavLinks = {
   About: 'about',
   Education: 'education',
-  Skills: 'skills',
-  Projects: 'projects'
+  Skills: 'skills'
 } as const;
 
 export const Pages = {
