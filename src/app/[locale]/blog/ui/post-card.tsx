@@ -1,7 +1,9 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { format } from 'timeago.js';
+import { format, register } from 'timeago.js';
+import roFunc from 'timeago.js/lib/lang/ro';
+import enFunc from 'timeago.js/lib/lang/en_US';
 import { Link } from '@/navigation';
 import { type Post as PostT } from 'contentlayer/generated';
 
@@ -13,6 +15,12 @@ export const PostCard: React.FC<PostT> = ({ title, description, date, slug, read
   const t = useTranslations('blog');
   const locale = useLocale();
   const { views, isLoading, isError } = usePostViews(slug);
+
+  if ('ro' === locale) {
+    register('ro', roFunc);
+  } else {
+    register('en', enFunc);
+  }
 
   return (
     <li>
