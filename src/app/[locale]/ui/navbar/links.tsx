@@ -41,6 +41,15 @@ export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = (
       <li>
         <Link
           className='text-inherit'
+          href={`/${Pages.Projects}`}
+          onClick={() => (isMobile && closeMenu ? closeMenu() : null)}
+        >
+          {t(Pages.Projects)}
+        </Link>
+      </li>
+      <li>
+        <Link
+          className='text-inherit'
           href={`/${Pages.Blog}`}
           onClick={() => (isMobile && closeMenu ? closeMenu() : null)}
         >
