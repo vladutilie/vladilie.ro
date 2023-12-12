@@ -35,7 +35,6 @@ export const Project = defineDocumentType(() => ({
     description: { type: 'string', required: true },
     keywords: { type: 'list', of: { type: 'string' }, required: true },
     technologies: { type: 'list', of: { type: 'string' }, required: true },
-    website: { type: 'string', required: false },
     date: { type: 'date', required: true }
   },
   computedFields: {
