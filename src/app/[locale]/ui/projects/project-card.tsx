@@ -37,7 +37,7 @@ export const ProjectCard: React.FC<Project & { idx: number }> = ({ idx, ...proje
     >
       <Link
         href={{ pathname: '/projects/[slug]', params: { slug: project.slug } }}
-        className='text-xl font-semibold text-gray-800 hover:text-gray-800'
+        className='text-xl font-semibold text-gray-800 hover:text-gray-800 dark:text-white'
       >
         {project.title}
       </Link>
