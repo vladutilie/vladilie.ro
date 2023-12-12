@@ -16,6 +16,10 @@ export async function generateMetadata({
   const commonFields = { title: `${post?.title} | ${t('title')}`, description: post?.description };
 
   return {
+    alternates: {
+      canonical:
+        ('ro' === locale ? '/ro/' : '') + getPathname({ locale, href: { pathname: '/blog/[slug]', params: { slug } } })
+    },
     ...commonFields,
     keywords: post?.keywords,
     openGraph: {

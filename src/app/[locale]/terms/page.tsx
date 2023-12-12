@@ -20,6 +20,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   const commonFields = { title: t('title'), description: `${t('metadata.description')} ${t('last-update')}` };
 
   return {
+    alternates: { canonical: ('ro' === locale ? '/ro/' : '') + getPathname({ locale, href: '/terms' }) },
     ...commonFields,
     keywords: t('metadata.keywords'),
     openGraph: {
