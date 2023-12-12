@@ -8,9 +8,8 @@ const nextConfig = {
       { protocol: 'https', hostname: 'i.gr-assets.com' },
       { protocol: 'https', hostname: 'images-na.ssl-images-amazon.com' },
       { protocol: 'https', hostname: 'cf.geekdo-images.com' },
-      { protocol: 'https', hostname: 'gcdahtftlmucxetygvev.supabase.co' },
-      { protocol: 'https', hostname: 'gravatar.com' },
-      { protocol: 'https', hostname: 'unavatar.io' }
+      { protocol: 'https', hostname: 'res.cloudinary.com' },
+      { protocol: 'https', hostname: 'gravatar.com' }
     ]
   }
 };
