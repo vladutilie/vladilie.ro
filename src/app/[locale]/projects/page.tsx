@@ -36,7 +36,9 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 
 export default async function Projects({ params: { locale } }: { params: { locale: string } }) {
   const t = await getTranslations('projects');
-  const projects = allProjects.filter(({ locale: l }) => l === locale);
+  const projects = allProjects
+    .filter(({ locale: l }) => l === locale)
+    .toSorted((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
 
   if ('ro' === locale) {
     register('ro', roFunc);
