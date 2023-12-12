@@ -110,7 +110,10 @@
     "title": "Projects",
     "description": "Outstanding projects I have implemented:",
     "no-projects": "There are currently no articles about projects. 🤷🏻‍♂️",
-    "reading-time": "{minutes} min read"
+    "reading-time": "{minutes} min read",
+    "technologies": "Technologies:",
+    "share": "Share on:",
+    "share-on": "Share on {network}"
   },
   "contact": {
     "metadata": {

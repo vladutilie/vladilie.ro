@@ -110,7 +110,10 @@
     "title": "Proiecte",
     "description": "Proiecte remarcabile pe care le-am implementat:",
     "no-projects": "Momentan nu sunt articole despre proiecte.  🤷🏻‍♂️",
-    "reading-time": "{minutes} min de citit"
+    "reading-time": "{minutes} min de citit",
+    "technologies": "Tehnologii:",
+    "share": "Partajează pe:",
+    "share-on": "Partajează pe {network}"
   },
   "contact": {
     "metadata": {
