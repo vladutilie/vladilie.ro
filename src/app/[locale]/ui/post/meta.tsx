@@ -9,11 +9,11 @@ import enFunc from 'timeago.js/lib/lang/en_US';
 import { numberFormat } from '@/lib/numberFormat';
 import { usePollIfInView } from '@/hooks/usePollIfInView';
 import { usePostViews } from '@/hooks/usePostViews';
-import { LoadingDots } from './loading-dots';
+import { LoadingDots } from '../loading-dots';
 
 type Props = { date: string; readingTime: number; slug: string };
 
-export const PostMeta: React.FC<Props> = ({ date, readingTime, slug }) => {
+export const Meta: React.FC<Props> = ({ date, readingTime, slug }) => {
   const locale = useLocale();
   const t = useTranslations('blog');
 
