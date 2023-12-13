@@ -1,8 +1,5 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { register } from 'timeago.js';
-import roFunc from 'timeago.js/lib/lang/ro';
-import enFunc from 'timeago.js/lib/lang/en_US';
 import { getPathname } from '@/navigation';
 import { allProjects, type Project as ProjectT } from 'contentlayer/generated';
 
@@ -39,12 +36,6 @@ export default async function Projects({ params: { locale } }: { params: { local
   const projects = allProjects
     .filter(({ locale: l }) => l === locale)
     .sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
-
-  if ('ro' === locale) {
-    register('ro', roFunc);
-  } else {
-    register('en', enFunc);
-  }
 
   return (
     <main className='container mx-auto max-w-7xl gap-8 px-4 py-32'>

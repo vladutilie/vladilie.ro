@@ -23,6 +23,11 @@ const nextConfig = {
         source: '/en/case-studies/wordpress-plugin-woocommerce-custom-paintings',
         destination: '/en/projects/wordpress-plugin-woocommerce-custom-paintings',
         permanent: true
+      },
+      {
+        source: '/case-studies/wordpress-plugin-woocommerce-custom-paintings',
+        destination: '/en/projects/wordpress-plugin-woocommerce-custom-paintings',
+        permanent: true
       }
     ];
   }

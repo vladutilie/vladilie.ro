@@ -116,6 +116,7 @@
     "description": "Proiecte remarcabile pe care le-am implementat:",
     "no-projects": "Momentan nu sunt articole despre proiecte.  🤷🏻‍♂️",
     "reading-time": "{minutes} min de citit",
+    "views": "{count, plural, =0 {0 vizualizări} =1 {o vizualizare} few {# vizualizări} other {# de vizualizări}}",
     "technologies": "Tehnologii:",
     "share": "Partajează pe:",
     "share-on": "Partajează pe {network}"

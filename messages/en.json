@@ -116,6 +116,7 @@
     "description": "Outstanding projects I have implemented:",
     "no-projects": "There are currently no articles about projects. 🤷🏻‍♂️",
     "reading-time": "{minutes} min read",
+    "views": "{count, plural, =0 {0 views} =1 {1 view} other {# views}}",
     "technologies": "Technologies:",
     "share": "Share on:",
     "share-on": "Share on {network}"
