@@ -7,6 +7,7 @@ import prisma from '@/lib/prisma';
 import { readData } from '@/lib/readData';
 import { Categories } from './ui/categories';
 import { List } from './ui/list';
+import { getPlaiceholder } from 'plaiceholder';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
   const t = await getTranslations('boardgames');
@@ -49,15 +50,25 @@ const seedBoardgames = async () => {
 
   const { boardgames } = await readData<{ boardgames: BoardgameType[] }>('/public/data/boardgames.json');
 
-  // TODO: install plaiceholder to generate the blur data for images.
-  await prisma.boardgame.createMany({
-    data: boardgames.map(({ blurDataUrl, tags, state, ...boardgame }) => ({
-      ...boardgame,
-      blurData: blurDataUrl,
+  const list = [];
+
+  let i = 1;
+  for await (let bgame of boardgames) {
+    const { blurDataUrl, tags, state, ...rest } = bgame;
+
+    const bufferImage = await fetch(rest.image).then(async (r) => Buffer.from(await r.arrayBuffer()));
+    const { base64 } = await getPlaiceholder(bufferImage, { size: 10 });
+
+    list.push({
+      id: i++,
+      ...rest,
+      blurData: base64,
       state: 'Wish' === state ? BoardgameState.Wishlist : BoardgameState.Own,
       tags: tags.toString()
-    }))
-  });
+    });
+  }
+
+  await prisma.boardgame.createMany({ data: list });
 };
 
 const getBoardgames = async () => {
@@ -72,7 +83,6 @@ const getBoardgames = async () => {
 };
 
 export default async function Boardgames() {
-  //   await seedBoardgames();
   const t = await getTranslations('boardgames');
   const { boardgames, categories } = await getBoardgames();
 
