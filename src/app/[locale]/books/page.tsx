@@ -2,10 +2,8 @@ import { Metadata } from 'next';
 import { type Book as BookT, BookState } from '@prisma/client';
 import { getTranslations } from 'next-intl/server';
 import { getPathname } from '@/navigation';
-import { getPlaiceholder } from 'plaiceholder';
 
 import prisma from '@/lib/prisma';
-import { readData } from '@/lib/readData';
 import { Book } from './ui/book';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
@@ -33,39 +31,6 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     }
   };
 }
-
-type BookTFile = {
-  author: string;
-  blurDataUrl: string;
-  cover: string;
-  link: string;
-  state: BookState | 'Favorite';
-  title: string;
-};
-
-// TODO: Run this when on production, then remove it :)
-const seedBooks = async () => {
-  const { books } = await readData<{ books: BookTFile[] }>('/public/data/books.json');
-  const bookList = [];
-
-  let i = 1;
-  for await (let book of books) {
-    const { blurDataUrl, state, ...rest } = book;
-
-    const bufferImage = await fetch(rest.cover).then(async (r) => Buffer.from(await r.arrayBuffer()));
-    const { base64 } = await getPlaiceholder(bufferImage, { size: 10 });
-
-    bookList.push({
-      id: i++,
-      ...rest,
-      blurData: base64,
-      state: 'Favorite' === state ? BookState.Completed : (state as BookState),
-      isFavorite: 'Favorite' === state
-    });
-  }
-
-  await prisma.book.createMany({ data: bookList });
-};
 
 const getBooks = async () => {
   const books: BookT[] = await prisma.book.findMany();
