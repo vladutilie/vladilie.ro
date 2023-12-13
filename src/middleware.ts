@@ -1,5 +1,5 @@
 import createMiddleware from 'next-intl/middleware';
-import { locales, pathnames } from './navigation';
+import { locales, pathnames } from '@/navigation';
 
 export default createMiddleware({
   defaultLocale: locales[0],
@@ -8,4 +8,6 @@ export default createMiddleware({
   localePrefix: 'as-needed'
 });
 
-export const config = { matcher: ['/((?!api|_next/static|_next/image|images/*|favicon.ico|sitemap.xml).*)'] };
+export const config = {
+  matcher: ['/((?!api|_next/static|_next/image|images/.*|favicon.ico|sitemap.xml|robots.txt).*)']
+};
