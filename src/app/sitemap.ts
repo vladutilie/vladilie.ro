@@ -7,10 +7,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: '/', priority: 1, changeFrequency: 'weekly', lastModified: new Date() },
     { url: '/ro', priority: 1, changeFrequency: 'weekly', lastModified: new Date() },
 
-    { url: '/blog', priority: 9, changeFrequency: 'monthly', lastModified: new Date() },
+    { url: '/blog', priority: 0.9, changeFrequency: 'monthly', lastModified: new Date() },
     { url: '/ro/blog', priority: 0.9, changeFrequency: 'monthly', lastModified: new Date() },
 
-    { url: '/projects', priority: 9, changeFrequency: 'monthly', lastModified: new Date() },
+    { url: '/projects', priority: 0.9, changeFrequency: 'monthly', lastModified: new Date() },
     { url: '/ro/proiecte', priority: 0.9, changeFrequency: 'monthly', lastModified: new Date() },
 
     { url: '/locations', priority: 0.8, changeFrequency: 'weekly', lastModified: new Date() },

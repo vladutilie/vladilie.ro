@@ -32,6 +32,7 @@
     "about": {
       "tag": "Despre mine",
       "title": "Mai multe despre mine",
+      "image-alt": "Vlad în munți",
       "p1": "În ultimii cinci ani, am lucrat cu tehnologii bazate pe JavaScript, cu accent pe NextJS, NodeJS și Tailwind CSS. Această perioadă a fost marcată de dezvoltarea și integrarea unui spectru divers de soluții pentru baze de date, stocare, managementul utilizatorilor și analiza datelor.",
       "p2": "Am lucrat cu startup-uri, ajutând la crearea de MVP-uri și la lansarea lor pe piață. În același timp, am cultivat proiecte personale de tip SaaS în care am investit creativitate și inovație.",
       "p3": "În sfera web, mi-am asumat responsabilitatea pentru întreținerea site-urilor WordPress cu angajamentul de a asigura buna funcționare a acestora. În plus, sunt implicat pro-bono în întreținerea infrastructurii web a Asociației Culturale Carțile pe Față.",
@@ -47,7 +48,7 @@
         "title": "Profesionist certificat Neo4j",
         "subtitle": "Neo4j",
         "interval": "2022",
-        "description": "Împins de entuziasmul unui proiect bazat pe recomandări de informații relaționale, am urmat și absolvit cursurile GraphAcademy oferite de Neo4j. Certificatul este disponibil <url>aici</url>."
+        "description": "Împins de entuziasmul unui proiect bazat pe recomandări de informații relaționale, am urmat și absolvit cursurile GraphAcademy oferite de Neo4j. Poți vedea <url>certificatul</url>."
       },
       "bachelor-degree": {
         "title": "Diplomă de licență",

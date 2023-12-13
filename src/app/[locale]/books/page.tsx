@@ -4,7 +4,6 @@ import { getTranslations } from 'next-intl/server';
 import { getPathname } from '@/navigation';
 
 import prisma from '@/lib/prisma';
-import { readData } from '@/lib/readData';
 import { Book } from './ui/book';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
@@ -32,30 +31,6 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     }
   };
 }
-
-type BookTFile = {
-  author: string;
-  blurDataUrl: string;
-  cover: string;
-  link: string;
-  state: BookState | 'Favorite';
-  title: string;
-};
-
-// TODO: Run this when on production, then remove it :)
-const seedBooks = async () => {
-  const { books } = await readData<{ books: BookTFile[] }>('/public/data/books.json');
-  await prisma.book.createMany({
-    data: books.map(({ blurDataUrl, state, ...book }) => ({
-      ...book,
-      blurData: blurDataUrl,
-      state: 'Favorite' === state ? BookState.Completed : (state as BookState),
-      isFavorite: 'Favorite' === state
-    }))
-  });
-
-  return books;
-};
 
 const getBooks = async () => {
   const books: BookT[] = await prisma.book.findMany();

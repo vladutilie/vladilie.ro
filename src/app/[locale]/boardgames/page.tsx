@@ -1,10 +1,9 @@
 import { Metadata } from 'next';
-import { Boardgame, BoardgameState } from '@prisma/client';
+import { Boardgame } from '@prisma/client';
 import { getTranslations } from 'next-intl/server';
 import { getPathname } from '@/navigation';
 
 import prisma from '@/lib/prisma';
-import { readData } from '@/lib/readData';
 import { Categories } from './ui/categories';
 import { List } from './ui/list';
 
@@ -34,32 +33,6 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-const seedBoardgames = async () => {
-  type BoardgameType = {
-    age: string;
-    blurDataUrl: string;
-    duration: string;
-    image: string;
-    name: string;
-    players: string;
-    state: string;
-    tags: string[];
-    link: string;
-  };
-
-  const { boardgames } = await readData<{ boardgames: BoardgameType[] }>('/public/data/boardgames.json');
-
-  // TODO: install plaiceholder to generate the blur data for images.
-  await prisma.boardgame.createMany({
-    data: boardgames.map(({ blurDataUrl, tags, state, ...boardgame }) => ({
-      ...boardgame,
-      blurData: blurDataUrl,
-      state: 'Wish' === state ? BoardgameState.Wishlist : BoardgameState.Own,
-      tags: tags.toString()
-    }))
-  });
-};
-
 const getBoardgames = async () => {
   const boardgames = await prisma.boardgame.findMany();
   let categories: string[] = [];
@@ -72,7 +45,6 @@ const getBoardgames = async () => {
 };
 
 export default async function Boardgames() {
-  //   await seedBoardgames();
   const t = await getTranslations('boardgames');
   const { boardgames, categories } = await getBoardgames();
 
