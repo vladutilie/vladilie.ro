@@ -11,6 +11,15 @@ const nextConfig = {
       { protocol: 'https', hostname: 'res.cloudinary.com' },
       { protocol: 'https', hostname: 'gravatar.com' }
     ]
+  },
+  redirects() {
+    return [
+      {
+        source: '/case-studies/wordpress-plugin-woocommerce-custom-paintings',
+        destination: '/en/projects/wordpress-plugin-woocommerce-custom-paintings',
+        permanent: true
+      }
+    ];
   }
 };
 
