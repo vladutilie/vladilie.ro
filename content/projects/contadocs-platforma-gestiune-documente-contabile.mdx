@@ -1,0 +1,99 @@
+---
+title: ContaDocs - Platformă de gestiune a documentelor contabile
+locale: ro
+featuredImage: https://res.cloudinary.com/vladilie-ro/image/upload/v1702388808/projects/contadocs-platforma-gestiune-documente-contabile/zenrqfjw248khtdjojlt.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAjUlEQVR4nGP4////o+ev/8PA8zfvudyT6pJCd6+Y9///f4b///93d3cXFxefPn36169f33//unbvybV7TyCqQdJBcRkW7kETJkzo7u4+cuIsl7E9g4DyxfuPoNIRprKO0gxvXr/5////lEXLGRgYGJRM5m/aDZW+cevu06dPIaa9//oNYvjHz9+g0ngAADLQjXK82VK7AAAAAElFTkSuQmCC
+description: Platformă de gestiune a documentelor contabile cu stocare exclusivă în contul Google Drive al contabilului.
+technologies: [NextJS, Tailwind CSS, TypeScript, Google Drive API, NextAuth, Prisma, Firebase, Docker, i18n]
+keywords: [contadocs,documente,contabilitate,gestiune,documente contabile,organizare documente]
+date: December 12, 2023 18:14:21
+---
+
+## Introducere
+Ideea proiectului a fost de a crea o platformă extrem de minimalistă atât ca design cât și ca funcționalități, astfel încât activitatea contabilului să se limiteze la un număr minim de acțiuni simple pe care le poate face, iar clientul să-și elimine grijile trimiterii documentelor contabile lunar către contabil.
+
+### Contabil
+Panoul de control a contabilului permite gestionarea listei de firme pentru care face contabilitate și eventual încărcarea unor rapoarte lunare pentru firmele respective.
+
+### Client
+Panoul de control a clientului permite alegerea firmei dintr-o listă (dacă este cazul) pentru care dorește să gestioneze documente și poate naviga printr-o structură de directoare pentru ca ulterior să își încarce documentele.
+
+## Crearea contului de contabil
+La crearea contului de contabil este nevoie de un **cont Google**.
+Acesta se poate crea separat sau la accesarea aplicației în zona dedicată pe <a href="https://accountant.contadocs.ro" title="Zona de administrare pentru contabil" target="_blank" rel="noopener" className="after:content-['_↗']">accountant.contadocs.ro</a>.
+Pentru ca totul să funcționeze în parametri, este necesar ca următoarele permisiuni să fie acordate aplicației la crearea contului:
+<ul className="list-inside list-disc space-y-2 text-gray-600 dark:text-gray-300">
+    <li>să vadă, să editeze, să creeze și să șteargă **numai** fișierele Google Drive specifice pe care le folosești cu această aplicație</li>
+    <li>să se conecteze la un serviciu extern</li>
+</ul>
+
+Celelalte permisiuni vor fi acordate automat de vreme ce aplicația folosește funcția de conectare cu Google:
+<ul className="list-inside list-disc space-y-2 text-gray-600 dark:text-gray-300">
+    <li>să te asocieze cu informațiile cu caracter personal de pe Google</li>
+    <li>să vadă informațiile tale cu caracter personal, inclusiv pe cele pe care le-ai făcut disponibile public</li>
+    <li>să vadă adresa de e-mail principală din Contul Google</li>
+</ul>
+
+## Gestionarea firmelor
+Imediat după crearea contului de contabil se poate adăuga prima firmă în cont.
+În formularul de adăugare firmă, unul dintre câmpuri va solicita numărul de telefon al reprezentantului firmei respective.
+Aici este partea interesantă care introduce clientul în proces și anume, cu acest număr de telefon el se va putea conecta pe platformă.
+
+După adăugarea firmei, în spațiul de stocare din Google Drive™ al contabilului se va genera automat o structură de directoare ca cea de mai jos.
+
+## Contul de client
+Din momentul în care firma a fost adăugată de contabil cu numărul de telefon aferent reprezentantului ei, clientul poate accesa platfoma.
+Accesul de către clienți se face la adresa <a href="https://app.contadocs.ro" title="Zona de administrare pentru clienți" target="_blank" rel="noopener" className="after:content-['_↗']">app.contadocs.ro</a>.
+Autentificarea clientului este pe bază de parolă de unică folosință (OTP - One Time Password) - utilizatorul își introduce numărul de telefon (adăugat în prealabil de către contabil la datele firmei), primește o parolă unică prin SMS pe care o introduce în pasul doi în autentificare, se face verificarea și apoi autentificarea.
+
+Pentru asta am integrat serviciile de la Firebase.
+
+😩 Motivul pentru care am optat pentru acest tip de autentificare este că scutește utilizatorul unei astfel de aplicații de generarea încă unei parole pentru o aplicație cu uz relativ redus, memorarea sau chiar resetarea ei (da, mulți utilizatori nu știu despre Password Managers).
+
+După autentificarea în aplicație, clientul poate fie să aleagă firma pentru care dorește încărcarea documentelor (poate fi reprezentant pentru mai multe firme), fie să acceseze șirul de directoare pentru a ajunge în destinația directorului dorit, de exemplu:
+```
+2023 > Decembrie > Facturi > Furnizor
+```
+Acolo va avea posibilitatea să își încarce documentele din dispozitiv, documente care vor ajunge în spațiul de stocare Google Drive™ al contabilului care se ocupă de firma sa.
+
+## Structura de directoare
+După adăugarea unei firme în cont de către un contabil, în spațiul său de stocare Google Drive™ se va genera automat o structură de directoare asemănătoare celei de mai jos:
+```
+Spațiu de stocare Google Drive™
+└── Contadocs
+    └── Nume firmă
+        ├── 2022
+        │   ├── Octombrie
+        │   ├── Noiembrie
+        │   └── Decembrie
+        └── 2023
+            ├── Ianuarie
+            ├── ...
+            ├── Noiembrie
+            │   ├── Facturi
+            │   │   ├── Clienți
+            │   │   └── Furnizori
+            │   ├── Extrase de cont
+            │   └── Rapoarte
+            └── Decembrie
+```
+Toate directoarele sunt gestionate automat de către platformă, în ideea că dacă un director va fi șters (din greșeală 🤷🏻‍♂️) de către contabil, la prima următoare interacțiune a platformei ContaDocs cu acesta, va detecta că nu există și îl va re-crea.
+Astfel se păstrează o semi-integritate a structurii.
+
+Din păcate Google nu oferă posibilitatea pentru conturile gratuite ca aceste directoare să poată fi blocate de către aplicația care le-a creat.
+
+## Încărcarea documentelor
+În directoarele `Clienți`, `Furnizori` și `Extrase de cont` clientul are acces la o funcționalitate de încărcare de documente.
+În general poate alege documente în format `jpg/jpeg`, `png`, `pdf`, `doc` și `docx` din dispozitiv.
+Dacă acesta accesează platforma de pe telefon, va putea și să fotografieze cu telefonul bonurile, facturile sau alte documente și după finalizarea pozelor pentru fiecare pagină sau document, pozele vor fi convertite într-un document PDF și încărcat apoi în dosarul destinație.
+
+## Confidențialitatea documentelor
+ContaDocs folosește API-ul Google Drive™ pentru a manipula încărcarea și ștergerea documentelor din conturile legate ale contabililor.
+Niciun document încărcat prin platformă și eventual procesat nu este stocat nici permanent și nici temporar de către ContaDocs.
+Stocarea documentelor se va face în spațiile de stocare din Google Drive™ din conturile contabililor.
+Am gândit asta pentru a elimina orice suspiciune, teamă și reținere de a folosi platforma.
+
+## Ce urmează?
+Platforma este de tip SaaS (Software-as-a-Service).
+Din păcate, având o perioadă îndelungată de dezvoltare și o vizibilitate relativ scăzută în rândul contabililor, nu a avut parte de un feedback din piață și astfel funcționalitățile de tip push/email-notifications, monetizarea și altele nu au fost dezvoltate.
+Probabil ar urma integrarea feedback-ului din partea contabililor și eventual a clienților.

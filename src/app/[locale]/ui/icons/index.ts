@@ -1,0 +1,16 @@
+export { Burger } from './burger.icon';
+export { Commit } from './commit.icon';
+export { ExpressJS } from './expressjs.icon';
+export { Facebook } from './facebook.icon';
+export { GitHub } from './github.icon';
+export { LinkedIn } from './linkedin.icon';
+export { Logo } from './logo.icon';
+export { MySQL } from './mysql.icon';
+export { PHP } from './php.icon';
+export { Pin } from './pin.icon';
+export { Polywork } from './polywork.icon';
+export { Prisma } from './prisma.icon';
+export { WordPress } from './wordpress.icon';
+export { WordPress2 } from './wordpress2.icon';
+export { X } from './x.icon';
+export { WhatsApp } from './whatsapp.icon';

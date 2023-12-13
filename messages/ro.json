@@ -1,0 +1,310 @@
+{
+  "navbar": {
+    "go-to-homepage-al": "Mergi la prima pagină",
+    "burger-menu-al": "Meniu burger",
+    "about": "Despre",
+    "education": "Educație",
+    "skills": "Abilități",
+    "projects": "Proiecte",
+    "testimonials": "Testimoniale",
+    "services": "Servicii",
+    "blog": "Blog",
+    "contact": "Contact",
+    "switch-theme": "Schimbă temă",
+    "change-language": "Schimbă limba",
+    "change-language-to": "Change language to {lang}"
+  },
+  "homepage": {
+    "metadata": {
+      "title": "Inginer software · Lucrez cu NodeJS, WordPress, Neo4j",
+      "description": "Construiesc soluții software dedicate cu JavaScript, WordPress, Neo4j, Tailwind CSS și multe alte platforme și tehnologii conexe.",
+      "keywords": "vlad,ilie,software,inginer,web developer,wordpress,nodejs,nextjs,tailwind,javascript"
+    },
+    "hero": {
+      "hello": "Salut, aici Vlad {emoji}",
+      "about": "Sunt <strong>Inginer Software</strong> și locuiesc în România. Iubesc să jonglez cu tehnologiile și pun suflet în fiecare proiect pentru a obține tot ce este mai bun din el. <strong>Profesionist certificat <neo4j>Neo4j</neo4j></strong>, fan NextJS, entuziast al tehnologiilor JavaScript, nostalgic iubitor de <strong>WordPress</strong>, și întreținător al site-urilor web <strong><cpf>Cărțile pe Față</cpf></strong>. Îmi place și să călătoresc prin țară, de aceea acum mă aflu în <locations>{city}</locations>, iar mâine aș putea fi în altă parte.",
+      "available": "Disponibil pentru proiecte noi",
+      "commits": "{count, plural, =0 {<commits>0</commits> comiteri} =1 {<commits>1</commits> comitere} few {<commits>#</commits> comiteri} other {<commits>#</commits> de comiteri}} în ultimele 7 zile",
+      "link-to-al": "Legătură către {socialNetwork}",
+      "neo4j-certificate": "Certificat Neo4j",
+      "location-history": "Istoric locații"
+    },
+    "about": {
+      "tag": "Despre mine",
+      "title": "Mai multe despre mine",
+      "p1": "În ultimii cinci ani, am lucrat cu tehnologii bazate pe JavaScript, cu accent pe NextJS, NodeJS și Tailwind CSS. Această perioadă a fost marcată de dezvoltarea și integrarea unui spectru divers de soluții pentru baze de date, stocare, managementul utilizatorilor și analiza datelor.",
+      "p2": "Am lucrat cu startup-uri, ajutând la crearea de MVP-uri și la lansarea lor pe piață. În același timp, am cultivat proiecte personale de tip SaaS în care am investit creativitate și inovație.",
+      "p3": "În sfera web, mi-am asumat responsabilitatea pentru întreținerea site-urilor WordPress cu angajamentul de a asigura buna funcționare a acestora. În plus, sunt implicat pro-bono în întreținerea infrastructurii web a Asociației Culturale Carțile pe Față.",
+      "p4": "Sunt implicat în comunitatea WordPress în diverse moduri: sunt Editor General de Traduceri (GTE) pentru limba română, și contribui la eliminarea barierei lingvistice și la facilitarea accesului la WordPress pentru un public mai larg. De asemenea, prin implicarea mea și în echipa WP-Translations PRO, promovez traduceri de înaltă calitate. De asemenea, contribui la localizarea altor software-uri open-source pe diverse platforme precum Crowdin, Weblate, Transifex, Lokalise și chiar GitHub.",
+      "p5": "Mențin biblioteca NPM \"euplatesc\" pentru integrarea serviciului de plată EuPlătesc.",
+      "p6": "Sunt atras de proiecte care au un impact semnificativ asupra societății, în special în domenii precum mediul, educația, activismul și ONG-urile. Sunt hotărât să pun tehnologia în slujba unor cauze mari și să ajut la construirea unui viitor mai bun pentru toți.",
+      "see-more": "Vezi mai mult ˅",
+      "see-less": "Vezi mai puțin ˄"
+    },
+    "education": {
+      "tag": "Educație",
+      "neo4j": {
+        "title": "Profesionist certificat Neo4j",
+        "subtitle": "Neo4j",
+        "interval": "2022",
+        "description": "Împins de entuziasmul unui proiect bazat pe recomandări de informații relaționale, am urmat și absolvit cursurile GraphAcademy oferite de Neo4j. Certificatul este disponibil <url>aici</url>."
+      },
+      "bachelor-degree": {
+        "title": "Diplomă de licență",
+        "subtitle": "Universitatea Politehnica Timișoara | România",
+        "interval": "2013-2017",
+        "description": "Am urmat cursurile de zi ale Facultății de Automatică și Calculatoare din cadrul universității, studiind Automatică și Informatică Aplicată timp de 4 ani."
+      },
+      "oracle": {
+        "title": "Arhitectura și programarea bazelor de date cu SQL",
+        "subtitle": "Liceul Teoretic \"Mihai Viteazul\" | Caracal, România",
+        "interval": "2009-2013",
+        "description": "În timpul liceului, am participat la un curs intensiv oferit de Oracle. Acesta a reprezentat nu doar o oportunitate de a-mi dezvolta abilități tehnice solide, dar și un pas semnificativ în direcția pasiunii mele pentru tehnologia informației."
+      },
+      "high-school": {
+        "title": "Liceu",
+        "subtitle": "Liceul Teoretic \"Mihai Viteazul\" | Caracal, România",
+        "interval": "2009-2013",
+        "description": "Am studiat matematica și informatica intensiv."
+      }
+    },
+    "skills": {
+      "tag": "Abilități",
+      "description": "Tehnologiile pe care le folosesc și cu care m-am format ca dezvoltator software de-a lungul timpului:"
+    },
+    "projects": { "tag": "Proiecte", "see-all": "Vezi toate proiectele" },
+    "sw-l10n": {
+      "title": "Localizare software",
+      "description": "Proiecte software pentru care întrețin traducerile pentru limba română.",
+      "cron-job": "De peste 15 ani, asigură ritmul inimii pentru zeci de mii de site-uri web și execută milioane de cronjob-uri în fiecare zi.",
+      "discourse": "Software open-source pentru forumuri, care alimentează peste 20 000 de comunități online de toate formele și dimensiunile.",
+      "homebrew": "Homebrew instalează lucrurile de care ai nevoie și pe care Apple (sau sistemul tău Linux) nu le are. Poate fi folosit pentru a instala aplicații macOS, fonturi, module și alte software-uri non-open-source.",
+      "poedit": "Un editor de traducere puternic și intuitiv pentru Windows, macOS și Linux, folosit de peste 66 000 de oameni în fiecare lună.",
+      "tldraw": "O tablă digitală colaborativă. Poți folosi tldraw pentru a crea o tablă albă integrată pentru produsul tău sau ca bază pe care să îți construiești aplicațiile pe o pânză infinită.",
+      "weblate": "Serviciu găzduit și instrument autonom de traducere cu strânsă integrare a controlului versiunilor. Folosit de peste 2 500 de proiecte software și companii din peste 165 de țări.",
+      "wordpress": "Din 2019, sunt Editor general de traduceri, furnizând traduceri în română pentru nucleul WordPress, teme, module, aplicații mobile și site-uri web secundare WordPress.",
+      "wp-cli": "WP-CLI este interfața de linie de comandă pentru WordPress. Poți actualiza module, configura instalări multisite și multe altele, fără a utiliza un navigator web.",
+      "wp-translations": "Fac parte din echipa WP-Translations.PRO și ofer traduceri în limba română și corecții pentru companii precum Yoast, MailPoet, Polylang, ThemeIsle.",
+      "quote": "<contact>Scrie-mi</contact> dacă ai nevoie de o ofertă cu privire la traducerile proiectului tău în limba română."
+    }
+  },
+  "locations": {
+    "metadata": { "keywords": "lucru de la distanță,locuri,românia,locație,istoric,cluj-napoca" },
+    "title": "Istoric locații",
+    "description": "Locuri în care am fost, din care am lucrat sau pe care le-am vizitat. Din decembrie 2022 🎁.",
+    "visited": "{visitCounter, plural, =1 {Vizitat: o dată} few {Vizitat de: # ori} other {Vizitat de: # de ori}} · Ultima vizită: <lastVisit>{lastVisitAt}</lastVisit>"
+  },
+  "blog": {
+    "metadata": {
+      "description": "Articole despre pasiunile mele, hobby-uri și tehnologie.",
+      "keywords": "blog,articole,tehnologie,pasiune,hobby"
+    },
+    "title": "Blog",
+    "search-placeholder": "Tastează și caută...",
+    "views": "{count, plural, =0 {0 vizualizări} =1 {o vizualizare} few {# vizualizări} other {# de vizualizări}}",
+    "no-posts": "Momentan nu există articole. Rămâi aproape.",
+    "reading-time": "{minutes} min de citit"
+  },
+  "projects": {
+    "metadata": { "keywords": "proiecte,tehnologii,wordpress,nextjs,nodejs,neo4j,javascript,baze de date,dezvoltare" },
+    "title": "Proiecte",
+    "description": "Proiecte remarcabile pe care le-am implementat:",
+    "no-projects": "Momentan nu sunt articole despre proiecte.  🤷🏻‍♂️",
+    "reading-time": "{minutes} min de citit",
+    "technologies": "Tehnologii:",
+    "share": "Partajează pe:",
+    "share-on": "Partajează pe {network}"
+  },
+  "contact": {
+    "metadata": {
+      "keywords": "contact,discută,proiect nou,servicii dezvoltare software,mentenanță,wordpress,javascript"
+    },
+    "title": "Contact",
+    "description": "Spune-mi mai multe despre proiectul tău și hai să pornim o discuție.",
+    "form": {
+      "first-name": "Prenume",
+      "last-name": "Nume",
+      "email": "Email",
+      "phone": "Telefon",
+      "service": "Serviciu necesar",
+      "choose-service": "Alege...",
+      "service-custom-developmemt": "👨🏼‍💻 Dezvoltare personalizată",
+      "service-landing-page": "🚀 Pagină de prezentare",
+      "sw-i18n-l10n": "🌐 Internaționalizare/localizare software",
+      "service-maintenance": "🛠️ Mentenanță",
+      "service-job-opportunity": "💼 Oportunitate de job",
+      "just-say-hi": "👋 Salută pur și simplu",
+      "budget": "Buget <strong>{amount} 000 EUR</strong>",
+      "message": "Mesaj",
+      "required-field": "Acest câmp este obligatoriu.",
+      "submit": "Trimite",
+      "please-wait": "Te rog așteaptă...",
+      "message-sent": "Mulțumesc! 🙏🏻 Mesajul tău a fost trimis.",
+      "send-failed": "Din păcate trimiterea a eșuat. Te rog reîncearcă."
+    }
+  },
+  "colophon": {
+    "metadata": {
+      "description": "Despre cum a fost construit site-ul, stiva de tehnologii folosite și codul sursă.",
+      "keywords": "colofon,design,cod sursă site,nextjs,planetscale,mdx,tailwind,typescript,vercel"
+    },
+    "title": "Colofon",
+    "p1": "Designul site-ului meu este inspirat de <url>Sagar Shah</url>.",
+    "p2": "Stiva tehnologică folosită este formată din <nextjs>NextJS</nextjs>, <planet>PlanetScale</planet>, <mdx>MDX</mdx>, <tailwind>Tailwind CSS</tailwind> și <typescript>TypeScript</typescript>, lansat pe <vercel>Vercel</vercel>.",
+    "p3": "Codul sursă este disponibil pe <new>GitHub</new>. Poți găsi versiunea veche pe <old>această ramură</old>."
+  },
+  "uses": {
+    "metadata": { "keywords": "mediu de lucru,programe software,lucru la distanță,birou,echipament,instrumente" },
+    "title": "Utilizări",
+    "description": "Nu pot face magie de unul singur, dar instrumentele software potrivite în mâinile potrivite fac o treabă grozavă.",
+    "environment": {
+      "title": "🗄️ Mediu de lucru",
+      "desk": { "name": "Birou ajustabil manual pe înălțime", "description": "1600x800x36 mm, negru" },
+      "chair": { "name": "2 x scaun Notus", "description": "Scaun ergonomic cu mesh" },
+      "laptop-stand": { "name": "Stand laptop", "description": "Portabil, ajustabil pe înălțime, pliabil" },
+      "monitors-support": {
+        "name": "Suport de birou pentru 2 monitoare",
+        "description": "Arc cu gaz, A+ SMLC24, 17-32 țoli"
+      },
+      "mousepad": { "name": "Mousepad Floston WORLD", "description": "900x400x3 mm" },
+      "lamp": "Veioză FORSÅ, nichelată"
+    },
+    "hardware": {
+      "title": "💻 Hardware",
+      "macbook": {
+        "name": "MacBook Pro 15 Retina cu Touch Bar",
+        "description": "2019, Coffee Lake 8-core i9 2.3GHz, 16GB DDR4, 512GB SSD, Radeon Pro 560X 4GB"
+      },
+      "monitors": { "name": "2 x monitor LED LG", "description": "27 țoli, 4K, 60Hz" },
+      "mouse": "Maus Apple Magic 2",
+      "keyboard": "Tastatură Mac LOGITECH MX Keys",
+      "mic": "Microfon VONYX CMS300B"
+    },
+    "software": {
+      "title": "🤖 Software",
+      "vscode": {
+        "name": "Visual Studio Code",
+        "description": "Extensii: EditorConfig for VS Code, ESLint, GitHub Actions, GitLens, i18n Ally, MDX, Package Json Upgrade, PHP_CodeSniffer, Prettier, Prisma, Sort lines, Tailwind CSS IntelliSense, vscode-icons, WordPress Snippets"
+      },
+      "postman": "Postman",
+      "chrome": {
+        "name": "Google Chrome",
+        "description": "Extensii: AdBlock, GoFullPage - Full Page Screen Capture, Grammarly, JSON Viewer, React Developer Tools, SWR DevTools, Tab Suspender, Xdebug helper"
+      },
+      "neo4j": "Neo4j Desktop",
+      "signal": "Signal",
+      "slack": "Slack"
+    }
+  },
+  "books": {
+    "metadata": { "keywords": "cărți,listă cărți,lectură,ce să citești,recomandări cărți" },
+    "title": "Cărți",
+    "description": "O parte din colecția mea de cărți. O călătorie prin cunoștințele și poveștile vieții mele.",
+    "currently-reading": "Acum citesc 📖",
+    "read": "Am citit 📚",
+    "wishlist": "Vreau să citesc 🧞‍♂️"
+  },
+  "boardgames": {
+    "metadata": { "keywords": "jocuri de societate,azul,pandemic,ticket to ride,zestrea" },
+    "title": "Jocuri de societate",
+    "description": "Dincolo de a învăța și de a lucra, îmi asigur și experiențe distractive. Iată jocurile de societate pe care le joc cu prietenii și cei dragi.",
+    "all-categories": "Toate",
+    "own": "Dețin ({count})",
+    "wishlist": "Îmi doresc ({count})",
+    "age": "Vârstă: {age}"
+  },
+  "terms": {
+    "metadata": {
+      "description": "Despre utilizarea site-ului, informațiile personale, limitări de răspundere și legislația aplicabilă.",
+      "keywords": "termeni,condiții,utilizare site,informații personale,limitări de răspundere,legislație aplicabilă"
+    },
+    "title": "Termeni și condiții",
+    "last-update": "Ultima actualizare: 6 decembrie 2023",
+    "welcome": "Bine ai venit pe site-ul meu!",
+    "cap1": {
+      "title": "1. Acceptarea Termenilor și Condițiilor",
+      "p1": "Accesând sau utilizând acest site web, ești de acord să respecți și să te supui tuturor termenilor și condițiilor prezentate mai jos. Dacă nu ești de acord cu acești termeni, te rog să nu utilizezi acest site."
+    },
+    "cap2": {
+      "title": "2. Drepturi de autor",
+      "p1": "Conținutul acestui site, inclusiv, dar fără a se limita la text, imagini, grafică, video și alte materiale, este protejat de drepturile de autor și alte legi privind proprietatea intelectuală.",
+      "p2": "Sunt excluse de la acești termeni acele resurse ale căror sursă este precizată în mod expres."
+    },
+    "cap3": {
+      "title": "3. Utilizarea site-ului",
+      "p1": "Utilizarea acestui site este permisă în scopuri legale și conforme cu acești termeni. Nu ai voie să utilizezi acest site în scopuri ilegale sau interzise de legi și regulamente aplicabile."
+    },
+    "cap4": {
+      "title": "4. Informații personale",
+      "p1": "Prin utilizarea acestui site, ești de acord cu colectarea și utilizarea informațiilor personale în conformitate cu Politica de Confidențialitate a site-ului."
+    },
+    "cap5": {
+      "title": "5. Limitări de răspundere",
+      "p1": "Site-ul este furnizat „așa cum este”, fără nicio garanție, fie expresă, fie implicită. Nu ne asumăm nicio răspundere pentru pierderi sau daune rezultate din utilizarea sau incapacitatea de a utiliza acest site."
+    },
+    "cap6": {
+      "title": "6. Modificări ale Termenilor și Condițiilor",
+      "p1": "Îmi rezerv dreptul de a modifica acești termeni și condiții în orice moment, fără notificare prealabilă. Este responsabilitatea ta să verifici periodic aceste modificări."
+    },
+    "cap7": {
+      "title": "7. Legislație aplicabilă",
+      "p1": "Acești termeni și condiții sunt guvernați de legislația română și orice litigiu legat de acești termeni va fi soluționat în instanțele competente din România."
+    },
+    "cap8": {
+      "title": "Contact",
+      "p1": "Pentru întrebări sau preocupări legate de acești termeni și condiții, te rog să mă contactezi prin intermediul formularului de contact.",
+      "p2": "Mulțumesc pentru vizitarea site-ului meu! 🙏🏻"
+    }
+  },
+  "privacy": {
+    "metadata": {
+      "description": "Despre informațiile colectate, utilizarea, securitatea, partajarea lor și drepturile tale.",
+      "keywords": "politică,confidențialitate,informații colectate,utilizare informații,securitate,drepturi utilizator"
+    },
+    "title": "Politică de confidențialitate",
+    "last-update": "Ultima actualizare: 6 decembrie 2023",
+    "welcome": "Bine ai venit pe site-ul meu!",
+    "cap1": {
+      "title": "1. Informații colectate",
+      "p1": "Atunci când utilizezi formularul de contact de pe site-ul meu, îți solicit să furnizezi următoarele informații: prenume, nume, adresă de email, număr de telefon, mesaj.",
+      "p2": "Aceste informații sunt colectate exclusiv în scopul oferirii de servicii sau răspunsului la întrebările și solicitările tale.",
+      "p3": "Pe măsură ce navighezi pe site-ul meu, pot fi colectate automat informații non-personale, cum ar fi adresele IP, tipul de browser, paginile vizitate și altele, în scopuri statistice și de îmbunătățire a experienței utilizatorilor."
+    },
+    "cap2": {
+      "title": "2. Scopuri și utilizarea informațiilor",
+      "p1": "Informațiile personale colectate sunt utilizate în principal în următoarele scopuri:",
+      "p2": " - Pentru a răspunde la solicitările și întrebările tale",
+      "p3": " - Pentru a furniza serviciile solicitate",
+      "p4": " - Pentru a te informa despre modificări sau actualizări ale serviciilor mele",
+      "p5": " - În scopuri statistice și de analiză pentru îmbunătățirea site-ului meu"
+    },
+    "cap3": {
+      "title": "3. Păstrarea și securitatea informațiilor",
+      "p1": "Informațiile tale personale vor fi păstrate doar atât cât este necesar pentru scopurile specificate în această politică. Mă angajez să implementăm măsuri de securitate adecvate pentru a proteja informațiile împotriva accesului neautorizat sau a utilizării incorecte."
+    },
+    "cap4": {
+      "title": "4. Partajarea informațiilor",
+      "p1": "Nu voi partaja, vinde sau transfera informațiile tale personale terților fără consimțământul tău explicit, cu excepția cazurilor în care legea o cere."
+    },
+    "cap5": {
+      "title": "5. Drepturile tale",
+      "p1": "Ai dreptul să soliciți acces la informațiile tale personale, să le corectezi sau să le ștergi. Pentru orice solicitare în acest sens, te rog să mă contactezi prin intermediul formularului de contact."
+    },
+    "cap6": {
+      "title": "6. Modificări ale Politicii de Confidențialitate",
+      "p1": "Îmi rezerv dreptul de a modifica această Politică de Confidențialitate în orice moment. Orice modificări vor fi publicate pe această pagină, iar utilizarea continuă a site-ului după aceste modificări constituie acceptarea acestora."
+    },
+    "cap7": {
+      "title": "Contact",
+      "p1": "Pentru întrebări sau nelămuriri legate de această Politică de Confidențialitate, te rog să mă contactezi prin intermediul formularului de contact.",
+      "p2": "Îți mulțumesc pentru încrederea acordată! 😌"
+    }
+  },
+  "footer": {
+    "vat-id": "CUI: {vatId}",
+    "trade-reg-no": "Nr.reg.com.: {regNo}",
+    "sal-al": "Detalii Soluționarea alternativă a litigiilor",
+    "sol-al": "Soluționarea online a litigiilor"
+  },
+  "not-found": { "title": "Eroare 404", "description": "Pagina pe care o cauți nu există." }
+}
