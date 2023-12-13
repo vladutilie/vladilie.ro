@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { getPathname } from '@/navigation';
 
+import { UpdateLocation } from './ui/update-location';
 import { Hero } from './ui/hero';
 import { About } from './ui/about';
 import { Education } from './ui/education/';
@@ -85,6 +86,7 @@ export default async function Home() {
 
   return (
     <>
+      <UpdateLocation />
       <Hero location={location} commits={commits} />
       <About />
       <Education />
