@@ -5,7 +5,7 @@ import { Link } from '@/navigation';
 
 import { SocialMedia } from './social-media';
 import { Commit, Pin } from '../ui/icons';
-import vlad from '@/../public/images/vlad-ilie.jpg';
+import vlad from '@/../public/images/vlad-ilie-portrait.webp';
 
 export const Hero: React.FC<{ location: string; commits: number }> = ({ location, commits }) => {
   const t = useTranslations('homepage.hero');
