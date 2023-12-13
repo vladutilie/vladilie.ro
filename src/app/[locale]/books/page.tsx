@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { type Book as BookT, BookState } from '@prisma/client';
 import { getTranslations } from 'next-intl/server';
 import { getPathname } from '@/navigation';
+import { getPlaiceholder } from 'plaiceholder';
 
 import prisma from '@/lib/prisma';
 import { readData } from '@/lib/readData';
@@ -45,16 +46,25 @@ type BookTFile = {
 // TODO: Run this when on production, then remove it :)
 const seedBooks = async () => {
   const { books } = await readData<{ books: BookTFile[] }>('/public/data/books.json');
-  await prisma.book.createMany({
-    data: books.map(({ blurDataUrl, state, ...book }) => ({
-      ...book,
-      blurData: blurDataUrl,
+  const bookList = [];
+
+  let i = 1;
+  for await (let book of books) {
+    const { blurDataUrl, state, ...rest } = book;
+
+    const bufferImage = await fetch(rest.cover).then(async (r) => Buffer.from(await r.arrayBuffer()));
+    const { base64 } = await getPlaiceholder(bufferImage, { size: 10 });
+
+    bookList.push({
+      id: i++,
+      ...rest,
+      blurData: base64,
       state: 'Favorite' === state ? BookState.Completed : (state as BookState),
       isFavorite: 'Favorite' === state
-    }))
-  });
+    });
+  }
 
-  return books;
+  await prisma.book.createMany({ data: bookList });
 };
 
 const getBooks = async () => {
