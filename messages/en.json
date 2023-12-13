@@ -98,7 +98,8 @@
   "blog": {
     "metadata": {
       "description": "Articles about my passions, hobbies and technology.",
-      "keywords": "blog,posts,technology,passion,hobby"
+      "keywords": "blog,posts,technology,passion,hobby",
+      "404-error": "404 Error"
     },
     "title": "Blog",
     "search-placeholder": "Type and search...",
@@ -107,7 +108,10 @@
     "reading-time": "{minutes} min read"
   },
   "projects": {
-    "metadata": { "keywords": "projects,technologies,wordpress,nextjs,nodejs,neo4j,javascript,database,development" },
+    "metadata": {
+      "keywords": "projects,technologies,wordpress,nextjs,nodejs,neo4j,javascript,database,development",
+      "404-error": "404 Error"
+    },
     "title": "Projects",
     "description": "Outstanding projects I have implemented:",
     "no-projects": "There are currently no articles about projects. 🤷🏻‍♂️",

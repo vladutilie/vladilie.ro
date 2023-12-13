@@ -98,7 +98,8 @@
   "blog": {
     "metadata": {
       "description": "Articole despre pasiunile mele, hobby-uri și tehnologie.",
-      "keywords": "blog,articole,tehnologie,pasiune,hobby"
+      "keywords": "blog,articole,tehnologie,pasiune,hobby",
+      "404-error": "Eroare 404"
     },
     "title": "Blog",
     "search-placeholder": "Tastează și caută...",
@@ -107,7 +108,10 @@
     "reading-time": "{minutes} min de citit"
   },
   "projects": {
-    "metadata": { "keywords": "proiecte,tehnologii,wordpress,nextjs,nodejs,neo4j,javascript,baze de date,dezvoltare" },
+    "metadata": {
+      "keywords": "proiecte,tehnologii,wordpress,nextjs,nodejs,neo4j,javascript,baze de date,dezvoltare",
+      "404-error": "Eroare 404"
+    },
     "title": "Proiecte",
     "description": "Proiecte remarcabile pe care le-am implementat:",
     "no-projects": "Momentan nu sunt articole despre proiecte.  🤷🏻‍♂️",
