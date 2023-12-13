@@ -1,15 +1,11 @@
-'use client';
-
-import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 import { NavLinks } from '@/lib/constants';
-import vlad from '@/../public/images/vlad-ilie.jpg';
+import vlad from '@/../public/images/vlad-ilie.webp';
 
 export const About: React.FC = () => {
   const t = useTranslations('homepage.about');
-  const [showMore, setShowMore] = useState(false);
 
   return (
     <section id={NavLinks.About} className='bg-gray-50 transition-colors dark:bg-slate-900'>
@@ -19,14 +15,14 @@ export const About: React.FC = () => {
         </div>
 
         <div className='col-span-3 mx-auto self-center lg:col-span-1'>
-          <Image src={vlad} alt='Vlad Ilie' width={400} height={400} className='rounded-full' placeholder='blur' />
+          <Image src={vlad} alt='Vlad Ilie' width={300} height={400} placeholder='blur' />
         </div>
 
         <div className='col-span-3 flex flex-col lg:col-span-2'>
           <h2>{t('title')}</h2>
 
           <div className='relative'>
-            <div className={`transition-[height] ${showMore ? 'h-full' : 'h-72'}  overflow-hidden`}>
+            <div>
               <p>{t('p1')}</p>
               <p>{t('p2')}</p>
               <p>{t('p3')}</p>
@@ -34,20 +30,6 @@ export const About: React.FC = () => {
               <p>{t('p5')}</p>
               <p>{t('p6')}</p>
             </div>
-
-            {!showMore && (
-              <div className='before:absolute before:bottom-0 before:z-0 before:h-20 before:w-full before:bg-gradient-to-t before:from-gray-50 dark:before:from-slate-900' />
-            )}
-
-            {showMore ? (
-              <span className='absolute -bottom-4 z-10 mx-auto cursor-pointer' onClick={() => setShowMore(false)}>
-                {t('see-less')}
-              </span>
-            ) : (
-              <span onClick={() => setShowMore(true)} className='absolute bottom-0 z-10 mx-auto cursor-pointer'>
-                {t('see-more')}
-              </span>
-            )}
           </div>
         </div>
       </div>
