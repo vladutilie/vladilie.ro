@@ -5,7 +5,7 @@ import { Done, Favorite, Glasses, Wishlist } from '@/icons';
 
 export const Book: React.FC<BookT> = ({ title, author, cover, state, link, blurData, isFavorite }) => (
   <a
-    className='col-span-6 p-2 transition-transform hover:scale-105 sm:col-span-3 lg:col-span-2'
+    className='group col-span-6 p-2 transition-transform hover:scale-105 sm:col-span-3 lg:col-span-2'
     href={link}
     target='_blank'
   >
@@ -45,8 +45,8 @@ export const Book: React.FC<BookT> = ({ title, author, cover, state, link, blurD
       </div>
 
       <div className='flex flex-col py-2'>
-        <p className='my-0 grow font-semibold'>{title}</p>
-        <span className='text-xs'>{author}</span>
+        <p className="my-0 grow font-semibold group-hover:after:content-['_↗']">{title}</p>
+        <span className='text-xs text-gray-600'>{author}</span>
       </div>
     </div>
   </a>
