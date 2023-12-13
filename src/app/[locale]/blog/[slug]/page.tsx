@@ -12,7 +12,11 @@ export async function generateMetadata({
   params: { locale: 'en' | 'ro'; slug: string };
 }): Promise<Metadata> {
   const post = allPosts.find((p: Post) => p.slug === slug && p.locale === locale);
-  const t = await getTranslations('projects');
+  const t = await getTranslations('blog');
+  if (!post) {
+    return { title: `${t('metadata.404-error')} | ${t('title')}` };
+  }
+
   const commonFields = { title: `${post?.title} | ${t('title')}`, description: post?.description };
 
   return {
