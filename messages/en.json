@@ -32,6 +32,7 @@
     "about": {
       "tag": "About me",
       "title": "More about me",
+      "image-alt": "Vlad in the mountains",
       "p1": "For the past five years, I have been working with JavaScript-based technologies with a focus on NextJS, NodeJS, and Tailwind CSS. This period was marked by the development and integration of a diverse spectrum of solutions for databases, storage, user management, and data analysis.",
       "p2": "I have worked with startups, helping to create MVPs and take them to market. At the same time, I cultivated personal SaaS projects in which I invested creativity and innovation.",
       "p3": "In the web sphere, I have taken responsibility for the maintenance of WordPress sites with the commitment to ensure their smooth operation. In addition, I am involved pro-bono in maintaining the infrastructure of the Cultural Association Carțile pe Față.",
@@ -47,7 +48,7 @@
         "title": "Neo4j Certified Professional",
         "subtitle": "Neo4j",
         "interval": "2022",
-        "description": "Driven by the excitement of a project based on relational information recommendations, I took and graduated from the GraphAcademy courses offered by Neo4j. The certificate is available <url>here</url>."
+        "description": "Driven by the excitement of a project based on relational information recommendations, I took and graduated from the GraphAcademy courses offered by Neo4j. You can see <url>the certificate</url>."
       },
       "bachelor-degree": {
         "title": "Bachelor degree",
