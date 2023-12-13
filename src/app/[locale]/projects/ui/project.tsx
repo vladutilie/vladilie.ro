@@ -1,9 +1,16 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { format } from 'timeago.js';
+import { format, register } from 'timeago.js';
+import roFunc from 'timeago.js/lib/lang/ro';
+import enFunc from 'timeago.js/lib/lang/en_US';
 import { type Project as ProjectT } from 'contentlayer/generated';
-
 import { Link } from '@/navigation';
+
+import { usePostViews } from '@/hooks/usePostViews';
+import { numberFormat } from '@/lib/numberFormat';
+import { LoadingDots } from '../../ui/loading-dots';
 
 export const Project: React.FC<ProjectT> = ({
   title,
@@ -16,6 +23,13 @@ export const Project: React.FC<ProjectT> = ({
   readingTime
 }) => {
   const t = useTranslations('projects');
+  const { views, isLoading, isError } = usePostViews(slug);
+
+  if ('ro' === locale) {
+    register('ro', roFunc);
+  } else {
+    register('en', enFunc);
+  }
 
   return (
     <Link
@@ -40,6 +54,7 @@ export const Project: React.FC<ProjectT> = ({
 
         <div className='flex justify-between text-xs text-gray-500'>
           <span>{t('reading-time', { minutes: Math.ceil(readingTime) })}</span>
+          <span>{isError || isLoading ? <LoadingDots /> : t('views', { count: numberFormat(Number(views)) })}</span>
           <span>{format(date, locale)}</span>
         </div>
       </div>
