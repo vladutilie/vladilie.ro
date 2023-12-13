@@ -6,11 +6,11 @@ import { GitHub, X, LinkedIn, WordPress, Polywork } from '../ui/icons';
 import { useTranslations } from 'next-intl';
 
 const socialLinks: { name: string; url: string; logo: ReactNode }[] = [
-  { name: 'GitHub', url: 'https://github.com/vladutilie', logo: <GitHub /> },
-  { name: 'X', url: 'https://x.com/vladilie94', logo: <X /> },
-  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/vladilie', logo: <LinkedIn /> },
-  { name: 'WordPress', url: 'https://profiles.w.org/vladwtz', logo: <WordPress /> },
-  { name: 'Polywork', url: 'https://www.polywork.com/vladilie', logo: <Polywork /> }
+  { name: 'GitHub', url: process.env.NEXT_PUBLIC_GITHUB!, logo: <GitHub /> },
+  { name: 'X', url: process.env.NEXT_PUBLIC_X!, logo: <X /> },
+  { name: 'LinkedIn', url: process.env.NEXT_PUBLIC_LINKEDIN!, logo: <LinkedIn /> },
+  { name: 'WordPress', url: process.env.NEXT_PUBLIC_WORDPRESS!, logo: <WordPress /> },
+  { name: 'Polywork', url: process.env.NEXT_PUBLIC_POLYWORK!, logo: <Polywork /> }
 ];
 
 export const SocialMedia: React.FC = () => {
