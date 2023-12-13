@@ -1,0 +1,307 @@
+{
+  "navbar": {
+    "go-to-homepage-al": "Go to homepage",
+    "burger-menu-al": "Burger menu",
+    "about": "About",
+    "education": "Education",
+    "skills": "Skills",
+    "projects": "Projects",
+    "testimonials": "Testimonials",
+    "services": "Services",
+    "blog": "Blog",
+    "contact": "Contact",
+    "switch-theme": "Switch theme",
+    "change-language": "Change language",
+    "change-language-to": "Schimbă limba în {lang}"
+  },
+  "homepage": {
+    "metadata": {
+      "title": "Software Engineer · Work with NodeJS, WordPress, Neo4j",
+      "description": "I build dedicated software solutions with JavaScript, WordPress, Neo4j, Tailwind CSS, and many other related platforms and technologies.",
+      "keywords": "vlad,ilie,software,engineer,web developer,wordpress,nodejs,nextjs,tailwind,javascript"
+    },
+    "hero": {
+      "hello": "Hi there, Vlad here {emoji}",
+      "about": "I'm a <strong>Software Engineer</strong> based in Romania, love to juggle with technologies and put my soul into every project to get the best out of it. <strong><neo4j>Neo4j</neo4j> Certified Professional</strong>, NextJS fan, enthusiastic about JavaScript technologies, nostalgic <strong>WordPress</strong> lover, and the maintainer of <strong><cpf>Cărțile pe Față</cpf></strong> websites. I also like to travel around the country, so now I am in <locations>{city}</locations>, and tomorrow I might be somewhere else.",
+      "available": "Available for new projects",
+      "commits": "{count, plural, =0 {<commits>0</commits> commits} =1 {<commits>1</commits> commit} other {<commits>#</commits> commits}} in the last 7 days",
+      "link-to-al": "Link to {socialNetwork}",
+      "neo4j-certificate": "Neo4j Certificate",
+      "location-history": "Location history"
+    },
+    "about": {
+      "tag": "About me",
+      "title": "More about me",
+      "p1": "For the past five years, I have been working with JavaScript-based technologies with a focus on NextJS, NodeJS, and Tailwind CSS. This period was marked by the development and integration of a diverse spectrum of solutions for databases, storage, user management, and data analysis.",
+      "p2": "I have worked with startups, helping to create MVPs and take them to market. At the same time, I cultivated personal SaaS projects in which I invested creativity and innovation.",
+      "p3": "In the web sphere, I have taken responsibility for the maintenance of WordPress sites with the commitment to ensure their smooth operation. In addition, I am involved pro-bono in maintaining the infrastructure of the Cultural Association Carțile pe Față.",
+      "p4": "I am involved in the WordPress community in various ways: I am a General Translation Editor (GTE) in Romania, and I contribute to removing the language barrier and facilitating access to WordPress for a wider audience. Also, through my involvement in the WP-Translations PRO team, I promote high-quality translations. I also contribute to other open-source software localization on various platforms like Crowdin, Weblate, Transifex, Lokalise, and even GitHub.",
+      "p5": "I maintain the \"euplatesc\" NPM library for the integration of the EuPlătesc payment service.",
+      "p6": "I am attracted to projects that have a significant impact on society, especially in areas such as the environment, education, activism, and NGOs. I am determined to put technology at the service of great causes and help build a better future for all.",
+      "see-more": "See more ˅",
+      "see-less": "See less ˄"
+    },
+    "education": {
+      "tag": "Education",
+      "neo4j": {
+        "title": "Neo4j Certified Professional",
+        "subtitle": "Neo4j",
+        "interval": "2022",
+        "description": "Driven by the excitement of a project based on relational information recommendations, I took and graduated from the GraphAcademy courses offered by Neo4j. The certificate is available <url>here</url>."
+      },
+      "bachelor-degree": {
+        "title": "Bachelor degree",
+        "subtitle": "Politehnica University Timișoara | Romania",
+        "interval": "2013-2017",
+        "description": "I attended the full-time courses of the Faculty of Automation and Computers within the university, studying Automation and Applied Informatics for four years."
+      },
+      "oracle": {
+        "title": "Database Design and Programming with SQL",
+        "subtitle": "\"Mihai Viteazul\" Theoretical High School | Caracal, Romania",
+        "interval": "2012-2013",
+        "description": "During high school, I took a crash course offered by Oracle. It was not only an opportunity to develop my solid technical skills, but also a significant step in the direction of my passion for information technology."
+      },
+      "high-school": {
+        "title": "High School",
+        "subtitle": "\"Mihai Viteazul\" High School | Caracal, Romania",
+        "interval": "2009-2013",
+        "description": "I studied mathematics and computer science intensively."
+      }
+    },
+    "skills": {
+      "tag": "Skills",
+      "description": "The technologies I use and trained with as a software developer over time:"
+    },
+    "projects": { "tag": "Projects", "see-all": "See all projects" },
+    "sw-l10n": {
+      "title": "Software localization",
+      "description": "SSoftware projects for which I maintain translations for the Romanian language.",
+      "cron-job": "For over 15 years, it has been providing the heartbeat for tens of thousands of websites and executes millions of cronjobs every day.",
+      "discourse": "Open-source forum software that powers over 20,000 online communities of all shapes and sizes.",
+      "homebrew": "Homebrew installs the stuff you need that Apple (or your Linux system) didn't. It can be used to install macOS apps, fonts, plugins, and other non-open-source software.",
+      "poedit": "A powerful and intuitive translation editor for Windows, macOS, and Linux, used by over 66,000 people every month.",
+      "tldraw": "A collaborative digital whiteboard. You can use tldraw to create a drop-in whiteboard for your product or as the foundation on which to build your own infinite canvas applications.",
+      "weblate": "Hosted service and standalone translation tool with tight version control integration. Used by over 2,500 software projects and companies in over 165 countries.",
+      "wordpress": "Since 2019, I have been a General Translation Editor providing translations into Romanian for WordPress Core, themes, plugins, mobile apps, and secondary WordPress websites.",
+      "wp-cli": "WP-CLI is the command-line interface for WordPress. You can update plugins, configure multisite installations and much more, without using a web browser.",
+      "wp-translations": "I am part of the WP-Translations.PRO team and providing translations into Romanian and proofreading strings for companies like Yoast, MailPoet, Polylang, ThemeIsle.",
+      "quote": "<contact>Drop me a line</contact> if you need a quote regarding your project translations into Romanian."
+    }
+  },
+  "locations": {
+    "metadata": { "keywords": "remote work,places,romania,location,history,cluj-napoca" },
+    "title": "Location history",
+    "description": "Places I've been, worked from or visited. Since December 2022 🎁.",
+    "visited": "Visited: {visitCounter, plural, =0 {0 times} =1 {1 time} other {# times}} · Last visit: <lastVisit>{lastVisitAt}</lastVisit>"
+  },
+  "blog": {
+    "metadata": {
+      "description": "Articles about my passions, hobbies and technology.",
+      "keywords": "blog,posts,technology,passion,hobby"
+    },
+    "title": "Blog",
+    "search-placeholder": "Type and search...",
+    "views": "{count, plural, =0 {0 views} =1 {1 view} other {# views}}",
+    "no-posts": "There are no blog posts for now. Stay close.",
+    "reading-time": "{minutes} min read"
+  },
+  "projects": {
+    "metadata": { "keywords": "projects,technologies,wordpress,nextjs,nodejs,neo4j,javascript,database,development" },
+    "title": "Projects",
+    "description": "Outstanding projects I have implemented:",
+    "no-projects": "There are currently no articles about projects. 🤷🏻‍♂️",
+    "reading-time": "{minutes} min read",
+    "technologies": "Technologies:",
+    "share": "Share on:",
+    "share-on": "Share on {network}"
+  },
+  "contact": {
+    "metadata": {
+      "keywords": "contact,discuss,new project,software development services,maintenance,wordpress,javascript"
+    },
+    "title": "Contact",
+    "description": "Tell me more about your project and let's start a discussion.",
+    "form": {
+      "first-name": "First name",
+      "last-name": "Last name",
+      "email": "Email",
+      "phone": "Phone",
+      "service": "Needed service",
+      "choose-service": "Choose...",
+      "service-custom-developmemt": "👨🏼‍💻 Custom development",
+      "service-landing-page": "🚀 Landing page",
+      "sw-i18n-l10n": "🌐 Software internationalization/localization",
+      "service-maintenance": "🛠️ Maintenance",
+      "service-job-opportunity": "💼 Job opportunity",
+      "just-say-hi": "👋 Just say hi",
+      "budget": "Budget <strong>€{amount}K</strong>",
+      "message": "Message",
+      "required-field": "This field is required.",
+      "submit": "Submit",
+      "please-wait": "Please wait...",
+      "message-sent": "Thank you! 🙏🏻 Your message has been sent.",
+      "send-failed": "Unfortunately, the submission failed. Please try again."
+    }
+  },
+  "colophon": {
+    "metadata": {
+      "description": "About how the site was built, the technology stack used and the source code.",
+      "keywords": "colophon,design,site source code,nextjs,planetscale,mdx,tailwind,typescript,vercel"
+    },
+    "title": "Colophon",
+    "p1": "My website's design is inspired by <url>Sagar Shah</url>.",
+    "p2": "The technology stack used consists of <nextjs>NextJS</nextjs>, <planet>PlanetScale</planet>, <mdx>MDX</mdx>, <tailwind>Tailwind CSS</tailwind>, and <typescript>TypeScript</typescript>, deployed on <vercel>Vercel</vercel>.",
+    "p3": "The source code is open-sourced on <new>GitHub</new>. You can find the old version on <old>this branch</old>."
+  },
+  "uses": {
+    "metadata": { "keywords": "working environment,software,remote work,desk,equipment,tools" },
+    "title": "Uses",
+    "description": "I can't do magic by myself, but the right software tools in the right hands are doing a great job.",
+    "environment": {
+      "title": "🗄️ Working environment",
+      "desk": { "name": "Manually adjustable desk", "description": "1600x800x36 mm, black" },
+      "chair": { "name": "2 x Notus chair", "description": "Ergonomic chair with mesh" },
+      "laptop-stand": { "name": "Laptop stand", "description": "Portable, height adjustable, folding" },
+      "monitors-support": { "name": "Desk support for 2 monitors", "description": "Gas spring, A+ SMLC24, 17-32 inch" },
+      "mousepad": { "name": "Mousepad Floston WORLD", "description": "900x400x3 mm" },
+      "lamp": "FORSÅ lamp, nickel-plated"
+    },
+    "hardware": {
+      "title": "💻 Hardware",
+      "macbook": {
+        "name": "MacBook Pro 15 Retina with Touch Bar",
+        "description": "2019, Coffee Lake 8-core i9 2.3GHz, 16GB DDR4, 512GB SSD, Radeon Pro 560X 4GB"
+      },
+      "monitors": { "name": "2 x Monitor LED LG", "description": "27 inch, 4K, 60Hz" },
+      "mouse": "Mouse Apple Magic 2",
+      "keyboard": "Keyboard Mac LOGITECH MX Keys",
+      "mic": "Microphone VONYX CMS300B"
+    },
+    "software": {
+      "title": "🤖 Software",
+      "vscode": {
+        "name": "Visual Studio Code",
+        "description": "Extensions: EditorConfig for VS Code, ESLint, GitHub Actions, GitLens, i18n Ally, MDX, Package Json Upgrade, PHP_CodeSniffer, Prettier, Prisma, Sort lines, Tailwind CSS IntelliSense, vscode-icons, WordPress Snippets"
+      },
+      "postman": "Postman",
+      "chrome": {
+        "name": "Google Chrome",
+        "description": "Extensions: AdBlock, GoFullPage - Full Page Screen Capture, Grammarly, JSON Viewer, React Developer Tools, SWR DevTools, Tab Suspender, Xdebug helper"
+      },
+      "neo4j": "Neo4j Desktop",
+      "signal": "Signal",
+      "slack": "Slack"
+    }
+  },
+  "books": {
+    "metadata": { "keywords": "books,book list,reading,what to read,book recommendation" },
+    "title": "Books",
+    "description": "A part of my book collection. A journey through my knowledge and stories along life.",
+    "currently-reading": "Curently reading 📖",
+    "read": "Read 📚",
+    "wishlist": "Wishlist 🧞‍♂️"
+  },
+  "boardgames": {
+    "metadata": { "keywords": "boardgames,azul,pandemic,ticket to ride,zestrea" },
+    "title": "Boardgames",
+    "description": "Beyond learning and working, I also ensure myself fun experiences. Here are the board games I play with friends and dear ones.",
+    "all-categories": "All",
+    "own": "Own ({count})",
+    "wishlist": "Wishlist ({count})",
+    "age": "Age: {age}"
+  },
+  "terms": {
+    "metadata": {
+      "description": "About site use, personal information, limitations of liability and applicable law.",
+      "keywords": "terms,conditions,site use,personal information,limitations of liability,applicable legislation"
+    },
+    "title": "Terms and conditions",
+    "last-update": "Last updated: December 6, 2023",
+    "welcome": "Welcome to my website!",
+    "cap1": {
+      "title": "1. Acceptance of Terms",
+      "p1": "By accessing or using this website, you agree to comply with and be bound by all the terms and conditions outlined below. If you do not agree with these terms, please refrain from using this site."
+    },
+    "cap2": {
+      "title": "2. Copyright",
+      "p1": "The content of this website, including but not limited to text, images, graphics, video, and other materials, is protected by copyright and other intellectual property laws.",
+      "p2": "Excluded from these terms are those resources whose source is expressly stated."
+    },
+    "cap3": {
+      "title": "3. Use of the site",
+      "p1": "The use of this site is permitted for lawful purposes and in accordance with these terms. You may not use this site for any illegal or prohibited purposes under applicable laws and regulations."
+    },
+    "cap4": {
+      "title": "4. Personal information",
+      "p1": "By using this site, you agree to the collection and use of personal information as outlined in the Privacy Policy of the site."
+    },
+    "cap5": {
+      "title": "5. Limitation of liability",
+      "p1": "The site is provided \"as is\", without any warranties, whether expressed or implied. I do not assume any liability for losses or damages resulting from the use or inability to use this site."
+    },
+    "cap6": {
+      "title": "6. Changes to Terms and Conditions",
+      "p1": "I reserve the right to modify these terms and conditions at any time without prior notice. It is your responsibility to periodically review these changes."
+    },
+    "cap7": {
+      "title": "7. Applicable law",
+      "p1": "These terms and conditions are governed by the laws of Romania, and any dispute related to these terms will be resolved in the competent courts of Romania."
+    },
+    "cap8": {
+      "title": "Contact",
+      "p1": "For questions or concerns about these terms and conditions, please contact me via the contact form.",
+      "p2": "Thanks for visiting my site! 🙏🏻"
+    }
+  },
+  "privacy": {
+    "metadata": {
+      "description": "About information collected, its use, security, sharing and your rights.",
+      "keywords": "policy,privacy,information collected,information use,security,user rights"
+    },
+    "title": "Privacy policy",
+    "last-update": "Last updated: December 6, 2023",
+    "welcome": "Welcome to my website!",
+    "cap1": {
+      "title": "1. Information collected",
+      "p1": "When you use the contact form on my website, I request the following information: first name, last name, email address, phone number, message.",
+      "p2": "These details are collected solely for the purpose of providing services or responding to your inquiries and requests.",
+      "p3": "As you navigate my website, certain non-personal information may be collected automatically, including IP addresses, browser type, pages visited, and others, for statistical purposes and to enhance user experience."
+    },
+    "cap2": {
+      "title": "2. Purposes and use of information",
+      "p1": "The personally identifiable information collected is primarily used for the following purposes:",
+      "p2": " - To respond to your inquiries and questions",
+      "p3": " - To provide the requested services",
+      "p4": " - To inform you about changes or updates to my services",
+      "p5": " - For statistical and analytical purposes to improve my website"
+    },
+    "cap3": {
+      "title": "3. Retention and security of information",
+      "p1": "Your personal information will be retained only as long as necessary for the purposes specified in this policy. I am committed to implementing adequate security measures to protect information against unauthorized access or misuse."
+    },
+    "cap4": {
+      "title": "4. Sharing of information",
+      "p1": "I will not share, sell, or transfer your personal information to third parties without your explicit consent, except where required by law."
+    },
+    "cap5": {
+      "title": "5. Your rights",
+      "p1": "You have the right to request access to, correct or delete your personal information. For any request in this regard, please contact me through the contact form."
+    },
+    "cap6": {
+      "title": "6. Changes to the Privacy Policy",
+      "p1": "I reserve the right to modify this Privacy Policy at any time. Any changes will be posted on this page, and your continued use of the site after these changes constitutes acceptance."
+    },
+    "cap7": {
+      "title": "Contact",
+      "p1": "For questions or concerns about this Privacy Policy, please contact me via the contact form.",
+      "p2": "Thank you for placing your trust in me! 😌"
+    }
+  },
+  "footer": {
+    "vat-id": "VAT ID: {vatId}",
+    "trade-reg-no": "Tr.reg.no: {regNo}",
+    "sal-al": "Details Alternative Dispute Resolution",
+    "sol-al": "Online dispute resolution"
+  },
+  "not-found": { "title": "404 Error", "description": "The page you are looking for does not exist." }
+}

@@ -1,0 +1,103 @@
+@tailwind base;
+@import './ui/syntax-highlighting.css';
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-gray-800 dark:text-gray-50;
+    @apply transition-colors;
+    @apply my-2.5;
+  }
+
+  h1 {
+    @apply text-4xl;
+    @apply font-bold;
+  }
+
+  h2 {
+    @apply text-3xl;
+    @apply font-semibold;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  h5 {
+    @apply text-lg;
+  }
+
+  p {
+    @apply text-base;
+    @apply text-gray-600 dark:text-gray-300;
+    @apply transition-colors;
+    @apply my-2;
+  }
+
+  a {
+    @apply text-blue-600;
+  }
+
+  a:hover {
+    @apply text-blue-500;
+  }
+
+  @screen lg {
+    h1 {
+      @apply text-6xl;
+    }
+
+    h2 {
+      @apply text-5xl;
+    }
+
+    h3 {
+      @apply text-4xl;
+    }
+
+    h4 {
+      @apply text-3xl;
+    }
+
+    h5 {
+      @apply text-2xl;
+    }
+  }
+
+  article h1 {
+    @apply text-4xl;
+  }
+
+  article h2 {
+    @apply text-3xl;
+  }
+
+  article h3 {
+    @apply text-2xl;
+  }
+
+  article h4 {
+    @apply text-xl;
+  }
+
+  /* For Webkit-based browsers (Chrome, Safari and Opera) */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For IE, Edge and Firefox */
+  .hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}

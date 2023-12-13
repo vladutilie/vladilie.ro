@@ -1,16 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
+  darkMode: ['class'],
+  content: ['./src/ui/**/*.{ts,tsx}', './src/app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
-      colors: {
-        blue: {
-          500: '#3598db' // curious blue
-        }
-      },
+      colors: { blue: { 450: '#3598db' } },
       animation: {
         slide: 'slide 50s linear infinite',
-        slide2: 'slide2 50s linear infinite'
+        slide2: 'slide2 50s linear infinite',
+        'text-bg': 'bg-animate 3s ease infinite'
       },
       keyframes: {
         slide: {
@@ -22,16 +20,13 @@ module.exports = {
           to: { transform: 'translateX(0%)' }
         },
         loading: {
-          '0%': {
-            opacity: '.2'
-          },
-          '20%': {
-            opacity: '1',
-            transform: 'translateX(1px)'
-          },
-          to: {
-            opacity: '.2'
-          }
+          '0%': { opacity: '.2' },
+          '20%': { opacity: '1', transform: 'translateX(1px)' },
+          to: { opacity: '.2' }
+        },
+        'bg-animate': {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%;' }
         }
       },
       boxShadow: ({ theme }) => ({
@@ -47,10 +42,7 @@ module.exports = {
           0px 33.2px 37.4px -2.5px rgba(3, 2, 2, 0.02)`
       })
     },
-    fontFamily: {
-      sans: ['Inter', 'sans-serif'],
-      quicksand: ['Quicksand', 'sans-serif']
-    }
+    fontFamily: { sans: ['Inter', 'sans-serif'] }
   },
   plugins: []
 };
