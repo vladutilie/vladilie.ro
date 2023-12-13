@@ -15,7 +15,12 @@ const nextConfig = {
   redirects() {
     return [
       {
-        source: '/case-studies/wordpress-plugin-woocommerce-custom-paintings',
+        source: '/ro/case-studies/wordpress-plugin-woocommerce-custom-paintings',
+        destination: '/en/projects/wordpress-plugin-woocommerce-custom-paintings',
+        permanent: true
+      },
+      {
+        source: '/en/case-studies/wordpress-plugin-woocommerce-custom-paintings',
         destination: '/en/projects/wordpress-plugin-woocommerce-custom-paintings',
         permanent: true
       }
