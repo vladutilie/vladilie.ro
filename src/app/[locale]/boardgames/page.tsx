@@ -1,13 +1,11 @@
 import { Metadata } from 'next';
-import { Boardgame, BoardgameState } from '@prisma/client';
+import { Boardgame } from '@prisma/client';
 import { getTranslations } from 'next-intl/server';
 import { getPathname } from '@/navigation';
 
 import prisma from '@/lib/prisma';
-import { readData } from '@/lib/readData';
 import { Categories } from './ui/categories';
 import { List } from './ui/list';
-import { getPlaiceholder } from 'plaiceholder';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
   const t = await getTranslations('boardgames');
@@ -34,42 +32,6 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     }
   };
 }
-
-const seedBoardgames = async () => {
-  type BoardgameType = {
-    age: string;
-    blurDataUrl: string;
-    duration: string;
-    image: string;
-    name: string;
-    players: string;
-    state: string;
-    tags: string[];
-    link: string;
-  };
-
-  const { boardgames } = await readData<{ boardgames: BoardgameType[] }>('/public/data/boardgames.json');
-
-  const list = [];
-
-  let i = 1;
-  for await (let bgame of boardgames) {
-    const { blurDataUrl, tags, state, ...rest } = bgame;
-
-    const bufferImage = await fetch(rest.image).then(async (r) => Buffer.from(await r.arrayBuffer()));
-    const { base64 } = await getPlaiceholder(bufferImage, { size: 10 });
-
-    list.push({
-      id: i++,
-      ...rest,
-      blurData: base64,
-      state: 'Wish' === state ? BoardgameState.Wishlist : BoardgameState.Own,
-      tags: tags.toString()
-    });
-  }
-
-  await prisma.boardgame.createMany({ data: list });
-};
 
 const getBoardgames = async () => {
   const boardgames = await prisma.boardgame.findMany();
