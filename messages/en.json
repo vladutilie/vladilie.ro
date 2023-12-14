@@ -307,7 +307,8 @@
     "vat-id": "VAT ID: {vatId}",
     "trade-reg-no": "Tr.reg.no: {regNo}",
     "sal-al": "Details Alternative Dispute Resolution",
-    "sol-al": "Online dispute resolution"
+    "sol-al": "Online dispute resolution",
+    "copyright": "All rights reserved."
   },
   "not-found": { "title": "404 Error", "description": "The page you are looking for does not exist." }
 }
