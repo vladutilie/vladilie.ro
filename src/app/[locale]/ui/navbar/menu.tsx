@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/navigation';
 
-import { Burger, Logo } from '../icons';
+import { Logo } from '../icons';
 import { Links } from './links';
+import { BurgerMenu } from './burger-menu';
 
 export const Menu: React.FC = () => {
   const [displayMenu, setDisplayMenu] = useState(false);
@@ -63,7 +64,7 @@ export const Menu: React.FC = () => {
       />
 
       <button className='md:hidden' onClick={() => handleMenu()} aria-label={t('burger-menu-al')}>
-        <Burger />
+        <BurgerMenu />
       </button>
     </div>
   );
