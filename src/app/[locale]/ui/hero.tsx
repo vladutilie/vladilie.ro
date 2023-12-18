@@ -83,13 +83,13 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
 
       <div className='col-span-6 place-self-center md:col-span-2'>
         <Image
-          src={vlad}
           alt='Vlad Ilie'
-          priority={true}
-          width={400}
-          height={400}
           className='rounded-full'
+          height={400}
           placeholder='blur'
+          priority
+          src={vlad}
+          width={400}
         />
       </div>
     </section>

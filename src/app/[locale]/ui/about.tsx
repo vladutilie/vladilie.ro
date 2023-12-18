@@ -15,7 +15,7 @@ export const About: React.FC = () => {
         </div>
 
         <div className='col-span-3 mx-auto self-center lg:col-span-1'>
-          <Image src={vlad} alt={t('image-alt')} width={300} height={400} placeholder='blur' />
+          <Image src={vlad} alt={t('image-alt')} width={300} height={400} priority placeholder='blur' />
         </div>
 
         <div className='col-span-3 flex flex-col lg:col-span-2'>
