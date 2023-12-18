@@ -76,7 +76,7 @@
     "projects": { "tag": "Projects", "see-all": "See all projects" },
     "sw-l10n": {
       "title": "Software localization",
-      "description": "SSoftware projects for which I maintain translations for the Romanian language.",
+      "description": "Software projects for which I maintain the Romanian translations.",
       "cron-job": "For over 15 years, it has been providing the heartbeat for tens of thousands of websites and executes millions of cronjobs every day.",
       "discourse": "Open-source forum software that powers over 20,000 online communities of all shapes and sizes.",
       "homebrew": "Homebrew installs the stuff you need that Apple (or your Linux system) didn't. It can be used to install macOS apps, fonts, plugins, and other non-open-source software.",

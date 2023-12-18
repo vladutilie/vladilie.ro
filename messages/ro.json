@@ -76,7 +76,7 @@
     "projects": { "tag": "Proiecte", "see-all": "Vezi toate proiectele" },
     "sw-l10n": {
       "title": "Localizare software",
-      "description": "Proiecte software pentru care întrețin traducerile pentru limba română.",
+      "description": "Proiecte software pentru care întrețin traducerile în limba română.",
       "cron-job": "De peste 15 ani, asigură ritmul inimii pentru zeci de mii de site-uri web și execută milioane de cronjob-uri în fiecare zi.",
       "discourse": "Software open-source pentru forumuri, care alimentează peste 20 000 de comunități online de toate formele și dimensiunile.",
       "homebrew": "Homebrew instalează lucrurile de care ai nevoie și pe care Apple (sau sistemul tău Linux) nu le are. Poate fi folosit pentru a instala aplicații macOS, fonturi, module și alte software-uri non-open-source.",
