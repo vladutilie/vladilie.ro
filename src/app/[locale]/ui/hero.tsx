@@ -65,17 +65,19 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
             <p className='my-0'>{t('available')}</p>
           </div>
 
-          <div className='flex items-center gap-x-2'>
-            <Commit />
-            <p className='my-0'>
-              {t.rich('commits', {
-                count: commits,
-                commits: (chunk: ReactNode): JSX.Element => (
-                  <code className='rounded bg-gray-500 p-0.5 text-gray-50'>{chunk}</code>
-                )
-              })}
-            </p>
-          </div>
+          {!!commits && (
+            <div className='flex items-center gap-x-2'>
+              <Commit />
+              <p className='my-0'>
+                {t.rich('commits', {
+                  count: commits,
+                  commits: (chunk: ReactNode): JSX.Element => (
+                    <code className='rounded bg-gray-500 p-0.5 text-gray-50'>{chunk}</code>
+                  )
+                })}
+              </p>
+            </div>
+          )}
         </div>
 
         <SocialMedia />
