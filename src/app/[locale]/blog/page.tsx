@@ -35,7 +35,9 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 
 export default function Blog({ params: { locale } }: { params: { locale: string } }) {
   const t = useTranslations('blog');
-  const posts = allPosts.filter(({ locale: l }) => l === locale);
+  const posts = allPosts
+    .filter(({ locale: l }) => l === locale)
+    .sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
 
   return (
     <main className='container mx-auto flex max-w-7xl flex-col gap-8 px-4 py-20 md:py-32'>
