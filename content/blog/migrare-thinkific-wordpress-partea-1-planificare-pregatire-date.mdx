@@ -55,12 +55,12 @@ Pe lângă acestea, pe viitoarea platformă am nevoie de funcționalitățile ur
 - utilizatorii să poată urmări progresul cursurilor achiziționate
 
 ### Crearea unui plan detaliat pentru migrare
-Pentru noua casă a site-ului Masterclass Onlone am ales modulul <a href="https://wordpress.org/plugins/tutor/" target="_blank" className="after:content-['_↗']">Tutor LMS</a> configurat împreună cu <a href="https://wordpress.org/plugins/woocommerce/" target="_blank" className="after:content-['_↗']">WooCommerce</a> pentru procesarea comenzilor, cu plată, facturare și restul integrărilor, aici n-am să intru mai mult în detalii.
+Pentru noua casă a site-ului Masterclass Online am ales modulul <a href="https://wordpress.org/plugins/tutor/" target="_blank" className="after:content-['_↗']">Tutor LMS</a> configurat împreună cu <a href="https://wordpress.org/plugins/woocommerce/" target="_blank" className="after:content-['_↗']">WooCommerce</a> pentru procesarea comenzilor, cu plată, facturare și restul integrărilor, dar aici n-am să intru mai mult în detalii.
 
 Am studiat apoi modulul de e-learning pentru a stabili care sunt cerințele tehnice de care am nevoie pentru a migra datele:
 - ce filtre și acțiuni din `Tutor LMS` pot folosi pentru a ocoli eventualele verificări
 - care este relaționarea dintre entitățile din baza de date
-- de ce informații am nevoie să fie completate în instanța WordPRess pentru ca un utilizator să poată avea acces la cursurile sale
+- de ce informații am nevoie să fie completate în instanța WordPress pentru ca un utilizator să poată avea acces la cursurile sale
 - care sunt câmpurile pe care trebuie potrivite celelalte date din Thinkific
 - care este modul optim în care voi face migrarea (aici am stabilit deja, WP-CLI este forță!)
 
@@ -77,14 +77,14 @@ Am studiat apoi modulul de e-learning pentru a stabili care sunt cerințele tehn
 #### Utilizatorii
 Din fericire există o metodă la îndemână pentru a exporta lista de utilizatori:
 Panou de control Thinkific > Student Support > Users > clic pe butonul „Export”.
-<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706375897/blog/1.%20migrate-thinkific-to-wordpress/thinkific-export-users_iqqirf.webp" />
+<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706375897/blog/1.%20migrate-thinkific-to-wordpress/thinkific-export-users_iqqirf.webp" alt="Export utilizatori din panoul Thinkific" />
 Când procesarea va fi gata, va fi trimisă o notificare pe email cu o legătură pentru a descărca fișierul în format `CSV`.
 
 Antetul fișierului `CSV` exportat arată așa:
 ```csv
 First Name,Last Name,Amount spent,Date created,Email,Enrollments,Enrollments - list,External source,Last sign in,Referred by,Roles,Sign in count
 ```
-Dintre toate datele, am avea nevoie doar de următoarele:
+Dintre toate datele, am nevoie doar de următoarele:
 - First Name
 - Last Name
 - Date created
@@ -95,7 +95,7 @@ Așa că fie pot face o normalizare în fișier și să elimin tot ce nu am nevo
 
 #### Cursurile
 Fiind doar 4 cursuri, nu am văzut oportun să fac un export al lor.
-De fapt, nici nu există această posibilitate din panoul de control de la Thinkific.
+De fapt, nici nu există această posibilitate în panoul de control de la Thinkific.
 
 Cursurile le-am creat manual în modulul de e-learning și ca produse în WooCommerce.
 Procesul a fost destul de rapid, mai mult a durat să le aranjez vizual și să le bibilesc cu Elementor.
@@ -108,9 +108,9 @@ Astfel a trebuit să parcurg fiecare listă de la fiecare utilizator, în timpul
 #### Progresul
 Aici este vorba despre progresul fiecărui utilizator făcut în cazul fiecărui curs pe care-l urmează.
 Din nou, lista cu progresul fiecărui utilizator se poate exporta cu ușurință din panoul de control Thinkific.
-<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706377907/blog/1.%20migrate-thinkific-to-wordpress/thinkific-export-user-course-progress_ez6b8x.webp" />
+<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706377907/blog/1.%20migrate-thinkific-to-wordpress/thinkific-export-user-course-progress_ez6b8x.webp" alt="Export progres din panoul Thinkific" />
 
-📛 Un alt minus al platformei Thinkific este că progresul se poate exporta doar individual per curs și nu în bloc.
+📛 Un alt minus al platformei Thinkific este că progresul se poate exporta doar individual, per curs și nu în bloc.
 Așa că dacă ai multe cursuri pe platformă și vrei o astfel de migrare, s-ar putea să ai o treabă mai serioasă de făcut.
 
 Antetul fișierului `CSV` al progresului exportat arată așa:
@@ -119,7 +119,7 @@ Email,Completed At,% Completed,<Nume-lecție-1>,<Nume-lecție-2>,...,<Nume-lecț
 ```
 Valorile pentru coloanele cu `<Numele lecțiilor>` sunt între 0 și 100.
 
-O să vezi mai departe în partea a doua a seriei de articole că am făcut un compromis și am tratat doar progresul cu valoarea `100`.
+O să vezi mai departe în partea a treia a seriei de articole că am făcut un compromis și am tratat doar progresul cu valoarea `100`.
 Restul valorilor diferite de 100, fiind mai puține, mi-am asumat să le actualizez manual direct în baza de date.
 
 #### Recenziile
@@ -153,8 +153,9 @@ Structura fiecărui obiect JSON pentru recenzii arată așa:
 ```
 
 ## Încheiere
-Mulțumesc că ai avut răbdare până aici.
-Până acum am planul de migrare și toate datele de care am nevoie din Thinkific.
+Mulțumesc că ai avut răbdare până aici. 🍻
+Până acum am planul de migrare și toate datele de care am nevoie din Thinkific în fișierele lor separate: `users.csv`, `progress.csv` și `reviews.json`.
+
 În <a href="/blog/migrare-thinkific-wordpress-partea-2-import-utilizatori">următorul articol</a> voi aborda partea care-mi place cel mai mult, implementarea uneia dintre comenzile `WP-CLI`. ✌️
 
 <div className='mb-4 flex flex-col items-center rounded-md border border-blue-600 p-2'>
