@@ -1,8 +1,8 @@
 export enum Services {
-  CustomDevelopment = 'custom-development',
-  LandingPage = 'landing-page',
+  CustomDevelopment = 'service-custom-development',
+  LandingPage = 'service-landing-page',
   SwI18nL10n = 'sw-i18n-l10n',
-  Maintenance = 'maintenance',
-  JobOpportunity = 'job-opportunity',
+  Maintenance = 'service-maintenance',
+  JobOpportunity = 'service-job-opportunity',
   JustSayHi = 'just-say-hi'
 }

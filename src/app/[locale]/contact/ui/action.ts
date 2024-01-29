@@ -11,7 +11,7 @@ export const sendMail: SubmitHandler<Inputs> = async (data) => {
 
   try {
     const name = [data.firstName, data.lastName].join(' ');
-    const budget = Number(data.budget) * 1000;
+    const budget = Number(data.budget);
 
     const body = ContactSchema.validateSync({ ...data, budget });
 

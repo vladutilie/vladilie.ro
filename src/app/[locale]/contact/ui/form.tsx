@@ -1,7 +1,7 @@
 'use client';
 
-import { ReactNode, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import React, { ReactNode, useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Services } from './services.enum';
@@ -15,6 +15,7 @@ export const Form: React.FC = () => {
     success: false
   });
   const t = useTranslations('contact.form');
+  const locale = useLocale();
 
   const {
     register,
@@ -23,7 +24,7 @@ export const Form: React.FC = () => {
     formState: { errors },
     reset
   } = useForm<Inputs>({
-    values: { firstName: '', lastName: '', email: '', phone: '', budget: 1, message: '' }
+    values: { firstName: '', lastName: '', email: '', phone: '', budget: 500, message: '' }
   });
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -105,7 +106,7 @@ export const Form: React.FC = () => {
         </label>
         <select
           {...register('service', { required: true })}
-          className={`rounded-md border border-gray-500 px-2 py-1 dark:outline-slate-800 focus:dark:outline-blue-500 ${
+          className={`min-h-[34px] rounded-md border border-gray-500 bg-white px-2 py-1 dark:outline-slate-800 focus:dark:outline-blue-500 ${
             !watch('service') ? 'text-gray-500' : ''
           }`}
           id='service'
@@ -114,9 +115,11 @@ export const Form: React.FC = () => {
           <option value='' hidden disabled>
             {t('choose-service')}
           </option>
-          <option value={Services.CustomDevelopment}>{t('service-custom-developmemt')}</option>
+          <option defaultChecked={false} value={Services.CustomDevelopment}>
+            {t('service-custom-development')}
+          </option>
           <option value={Services.LandingPage}>{t('service-landing-page')}</option>
-          <option value={Services.SwI18nL10n}>{t('sw-i18n-l10n')}</option>
+          <option value={Services.SwI18nL10n}>{t('service-landing-page')}</option>
           <option value={Services.Maintenance}>{t('service-maintenance')}</option>
           <option value={Services.JobOpportunity}>{t('service-job-opportunity')}</option>
           <option value={Services.JustSayHi}>{t('just-say-hi')}</option>
@@ -129,15 +132,23 @@ export const Form: React.FC = () => {
           <label htmlFor='budget' className='text-sm text-gray-500'>
             {t.rich('budget', {
               amount: watch('budget'),
-              strong: (chunk: ReactNode): JSX.Element => <span className='font-semibold'>{chunk}</span>
+              strong: (chunk: ReactNode): JSX.Element => (
+                <span className='font-semibold'>
+                  {new Intl.NumberFormat(locale, {
+                    style: 'currency',
+                    currency: 'EUR',
+                    minimumFractionDigits: 0
+                  }).format(Number(chunk?.toString()))}
+                </span>
+              )
             })}
           </label>
           <input
             {...register('budget', { required: true })}
             defaultValue={1}
-            max={30}
-            min={1}
-            step={1}
+            max={15000}
+            min={500}
+            step={500}
             type='range'
             id='budget'
           />
@@ -165,7 +176,7 @@ export const Form: React.FC = () => {
       />
 
       {state.success ? (
-        <p className='col-span-2 border border-green-400 px-4 py-2'>{state.response}</p>
+        <p className='col-span-2 rounded-md border border-green-400 px-4 py-2'>{state.response}</p>
       ) : !state.success && state.response ? (
         <p className='col-span-2 border border-red-400 px-4 py-2'>{state.response}</p>
       ) : null}
