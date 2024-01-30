@@ -15,10 +15,10 @@ Mai jos îți las și lista de articole din serie:
 <div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
     <p>Cuprins</p>
     1. <a href="/blog/migrare-thinkific-wordpress-partea-1-planificare-pregatire-date">Partea 1: Planificarea și pregătirea datelor</a>
-    2. _Partea 2: Import utilizatori_
+    2. _**Partea 2: Import utilizatori**_
     3. <a href="/blog/migrare-thinkific-wordpress-partea-3-import-progres">Partea 3: Import progres</a>
     4. <a href="/blog/migrare-thinkific-wordpress-partea-4-import-recenzii">Partea 4: Import recenzii</a>
-    5. <a href="/blog/migrare-thinkific-wordpress-partea-5-alte-adaptari">Partea 5: Alte adaptări și concluzii</a>
+    5. <a href="/blog/migrare-thinkific-wordpress-partea-5-adaptari-concluzii">Partea 5: Alte adaptări și concluzii</a>
 </div>
 
 După cum spuneam, aici începe partea cea mai interesantă din tot procesul de migrare a datelor din Thinkific în WordPress.
@@ -45,14 +45,17 @@ Urmează ca aceste 3 comenzi să fie disponibile în rularea lor într-un termin
 În toate cele 3 callback-uri derivate din metoda de mai sus și anume `import_users`, `import_progress` și `import_reviews` a fost nevoie de citire din fișierele cu date (2 fișiere CSV și un fișier JSON).
 Pentru asta am folosit API-ul din clasa `WP_Filesystem` care aparține de WordPress și care m-a ajutat să păstrez codul destul de curat și în limitele standardelor.
 ```php showLineNumbers title="class-wpcli.php"
-global $wp_filesystem;
+public function import_users(): void {
+    global $wp_filesystem;
 
-include_once ABSPATH . 'wp-admin/includes/file.php';
-WP_Filesystem();
+    include_once ABSPATH . 'wp-admin/includes/file.php';
+    WP_Filesystem();
 
-$file_path    = plugin_dir_path( __FILE__ ) . 'data/users.csv';
-$file_content = $wp_filesystem->get_contents( $file_path );
-$csv_data     = $this->parse_csv_content( $file_content );
+    $file_path    = plugin_dir_path( __FILE__ ) . 'data/users.csv';
+    $file_content = $wp_filesystem->get_contents( $file_path );
+    $csv_data     = $this->parse_csv_content( $file_content );
+    //...
+}
 ```
 
 După cum se observă, am implementat o altă metodă de ajutor pentru a interpreta conținutul CSV într-un format ușor de parcurs și anume vector:
@@ -189,6 +192,9 @@ Din acel moment utilizatorul se transformă în cursant pe noua platformă de e-
 
 ## Încheiere
 Cam asta a fost tot cu importul utilizatorilor, rămâne să rulez comanda și magia se întâmplă. 🪄
+```sh
+$ wp thinkific import users
+```
 
 <a href="/blog/migrare-thinkific-wordpress-partea-3-import-progres">Următorul articol</a> va decurge cam în aceeași manieră, dar sunt și acolo câteva lucruri interesante de notat.
 

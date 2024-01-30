@@ -12,11 +12,11 @@ date: January 28, 2024 20:00:00
 Mai jos îți las lista de articole din serie:
 <div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
     <p>Cuprins</p>
-    1. _Partea 1: Planificarea și pregătirea datelor_
+    1. _**Partea 1: Planificarea și pregătirea datelor**_
     2. <a href="/blog/migrare-thinkific-wordpress-partea-2-import-utilizatori">Partea 2: Import utilizatori</a>
     3. <a href="/blog/migrare-thinkific-wordpress-partea-3-import-progres">Partea 3: Import progres</a>
     4. <a href="/blog/migrare-thinkific-wordpress-partea-4-import-recenzii">Partea 4: Import recenzii</a>
-    5. <a href="/blog/migrare-thinkific-wordpress-partea-5-adaptari">Partea 5: Alte adaptări și concluzii</a>
+    5. <a href="/blog/migrare-thinkific-wordpress-partea-5-adaptari-concluzii">Partea 5: Alte adaptări și concluzii</a>
 </div>
 
 
@@ -77,7 +77,7 @@ Am studiat apoi modulul de e-learning pentru a stabili care sunt cerințele tehn
 #### Utilizatorii
 Din fericire există o metodă la îndemână pentru a exporta lista de utilizatori:
 Panou de control Thinkific > Student Support > Users > clic pe butonul „Export”.
-<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706375897/blog/1.%20migrate-thinkific-to-wordpress/thinkific-export-users_iqqirf.webp" alt="Export utilizatori din panoul Thinkific" />
+<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706375897/blog/1.%20migrate-thinkific-to-wordpress/thinkific-export-users_iqqirf.webp" alt="Export utilizatori din panoul Thinkific" className="rounded-md shadow-lg" />
 Când procesarea va fi gata, va fi trimisă o notificare pe email cu o legătură pentru a descărca fișierul în format `CSV`.
 
 Antetul fișierului `CSV` exportat arată așa:
@@ -108,18 +108,18 @@ Astfel a trebuit să parcurg fiecare listă de la fiecare utilizator, în timpul
 #### Progresul
 Aici este vorba despre progresul fiecărui utilizator făcut în cazul fiecărui curs pe care-l urmează.
 Din nou, lista cu progresul fiecărui utilizator se poate exporta cu ușurință din panoul de control Thinkific.
-<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706377907/blog/1.%20migrate-thinkific-to-wordpress/thinkific-export-user-course-progress_ez6b8x.webp" alt="Export progres din panoul Thinkific" />
+<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706377907/blog/1.%20migrate-thinkific-to-wordpress/thinkific-export-user-course-progress_ez6b8x.webp" alt="Export progres din panoul Thinkific" className="rounded-md shadow-lg" />
 
 📛 Un alt minus al platformei Thinkific este că progresul se poate exporta doar individual, per curs și nu în bloc.
 Așa că dacă ai multe cursuri pe platformă și vrei o astfel de migrare, s-ar putea să ai o treabă mai serioasă de făcut.
 
 Antetul fișierului `CSV` al progresului exportat arată așa:
 ```csv
-Email,Completed At,% Completed,<Nume-lecție-1>,<Nume-lecție-2>,...,<Nume-lecție-n>
+Email,Completed At,% Completed,<Nume-capitol-1>,<Nume-capitol-2>,...,<Nume-capitol-n>
 ```
-Valorile pentru coloanele cu `<Numele lecțiilor>` sunt între 0 și 100.
+Valorile pentru coloanele cu `<Numele capitolelor>` sunt între 0 și 100.
 
-O să vezi mai departe în partea a treia a seriei de articole că am făcut un compromis și am tratat doar progresul cu valoarea `100`.
+O să vezi mai departe în <a href="/blog/migrare-thinkific-wordpress-partea-3-import-progres">partea a treia</a> a seriei de articole că am făcut un compromis și am tratat doar progresul cu valoarea `100`.
 Restul valorilor diferite de 100, fiind mai puține, mi-am asumat să le actualizez manual direct în baza de date.
 
 #### Recenziile
