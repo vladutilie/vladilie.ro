@@ -13,16 +13,16 @@ Mai jos îți las lista de articole din serie:
 <div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
     <p>Cuprins</p>
     1. _**Partea 1: Planificarea și pregătirea datelor**_
-    2. <a href="/blog/migrare-thinkific-wordpress-partea-2-import-utilizatori">Partea 2: Import utilizatori</a>
-    3. <a href="/blog/migrare-thinkific-wordpress-partea-3-import-progres">Partea 3: Import progres</a>
-    4. <a href="/blog/migrare-thinkific-wordpress-partea-4-import-recenzii">Partea 4: Import recenzii</a>
-    5. <a href="/blog/migrare-thinkific-wordpress-partea-5-adaptari-concluzii">Partea 5: Alte adaptări și concluzii</a>
+    2. <Link href="/blog/migrare-thinkific-wordpress-partea-2-import-utilizatori">Partea 2: Import utilizatori</Link>
+    3. <Link href="/blog/migrare-thinkific-wordpress-partea-3-import-progres">Partea 3: Import progres</Link>
+    4. <Link href="/blog/migrare-thinkific-wordpress-partea-4-import-recenzii">Partea 4: Import recenzii</Link>
+    5. <Link href="/blog/migrare-thinkific-wordpress-partea-5-adaptari-concluzii">Partea 5: Alte adaptări și concluzii</Link>
 </div>
 
 ## Introducere
 2023 s-a încheiat cu o mică provocare pentru mine în privința WordPress.
 La care am răspuns cu bucurie „Da!”.
-Este vorba despre migrarea conținutului site-ului <a href="https://masterclassonline.ro" title="Masterclass Online" target="_blank" className="after:content-['_↗']">masterclassonline.ro</a> pe WordPress, site aparținând Asociației Culturale <a href="https://cartilepefata.ro" title="Cărțile pe față" target="_blank" className="after:content-['_↗']">Cărțile pe față</a>.
+Este vorba despre migrarea conținutului site-ului <Link href="https://masterclassonline.ro">masterclassonline.ro</Link> pe WordPress, site aparținând Asociației Culturale <Link href="https://cartilepefata.ro">Cărțile pe față</Link>.
 
 Site-ul de e-learning a fost până acum găzduit pe platforma Thinkific, o platformă dedicată cursurilor online, dar totuși nu foarte pregătită din punctul meu de vedere.
 Din cât am navigat pe ea în ultima lună, în munca de a pregăti migrarea către WordPress, am observat că nu este foarte prietenoasă în partea de panou de control, unele dintre informații sunt afișate în tabele care se termină la trei sferturi lățime de pagină (pe o rezoluție ca a mea de `1920x1200px` este destul de enervant).
@@ -54,7 +54,7 @@ Pe lângă acestea, pe viitoarea platformă am nevoie de funcționalitățile ur
 - utilizatorii să poată urmări progresul cursurilor achiziționate
 
 ### Crearea unui plan detaliat pentru migrare
-Pentru noua casă a site-ului Masterclass Online am ales modulul <a href="https://wordpress.org/plugins/tutor/" target="_blank" className="after:content-['_↗']">Tutor LMS</a> configurat împreună cu <a href="https://wordpress.org/plugins/woocommerce/" target="_blank" className="after:content-['_↗']">WooCommerce</a> pentru procesarea comenzilor, cu plată, facturare și restul integrărilor, dar aici n-am să intru mai mult în detalii.
+Pentru noua casă a site-ului Masterclass Online am ales modulul <Link href="https://wordpress.org/plugins/tutor/">Tutor LMS</Link> configurat împreună cu <Link href="https://wordpress.org/plugins/woocommerce/">WooCommerce</Link> pentru procesarea comenzilor, cu plată, facturare și restul integrărilor, dar aici n-am să intru mai mult în detalii.
 
 Am studiat apoi modulul de e-learning pentru a stabili care sunt cerințele tehnice de care am nevoie pentru a migra datele:
 - ce filtre și acțiuni din `Tutor LMS` pot folosi pentru a ocoli eventualele verificări
@@ -123,7 +123,7 @@ Restul valorilor diferite de 100, fiind mai puține, mi-am asumat să le actuali
 
 #### Recenziile
 Thinkific nu are o metodă prietenoasă pentru utilizator pentru a exporta recenziile cursurilor.
-La o căutare rapidă pe Google am dat de <a href="https://martechlms.com/blog/how-to-export-student-reviews-from-thinkific/" title="How to export student reviews from Thinkific" target="_blank" className="after:content-['_↗']">acest articol</a> care m-a îndrumat cum să obțin recenziile fiecărui curs.
+La o căutare rapidă pe Google am dat de <Link href="https://martechlms.com/blog/how-to-export-student-reviews-from-thinkific/" title="How to export student reviews from Thinkific">acest articol</Link> care m-a îndrumat cum să obțin recenziile fiecărui curs.
 Din nou, dacă ai multe cursuri pe platformă și vrei să faci o astfel de migrare pe WordPress, va fi nevoie de mai multă muncă manuală.
 
 Revenind, recenziile cursurilor sunt disponibile în sursa paginii fiecărui curs.
@@ -155,7 +155,7 @@ Structura fiecărui obiect JSON pentru recenzii arată așa:
 Mulțumesc că ai avut răbdare până aici. 🍻
 Până acum am planul de migrare și toate datele de care am nevoie din Thinkific în fișierele lor separate.
 
-În <a href="/blog/migrare-thinkific-wordpress-partea-2-import-utilizatori">următorul articol</a> voi aborda partea care-mi place cel mai mult, implementarea uneia dintre comenzile `WP-CLI`. ✌️
+În <Link href="/blog/migrare-thinkific-wordpress-partea-2-import-utilizatori">următorul articol</Link> voi aborda partea care-mi place cel mai mult, implementarea uneia dintre comenzile `WP-CLI`. ✌️
 
 <div className='mb-4 flex flex-col items-center rounded-md border border-blue-600 p-2'>
     <p className="text-center mt-0">_Dacă ai nevoie de o astfel de migrare, dă clic mai jos și hai să discutăm._</p>

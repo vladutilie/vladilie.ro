@@ -8,17 +8,17 @@ type: Post
 keywords: [migrare,thinkific,wordpress,tutor lms,woocommerce,wp-cli,funcții,comenzi,import progres,citire din fișier,capitol,lecție]
 date: January 30, 2024 08:00:00
 ---
-În <a href="/blog/migrare-thinkific-wordpress-partea-2-planificare-pregatire-date">partea a doua</a> a acestei serii de 5 articole am vorbit despre cum am făcut implementarea pentru comanda personalizată WP-CLI de importare a utilizatorilor.
+În <Link href="/blog/migrare-thinkific-wordpress-partea-2-planificare-pregatire-date">partea a doua</Link> a acestei serii de 5 articole am vorbit despre cum am făcut implementarea pentru comanda personalizată WP-CLI de importare a utilizatorilor.
 
 În **partea a treia** voi descrie funcționalitatea comenzii WP-CLI pentru a importa progresul utilizatorilor în privința cursurilor la care sunt înrolați în platforma Thinkific.
 Mai jos îți las și lista de articole din serie:
 <div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
     <p>Cuprins</p>
-    1. <a href="/blog/migrare-thinkific-wordpress-partea-1-planificare-pregatire-date">Partea 1: Planificarea și pregătirea datelor</a>
-    2. <a href="/blog/migrare-thinkific-wordpress-partea-2-import-utilizatori">Partea 2: Import utilizatori</a>
+    1. <Link href="/blog/migrare-thinkific-wordpress-partea-1-planificare-pregatire-date">Partea 1: Planificarea și pregătirea datelor</Link>
+    2. <Link href="/blog/migrare-thinkific-wordpress-partea-2-import-utilizatori">Partea 2: Import utilizatori</Link>
     3. _**Partea 3: Import progres**_
-    4. <a href="/blog/migrare-thinkific-wordpress-partea-4-import-recenzii">Partea 4: Import recenzii</a>
-    5. <a href="/blog/migrare-thinkific-wordpress-partea-5-adaptari-concluzii">Partea 5: Alte adaptări și concluzii</a>
+    4. <Link href="/blog/migrare-thinkific-wordpress-partea-4-import-recenzii">Partea 4: Import recenzii</Link>
+    5. <Link href="/blog/migrare-thinkific-wordpress-partea-5-adaptari-concluzii">Partea 5: Alte adaptări și concluzii</Link>
 </div>
 
 ## Definirea metodei de import progres
@@ -53,7 +53,7 @@ $i            = 0;
 $lesson_names = array();
 $time         = time();
 ```
-Am refolosit metoda `parse_csv_content` pentru a transforma liniile din `CSV` într-un vector, metodă pe care am definit-o în <a href="/blog/migrare-thinkific-wordpress-partea-2-import-utilizatori">partea a doua</a> la importul utilizatorilor.
+Am refolosit metoda `parse_csv_content` pentru a transforma liniile din `CSV` într-un vector, metodă pe care am definit-o în <Link href="/blog/migrare-thinkific-wordpress-partea-2-import-utilizatori">partea a doua</Link> la importul utilizatorilor.
 Am definit și variabilele `$i`, `$lesson_names` și `$time` pe care le voi folosi mai jos.
 
 ## Parcurgerea și procesarea datelor
@@ -107,7 +107,7 @@ foreach ( $csv_data as $line ) {
 }
 ```
 În liniile 2-6 am sărit din nou peste prima linie din fișierul `CSV` care conține numele coloanelor, dar în același timp am păstrat și numele lecțiilor (linia 4) în variabila `$lesson_names` pentru că am nevoie de ele în interogarea de mai jos.
-Dacă îți amintești din prima parte de la <a href="/blog/migrare-thinkific-wordpress-partea-1-planificare-pregatire-date">pregătirea datelor</a>, prima linie a fișierului `CSV` de progres arăta așa:
+Dacă îți amintești din prima parte de la <Link href="/blog/migrare-thinkific-wordpress-partea-1-planificare-pregatire-date">pregătirea datelor</Link>, prima linie a fișierului `CSV` de progres arăta așa:
 ```csv
 Email,Completed At,% Completed,<Nume-capitol-1>,<Nume-capitol-2>,...,<Nume-capitol-n>
 ```
@@ -163,7 +163,7 @@ $ wp thinkific import progress
 ```
 
 Încă un pas și migrarea este finalizată.
-În <a href="/blog/migrare-thinkific-wordpress-partea-4-import-recenzii">următorul articol</a> voi folosi API-ul de comentarii din WordPress pentru migrarea recenziilor, așa că te invit să-l studiezi 😎.
+În <Link href="/blog/migrare-thinkific-wordpress-partea-4-import-recenzii">următorul articol</Link> voi folosi API-ul de comentarii din WordPress pentru migrarea recenziilor, așa că te invit să-l studiezi 😎.
 
 <div className='mb-4 flex flex-col items-center rounded-md border border-blue-600 p-2'>
     <p className="text-center mt-0">_Dacă ai nevoie de o astfel de migrare, dă clic mai jos și hai să discutăm._</p>
