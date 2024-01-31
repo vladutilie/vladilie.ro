@@ -106,7 +106,7 @@ export const Form: React.FC = () => {
         </label>
         <select
           {...register('service', { required: true })}
-          className={`min-h-[34px] rounded-md border border-gray-500 bg-white px-2 py-1 dark:outline-slate-800 focus:dark:outline-blue-500 ${
+          className={`min-h-[34px] rounded-md border border-gray-500 px-2 py-1 dark:outline-slate-800 focus:dark:outline-blue-500 ${
             !watch('service') ? 'text-gray-500' : ''
           }`}
           id='service'
