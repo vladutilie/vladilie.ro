@@ -1,0 +1,162 @@
+---
+title: 'Cum migrezi de la Thinkific la WordPress. Partea 4: Import recenzii'
+locale: ro
+featuredImage: https://res.cloudinary.com/vladilie-ro/image/upload/v1706196659/blog/1.%20migrate-thinkific-to-wordpress/v5ypjuldovovlpqw1cc3.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAxUlEQVR4nAG6AEX/ANLS0t/f3+vr6+3t6+/y8fHy7/X39+/y8ens693f3gCZr8qmutOqwtuyxNrK1+b7+/j8//75/Pv19/fo6u0AOG2gKGGRNGiYPHCgUoO2gLPNnNXgmtLels/ZkMrVAKO51qnA3J2zy52yzH+0yxSesQB4iABOWwBicgCKoQDHx8VaTTwkEgAnEwBRQSxNTjkEGREADQA/Vkxmk5oAHg8ARzATLxsAHQAAHgIAMyAGOiQNUTsgaU8yPSsXAbliTzFAqmUAAAAASUVORK5CYII=
+description: Cum am folosit WP-CLI pentru a rula importul de recenzii din fișiere JSON obținute din Thinkific.
+type: Post
+keywords: [migrare,thinkific,wordpress,tutor lms,woocommerce,wp-cli,funcții,comenzi,import recenzii,citire din fișier]
+date: January 30, 2024 11:00:00
+---
+În <Link href="/blog/migrare-thinkific-wordpress-partea-3-import-progres">articolul anterior</Link>, partea a treia a acestei serii de 5 articole, am descris implementarea comenzii WP-CLI de importare a progresului cursurilor pentru utilizatori.
+
+În **partea a patra** voi descrie funcționalitatea comenzii WP-CLI pentru a importa recenziile date de utilizatori cursurilor.
+Mai jos îți las și lista de articole din serie:
+<div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
+    <p>Cuprins</p>
+    1. <Link href="/blog/migrare-thinkific-wordpress-partea-1-planificare-pregatire-date">Partea 1: Planificarea și pregătirea datelor</Link>
+    2. <Link href="/blog/migrare-thinkific-wordpress-partea-2-import-utilizatori">Partea 2: Import utilizatori</Link>
+    3. <Link href="/blog/migrare-thinkific-wordpress-partea-3-import-progres">Partea 3: Import progres</Link>
+    4. _**Partea 4: Import recenzii**_
+    5. <Link href="/blog/migrare-thinkific-wordpress-partea-5-adaptari-concluzii">Partea 5: Alte adaptări și concluzii</Link>
+</div>
+
+## Declararea metodei de import recenzii
+Încep din nou cu declararea metodei și a variabilelor ajutătoare pentru citirea din fișier:
+```php showLineNumbers title="class-wpcli.php"
+public function import_reviews(): void {
+    global $wp_filesystem, $wpdb;
+
+    include_once ABSPATH . 'wp-admin/includes/file.php';
+    WP_Filesystem();
+
+    $files = array( 'course-1-reviews.json', 'course-2-reviews.json', 'course-3-reviews', 'course-4-reviews.json' );
+    //...
+}
+```
+Am declarat și o variabilă de tip vector cu lista fișierelor cu recenzii pentru cursuri pe care o voi parcurge iterativ cu `foreach ( $files as $file )`.
+
+## Citirea din fișier
+### Structura fișierului JSON
+Mai pun aici încă o dată structura fișierului de recenzii în format JSON:
+```json showLineNumbers title="course-*-reviews.json"
+{
+  "@context": "http://schema.org",
+  "@type": "Product",
+  "name": "<nume-curs>",
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "reviewCount": 5 },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "<nume-recenzor>" },
+      "description": "<descriere-recenzie>",
+      "name": "<titlu-recenzie>",
+      "date": "November 26, 2021",
+      "reviewRating": { "@type": "Rating", "bestRating": 5, "ratingValue": 5, "worstRating": 0 }
+    },
+    // ...
+  ],
+    "image": "<url-imagine-curs>"
+}
+```
+
+Ca și în articolele precendente, citirea din fișiere se face aproximativ la fel, doar că de această dată nu voi mai folosi metoda ajutătoare `parse_csv_content` de compunere a vectorului cu liniile din fișierul `CSV`, ci voi folosi funcția `json_decode` pentru interpretarea codului JSON:
+```php showLineNumbers title="class-wpcli.php"
+$file_path    = plugin_dir_path( __FILE__ ) . '/data/reviews/' . $file;
+$file_content = $wp_filesystem->get_contents( $file_path );
+$json         = json_decode( $file_content );
+
+$course_name  = $json->name;
+$review_count = count( $json->review );
+
+$course = get_page_by_title( $course_name, OBJECT, 'courses' );
+```
+Am declarat și alte câteva variabile care-mi vor folosi mai departe.
+M-am asigurat că numele cursurilor din fișierele cu recenzii din câmpul `name` **corespund** cu numele cursurilor create în `Tutor LMS`.
+
+## Procesarea recenziilor
+Am început apoi să parcurg recenziile din vectorul `review` din JSON și am procedat astfel mai departe:
+```php showLineNumbers title="class-wpcli.php"
+foreach ( $json->review as $review ) {
+    $user_id = $this->search_user_by_name( $review->author->name );
+    $new_comment  = wp_insert_comment(
+        array(
+            'comment_post_ID'  => $course->ID,
+            'comment_author'   => $review->author->name,
+            'comment_date'     => gmdate( 'Y-m-d H:i:s', strtotime( $review->date ) ),
+            'comment_content'  => $review->description,
+            'comment_agent'    => 'TutorLMSPlugin',
+            'comment_type'     => 'tutor_course_rating',
+            'comment_approved' => 'approved',
+            'user_id'          => $user_id,
+            'comment_meta'     => array( 'tutor_rating' => $review->reviewRating->ratingValue ), // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+        )
+    );
+
+    if ( is_wp_error( $new_comment ) ) {
+        \WP_CLI::warning( sprintf( 'Review of "%s" for "%s" not imported.', $review->author->name, $course_name ) );
+    }
+}
+```
+Am făcut o căutare după numele utilizatorului pentru a-i lua ID-ul din baza de date, folosind metoda de ajutor `search_user_by_name`, descrisă ceva mai jos.
+Apoi am folosit funcția `wp_insert_comment` pentru crearea recenziei, căreia i-am transmis valorile necesare:
+- ID-ul cursului căruia îi aparține recenzia
+- numele autorului
+- data recenziei (ușor reformatată)
+- conținutul recenziei
+- valorile personalizate ale modulului `Tutor LMS` pentru ca recenzia să fie considerată una dintre cele ale cursurilor `Tutor LMS`
+- ID-ul utilizatorului și
+- evaluarea recenziei, nota
+
+Metoda de căutare a utilizatorului după nume și prenume este aici:
+```php showLineNumbers title="class-wpcli.php"
+protected function search_user_by_name( string $name ): int {
+    $normalized_name = str_replace( '  ', ' ', trim( $name ) );
+    $names           = explode( ' ', $normalized_name );
+    $last_name       = array_pop( $names );
+    $first_name      = implode( ' ', $names );
+
+    $wp_user_query = new WP_User_Query(
+        array(
+            'role'       => 'subscriber',
+            'meta_query' => array(
+                'relation' => 'AND',
+                array(
+                    'key'     => 'first_name',
+                    'value'   => $first_name,
+                    'compare' => '=',
+                ),
+                array(
+                    'key'     => 'last_name',
+                    'value'   => $last_name,
+                    'compare' => '=',
+                ),
+            ),
+        )
+    );
+
+    $authors = $wp_user_query->get_results();
+
+    return $authors[0]->ID;
+}
+```
+În primă fază am făcut o mică normalizare a numelui, în speță am eliminaț spațiile din extremități și am înlocuit spațiile duble din nume cu unul singur.
+Am observat foarte multe neconcordanțe de acest gen în fișierul exportat JSON obținut din paginile cursurilor din Thinkific.
+
+Apoi (în linile 3-5) am împărțit numele după spațiu pentru a putea apoi să obțin numele și prenumele, chiar și atunci când numele complet este format din 3 nume.
+În acest caz am folosit ChatGPT și așa a ieșit combinația dintre funcțiile `explode`, `array_pop` și `implode`.
+
+Mai departe am folosit clasa `WP_User_Query` pentru interogarea complexă și găsirea utilizatorului după numele și prenumele lui și în final am returnat ID-ul.
+
+## Încheiere
+Cu rularea ultimei comenzi `WP-CLI` avem și recenziile adăugate:
+```sh
+$ wp thinkific import reviews
+```
+
+Migrarea este finalizată, în <Link href="/blog/migrare-thinkific-wordpress-partea-5-adaptari-concluzii">următorul articol</Link> voi mai face câteva adaptări ale temei, ale șabloanelor `Tutor LMS` și `WooCommerce`.
+
+<div className='mb-4 flex flex-col items-center rounded-md border border-blue-600 p-2'>
+    <p className="text-center mt-0">_Dacă ai nevoie de o astfel de migrare, dă clic mai jos și hai să discutăm._</p>
+    <Link href='/contact' className="animate-text-bg rounded-md bg-gradient-to-r from-blue-600 via-gray-600 to-green-500 bg-[length:400%] px-2 py-1 text-white hover:text-white">Contactează-mă</Link>
+</div>

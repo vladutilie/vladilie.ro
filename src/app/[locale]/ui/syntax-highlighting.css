@@ -13,7 +13,9 @@ figure[data-rehype-pretty-code-figure] pre {
   @apply leading-6;
 }
 
-figcaption[data-rehype-pretty-code-title] {
+figcaption[data-rehype-pretty-code-title],
+figcaption[data-rehype-pretty-code-caption],
+div[data-rehype-pretty-code-title] {
   /* stylistic preferences */
   margin-bottom: 0.125rem;
   border-radius: 0.375rem;

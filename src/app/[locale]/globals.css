@@ -44,6 +44,12 @@
     @apply my-2;
   }
 
+  ul > li,
+  ol > li {
+    @apply text-gray-600 dark:text-gray-300;
+    @apply transition-colors;
+  }
+
   a {
     @apply text-blue-600;
   }

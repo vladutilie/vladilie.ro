@@ -1,0 +1,171 @@
+---
+title: 'Cum migrezi de la Thinkific la WordPress. Partea 3: Import progres'
+locale: ro
+featuredImage: https://res.cloudinary.com/vladilie-ro/image/upload/v1706196659/blog/1.%20migrate-thinkific-to-wordpress/v5ypjuldovovlpqw1cc3.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAxUlEQVR4nAG6AEX/ANLS0t/f3+vr6+3t6+/y8fHy7/X39+/y8ens693f3gCZr8qmutOqwtuyxNrK1+b7+/j8//75/Pv19/fo6u0AOG2gKGGRNGiYPHCgUoO2gLPNnNXgmtLels/ZkMrVAKO51qnA3J2zy52yzH+0yxSesQB4iABOWwBicgCKoQDHx8VaTTwkEgAnEwBRQSxNTjkEGREADQA/Vkxmk5oAHg8ARzATLxsAHQAAHgIAMyAGOiQNUTsgaU8yPSsXAbliTzFAqmUAAAAASUVORK5CYII=
+description: Cum am folosit WP-CLI pentru a rula importul de progres dintr-un fișier CSV exportat din Thinkific.
+type: Post
+keywords: [migrare,thinkific,wordpress,tutor lms,woocommerce,wp-cli,funcții,comenzi,import progres,citire din fișier,capitol,lecție]
+date: January 30, 2024 08:00:00
+---
+În <Link href="/blog/migrare-thinkific-wordpress-partea-2-planificare-pregatire-date">partea a doua</Link> a acestei serii de 5 articole am vorbit despre cum am făcut implementarea pentru comanda personalizată WP-CLI de importare a utilizatorilor.
+
+În **partea a treia** voi descrie funcționalitatea comenzii WP-CLI pentru a importa progresul utilizatorilor în privința cursurilor la care sunt înrolați în platforma Thinkific.
+Mai jos îți las și lista de articole din serie:
+<div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
+    <p>Cuprins</p>
+    1. <Link href="/blog/migrare-thinkific-wordpress-partea-1-planificare-pregatire-date">Partea 1: Planificarea și pregătirea datelor</Link>
+    2. <Link href="/blog/migrare-thinkific-wordpress-partea-2-import-utilizatori">Partea 2: Import utilizatori</Link>
+    3. _**Partea 3: Import progres**_
+    4. <Link href="/blog/migrare-thinkific-wordpress-partea-4-import-recenzii">Partea 4: Import recenzii</Link>
+    5. <Link href="/blog/migrare-thinkific-wordpress-partea-5-adaptari-concluzii">Partea 5: Alte adaptări și concluzii</Link>
+</div>
+
+## Definirea metodei de import progres
+Am câte un fișier de progres `CSV` pentru fiecare curs existent, din care voi citi pe rând folosind o instrucțiune recursivă.
+
+Pentru început definesc metoda de import progres, declar variabilele globale, includ și apelez funcția `WP_Filesystem` din WordPress.
+```php showLineNumbers title="class-wpcli.php"
+public function import_progress() {
+    global $wp_filesystem, $wpdb;
+
+    include_once ABSPATH . 'wp-admin/includes/file.php';
+    WP_Filesystem();
+    // ...
+}
+```
+Definesc apoi un vector atributiv cu lista cu fișiere de progres din care se va face citirea și ID-ul cursului pentru care este progresul respectiv:
+```php showLineNumbers title="class-wpcli.php"
+$files         = array(
+    'course-1-progress.csv' => 10, // Course name 1
+    'course-2-progress.csv' => 11, // Course name 2
+    'course-3-progress.csv' => 12, // Course name 3
+    'course-4-progress.csv' => 13, // Course name 4
+);
+
+$file_basepath = plugin_dir_path( __FILE__ ) . 'data/progress/';
+```
+Și prin instrucțiunea `foreach ( $files as $file => $course_id )` parcurg lista de fișiere și încep citirea din ele:
+```php showLineNumbers title="class-wpcli.php"
+$file_content = $wp_filesystem->get_contents( $file_basepath . $file );
+$csv_data     = $this->parse_csv_content( $file_content );
+$i            = 0;
+$lesson_names = array();
+$time         = time();
+```
+Am refolosit metoda `parse_csv_content` pentru a transforma liniile din `CSV` într-un vector, metodă pe care am definit-o în <Link href="/blog/migrare-thinkific-wordpress-partea-2-import-utilizatori">partea a doua</Link> la importul utilizatorilor.
+Am definit și variabilele `$i`, `$lesson_names` și `$time` pe care le voi folosi mai jos.
+
+## Parcurgerea și procesarea datelor
+Ca să nu încurc prea mult ițele, am să pun toată partea cu parcurgerea și procesarea datelor și voi aduce comentarii după ea:
+```php showLineNumbers title="class-wpcli.php"
+foreach ( $csv_data as $line ) {
+    if ( ! $i ) {
+        $i++;
+        $chapter_names = array_slice( $line, 3 );
+        continue;
+    }
+
+    list($email, $completed_at, $percent_completed) = array_slice( $line, 0, 3 );
+
+    $user = get_user_by( 'email', $email );
+    if ( ! $user ) {
+        \WP_CLI::error( sprintf( 'The user with email address %s does not exist.', $email ) );
+    }
+
+    $chapter_progress = array_slice( $line, 3 );
+    $count            = count( $chapter_progress );
+    for ( $j = 0; $j < $count; $j++ ) {
+        if ( '100' === $chapter_progress[ $j ] ) {
+            $lesson_id = $wpdb->get_var(
+                $wpdb->prepare(
+                    "SELECT ID
+                    FROM $wpdb->posts
+                    WHERE post_parent = (
+                        SELECT ID
+                        FROM $wpdb->posts
+                        WHERE post_title = %s AND post_parent = %d
+                    )",
+                    $chapter_names[ $j ],
+                    $course_id
+                )
+            );
+
+            if ( ! $lesson_id ) {
+                \WP_CLI::error( sprintf( 'The lesson named „%s” of the course „” not found.', $chapter_names[ $j ], $course_id ) );
+            }
+
+            $updated = update_user_meta( $user->ID, '_tutor_completed_lesson_id_' . $lesson_id, $time );
+
+            if ( ! $updated ) {
+                \WP_CLI::warning( sprintf( 'Update status: „%s”. That means failure or the value already exists.', $updated ) );
+            }
+        }
+    }
+
+    $i++;
+}
+```
+În liniile 2-6 am sărit din nou peste prima linie din fișierul `CSV` care conține numele coloanelor, dar în același timp am păstrat și numele lecțiilor (linia 4) în variabila `$lesson_names` pentru că am nevoie de ele în interogarea de mai jos.
+Dacă îți amintești din prima parte de la <Link href="/blog/migrare-thinkific-wordpress-partea-1-planificare-pregatire-date">pregătirea datelor</Link>, prima linie a fișierului `CSV` de progres arăta așa:
+```csv
+Email,Completed At,% Completed,<Nume-capitol-1>,<Nume-capitol-2>,...,<Nume-capitol-n>
+```
+Cu funcția `array_slice` am trecut peste primele 3 câmpurilor (`Email`, `Completed At` și `% Completed`) și mi-au fost returnate următoarele până la final, în variabila `$lesson_names`.
+Aici au fost stocate _numele capitolelor_ din curs.
+
+În aceeași manieră, pe linia 15 am stocat _progresul lecției_ respective.
+
+Pe linia 8 am folosit aceeași funcție, de data asta pentru a stoca **primele** 3 valori.
+
+Se face apoi o căutare după adresa de email a utilizatorului.
+În principiu nu ar trebui să fie probleme la această căutare pentru că utilizatorii ar trebui să fie creați în pasul de la importul utilizatorilor.
+Oricum, pentru orice eventualitate am pus acolo și o verificare cu mesaj de eroare.
+
+În final, începând cu linia 16 se începe parcurgerea progresurilor lecțiilor.
+
+## Procesare progres capitol - lecție
+Spuneam la un moment dat că am făcut un compromis și am procesat doar capitolele al căror progres este `100`.
+
+Ca să fie totul clar: conținutul cursurilor poate fi organizat, atât în Thinkific cât și în Tutor LMS, în capitole cu lecții, subiecte cu lecții sau cum vrei să-i spui.
+Deci sunt doar două niveluri de ierarhie.
+Progresul se referă doar la capitole (sau subiecte), nu și la lecțiile din ele, iar fișierul `CSV` este generat de către Thinkific în consecință.
+
+Astfel că, spre exemplu, un capitol cu 3 lecții și un progres de 67 (%), presupune că 2 dintre lecțiile sale au fost finalizate.
+În mod real nu știu care sunt cele 2 lecții dintre cele 3 au fost finalizate, dar mi-am asumat că primele 2, dacă iau în considerare ordinea naturală de parcurgere a unui curs.
+
+Acum, în `Tutor LMS` abordarea este următoarea: progresul trebuie setat per lecție și doar în starea fie finalizată, fie nefinalizată.
+Câmpul din baza de date pentru progresul unui curs al unui utilizator este stocat în tabelul `_usermeta` în modul următor:
+```markdown
+| umeta_id | user_id | meta_key                      | meta_value |
+| -------- | ------- | ----------------------------- | ---------- |
+| 12345    | 678     | _tutor_completed_lesson_id_90 | 1705610847 |
+```
+Utilizatorul cu ID `678` a finalizat lecția cu ID `90` în data cu unixtimestamp `1705610847` (care corespunde datei joi, 18 ianuarie 2024, ora 22:47:27 GMT+0200).
+Lecția cu ID `90` are la rândul ei un ID părinte.
+Părintele respectiv reprezintă capitolul lecției respective.
+
+În proiectul Masterclass, un singur curs are un capitol cu 3 lecții.
+Restul capitolelor au câte o lecție.
+Din punctul de vedere al migrării progresului, având doar 8 cazuri în care progresul acelui capitol nu a fost `100` (dacă țin bine mine 🤔), treaba mea a fost ușoară.
+Actualizarea manuală în baza de date a acelui progres a fost o operație de doar 2 minute.
+
+## Căutarea și actualizarea progresului lecției
+Variabila `$lesson_id` a reținut, în limbaj natural, „ID-ul articolului al cărui câmp **post_parent** este articolul cu ID al cărui **post_title** este numele capitolului ȘI **post_parent** este ID-ul cursului din iterația curentă”.
+Știu, sună destul de ciudat, dar cam așa se traduce interogarea 😁.
+
+În final se actualizează câmpul `_tutor_completed_lesson_id_*` al utilizatorului, iar el va vedea în panoul WordPress progresul pe care l-a avut pe Thinkific.
+
+## Încheiere
+Urmează să fie rulată și comanda de import progres și din nou se întâmplă magia. 🧙🏼‍♂️
+```sh
+$ wp thinkific import progress
+```
+
+Încă un pas și migrarea este finalizată.
+În <Link href="/blog/migrare-thinkific-wordpress-partea-4-import-recenzii">următorul articol</Link> voi folosi API-ul de comentarii din WordPress pentru migrarea recenziilor, așa că te invit să-l studiezi 😎.
+
+<div className='mb-4 flex flex-col items-center rounded-md border border-blue-600 p-2'>
+    <p className="text-center mt-0">_Dacă ai nevoie de o astfel de migrare, dă clic mai jos și hai să discutăm._</p>
+    <Link href='/contact' className="animate-text-bg rounded-md bg-gradient-to-r from-blue-600 via-gray-600 to-green-500 bg-[length:400%] px-2 py-1 text-white hover:text-white">Contactează-mă</Link>
+</div>

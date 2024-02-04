@@ -1,0 +1,162 @@
+---
+title: 'Cum migrezi de la Thinkific la WordPress. Partea 1: Planificarea și pregătirea datelor'
+locale: ro
+featuredImage: https://res.cloudinary.com/vladilie-ro/image/upload/v1706196659/blog/1.%20migrate-thinkific-to-wordpress/v5ypjuldovovlpqw1cc3.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAxUlEQVR4nAG6AEX/ANLS0t/f3+vr6+3t6+/y8fHy7/X39+/y8ens693f3gCZr8qmutOqwtuyxNrK1+b7+/j8//75/Pv19/fo6u0AOG2gKGGRNGiYPHCgUoO2gLPNnNXgmtLels/ZkMrVAKO51qnA3J2zy52yzH+0yxSesQB4iABOWwBicgCKoQDHx8VaTTwkEgAnEwBRQSxNTjkEGREADQA/Vkxmk5oAHg8ARzATLxsAHQAAHgIAMyAGOiQNUTsgaU8yPSsXAbliTzFAqmUAAAAASUVORK5CYII=
+description: Cum am făcut planul de migrare de pe Thinkific pe WordPress a unui site de e-learning și cum am exportat datele din Thinkific.
+type: Post
+keywords: [migrare,thinkific,wordpress,tutor lms,woocommerce,wp-cli,plan,mutare,e-learning,masterclass,cărțile pe față]
+date: January 28, 2024 20:00:00
+---
+În această serie de 5 articole îmi propun să scriu despre cum am făcut migrarea de la platforma de e-learning <Link href="https://thinkific.com">Thinkific</Link> la WordPress, cum am exportat datele din Thinkific, ce tehnologii am folosit, cum m-a ajutat interfața liniei de comandă de la WordPress (WP-CLI) și cum am făcut alte modificări minore în șabloane sau folosind cârligele (hooks) din API-ul WordPress.
+Mai jos îți las lista de articole din serie:
+<div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
+    <p>Cuprins</p>
+    1. _**Partea 1: Planificarea și pregătirea datelor**_
+    2. <Link href="/blog/migrare-thinkific-wordpress-partea-2-import-utilizatori">Partea 2: Import utilizatori</Link>
+    3. <Link href="/blog/migrare-thinkific-wordpress-partea-3-import-progres">Partea 3: Import progres</Link>
+    4. <Link href="/blog/migrare-thinkific-wordpress-partea-4-import-recenzii">Partea 4: Import recenzii</Link>
+    5. <Link href="/blog/migrare-thinkific-wordpress-partea-5-adaptari-concluzii">Partea 5: Alte adaptări și concluzii</Link>
+</div>
+
+## Introducere
+2023 s-a încheiat cu o mică provocare pentru mine în privința WordPress.
+La care am răspuns cu bucurie „Da!”.
+Este vorba despre migrarea conținutului site-ului <Link href="https://masterclassonline.ro">masterclassonline.ro</Link>, site aparținând Asociației Culturale <Link href="https://cartilepefata.ro">Cărțile pe față</Link>, pe WordPress.
+
+Site-ul de e-learning a fost până acum găzduit pe platforma Thinkific, o platformă dedicată cursurilor online.
+Motivul principal pentru această migrare a fost prețul.
+Și pentru câteva cursuri, o astfel de platformă este prea mult.
+
+Iar WordPress vine aici ca o mănușă.
+Este flexibil, sunt câteva module serioase de e-learning pe piață, există o flexibilitate și mai mare la dezvoltarea de noi funcționalități și experiența pe care o am îmi este cu atât mai plăcută.
+Pot aduce și niște îmbunătățiri de performanță.
+Migrarea datelor dintr-o parte în alta este doar o chestie de timp.
+
+Am ales WP-CLI, interfața de linie de comandă pentru WordPress, pentru că procesul este unul singular, am nevoie de monitorizare în timp real în timpul migrării, am control total asupra datelor și limitările sunt doar cele pe care le impun eu în configurările locale PHP, rulând migrarea local și abia apoi mutând site-ul în instanța de producție.
+
+## Planificare migrare
+
+### Evaluarea cerințelor și resurselor necesare
+În cazul meu, datele de care am nevoie din Thinkific sunt următoarele:
+- cursurile
+- utilizatorii și înrolarea lor la cursuri
+- progresul utilizatori pentru cursurile pe care le urmează
+- recenziile cursurilor primite de la cursanți
+
+Trebuie îndeplinite și condițiile de înrolare a utilizatorilor la cursurile din WordPress care, spre exemplu, presupun crearea unor comenzi WooCommerce.
+Pe lângă acestea, pe viitoarea platformă am nevoie de funcționalitățile următoare:
+- înregistrare și autentificare utilizatori
+- achiziționare cursuri
+- plată cu cardul
+- posibilitate de facturare pe persoană juridică
+- utilizatorii să poată urmări progresul cursurilor achiziționate
+
+### Crearea unui plan detaliat pentru migrare
+Pentru noua casă a site-ului Masterclass Online am ales modulul <Link href="https://wordpress.org/plugins/tutor/">Tutor LMS</Link> configurat împreună cu <Link href="https://wordpress.org/plugins/woocommerce/">WooCommerce</Link> pentru procesarea comenzilor, cu plată, facturare și restul integrărilor, dar aici n-am să intru mai mult în detalii.
+
+Am studiat apoi modulul de e-learning pentru a stabili care sunt cerințele tehnice de care am nevoie pentru a migra datele:
+- ce filtre și acțiuni din `Tutor LMS` pot folosi pentru a ocoli eventualele verificări
+- care este relaționarea dintre entitățile din baza de date
+- de ce informații am nevoie să fie completate în instanța WordPress pentru ca un utilizator să poată avea acces la cursurile sale
+- care sunt câmpurile pe care trebuie potrivite celelalte date din Thinkific
+- care este modul optim în care voi face migrarea (aici am stabilit deja, WP-CLI este forță!)
+
+**Mai departe am stabilit lista cu acțiuni pe care le am de îndeplinit:**
+- Pregătirea datelor exportate din Thinkific prin normalizarea lor și eliminarea celor nerelevante.
+- Asigurarea că nicio notificare prin email nu este activată (de exemplu cea de creare cont în WordPress sau celelalte mailuri despre comenzile din WooCommerce).
+- ❗️ Din cercetarea pe care am făcut-o în funcționalitatea modulului `Tutor LMS`, este nevoie ca o verificare din PHP să fie negată. Am săpat (probabil nu suficient) prin modul și din toate testele pe care le-am făcut, dacă negarea respectivă nu era făcută, utilizatorul nu și-ar fi văzut cursurile în panoul de control. Iar un filtru, pentru a face acest lucru mai ușor, nu există în modul, din păcate.
+- Rulare import utilizatori, progres și recenzii.
+- Reactivare notificări prin email, dacă acestea au fost dezactivate mai sus.
+
+### Exportarea și pregătirea datelor din Thinkific
+În privința datelor am avut un pic de furcă, dar în cele din urmă s-a dovedit a fi relativ ușor să le export.
+
+#### Utilizatorii
+Din fericire există o metodă la îndemână pentru a exporta lista de utilizatori:
+Panou de control Thinkific > Student Support > Users > clic pe butonul „Export”.
+<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706375897/blog/1.%20migrate-thinkific-to-wordpress/thinkific-export-users_iqqirf.webp" alt="Export utilizatori din panoul Thinkific" className="rounded-md shadow-lg" />
+Când procesarea va fi gata, va fi trimisă o notificare pe email cu o legătură pentru a descărca fișierul în format `CSV`.
+
+Antetul fișierului `CSV` exportat arată așa:
+```csv
+First Name,Last Name,Amount spent,Date created,Email,Enrollments,Enrollments - list,External source,Last sign in,Referred by,Roles,Sign in count
+```
+Dintre toate datele, am nevoie doar de următoarele:
+- First Name
+- Last Name
+- Date created
+- Email
+- Enrollments - list
+
+Așa că fie pot face o normalizare în fișier și să elimin tot ce nu am nevoie, fie să parcurg fișierul și să aleg din el doar datele necesare (în prima fază am mers pe varianta a doua).
+
+#### Cursurile
+Fiind doar 4 cursuri, nu am văzut oportun să fac un export al lor.
+De fapt, nici nu există această posibilitate în panoul de control de la Thinkific (sau n-am găsit eu).
+
+Cursurile le-am creat manual în modulul de e-learning și ca produse în WooCommerce.
+Procesul a fost destul de rapid, mai mult a durat să le aranjez vizual și să le bibilesc cu Elementor.
+
+Este un pic ciudat modul în care Thinkific exportă lista de utilizatori pentru că în câmpul `Enrollments - list` din fișierul `CSV`, fiecare utilizator are o listă separată prin virgulă a titlurilor cursurilor la care este înrolat.
+Astfel a trebuit să parcurg fiecare listă de la fiecare utilizator, în timpul importului, și să fac o potrivire manuală pentru a seta relațiile utilizatorului cu cursurile pe care le urmează.
+
+📛 Singurul minus din această privință este că modulul dezvoltat nu este chiar „plug-and-play”, ci va avea nevoie de o adaptare la acea potrivire manuală pentru o eventuală rulare pe un alt set de date.
+
+#### Progresul
+Aici este vorba despre progresul fiecărui utilizator făcut în cazul fiecărui curs pe care-l urmează.
+Din nou, lista cu progresul fiecărui utilizator se poate exporta cu ușurință din panoul de control Thinkific.
+<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706377907/blog/1.%20migrate-thinkific-to-wordpress/thinkific-export-user-course-progress_ez6b8x.webp" alt="Export progres din panoul Thinkific" className="rounded-md shadow-lg" />
+
+📛 Un alt minus al platformei Thinkific este că progresul se poate exporta doar individual, per curs și nu în bloc.
+Așa că dacă ai multe cursuri pe platformă și vrei o astfel de migrare, s-ar putea să ai o treabă mai serioasă de făcut.
+
+Antetul fișierului `CSV` al progresului exportat arată așa:
+```csv
+Email,Completed At,% Completed,<Nume-capitol-1>,<Nume-capitol-2>,...,<Nume-capitol-n>
+```
+Valorile pentru coloanele cu `<Numele capitolelor>` sunt între 0 și 100.
+
+O să vezi mai departe în <a href="/blog/migrare-thinkific-wordpress-partea-3-import-progres">partea a treia</a> a seriei de articole că am făcut un compromis și am tratat doar progresul cu valoarea `100`.
+Restul valorilor diferite de 100, fiind mai puține, mi-am asumat să le actualizez manual direct în baza de date.
+
+#### Recenziile
+Thinkific nu are o metodă prietenoasă pentru utilizator pentru a exporta recenziile cursurilor.
+La o căutare rapidă pe Google am dat de <Link href="https://martechlms.com/blog/how-to-export-student-reviews-from-thinkific/" title="How to export student reviews from Thinkific">acest articol</Link> care m-a îndrumat cum să obțin recenziile fiecărui curs.
+Din nou, dacă ai multe cursuri pe platformă și vrei să faci o astfel de migrare pe WordPress, va fi nevoie de mai multă muncă manuală.
+
+Revenind, recenziile cursurilor sunt disponibile în sursa paginii fiecărui curs.
+Așa că le-am luat de acolo (după ce m-am asigurat că sunt toate validate din panoul de control Thinkific!) în format JSON de această dată și așa am lucrat cu ele mai deprte (de dragul dinamicii 😁 - glumesc, mi s-a părut mai ușor să le parcurg așa).
+
+Structura fiecărui obiect JSON pentru recenzii arată așa:
+```json showLineNumbers title="recenzii-curs-1.json"
+{
+  "@context": "http://schema.org",
+  "@type": "Product",
+  "name": "<nume-curs>",
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "reviewCount": 5 },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "<nume-recenzor>" },
+      "description": "<descriere-recenzie>",
+      "name": "<titlu-recenzie>",
+      "date": "November 26, 2021",
+      "reviewRating": { "@type": "Rating", "bestRating": 5, "ratingValue": 5, "worstRating": 0 }
+    },
+    // ...
+  ],
+    "image": "<url-imagine-curs>"
+}
+```
+
+## Încheiere
+Mulțumesc că ai avut răbdare până aici. 🍻
+Până acum am planul de migrare și toate datele de care am nevoie din Thinkific în fișierele lor separate.
+
+În <Link href="/blog/migrare-thinkific-wordpress-partea-2-import-utilizatori">următorul articol</Link> voi aborda partea care-mi place cel mai mult, implementarea uneia dintre comenzile `WP-CLI`. ✌️
+
+<div className='mb-4 flex flex-col items-center rounded-md border border-blue-600 p-2'>
+    <p className="text-center mt-0">_Dacă ai nevoie de o astfel de migrare, dă clic mai jos și hai să discutăm._</p>
+    <Link href='/contact' className="animate-text-bg rounded-md bg-gradient-to-r from-blue-600 via-gray-600 to-green-500 bg-[length:400%] px-2 py-1 text-white hover:text-white">Contactează-mă</Link>
+</div>

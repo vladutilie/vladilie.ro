@@ -15,7 +15,7 @@ export async function GET(_r: Request, { params: { slug } }: { params: { slug: s
 // TODO: Test this method and fix it if needed.
 export async function POST(request: Request, { params: { slug } }: { params: { slug: string } }) {
   const ip = request.headers.get('x-forwarded-for');
-  const isLive = 'undefined' !== typeof ip && '::1' !== ip;
+  const isLive = 'undefined' !== typeof ip && '::1' !== ip && 'production' === process.env.NEXT_PUBLIC_VERCEL_ENV;
 
   const post = await prisma.postCounter.upsert({
     where: { slug },
