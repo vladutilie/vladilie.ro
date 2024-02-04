@@ -63,7 +63,7 @@ Pentru adăugarea legăturii către panoul de control Tutor LMS în meniul de na
 ## Formularul de autentificare `Tutor LMS`
 <img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706624461/blog/1.%20migrate-thinkific-to-wordpress/tutor-login-form_ezqrm2.webp" alt="Formular de autentificare Tutor LMS" className="rounded-md shadow-lg"/>
 Făcând migrarea și având de-a face cu conturi de utilizatori, nu am vrut să o fac intruziv și mai ales nici să încalc Regulamentul general de protecția datelor.
-Așa că am abordat altfel acest lucru, notificând utilizatorii printr-un mesaj în formularul de autentificare, că site-ul a trecut pe o altă platformă și dacă a avut cont înainte, pot solicita o legătură pentru resetarea parolei, pentru a se putea autentifica.
+Așa că am abordat altfel acest lucru, notificând utilizatorii printr-un mesaj în formularul de autentificare, că site-ul a trecut pe o altă platformă și dacă a avut cont înainte, poate solicita o legătură pentru resetarea parolei, pentru a se putea autentifica.
 Pentru adăugarea acestui mesaj, am apelat din nou la cârligele (hooks) din fișierul `functions.php` al temei:
 ```php showLineNumbers title="class-wpcli.php" caption="/wp-content/themes/child-theme/"
 // Add custom message in the Tutor LMS login form.
@@ -104,12 +104,13 @@ add_filter(
 ```
 
 Un ultim filtru pe care l-am folosit este pentru eliminarea câmpului „cantitate” din pagina coșului de cumpărături pentru a preveni mărirea cantității.
+Nu ar avea sens ca un utilizator să cumpere o cantitate mai mare de 1 pentru un curs.
 ```php showLineNumbers title="functions.php" caption="/wp-content/themes/child-theme/"
 // Hide quantity input field from cart.
 add_filter( 'woocommerce_is_sold_individually', '__return_true' );
 ```
 
-De asemenea, am copiat și șablonul `/wp-content/plugins/woocommerce/templates/cart/cart.php` în `/wp-content/themes/child-theme/woocommerce/cart/cart.php` pentru a-l suprascrie și am eliminat apoi următoarele linii din el:
+De asemenea, pentru a elimina câmpul cantității și din coș, am copiat și șablonul `/wp-content/plugins/woocommerce/templates/cart/cart.php` în `/wp-content/themes/child-theme/woocommerce/cart/cart.php` pentru a-l suprascrie și am eliminat apoi următoarele linii din el:
 ```php showLineNumbers title="cart.php" caption="/wp-content/themes/child-theme/woocommerce/cart/" {1, 5-29}
 <th class="product-quantity"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
 

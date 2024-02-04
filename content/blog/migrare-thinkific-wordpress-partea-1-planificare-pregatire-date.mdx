@@ -8,7 +8,7 @@ type: Post
 keywords: [migrare,thinkific,wordpress,tutor lms,woocommerce,wp-cli,plan,mutare,e-learning,masterclass,cărțile pe față]
 date: January 28, 2024 20:00:00
 ---
-În această serie de 5 articole îmi propun să scriu despre cum am făcut migrarea de la platforma de e-learning Thinkific la WordPress, cum am exportat datele din Thinkific, ce tehnologii am folosit, cum m-a ajutat interfața liniei de comandă de la WordPress (WP-CLI) și cum am făcut alte modificări minore în șabloane sau folosind cârligele (hooks) din API-ul WordPress.
+În această serie de 5 articole îmi propun să scriu despre cum am făcut migrarea de la platforma de e-learning <Link href="https://thinkific.com">Thinkific</Link> la WordPress, cum am exportat datele din Thinkific, ce tehnologii am folosit, cum m-a ajutat interfața liniei de comandă de la WordPress (WP-CLI) și cum am făcut alte modificări minore în șabloane sau folosind cârligele (hooks) din API-ul WordPress.
 Mai jos îți las lista de articole din serie:
 <div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
     <p>Cuprins</p>
@@ -22,11 +22,10 @@ Mai jos îți las lista de articole din serie:
 ## Introducere
 2023 s-a încheiat cu o mică provocare pentru mine în privința WordPress.
 La care am răspuns cu bucurie „Da!”.
-Este vorba despre migrarea conținutului site-ului <Link href="https://masterclassonline.ro">masterclassonline.ro</Link> pe WordPress, site aparținând Asociației Culturale <Link href="https://cartilepefata.ro">Cărțile pe față</Link>.
+Este vorba despre migrarea conținutului site-ului <Link href="https://masterclassonline.ro">masterclassonline.ro</Link>, site aparținând Asociației Culturale <Link href="https://cartilepefata.ro">Cărțile pe față</Link>, pe WordPress.
 
-Site-ul de e-learning a fost până acum găzduit pe platforma Thinkific, o platformă dedicată cursurilor online, dar totuși nu foarte pregătită din punctul meu de vedere.
-Din cât am navigat pe ea în ultima lună, în munca de a pregăti migrarea către WordPress, am observat că nu este foarte prietenoasă în partea de panou de control, unele dintre informații sunt afișate în tabele care se termină la trei sferturi lățime de pagină (pe o rezoluție ca a mea de `1920x1200px` este destul de enervant).
-Dar motivul principal pentru această migrare este, într-adevăr, prețul.
+Site-ul de e-learning a fost până acum găzduit pe platforma Thinkific, o platformă dedicată cursurilor online.
+Motivul principal pentru această migrare a fost prețul.
 Și pentru câteva cursuri, o astfel de platformă este prea mult.
 
 Iar WordPress vine aici ca o mănușă.
@@ -66,7 +65,7 @@ Am studiat apoi modulul de e-learning pentru a stabili care sunt cerințele tehn
 **Mai departe am stabilit lista cu acțiuni pe care le am de îndeplinit:**
 - Pregătirea datelor exportate din Thinkific prin normalizarea lor și eliminarea celor nerelevante.
 - Asigurarea că nicio notificare prin email nu este activată (de exemplu cea de creare cont în WordPress sau celelalte mailuri despre comenzile din WooCommerce).
-- ❗️ Din cercetarea pe care am făcut-o în funcționalitatea modulului Tutor LMS, este nevoie ca o verificare din PHP să fie negată. Am săpat (probabil nu suficient) prin modul și din toate testele pe care le-am făcut, dacă negarea respectivă nu era făcută, utilizatorul nu și-ar fi văzut cursurile în panoul de control. Iar un filtru, pentru a face acest lucru mai ușor, nu există în modul, din păcate.
+- ❗️ Din cercetarea pe care am făcut-o în funcționalitatea modulului `Tutor LMS`, este nevoie ca o verificare din PHP să fie negată. Am săpat (probabil nu suficient) prin modul și din toate testele pe care le-am făcut, dacă negarea respectivă nu era făcută, utilizatorul nu și-ar fi văzut cursurile în panoul de control. Iar un filtru, pentru a face acest lucru mai ușor, nu există în modul, din păcate.
 - Rulare import utilizatori, progres și recenzii.
 - Reactivare notificări prin email, dacă acestea au fost dezactivate mai sus.
 
@@ -94,7 +93,7 @@ Așa că fie pot face o normalizare în fișier și să elimin tot ce nu am nevo
 
 #### Cursurile
 Fiind doar 4 cursuri, nu am văzut oportun să fac un export al lor.
-De fapt, nici nu există această posibilitate în panoul de control de la Thinkific.
+De fapt, nici nu există această posibilitate în panoul de control de la Thinkific (sau n-am găsit eu).
 
 Cursurile le-am creat manual în modulul de e-learning și ca produse în WooCommerce.
 Procesul a fost destul de rapid, mai mult a durat să le aranjez vizual și să le bibilesc cu Elementor.
