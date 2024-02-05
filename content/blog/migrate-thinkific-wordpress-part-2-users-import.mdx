@@ -8,26 +8,26 @@ type: Post
 keywords: [migrate,thinkific,wordpress,tutor lms,woocommerce,wp-cli,functions,commands,users import,reading from file]
 date: January 29, 2024 20:00:00
 ---
-In <Link href="/blog/migrate-thinkific-wordpress-part-1-planning-data-preparation">the first part</Link> of this 5-article series, I discussed the project for which I performed the migration, how I planned the migration, and how I exported data from Thinkific.
+In <Link href="/blog/migrate-thinkific-wordpress-part-1-planning-data-preparation">the first part</Link> of this 5-article series, I discussed the project for which I performed the migration, how I planned the migration, and how I exported data from `Thinkific`.
 
-Here, in **the second part**, I will cover the functionality of the WP-CLI command that I implemented to import users into WordPress.
+Here, in **the second part**, I will cover the functionality of the `WP-CLI` command that I implemented to import users into `WordPress`.
 Below, I also provide you with the list of articles in the series:
 <div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
     <p>Table of contents</p>
     1. <Link href="/blog/migrate-thinkific-wordpress-part-1-planning-data-preparation">Part 1: Planning and data preparations</Link>
-    2. _**How to migrate from Thinkific to WordPress. Part 2: Users import**_
+    2. _**Part 2: Users import**_
     3. <Link href="/blog/migrate-thinkific-wordpress-part-3-progress-import">Part 3: Progress import</Link>
     4. <Link href="/blog/migrate-thinkific-wordpress-part-4-reviews-import">Part 4: Reviews import</Link>
     5. <Link href="/blog/migrate-thinkific-wordpress-part-5-adaptations-conclusions">Part 5: Other adaptations and conclusions</Link>
 </div>
 
-As I mentioned, here begins the most interesting part of the entire process of migrating data from Thinkific to WordPress.
-I intend to create a plugin that encompasses everything needed for custom WP-CLI commands, specifically the PHP class I have implemented.
+As I mentioned, here begins the most interesting part of the entire process of migrating data from `Thinkific` to `WordPress`.
+I intend to create a plugin that encompasses everything needed for custom `WP-CLI` commands, specifically the `PHP` class I have implemented.
 
 I will go through the key points of the class one by one and explain the approaches along the way.
 
-## Declaring custom WP-CLI commands
-To begin with, I defined a method in which I added 3 custom WP-CLI commands that I implemented further:
+## Declaring custom `WP-CLI` commands
+To begin with, I defined a method in which I added 3 custom `WP-CLI` commands that I implemented further:
 ```php showLineNumbers title="class-wpcli.php"
 // ...
 protected function define_commands(): void {
@@ -39,11 +39,11 @@ protected function define_commands(): void {
 }
 // ...
 ```
-These 3 commands will be available by running them in a terminal shell using WP-CLI.
+These 3 commands will be available by running them in a terminal shell using `WP-CLI`.
 
 ## Reading from file
-In all three callbacks derived from the method above, namely `import_users`, `import_progress`, and `import_reviews`, it was necessary to read from data files (2 CSV files and a JSON file).
-For this, I used the API from the `WP_Filesystem` class belonging to WordPress, which helped me keep the code quite clean and within standard limits.
+In all three callbacks derived from the method above, namely `import_users`, `import_progress`, and `import_reviews`, it was necessary to read from data files (2 `CSV` files and a `JSON` file).
+For this, I used the `API` from the `WP_Filesystem` class belonging to `WordPress`, which helped me keep the code quite clean and within standard limits.
 ```php showLineNumbers title="class-wpcli.php"
 public function import_users(): void {
     global $wp_filesystem;
@@ -57,8 +57,7 @@ public function import_users(): void {
     //...
 }
 ```
-
-As can be seen, we have implemented another helper method to interpret the CSV content into an easily traversable vector format:
+As can be seen, we have implemented another helper method to interpret the `CSV` content into an easily traversable vector format:
 ```php showLineNumbers title="class-wpcli.php"
 protected function parse_csv_content( $csv_content ): array {
     $lines = explode( "\n", $csv_content );
@@ -72,7 +71,7 @@ protected function parse_csv_content( $csv_content ): array {
 }
 ```
 
-I was then able to simply loop through the lines in the CSV file and proceed with the data processing:
+I was then able to simply loop through the lines in the `CSV` file and proceed with the data processing:
 ```php showLineNumbers title="class-wpcli.php"
 foreach ( $csv_data as $line ) {
     if ( ! $i ) {
@@ -95,7 +94,7 @@ Then, I processed only the users enrolled in at least one course (line 9).
 There were a few cases where users were merely registered on the platform but had not purchased any courses.
 Consequently, migrating this data was unnecessary as it was not relevant.
 
-Subsequently, for the remaining users, I invoked the two methods: user creation and order creation in WooCommerce - as mentioned earlier, I needed to integrate with the normal course purchase process through `Tutor LMS - WooCommerce`.
+Subsequently, for the remaining users, I invoked the two methods: user creation and order creation in `WooCommerce` - as mentioned earlier, I needed to integrate with the normal course purchase process through `Tutor LMS - WooCommerce`.
 
 ## Create user
 In the user creation method, I didn't do anything special.
@@ -133,12 +132,12 @@ protected function create_user( $user_data ) {
     }
 }
 ```
-Bineînțeles, la crearea utilizatorului am folosit datele din fișier și am făcut o interpretare a datei de înregistrare pentru că formatul furnizat nu este același cu cel acceptat de structura din tabelul de utilizatori WordPress - am eliminat partea cu `UTC` din dată.
+Of course, when creating the user, I used the data from the file and interpreted the registration date because the provided format is not the same as the one accepted by the structure in the `WordPress` user table - I removed the `UTC` part from the date.
 
 ## Create WooCommerce order
-I hope I've been clear when mentioning "creating a WooCommerce order".
-To elaborate, I'm referring to generating an order for products in an online store built with WooCommerce, which is intended for payment and so forth.
-Within the WooCommerce order creation method, I manually matched the IDs of the course products, as seen in lines 2-8.
+I hope I've been clear when mentioning "creating a `WooCommerce` order".
+To elaborate, I'm referring to generating an order for products in an online store built with `WooCommerce`, which is intended for payment and so forth.
+Within the `WooCommerce` order creation method, I manually matched the IDs of the course products, as seen in lines 2-8.
 
 IDs 1, 2, 3, and 4 are assigned to products in the database, linked to the respective courses in the `Tutor LMS` plugin.
 Of course, the actual IDs are different.

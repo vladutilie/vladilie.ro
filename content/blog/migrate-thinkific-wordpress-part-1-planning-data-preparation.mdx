@@ -8,7 +8,7 @@ type: Post
 keywords: [migrate,thinkific,wordpress,tutor lms,woocommerce,wp-cli,planning,e-learning,masterclass,cărțile pe față]
 date: January 28, 2024 20:00:00
 ---
-In this series of 5 articles, I propose to write about how I migrated from the e-learning platform <Link href="https://thinkific.com">Thinkific</Link> to WordPress, how I exported the data from Thinkific, what technologies I used, how WordPress Command Line Interface (WP-CLI) helped me, and how I made other minor changes to templates or using WordPress API hooks.
+In this series of 5 articles, I propose to write about how I migrated from the e-learning platform <Link href="https://thinkific.com">Thinkific</Link> to `WordPress`, how I exported the data from `Thinkific`, what technologies I used, how WordPress Command Line Interface (WP-CLI) helped me, and how I made other minor changes to templates or using WordPress API hooks.
 Below, I leave you the list of articles in the series:
 <div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
     <p>Table of contents</p>
@@ -21,18 +21,20 @@ Below, I leave you the list of articles in the series:
 
 ## Introduction
 2023 ended with a small WordPress challenge for me, to which I happily answered with "Yes!".
-It involves the migration of the content of the site <Link href="https://masterclassonline.ro">masterclassonline.ro</Link>, a site belonging to the Cultural Association <Link href="https://cartilepefata.ro">Cărțile pe față</Link>, on WordPress.
+It involves the migration of the content of the site <Link href="https://masterclassonline.ro">masterclassonline.ro</Link>, a site belonging to the Cultural Association <Link href="https://cartilepefata.ro">Cărțile pe față</Link>, on `WordPress`.
 
 The e-learning site was hosted so far on the Thinkific platform, a platform dedicated to online courses.
 The main reason for this migration was price.
 And for a few courses, such a platform is too much.
 
-And WordPress fits here like a glove.
+And `WordPress` fits here like a glove.
 It's flexible, there are some good e-learning plugins on the market, there's even more flexibility in developing new functionality, and the experience I have is even more enjoyable.
 It can also bring some performance improvements.
 Migrating data from one side to another is just a matter of time.
 
-I chose WP-CLI, the command line interface for WordPress because the process is singular. I need real-time monitoring during the migration, I have full control over the data, and the limitations are only those I impose in the local PHP configurations. I run the migration locally and only then move the site to the production instance.
+I chose `WP-CLI`, the command line interface for WordPress because the process is singular.
+I need real-time monitoring during the migration, I have full control over the data, and the limitations are only those I impose in the local `PHP` configurations.
+I run the migration locally and only then move the site to the production instance.
 
 ## Migration planning
 
@@ -43,7 +45,7 @@ In my case, the data I need from Thinkific is as follows:
 - user progress for the courses they follow
 - course reviews received from students
 
-The conditions for enrolling users in WordPress courses that, for example, require the creation of WooCommerce orders must also met.
+The conditions for enrolling users in `WordPress` courses that, for example, require the creation of WooCommerce orders must also met.
 In addition to these, on the future platform, I need the following functionalities:
 - user registration and authentication
 - purchasing courses
@@ -52,19 +54,20 @@ In addition to these, on the future platform, I need the following functionaliti
 - users can track the progress of purchased courses
 
 ### Create a detailed plan for the migration
-For the new home of the Masterclass Online site, I chose the <Link href="https://wordpress.org/plugins/tutor/">Tutor LMS</Link> plugin configured with <Link href="https://wordpress .org/plugins/woocommerce/">WooCommerce</Link> for order processing, including payment, invoicing, and other integrations. However, I won't go into the details here.
+For the new home of the Masterclass Online site, I chose the <Link href="https://wordpress.org/plugins/tutor/">Tutor LMS</Link> plugin configured with <Link href="https://wordpress .org/plugins/woocommerce/">WooCommerce</Link> for order processing, including payment, invoicing, and other integrations.
+However, I won't go into the details here.
 
 Next, I studied the e-learning plugin to determine the technical requirements needed for migrating the data:
 - Identified filters and actions in `Tutor LMS` that I can use to bypass potential checks.
 - Examined the relationships between entities in the database.
-- Determined the necessary information to be filled in the WordPress instance for a user to access their courses.
-- Identified the fields to which other data in Thinkific must be matched.
-- Established the optimal method for migration (I've already decided: WP-CLI rocks!)
+- Determined the necessary information to be filled in the `WordPress` instance for a user to access their courses.
+- Identified the fields to which other data in `Thinkific` must be matched.
+- Established the optimal method for migration (I've already decided: `WP-CLI` rocks!)
 
 **Furthermore, I outlined the list of actions that I need to complete:**
-- Prepared data exported from Thinkific by normalizing it and removing irrelevant information.
-- Ensured that no email notifications are enabled (e.g., for WordPress account creation or other emails related to WooCommerce orders).
-- ❗️ Based on my research on the functionality of the `Tutor LMS` plugin, there is a need for a PHP check to be denied. I delved (probably not enough) into the plugin, and from all the tests I conducted, without this disclaimer, the user wouldn't see their courses in the dashboard. Unfortunately, a filter for making this process easier does not exist in the plugin.
+- Prepared data exported from `Thinkific` by normalizing it and removing irrelevant information.
+- Ensured that no email notifications are enabled (e.g., for `WordPress` account creation or other emails related to `WooCommerce` orders).
+- ❗️ Based on my research on the functionality of the `Tutor LMS` plugin, there is a need for a `PHP` check to be denied. I delved (probably not enough) into the plugin, and from all the tests I conducted, without this disclaimer, the user wouldn't see their courses in the dashboard. Unfortunately, a filter for making this process easier does not exist in the plugin.
 - Executed the import for users, progress, and reviews.
 - Reactivated email notifications if they were disabled previously."
 
@@ -75,7 +78,7 @@ In terms of data, I had a bit of a challenge, but in the end, it turned out to b
 Fortunately, there is a handy method to export the list of users:
 Thinkific Dashboard > Student Support > Users > Click on the "Export" button.
 <img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706375897/blog/1.%20migrate-thinkific-to-wordpress/thinkific-export-users_iqqirf.webp" alt="Export users from Thinkific Dashboard" className="rounded-md shadow-lg" />
-Once the processing is complete, an email notification will be sent with a link to download the file in CSV format.
+Once the processing is complete, an email notification will be sent with a link to download the file in `CSV` format.
 
 The header of the exported `CSV` file looks like this:
 ```csv
@@ -93,22 +96,22 @@ So, I can either normalize the file and remove everything I don't need, or I can
 
 #### Courses
 Since there are only 4 courses, I didn't find it necessary to export them.
-There doesn't seem to be an option for this in the Thinkific dashboard (or I couldn't locate it).
+There doesn't seem to be an option for this in the `Thinkific` dashboard (or I couldn't locate it).
 
-I manually created the courses in the e-learning plugin and as products in WooCommerce.
-The process was quite fast; the main time consumption was in visually arranging and styling them with Elementor.
+I manually created the courses in the e-learning plugin and as products in `WooCommerce`.
+The process was quite fast; the main time consumption was in visually arranging and styling them with `Elementor`.
 
-The way Thinkific exports the user list is a bit peculiar because, in the `Enrollments - list` field of the `CSV` file, each user has a separate comma-separated list of course titles they are enrolled in.
+The way `Thinkific` exports the user list is a bit peculiar because, in the `Enrollments - list` field of the `CSV` file, each user has a separate comma-separated list of course titles they are enrolled in.
 As a result, I had to go through each user's list during the import process and manually match them to set up the user-course relationships.
 
 📛 The only drawback in this regard is that the developed plugin is not entirely "plug-and-play"; it will require adaptation for that manual matching if run on a different dataset.
 
 #### Progress
 This concerns the progress of each user in each course they are taking.
-Once again, the list of each user's progress can be easily exported from the Thinkific dashboard.
+Once again, the list of each user's progress can be easily exported from the `Thinkific` dashboard.
 <img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706377907/blog/1.%20migrate-thinkific-to-wordpress/thinkific-export-user-course-progress_ez6b8x.webp" alt="Export progress from Thinkific Dashboard" className="rounded-md shadow-lg" />
 
-📛 Another drawback of the Thinkific platform is that progress can only be exported individually, per course, and not in bulk.
+📛 Another drawback of the `Thinkific` platform is that progress can only be exported individually, per course, and not in bulk.
 So, if you have many courses on the platform and want such a migration, you might have a more serious task on your hands.
 
 The header of the exported progress `CSV` file looks like this:
@@ -121,14 +124,14 @@ You will see further in <Link href="/blog/migrate-thinkific-wordpress-part-3-pro
 For the remaining values other than 100, being fewer in number, I took the responsibility to update them manually directly in the database.
 
 #### Reviews
-Thinkific doesn't have a user-friendly method to export course reviews.
+`Thinkific` doesn't have a user-friendly method to export course reviews.
 Through a quick Google search, I came across <Link href="https://martechlms.com/blog/how-to-export-student-reviews-from-thinkific/" title="How to export student reviews from Thinkific">this article</Link> that guided me on how to obtain reviews for each course.
-Again, if you have many courses on the platform and want to migrate them to WordPress, it will require more manual work.
+Again, if you have many courses on the platform and want to migrate them to `WordPress`, it will require more manual work.
 
 Returning to the point, course reviews are available in the page source of each course.
-So, I fetched them from there (after ensuring they are all validated from the Thinkific dashboard!) in JSON format this time and worked with them from there (for the sake of dynamics 😁 - kidding, it seemed easier for me to process them this way).
+So, I fetched them from there (after ensuring they are all validated from the Thinkific dashboard!) in `JSON` format this time and worked with them from there (for the sake of dynamics 😁 - kidding, it seemed easier for me to process them this way).
 
-The structure of each JSON object for reviews looks like this:
+The structure of each `JSON` object for reviews looks like this:
 ```json showLineNumbers title="recenzii-curs-1.json"
 {
   "@context": "http://schema.org",
@@ -152,7 +155,7 @@ The structure of each JSON object for reviews looks like this:
 
 ## Closing thoughts
 Thank you for your patience so far. 🍻
-By now, I have the migration plan and all the necessary data from Thinkific in their respective files.
+By now, I have the migration plan and all the necessary data from `Thinkific` in their respective files.
 
 In <Link href="/blog/migrate-thinkific-wordpress-part-2-users-import">the next article</Link>, I will tackle the part I enjoy the most, implementing one of the `WP-CLI` commands. ✌️
 
