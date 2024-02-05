@@ -1,0 +1,163 @@
+---
+title: 'How to migrate from Thinkific to WordPress. Part 4: Reviews import'
+locale: en
+featuredImage: https://res.cloudinary.com/vladilie-ro/image/upload/v1706196659/blog/1.%20migrate-thinkific-to-wordpress/v5ypjuldovovlpqw1cc3.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAxUlEQVR4nAG6AEX/ANLS0t/f3+vr6+3t6+/y8fHy7/X39+/y8ens693f3gCZr8qmutOqwtuyxNrK1+b7+/j8//75/Pv19/fo6u0AOG2gKGGRNGiYPHCgUoO2gLPNnNXgmtLels/ZkMrVAKO51qnA3J2zy52yzH+0yxSesQB4iABOWwBicgCKoQDHx8VaTTwkEgAnEwBRQSxNTjkEGREADQA/Vkxmk5oAHg8ARzATLxsAHQAAHgIAMyAGOiQNUTsgaU8yPSsXAbliTzFAqmUAAAAASUVORK5CYII=
+description: How I used WP-CLI to import of reviews from JSON files obtained from Thinkific.
+type: Post
+keywords: [migrate,thinkific,wordpress,tutor lms,woocommerce,wp-cli,functions,commands,reviews import,reading from file]
+date: January 30, 2024 11:00:00
+---
+In the <Link href="/blog/migrate-thinkific-wordpress-part-3-progress-import">previous article</Link>, the third part of this 5-article series, I described the implementation of the `WP-CLI` command to import the progress of courses for users.
+
+In **part four**, I will describe the functionality of the `WP-CLI` command to import reviews given by users to the courses.
+Below, I also provide you with the list of articles in the series:
+<div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
+    <p>Table of contents</p>
+    1. <Link href="/blog/migrate-thinkific-wordpress-part-1-planning-data-preparation">Part 1: Planning and data preparations</Link>
+    2. <Link href="/blog/migrate-thinkific-wordpress-part-2-users-import">Part 2: Users import</Link>
+    3. <Link href="/blog/migrate-thinkific-wordpress-part-3-progress-import">Part 3: Progress import</Link>
+    4. _**Part 4: Reviews import**_
+    5. <Link href="/blog/migrate-thinkific-wordpress-part-5-adaptations-conclusions">Part 5: Other adaptations and conclusions</Link>
+</div>
+
+## Declaring the review import method
+I start again with declaring the method and the helper variables for reading from the file:
+```php showLineNumbers title="class-wpcli.php"
+public function import_reviews(): void {
+    global $wp_filesystem, $wpdb;
+
+    include_once ABSPATH . 'wp-admin/includes/file.php';
+    WP_Filesystem();
+
+    $files = array( 'course-1-reviews.json', 'course-2-reviews.json', 'course-3-reviews', 'course-4-reviews.json' );
+    //...
+}
+```
+I also declared a variable of type array with the list of files containing reviews for courses, which I will iterate through using `foreach ($files as $file)`.
+
+## Reading from file
+### `JSON` file structure
+I'm putting here again the structure of the review file in `JSON` format:
+```json showLineNumbers title="course-*-reviews.json"
+{
+  "@context": "http://schema.org",
+  "@type": "Product",
+  "name": "<course-name>",
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "reviewCount": 5 },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "<reviewer-name>" },
+      "description": "<review-description>",
+      "name": "<review-title>",
+      "date": "November 26, 2021",
+      "reviewRating": { "@type": "Rating", "bestRating": 5, "ratingValue": 5, "worstRating": 0 }
+    },
+    // ...
+  ],
+    "image": "<course-image-url>"
+}
+```
+
+As in the previous articles, reading from files is done in a similar way, but this time I won't use the helper method `parse_csv_content` to compose the vector with lines from the `CSV` file.
+Instead, I will use the `json_decode` function to interpret the `JSON` code:
+```php showLineNumbers title="class-wpcli.php"
+$file_path    = plugin_dir_path( __FILE__ ) . '/data/reviews/' . $file;
+$file_content = $wp_filesystem->get_contents( $file_path );
+$json         = json_decode( $file_content );
+
+$course_name  = $json->name;
+$review_count = count( $json->review );
+
+$course = get_page_by_title( $course_name, OBJECT, 'courses' );
+```
+I also declared a few more variables that will be useful later on.
+I made sure that the course `names` in the review files in the name field **match** the names of the courses created in `Tutor LMS`.
+
+## Processing reviews
+I then started looping through the reviews in the `review` vector in the `JSON` and proceeded like this:
+```php showLineNumbers title="class-wpcli.php"
+foreach ( $json->review as $review ) {
+    $user_id = $this->search_user_by_name( $review->author->name );
+    $new_comment  = wp_insert_comment(
+        array(
+            'comment_post_ID'  => $course->ID,
+            'comment_author'   => $review->author->name,
+            'comment_date'     => gmdate( 'Y-m-d H:i:s', strtotime( $review->date ) ),
+            'comment_content'  => $review->description,
+            'comment_agent'    => 'TutorLMSPlugin',
+            'comment_type'     => 'tutor_course_rating',
+            'comment_approved' => 'approved',
+            'user_id'          => $user_id,
+            'comment_meta'     => array( 'tutor_rating' => $review->reviewRating->ratingValue ), // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+        )
+    );
+
+    if ( is_wp_error( $new_comment ) ) {
+        \WP_CLI::warning( sprintf( 'Review of "%s" for "%s" not imported.', $review->author->name, $course_name ) );
+    }
+}
+```
+I performed a search for the user's name to retrieve their ID from the database using the helper method `search_user_by_name`, described below.
+Then, I used the `wp_insert_comment` function to create the review, to which I passed the necessary values:
+- The ID of the course to which the review belongs
+- The author's name
+- The review date (slightly reformatted)
+- The review content
+- The custom values of the `Tutor LMS` plugin to categorize the review as one of the `Tutor LMS` course reviews
+- The user's ID
+- The review rating
+
+The method for searching for a user by name and surname is here:
+```php showLineNumbers title="class-wpcli.php"
+protected function search_user_by_name( string $name ): int {
+    $normalized_name = str_replace( '  ', ' ', trim( $name ) );
+    $names           = explode( ' ', $normalized_name );
+    $last_name       = array_pop( $names );
+    $first_name      = implode( ' ', $names );
+
+    $wp_user_query = new WP_User_Query(
+        array(
+            'role'       => 'subscriber',
+            'meta_query' => array(
+                'relation' => 'AND',
+                array(
+                    'key'     => 'first_name',
+                    'value'   => $first_name,
+                    'compare' => '=',
+                ),
+                array(
+                    'key'     => 'last_name',
+                    'value'   => $last_name,
+                    'compare' => '=',
+                ),
+            ),
+        )
+    );
+
+    $authors = $wp_user_query->get_results();
+
+    return $authors[0]->ID;
+}
+```
+In the initial phase, I performed a small normalization of the name, specifically removing spaces from the ends and replacing double spaces in the name with a single space.
+I noticed many discrepancies of this kind in the `JSON-exported` file obtained from `Thinkific` course pages.
+
+Then (in lines 3-5), I split the name by space to be able to obtain the first and last names, even when the full name consists of 3 names.
+In this case, I used `ChatGPT`, resulting in the combination of the `explode`, `array_pop`, and `implode` functions.
+
+Furthermore, I used the `WP_User_Query` class for the complex query to find the user by their first and last names, and finally, I returned the ID.
+
+## Closing thoughts
+With the execution of the last `WP-CLI` command, we now have the reviews added:
+```sh
+$ wp thinkific import reviews
+```
+
+The migration is complete, and in the <Link href="/blog/migrate-thinkific-wordpress-part-5-adaptations-conclusions">next article</Link>, I will make a few adjustments to the theme, `Tutor LMS`, and `WooCommerce` templates."
+
+<div className='mb-4 flex flex-col items-center rounded-md border border-blue-600 p-2'>
+    <p className="text-center mt-0">_If you need such a migration, click below, and let's discuss._</p>
+    <Link href='/contact' className="animate-text-bg rounded-md bg-gradient-to-r from-blue-600 via-gray-600 to-green-500 bg-[length:400%] px-2 py-1 text-white hover:text-white">Contact me</Link>
+</div>

@@ -8,9 +8,9 @@ type: Post
 keywords: [migrare,thinkific,wordpress,tutor lms,woocommerce,wp-cli,funcții,comenzi,import utilizatori,citire din fișier]
 date: January 29, 2024 20:00:00
 ---
-În <Link href="/blog/migrare-thinkific-wordpress-partea-1-planificare-pregatire-date">prima partea</Link> din această serie de 5 articole am vorbit despre proiectul pentru care am făcut migrarea, cum am făcut planul de migrare și cum am exportat datele din Thinkific.
+În <Link href="/blog/migrare-thinkific-wordpress-partea-1-planificare-pregatire-date">prima partea</Link> din această serie de 5 articole am vorbit despre proiectul pentru care am făcut migrarea, cum am făcut planul de migrare și cum am exportat datele din `Thinkific`.
 
-Aici, în **partea a doua** voi acoperi funcționalitatea comenzii WP-CLI pe care am implementat-o pentru a importa utilizatorii în WordPress.
+Aici, în **partea a doua** voi acoperi funcționalitatea comenzii `WP-CLI` pe care am implementat-o pentru a importa utilizatorii în `WordPress`.
 Mai jos îți las și lista de articole din serie:
 <div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
     <p>Cuprins</p>
@@ -21,13 +21,13 @@ Mai jos îți las și lista de articole din serie:
     5. <Link href="/blog/migrare-thinkific-wordpress-partea-5-adaptari-concluzii">Partea 5: Alte adaptări și concluzii</Link>
 </div>
 
-După cum spuneam, aici începe partea cea mai interesantă din tot procesul de migrare a datelor din Thinkific în WordPress.
-Intenția mea este de a crea un modul care să înglobeze tot ceea ce am avut nevoie pentru comenzile personalizate de `WP-CLI`, în speță clasa PHP pe care am implementat-o.
+După cum spuneam, aici începe partea cea mai interesantă din tot procesul de migrare a datelor din `Thinkific` în `WordPress`.
+Intenția mea este de a crea un modul care să înglobeze tot ceea ce am avut nevoie pentru comenzile personalizate de `WP-CLI`, în speță clasa `PHP` pe care am implementat-o.
 
 Voi parcurge pe rând punctele cheie din clasă și voi explica pe parcurs abordările.
 
-## Declararea comenzilor personalizate WP-CLI
-Pentru început am definit o metodă în care am adăugat 3 comenzi personalizate WP-CLI pe care le-am implementat mai departe:
+## Declararea comenzilor personalizate `WP-CLI`
+Pentru început am definit o metodă în care am adăugat 3 comenzi personalizate `WP-CLI` pe care le-am implementat mai departe:
 ```php showLineNumbers title="class-wpcli.php"
 // ...
 protected function define_commands(): void {
@@ -39,11 +39,11 @@ protected function define_commands(): void {
 }
 // ...
 ```
-Urmează ca aceste 3 comenzi să fie disponibile în rularea lor într-un terminal shell utilizând WP-CLI.
+Urmează ca aceste 3 comenzi să fie disponibile în rularea lor într-un terminal shell utilizând `WP-CLI`.
 
 ## Citirea din fișier
-În toate cele 3 callback-uri derivate din metoda de mai sus și anume `import_users`, `import_progress` și `import_reviews` a fost nevoie de citire din fișierele cu date (2 fișiere CSV și un fișier JSON).
-Pentru asta am folosit API-ul din clasa `WP_Filesystem` care aparține de WordPress și care m-a ajutat să păstrez codul destul de curat și în limitele standardelor.
+În toate cele 3 callback-uri derivate din metoda de mai sus și anume `import_users`, `import_progress` și `import_reviews` a fost nevoie de citire din fișierele cu date (2 fișiere `CSV` și un fișier `JSON`).
+Pentru asta am folosit API-ul din clasa `WP_Filesystem` care aparține de `WordPress` și care m-a ajutat să păstrez codul destul de curat și în limitele standardelor.
 ```php showLineNumbers title="class-wpcli.php"
 public function import_users(): void {
     global $wp_filesystem;
@@ -58,7 +58,7 @@ public function import_users(): void {
 }
 ```
 
-După cum se observă, am implementat o altă metodă de ajutor pentru a interpreta conținutul CSV într-un format ușor de parcurs și anume vector:
+După cum se observă, am implementat o altă metodă de ajutor pentru a interpreta conținutul `CSV` într-un format ușor de parcurs și anume vector:
 ```php showLineNumbers title="class-wpcli.php"
 protected function parse_csv_content( $csv_content ): array {
     $lines = explode( "\n", $csv_content );
@@ -72,7 +72,7 @@ protected function parse_csv_content( $csv_content ): array {
 }
 ```
 
-Apoi am putut să parcurg simplu liniile din fișierul CSV și să purced mai departe la procesarea datelor:
+Apoi am putut să parcurg simplu liniile din fișierul `CSV` și să purced mai departe la procesarea datelor:
 ```php showLineNumbers title="class-wpcli.php"
 foreach ( $csv_data as $line ) {
     if ( ! $i ) {
@@ -95,7 +95,7 @@ Apoi am procesat doar utilizatorii care sunt înrolați la cel puțin un curs (l
 Au fost câteva cazuri în care utilizatorii erau doar înscriși pe platformă, dar nu aveau niciun curs achiziționat.
 În consecință nu avea rost să migrez și aceste date, nefiind relevante.
 
-Apoi, pentru ceilalți utilizatori, am apelat cele două metode: de creare utilizator și de creeare comandă în WooCommerce - spuneam mai sus că este nevoie de a mă integra cu procesul normal de achiziție curs prin `Tutor LMS - WooCommerce`.
+Apoi, pentru ceilalți utilizatori, am apelat cele două metode: de creare utilizator și de creeare comandă în `WooCommerce` - spuneam mai sus că este nevoie de a mă integra cu procesul normal de achiziție curs prin `Tutor LMS - WooCommerce`.
 
 ## Creare utilizator
 În metoda de creare utilizator nu am făcut ceva în mod special.
@@ -134,21 +134,23 @@ protected function create_user( $user_data ) {
     }
 }
 ```
-Bineînțeles, la crearea utilizatorului am folosit datele din fișier și am făcut o interpretare a datei de înregistrare pentru că formatul furnizat nu este același cu cel acceptat de structura din tabelul de utilizatori WordPress - am eliminat partea cu `UTC` din dată.
+Bineînțeles, la crearea utilizatorului am folosit datele din fișier și am făcut o interpretare a datei de înregistrare pentru că formatul furnizat nu este același cu cel acceptat de structura din tabelul de utilizatori `WordPress` - am eliminat partea cu `UTC` din dată.
 
-## Creare comandă WooCommerce
-Sper că m-am făcut înțeles prin „creare comandă WooCommerce”. Ca să fie clar, mă refer la o comandă de produse într-un magazin online creat cu WooCommerce care urmează să fie plătită și așa mai departe.
-În metoda de creare comandă WooCommerce am făcut o potrivire manuală cu ID-urile produselor pentru cursuri, după cum se vede mai jos în liniile 2-8.
+## Creare comandă `WooCommerce`
+Sper că m-am făcut înțeles prin „creare comandă `WooCommerce”`.
+Ca să fie clar, mă refer la o comandă de produse într-un magazin online creat cu `WooCommerce` care urmează să fie plătită și așa mai departe.
+În metoda de creare comandă `WooCommerce` am făcut o potrivire manuală cu ID-urile produselor pentru cursuri, după cum se vede mai jos în liniile 2-8.
 
-ID-urile 1, 2, 3 și 4 sunt ale produselor din baza de date care sunt atribuite cursurilor respective din modulul `Tutor LMS`. Evident, ID-urile reale sunt altele.
+ID-urile 1, 2, 3 și 4 sunt ale produselor din baza de date care sunt atribuite cursurilor respective din modulul `Tutor LMS`.
+Evident, ID-urile reale sunt altele.
 ```php showLineNumbers title="class-wpcli.php"
 protected function create_woo_order( array $data, int $user_id ): void {
     $raw_course_list = array(
         // course_title => product_id.
-        'Masterclass de comunicare și vorbit în public cu Oana Pellea' => 1,
-        'Masterclass online de cultură cinematografică cu Irina-Margareta Nistor' => 2,
-        'Masterclass online de cultură muzicală cu Vladimir Agachi' => 3,
-        'Masterclass online de scris practic cu Iv cel Naiv' => 4,
+        'Course title 1' => 1,
+        'Course title 2' => 2,
+        'Course title 3' => 3,
+        'Course title 4' => 4,
     );
 
     list($first_name, $last_name, , $created_at, $email, , $courses) = $data;

@@ -1,0 +1,167 @@
+---
+title: 'How to migrate from Thinkific to WordPress. Part 5: Other adaptations and conclusions'
+locale: en
+featuredImage: https://res.cloudinary.com/vladilie-ro/image/upload/v1706196659/blog/1.%20migrate-thinkific-to-wordpress/v5ypjuldovovlpqw1cc3.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAxUlEQVR4nAG6AEX/ANLS0t/f3+vr6+3t6+/y8fHy7/X39+/y8ens693f3gCZr8qmutOqwtuyxNrK1+b7+/j8//75/Pv19/fo6u0AOG2gKGGRNGiYPHCgUoO2gLPNnNXgmtLels/ZkMrVAKO51qnA3J2zy52yzH+0yxSesQB4iABOWwBicgCKoQDHx8VaTTwkEgAnEwBRQSxNTjkEGREADQA/Vkxmk5oAHg8ARzATLxsAHQAAHgIAMyAGOiQNUTsgaU8yPSsXAbliTzFAqmUAAAAASUVORK5CYII=
+description: How I made various adaptations to the new e-learning site using hooks and overriding Tutor LMS and WooCommerce templates.
+type: Post
+keywords: [migrate,thinkific,wordpress,adaptations,templates,woocommerce,tutor lms,hooks,dashboard,all in one wp migration]
+date: January 30, 2024 21:00:00
+---
+In the <Link href="/blog/migrate-thinkific-wordpress-part-4-reviews-import">fourth part</Link> of this 5-article series, I concluded the implementation of functions for custom import commands for users, progress, and reviews.
+
+In the **last part**, I will talk about the customizations I made to the Masterclass online site and specifically go through the adaptations I made to the theme, `Tutor LMS` templates, and `WooCommerce`.
+Below is the list of articles in the series:"
+<div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
+    <p>Table of contents</p>
+    1. <Link href="/blog/migrate-thinkific-wordpress-part-1-planning-data-preparation">Part 1: Planning and data preparations</Link>
+    2. <Link href="/blog/migrate-thinkific-wordpress-part-2-users-import">Part 2: Users import</Link>
+    3. <Link href="/blog/migrate-thinkific-wordpress-part-3-progress-import">Part 3: Progress import</Link>
+    4. <Link href="/blog/migrate-thinkific-wordpress-part-4-reviews-import">Part 4: Reviews import</Link>
+    5. _**Part 5: Other adaptations and conclusions**_
+</div>
+
+## The `Tutor LMS` dashboard
+The `Tutor LMS` user dashboard on the Masterclass online site looked something like this:"
+<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706616716/blog/1.%20migrate-thinkific-to-wordpress/tutor-lms-user-dashboard_do6uvi.webp" alt="Tutor LMS user control panel" className="rounded-md shadow-lg"/>
+It would have been a bit complicated to merge the two control panels, the one from `WooCommerce` and the one shown in the picture from `Tutor LMS`, into a single one, so I just linked them together.
+If the user needs information about orders, they can find it in the `WooCommerce` panel; if they need information about the courses they have enrolled in, they can find it in the `Tutor LMS` panel, both accessible through direct links.
+
+To add the "Order Dashboard" link (marked with <span className="border border-green-500">green</span>), I overwrote the `/dashboard.php` template of `Tutor LMS`: I copied the contents of the `/wp-content/plugins/tutor/templates` directory to the `/wp-content/themes/child-theme/tutor` directory and added the following item to the navigation links list (inside the `<ul class="tutor-dashboard-permalinks">` element):
+```php showLineNumbers title="dashboard.php" caption="/wp-content/themes/child-theme/tutor"
+<li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile ">
+    <a class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black" href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>">
+        <span class='tutor-icon-arrow-right-left tutor-dashboard-menu-item-icon'></span>
+        <span class='tutor-dashboard-menu-item-text tutor-ml-12'>Panou de comenzi</span>
+    </a>
+</li>
+```
+
+Now, to remove the links marked with <span className="border border-red-500">red</span> in the image above, because such functionalities are not needed, I added the following filter to the `functions.php` file in the theme:
+```php showLineNumbers title="functions.php" caption="/wp-content/themes/child-theme/tutor"
+// Remove the page tabs from the panel sidebar.
+add_filter(
+    'tutor_dashboard/nav_items',
+	function( $defaults ) {
+        unset( $defaults['wishlist'] );
+		unset( $defaults['my-quiz-attempts'] );
+		unset( $defaults['question-answer'] );
+
+		return $defaults;
+});
+```
+
+## The `WooCommerce` dashboard
+<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706623254/blog/1.%20migrate-thinkific-to-wordpress/woocommerce-user-dashboard_wgteeh.webp" alt="WooCommerce user control panel" className="rounded-md shadow-lg"/>
+To add the link to the `Tutor LMS` dashboard in the navigation menu of `WooCommerce`, for overriding, I copied the template `/wp-content/plugins/woocommerce/templates/myaccount/navigation.php` to the directory `/wp-content/themes/child-theme/woocommerce/myaccount/navigation.php` and added the following element as the first item in the `<ul>` list:
+```php showLineNumbers title="navigation.php" caption="/wp-content/themes/child-theme/woocommerce/myaccount"
+<li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--dashboard">
+    <a href="<?php echo esc_url( tutor_utils()->tutor_dashboard_url() ); ?>"><strong>Panou cursuri</strong></a>
+</li>
+```
+
+## The `Tutor LMS` authentication form
+<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706624461/blog/1.%20migrate-thinkific-to-wordpress/tutor-login-form_ezqrm2.webp" alt="Tutor LMS login form" className="rounded-md shadow-lg"/>
+During the migration and dealing with user accounts, I didn't want to make it intrusive and, especially, to violate the General Data Protection Regulation.
+So, I approached this differently by notifying users through a message in the login form that the site has moved to another platform. If they had an account before, they could request a password reset link to log in.
+To add this message, I used hooks in the `functions.php` file of the theme:
+```php showLineNumbers title="class-wpcli.php" caption="/wp-content/themes/child-theme/"
+// Add custom message in the Tutor LMS login form.
+add_action(
+    'tutor_login_form_middle',
+    function () {
+        $lost_pass_url = wp_lostpassword_url();
+        ?>
+        <p>Recent am migrat site-ul pe o nouă platformă. Dacă aveai cont înainte, te rugăm <a href="<?php echo esc_url( $lost_pass_url ); ?>">să-ți resetezi parola</a>.</p>
+        <?php
+    }
+);
+```
+
+## Other filters for `WooCommerce`
+`Tutor LMS` being integrated with the `WooCommerce` e-commerce engine, each course in `Tutor LMS` has a corresponding product linked in `WooCommerce`.
+Unfortunately, `Tutor LMS` does not automatically hide `WooCommerce` products specifically created for courses.
+Consequently, these products could be added to the cart during a purchase, both as products and courses.
+To avoid such situations, I use the filter below, which hides products from areas like the shop page and related products.
+```php showLineNumbers title="functions.php" caption="/wp-content/themes/child-theme/"
+// Hide products from Woo shop page.
+add_filter( 'woocommerce_product_is_visible', '__return_false' );
+```
+
+But that's not enough.
+Products would still be accessible at a direct address, for example: `https://mclass.test/product/product-name`.
+Applying the filter below disables access to product pages:
+```php showLineNumbers title="functions.php" caption="/wp-content/themes/child-theme/"
+// Remove single page for Woo products.
+add_filter(
+	'woocommerce_register_post_type_product',
+	function ( $args ) {
+		$args['publicly_queryable'] = false;
+		$args['public']             = false;
+
+		return $args;
+	},
+	12
+);
+```
+
+A final filter that I used is for removing the "quantity" field from the shopping cart page to prevent increasing the quantity.
+It wouldn't make sense for a user to purchase a quantity greater than 1 for a course.
+```php showLineNumbers title="functions.php" caption="/wp-content/themes/child-theme/"
+// Hide quantity input field from cart.
+add_filter( 'woocommerce_is_sold_individually', '__return_true' );
+```
+
+Also, to remove the quantity field from the cart, I copied the template `/wp-content/plugins/woocommerce/templates/cart/cart.php` to `/wp-content/themes/child-theme/woocommerce/cart/cart.php` to override it, and then removed the following lines from it:
+```php showLineNumbers title="cart.php" caption="/wp-content/themes/child-theme/woocommerce/cart/" {1, 5-29}
+<th class="product-quantity"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
+
+// AND
+
+<td class="product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'woocommerce' ); ?>">
+<?php
+if ( $_product->is_sold_individually() ) {
+    $min_quantity = 1;
+    $max_quantity = 1;
+} else {
+    $min_quantity = 0;
+    $max_quantity = $_product->get_max_purchase_quantity();
+}
+
+$product_quantity = woocommerce_quantity_input(
+    array(
+        'input_name'   => "cart[{$cart_item_key}][qty]",
+        'input_value'  => $cart_item['quantity'],
+        'max_value'    => $max_quantity,
+        'min_value'    => $min_quantity,
+        'product_name' => $product_name,
+    ),
+    $_product,
+    false
+);
+
+echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item ); // PHPCS: XSS ok.
+?>
+</td>
+```
+
+## Migration to production
+After all the changes were made, migrations executed, courses arranged, and the store prepared with all the integrations, I move the site from the local environment to the `production` environment using the `All in One WP Migration` plugin.
+Throughout the development process of the new site, after each major step (creating courses and building their pages with `Elementor`, installing and configuring `WooCommerce`, running migrations, etc.), I made a backup with `All in One WP Migration`.
+If I had identified any data discrepancies or a malfunctioning part of the site while working on the next step, I would have reverted to the previous state of the site.
+In essence, I would have performed a `roll-back`, and this way, I could avoid losing too much progress.
+
+When I had a backup very close to a version ready for production, I placed it on the production subdomain, and that's how I had a smooth development-launch process.
+
+## Conclusions
+WordPress once again provides a solution to a problem I encountered.
+The related technologies developed around it are truly a breath of fresh air, and if you enjoy this environment, it's worth investing time and energy.
+Certainly, impressive results can be achieved using `WordPress`, even for enterprise projects—no need to say that, Automattic proves it every day.
+
+<Link href="https://wp-cli.org">WP-CLI</Link> is a very powerful and flexible tool that can be helpful in many situations like these migrations.
+I recommend it every time I have the chance; I've used it in dozens of projects, and each time, I've successfully accomplished everything I needed with it.
+
+<div className='mb-4 flex flex-col items-center rounded-md border border-blue-600 p-2'>
+    <p className="text-center mt-0">If you need such a migration, click below, and let's discuss._</p>
+    <Link href='/contact' className="animate-text-bg rounded-md bg-gradient-to-r from-blue-600 via-gray-600 to-green-500 bg-[length:400%] px-2 py-1 text-white hover:text-white">Contact me</Link>
+</div>

@@ -1,0 +1,172 @@
+---
+title: 'How to migrate from Thinkific to WordPress. Part 3: Progress import'
+locale: en
+featuredImage: https://res.cloudinary.com/vladilie-ro/image/upload/v1706196659/blog/1.%20migrate-thinkific-to-wordpress/v5ypjuldovovlpqw1cc3.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAxUlEQVR4nAG6AEX/ANLS0t/f3+vr6+3t6+/y8fHy7/X39+/y8ens693f3gCZr8qmutOqwtuyxNrK1+b7+/j8//75/Pv19/fo6u0AOG2gKGGRNGiYPHCgUoO2gLPNnNXgmtLels/ZkMrVAKO51qnA3J2zy52yzH+0yxSesQB4iABOWwBicgCKoQDHx8VaTTwkEgAnEwBRQSxNTjkEGREADQA/Vkxmk5oAHg8ARzATLxsAHQAAHgIAMyAGOiQNUTsgaU8yPSsXAbliTzFAqmUAAAAASUVORK5CYII=
+description: How I used WP-CLI to import progress from an exported CSV file from Thinkific.
+type: Post
+keywords: [migrate,thinkific,wordpress,tutor lms,woocommerce,wp-cli,functions,commands,progress import,reading from file,chapter,lesson]
+date: January 30, 2024 08:00:00
+---
+In <Link href="/blog/migrate-thinkific-wordpress-part-2-users-import">part two</Link> of this 5-article series, I discussed how I implemented the `WP-CLI` custom command for importing users.
+
+In **part three**, I will describe the functionality of the `WP-CLI` command for importing the progress of users regarding the courses they are enrolled in on the `Thinkific` platform.
+Below, I also provide you with the list of articles in the series:
+<div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
+    <p>Table of contents</p>
+    1. <Link href="/blog/migrate-thinkific-wordpress-part-1-planning-data-preparation">Part 1: Planning and data preparations</Link>
+    2. <Link href="/blog/migrate-thinkific-wordpress-part-2-users-import">Part 2: Users import</Link>
+    3. _**Part 3: Progress import**_
+    4. <Link href="/blog/migrate-thinkific-wordpress-part-4-reviews-import">Part 4: Reviews import</Link>
+    5. <Link href="/blog/migrate-thinkific-wordpress-part-5-adaptations-conclusions">Part 5: Other adaptations and conclusions</Link>
+</div>
+
+## Defining the progress import method
+I have a separate `CSV` progress file for each existing course, from which I will read one by one using a recursive statement.
+
+To begin, I define the progress import method, declare global variables, and include and call the `WP_Filesystem` function in `WordPress`.
+```php showLineNumbers title="class-wpcli.php"
+public function import_progress() {
+    global $wp_filesystem, $wpdb;
+
+    include_once ABSPATH . 'wp-admin/includes/file.php';
+    WP_Filesystem();
+    // ...
+}
+```
+Next, I define an associative array with the list of progress files from which reading will be made and the course ID for which that progress corresponds:
+```php showLineNumbers title="class-wpcli.php"
+$files         = array(
+    'course-1-progress.csv' => 10, // Course name 1
+    'course-2-progress.csv' => 11, // Course name 2
+    'course-3-progress.csv' => 12, // Course name 3
+    'course-4-progress.csv' => 13, // Course name 4
+);
+
+$file_basepath = plugin_dir_path( __FILE__ ) . 'data/progress/';
+```
+And through the `foreach ( $files as $file => $course_id )` instruction, I go through the list of files and start reading from them:
+```php showLineNumbers title="class-wpcli.php"
+$file_content = $wp_filesystem->get_contents( $file_basepath . $file );
+$csv_data     = $this->parse_csv_content( $file_content );
+$i            = 0;
+$lesson_names = array();
+$time         = time();
+```
+I reused the `parse_csv_content` method to transform the lines from the `CSV` into a vector, a method I defined in <Link href="/blog/migrate-thinkific-wordpress-part-2-users-import">part two</Link> during the user import.
+I also defined the variables `$i`, `$lesson_names`, and `$time`, which I will use later.
+
+## Data browsing and processing
+To avoid getting too tangled up, I'll include the entire section on traversing and processing the data, and then I'll add comments afterward:
+```php showLineNumbers title="class-wpcli.php"
+foreach ( $csv_data as $line ) {
+    if ( ! $i ) {
+        $i++;
+        $chapter_names = array_slice( $line, 3 );
+        continue;
+    }
+
+    list($email, $completed_at, $percent_completed) = array_slice( $line, 0, 3 );
+
+    $user = get_user_by( 'email', $email );
+    if ( ! $user ) {
+        \WP_CLI::error( sprintf( 'The user with email address %s does not exist.', $email ) );
+    }
+
+    $chapter_progress = array_slice( $line, 3 );
+    $count            = count( $chapter_progress );
+    for ( $j = 0; $j < $count; $j++ ) {
+        if ( '100' === $chapter_progress[ $j ] ) {
+            $lesson_id = $wpdb->get_var(
+                $wpdb->prepare(
+                    "SELECT ID
+                    FROM $wpdb->posts
+                    WHERE post_parent = (
+                        SELECT ID
+                        FROM $wpdb->posts
+                        WHERE post_title = %s AND post_parent = %d
+                    )",
+                    $chapter_names[ $j ],
+                    $course_id
+                )
+            );
+
+            if ( ! $lesson_id ) {
+                \WP_CLI::error( sprintf( 'The lesson named „%s” of the course „” not found.', $chapter_names[ $j ], $course_id ) );
+            }
+
+            $updated = update_user_meta( $user->ID, '_tutor_completed_lesson_id_' . $lesson_id, $time );
+
+            if ( ! $updated ) {
+                \WP_CLI::warning( sprintf( 'Update status: „%s”. That means failure or the value already exists.', $updated ) );
+            }
+        }
+    }
+
+    $i++;
+}
+```
+In lines 2-6, I skipped the first line of the `CSV` file again, which contains the column names.
+However, at the same time, I retained the lesson names (line 4) in the variable `$lesson_names` because I need them in the query below.
+If you recall from the first part of <Link href="/blog/migrate-thinkific-wordpress-part-1-planning-data-preparation">data preparation</Link>, the first line of the progress `CSV` file looked like this:
+```csv
+Email,Completed At,% Completed,<Nume-capitol-1>,<Nume-capitol-2>,...,<Nume-capitol-n>
+```
+With the `array_slice` function, I skipped the first 3 fields (`Email`, `Completed At`, and `% Completed`), and the remaining values were returned in the variable `$lesson_names`.
+Here, the _chapter names_ of the course were stored.
+
+Similarly, on line 15, the _lesson progress_ was stored.
+
+On line 8, I used the same function, this time to store **the first** 3 values.
+
+Then, a search is performed based on the user's email address.
+In principle, there should be no issues with this search, as users should have been created during the user import step.
+Nevertheless, for any eventuality, I included a check with an error message.
+
+Finally, starting from line 16, the progress of the lessons is iterated through.
+
+## Processing progress chapter - lesson
+I mentioned at some point that I made a compromise and processed only the chapters whose progress is `100`.
+
+To clarify: the content of the courses can be organized, both in `Thinkific` and `Tutor LMS`, into chapters with lessons, topics with lessons, or whatever you want to call them.
+So, there are only two levels of hierarchy.
+Progress refers only to chapters (or topics), not to the lessons within them, and the `CSV` file is generated accordingly by `Thinkific`.
+
+For example, a chapter with 3 lessons and a progress of 67% implies that 2 of its lessons have been completed.
+In reality, I don't know which of the 3 lessons have been completed, but I assumed it's the first 2, considering the natural order of progressing through a course.
+
+Now, in `Tutor LMS`, the approach is as follows: progress must be set per lesson and only in the state of either completed or not completed.
+The field in the database for the progress of a user's course is stored in the `_usermeta` table as follows:
+```markdown
+| umeta_id | user_id | meta_key                      | meta_value |
+| -------- | ------- | ----------------------------- | ---------- |
+| 12345    | 678     | _tutor_completed_lesson_id_90 | 1705610847 |
+```
+The user with ID `678` completed the lesson with ID `90` on the date with Unix timestamp `1705610847` (which corresponds to Thursday, January 18, 2024, at 22:47:27 GMT+0200).
+Lesson with ID `90` itself has a parent ID.
+This parent represents the chapter of that lesson.
+
+In the Masterclass project, a single course has a chapter with 3 lessons.
+The rest of the chapters have one lesson each.
+From the perspective of progress migration, having only 8 cases where the progress of that chapter was not 100 (if I remember correctly 🤔), my job was easy.
+Manual updating of that progress in the database took only 2 minutes.
+
+## Search and update lesson progress
+The variable `$lesson_id` retained, in plain language, the "ID of the post whose **post_parent** field is the post with the ID whose **post_title** is the name of the chapter AND **post_parent** is the ID of the course from the current iteration".
+I know, it sounds quite strange, but that's how the query translates 😁.
+
+In the end, the user's `_tutor_completed_lesson_id_*` field is updated, and they will see the progress they had on `Thinkific` in the `WordPress` dashboard.
+
+## Closing thoughts
+The progress import command is about to be executed, and once again, the magic happens. 🧙🏼‍♂️
+```sh
+$ wp thinkific import progress
+```
+
+One more step, and the migration is complete.
+In <Link href="/blog/migrate-thinkific-wordpress-part-4-reviews-import">the next article</Link>, I will use the `WordPress` comments API for migrating reviews, so I invite you to check it out. 😎
+
+<div className='mb-4 flex flex-col items-center rounded-md border border-blue-600 p-2'>
+    <p className="text-center mt-0">_If you need such a migration, click below, and let's discuss._</p>
+    <Link href='/contact' className="animate-text-bg rounded-md bg-gradient-to-r from-blue-600 via-gray-600 to-green-500 bg-[length:400%] px-2 py-1 text-white hover:text-white">Contact me</Link>
+</div>

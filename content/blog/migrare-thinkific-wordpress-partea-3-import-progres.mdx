@@ -8,9 +8,9 @@ type: Post
 keywords: [migrare,thinkific,wordpress,tutor lms,woocommerce,wp-cli,funcții,comenzi,import progres,citire din fișier,capitol,lecție]
 date: January 30, 2024 08:00:00
 ---
-În <Link href="/blog/migrare-thinkific-wordpress-partea-2-planificare-pregatire-date">partea a doua</Link> a acestei serii de 5 articole am vorbit despre cum am făcut implementarea pentru comanda personalizată WP-CLI de importare a utilizatorilor.
+În <Link href="/blog/migrare-thinkific-wordpress-partea-2-planificare-pregatire-date">partea a doua</Link> a acestei serii de 5 articole am vorbit despre cum am făcut implementarea pentru comanda personalizată `WP-CLI` de importare a utilizatorilor.
 
-În **partea a treia** voi descrie funcționalitatea comenzii WP-CLI pentru a importa progresul utilizatorilor în privința cursurilor la care sunt înrolați în platforma Thinkific.
+În **partea a treia** voi descrie funcționalitatea comenzii `WP-CLI` pentru a importa progresul utilizatorilor în privința cursurilor la care sunt înrolați în platforma `Thinkific`.
 Mai jos îți las și lista de articole din serie:
 <div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
     <p>Cuprins</p>
@@ -24,7 +24,7 @@ Mai jos îți las și lista de articole din serie:
 ## Definirea metodei de import progres
 Am câte un fișier de progres `CSV` pentru fiecare curs existent, din care voi citi pe rând folosind o instrucțiune recursivă.
 
-Pentru început definesc metoda de import progres, declar variabilele globale, includ și apelez funcția `WP_Filesystem` din WordPress.
+Pentru început definesc metoda de import progres, declar variabilele globale, includ și apelez funcția `WP_Filesystem` din `WordPress`.
 ```php showLineNumbers title="class-wpcli.php"
 public function import_progress() {
     global $wp_filesystem, $wpdb;
@@ -127,9 +127,9 @@ Oricum, pentru orice eventualitate am pus acolo și o verificare cu mesaj de ero
 ## Procesare progres capitol - lecție
 Spuneam la un moment dat că am făcut un compromis și am procesat doar capitolele al căror progres este `100`.
 
-Ca să fie totul clar: conținutul cursurilor poate fi organizat, atât în Thinkific cât și în Tutor LMS, în capitole cu lecții, subiecte cu lecții sau cum vrei să-i spui.
+Ca să fie totul clar: conținutul cursurilor poate fi organizat, atât în `Thinkific` cât și în `Tutor LMS`, în capitole cu lecții, subiecte cu lecții sau cum vrei să-i spui.
 Deci sunt doar două niveluri de ierarhie.
-Progresul se referă doar la capitole (sau subiecte), nu și la lecțiile din ele, iar fișierul `CSV` este generat de către Thinkific în consecință.
+Progresul se referă doar la capitole (sau subiecte), nu și la lecțiile din ele, iar fișierul `CSV` este generat de către `Thinkific` în consecință.
 
 Astfel că, spre exemplu, un capitol cu 3 lecții și un progres de 67 (%), presupune că 2 dintre lecțiile sale au fost finalizate.
 În mod real nu știu care sunt cele 2 lecții dintre cele 3 au fost finalizate, dar mi-am asumat că primele 2, dacă iau în considerare ordinea naturală de parcurgere a unui curs.
@@ -154,7 +154,7 @@ Actualizarea manuală în baza de date a acelui progres a fost o operație de do
 Variabila `$lesson_id` a reținut, în limbaj natural, „ID-ul articolului al cărui câmp **post_parent** este articolul cu ID al cărui **post_title** este numele capitolului ȘI **post_parent** este ID-ul cursului din iterația curentă”.
 Știu, sună destul de ciudat, dar cam așa se traduce interogarea 😁.
 
-În final se actualizează câmpul `_tutor_completed_lesson_id_*` al utilizatorului, iar el va vedea în panoul WordPress progresul pe care l-a avut pe Thinkific.
+În final se actualizează câmpul `_tutor_completed_lesson_id_*` al utilizatorului, iar el va vedea în panoul `WordPress` progresul pe care l-a avut pe `Thinkific`.
 
 ## Încheiere
 Urmează să fie rulată și comanda de import progres și din nou se întâmplă magia. 🧙🏼‍♂️
@@ -163,7 +163,7 @@ $ wp thinkific import progress
 ```
 
 Încă un pas și migrarea este finalizată.
-În <Link href="/blog/migrare-thinkific-wordpress-partea-4-import-recenzii">următorul articol</Link> voi folosi API-ul de comentarii din WordPress pentru migrarea recenziilor, așa că te invit să-l studiezi 😎.
+În <Link href="/blog/migrare-thinkific-wordpress-partea-4-import-recenzii">următorul articol</Link> voi folosi API-ul de comentarii din `WordPress` pentru migrarea recenziilor, așa că te invit să-l studiezi 😎.
 
 <div className='mb-4 flex flex-col items-center rounded-md border border-blue-600 p-2'>
     <p className="text-center mt-0">_Dacă ai nevoie de o astfel de migrare, dă clic mai jos și hai să discutăm._</p>

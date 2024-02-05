@@ -53,7 +53,7 @@ add_filter(
 
 ## Panoul de control `WooCommerce`
 <img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706623254/blog/1.%20migrate-thinkific-to-wordpress/woocommerce-user-dashboard_wgteeh.webp" alt="Panou de control WooCommerce pentru utilizator" className="rounded-md shadow-lg"/>
-Pentru adăugarea legăturii către panoul de control Tutor LMS în meniul de navigare din WooCommerce, pentru suprascriere, am copiat șablonul `/wp-content/plugins/woocommerce/templates/myaccount/navigation.php` în directorul `/wp-content/themes/child-theme/woocommerce/myaccount/navigation.php` și am adăugat următorul element ca prim element în lista `<ul>`:
+Pentru adăugarea legăturii către panoul de control `Tutor LMS` în meniul de navigare din `WooCommerce`, pentru suprascriere, am copiat șablonul `/wp-content/plugins/woocommerce/templates/myaccount/navigation.php` în directorul `/wp-content/themes/child-theme/woocommerce/myaccount/navigation.php` și am adăugat următorul element ca prim element în lista `<ul>`:
 ```php showLineNumbers title="navigation.php" caption="/wp-content/themes/child-theme/woocommerce/myaccount"
 <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--dashboard">
     <a href="<?php echo esc_url( tutor_utils()->tutor_dashboard_url() ); ?>"><strong>Panou cursuri</strong></a>
@@ -79,7 +79,7 @@ add_action(
 ```
 
 ## Alte filtre pentru `WooCommerce`
-`Tutor LMS` fiind integrat cu motorul de magazin online `WooCommerce`, fiecare curs din `Tutor LMS` are un produs corespondent legat în WooCommerce.
+`Tutor LMS` fiind integrat cu motorul de magazin online `WooCommerce`, fiecare curs din `Tutor LMS` are un produs corespondent legat în `WooCommerce`.
 Din păcate `Tutor LMS` nu asunde automat produsele `WooCommerce` special create pentru cursuri și astfel ar putea fi adăugate în coș, la o eventuală achiziție, atât produse cât și cursuri.
 Pentru a evita astfel de cazuri, folosesc filtrul de mai jos care ascunde produsele din zone precum pagina de magazin și produse similare.
 ```php showLineNumbers title="functions.php" caption="/wp-content/themes/child-theme/"
@@ -152,9 +152,9 @@ Practic aș fi făcut un `roll-back` și așa am putut evita să pierd prea mult
 În momentul în care am avut o copie de siguranță foarte apropiată de o versiune gata de lansat în producție, am pus-o și pe subdomeniul din producție și așa am avut un proces lin de dezvoltare-lansare.
 
 ## Concluzii
-WordPress vine din nou cu o soluție pentru o problemă cu care m-am întâlnit.
+`WordPress` vine din nou cu o soluție pentru o problemă cu care m-am întâlnit.
 Tehnologiile conexe dezvoltate în jurul său sunt cu adevărat o gură de aer proaspăt și dacă îți place acest mediu, merită să investești timp și energie.
-Cu siguranță rezultatele pot străluci folosind WordPress, chiar și pentru proiecte enterprise, nu este nevoie să mai spun asta, Automattic o dovedește în fiecare zi.
+Cu siguranță rezultatele pot străluci folosind `WordPress`, chiar și pentru proiecte enterprise, nu este nevoie să mai spun asta, `Automattic` o dovedește în fiecare zi.
 
 <Link href="https://wp-cli.org">WP-CLI</Link> este un instrument foarte puternic, flexibil și care poate fi de ajutor în multe situații de genul acestor migrări.
 Îl recomand de fiecare dată când am ocazia, l-am folosit în zeci de proiecte și de fiecare dată am rezolvat tot ce am avut de făcut cu el.
