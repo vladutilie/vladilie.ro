@@ -43,20 +43,20 @@ I'm putting here again the structure of the review file in `JSON` format:
 {
   "@context": "http://schema.org",
   "@type": "Product",
-  "name": "<nume-curs>",
+  "name": "<course-name>",
   "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "reviewCount": 5 },
   "review": [
     {
       "@type": "Review",
-      "author": { "@type": "Person", "name": "<nume-recenzor>" },
-      "description": "<descriere-recenzie>",
-      "name": "<titlu-recenzie>",
+      "author": { "@type": "Person", "name": "<reviewer-name>" },
+      "description": "<review-description>",
+      "name": "<review-title>",
       "date": "November 26, 2021",
       "reviewRating": { "@type": "Rating", "bestRating": 5, "ratingValue": 5, "worstRating": 0 }
     },
     // ...
   ],
-    "image": "<url-imagine-curs>"
+    "image": "<course-image-url>"
 }
 ```
 
