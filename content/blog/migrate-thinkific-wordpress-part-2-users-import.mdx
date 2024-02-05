@@ -1,0 +1,207 @@
+---
+title: 'How to migrate from Thinkific to WordPress. Part 2: Users import'
+locale: en
+featuredImage: https://res.cloudinary.com/vladilie-ro/image/upload/v1706196659/blog/1.%20migrate-thinkific-to-wordpress/v5ypjuldovovlpqw1cc3.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAxUlEQVR4nAG6AEX/ANLS0t/f3+vr6+3t6+/y8fHy7/X39+/y8ens693f3gCZr8qmutOqwtuyxNrK1+b7+/j8//75/Pv19/fo6u0AOG2gKGGRNGiYPHCgUoO2gLPNnNXgmtLels/ZkMrVAKO51qnA3J2zy52yzH+0yxSesQB4iABOWwBicgCKoQDHx8VaTTwkEgAnEwBRQSxNTjkEGREADQA/Vkxmk5oAHg8ARzATLxsAHQAAHgIAMyAGOiQNUTsgaU8yPSsXAbliTzFAqmUAAAAASUVORK5CYII=
+description: How I used WP-CLI to import users from an exported CSV file from Thinkific.
+type: Post
+keywords: [migrate,thinkific,wordpress,tutor lms,woocommerce,wp-cli,functions,commands,users import,reading from file]
+date: January 29, 2024 20:00:00
+---
+In <Link href="/blog/migrate-thinkific-wordpress-part-1-planning-data-preparation">the first part</Link> of this 5-article series, I discussed the project for which I performed the migration, how I planned the migration, and how I exported data from Thinkific.
+
+Here, in **the second part**, I will cover the functionality of the WP-CLI command that I implemented to import users into WordPress.
+Below, I also provide you with the list of articles in the series:
+<div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
+    <p>Table of contents</p>
+    1. <Link href="/blog/migrate-thinkific-wordpress-part-1-planning-data-preparation">Part 1: Planning and data preparations</Link>
+    2. _**How to migrate from Thinkific to WordPress. Part 2: Users import**_
+    3. <Link href="/blog/migrate-thinkific-wordpress-part-3-progress-import">Part 3: Progress import</Link>
+    4. <Link href="/blog/migrate-thinkific-wordpress-part-4-reviews-import">Part 4: Reviews import</Link>
+    5. <Link href="/blog/migrate-thinkific-wordpress-part-5-adaptations-conclusions">Part 5: Other adaptations and conclusions</Link>
+</div>
+
+As I mentioned, here begins the most interesting part of the entire process of migrating data from Thinkific to WordPress.
+I intend to create a plugin that encompasses everything needed for custom WP-CLI commands, specifically the PHP class I have implemented.
+
+I will go through the key points of the class one by one and explain the approaches along the way.
+
+## Declaring custom WP-CLI commands
+To begin with, I defined a method in which I added 3 custom WP-CLI commands that I implemented further:
+```php showLineNumbers title="class-wpcli.php"
+// ...
+protected function define_commands(): void {
+    if ( class_exists( 'WP_CLI' ) ) {
+        \WP_CLI::add_command( 'thinkific import users', array( $this, 'import_users' ) );
+        \WP_CLI::add_command( 'thinkific import progress', array( $this, 'import_progress' ) );
+        \WP_CLI::add_command( 'thinkific import reviews', array( $this, 'import_reviews' ) );
+    }
+}
+// ...
+```
+These 3 commands will be available by running them in a terminal shell using WP-CLI.
+
+## Reading from file
+In all three callbacks derived from the method above, namely `import_users`, `import_progress`, and `import_reviews`, it was necessary to read from data files (2 CSV files and a JSON file).
+For this, I used the API from the `WP_Filesystem` class belonging to WordPress, which helped me keep the code quite clean and within standard limits.
+```php showLineNumbers title="class-wpcli.php"
+public function import_users(): void {
+    global $wp_filesystem;
+
+    include_once ABSPATH . 'wp-admin/includes/file.php';
+    WP_Filesystem();
+
+    $file_path    = plugin_dir_path( __FILE__ ) . 'data/users.csv';
+    $file_content = $wp_filesystem->get_contents( $file_path );
+    $csv_data     = $this->parse_csv_content( $file_content );
+    //...
+}
+```
+
+As can be seen, we have implemented another helper method to interpret the CSV content into an easily traversable vector format:
+```php showLineNumbers title="class-wpcli.php"
+protected function parse_csv_content( $csv_content ): array {
+    $lines = explode( "\n", $csv_content );
+    $data  = array();
+
+    foreach ( $lines as $line ) {
+        $data[] = str_getcsv( $line );
+    }
+
+    return $data;
+}
+```
+
+I was then able to simply loop through the lines in the CSV file and proceed with the data processing:
+```php showLineNumbers title="class-wpcli.php"
+foreach ( $csv_data as $line ) {
+    if ( ! $i ) {
+        $i++;
+        continue;
+    }
+
+    list(, , , , , , $courses) = $line;
+    $course_arr                = explode( ', ', $courses );
+    if ( count( $course_arr ) && ! empty( $course_arr[0] ) ) {
+        $user_id = $this->create_user( $line );
+        $this->create_woo_order( $line, $user_id );
+    }
+
+    $i++;
+}
+```
+Obviously, I skipped the header row of the table (lines 2-5).
+Then, I processed only the users enrolled in at least one course (line 9).
+There were a few cases where users were merely registered on the platform but had not purchased any courses.
+Consequently, migrating this data was unnecessary as it was not relevant.
+
+Subsequently, for the remaining users, I invoked the two methods: user creation and order creation in WooCommerce - as mentioned earlier, I needed to integrate with the normal course purchase process through `Tutor LMS - WooCommerce`.
+
+## Create user
+In the user creation method, I didn't do anything special.
+I passed the information from the `CSV` line to the method, and if the user searched by email address did not already exist, I create them.
+In both cases, the user ID is returned, and only in the case of a user creation error, `null` is returned.
+```php showLineNumbers title="class-wpcli.php"
+protected function create_user( $user_data ) {
+    list($first_name, $last_name, , $created_at, $email) = $user_data;
+    $user = get_user_by( 'email', $email );
+
+    // User already exists, return current user ID.
+    if ( $user ) {
+        $user_id = $user->get( 'ID' );
+
+        return $user->get( 'id' );
+    }
+
+    $user_id = wp_insert_user(
+        array(
+            'user_login'      => $email,
+            'user_email'      => $email,
+            'first_name'      => $first_name,
+            'last_name'       => $last_name,
+            'use_ssl'         => true,
+            'user_registered' => str_replace( ' UTC', '', $created_at ),
+        )
+    );
+    if ( is_wp_error( $user_id ) ) {
+        \WP_CLI::error( sprintf( 'Error creating user %1$s %2$s <%3$s>: %4$s', $first_name, $last_name, $email, $user_id->get_error_message() ) );
+
+        return null;
+    } else {
+        // User created.
+        return $user_id;
+    }
+}
+```
+Bineînțeles, la crearea utilizatorului am folosit datele din fișier și am făcut o interpretare a datei de înregistrare pentru că formatul furnizat nu este același cu cel acceptat de structura din tabelul de utilizatori WordPress - am eliminat partea cu `UTC` din dată.
+
+## Create WooCommerce order
+I hope I've been clear when mentioning "creating a WooCommerce order".
+To elaborate, I'm referring to generating an order for products in an online store built with WooCommerce, which is intended for payment and so forth.
+Within the WooCommerce order creation method, I manually matched the IDs of the course products, as seen in lines 2-8.
+
+IDs 1, 2, 3, and 4 are assigned to products in the database, linked to the respective courses in the `Tutor LMS` plugin.
+Of course, the actual IDs are different.
+```php showLineNumbers title="class-wpcli.php"
+protected function create_woo_order( array $data, int $user_id ): void {
+    $raw_course_list = array(
+        // course_title => product_id.
+        'Masterclass de comunicare și vorbit în public cu Oana Pellea' => 1,
+        'Masterclass online de cultură cinematografică cu Irina-Margareta Nistor' => 2,
+        'Masterclass online de cultură muzicală cu Vladimir Agachi' => 3,
+        'Masterclass online de scris practic cu Iv cel Naiv' => 4,
+    );
+
+    list($first_name, $last_name, , $created_at, $email, , $courses) = $data;
+
+    $order = wc_create_order(
+        array(
+            'customer_id' => $user_id,
+            'status'      => 'wc-completed',
+        )
+    );
+
+    $course_list = explode( ', ', $courses );
+    // Add products to order.
+    foreach ( $course_list as $course_name ) {
+        $course_id = $raw_course_list[ $course_name ];
+        $order->add_product( wc_get_product( $course_id ), 1 ); // 1 is for quantity.
+    }
+
+    $order->calculate_totals();
+
+    $address = array(
+        'first_name' => $first_name,
+        'last_name'  => $last_name,
+        'email'      => $email,
+        'country'    => 'RO',
+    );
+    $order->set_address( $address, 'billing' );
+    $order->set_payment_method( 'cod' );
+    $order->set_date_created( $created_at );
+    $order->set_date_completed( $created_at );
+    $order->set_date_paid( $created_at );
+
+    $order->save();
+}
+```
+Instead of using the variable `$raw_course_list`, I could have performed a database search for courses, making the assignment of IDs dynamic.
+However, this would have introduced an additional database query and complicated things.
+If there were many more courses, I probably would have done it this way to save time.
+
+Moving forward, I began preparing the "order", adding courses to the cart, calculating totals, and setting the customer's address, payment method, and date.
+Finally, I marked the "order" as paid.
+From that moment, the user becomes a learner on the new e-learning platform.
+
+## Closing thoughts
+That's about it for the user import; now, all that's left is to run the command, and the magic happens. 🪄
+```sh
+$ wp thinkific import users
+```
+
+<Link href="/blog/migrate-thinkific-wordpress-part-3-progress-import">The next article</Link> will follow a similar pattern, but there are some interesting points to note there as well.
+
+<div className='mb-4 flex flex-col items-center rounded-md border border-blue-600 p-2'>
+    <p className="text-center mt-0">_If you need such a migration, click below, and let's discuss._</p>
+    <Link href='/contact' className="animate-text-bg rounded-md bg-gradient-to-r from-blue-600 via-gray-600 to-green-500 bg-[length:400%] px-2 py-1 text-white hover:text-white">Contact me</Link>
+</div>
