@@ -8,7 +8,7 @@ type: Post
 keywords: [migrate,thinkific,wordpress,tutor lms,woocommerce,wp-cli,planning,e-learning,masterclass,cărțile pe față]
 date: January 28, 2024 20:00:00
 ---
-In this series of 5 articles, I propose to write about how I migrated from the e-learning platform <Link href="https://thinkific.com">Thinkific</Link> to `WordPress`, how I exported the data from `Thinkific`, what technologies I used, how WordPress Command Line Interface (WP-CLI) helped me, and how I made other minor changes to templates or using WordPress API hooks.
+In this series of 5 articles, I propose to write about how I migrated from the e-learning platform <Link href="https://thinkific.com">Thinkific</Link> to `WordPress`, how I exported the data from `Thinkific`, what technologies I used, how WordPress Command Line Interface (`WP-CLI`) helped me, and how I made other minor changes to templates or using `WordPress` API hooks.
 Below, I leave you the list of articles in the series:
 <div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
     <p>Table of contents</p>
@@ -20,10 +20,10 @@ Below, I leave you the list of articles in the series:
 </div>
 
 ## Introduction
-2023 ended with a small WordPress challenge for me, to which I happily answered with "Yes!".
+2023 ended with a small `WordPress` challenge for me, to which I happily answered with "Yes!".
 It involves the migration of the content of the site <Link href="https://masterclassonline.ro">masterclassonline.ro</Link>, a site belonging to the Cultural Association <Link href="https://cartilepefata.ro">Cărțile pe față</Link>, on `WordPress`.
 
-The e-learning site was hosted so far on the Thinkific platform, a platform dedicated to online courses.
+The e-learning site was hosted so far on the `Thinkific` platform, a platform dedicated to online courses.
 The main reason for this migration was price.
 And for a few courses, such a platform is too much.
 
@@ -32,20 +32,20 @@ It's flexible, there are some good e-learning plugins on the market, there's eve
 It can also bring some performance improvements.
 Migrating data from one side to another is just a matter of time.
 
-I chose `WP-CLI`, the command line interface for WordPress because the process is singular.
+I chose `WP-CLI`, the command line interface for `WordPress` because the process is singular.
 I need real-time monitoring during the migration, I have full control over the data, and the limitations are only those I impose in the local `PHP` configurations.
 I run the migration locally and only then move the site to the production instance.
 
 ## Migration planning
 
 ### Assessment of requirements and resources
-In my case, the data I need from Thinkific is as follows:
+In my case, the data I need from `Thinkific` is as follows:
 - the courses
 - users and their enrollment in courses
 - user progress for the courses they follow
 - course reviews received from students
 
-The conditions for enrolling users in `WordPress` courses that, for example, require the creation of WooCommerce orders must also met.
+The conditions for enrolling users in `WordPress` courses that, for example, require the creation of `WooCommerce` orders must also met.
 In addition to these, on the future platform, I need the following functionalities:
 - user registration and authentication
 - purchasing courses
@@ -54,7 +54,7 @@ In addition to these, on the future platform, I need the following functionaliti
 - users can track the progress of purchased courses
 
 ### Create a detailed plan for the migration
-For the new home of the Masterclass Online site, I chose the <Link href="https://wordpress.org/plugins/tutor/">Tutor LMS</Link> plugin configured with <Link href="https://wordpress .org/plugins/woocommerce/">WooCommerce</Link> for order processing, including payment, invoicing, and other integrations.
+For the new home of the Masterclass Online site, I chose the <Link href="https://wordpress.org/plugins/tutor/">Tutor LMS</Link> plugin configured with <Link href="https://wordpress.org/plugins/woocommerce/">WooCommerce</Link> for order processing, including payment, invoicing, and other integrations.
 However, I won't go into the details here.
 
 Next, I studied the e-learning plugin to determine the technical requirements needed for migrating the data:
@@ -71,7 +71,7 @@ Next, I studied the e-learning plugin to determine the technical requirements ne
 - Executed the import for users, progress, and reviews.
 - Reactivated email notifications if they were disabled previously."
 
-### Exporting and preparing data from Thinkific
+### Exporting and preparing data from `Thinkific`
 In terms of data, I had a bit of a challenge, but in the end, it turned out to be relatively easy to export them.
 
 #### Users
@@ -129,7 +129,7 @@ Through a quick Google search, I came across <Link href="https://martechlms.com/
 Again, if you have many courses on the platform and want to migrate them to `WordPress`, it will require more manual work.
 
 Returning to the point, course reviews are available in the page source of each course.
-So, I fetched them from there (after ensuring they are all validated from the Thinkific dashboard!) in `JSON` format this time and worked with them from there (for the sake of dynamics 😁 - kidding, it seemed easier for me to process them this way).
+So, I fetched them from there (after ensuring they are all validated from the `Thinkific` dashboard!) in `JSON` format this time and worked with them from there (for the sake of dynamics 😁 - kidding, it seemed easier for me to process them this way).
 
 The structure of each `JSON` object for reviews looks like this:
 ```json showLineNumbers title="recenzii-curs-1.json"

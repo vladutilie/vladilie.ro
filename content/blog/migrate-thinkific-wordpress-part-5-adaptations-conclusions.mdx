@@ -23,7 +23,7 @@ Below is the list of articles in the series:"
 
 ## The `Tutor LMS` dashboard
 The `Tutor LMS` user dashboard on the Masterclass online site looked something like this:"
-<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706616716/blog/1.%20migrate-thinkific-to-wordpress/tutor-lms-user-dashboard_do6uvi.webp" alt="Panou de control Tutor LMS pentru utilizator" className="rounded-md shadow-lg"/>
+<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706616716/blog/1.%20migrate-thinkific-to-wordpress/tutor-lms-user-dashboard_do6uvi.webp" alt="Tutor LMS user control panel" className="rounded-md shadow-lg"/>
 It would have been a bit complicated to merge the two control panels, the one from `WooCommerce` and the one shown in the picture from `Tutor LMS`, into a single one, so I just linked them together.
 If the user needs information about orders, they can find it in the `WooCommerce` panel; if they need information about the courses they have enrolled in, they can find it in the `Tutor LMS` panel, both accessible through direct links.
 
@@ -52,7 +52,7 @@ add_filter(
 ```
 
 ## The `WooCommerce` dashboard
-<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706623254/blog/1.%20migrate-thinkific-to-wordpress/woocommerce-user-dashboard_wgteeh.webp" alt="Panou de control WooCommerce pentru utilizator" className="rounded-md shadow-lg"/>
+<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706623254/blog/1.%20migrate-thinkific-to-wordpress/woocommerce-user-dashboard_wgteeh.webp" alt="WooCommerce user control panel" className="rounded-md shadow-lg"/>
 To add the link to the `Tutor LMS` dashboard in the navigation menu of `WooCommerce`, for overriding, I copied the template `/wp-content/plugins/woocommerce/templates/myaccount/navigation.php` to the directory `/wp-content/themes/child-theme/woocommerce/myaccount/navigation.php` and added the following element as the first item in the `<ul>` list:
 ```php showLineNumbers title="navigation.php" caption="/wp-content/themes/child-theme/woocommerce/myaccount"
 <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--dashboard">
@@ -61,7 +61,7 @@ To add the link to the `Tutor LMS` dashboard in the navigation menu of `WooComme
 ```
 
 ## The `Tutor LMS` authentication form
-<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706624461/blog/1.%20migrate-thinkific-to-wordpress/tutor-login-form_ezqrm2.webp" alt="Formular de autentificare Tutor LMS" className="rounded-md shadow-lg"/>
+<img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1706624461/blog/1.%20migrate-thinkific-to-wordpress/tutor-login-form_ezqrm2.webp" alt="Tutor LMS login form" className="rounded-md shadow-lg"/>
 During the migration and dealing with user accounts, I didn't want to make it intrusive and, especially, to violate the General Data Protection Regulation.
 So, I approached this differently by notifying users through a message in the login form that the site has moved to another platform. If they had an account before, they could request a password reset link to log in.
 To add this message, I used hooks in the `functions.php` file of the theme:
@@ -156,7 +156,7 @@ When I had a backup very close to a version ready for production, I placed it on
 ## Concluzii
 WordPress once again provides a solution to a problem I encountered.
 The related technologies developed around it are truly a breath of fresh air, and if you enjoy this environment, it's worth investing time and energy.
-Certainly, impressive results can be achieved using WordPress, even for enterprise projects—no need to say that, Automattic proves it every day.
+Certainly, impressive results can be achieved using `WordPress`, even for enterprise projects—no need to say that, Automattic proves it every day.
 
 <Link href="https://wp-cli.org">WP-CLI</Link> is a very powerful and flexible tool that can be helpful in many situations like these migrations.
 I recommend it every time I have the chance; I've used it in dozens of projects, and each time, I've successfully accomplished everything I needed with it.
