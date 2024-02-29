@@ -1,10 +1,10 @@
 'use server';
 
+import { getTranslations } from 'next-intl/server';
 import { SubmitHandler } from 'react-hook-form';
 
 import { Inputs } from './inputs.type';
-import { ContactSchema } from '@/app/[locale]/contact/ui/contact.schema';
-import { getTranslations } from 'next-intl/server';
+import { ContactSchema } from './contact.schema';
 
 export const sendMail: SubmitHandler<Inputs> = async (data) => {
   const t = await getTranslations('contact.form');
@@ -31,6 +31,7 @@ export const sendMail: SubmitHandler<Inputs> = async (data) => {
           service: t(data.service),
           budget: new Intl.NumberFormat('ro-RO', { style: 'currency', currency: 'EUR' }).format(budget),
           content: data.message,
+          email: data.email,
           phone: data.phone
         }
       })
