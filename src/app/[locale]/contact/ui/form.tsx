@@ -119,7 +119,7 @@ export const Form: React.FC = () => {
             {t('service-custom-development')}
           </option>
           <option value={Services.LandingPage}>{t('service-landing-page')}</option>
-          <option value={Services.SwI18nL10n}>{t('service-landing-page')}</option>
+          <option value={Services.SwI18nL10n}>{t('sw-i18n-l10n')}</option>
           <option value={Services.Maintenance}>{t('service-maintenance')}</option>
           <option value={Services.JobOpportunity}>{t('service-job-opportunity')}</option>
           <option value={Services.JustSayHi}>{t('just-say-hi')}</option>
@@ -162,6 +162,7 @@ export const Form: React.FC = () => {
         <textarea
           {...register('message', { required: true })}
           className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 focus:dark:outline-blue-500'
+          rows={8}
           id='message'
           minLength={50}
         />
