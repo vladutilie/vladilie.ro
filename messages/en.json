@@ -152,11 +152,11 @@
   "colophon": {
     "metadata": {
       "description": "About how the site was built, the technology stack used and the source code.",
-      "keywords": "colophon,design,site source code,nextjs,planetscale,mdx,tailwind,typescript,vercel"
+      "keywords": "colophon,design,site source code,nextjs,supabase,planetscale,mdx,tailwind,typescript,vercel"
     },
     "title": "Colophon",
     "p1": "My website's design is inspired by <url>Sagar Shah</url>.",
-    "p2": "The technology stack used consists of <nextjs>NextJS</nextjs>, <planet>PlanetScale</planet>, <mdx>MDX</mdx>, <tailwind>Tailwind CSS</tailwind>, and <typescript>TypeScript</typescript>, deployed on <vercel>Vercel</vercel>.",
+    "p2": "The technology stack used consists of <nextjs>NextJS</nextjs>, <planet>PlanetScale</planet>, <supa>Supabase</supa>, <mdx>MDX</mdx>, <tailwind>Tailwind CSS</tailwind>, and <typescript>TypeScript</typescript>, deployed on <vercel>Vercel</vercel>.",
     "p3": "The source code is open-sourced on <new>GitHub</new>. You can find the old version on <old>this branch</old>."
   },
   "uses": {
