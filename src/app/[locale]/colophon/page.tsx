@@ -51,8 +51,9 @@ export default async function Colophon() {
               {chunk}
             </a>
           ),
-          planet: (chunk: ReactNode): JSX.Element => (
-            <a href='https://planetscale.com' target='_blank' className="after:content-['_↗']">
+          planet: (chunk: ReactNode): JSX.Element => <span className='line-through'>{chunk}</span>,
+          supa: (chunk: ReactNode): JSX.Element => (
+            <a href='https://supabase.com' target='_blank' className="after:content-['_↗']">
               {chunk}
             </a>
           ),
