@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model PostCounter {
@@ -39,7 +40,7 @@ model Location {
 }
 
 model Book {
-  id         Int       @id @default(autoincrement())
+  id         String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   title      String    @db.VarChar(191)
   author     String    @db.VarChar(30)
   cover      String    @db.VarChar(191)
@@ -60,7 +61,7 @@ enum BookState {
 }
 
 model Boardgame {
-  id        Int            @id @default(autoincrement())
+  id        String         @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   name      String         @db.VarChar(50)
   duration  String         @db.VarChar(7)
   age       String         @db.VarChar(5)
