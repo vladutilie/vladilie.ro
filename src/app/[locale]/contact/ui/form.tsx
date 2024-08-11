@@ -51,8 +51,6 @@ export const Form: React.FC = () => {
           {...register('firstName', { required: true })}
           className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 focus:dark:outline-blue-500'
           id='firstName'
-          maxLength={20}
-          minLength={4}
         />
         {errors.firstName && <span className='text-xs text-red-400'>{t('required-field')}</span>}
       </div>
@@ -65,8 +63,6 @@ export const Form: React.FC = () => {
           {...register('lastName', { required: true })}
           id='lastName'
           className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 focus:dark:outline-blue-500'
-          maxLength={20}
-          minLength={4}
         />
         {errors.lastName && <span className='text-xs text-red-400'>{t('required-field')}</span>}
       </div>
