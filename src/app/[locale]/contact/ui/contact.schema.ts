@@ -4,8 +4,8 @@ import { Inputs } from './inputs.type';
 import { Services } from './services.enum';
 
 export const ContactSchema = object<Inputs>({
-  firstName: string().trim().min(4).max(20).required(),
-  lastName: string().trim().min(4).max(20).required(),
+  firstName: string().trim().required(),
+  lastName: string().trim().required(),
   email: string().email().required(),
   phone: string().min(10).max(15).required(),
   service: string()
