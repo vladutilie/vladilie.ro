@@ -24,6 +24,7 @@
       "hello": "Salut, aici Vlad {emoji}",
       "about": "Sunt <strong>Inginer Software</strong> și locuiesc în România. Iubesc să jonglez cu tehnologiile și pun suflet în fiecare proiect pentru a obține tot ce este mai bun din el. <strong>Profesionist certificat <neo4j>Neo4j</neo4j></strong>, fan NextJS, entuziast al tehnologiilor JavaScript, nostalgic iubitor de <strong>WordPress</strong>, și întreținător al site-urilor web <strong><cpf>Cărțile pe Față</cpf></strong>. Îmi place și să călătoresc prin țară, de aceea acum mă aflu în <locations>{city}</locations>, iar mâine aș putea fi în altă parte.",
       "available": "Disponibil pentru proiecte noi",
+      "not-available": "Indisponibil pentru proiecte noi",
       "commits": "{count, plural, =0 {<commits>0</commits> comiteri} =1 {<commits>1</commits> comitere} few {<commits>#</commits> comiteri} other {<commits>#</commits> de comiteri}} în ultimele 7 zile",
       "link-to-al": "Legătură către {socialNetwork}",
       "neo4j-certificate": "Certificat Neo4j",

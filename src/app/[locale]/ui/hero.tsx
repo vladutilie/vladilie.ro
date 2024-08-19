@@ -58,11 +58,11 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
           <div className='flex items-center gap-x-2'>
             <div className='flex h-6 w-6 items-center justify-center'>
               <span className='relative flex h-3 w-3 items-center'>
-                <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75' />
-                <span className='relative inline-flex h-3 w-3 rounded-full bg-green-500' />
+                <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75' />
+                <span className='relative inline-flex h-3 w-3 rounded-full bg-red-500' />
               </span>
             </div>
-            <p className='my-0'>{t('available')}</p>
+            <p className='my-0'>{t('not-available')}</p>
           </div>
 
           {!!commits && (
