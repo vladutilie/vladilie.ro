@@ -98,7 +98,7 @@ Subsequently, for the remaining users, I invoked the two methods: user creation 
 
 ## Create user
 In the user creation method, I didn't do anything special.
-I passed the information from the `CSV` line to the method, and if the user searched by email address did not already exist, I create them.
+I passed the information from the `CSV` line to the method, and if the user searched by email address did not already exist, I created them.
 In both cases, the user ID is returned, and only in the case of a user creation error, `null` is returned.
 ```php showLineNumbers title="class-wpcli.php"
 protected function create_user( $user_data ) {

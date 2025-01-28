@@ -11,7 +11,7 @@ date: January 30, 2024 21:00:00
 In the <Link href="/blog/migrate-thinkific-wordpress-part-4-reviews-import">fourth part</Link> of this 5-article series, I concluded the implementation of functions for custom import commands for users, progress, and reviews.
 
 In the **last part**, I will talk about the customizations I made to the Masterclass online site and specifically go through the adaptations I made to the theme, `Tutor LMS` templates, and `WooCommerce`.
-Below is the list of articles in the series:"
+Below is the list of articles in the series:
 <div className='rounded-md border p-2 bg-gray-50 dark:bg-slate-900'>
     <p>Table of contents</p>
     1. <Link href="/blog/migrate-thinkific-wordpress-part-1-planning-data-preparation">Part 1: Planning and data preparations</Link>
@@ -65,7 +65,7 @@ To add the link to the `Tutor LMS` dashboard in the navigation menu of `WooComme
 During the migration and dealing with user accounts, I didn't want to make it intrusive and, especially, to violate the General Data Protection Regulation.
 So, I approached this differently by notifying users through a message in the login form that the site has moved to another platform. If they had an account before, they could request a password reset link to log in.
 To add this message, I used hooks in the `functions.php` file of the theme:
-```php showLineNumbers title="class-wpcli.php" caption="/wp-content/themes/child-theme/"
+```php showLineNumbers title="functions.php" caption="/wp-content/themes/child-theme/"
 // Add custom message in the Tutor LMS login form.
 add_action(
     'tutor_login_form_middle',
@@ -146,7 +146,7 @@ echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_i
 ```
 
 ## Migration to production
-After all the changes were made, migrations executed, courses arranged, and the store prepared with all the integrations, I move the site from the local environment to the `production` environment using the `All in One WP Migration` plugin.
+After all the changes were made, migrations executed, courses arranged, and the store prepared with all the integrations, I moved the site from the local environment to the `production` environment using the `All in One WP Migration` plugin.
 Throughout the development process of the new site, after each major step (creating courses and building their pages with `Elementor`, installing and configuring `WooCommerce`, running migrations, etc.), I made a backup with `All in One WP Migration`.
 If I had identified any data discrepancies or a malfunctioning part of the site while working on the next step, I would have reverted to the previous state of the site.
 In essence, I would have performed a `roll-back`, and this way, I could avoid losing too much progress.

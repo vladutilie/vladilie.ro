@@ -23,7 +23,7 @@ Below, I leave you the list of articles in the series:
 2023 ended with a small `WordPress` challenge for me, to which I happily answered with "Yes!".
 It involves the migration of the content of the site <Link href="https://masterclassonline.ro">masterclassonline.ro</Link>, a site belonging to the Cultural Association <Link href="https://cartilepefata.ro">Cărțile pe față</Link>, on `WordPress`.
 
-The e-learning site was hosted so far on the `Thinkific` platform, a platform dedicated to online courses.
+The e-learning site has been hosted so far on the Thinkific platform, which is dedicated to online courses.
 The main reason for this migration was price.
 And for a few courses, such a platform is too much.
 
@@ -33,7 +33,7 @@ It can also bring some performance improvements.
 Migrating data from one side to another is just a matter of time.
 
 I chose `WP-CLI`, the command line interface for `WordPress` because the process is singular.
-I need real-time monitoring during the migration, I have full control over the data, and the limitations are only those I impose in the local `PHP` configurations.
+I need real-time monitoring during the migration, I have full control over the data, and the limitations are only those I impose on the local `PHP` configurations.
 I run the migration locally and only then move the site to the production instance.
 
 ## Migration planning
@@ -61,18 +61,18 @@ Next, I studied the e-learning plugin to determine the technical requirements ne
 - Identified filters and actions in `Tutor LMS` that I can use to bypass potential checks.
 - Examined the relationships between entities in the database.
 - Determined the necessary information to be filled in the `WordPress` instance for a user to access their courses.
-- Identified the fields to which other data in `Thinkific` must be matched.
+- Identified the fields to which other data `Thinkific` must be matched.
 - Established the optimal method for migration (I've already decided: `WP-CLI` rocks!)
 
 **Furthermore, I outlined the list of actions that I need to complete:**
 - Prepared data exported from `Thinkific` by normalizing it and removing irrelevant information.
-- Ensured that no email notifications are enabled (e.g., for `WordPress` account creation or other emails related to `WooCommerce` orders).
+- Ensured that no email notifications were enabled (e.g., for `WordPress` account creation or other emails related to `WooCommerce` orders).
 - ❗️ Based on my research on the functionality of the `Tutor LMS` plugin, there is a need for a `PHP` check to be denied. I delved (probably not enough) into the plugin, and from all the tests I conducted, without this disclaimer, the user wouldn't see their courses in the dashboard. Unfortunately, a filter for making this process easier does not exist in the plugin.
 - Executed the import for users, progress, and reviews.
 - Reactivated email notifications if they were disabled previously."
 
 ### Exporting and preparing data from `Thinkific`
-In terms of data, I had a bit of a challenge, but in the end, it turned out to be relatively easy to export them.
+I had some challenges with data, but it turned out to be relatively easy to export them.
 
 #### Users
 Fortunately, there is a handy method to export the list of users:
@@ -92,7 +92,7 @@ Of all the data, I only need the following:
 - Email
 - Enrollments - list
 
-So, I can either normalize the file and remove everything I don't need, or I can go through the file and select only the necessary data (initially, I opted for the second option).
+So, I can either normalize the file and remove everything I don't need, or go through it and select only the necessary data (initially, I opted for the second option).
 
 #### Courses
 Since there are only 4 courses, I didn't find it necessary to export them.
@@ -116,7 +116,7 @@ So, if you have many courses on the platform and want such a migration, you migh
 
 The header of the exported progress `CSV` file looks like this:
 ```csv
-Email,Completed At,% Completed,<Nume-capitol-1>,<Nume-capitol-2>,...,<Nume-capitol-n>
+Email,Completed At,% Completed,<Chapter-1>,<Chapter-2>,...,<Chapter-n>
 ```
 The values for the columns with `<Chapter-names>` range from 0 to 100.
 
@@ -129,7 +129,7 @@ Through a quick Google search, I came across <Link href="https://martechlms.com/
 Again, if you have many courses on the platform and want to migrate them to `WordPress`, it will require more manual work.
 
 Returning to the point, course reviews are available in the page source of each course.
-So, I fetched them from there (after ensuring they are all validated from the `Thinkific` dashboard!) in `JSON` format this time and worked with them from there (for the sake of dynamics 😁 - kidding, it seemed easier for me to process them this way).
+So, I fetched them from there (after ensuring they were all validated from the `Thinkific` dashboard!) in `JSON` format this time and worked with them from there (for the sake of dynamics 😁 - kidding, it seemed easier for me to process them this way).
 
 The structure of each `JSON` object for reviews looks like this:
 ```json showLineNumbers title="recenzii-curs-1.json"
