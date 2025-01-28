@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { SocialMedia } from './social-media';
 import { Commit, Pin } from '../ui/icons';
+import { Availability } from '../ui/availability';
 import vlad from '@/../public/images/vlad-ilie-portrait.webp';
 
 export const Hero: React.FC<{ location: string; commits: number }> = ({ location, commits }) => {
@@ -55,15 +56,7 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
             <p className='my-0'>{location}</p>
           </div>
 
-          <div className='flex items-center gap-x-2'>
-            <div className='flex h-6 w-6 items-center justify-center'>
-              <span className='relative flex h-3 w-3 items-center'>
-                <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75' />
-                <span className='relative inline-flex h-3 w-3 rounded-full bg-red-500' />
-              </span>
-            </div>
-            <p className='my-0'>{t('not-available')}</p>
-          </div>
+          <Availability />
 
           {!!commits && (
             <div className='flex items-center gap-x-2'>
