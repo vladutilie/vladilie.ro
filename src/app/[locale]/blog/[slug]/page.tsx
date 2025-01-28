@@ -7,10 +7,11 @@ import { getPathname } from '@/i18n/routing';
 import { Header, Content, Footer } from '../../ui/post';
 
 export async function generateMetadata({
-  params: { locale, slug }
+  params
 }: {
-  params: { locale: 'en' | 'ro'; slug: string };
+  params: Promise<{ locale: 'en' | 'ro'; slug: string }>;
 }): Promise<Metadata> {
+  const { locale, slug } = await params;
   const post = allPosts.find((p: Post) => p.slug === slug && p.locale === locale);
   const t = await getTranslations('blog');
   if (!post) {
@@ -47,7 +48,8 @@ export async function generateMetadata({
   };
 }
 
-export default function Post({ params: { slug, locale } }: { params: { slug: string; locale: string } }) {
+export default async function Post({ params }: { params: Promise<{ slug: string; locale: string }> }) {
+  const { slug, locale } = await params;
   const post = allPosts.find((p: Post) => p.slug === slug && p.locale === locale);
 
   if (!post) {

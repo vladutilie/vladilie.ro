@@ -15,7 +15,8 @@ const texts = [
   ['cap7.title', 'cap7.p1', 'cap7.p2']
 ];
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations('privacy');
   const commonFields = { title: t('title'), description: `${t('metadata.description')} ${t('last-update')}` };
 

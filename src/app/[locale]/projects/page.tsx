@@ -5,7 +5,8 @@ import { allProjects, type Project as ProjectT } from 'contentlayer/generated';
 import { getPathname } from '@/i18n/routing';
 import { Project } from './ui/project';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations('projects');
   const commonFields = { title: t('title'), description: t('description') };
 
@@ -31,7 +32,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default async function Projects({ params: { locale } }: { params: { locale: string } }) {
+export default async function Projects({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations('projects');
   const projects = allProjects
     .filter(({ locale: l }) => l === locale)

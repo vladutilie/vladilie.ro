@@ -6,7 +6,8 @@ import { getPathname } from '@/i18n/routing';
 import prisma from '@/lib/prisma';
 import { Book } from './ui/book';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations('books');
   const commonFields = { title: t('title'), description: t('description') };
 

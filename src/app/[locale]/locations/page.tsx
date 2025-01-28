@@ -8,7 +8,8 @@ import enFunc from 'timeago.js/lib/lang/en_US';
 import { getPathname } from '@/i18n/routing';
 import prisma from '@/lib/prisma';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations('locations');
 
   const commonFields = { title: t('title'), description: t('description') };
@@ -37,7 +38,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 
 const getLocations = async () => await prisma.location.findMany({ orderBy: { lastVisitAt: 'desc' } });
 
-export default async function Locations({ params: { locale } }: { params: { locale: string } }) {
+export default async function Locations({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations('locations');
 
   const locations = await getLocations();
