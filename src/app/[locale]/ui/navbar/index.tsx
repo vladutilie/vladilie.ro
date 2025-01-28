@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { usePathname, Link } from '@/navigation';
 
+import { usePathname, Link } from '@/i18n/routing';
 import { Logo } from '../icons';
 import { Menu } from './menu';
 

@@ -1,11 +1,11 @@
-import { ReactNode } from 'react';
+import { ReactNode, JSX } from 'react';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { format, register } from 'timeago.js';
 import roFunc from 'timeago.js/lib/lang/ro';
 import enFunc from 'timeago.js/lib/lang/en_US';
-import { getPathname } from '@/navigation';
 
+import { getPathname } from '@/i18n/routing';
 import prisma from '@/lib/prisma';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {

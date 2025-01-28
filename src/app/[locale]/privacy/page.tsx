@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { getPathname } from '@/navigation';
+
+import { getPathname } from '@/i18n/routing';
 
 const texts = [
   'last-update',

@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { getPathname } from '@/navigation';
 import { allPosts, type Post as PostType } from 'contentlayer/generated';
 
+import { getPathname } from '@/i18n/routing';
 import { PostCard } from './ui/post-card';
 import { Search } from './ui/Search';
 

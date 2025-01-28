@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import { Boardgame } from '@prisma/client';
 import { getTranslations } from 'next-intl/server';
-import { getPathname } from '@/navigation';
 
+import { getPathname } from '@/i18n/routing';
 import prisma from '@/lib/prisma';
 import { Categories } from './ui/categories';
 import { List } from './ui/list';

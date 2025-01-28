@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/navigation';
 
+import { Link } from '@/i18n/routing';
 import { Logo } from './icons';
 import { Pages } from '@/lib/constants';
 import sal from '@/../public/images/anpc-sal.webp';

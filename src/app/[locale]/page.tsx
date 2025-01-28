@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { getPathname } from '@/navigation';
 
+import { getPathname } from '@/i18n/routing';
 import { UpdateLocation } from './ui/update-location';
 import { Hero } from './ui/hero';
 import { About } from './ui/about';
@@ -11,7 +11,8 @@ import { Projects } from './ui/projects';
 import { SoftwareLocalization } from './ui/sw-l10n';
 import prisma from '@/lib/prisma';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations('homepage.metadata');
   const commonFields = { title: `${process.env.NEXT_PUBLIC_SITE_NAME} | ${t('title')}`, description: t('description') };
 

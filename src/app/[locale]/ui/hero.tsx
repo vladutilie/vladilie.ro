@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
+import { ReactNode, JSX } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/navigation';
 
+import { Link } from '@/i18n/routing';
 import { SocialMedia } from './social-media';
 import { Commit, Pin } from '../ui/icons';
 import vlad from '@/../public/images/vlad-ilie-portrait.webp';

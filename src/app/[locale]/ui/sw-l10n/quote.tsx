@@ -1,6 +1,7 @@
-import { ReactNode } from 'react';
+import { ReactNode, JSX } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/navigation';
+
+import { Link } from '@/i18n/routing';
 
 export const Quote: React.FC = () => {
   const t = useTranslations('homepage.sw-l10n');

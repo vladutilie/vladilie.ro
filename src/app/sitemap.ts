@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
-import { getPathname } from '@/navigation';
 import { Post, Project, allPosts, allProjects } from 'contentlayer/generated';
+
+import { getPathname } from '@/i18n/routing';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const links: MetadataRoute.Sitemap = [

@@ -4,9 +4,9 @@ import { useLocale, useTranslations } from 'next-intl';
 import { format, register } from 'timeago.js';
 import roFunc from 'timeago.js/lib/lang/ro';
 import enFunc from 'timeago.js/lib/lang/en_US';
-import { Link } from '@/navigation';
 import { type Post as PostT } from 'contentlayer/generated';
 
+import { Link } from '@/i18n/routing';
 import { LoadingDots } from '../../ui/loading-dots';
 import { usePostViews } from '@/hooks/usePostViews';
 import { numberFormat } from '@/lib/numberFormat';

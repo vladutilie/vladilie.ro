@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { allPosts, type Post } from 'contentlayer/generated';
-import { getPathname } from '@/navigation';
 
+import { getPathname } from '@/i18n/routing';
 import { Header, Content, Footer } from '../../ui/post';
 
 export async function generateMetadata({

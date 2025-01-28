@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { getPathname } from '@/navigation';
 import { allProjects, type Project as ProjectT } from 'contentlayer/generated';
 
+import { getPathname } from '@/i18n/routing';
 import { Project } from './ui/project';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
