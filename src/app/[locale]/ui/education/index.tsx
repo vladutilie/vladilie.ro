@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, JSX } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { Tag } from '../tag';
