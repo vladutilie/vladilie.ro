@@ -312,7 +312,7 @@
     "trade-reg-no": "Nr.reg.com.: {regNo}",
     "sal-al": "Detalii Soluționarea alternativă a litigiilor",
     "sol-al": "Soluționarea online a litigiilor",
-    "copyright": "Toate drepturile rezervate."
+    "copyright": "© 2019 – {year} · {siteName} · Toate drepturile rezervate."
   },
   "not-found": { "title": "Eroare 404", "description": "Pagina pe care o cauți nu există." }
 }

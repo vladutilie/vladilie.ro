@@ -76,7 +76,7 @@ export const Footer: React.FC = () => {
         </ul>
 
         <p className='col-span-3 mt-4 border-t pt-4 text-center text-sm text-gray-500'>
-          {`© 2019 - ${new Date().getFullYear()} · ${process.env.NEXT_PUBLIC_SITE_NAME} · ${t('footer.copyright')}`}
+          {t('footer.copyright', { year: new Date().getFullYear(), siteName: process.env.NEXT_PUBLIC_SITE_NAME })}
         </p>
       </div>
     </footer>
