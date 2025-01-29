@@ -83,6 +83,7 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
           height={400}
           placeholder='blur'
           priority
+          fetchPriority='high'
           src={vlad}
           width={400}
         />
