@@ -12,6 +12,9 @@ import { Projects } from './ui/projects';
 import { SoftwareLocalization } from './ui/sw-l10n';
 import prisma from '@/lib/prisma';
 
+// Revalidate the page cache to update the GitHub commits.
+export const revalidate = 3600;
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations('homepage.metadata');
