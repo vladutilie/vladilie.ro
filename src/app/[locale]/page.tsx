@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import { Octokit } from '@octokit/rest';
 
 import { getPathname } from '@/i18n/routing';
 import { UpdateLocation } from './ui/update-location';
@@ -48,47 +49,52 @@ const getLocation = async (): Promise<string> => {
 };
 
 const getCommits = async (): Promise<number> => {
-  if ('production' !== process.env.NEXT_PUBLIC_VERCEL_ENV) {
-    return Math.floor(Math.random() * 50);
-  }
+  const octokit = new Octokit({ auth: process.env.GITHUB_PERSONAL_ACCESS_TOKEN });
 
-  const apiUrl = `https://api.github.com/users/vladutilie/events?per_page=100`;
-  const res = await fetch(apiUrl, { next: { revalidate: 3600 } });
+  const oneWeekAgo = new Date();
+  oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
-  if (!res.ok) {
-    console.error('Failed to fetch GitHub commits.');
+  try {
+    const { data: repos } = await octokit.repos.listForAuthenticatedUser({
+      username: new URL(process.env.NEXT_PUBLIC_GITHUB!).pathname.split('/')[1],
+      sort: 'updated',
+      per_page: 10
+    });
+
+    let totalCommits = 0;
+
+    for (const repo of repos) {
+      try {
+        const { data: commits } = await octokit.repos.listCommits({
+          owner: repo.full_name.split('/')[0],
+          repo: repo.name,
+          since: oneWeekAgo.toISOString(),
+          per_page: 100
+        });
+
+        totalCommits += commits.length;
+      } catch (error: any) {
+        if (error.status !== 409) {
+          console.log(`getCommits() repository ${repo.name} error: ${error.message}`);
+        }
+      }
+    }
+
+    return totalCommits;
+  } catch (error: any) {
+    console.error(`getCommits() error: ${error.message}`);
 
     return 0;
   }
-
-  const data = await res.json();
-
-  const commitEvents = data.filter((event: { created_at: string; type: string }) => {
-    const createdAt = new Date(event.created_at);
-    const ago7days = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-
-    return event.type === 'PushEvent' && createdAt >= ago7days;
-  });
-
-  const totalCommits: number = commitEvents.reduce(
-    (total: number, event: { payload: { commits: { author: { email: string } }[] } }) => {
-      const commits = event.payload.commits.filter((commit) => process.env.GITHUB_EMAIL === commit.author.email);
-
-      return total + commits.length;
-    },
-    0
-  );
-
-  return totalCommits;
 };
 
 export default async function Home() {
-  const [location, commits] = await Promise.all([getLocation(), getCommits()]);
+  const [location, totalCommits] = await Promise.all([getLocation(), getCommits()]);
 
   return (
     <>
       <UpdateLocation />
-      <Hero location={location} commits={commits} />
+      <Hero location={location} commits={totalCommits} />
       <About />
       <Education />
       <Experience />
