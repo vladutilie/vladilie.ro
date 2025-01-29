@@ -6,14 +6,16 @@ BigInt.prototype.toJSON = function () {
   return this.toString();
 };
 
-export async function GET(_r: Request, { params: { slug } }: { params: { slug: string } }) {
+export async function GET(_r: Request, { params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const post = await prisma.postCounter.findUnique({ where: { slug } });
 
   return Response.json(post?.views || 1);
 }
 
 // TODO: Test this method and fix it if needed.
-export async function POST(request: Request, { params: { slug } }: { params: { slug: string } }) {
+export async function POST(request: Request, { params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const ip = request.headers.get('x-forwarded-for');
   const isLive = 'undefined' !== typeof ip && '::1' !== ip && 'production' === process.env.NEXT_PUBLIC_VERCEL_ENV;
 

@@ -1,9 +1,11 @@
-import { ReactNode } from 'react';
+import { ReactNode, JSX } from 'react';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { getPathname } from '@/navigation';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
+import { getPathname } from '@/i18n/routing';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations('colophon');
   const commonFields = { title: t('title'), description: t('metadata.description') };
 

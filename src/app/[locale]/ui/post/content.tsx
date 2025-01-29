@@ -4,6 +4,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 export const Content: React.FC<{ content: string }> = ({ content }) => {
   const MDXContent = useMDXComponent(content);
 
+  // Custom components in MDX: https://github.com/delbaoliveira/website/blob/main/ui/MdxComponents.tsx
   const components = {
     Link: (props: any) => {
       if (props.href.startsWith('http')) {

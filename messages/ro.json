@@ -22,7 +22,7 @@
     },
     "hero": {
       "hello": "Salut, aici Vlad {emoji}",
-      "about": "Sunt <strong>Inginer Software</strong> și locuiesc în România. Iubesc să jonglez cu tehnologiile și pun suflet în fiecare proiect pentru a obține tot ce este mai bun din el. <strong>Profesionist certificat <neo4j>Neo4j</neo4j></strong>, fan NextJS, entuziast al tehnologiilor JavaScript, nostalgic iubitor de <strong>WordPress</strong>, și întreținător al site-urilor web <strong><cpf>Cărțile pe Față</cpf></strong>. Îmi place și să călătoresc prin țară, de aceea acum mă aflu în <locations>{city}</locations>, iar mâine aș putea fi în altă parte.",
+      "about": "Sunt <strong>Inginer Software</strong> și locuiesc în România. <strong>Certificat <neo4j>Neo4j</neo4j></strong>, fan NextJS, pasionat de <strong>WordPress</strong> și JavaScript. Întrețin site-urile <strong><cpf>Cărțile pe Față</cpf></strong>. Acum mă aflu în <locations>{city}</locations>, dar adeseori călătoresc.",
       "available": "Disponibil pentru proiecte noi",
       "not-available": "Indisponibil pentru proiecte noi",
       "commits": "{count, plural, =0 {<commits>0</commits> comiteri} =1 {<commits>1</commits> comitere} few {<commits>#</commits> comiteri} other {<commits>#</commits> de comiteri}} în ultimele 7 zile",
@@ -312,7 +312,7 @@
     "trade-reg-no": "Nr.reg.com.: {regNo}",
     "sal-al": "Detalii Soluționarea alternativă a litigiilor",
     "sol-al": "Soluționarea online a litigiilor",
-    "copyright": "Toate drepturile rezervate."
+    "copyright": "© 2019 – {year} · {siteName} · Toate drepturile rezervate."
   },
   "not-found": { "title": "Eroare 404", "description": "Pagina pe care o cauți nu există." }
 }

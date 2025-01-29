@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { getPathname } from '@/navigation';
 
+import { getPathname } from '@/i18n/routing';
 import { Form } from './ui/form';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations('contact');
   const commonFields = { title: t('title'), description: t('description') };
 

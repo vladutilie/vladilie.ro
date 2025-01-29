@@ -2,7 +2,8 @@
 
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { useRouter } from '@/navigation';
+
+import { useRouter } from '@/i18n/routing';
 
 export const Categories: React.FC<{ list: string[] }> = ({ list }) => {
   const { push } = useRouter();

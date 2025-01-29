@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Project } from 'contentlayer/generated';
-import { Link } from '@/navigation';
 
+import { Link } from '@/i18n/routing';
 import { Tag } from '../tag';
 
 export const ProjectCard: React.FC<Project & { idx: number }> = ({ idx, ...project }) => (

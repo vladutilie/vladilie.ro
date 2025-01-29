@@ -1,7 +1,9 @@
-/** @type {import('next').NextConfig} */
-const { withContentlayer } = require('next-contentlayer');
-const withNextIntl = require('next-intl/plugin')();
+const createNextIntlPlugin = require('next-intl/plugin');
+const withNextIntl = createNextIntlPlugin();
 
+const { withContentlayer } = require('next-contentlayer');
+
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
     minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year

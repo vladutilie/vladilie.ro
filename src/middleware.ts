@@ -1,12 +1,7 @@
 import createMiddleware from 'next-intl/middleware';
-import { locales, pathnames } from '@/navigation';
+import { routing } from './i18n/routing';
 
-export default createMiddleware({
-  defaultLocale: locales[0],
-  locales,
-  pathnames,
-  localePrefix: 'as-needed'
-});
+export default createMiddleware(routing);
 
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|images/.*|favicon.ico|sitemap.xml|robots.txt).*)']

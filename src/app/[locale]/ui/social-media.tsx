@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react';
 
-import { GitHub, X, LinkedIn, WordPress, Polywork } from '../ui/icons';
+import { GitHub, X, LinkedIn, WordPress, Polywork, CV } from '../ui/icons';
 import { useTranslations } from 'next-intl';
 
 const socialLinks: { name: string; url: string; logo: ReactNode }[] = [
@@ -10,7 +10,8 @@ const socialLinks: { name: string; url: string; logo: ReactNode }[] = [
   { name: 'X', url: process.env.NEXT_PUBLIC_X!, logo: <X /> },
   { name: 'LinkedIn', url: process.env.NEXT_PUBLIC_LINKEDIN!, logo: <LinkedIn /> },
   { name: 'WordPress', url: process.env.NEXT_PUBLIC_WORDPRESS!, logo: <WordPress /> },
-  { name: 'Polywork', url: process.env.NEXT_PUBLIC_POLYWORK!, logo: <Polywork /> }
+  { name: 'Polywork', url: process.env.NEXT_PUBLIC_POLYWORK!, logo: <Polywork /> },
+  { name: 'CV', url: process.env.NEXT_PUBLIC_CV!, logo: <CV /> }
 ];
 
 export const SocialMedia: React.FC = () => {

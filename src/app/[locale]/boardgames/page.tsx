@@ -1,13 +1,14 @@
 import { Metadata } from 'next';
 import { Boardgame } from '@prisma/client';
 import { getTranslations } from 'next-intl/server';
-import { getPathname } from '@/navigation';
 
+import { getPathname } from '@/i18n/routing';
 import prisma from '@/lib/prisma';
 import { Categories } from './ui/categories';
 import { List } from './ui/list';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations('boardgames');
   const commonFields = { title: t('title'), description: t('description') };
 

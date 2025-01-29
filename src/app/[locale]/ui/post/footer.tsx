@@ -2,9 +2,9 @@
 
 import { ReactNode, useMemo } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { getPathname } from '@/navigation';
 import { Post, Project } from 'contentlayer/generated';
 
+import { getPathname } from '@/i18n/routing';
 import { Facebook, LinkedIn, WhatsApp, X } from '../icons';
 import { Tag } from '../tag';
 

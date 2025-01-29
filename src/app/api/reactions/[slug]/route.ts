@@ -8,7 +8,8 @@ BigInt.prototype.toJSON = function () {
   return this.toString();
 };
 
-export async function GET(request: Request, { params: { slug } }: { params: { slug: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const ipAddress = request.headers.get('x-forwarded-for') || '0.0.0.0'; // Fallback for localhost or non Vercel deployments
   const ipHash = createHash('md5')
     .update(ipAddress + process.env.IP_ADDRESS_SALT!, 'utf8')
@@ -37,7 +38,8 @@ export async function GET(request: Request, { params: { slug } }: { params: { sl
   });
 }
 
-export async function POST(request: Request, { params: { slug } }: { params: { slug: string } }) {
+export async function POST(request: Request, { params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   try {
     const { reaction } = await request.json();
     const reactions = ['likes', 'loves', 'awards', 'wows'];

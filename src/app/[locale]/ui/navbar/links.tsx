@@ -1,8 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Link, usePathname, useRouter } from '@/navigation';
 
+import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { ThemeSwitcher } from './theme-switcher';
 import { LangChanger } from './lang-changer';
 import { scrollTo } from '@/lib/utils';

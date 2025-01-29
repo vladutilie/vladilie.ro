@@ -1,16 +1,17 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
-import { getPathname } from '@/navigation';
 import { allProjects, type Project } from 'contentlayer/generated';
 
+import { getPathname } from '@/i18n/routing';
 import { Header, Content, Footer } from '../../ui/post';
 
 export async function generateMetadata({
-  params: { locale, slug }
+  params
 }: {
-  params: { locale: 'en' | 'ro'; slug: string };
+  params: Promise<{ locale: 'en' | 'ro'; slug: string }>;
 }): Promise<Metadata> {
+  const { locale, slug } = await params;
   const project = allProjects.find((p: Project) => p.slug === slug && p.locale === locale);
   const t = await getTranslations('projects');
   if (!project) {
@@ -48,7 +49,8 @@ export async function generateMetadata({
   };
 }
 
-export default function Post({ params: { slug, locale } }: { params: { slug: string; locale: string } }) {
+export default async function Post({ params }: { params: Promise<{ slug: string; locale: string }> }) {
+  const { slug, locale } = await params;
   const project = allProjects.find((p: Project) => p.slug === slug && p.locale === locale);
 
   if (!project) {

@@ -1,13 +1,14 @@
 import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { getPathname } from '@/navigation';
 import { allPosts, type Post as PostType } from 'contentlayer/generated';
 
+import { getPathname } from '@/i18n/routing';
 import { PostCard } from './ui/post-card';
 import { Search } from './ui/Search';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: 'en' | 'ro' } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations('blog');
   const commonFields = { title: t('title'), description: t('metadata.description') };
 
@@ -33,8 +34,9 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default function Blog({ params: { locale } }: { params: { locale: string } }) {
-  const t = useTranslations('blog');
+export default async function Blog({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations('blog');
   const posts = allPosts
     .filter(({ locale: l }) => l === locale)
     .sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));

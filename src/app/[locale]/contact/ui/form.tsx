@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useState, JSX } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
