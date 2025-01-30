@@ -12,6 +12,7 @@ import { Projects } from './ui/projects';
 import { SoftwareLocalization } from './ui/sw-l10n';
 import prisma from '@/lib/prisma';
 
+export const dynamic = 'force-static';
 // Revalidate the page cache to update the GitHub commits.
 export const revalidate = 3600;
 
