@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 
 import { routing } from '@/i18n/routing';
 import './globals.css';
@@ -25,6 +25,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   };
 }
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export default async function LocaleLayout({
   children,
   params
@@ -39,11 +43,11 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  setRequestLocale(locale);
+
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
-
-  if (!routing.locales.includes(locale as any)) notFound();
 
   return (
     <html lang={locale} suppressHydrationWarning>
