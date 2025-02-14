@@ -17,7 +17,7 @@ export const ProjectCard: React.FC<{
   const { theme } = useTheme();
 
   return (
-    <div className='group flex w-4/5 shrink-0 snap-center snap-always flex-col justify-center gap-y-2 self-stretch rounded-lg border p-4 hover:bg-gray-50 dark:border-slate-700 hover:dark:bg-slate-900 sm:w-3/4 md:w-1/2 lg:col-span-2 lg:w-auto'>
+    <div className='group flex w-4/5 shrink-0 snap-center snap-always flex-col justify-center gap-y-2 self-stretch rounded-lg border p-4 hover:bg-gray-50 dark:border-slate-700 dark:hover:bg-slate-900 sm:w-3/4 md:w-1/2 lg:col-span-2 lg:w-auto'>
       {isValidElement(logo) ? (
         logo
       ) : (

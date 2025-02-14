@@ -10,8 +10,8 @@ export const ProjectCard: React.FC<Project & { idx: number }> = ({ idx, ...proje
     className={`flex flex-col rounded-xl shadow-md ${1 === idx % 2 ? 'md:flex-row-reverse' : 'md:flex-row'}`}
   >
     <div
-      className={`flex w-full items-center justify-center rounded-t-xl bg-gray-50 p-8 dark:bg-slate-800 lg:w-1/2 lg:p-12 ${
-        1 === idx % 2 ? 'md:rounded-r-xl md:rounded-tl-none' : 'md:rounded-l-xl md:rounded-tr-none'
+      className={`flex w-full items-center justify-center rounded-t-xl bg-gray-50 p-8 lg:w-1/2 lg:p-12 dark:bg-slate-800 ${
+        1 === idx % 2 ? 'md:rounded-tl-none md:rounded-r-xl' : 'md:rounded-l-xl md:rounded-tr-none'
       }`}
     >
       <Link
@@ -31,8 +31,8 @@ export const ProjectCard: React.FC<Project & { idx: number }> = ({ idx, ...proje
     </div>
 
     <div
-      className={`flex w-full flex-col gap-6 rounded-b-xl p-8 dark:bg-slate-900 lg:w-1/2 lg:p-12 ${
-        1 === idx % 2 ? 'md:rounded-br-none md:rounded-tl-xl' : 'md:rounded-r-xl md:rounded-bl-none'
+      className={`flex w-full flex-col gap-6 rounded-b-xl p-8 lg:w-1/2 lg:p-12 dark:bg-slate-900 ${
+        1 === idx % 2 ? 'md:rounded-tl-xl md:rounded-br-none' : 'md:rounded-r-xl md:rounded-bl-none'
       }`}
     >
       <Link

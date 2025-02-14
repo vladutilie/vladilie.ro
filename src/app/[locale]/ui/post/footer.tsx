@@ -57,7 +57,7 @@ export const Footer: React.FC<Project | Post> = (post) => {
           {socialLinks.map(({ name, url, logo }) => (
             <li key={name} className={'WhatsApp' === name ? 'md:hidden' : ''}>
               <button
-                className='rounded-md bg-gray-100 bg-opacity-0 p-1.5 transition duration-200 hover:bg-opacity-100 dark:hover:bg-slate-800'
+                className='rounded-md bg-gray-100/0 p-1.5 transition duration-200 hover:bg-gray-100/100 dark:hover:bg-slate-800'
                 onClick={() =>
                   window.open(url, t('share-on', { network: name }), 'left=20,top=20,width=500,height=600,toolbar=1')
                 }

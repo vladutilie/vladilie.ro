@@ -60,7 +60,7 @@ export const Menu: React.FC = () => {
       </aside>
 
       <div
-        className={displayMenu ? 'fixed inset-0 z-30 h-screen w-full bg-gray-900/10 backdrop-blur-sm md:hidden' : ''}
+        className={displayMenu ? 'fixed inset-0 z-30 h-screen w-full bg-gray-900/10 backdrop-blur-xs md:hidden' : ''}
       />
 
       <button className='md:hidden' onClick={() => handleMenu()} aria-label={t('burger-menu-al')}>
