@@ -49,7 +49,7 @@ export const Form: React.FC = () => {
         </label>
         <input
           {...register('firstName', { required: true })}
-          className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 focus:dark:outline-blue-500'
+          className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 dark:focus:outline-blue-500'
           id='firstName'
         />
         {errors.firstName && <span className='text-xs text-red-400'>{t('required-field')}</span>}
@@ -62,7 +62,7 @@ export const Form: React.FC = () => {
         <input
           {...register('lastName', { required: true })}
           id='lastName'
-          className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 focus:dark:outline-blue-500'
+          className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 dark:focus:outline-blue-500'
         />
         {errors.lastName && <span className='text-xs text-red-400'>{t('required-field')}</span>}
       </div>
@@ -73,7 +73,7 @@ export const Form: React.FC = () => {
         </label>
         <input
           {...register('email', { required: true })}
-          className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 focus:dark:outline-blue-500'
+          className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 dark:focus:outline-blue-500'
           id='email'
           maxLength={20}
           minLength={4}
@@ -88,7 +88,7 @@ export const Form: React.FC = () => {
         </label>
         <input
           {...register('phone', { required: true })}
-          className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 focus:dark:outline-blue-500'
+          className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 dark:focus:outline-blue-500'
           id='phone'
           maxLength={15}
           minLength={10}
@@ -102,7 +102,7 @@ export const Form: React.FC = () => {
         </label>
         <select
           {...register('service', { required: true })}
-          className={`min-h-[34px] rounded-md border border-gray-500 px-2 py-1 dark:outline-slate-800 focus:dark:outline-blue-500 ${
+          className={`min-h-[34px] rounded-md border border-gray-500 px-2 py-1 dark:outline-slate-800 dark:focus:outline-blue-500 ${
             !watch('service') ? 'text-gray-500' : ''
           }`}
           id='service'
@@ -157,7 +157,7 @@ export const Form: React.FC = () => {
         </label>
         <textarea
           {...register('message', { required: true })}
-          className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 focus:dark:outline-blue-500'
+          className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 dark:focus:outline-blue-500'
           rows={8}
           id='message'
           minLength={50}

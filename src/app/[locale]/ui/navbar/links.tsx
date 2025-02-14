@@ -15,7 +15,7 @@ export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = (
 
   return (
     <ul
-      className={`flex-col gap-x-6 after:absolute after:left-0 after:w-full after:border-b after:dark:border-gray-600 md:flex-row md:after:hidden ${
+      className={`flex-col gap-x-6 after:absolute after:left-0 after:w-full after:border-b dark:after:border-gray-600 md:flex-row md:after:hidden ${
         isMobile ? 'flex gap-y-4 overflow-y-auto text-base' : 'hidden items-center md:flex'
       }`}
     >
@@ -66,7 +66,7 @@ export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = (
         </Link>
       </li>
       <li className='hidden h-6 w-0.5 bg-gray-100 md:block' />
-      <li className='before:absolute before:left-0 before:w-full before:border-b before:dark:border-gray-600 md:before:hidden'>
+      <li className='before:absolute before:left-0 before:w-full before:border-b dark:before:border-gray-600 md:before:hidden'>
         <ThemeSwitcher />
       </li>
       <li>

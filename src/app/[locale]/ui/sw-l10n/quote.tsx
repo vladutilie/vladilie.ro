@@ -12,7 +12,7 @@ export const Quote: React.FC = () => {
         contact: (chunk: ReactNode): JSX.Element => (
           <Link
             href='/contact'
-            className='animate-text-bg text-clip bg-gradient-to-r from-blue-600 via-gray-600 to-green-500 bg-[length:400%] bg-clip-text text-lg font-semibold text-transparent hover:text-transparent'
+            className='animate-text-bg text-clip bg-linear-to-r from-blue-600 via-gray-600 to-green-500 bg-[length:400%] bg-clip-text text-lg font-semibold text-transparent hover:text-transparent'
           >
             {chunk}
           </Link>
