@@ -1,8 +1,81 @@
+@import 'tailwindcss';
 @import './ui/syntax-highlighting.css';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-*: initial;
+  --font-sans: Inter, sans-serif;
+
+  --color-blue-450: #3598db;
+
+  --animate-slide: slide 50s linear infinite;
+  --animate-slide2: slide2 50s linear infinite;
+  --animate-text-bg: bg-animate 3s ease infinite;
+
+  --shadow-surface-glass:
+    inset 0.25px 1px 0 0 color-mix(in oklab, oklch(0.892 0.058 10.001) 3%, transparent),
+    0px 0.3px 0.3px rgba(3, 2, 2, 0.02), 0px 2.2px 2.5px -0.4px rgba(3, 2, 2, 0.02),
+    0px 4.3px 4.8px -0.8px rgba(3, 2, 2, 0.02), 0px 7.5px 8.4px -1.2px rgba(3, 2, 2, 0.02),
+    0px 12.8px 14.4px -1.7px rgba(3, 2, 2, 0.02), 0px 21px 23.6px -2.1px rgba(3, 2, 2, 0.02),
+    0px 33.2px 37.4px -2.5px rgba(3, 2, 2, 0.02);
+
+  @keyframes slide {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes slide2 {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+  @keyframes loading {
+    0% {
+      opacity: 0.2;
+    }
+    20% {
+      opacity: 1;
+      transform: translateX(1px);
+    }
+    to {
+      opacity: 0.2;
+    }
+  }
+  @keyframes bg-animate {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 @layer base {
   h1,
@@ -59,7 +132,7 @@
     @apply text-blue-500;
   }
 
-  @screen lg {
+  @media (width >= theme(--breakpoint-lg)) {
     h1 {
       @apply text-6xl;
     }
