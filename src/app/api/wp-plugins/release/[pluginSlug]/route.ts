@@ -28,7 +28,8 @@ export async function POST(request: Request, { params }: { params: Promise<{ plu
       author: body.release.author.login,
       sections: { description: body.release.body },
       homepage: '',
-      assetId: body.release.assets[0].id
+      assetId: body.release.assets[0].id,
+      repository: body.repository.full_name
     },
 
     where: { slug },
