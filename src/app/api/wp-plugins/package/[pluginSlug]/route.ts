@@ -3,10 +3,6 @@ import { NextRequest } from 'next/server';
 import prisma from '@/lib/prisma';
 import { LicensePlan } from '@prisma/client';
 
-const GITHUB_API_URL = 'https://api.github.com/repos';
-const GITHUB_TOKEN = process.env.GITHUB_CNRWOO_LICENSING_TOKEN;
-const GITHUB_REPO = process.env.GITHUB_CNRWOO_REPOSITORY;
-
 export async function GET(req: NextRequest, { params }: { params: Promise<{ pluginSlug: string }> }) {
   try {
     const { pluginSlug } = await params;
@@ -34,9 +30,15 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ plug
       return Response.json({ error: 'License key is already set for another domain.' }, { status: 400 });
     */
     } else {
-      const download = await fetch(`${GITHUB_API_URL}/${GITHUB_REPO}/releases/assets/${plugin.assetId}`, {
-        headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: 'application/octet-stream' }
-      });
+      const download = await fetch(
+        `https://api.github.com/repos/${plugin.repository}/releases/assets/${plugin.assetId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.GITHUB_WP_PLUGINS_LICENSING_TOKEN}`,
+            Accept: 'application/octet-stream'
+          }
+        }
+      );
 
       if (!download.ok) {
         return Response.json({ error: 'Failed to download the file.' }, { status: 500 });
