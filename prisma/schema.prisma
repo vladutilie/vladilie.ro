@@ -81,3 +81,44 @@ enum BoardgameState {
   Own
   Wishlist
 }
+
+model WPPlugin {
+  id          String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name        String   @db.VarChar
+  slug        String   @unique @db.VarChar
+  downloads   Int      @default(0)
+  version     String   @db.VarChar(8)
+  requires    String   @db.VarChar(8)
+  requiresPhp String   @map("requires_php") @db.VarChar(8)
+  tested      String   @db.VarChar(8)
+  author      String   @db.VarChar(20)
+  sections    Json     @db.JsonB
+  homepage    String   @db.VarChar
+  assetId     Int      @map("asset_id") @db.Integer
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at")
+
+  licenses License[]
+
+  @@map("wp_plugins")
+}
+
+model License {
+  id        String      @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  key       String      @unique @db.VarChar
+  pluginId  String      @map("plugin_id") @db.Uuid
+  domain    String      @db.VarChar
+  plan      LicensePlan @default(Annual)
+  validity  DateTime
+  createdAt DateTime    @default(now()) @map("created_at")
+  updatedAt DateTime    @default(now()) @updatedAt @map("updated_at")
+
+  wpPlugin WPPlugin @relation(fields: [pluginId], references: [id])
+
+  @@map("licenses")
+}
+
+enum LicensePlan {
+  Annual
+  Lifetime
+}
