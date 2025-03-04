@@ -839,6 +839,11 @@
   resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-23.0.1.tgz#3721646ecd36b596ddb12650e0e89d3ebb2dd50e"
   integrity sha512-izFjMJ1sir0jn0ldEKhZ7xegCTj/ObmEDlEfpFrx4k/JyZSMRHbO3/rBwgE7f3m2DHt+RrNGIVw4wSmwnm3t/g==
 
+"@octokit/openapi-webhooks-types@10.1.1":
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/@octokit/openapi-webhooks-types/-/openapi-webhooks-types-10.1.1.tgz#8373f90150ca5783771ba79336c71e14b5aa4675"
+  integrity sha512-qBfqQVIDQaCFeGCofXieJDwvXcGgDn17+UwZ6WW6lfEvGYGreLFzTiaz9xjet9Us4zDf8iasoW3ixUj/R5lMhA==
+
 "@octokit/plugin-paginate-rest@^11.4.0":
   version "11.4.0"
   resolved "https://registry.yarnpkg.com/@octokit/plugin-paginate-rest/-/plugin-paginate-rest-11.4.0.tgz#a9c3347113d793e48a014f0aa549eada00de7c9a"
@@ -862,6 +867,13 @@
   version "6.1.6"
   resolved "https://registry.yarnpkg.com/@octokit/request-error/-/request-error-6.1.6.tgz#5f42c7894e7c3ab47c63aa3241f78cee8a826644"
   integrity sha512-pqnVKYo/at0NuOjinrgcQYpEbv4snvP3bKMRqHaD9kIsk9u1LCpb2smHZi8/qJfgeNqLo5hNW4Z7FezNdEo0xg==
+  dependencies:
+    "@octokit/types" "^13.6.2"
+
+"@octokit/request-error@^6.1.7":
+  version "6.1.7"
+  resolved "https://registry.yarnpkg.com/@octokit/request-error/-/request-error-6.1.7.tgz#44fc598f5cdf4593e0e58b5155fe2e77230ff6da"
+  integrity sha512-69NIppAwaauwZv6aOzb+VVLwt+0havz9GT5YplkeJv7fG7a40qpLt/yZKyiDxAhgz0EtgNdNcb96Z0u+Zyuy2g==
   dependencies:
     "@octokit/types" "^13.6.2"
 
@@ -892,6 +904,20 @@
   integrity sha512-BXfRP+3P3IN6fd4uF3SniaHKOO4UXWBfkdR3vA8mIvaoO/wLjGN5qivUtW0QRitBHHMcfC41SLhNVYIZZE+wkA==
   dependencies:
     "@octokit/openapi-types" "^23.0.1"
+
+"@octokit/webhooks-methods@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@octokit/webhooks-methods/-/webhooks-methods-5.1.1.tgz#192f11a1f115702833f033293e2fef8f69f612e4"
+  integrity sha512-NGlEHZDseJTCj8TMMFehzwa9g7On4KJMPVHDSrHxCQumL6uSQR8wIkP/qesv52fXqV1BPf4pTxwtS31ldAt9Xg==
+
+"@octokit/webhooks@^13.7.4":
+  version "13.7.4"
+  resolved "https://registry.yarnpkg.com/@octokit/webhooks/-/webhooks-13.7.4.tgz#c709cb0b2c668c0d09005e5a1157820e59228922"
+  integrity sha512-f386XyLTieQbgKPKS6ZMlH4dq8eLsxNddwofiKRZCq0bZ2gikoFwMD99K6l1oAwqe/KZNzrEziGicRgnzplplQ==
+  dependencies:
+    "@octokit/openapi-webhooks-types" "10.1.1"
+    "@octokit/request-error" "^6.1.7"
+    "@octokit/webhooks-methods" "^5.1.1"
 
 "@opentelemetry/api-logs@0.39.1":
   version "0.39.1"
