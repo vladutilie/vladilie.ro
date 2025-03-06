@@ -1,24 +1,16 @@
 import { NextRequest } from 'next/server';
 
 import prisma from '@/lib/prisma';
-import { LicensePlan } from '@prisma/client';
+import { processPluginLicense } from '@/lib/processPluginLicense';
 
-export async function GET(req: NextRequest, { params }: { params: Promise<{ pluginSlug: string }> }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ pluginSlug: string }> }) {
   try {
     const { pluginSlug } = await params;
     const [slug] = pluginSlug.split('.');
+    const searchParams = request.nextUrl.searchParams;
+    const licenseKey = searchParams.get('license') as string;
 
-    const plugin = await prisma.wPPlugin.findUnique({ where: { slug } });
-    if (!plugin) {
-      return Response.json({ error: 'Plugin not found.' }, { status: 404 });
-    }
-
-    const searchParams = req.nextUrl.searchParams;
-    const licenseKey = searchParams.get('license');
-
-    if (!licenseKey) {
-      return Response.json({ error: 'License key not found.' }, { status: 404 });
-    }
+    const plugin = await processPluginLicense(request, licenseKey);
 
     const license = await prisma.license.findFirst({ where: { key: licenseKey } });
 
