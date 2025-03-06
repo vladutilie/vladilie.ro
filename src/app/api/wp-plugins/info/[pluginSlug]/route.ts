@@ -31,8 +31,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
       author: plugin.author,
       homepage: plugin.homepage,
       rating: 0,
-      num_ratings: 0,
-      req: { latest: '0.1.1', licenseKey, referer, slug }
+      num_ratings: 0
     };
 
     return Response.json(response);
