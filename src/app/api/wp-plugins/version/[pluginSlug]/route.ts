@@ -1,19 +1,11 @@
-import prisma from '@/lib/prisma';
-import { headers } from 'next/headers';
+import { NextRequest } from 'next/server';
 
-export async function GET(_: Request, { params }: { params: Promise<{ pluginSlug: string }> }) {
+import { processPluginLicense } from '@/lib/processPluginLicense';
+
+export async function GET(request: NextRequest, { params }: { params: Promise<{ pluginSlug: string }> }) {
   try {
-    const headersList = await headers();
-
-    // TODO: Think about how should I handle the license key and the referer.
-    const referer = headersList.get('referer');
-    const licenseKey = headersList.get('x-license-key');
-
     const { pluginSlug: slug } = await params;
-    const plugin = await prisma.wPPlugin.findUnique({ where: { slug } });
-    if (!plugin) {
-      return Response.json({ error: 'Plugin not found.' }, { status: 404 });
-    }
+    const plugin = await processPluginLicense(request);
 
     return Response.json({ slug, latest: plugin.version });
   } catch (error: any) {
