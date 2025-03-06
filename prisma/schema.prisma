@@ -96,6 +96,7 @@ model WPPlugin {
   homepage    String   @db.VarChar
   assetId     Int      @map("asset_id") @db.Integer
   repository  String   @db.VarChar
+  productId   String   @default("") @map("product_id") @db.VarChar
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @default(now()) @updatedAt @map("updated_at")
 
