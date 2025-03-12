@@ -20,8 +20,8 @@ export const Footer: React.FC = () => {
           <div>
             <p className='my-0 text-sm font-medium'>{process.env.NEXT_PUBLIC_COMPANY_NAME}</p>
             <p className='my-0 text-sm'>{process.env.NEXT_PUBLIC_ADDRESS}</p>
-            <p className='my-0 text-sm'>{t('footer.vat-id', { vatId: process.env.NEXT_PUBLIC_VAT_ID })}</p>
-            <p className='my-0 text-sm'>{t('footer.trade-reg-no', { regNo: process.env.NEXT_PUBLIC_REG_NO })}</p>
+            <p className='my-0 text-sm'>{t('footer.vat-id', { vatId: process.env.NEXT_PUBLIC_VAT_ID! })}</p>
+            <p className='my-0 text-sm'>{t('footer.trade-reg-no', { regNo: process.env.NEXT_PUBLIC_REG_NO! })}</p>
           </div>
         </div>
 
@@ -76,7 +76,7 @@ export const Footer: React.FC = () => {
         </ul>
 
         <p className='col-span-3 mt-4 border-t pt-4 text-center text-sm text-gray-500'>
-          {t('footer.copyright', { year: new Date().getFullYear(), siteName: process.env.NEXT_PUBLIC_SITE_NAME })}
+          {t('footer.copyright', { year: new Date().getFullYear(), siteName: process.env.NEXT_PUBLIC_SITE_NAME! })}
         </p>
       </div>
     </footer>

@@ -127,7 +127,7 @@ export const Form: React.FC = () => {
         <div className='col-span-2 flex flex-col'>
           <label htmlFor='budget' className='text-sm text-gray-500'>
             {t.rich('budget', {
-              amount: watch('budget'),
+              amount: Number(watch('budget')),
               strong: (chunk: ReactNode): JSX.Element => (
                 <span className='font-semibold'>
                   {new Intl.NumberFormat(locale, {
