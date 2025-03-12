@@ -29,7 +29,7 @@ export const ThemeSwitcher: React.FC = () => {
     <div className='flex items-center justify-between'>
       <span className='md:hidden'>{t('switch-theme')}</span>
       <button
-        className='relative flex items-center justify-center gap-x-2 overflow-hidden p-2'
+        className='relative flex cursor-pointer items-center justify-center gap-x-2 overflow-hidden p-2'
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       >
         <Image
