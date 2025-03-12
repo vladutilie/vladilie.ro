@@ -8,7 +8,7 @@ export { Glasses } from './Glasses';
 export { Instagram } from './Instagram';
 export { LinkedIn } from './LinkedIn';
 export { Players } from './Players';
-export { Polywork } from './Polywork';
+
 export { Quotes } from './Quotes';
 export { Twitter } from './Twitter';
 export { Wishlist } from './Wishlist';
