@@ -11,7 +11,7 @@ export { MySQL } from './mysql.icon';
 export { NationalDay } from './national-day.icon';
 export { PHP } from './php.icon';
 export { Pin } from './pin.icon';
-export { Polywork } from './polywork.icon';
+export { ProductHunt } from './product-hunt';
 export { CV } from './cv.icon';
 export { Prisma } from './prisma.icon';
 export { Pumpkin } from './pumpkin.icon';

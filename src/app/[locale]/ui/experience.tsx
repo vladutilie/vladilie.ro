@@ -9,6 +9,7 @@ import javascript from '@/../public/images/technologies/javascript.svg';
 import typescript from '@/../public/images/technologies/typescript.svg';
 import nodejs from '@/../public/images/technologies/nodejs.svg';
 import { ExpressJS, PHP, WordPress2, MySQL, Prisma } from './icons';
+import wpcli from '@/../public/images/sw-l10n/wp-cli.png';
 import nextjs from '@/../public/images/technologies/nextjs.svg';
 import nestjs from '@/../public/images/technologies/nestjs.svg';
 import neo4j from '@/../public/images/technologies/neo4j.svg';
@@ -33,6 +34,7 @@ const technologies: { name: string; image: StaticImport; url: string }[] = [
     image: <WordPress2 className='grayscale transition-transform group-hover:scale-110' />,
     url: 'https://wordpress.org'
   },
+  { name: 'WP-CLI', image: wpcli, url: 'https://wp-cli.org' },
 
   { name: 'MySQL', image: <MySQL />, url: 'https://mysql.com' },
   { name: 'PostgreSQL', image: postgresql, url: 'https://postgresql.org' },
