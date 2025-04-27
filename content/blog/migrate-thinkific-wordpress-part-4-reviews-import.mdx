@@ -60,7 +60,7 @@ I'm putting here again the structure of the review file in `JSON` format:
 }
 ```
 
-As in the previous articles, reading from files is done in a similar way, but this time I won't use the helper method `parse_csv_content` to compose the vector with lines from the `CSV` file.
+As in the previous articles, reading from files is done in a similar way, but this time I won't use the helper method `parse_csv_content` to compose the array with lines from the `CSV` file.
 Instead, I will use the `json_decode` function to interpret the `JSON` code:
 ```php showLineNumbers title="class-wpcli.php"
 $file_path    = plugin_dir_path( __FILE__ ) . '/data/reviews/' . $file;
