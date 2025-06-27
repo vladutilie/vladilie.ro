@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Post, Project } from 'contentlayer/generated';
 
 import { getPathname } from '@/i18n/routing';
-import { Facebook, LinkedIn, WhatsApp, X } from '../icons';
+import { Bluesky, Facebook, LinkedIn, WhatsApp, X } from '../icons';
 import { Tag } from '../tag';
 
 export const Footer: React.FC<Project | Post> = (post) => {
@@ -18,14 +18,15 @@ export const Footer: React.FC<Project | Post> = (post) => {
       page = getPathname({ href: '/projects', locale });
     }
 
-    let localePrefix = '';
-    if ('ro' === locale) {
-      localePrefix = '/ro/';
-    }
-    const url = new URL(`${localePrefix}${page}/${post.slug}`, process.env.NEXT_PUBLIC_SITE_URL!);
+    const url = new URL(`${page}/${post.slug}`, process.env.NEXT_PUBLIC_SITE_URL!);
 
     return [
       { name: 'X', url: `https://x.com/intent/tweet?url=${url}&text=${post.description}&via=vladilie`, logo: <X /> },
+      {
+        name: 'Bluesky',
+        url: `https://bsky.app/intent/compose?text=${post.description} ${url}`,
+        logo: <Bluesky />
+      },
       {
         name: 'LinkedIn',
         url: `https://www.linkedin.com/shareArticle?url=${url}&title=${post.title}`,
