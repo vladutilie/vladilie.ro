@@ -1,4 +1,4 @@
-import { BoardgameState, BookState, PrismaClient } from '@prisma/client';
+import { BoardgameState, BookState, PrismaClient } from '@/../generated/prisma';
 import { getPlaiceholder } from 'plaiceholder';
 
 const getImageData = async (imageUrl: string): Promise<string> => {

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { BookState, Book as BookT } from '@prisma/client';
+import { BookState, Book as BookT } from '@/../generated/prisma';
 
 import { Done, Favorite, Glasses, Wishlist } from '@/icons';
 
