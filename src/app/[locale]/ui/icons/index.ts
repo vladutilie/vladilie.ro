@@ -1,5 +1,7 @@
+export { Bluesky } from './bluesky.icon';
 export { Burger } from './burger.icon';
 export { Commit } from './commit.icon';
+export { CV } from './cv.icon';
 export { Easter } from './easter.icon';
 export { ExpressJS } from './expressjs.icon';
 export { Facebook } from './facebook.icon';
@@ -11,9 +13,8 @@ export { MySQL } from './mysql.icon';
 export { NationalDay } from './national-day.icon';
 export { PHP } from './php.icon';
 export { Pin } from './pin.icon';
-export { ProductHunt } from './product-hunt';
-export { CV } from './cv.icon';
 export { Prisma } from './prisma.icon';
+export { ProductHunt } from './product-hunt';
 export { Pumpkin } from './pumpkin.icon';
 export { WhatsApp } from './whatsapp.icon';
 export { WordPress } from './wordpress.icon';
