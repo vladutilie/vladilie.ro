@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { type Boardgame as BoardgameT, BoardgameState } from '@prisma/client';
+import { type Boardgame as BoardgameT, BoardgameState } from '@/../generated/prisma';
 
 import { Boardgame } from './boardgame';
 

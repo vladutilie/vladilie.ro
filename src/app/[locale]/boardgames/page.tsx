@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Boardgame } from '@prisma/client';
+import { Boardgame } from '@/../generated/prisma';
 import { getTranslations } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';

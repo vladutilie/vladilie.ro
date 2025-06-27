@@ -1,7 +1,7 @@
 'use server';
 
 import { NextRequest } from 'next/server';
-import { LicensePlan } from '@prisma/client';
+import { LicensePlan } from '@/../generated/prisma';
 
 import prisma from '@/lib/prisma';
 

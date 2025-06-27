@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { type Boardgame as BoardgameT } from '@prisma/client';
+import { type Boardgame as BoardgameT } from '@/../generated/prisma';
 
 import { Duration, Players } from '@/icons';
 

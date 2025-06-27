@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { type Book as BookT, BookState } from '@prisma/client';
+import { type Book as BookT, BookState } from '@/../generated/prisma';
 import { getTranslations } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';
