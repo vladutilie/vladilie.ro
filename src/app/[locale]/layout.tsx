@@ -1,13 +1,14 @@
+import { Analytics } from '@vercel/analytics/next';
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
+import { notFound } from 'next/navigation';
 
 import { routing } from '@/i18n/routing';
 import './globals.css';
-import { ThemeProvider } from './ui/theme-provider';
-import { Navbar } from './ui/navbar';
 import { Footer } from './ui/footer';
+import { Navbar } from './ui/navbar';
+import { ThemeProvider } from './ui/theme-provider';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -57,6 +58,7 @@ export default async function LocaleLayout({
             <Navbar />
             {children}
             <Footer />
+            <Analytics />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
