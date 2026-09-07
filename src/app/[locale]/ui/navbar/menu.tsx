@@ -16,7 +16,7 @@ export const Menu: React.FC = () => {
     const handleClickOutside = (event: any) => {
       const sidebar = document.getElementById('sidebar');
       if (sidebar && !sidebar.contains(event.target) && displayMenu) {
-        window.document.body.style.overflowY = '';
+        window.document.body.style.overflow = '';
         setDisplayMenu(false);
       }
     };
@@ -28,10 +28,10 @@ export const Menu: React.FC = () => {
 
   const handleMenu = (state = true): void => {
     if (state) {
-      window.document.body.style.overflowY = 'hidden';
+      window.document.body.style.overflow = 'hidden';
       setDisplayMenu(true);
     } else {
-      window.document.body.style.overflowY = '';
+      window.document.body.style.overflow = '';
       setDisplayMenu(false);
     }
   };
@@ -42,8 +42,10 @@ export const Menu: React.FC = () => {
 
       <aside
         id='sidebar'
-        className={`border-hairline bg-surface fixed top-0 right-0 z-40 flex h-screen w-full max-w-sm origin-right flex-col gap-y-8 border-l p-6 transition ${
-          displayMenu ? '-translate-x-0 opacity-100 md:hidden' : 'translate-x-full opacity-0'
+        className={`border-hairline bg-surface fixed top-0 right-0 z-40 flex h-screen w-full max-w-sm flex-col gap-y-8 border-l p-6 transition-all transition-discrete duration-300 md:hidden ${
+          displayMenu
+            ? 'translate-x-0 opacity-100 starting:translate-x-full starting:opacity-0'
+            : 'hidden translate-x-full opacity-0'
         }`}
       >
         <header className='flex items-center justify-between'>
