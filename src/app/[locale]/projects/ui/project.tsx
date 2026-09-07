@@ -18,6 +18,7 @@ export const Project: React.FC<ProjectT> = ({
   featuredImage,
   blurDataImage,
   description,
+  technologies,
   date,
   slug,
   readingTime
@@ -32,32 +33,41 @@ export const Project: React.FC<ProjectT> = ({
   }
 
   return (
-    <Link
-      href={{ pathname: '/projects/[slug]', params: { slug } }}
-      className='bg-surface-raised dark:bg-surface-raised col-span-6 rounded-lg border sm:col-span-3 lg:col-span-2'
-    >
-      <div className='relative h-52 border-b'>
-        <Image
-          alt={title}
-          blurDataURL={blurDataImage}
-          className='rounded-t-lg object-cover'
-          fill
-          placeholder='blur'
-          sizes='(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw'
-          src={featuredImage}
-        />
-      </div>
-
-      <div className='flex flex-col px-4 py-2'>
-        <h2 className='line-clamp-1 text-xl'>{title}</h2>
-        <p className='text-content/60 line-clamp-2 text-sm'>{description}</p>
-
-        <div className='text-content/60 flex justify-between text-xs'>
-          <span>{t('reading-time', { minutes: Math.ceil(readingTime) })}</span>
-          <span>{isError || isLoading ? <LoadingDots /> : t('views', { count: numberFormat(Number(views)) })}</span>
-          <span>{format(date, locale)}</span>
+    <li>
+      <Link
+        href={{ pathname: '/projects/[slug]', params: { slug } }}
+        className='group border-hairline bg-surface text-content hover:border-accent hover:text-content flex h-full flex-col overflow-hidden rounded-[4px] border transition-colors'
+      >
+        <div className='border-hairline relative aspect-16/10 border-b'>
+          <Image
+            alt={title}
+            blurDataURL={blurDataImage}
+            className='object-cover'
+            fill
+            placeholder='blur'
+            sizes='(max-width: 768px) 100vw, 33vw'
+            src={featuredImage}
+          />
         </div>
-      </div>
-    </Link>
+
+        <div className='flex flex-1 flex-col p-6 pb-7'>
+          <div className='text-accent mb-3 font-mono text-[11px] tracking-[0.1em] uppercase'>
+            {technologies.slice(0, 2).join(' · ')}
+          </div>
+
+          <h2 className='group-hover:text-accent my-0 mb-2.5 text-xl leading-tight transition-colors'>{title}</h2>
+
+          <p className='my-0 mb-5 text-[15px] leading-relaxed'>{description}</p>
+
+          <div className='border-hairline text-content/50 mt-auto flex flex-wrap items-center gap-x-2 border-t pt-4 font-mono text-[11px]'>
+            <span>{format(date, locale)}</span>
+            <span aria-hidden>·</span>
+            <span>{t('reading-time', { minutes: Math.ceil(readingTime) })}</span>
+            <span aria-hidden>·</span>
+            {isError || isLoading ? <LoadingDots /> : <span>{t('views', { count: numberFormat(Number(views)) })}</span>}
+          </div>
+        </div>
+      </Link>
+    </li>
   );
 };

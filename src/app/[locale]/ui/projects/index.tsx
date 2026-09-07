@@ -21,7 +21,7 @@ export const Projects: React.FC = () => {
     <section id={NavLinks.Work} className='border-hairline border-t py-16 md:py-20 lg:py-[88px]'>
       <div className='mb-11 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between'>
         <div>
-          <SectionLabel index='05'>{t('tag')}</SectionLabel>
+          <SectionLabel index='04'>{t('tag')}</SectionLabel>
           <p className='text-content my-0 mt-[18px] max-w-[24ch] text-3xl leading-tight font-semibold tracking-[-0.03em]'>
             {t('title')}
           </p>

@@ -12,7 +12,7 @@ export const Elsewhere: React.FC = () => {
   return (
     <section id={NavLinks.Writing} className='border-hairline border-t py-16 md:py-20 lg:py-[88px]'>
       <div className='mb-10 flex items-end justify-between gap-8'>
-        <SectionLabel index='07'>{t('homepage.elsewhere.tag')}</SectionLabel>
+        <SectionLabel index='06'>{t('homepage.elsewhere.tag')}</SectionLabel>
 
         <Link
           href={`/${Pages.Blog}`}

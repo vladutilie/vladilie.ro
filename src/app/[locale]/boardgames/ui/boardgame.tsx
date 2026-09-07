@@ -10,37 +10,38 @@ export const Boardgame: React.FC<BoardgameT> = ({ age, blurData, duration, image
   return (
     <a
       href={link}
-      className='group col-span-12 h-52 p-2 transition-transform hover:scale-105 sm:col-span-6 lg:col-span-4 xl:col-span-3'
+      className='group bg-surface hover:bg-hover-tint flex flex-col gap-4 p-5 transition-colors'
       target='_blank'
+      rel='noreferrer'
     >
-      <div className='bg-surface-raised flex h-full flex-col gap-y-4 rounded-md'>
-        <div className='bg-hover-tint dark:bg-surface-raised flex h-12 items-center justify-between rounded-t-md px-2'>
-          <h4 className="text-content/70 w-4/6 text-sm group-hover:text-blue-500 group-hover:after:inline-block group-hover:after:content-['_↗']">
-            {name.length > 34 ? `${name.slice(0, 34)}...` : name}
-          </h4>
-          <span className='text-content/60 w-2/6 text-right text-sm'>{t('age', { age })}</span>
-        </div>
+      <div className='flex items-start justify-between gap-3'>
+        <h3 className="text-content group-hover:text-accent my-0 text-base leading-snug font-semibold transition-colors group-hover:after:content-['_↗']">
+          {name}
+        </h3>
+        <span className='text-content/50 shrink-0 font-mono text-[11px] tracking-[0.08em] uppercase'>
+          {t('age', { age })}
+        </span>
+      </div>
 
-        <div className='relative h-20 w-full'>
-          <Image
-            alt={name}
-            blurDataURL={`data:image/png,${blurData}`}
-            className='object-contain'
-            fill
-            placeholder='blur'
-            sizes='100px'
-            src={image}
-          />
-        </div>
+      <div className='relative h-24 w-full'>
+        <Image
+          alt={name}
+          blurDataURL={`data:image/png,${blurData}`}
+          className='object-contain'
+          fill
+          placeholder='blur'
+          sizes='150px'
+          src={image}
+        />
+      </div>
 
-        <div className='flex justify-between px-2'>
-          <span className='text-content/60 flex w-1/2 items-center gap-x-2'>
-            <Players className='w-5 fill-gray-500' /> {players}
-          </span>
-          <span className='text-content/60 flex w-1/2 items-center justify-end gap-x-2'>
-            <Duration className='w-5 fill-gray-500' /> {duration}&quot;
-          </span>
-        </div>
+      <div className='border-hairline text-content/50 flex justify-between border-t pt-3 font-mono text-[11px]'>
+        <span className='flex items-center gap-x-2'>
+          <Players className='w-4 fill-current' /> {players}
+        </span>
+        <span className='flex items-center gap-x-2'>
+          <Duration className='w-4 fill-current' /> {duration}&quot;
+        </span>
       </div>
     </a>
   );

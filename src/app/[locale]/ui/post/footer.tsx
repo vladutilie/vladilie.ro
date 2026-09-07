@@ -38,10 +38,12 @@ export const Footer: React.FC<Project | Post> = (post) => {
   }, [post, locale]);
 
   return (
-    <div className='flex flex-col justify-between gap-4 border-t sm:flex-row'>
+    <div className='border-hairline mt-12 flex flex-col justify-between gap-6 border-t pt-8 sm:flex-row'>
       {'technologies' in post && (
         <div className='flex w-full flex-col sm:w-4/5'>
-          <p className='text-md font-semibold'>{t('technologies')}</p>
+          <p className='text-content/45 my-0 mb-3 font-mono text-[11px] tracking-[0.12em] uppercase'>
+            {t('technologies')}
+          </p>
           <ul className='flex flex-wrap gap-2'>
             {post.technologies.map((item) => (
               <li key={item}>
@@ -53,12 +55,18 @@ export const Footer: React.FC<Project | Post> = (post) => {
       )}
 
       <div className='flex w-full flex-col sm:w-1/5'>
-        <p className={`text-md font-semibold ${'technologies' in post ? 'sm:text-right' : ''}`}>{t('share')}</p>
+        <p
+          className={`text-content/45 my-0 mb-3 font-mono text-[11px] tracking-[0.12em] uppercase ${
+            'technologies' in post ? 'sm:text-right' : ''
+          }`}
+        >
+          {t('share')}
+        </p>
         <ul className={`flex gap-x-2 ${'technologies' in post ? 'sm:self-end' : ''}`}>
           {socialLinks.map(({ name, url, logo }) => (
             <li key={name} className={'WhatsApp' === name ? 'md:hidden' : ''}>
               <button
-                className='rounded-md bg-gray-100/0 p-1.5 transition duration-200 hover:bg-gray-100/100 dark:hover:bg-slate-800'
+                className='hover:bg-hover-tint cursor-pointer rounded-md p-1.5 transition-colors duration-200'
                 onClick={() =>
                   window.open(url, t('share-on', { network: name }), 'left=20,top=20,width=500,height=600,toolbar=1')
                 }

@@ -8,7 +8,6 @@ import { Hero } from './ui/hero';
 import { About } from './ui/about';
 import { Services } from './ui/services';
 import { Stack } from './ui/stack';
-import { Education } from './ui/education';
 import { Projects } from './ui/projects';
 import { SoftwareLocalization } from './ui/sw-l10n';
 import { Elsewhere } from './ui/elsewhere';
@@ -105,7 +104,6 @@ export default async function Home() {
       <About />
       <Services />
       <Stack />
-      <Education />
       <Projects />
       <SoftwareLocalization />
       <Elsewhere />

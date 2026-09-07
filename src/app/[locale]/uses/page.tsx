@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';
+import { GroupHeading, Page, PageHeader } from '../ui/page-header';
 const environment = [
   ['environment.desk.name', 'environment.desk.description'],
   ['environment.chair.name', 'environment.chair.description'],
@@ -62,69 +63,33 @@ export default async function Uses({ params }: { params: Promise<{ locale: strin
   const t = await getTranslations('uses');
 
   return (
-    <main className='mx-auto max-w-[1180px] gap-8 px-5 py-16 md:px-8 md:py-24'>
-      <h1>{t('title')}</h1>
-      <p>{t('description')}</p>
+    <Page>
+      <PageHeader title={t('title')} lead={t('description')} />
 
-      <h2 className='mt-8 text-3xl'>{t('environment.title')}</h2>
-      <ul className='list-inside list-disc space-y-2'>
-        {environment.map((item) => {
-          if (Array.isArray(item)) {
-            return (
-              <li key={item[0]}>
-                <p className='inline'>{t(item[0])}</p>
-                <span className='text-content/60 block text-sm'>{t(item[1])}</span>
-              </li>
-            );
-          }
+      <div className='grid gap-14'>
+        {(
+          [
+            ['environment', environment],
+            ['hardware', hardware],
+            ['software', software]
+          ] as const
+        ).map(([key, items]) => (
+          <section key={key}>
+            <GroupHeading>{t(`${key}.title`)}</GroupHeading>
 
-          return (
-            <li key={item} className='text-content/70'>
-              {t(item)}
-            </li>
-          );
-        })}
-      </ul>
-
-      <h2 className='mt-8 text-3xl'>{t('hardware.title')}</h2>
-      <ul className='list-inside list-disc space-y-2'>
-        {hardware.map((item) => {
-          if (Array.isArray(item)) {
-            return (
-              <li key={item[0]}>
-                <p className='inline'>{t(item[0])}</p>
-                <span className='text-content/60 block text-sm'>{t(item[1])}</span>
-              </li>
-            );
-          }
-
-          return (
-            <li key={item} className='text-content/70'>
-              {t(item)}
-            </li>
-          );
-        })}
-      </ul>
-
-      <h2 className='mt-8 text-3xl'>{t('software.title')}</h2>
-      <ul className='list-inside list-disc space-y-2'>
-        {software.map((item) => {
-          if (Array.isArray(item)) {
-            return (
-              <li key={item[0]}>
-                <p className='inline'>{t(item[0])}</p>
-                <span className='text-content/60 block text-sm'>{t(item[1])}</span>
-              </li>
-            );
-          }
-
-          return (
-            <li key={item} className='text-content/70'>
-              {t(item)}
-            </li>
-          );
-        })}
-      </ul>
-    </main>
+            <ul className='border-hairline bg-hairline grid gap-px border-y'>
+              {items.map((item) => (
+                <li key={Array.isArray(item) ? item[0] : item} className='bg-surface px-4 py-4 sm:px-6'>
+                  <p className='text-content my-0 font-medium'>{t(Array.isArray(item) ? item[0] : item)}</p>
+                  {Array.isArray(item) ? (
+                    <span className='text-content/60 mt-1 block text-sm'>{t(item[1])}</span>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </Page>
   );
 }

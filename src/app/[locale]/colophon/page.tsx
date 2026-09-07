@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';
+import { Page, PageHeader } from '../ui/page-header';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -38,8 +39,8 @@ export default async function Colophon({ params }: { params: Promise<{ locale: s
   const t = await getTranslations('colophon');
 
   return (
-    <main className='mx-auto max-w-[1180px] gap-8 px-5 py-16 md:px-8 md:py-24'>
-      <h1>{t('title')}</h1>
+    <Page narrow>
+      <PageHeader title={t('title')} />
       <p>
         {t.rich('p1', {
           url: (chunk: ReactNode): JSX.Element => (
@@ -102,6 +103,6 @@ export default async function Colophon({ params }: { params: Promise<{ locale: s
           )
         })}
       </p>
-    </main>
+    </Page>
   );
 }

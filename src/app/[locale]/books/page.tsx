@@ -6,6 +6,7 @@ import { getTranslations } from 'next-intl/server';
 import { getPathname } from '@/i18n/routing';
 import prisma from '@/lib/prisma';
 import { Book } from './ui/book';
+import { GroupHeading, Page, PageHeader } from '../ui/page-header';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -49,36 +50,34 @@ export default async function BookPage() {
   const books = await getBooks();
 
   return (
-    <main className='mx-auto max-w-[1180px] gap-8 px-5 py-16 md:px-8 md:py-24'>
-      <h1>{t('title')}</h1>
-      <p>{t('description')}</p>
+    <Page>
+      <PageHeader
+        meta={t('count', { count: books.reading.length + books.completed.length + books.wishing.length })}
+        title={t('title')}
+        lead={t('description')}
+      />
 
-      <div>
-        <h3 className='text-2xl'>{t('currently-reading')}</h3>
-        <div className='mt-4 grid grid-cols-6'>
-          {books.reading.map((book) => (
-            <Book key={book.id} {...book} />
-          ))}
-        </div>
-      </div>
+      <div className='grid gap-14'>
+        {(
+          [
+            ['currently-reading', books.reading],
+            ['read', books.completed],
+            ['wishlist', books.wishing]
+          ] as const
+        ).map(([key, list]) =>
+          list.length ? (
+            <section key={key}>
+              <GroupHeading>{t(key)}</GroupHeading>
 
-      <div>
-        <h3 className='text-2xl'>{t('read')}</h3>
-        <div className='mt-4 grid grid-cols-6'>
-          {books.completed.map((book) => (
-            <Book key={book.id} {...book} />
-          ))}
-        </div>
+              <div className='border-hairline bg-hairline grid grid-cols-1 gap-px border sm:grid-cols-2 lg:grid-cols-3'>
+                {list.map((book) => (
+                  <Book key={book.id} {...book} />
+                ))}
+              </div>
+            </section>
+          ) : null
+        )}
       </div>
-
-      <div>
-        <h3 className='text-2xl'>{t('wishlist')}</h3>
-        <div className='mt-4 grid grid-cols-6'>
-          {books.wishing.map((book) => (
-            <Book key={book.id} {...book} />
-          ))}
-        </div>
-      </div>
-    </main>
+    </Page>
   );
 }

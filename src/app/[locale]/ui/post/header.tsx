@@ -12,12 +12,12 @@ export const Header: React.FC<Post | Project> = async ({
   date,
   readingTime
 }) => (
-  <div className='flex flex-col gap-y-4'>
-    <div className='relative h-40 w-full sm:h-96'>
+  <div className='mb-10 flex flex-col gap-y-6'>
+    <div className='border-hairline relative aspect-16/9 w-full overflow-hidden rounded-[4px] border'>
       <Image
         alt={title}
         blurDataURL={blurDataImage}
-        className='rounded-md object-cover shadow-lg'
+        className='object-cover'
         fill
         placeholder='blur'
         sizes='100vw'
@@ -25,11 +25,11 @@ export const Header: React.FC<Post | Project> = async ({
       />
     </div>
 
-    <h1>{title}</h1>
+    <h1 className='my-0 text-4xl lg:text-5xl'>{title}</h1>
 
-    <div className='mb-4 flex flex-col justify-between gap-y-2 border-b pb-6 sm:flex-row sm:items-center'>
-      <Reactions slug={slug} />
+    <div className='border-hairline flex flex-col justify-between gap-y-4 border-y py-5 sm:flex-row sm:items-center'>
       <Meta date={date} readingTime={readingTime} slug={slug} />
+      <Reactions slug={slug} />
     </div>
   </div>
 );

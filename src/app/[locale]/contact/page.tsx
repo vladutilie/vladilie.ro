@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';
 import { Form } from './ui/form';
+import { Page, PageHeader } from '../ui/page-header';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -38,11 +39,10 @@ export default async function Contact({ params }: { params: Promise<{ locale: st
   const t = await getTranslations('contact');
 
   return (
-    <main className='mx-auto max-w-[1180px] gap-8 px-5 py-16 md:px-8 md:py-24'>
-      <h1>{t('title')}</h1>
-      <p>{t('description')}</p>
+    <Page>
+      <PageHeader title={t('title')} lead={t('description')} />
 
       <Form />
-    </main>
+    </Page>
   );
 }

@@ -10,22 +10,23 @@ export const Categories: React.FC<{ list: string[] }> = ({ list }) => {
   const params = useSearchParams();
   const t = useTranslations('boardgames');
 
+  const pill = (isActive: boolean): string =>
+    `cursor-pointer rounded-full border px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.08em] transition-colors ${
+      isActive
+        ? 'border-accent bg-accent text-white'
+        : 'border-hairline-strong text-content/70 hover:border-accent hover:text-accent'
+    }`;
+
   return (
     <div className='flex w-full flex-wrap gap-2'>
-      <button
-        className={`rounded-md px-2 py-1 text-xs font-semibold uppercase ${
-          !params.get('cat') ? 'bg-blue-500 text-white' : 'text-blue-500'
-        }`}
-        onClick={() => push({ pathname: '/boardgames', query: {} })}
-      >
+      <button className={pill(!params.get('cat'))} onClick={() => push({ pathname: '/boardgames', query: {} })}>
         {t('all-categories')}
       </button>
-      {list.map((cat: string, idx: number) => (
+
+      {list.map((cat: string) => (
         <button
-          key={idx}
-          className={`rounded-md px-2 py-1 text-xs font-semibold uppercase ${
-            params.get('cat') === cat ? 'bg-blue-500 text-white' : 'text-blue-500'
-          }`}
+          key={cat}
+          className={pill(params.get('cat') === cat)}
           onClick={() => push({ pathname: '/boardgames', query: { cat } })}
         >
           {cat}

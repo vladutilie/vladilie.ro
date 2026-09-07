@@ -7,6 +7,7 @@ import enFunc from 'timeago.js/lib/lang/en_US';
 
 import { getPathname } from '@/i18n/routing';
 import prisma from '@/lib/prisma';
+import { Page, PageHeader } from '../ui/page-header';
 
 export const revalidate = 3600;
 
@@ -53,15 +54,14 @@ export default async function Locations({ params }: { params: Promise<{ locale: 
   }
 
   return (
-    <main className='mx-auto max-w-[1180px] gap-8 px-5 py-16 md:px-8 md:py-24'>
-      <h1>{t('title')}</h1>
-      <p>{t('description')}</p>
+    <Page>
+      <PageHeader meta={t('count', { count: locations.length })} title={t('title')} lead={t('description')} />
 
-      <div className='flex flex-col gap-y-2'>
+      <ul className='border-hairline bg-hairline grid gap-px border-y'>
         {locations.map(({ name, visitCounter, lastVisitAt }) => (
-          <div key={name}>
-            <h3 className='my-0 text-xl'>{name}</h3>
-            <div className='text-content/60 text-sm'>
+          <li key={name} className='bg-surface px-4 py-5 sm:px-6'>
+            <h2 className='my-0 text-xl'>{name}</h2>
+            <div className='text-content/50 mt-1 font-mono text-[11px] tracking-[0.08em] uppercase'>
               {t.rich('visited', {
                 visitCounter,
                 lastVisitAt,
@@ -72,9 +72,9 @@ export default async function Locations({ params }: { params: Promise<{ locale: 
                 )
               })}
             </div>
-          </div>
+          </li>
         ))}
-      </div>
-    </main>
+      </ul>
+    </Page>
   );
 }

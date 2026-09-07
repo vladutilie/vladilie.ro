@@ -6,7 +6,7 @@ import type { Post as PostType } from '@/lib/content.types';
 
 import { getPathname } from '@/i18n/routing';
 import { PostCard } from './ui/post-card';
-import { Search } from './ui/Search';
+import { Page, PageHeader } from '../ui/page-header';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -41,21 +41,18 @@ export default async function Blog({ params }: { params: Promise<{ locale: strin
   const posts = allPosts().filter(({ locale: l }) => l === locale);
 
   return (
-    <main className='mx-auto flex max-w-[1180px] flex-col gap-8 px-5 py-16 md:px-8 md:py-24'>
-      <div className='flex items-center justify-between gap-x-4'>
-        <h1>Blog</h1>
-        {/* <Search /> */}
-      </div>
+    <Page>
+      <PageHeader meta={t('count', { count: posts.length })} title={t('title')} lead={t('metadata.description')} />
 
       {posts.length ? (
-        <ul className='flex flex-col gap-y-4'>
-          {posts.map((post: PostType, idx: number) => (
-            <PostCard key={idx} {...post} />
+        <ul className='border-hairline bg-hairline grid gap-px border-y'>
+          {posts.map((post: PostType) => (
+            <PostCard key={post.slug} {...post} />
           ))}
         </ul>
       ) : (
         <p>{t('no-posts')}</p>
       )}
-    </main>
+    </Page>
   );
 }

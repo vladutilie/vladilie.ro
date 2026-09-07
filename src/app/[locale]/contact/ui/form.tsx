@@ -8,6 +8,11 @@ import { Services } from './services.enum';
 import { sendMail } from './action';
 import { Inputs } from './inputs.type';
 
+const fieldClasses =
+  'rounded-[4px] border border-hairline-strong bg-surface px-3 py-2 text-content transition-colors outline-none focus:border-accent';
+
+const labelClasses = 'mb-1.5 font-mono text-[11px] uppercase tracking-[0.08em]';
+
 export const Form: React.FC = () => {
   const [state, setState] = useState<{ isLoading: boolean; response: string; success: boolean }>({
     isLoading: false,
@@ -42,69 +47,62 @@ export const Form: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='grid max-w-md grid-cols-2 gap-4'>
+    <form onSubmit={handleSubmit(onSubmit)} className='grid max-w-xl grid-cols-2 gap-5'>
       <div className='col-span-2 flex flex-col sm:col-span-1'>
-        <label htmlFor='firstName' className={`text-sm ${errors.firstName ? 'text-red-400' : 'text-content/60'}`}>
+        <label
+          htmlFor='firstName'
+          className={`${labelClasses} ${errors.firstName ? 'text-red-400' : 'text-content/60'}`}
+        >
           {t('first-name')}
         </label>
-        <input
-          {...register('firstName', { required: true })}
-          className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 dark:focus:outline-blue-500'
-          id='firstName'
-        />
-        {errors.firstName && <span className='text-xs text-red-400'>{t('required-field')}</span>}
+        <input {...register('firstName', { required: true })} className={fieldClasses} id='firstName' />
+        {errors.firstName && <span className='mt-1 text-xs text-red-400'>{t('required-field')}</span>}
       </div>
 
       <div className='col-span-2 flex flex-col sm:col-span-1'>
-        <label htmlFor='lastName' className={`text-sm ${errors.lastName ? 'text-red-400' : 'text-content/60'}`}>
+        <label htmlFor='lastName' className={`${labelClasses} ${errors.lastName ? 'text-red-400' : 'text-content/60'}`}>
           {t('last-name')}
         </label>
-        <input
-          {...register('lastName', { required: true })}
-          id='lastName'
-          className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 dark:focus:outline-blue-500'
-        />
-        {errors.lastName && <span className='text-xs text-red-400'>{t('required-field')}</span>}
+        <input {...register('lastName', { required: true })} id='lastName' className={fieldClasses} />
+        {errors.lastName && <span className='mt-1 text-xs text-red-400'>{t('required-field')}</span>}
       </div>
 
       <div className='col-span-2 flex flex-col sm:col-span-1'>
-        <label htmlFor='email' className={`text-sm ${errors.email ? 'text-red-400' : 'text-content/60'}`}>
+        <label htmlFor='email' className={`${labelClasses} ${errors.email ? 'text-red-400' : 'text-content/60'}`}>
           {t('email')}
         </label>
         <input
           {...register('email', { required: true })}
-          className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 dark:focus:outline-blue-500'
+          className={fieldClasses}
           id='email'
           maxLength={20}
           minLength={4}
           type='email'
         />
-        {errors.email && <span className='text-xs text-red-400'>{t('required-field')}</span>}
+        {errors.email && <span className='mt-1 text-xs text-red-400'>{t('required-field')}</span>}
       </div>
 
       <div className='col-span-2 flex flex-col sm:col-span-1'>
-        <label htmlFor='phone' className={`text-sm ${errors.phone ? 'text-red-400' : 'text-content/60'}`}>
+        <label htmlFor='phone' className={`${labelClasses} ${errors.phone ? 'text-red-400' : 'text-content/60'}`}>
           {t('phone')}
         </label>
         <input
           {...register('phone', { required: true })}
-          className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 dark:focus:outline-blue-500'
+          className={fieldClasses}
           id='phone'
           maxLength={15}
           minLength={10}
         />
-        {errors.phone && <span className='text-xs text-red-400'>{t('required-field')}</span>}
+        {errors.phone && <span className='mt-1 text-xs text-red-400'>{t('required-field')}</span>}
       </div>
 
       <div className='col-span-2 flex flex-col'>
-        <label htmlFor='service' className={`text-sm ${errors.service ? 'text-red-400' : 'text-content/60'}`}>
+        <label htmlFor='service' className={`${labelClasses} ${errors.service ? 'text-red-400' : 'text-content/60'}`}>
           {t('service')}
         </label>
         <select
           {...register('service', { required: true })}
-          className={`min-h-[34px] rounded-md border border-gray-500 px-2 py-1 dark:outline-slate-800 dark:focus:outline-blue-500 ${
-            !watch('service') ? 'text-content/60' : ''
-          }`}
+          className={`${fieldClasses} min-h-[42px] ${!watch('service') ? 'text-content/50' : ''}`}
           id='service'
           defaultValue=''
         >
@@ -120,12 +118,12 @@ export const Form: React.FC = () => {
           <option value={Services.JobOpportunity}>{t('service-job-opportunity')}</option>
           <option value={Services.JustSayHi}>{t('just-say-hi')}</option>
         </select>
-        {errors.service && <span className='text-xs text-red-400'>{t('required-field')}</span>}
+        {errors.service && <span className='mt-1 text-xs text-red-400'>{t('required-field')}</span>}
       </div>
 
       {watch('service') && ![Services.JobOpportunity, Services.JustSayHi].includes(watch('service') as Services) ? (
         <div className='col-span-2 flex flex-col'>
-          <label htmlFor='budget' className='text-content/60 text-sm'>
+          <label htmlFor='budget' className={`${labelClasses} text-content/60`}>
             {t.rich('budget', {
               amount: Number(watch('budget')),
               strong: (chunk: ReactNode): JSX.Element => (
@@ -147,35 +145,36 @@ export const Form: React.FC = () => {
             step={500}
             type='range'
             id='budget'
+            className='accent-accent'
           />
         </div>
       ) : null}
 
       <div className='col-span-2 flex flex-col'>
-        <label htmlFor='message' className={`text-sm ${errors.message ? 'text-red-400' : 'text-content/60'}`}>
+        <label htmlFor='message' className={`${labelClasses} ${errors.message ? 'text-red-400' : 'text-content/60'}`}>
           {t('message')}
         </label>
         <textarea
           {...register('message', { required: true })}
-          className='rounded-md border border-gray-400 px-2 py-1 dark:outline-slate-800 dark:focus:outline-blue-500'
+          className={fieldClasses}
           rows={8}
           id='message'
           minLength={50}
         />
-        {errors.message && <span className='text-xs text-red-400'>{t('required-field')}</span>}
+        {errors.message && <span className='mt-1 text-xs text-red-400'>{t('required-field')}</span>}
       </div>
 
       <input
         disabled={state.isLoading}
         type='submit'
         value={state.isLoading ? t('please-wait') : t('submit')}
-        className='justify-self-start rounded-xl bg-blue-600 px-4 py-2 font-semibold text-white disabled:bg-blue-600/50'
+        className='bg-accent hover:bg-ink disabled:bg-accent/50 dark:hover:bg-paper dark:hover:text-ink cursor-pointer justify-self-start rounded-full px-6 py-3.5 text-[15px] font-semibold text-white transition-colors disabled:cursor-not-allowed'
       />
 
       {state.success ? (
-        <p className='col-span-2 rounded-md border border-green-400 px-4 py-2'>{state.response}</p>
+        <p className='col-span-2 my-0 rounded-[4px] border border-green-500/60 px-4 py-3 text-sm'>{state.response}</p>
       ) : !state.success && state.response ? (
-        <p className='col-span-2 border border-red-400 px-4 py-2'>{state.response}</p>
+        <p className='col-span-2 my-0 rounded-[4px] border border-red-400/60 px-4 py-3 text-sm'>{state.response}</p>
       ) : null}
     </form>
   );

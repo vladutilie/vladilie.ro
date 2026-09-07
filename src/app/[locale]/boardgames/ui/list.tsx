@@ -7,6 +7,7 @@ import type { BoardgameModel as BoardgameT } from '@/../generated/prisma/models'
 import { BoardgameState } from '@/../generated/prisma/enums';
 
 import { Boardgame } from './boardgame';
+import { GroupHeading } from '../../ui/page-header';
 
 export const List: React.FC<{ list: BoardgameT[] }> = ({ list }) => {
   const t = useTranslations('boardgames');
@@ -24,31 +25,34 @@ export const List: React.FC<{ list: BoardgameT[] }> = ({ list }) => {
   const ownLength: number = boardgames.filter((bg) => bg.state === BoardgameState.Own).length;
   const wishLength: number = boardgames.filter((bg) => bg.state === BoardgameState.Wishlist).length;
 
+  const group = (state: BoardgameState): BoardgameT[] =>
+    boardgames.filter((bg) => bg.state === state).sort((a, b) => (a.name > b.name ? 1 : -1));
+
   return (
-    <>
+    <div className='grid gap-14'>
       {ownLength > 0 && (
-        <div className='grid grid-cols-12 gap-4'>
-          <h3 className='col-span-12 text-2xl'>{t('own', { count: ownLength })}</h3>
-          {boardgames
-            .filter((bg) => bg.state === BoardgameState.Own)
-            .sort((a, b) => (a.name > b.name ? 1 : -1))
-            .map((boardgame: BoardgameT) => (
+        <section>
+          <GroupHeading>{t('own', { count: ownLength })}</GroupHeading>
+
+          <div className='border-hairline bg-hairline grid grid-cols-1 gap-px border sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+            {group(BoardgameState.Own).map((boardgame: BoardgameT) => (
               <Boardgame {...boardgame} key={boardgame.id} />
             ))}
-        </div>
+          </div>
+        </section>
       )}
 
       {wishLength > 0 && (
-        <div className='grid grid-cols-12 gap-4'>
-          <h3 className='col-span-12 text-2xl'>{t('wishlist', { count: wishLength })}</h3>
-          {boardgames
-            .filter((bg) => bg.state === BoardgameState.Wishlist)
-            .sort((a, b) => (a.name > b.name ? 1 : -1))
-            .map((boardgame: BoardgameT) => (
+        <section>
+          <GroupHeading>{t('wishlist', { count: wishLength })}</GroupHeading>
+
+          <div className='border-hairline bg-hairline grid grid-cols-1 gap-px border sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+            {group(BoardgameState.Wishlist).map((boardgame: BoardgameT) => (
               <Boardgame {...boardgame} key={boardgame.id} />
             ))}
-        </div>
+          </div>
+        </section>
       )}
-    </>
+    </div>
   );
 };

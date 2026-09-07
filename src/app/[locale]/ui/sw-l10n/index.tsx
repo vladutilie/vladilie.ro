@@ -41,7 +41,7 @@ export const SoftwareLocalization: React.FC = () => {
   return (
     <SplitSection
       id={NavLinks.Localization}
-      index='06'
+      index='05'
       label={t('title')}
       lead={t('description')}
       aside={

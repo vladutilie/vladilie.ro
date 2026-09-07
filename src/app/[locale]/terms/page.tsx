@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';
+import { Page, PageHeader } from '../ui/page-header';
 
 const texts = [
   'last-update',
@@ -50,15 +51,15 @@ export default async function Terms({ params }: { params: Promise<{ locale: stri
   const t = await getTranslations('terms');
 
   return (
-    <main className='mx-auto max-w-[1180px] gap-8 px-5 py-16 md:px-8 md:py-24'>
-      <h1>{t('title')}</h1>
+    <Page narrow>
+      <PageHeader title={t('title')} />
 
       {texts.map((item) => {
         if (Array.isArray(item)) {
           return item.map((text) => {
             if (text.includes('title')) {
               return (
-                <h2 key={text} className='text-2xl'>
+                <h2 key={text} className='mt-10 mb-3 text-2xl'>
                   {t(text)}
                 </h2>
               );
@@ -70,6 +71,6 @@ export default async function Terms({ params }: { params: Promise<{ locale: stri
 
         return <p key={item[0]}>{t(item)}</p>;
       })}
-    </main>
+    </Page>
   );
 }

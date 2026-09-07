@@ -2,14 +2,13 @@ export const NavLinks = {
   About: 'about',
   Services: 'services',
   Skills: 'skills',
-  Education: 'education',
   Work: 'work',
   Localization: 'localization',
   Writing: 'writing'
 } as const;
 
-// The anchors surfaced in the header navigation, in the order of the page.
-export const HeaderLinks = [NavLinks.About, NavLinks.Skills, NavLinks.Work, NavLinks.Localization, NavLinks.Writing];
+// The homepage anchors surfaced in the header navigation, in page order.
+export const HeaderAnchors = [NavLinks.About, NavLinks.Skills, NavLinks.Localization];
 
 export const Pages = {
   Blog: 'blog',

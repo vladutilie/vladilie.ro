@@ -6,6 +6,7 @@ import { getPathname } from '@/i18n/routing';
 import prisma from '@/lib/prisma';
 import { Categories } from './ui/categories';
 import { List } from './ui/list';
+import { Page, PageHeader } from '../ui/page-header';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -50,13 +51,14 @@ export default async function Boardgames() {
   const { boardgames, categories } = await getBoardgames();
 
   return (
-    <main className='mx-auto max-w-[1180px] gap-8 px-5 py-16 md:px-8 md:py-24'>
-      <h1>{t('title')}</h1>
-      <p>{t('description')}</p>
-
-      <Categories list={categories} />
+    <Page>
+      <PageHeader meta={t('count', { count: boardgames.length })} title={t('title')} lead={t('description')}>
+        <div className='mt-8'>
+          <Categories list={categories} />
+        </div>
+      </PageHeader>
 
       <List list={boardgames} />
-    </main>
+    </Page>
   );
 }

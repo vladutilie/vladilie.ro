@@ -6,7 +6,6 @@
     "education": "Educație",
     "skills": "Tehnologii",
     "projects": "Proiecte",
-    "testimonials": "Testimoniale",
     "services": "Servicii",
     "blog": "Blog",
     "contact": "Contact",
@@ -15,7 +14,6 @@
     "change-language-to": "Change language to {lang}",
     "work": "Proiecte",
     "localization": "Localizare",
-    "writing": "Scrieri",
     "lets-talk": "Hai să vorbim",
     "light": "Luminos",
     "dark": "Întunecat",
@@ -29,25 +27,25 @@
     },
     "hero": {
       "hello": "Salut, aici Vlad {emoji}",
-      "about": "Sunt <strong>Inginer Software</strong> și locuiesc în România. <strong>Certificat <neo4j>Neo4j</neo4j></strong>, fan NextJS, pasionat de <strong>WordPress</strong> și JavaScript. Întrețin site-urile <strong><cpf>Cărțile pe Față</cpf></strong>. Acum mă aflu în <locations>{city}</locations>, dar adeseori călătoresc.",
+      "about": "Sunt <strong>Inginer Software</strong> și locuiesc în România. <strong>Certificat <neo4j>Neo4j</neo4j></strong>, fan Next.js, pasionat de <strong>WordPress</strong> și JavaScript. Întrețin site-urile <strong><cpf>Cărțile pe Față</cpf></strong>. Acum mă aflu în <locations>{city}</locations>, dar adeseori călătoresc.",
       "available": "Disponibil pentru proiecte noi",
       "not-available": "Indisponibil pentru proiecte noi",
       "commits": "{count, plural, =0 {<commits>0</commits> comiteri} =1 {<commits>1</commits> comitere} few {<commits>#</commits> comiteri} other {<commits>#</commits> de comiteri}} în ultimele 7 zile",
       "link-to-al": "Legătură către {socialNetwork}",
       "neo4j-certificate": "Certificat Neo4j",
       "location-history": "Istoric locații",
-      "title": "Inginer software<br></br>care construiește soluții<br></br>web <accent>dedicate</accent>.",
-      "intro": "Sunt Vlad — inginer software din România, construiesc cu <strong>WordPress</strong> și <strong>NextJS</strong>. Fac magazine online și produse digitale, apoi le țin — pe ele și infrastructura din spate — în funcțiune.",
+      "title": "Inginer software. Construiesc soluții web <accent>dedicate</accent>.",
+      "intro": "Sunt Vlad — inginer software din România, construiesc cu <strong>WordPress</strong> și <strong>Next.js</strong>. Fac magazine online și produse digitale, apoi le țin — pe ele și infrastructura din spate — în funcțiune.",
       "cta-work": "Vezi proiectele",
       "cta-quote": "Cere o ofertă",
-      "meta-stack": "WordPress · NextJS",
+      "meta-stack": "WordPress · Next.js",
       "meta-gte": "GTE WordPress ro_RO"
     },
     "about": {
       "tag": "Despre",
       "title": "Mai multe despre mine",
       "image-alt": "Vlad în munți",
-      "p1": "WordPress și NextJS sunt locul în care îmi petrec cea mai mare parte din timp: magazine online, pluginuri personalizate și interfețe de produs — plus stocarea, managementul utilizatorilor și analiza datelor din spatele lor.",
+      "p1": "WordPress și Next.js sunt locul în care îmi petrec cea mai mare parte din timp: magazine online, module personalizate și interfețe de produs — plus stocarea, managementul utilizatorilor și analiza datelor din spatele lor.",
       "p2": "Am lucrat cu startup-uri la MVP-uri pe care le-am dus pe piață, cultivând în paralel propriile proiecte SaaS. Pe partea de web întrețin site-uri WordPress cu angajamentul de a le asigura buna funcționare și mă ocup pro-bono de infrastructura Asociației Culturale <cpf>Cărțile pe Față</cpf>.",
       "p3": "Mă atrag proiectele cu impact real în societate — mediu, educație, activism, ONG-uri. Tehnologie în slujba unor cauze care merită efortul.",
       "p4": "Sunt implicat în comunitatea WordPress în diverse moduri: sunt Editor General de Traduceri (GTE) pentru limba română, și contribui la eliminarea barierei lingvistice și la facilitarea accesului la WordPress pentru un public mai larg. De asemenea, prin implicarea mea și în echipa WP-Translations PRO, promovez traduceri de înaltă calitate. De asemenea, contribui la localizarea altor software-uri open-source pe diverse platforme precum Crowdin, Weblate, Transifex, Lokalise și chiar GitHub.",
@@ -67,7 +65,7 @@
         },
         "experience": {
           "value": "5+ ani",
-          "label": "WordPress și NextJS livrate în producție"
+          "label": "WordPress și Next.js livrate în producție"
         }
       }
     },
@@ -133,11 +131,11 @@
       "lead": "Patru moduri în care încep de obicei colaborările.",
       "wordpress": {
         "title": "WordPress și WooCommerce",
-        "body": "Pluginuri personalizate, magazine online, automatizări cu WP-CLI și mentenanță pe termen lung pentru magazine care nu au voie să cadă."
+        "body": "Module personalizate, magazine online, automatizări cu WP-CLI și mentenanță pe termen lung pentru magazine care nu au voie să cadă."
       },
       "nextjs": {
-        "title": "Produse cu NextJS",
-        "body": "Aplicații NextJS și NodeJS de la MVP la producție — autentificare, stocare, plăți și analiză integrate."
+        "title": "Produse cu Next.js",
+        "body": "Aplicații Next.js și NodeJS de la MVP la producție — autentificare, stocare, plăți și analiză integrate."
       },
       "infrastructure": {
         "title": "Infrastructură și mentenanță",
@@ -149,7 +147,7 @@
       }
     },
     "elsewhere": {
-      "tag": "Scrieri și altele",
+      "tag": "Blog și altele",
       "blog": "Însemnări despre JavaScript, WordPress și viața de studio cu un singur om.",
       "uses": "Echipamentele, editorul și uneltele pe care le folosesc zilnic.",
       "books": "Ce citesc și ce mi-a rămas în minte.",
@@ -168,7 +166,8 @@
     },
     "title": "Istoric locații",
     "description": "Locuri în care am fost, din care am lucrat sau pe care le-am vizitat. Din decembrie 2022 🎁.",
-    "visited": "{visitCounter, plural, =1 {Vizitat: o dată} few {Vizitat de: # ori} other {Vizitat de: # de ori}} · Ultima vizită: <lastVisit>{lastVisitAt}</lastVisit>"
+    "visited": "{visitCounter, plural, =1 {Vizitat: o dată} few {Vizitat de: # ori} other {Vizitat de: # de ori}} · Ultima vizită: <lastVisit>{lastVisitAt}</lastVisit>",
+    "count": "{count, plural, =0 {Niciun loc} =1 {1 loc} few {# locuri} other {# de locuri}}"
   },
   "blog": {
     "metadata": {
@@ -180,7 +179,8 @@
     "search-placeholder": "Tastează și caută...",
     "views": "{count, plural, =0 {0 vizualizări} =1 {o vizualizare} few {# vizualizări} other {# de vizualizări}}",
     "no-posts": "Momentan nu există articole. Rămâi aproape.",
-    "reading-time": "{minutes} min de citit"
+    "reading-time": "{minutes} min de citit",
+    "count": "{count, plural, =0 {Niciun articol} =1 {1 articol} few {# articole} other {# de articole}}"
   },
   "projects": {
     "metadata": {
@@ -194,7 +194,8 @@
     "views": "{count, plural, =0 {0 vizualizări} =1 {o vizualizare} few {# vizualizări} other {# de vizualizări}}",
     "technologies": "Tehnologii:",
     "share": "Partajează pe:",
-    "share-on": "Partajează pe {network}"
+    "share-on": "Partajează pe {network}",
+    "count": "{count, plural, =0 {Niciun studiu de caz} =1 {1 studiu de caz} few {# studii de caz} other {# de studii de caz}}"
   },
   "contact": {
     "metadata": {
@@ -231,7 +232,7 @@
     },
     "title": "Colofon",
     "p1": "Designul site-ului meu este inspirat de <url>Sagar Shah</url>.",
-    "p2": "Stiva tehnologică folosită este formată din <nextjs>NextJS</nextjs>, <planet>PlanetScale</planet>, <supa>Supabase</supa>, <mdx>MDX</mdx>, <tailwind>Tailwind CSS</tailwind> și <typescript>TypeScript</typescript>, lansat pe <vercel>Vercel</vercel>.",
+    "p2": "Stiva tehnologică folosită este formată din <nextjs>Next.js</nextjs>, <planet>PlanetScale</planet>, <supa>Supabase</supa>, <mdx>MDX</mdx>, <tailwind>Tailwind CSS</tailwind> și <typescript>TypeScript</typescript>, lansat pe <vercel>Vercel</vercel>.",
     "p3": "Codul sursă este disponibil pe <new>GitHub</new>. Poți găsi versiunea veche pe <old>această ramură</old>."
   },
   "uses": {
@@ -302,7 +303,8 @@
     "description": "O parte din colecția mea de cărți. O călătorie prin cunoștințele și poveștile vieții mele.",
     "currently-reading": "Acum citesc 📖",
     "read": "Am citit 📚",
-    "wishlist": "Vreau să citesc 🧞‍♂️"
+    "wishlist": "Vreau să citesc 🧞‍♂️",
+    "count": "{count, plural, =0 {Nicio carte} =1 {1 carte} few {# cărți} other {# de cărți}}"
   },
   "boardgames": {
     "metadata": {
@@ -313,7 +315,8 @@
     "all-categories": "Toate",
     "own": "Dețin ({count})",
     "wishlist": "Îmi doresc ({count})",
-    "age": "Vârstă: {age}"
+    "age": "Vârstă: {age}",
+    "count": "{count, plural, =0 {Niciun joc} =1 {1 joc} few {# jocuri} other {# de jocuri}}"
   },
   "terms": {
     "metadata": {
@@ -411,10 +414,11 @@
     "site": "Site",
     "personal": "Personal",
     "legal": "Legal",
-    "built-with": "Construit cu NextJS · Tailwind CSS v4"
+    "built-with": "Construit cu Next.js · Tailwind CSS v4"
   },
   "not-found": {
     "title": "Eroare 404",
-    "description": "Pagina pe care o cauți nu există."
+    "description": "Pagina pe care o cauți nu există.",
+    "back-home": "Înapoi la prima pagină"
   }
 }

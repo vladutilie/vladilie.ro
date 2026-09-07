@@ -47,12 +47,14 @@ export const Meta: React.FC<Props> = ({ date, readingTime, slug }) => {
   }, []);
 
   return (
-    <div className='text-content/60 text-sm'>
-      <span>{format(date, locale)} · </span>
+    <div className='text-content/50 flex flex-wrap items-center gap-x-2 font-mono text-[11px] tracking-[0.1em] uppercase'>
+      <span>{format(date, locale)}</span>
+      <span aria-hidden>·</span>
       <span ref={intersectionRef}>
         {viewsIsError || viewsIsLoading ? <LoadingDots /> : t('views', { count: numberFormat(Number(views)) })}
       </span>
-      <span> · {t('reading-time', { minutes: Math.ceil(readingTime) })}</span>
+      <span aria-hidden>·</span>
+      <span>{t('reading-time', { minutes: Math.ceil(readingTime) })}</span>
     </div>
   );
 };

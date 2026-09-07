@@ -6,7 +6,9 @@ import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { ThemeSwitcher } from './theme-switcher';
 import { LangChanger } from './lang-changer';
 import { scrollTo } from '@/lib/utils';
-import { HeaderLinks, Pages } from '@/lib/constants';
+import { HeaderAnchors, Pages } from '@/lib/constants';
+
+const itemClasses = 'text-content/70 transition-colors hover:text-accent';
 
 export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = ({ isMobile = false, closeMenu }) => {
   const t = useTranslations('navbar');
@@ -14,9 +16,7 @@ export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = (
   const { replace } = useRouter();
 
   const goToAnchor = (anchor: string): void => {
-    if (isMobile && closeMenu) {
-      closeMenu();
-    }
+    closeMenu?.();
 
     if ('/' !== pathname) {
       // @ts-ignore
@@ -31,38 +31,28 @@ export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = (
       className={
         isMobile
           ? 'flex flex-col gap-y-5 overflow-y-auto text-lg'
-          : 'hidden items-center gap-7 text-sm md:flex lg:gap-8'
+          : 'hidden items-center gap-6 text-sm md:flex lg:gap-7'
       }
     >
-      {HeaderLinks.map((anchor) => (
+      {HeaderAnchors.map((anchor) => (
         <li key={anchor}>
-          <button
-            className='text-content/70 hover:text-accent cursor-pointer transition-colors'
-            onClick={() => goToAnchor(anchor)}
-          >
+          <button className={`cursor-pointer ${itemClasses}`} onClick={() => goToAnchor(anchor)}>
             {t(anchor)}
           </button>
         </li>
       ))}
 
-      {isMobile && (
-        <>
-          <li>
-            <Link
-              href={`/${Pages.Projects}`}
-              className='text-content/70 hover:text-accent'
-              onClick={() => closeMenu?.()}
-            >
-              {t(Pages.Projects)}
-            </Link>
-          </li>
-          <li>
-            <Link href={`/${Pages.Blog}`} className='text-content/70 hover:text-accent' onClick={() => closeMenu?.()}>
-              {t(Pages.Blog)}
-            </Link>
-          </li>
-        </>
-      )}
+      <li>
+        <Link href={`/${Pages.Projects}`} className={itemClasses} onClick={() => closeMenu?.()}>
+          {t(Pages.Projects)}
+        </Link>
+      </li>
+
+      <li>
+        <Link href={`/${Pages.Blog}`} className={itemClasses} onClick={() => closeMenu?.()}>
+          {t(Pages.Blog)}
+        </Link>
+      </li>
 
       <li className='bg-hairline hidden h-[18px] w-px md:block' aria-hidden />
 

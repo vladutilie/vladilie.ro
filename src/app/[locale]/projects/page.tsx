@@ -5,6 +5,7 @@ import type { Project as ProjectT } from '@/lib/content.types';
 
 import { getPathname } from '@/i18n/routing';
 import { Project } from './ui/project';
+import { Page, PageHeader } from '../ui/page-header';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -39,21 +40,18 @@ export default async function Projects({ params }: { params: Promise<{ locale: s
   const projects = allProjects().filter(({ locale: l }) => l === locale);
 
   return (
-    <main className='mx-auto max-w-[1180px] gap-8 px-5 py-16 md:px-8 md:py-24'>
-      <h1>{t('title')}</h1>
+    <Page>
+      <PageHeader meta={t('count', { count: projects.length })} title={t('title')} lead={t('description')} />
 
       {projects.length ? (
-        <>
-          <p>{t('description')}</p>
-          <div className='grid grid-cols-6 gap-8'>
-            {projects.map((project: ProjectT) => (
-              <Project key={project.slug} {...project} />
-            ))}
-          </div>
-        </>
+        <ul className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+          {projects.map((project: ProjectT) => (
+            <Project key={project.slug} {...project} />
+          ))}
+        </ul>
       ) : (
         <p>{t('no-projects')}</p>
       )}
-    </main>
+    </Page>
   );
 }

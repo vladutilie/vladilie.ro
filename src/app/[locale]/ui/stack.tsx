@@ -9,7 +9,7 @@ const groups: { key: string; items: { name: string; url: string }[] }[] = [
     items: [
       { name: 'WordPress', url: 'https://wordpress.org' },
       { name: 'WooCommerce', url: 'https://woocommerce.com' },
-      { name: 'NextJS', url: 'https://nextjs.org' },
+      { name: 'Next.js', url: 'https://nextjs.org' },
       { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
       { name: 'TypeScript', url: 'https://typescriptlang.org' },
       { name: 'PHP', url: 'https://php.net' }

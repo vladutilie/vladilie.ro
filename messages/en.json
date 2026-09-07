@@ -6,7 +6,6 @@
     "education": "Education",
     "skills": "Skills",
     "projects": "Projects",
-    "testimonials": "Testimonials",
     "services": "Services",
     "blog": "Blog",
     "contact": "Contact",
@@ -15,7 +14,6 @@
     "change-language-to": "Schimbă limba în {lang}",
     "work": "Work",
     "localization": "Localization",
-    "writing": "Writing",
     "lets-talk": "Let's talk",
     "light": "Light",
     "dark": "Dark",
@@ -29,7 +27,7 @@
     },
     "hero": {
       "hello": "Hi there, Vlad here {emoji}",
-      "about": "I'm a <strong>Software Engineer</strong> from Romania. I am <strong><neo4j>Neo4j</neo4j> Certified</strong>, a fan of NextJS and passionate about <strong>WordPress</strong> and JavaScript. I maintain the <strong><cpf>Cărțile pe Față</cpf></strong> websites. I am currently in <locations>{city}</locations>, but I often travel.",
+      "about": "I'm a <strong>Software Engineer</strong> from Romania. I am <strong><neo4j>Neo4j</neo4j> Certified</strong>, a fan of Next.js and passionate about <strong>WordPress</strong> and JavaScript. I maintain the <strong><cpf>Cărțile pe Față</cpf></strong> websites. I am currently in <locations>{city}</locations>, but I often travel.",
       "available": "Available for new projects",
       "not-available": "Not available for new projects",
       "commits": "{count, plural, =0 {<commits>0</commits> commits} =1 {<commits>1</commits> commit} other {<commits>#</commits> commits}} in the last 7 days",
@@ -37,17 +35,17 @@
       "neo4j-certificate": "Neo4j Certificate",
       "location-history": "Location history",
       "title": "Software engineer<br></br>building <accent>dedicated</accent><br></br>web solutions.",
-      "intro": "I'm Vlad — an engineer from Romania building with <strong>WordPress</strong> and <strong>NextJS</strong>. I build shops and products, then keep them — and the infrastructure under them — running.",
+      "intro": "I'm Vlad — an engineer from Romania building with <strong>WordPress</strong> and <strong>Next.js</strong>. I build shops and products, then keep them — and the infrastructure under them — running.",
       "cta-work": "View selected work",
       "cta-quote": "Request a quote",
-      "meta-stack": "WordPress · NextJS",
+      "meta-stack": "WordPress · Next.js",
       "meta-gte": "GTE WordPress ro_RO"
     },
     "about": {
       "tag": "About",
       "title": "More about me",
       "image-alt": "Vlad in the mountains",
-      "p1": "WordPress and NextJS are where I spend most of my time: online shops, custom plugins and product front ends — plus the storage, user management and analytics behind them.",
+      "p1": "WordPress and Next.js are where I spend most of my time: online shops, custom plugins and product front ends — plus the storage, user management and analytics behind them.",
       "p2": "I've worked with startups on MVPs and taken them to market, while cultivating my own SaaS projects on the side. On the web side I maintain WordPress sites with a commitment to keeping them running smoothly, and I look after the infrastructure of the <cpf>Cărțile pe Față</cpf> cultural association pro-bono.",
       "p3": "I'm drawn to projects with real social impact — environment, education, activism, NGOs. Technology in service of causes worth the effort.",
       "p4": "I am involved in the WordPress community in various ways: I am a General Translation Editor (GTE) in Romania, and I contribute to removing the language barrier and facilitating access to WordPress for a wider audience. Also, through my involvement in the WP-Translations PRO team, I promote high-quality translations. I also contribute to other open-source software localization on various platforms like Crowdin, Weblate, Transifex, Lokalise, and even GitHub.",
@@ -67,7 +65,7 @@
         },
         "experience": {
           "value": "5+ yrs",
-          "label": "Shipping WordPress and NextJS in production"
+          "label": "Shipping WordPress and Next.js in production"
         }
       }
     },
@@ -136,8 +134,8 @@
         "body": "Custom plugins, e-commerce builds, WP-CLI automation and long-term maintenance of stores that must not break."
       },
       "nextjs": {
-        "title": "NextJS product work",
-        "body": "NextJS and NodeJS applications from MVP to production — auth, storage, payments and analytics wired in."
+        "title": "Next.js product work",
+        "body": "Next.js and NodeJS applications from MVP to production — auth, storage, payments and analytics wired in."
       },
       "infrastructure": {
         "title": "Infrastructure & upkeep",
@@ -149,7 +147,7 @@
       }
     },
     "elsewhere": {
-      "tag": "Writing & elsewhere",
+      "tag": "Blog & elsewhere",
       "blog": "Notes on JavaScript, WordPress and running a one-person studio.",
       "uses": "Hardware, editor and the tools I reach for daily.",
       "books": "What I'm reading and what stayed with me.",
@@ -168,7 +166,8 @@
     },
     "title": "Location history",
     "description": "Places I've been, worked from or visited. Since December 2022 🎁.",
-    "visited": "Visited: {visitCounter, plural, =0 {0 times} =1 {1 time} other {# times}} · Last visit: <lastVisit>{lastVisitAt}</lastVisit>"
+    "visited": "Visited: {visitCounter, plural, =0 {0 times} =1 {1 time} other {# times}} · Last visit: <lastVisit>{lastVisitAt}</lastVisit>",
+    "count": "{count, plural, =0 {No places} =1 {1 place} other {# places}}"
   },
   "blog": {
     "metadata": {
@@ -180,7 +179,8 @@
     "search-placeholder": "Type and search...",
     "views": "{count, plural, =0 {0 views} =1 {1 view} other {# views}}",
     "no-posts": "There are no blog posts for now. Stay close.",
-    "reading-time": "{minutes} min read"
+    "reading-time": "{minutes} min read",
+    "count": "{count, plural, =0 {No articles} =1 {1 article} other {# articles}}"
   },
   "projects": {
     "metadata": {
@@ -194,7 +194,8 @@
     "views": "{count, plural, =0 {0 views} =1 {1 view} other {# views}}",
     "technologies": "Technologies:",
     "share": "Share on:",
-    "share-on": "Share on {network}"
+    "share-on": "Share on {network}",
+    "count": "{count, plural, =0 {No case studies} =1 {1 case study} other {# case studies}}"
   },
   "contact": {
     "metadata": {
@@ -231,7 +232,7 @@
     },
     "title": "Colophon",
     "p1": "My website's design is inspired by <url>Sagar Shah</url>.",
-    "p2": "The technology stack used consists of <nextjs>NextJS</nextjs>, <planet>PlanetScale</planet>, <supa>Supabase</supa>, <mdx>MDX</mdx>, <tailwind>Tailwind CSS</tailwind>, and <typescript>TypeScript</typescript>, deployed on <vercel>Vercel</vercel>.",
+    "p2": "The technology stack used consists of <nextjs>Next.js</nextjs>, <planet>PlanetScale</planet>, <supa>Supabase</supa>, <mdx>MDX</mdx>, <tailwind>Tailwind CSS</tailwind>, and <typescript>TypeScript</typescript>, deployed on <vercel>Vercel</vercel>.",
     "p3": "The source code is open-sourced on <new>GitHub</new>. You can find the old version on <old>this branch</old>."
   },
   "uses": {
@@ -302,7 +303,8 @@
     "description": "A part of my book collection. A journey through my knowledge and stories along life.",
     "currently-reading": "Curently reading 📖",
     "read": "Read 📚",
-    "wishlist": "Wishlist 🧞‍♂️"
+    "wishlist": "Wishlist 🧞‍♂️",
+    "count": "{count, plural, =0 {No books} =1 {1 book} other {# books}}"
   },
   "boardgames": {
     "metadata": {
@@ -313,7 +315,8 @@
     "all-categories": "All",
     "own": "Own ({count})",
     "wishlist": "Wishlist ({count})",
-    "age": "Age: {age}"
+    "age": "Age: {age}",
+    "count": "{count, plural, =0 {No games} =1 {1 game} other {# games}}"
   },
   "terms": {
     "metadata": {
@@ -411,10 +414,11 @@
     "site": "Site",
     "personal": "Personal",
     "legal": "Legal",
-    "built-with": "Built with NextJS · Tailwind CSS v4"
+    "built-with": "Built with Next.js · Tailwind CSS v4"
   },
   "not-found": {
     "title": "404 Error",
-    "description": "The page you are looking for does not exist."
+    "description": "The page you are looking for does not exist.",
+    "back-home": "Back to the homepage"
   }
 }
