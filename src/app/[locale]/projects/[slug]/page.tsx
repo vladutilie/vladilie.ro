@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
-import { allProjects, type Project } from 'contentlayer/generated';
+import { allProjects, type Project } from 'contentlayer2/generated';
 
 import { getPathname } from '@/i18n/routing';
 import { Header, Content, Footer } from '../../ui/post';
@@ -58,7 +58,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string;
   }
 
   return (
-    <article className='container mx-auto max-w-4xl px-4 py-24 md:py-32'>
+    <article className='mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-24'>
       <Header {...project} />
       <Content content={project.body.code} />
       <Footer {...project} />

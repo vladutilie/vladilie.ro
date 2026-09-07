@@ -2,7 +2,7 @@
 
 import { ReactNode, useMemo } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { Post, Project } from 'contentlayer/generated';
+import { Post, Project } from 'contentlayer2/generated';
 
 import { getPathname } from '@/i18n/routing';
 import { Bluesky, Facebook, LinkedIn, WhatsApp, X } from '../icons';

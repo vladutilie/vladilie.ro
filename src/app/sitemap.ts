@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { Post, Project, allPosts, allProjects } from 'contentlayer/generated';
+import { Post, Project, allPosts, allProjects } from 'contentlayer2/generated';
 
 import { getPathname } from '@/i18n/routing';
 

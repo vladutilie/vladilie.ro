@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { useMDXComponent } from 'next-contentlayer2/hooks';
 
 export const Content: React.FC<{ content: string }> = ({ content }) => {
   const MDXContent = useMDXComponent(content);

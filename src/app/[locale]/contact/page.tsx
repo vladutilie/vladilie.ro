@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';
 import { Form } from './ui/form';
@@ -31,11 +31,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   };
 }
 
-export default async function Contact() {
+export default async function Contact({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const t = await getTranslations('contact');
 
   return (
-    <main className='container mx-auto max-w-7xl gap-8 px-4 py-32'>
+    <main className='mx-auto max-w-[1180px] gap-8 px-5 py-16 md:px-8 md:py-24'>
       <h1>{t('title')}</h1>
       <p>{t('description')}</p>
 

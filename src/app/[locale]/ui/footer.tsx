@@ -19,14 +19,14 @@ export const Footer: React.FC = () => {
   const t = useTranslations();
 
   return (
-    <footer className='border-t border-hairline'>
-      <div className='mx-auto grid max-w-[1180px] grid-cols-1 gap-10 px-5 pb-10 pt-14 sm:grid-cols-2 md:px-8 lg:grid-cols-[1.4fr_1fr_1fr_1fr]'>
+    <footer className='border-hairline border-t'>
+      <div className='mx-auto grid max-w-[1180px] grid-cols-1 gap-10 px-5 pt-14 pb-10 sm:grid-cols-2 md:px-8 lg:grid-cols-[1.4fr_1fr_1fr_1fr]'>
         <div>
           <div className='mb-4'>
             <Wordmark />
           </div>
 
-          <p className='my-0 font-mono text-xs leading-[1.8] text-content/55'>
+          <p className='text-content/55 my-0 font-mono text-xs leading-[1.8]'>
             {process.env.NEXT_PUBLIC_COMPANY_NAME}
             <br />
             {process.env.NEXT_PUBLIC_ADDRESS}
@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
 
         {columns.map(({ key, pages }) => (
           <div key={key}>
-            <div className='mb-4 font-mono text-[11px] uppercase tracking-[0.12em] text-content/45'>
+            <div className='text-content/45 mb-4 font-mono text-[11px] tracking-[0.12em] uppercase'>
               {t(`footer.${key}`)}
             </div>
 
@@ -56,7 +56,7 @@ export const Footer: React.FC = () => {
         ))}
 
         <div>
-          <div className='mb-4 font-mono text-[11px] uppercase tracking-[0.12em] text-content/45'>
+          <div className='text-content/45 mb-4 font-mono text-[11px] tracking-[0.12em] uppercase'>
             {t('footer.legal')}
           </div>
 
@@ -107,8 +107,10 @@ export const Footer: React.FC = () => {
         </div>
       </div>
 
-      <div className='mx-auto flex max-w-[1180px] flex-col justify-between gap-3 border-t border-hairline px-5 pb-12 pt-5 font-mono text-[11.5px] text-content/50 sm:flex-row md:px-8'>
-        <span>{t('footer.copyright', { year: new Date().getFullYear(), siteName: process.env.NEXT_PUBLIC_SITE_NAME! })}</span>
+      <div className='border-hairline text-content/50 mx-auto flex max-w-[1180px] flex-col justify-between gap-3 border-t px-5 pt-5 pb-12 font-mono text-[11.5px] sm:flex-row md:px-8'>
+        <span>
+          {t('footer.copyright', { year: new Date().getFullYear(), siteName: process.env.NEXT_PUBLIC_SITE_NAME! })}
+        </span>
         <span>{t('footer.built-with')}</span>
       </div>
     </footer>

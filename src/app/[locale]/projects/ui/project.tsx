@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { format, register } from 'timeago.js';
 import roFunc from 'timeago.js/lib/lang/ro';
 import enFunc from 'timeago.js/lib/lang/en_US';
-import { type Project as ProjectT } from 'contentlayer/generated';
+import { type Project as ProjectT } from 'contentlayer2/generated';
 
 import { Link } from '@/i18n/routing';
 import { usePostViews } from '@/hooks/usePostViews';
@@ -34,7 +34,7 @@ export const Project: React.FC<ProjectT> = ({
   return (
     <Link
       href={{ pathname: '/projects/[slug]', params: { slug } }}
-      className='col-span-6 rounded-lg border bg-surface-raised sm:col-span-3 lg:col-span-2  dark:bg-surface-raised'
+      className='bg-surface-raised dark:bg-surface-raised col-span-6 rounded-lg border sm:col-span-3 lg:col-span-2'
     >
       <div className='relative h-52 border-b'>
         <Image
@@ -50,9 +50,9 @@ export const Project: React.FC<ProjectT> = ({
 
       <div className='flex flex-col px-4 py-2'>
         <h2 className='line-clamp-1 text-xl'>{title}</h2>
-        <p className='line-clamp-2 text-sm text-content/60'>{description}</p>
+        <p className='text-content/60 line-clamp-2 text-sm'>{description}</p>
 
-        <div className='flex justify-between text-xs text-content/60'>
+        <div className='text-content/60 flex justify-between text-xs'>
           <span>{t('reading-time', { minutes: Math.ceil(readingTime) })}</span>
           <span>{isError || isLoading ? <LoadingDots /> : t('views', { count: numberFormat(Number(views)) })}</span>
           <span>{format(date, locale)}</span>

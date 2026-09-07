@@ -56,7 +56,7 @@ export const Stack: React.FC = () => {
       <div className='grid gap-10'>
         {groups.map(({ key, items }) => (
           <div key={key} className='grid grid-cols-1 items-start gap-4 sm:grid-cols-[130px_1fr] sm:gap-7'>
-            <div className='font-mono text-xs tracking-[0.06em] text-content/50 sm:pt-2'>{t(`groups.${key}`)}</div>
+            <div className='text-content/50 font-mono text-xs tracking-[0.06em] sm:pt-2'>{t(`groups.${key}`)}</div>
 
             <ul className='flex flex-wrap gap-2'>
               {items.map(({ name, url }) => (
@@ -65,7 +65,7 @@ export const Stack: React.FC = () => {
                     href={url}
                     target='_blank'
                     rel='noreferrer'
-                    className='inline-block rounded-full border border-hairline-strong px-[15px] py-2 text-sm text-content transition-colors hover:border-accent hover:text-accent'
+                    className='border-hairline-strong text-content hover:border-accent hover:text-accent inline-block rounded-full border px-[15px] py-2 text-sm transition-colors'
                   >
                     {name}
                   </a>

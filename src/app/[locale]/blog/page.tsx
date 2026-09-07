@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { allPosts, type Post as PostType } from 'contentlayer/generated';
+import { allPosts, type Post as PostType } from 'contentlayer2/generated';
 
 import { getPathname } from '@/i18n/routing';
 import { PostCard } from './ui/post-card';
@@ -42,7 +42,7 @@ export default async function Blog({ params }: { params: Promise<{ locale: strin
     .sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
 
   return (
-    <main className='container mx-auto flex max-w-7xl flex-col gap-8 px-4 py-20 md:py-32'>
+    <main className='mx-auto flex max-w-[1180px] flex-col gap-8 px-5 py-16 md:px-8 md:py-24'>
       <div className='flex items-center justify-between gap-x-4'>
         <h1>Blog</h1>
         {/* <Search /> */}

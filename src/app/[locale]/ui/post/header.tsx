@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Post, Project } from 'contentlayer/generated';
+import { Post, Project } from 'contentlayer2/generated';
 
 import { Meta } from './meta';
 import { Reactions } from '../reactions';

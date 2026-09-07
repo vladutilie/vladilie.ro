@@ -125,7 +125,7 @@ export const Form: React.FC = () => {
 
       {watch('service') && ![Services.JobOpportunity, Services.JustSayHi].includes(watch('service') as Services) ? (
         <div className='col-span-2 flex flex-col'>
-          <label htmlFor='budget' className='text-sm text-content/60'>
+          <label htmlFor='budget' className='text-content/60 text-sm'>
             {t.rich('budget', {
               amount: Number(watch('budget')),
               strong: (chunk: ReactNode): JSX.Element => (

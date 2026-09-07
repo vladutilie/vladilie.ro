@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';
 const environment = [
@@ -55,11 +55,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   };
 }
 
-export default async function Uses() {
+export default async function Uses({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const t = await getTranslations('uses');
 
   return (
-    <main className='container mx-auto max-w-7xl gap-8 px-4 py-32'>
+    <main className='mx-auto max-w-[1180px] gap-8 px-5 py-16 md:px-8 md:py-24'>
       <h1>{t('title')}</h1>
       <p>{t('description')}</p>
 
@@ -70,7 +73,7 @@ export default async function Uses() {
             return (
               <li key={item[0]}>
                 <p className='inline'>{t(item[0])}</p>
-                <span className='block text-sm text-content/60'>{t(item[1])}</span>
+                <span className='text-content/60 block text-sm'>{t(item[1])}</span>
               </li>
             );
           }
@@ -90,7 +93,7 @@ export default async function Uses() {
             return (
               <li key={item[0]}>
                 <p className='inline'>{t(item[0])}</p>
-                <span className='block text-sm text-content/60'>{t(item[1])}</span>
+                <span className='text-content/60 block text-sm'>{t(item[1])}</span>
               </li>
             );
           }
@@ -110,7 +113,7 @@ export default async function Uses() {
             return (
               <li key={item[0]}>
                 <p className='inline'>{t(item[0])}</p>
-                <span className='block text-sm text-content/60'>{t(item[1])}</span>
+                <span className='text-content/60 block text-sm'>{t(item[1])}</span>
               </li>
             );
           }

@@ -3,7 +3,8 @@
 import { useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { type Boardgame as BoardgameT, BoardgameState } from '@/../generated/prisma';
+import type { BoardgameModel as BoardgameT } from '@/../generated/prisma/models';
+import { BoardgameState } from '@/../generated/prisma/enums';
 
 import { Boardgame } from './boardgame';
 

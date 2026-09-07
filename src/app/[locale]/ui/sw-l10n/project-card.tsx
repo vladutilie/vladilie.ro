@@ -21,10 +21,10 @@ export const LocalizedCard: React.FC<{
       href={url}
       target='_blank'
       rel='noreferrer'
-      className='group block bg-surface p-6 text-content transition-colors hover:bg-hover-tint hover:text-content'
+      className='group bg-surface text-content hover:bg-hover-tint hover:text-content block p-6 transition-colors'
     >
       <div className='mb-3 flex items-center gap-2.5'>
-        <span className='grid h-[22px] w-[22px] shrink-0 place-items-center overflow-hidden rounded-[5px] border border-hairline-strong'>
+        <span className='border-hairline-strong grid h-[22px] w-[22px] shrink-0 place-items-center overflow-hidden rounded-[5px] border'>
           {isValidElement(logo) ? (
             logo
           ) : (
@@ -41,7 +41,7 @@ export const LocalizedCard: React.FC<{
         </h3>
       </div>
 
-      <p className='my-0 text-[13.5px] leading-[1.55] text-content/62'>{t(i18nKey)}</p>
+      <p className='text-content/62 my-0 text-[13.5px] leading-[1.55]'>{t(i18nKey)}</p>
     </a>
   );
 };

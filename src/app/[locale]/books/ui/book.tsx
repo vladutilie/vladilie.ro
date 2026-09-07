@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { BookState, Book as BookT } from '@/../generated/prisma';
+import type { BookModel as BookT } from '@/../generated/prisma/models';
+import { BookState } from '@/../generated/prisma/enums';
 
 import { Done, Favorite, Glasses, Wishlist } from '@/icons';
 
@@ -9,7 +10,7 @@ export const Book: React.FC<BookT> = ({ title, author, cover, state, link, blurD
     href={link}
     target='_blank'
   >
-    <div className='flex w-full items-stretch gap-x-4 rounded-md bg-surface-raised p-4 dark:bg-surface-raised'>
+    <div className='bg-surface-raised dark:bg-surface-raised flex w-full items-stretch gap-x-4 rounded-md p-4'>
       <div className='relative h-20 w-12'>
         <Image
           alt={title}
@@ -46,7 +47,7 @@ export const Book: React.FC<BookT> = ({ title, author, cover, state, link, blurD
 
       <div className='flex flex-col py-2'>
         <p className="my-0 grow font-semibold group-hover:after:content-['_↗']">{title}</p>
-        <span className='text-xs text-content/70'>{author}</span>
+        <span className='text-content/70 text-xs'>{author}</span>
       </div>
     </div>
   </a>

@@ -4,7 +4,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { format, register } from 'timeago.js';
 import roFunc from 'timeago.js/lib/lang/ro';
 import enFunc from 'timeago.js/lib/lang/en_US';
-import { type Post as PostT } from 'contentlayer/generated';
+import { type Post as PostT } from 'contentlayer2/generated';
 
 import { Link } from '@/i18n/routing';
 import { LoadingDots } from '../../ui/loading-dots';
@@ -27,12 +27,12 @@ export const PostCard: React.FC<PostT> = ({ title, description, date, slug, read
       <Link href={{ pathname: '/blog/[slug]', params: { slug } }} className='flex flex-col'>
         <h2 className='my-0 text-lg'>{title}</h2>
 
-        <span className='text-sm text-content/60'>
+        <span className='text-content/60 text-sm'>
           {`${format(date, locale)} · ${t('reading-time', { minutes: Math.ceil(readingTime) })} · `}
           {isError || isLoading ? <LoadingDots /> : t('views', { count: numberFormat(Number(views)) })}
         </span>
 
-        <span className='text-sm text-content/60'>{description}</span>
+        <span className='text-content/60 text-sm'>{description}</span>
       </Link>
     </li>
   );

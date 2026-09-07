@@ -53,7 +53,7 @@ export default async function Locations({ params }: { params: Promise<{ locale: 
   }
 
   return (
-    <main className='container mx-auto max-w-7xl gap-8 px-4 py-32'>
+    <main className='mx-auto max-w-[1180px] gap-8 px-5 py-16 md:px-8 md:py-24'>
       <h1>{t('title')}</h1>
       <p>{t('description')}</p>
 
@@ -61,7 +61,7 @@ export default async function Locations({ params }: { params: Promise<{ locale: 
         {locations.map(({ name, visitCounter, lastVisitAt }) => (
           <div key={name}>
             <h3 className='my-0 text-xl'>{name}</h3>
-            <div className='text-sm text-content/60'>
+            <div className='text-content/60 text-sm'>
               {t.rich('visited', {
                 visitCounter,
                 lastVisitAt,

@@ -17,7 +17,7 @@ export const LangChanger: React.FC = () => {
       // @ts-ignore
       href={{ pathname, params }}
       locale={isEnglish ? 'ro' : 'en'}
-      className={`font-mono text-[11px] uppercase tracking-[0.06em] text-content/60 transition-colors hover:text-accent ${
+      className={`text-content/60 hover:text-accent font-mono text-[11px] tracking-[0.06em] uppercase transition-colors ${
         notAllowedPaths.includes(pathname) ? 'pointer-events-none opacity-40' : ''
       }`}
       title={t('change-language-to', { lang: isEnglish ? 'română' : 'English' })}

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Boardgame } from '@/../generated/prisma';
+import type { BoardgameModel as Boardgame } from '@/../generated/prisma/models';
 import { getTranslations } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';
@@ -50,7 +50,7 @@ export default async function Boardgames() {
   const { boardgames, categories } = await getBoardgames();
 
   return (
-    <main className='container mx-auto max-w-7xl gap-8 px-4 py-20 md:py-32'>
+    <main className='mx-auto max-w-[1180px] gap-8 px-5 py-16 md:px-8 md:py-24'>
       <h1>{t('title')}</h1>
       <p>{t('description')}</p>
 

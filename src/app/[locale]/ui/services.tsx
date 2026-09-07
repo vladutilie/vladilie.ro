@@ -10,10 +10,10 @@ export const Services: React.FC = () => {
 
   return (
     <SplitSection id={NavLinks.Services} index='02' label={t('tag')} lead={t('lead')}>
-      <div className='grid grid-cols-1 gap-px border border-hairline bg-hairline sm:grid-cols-2'>
+      <div className='border-hairline bg-hairline grid grid-cols-1 gap-px border sm:grid-cols-2'>
         {services.map((service, idx) => (
-          <div key={service} className='bg-surface p-8 transition-colors hover:bg-hover-tint'>
-            <div className='mb-4 font-mono text-[11px] tracking-[0.12em] text-accent'>
+          <div key={service} className='bg-surface hover:bg-hover-tint p-8 transition-colors'>
+            <div className='text-accent mb-4 font-mono text-[11px] tracking-[0.12em]'>
               {String(idx + 1).padStart(2, '0')}
             </div>
             <h3 className='my-0 mb-2.5 text-xl'>{t(`${service}.title`)}</h3>

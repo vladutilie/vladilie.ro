@@ -42,7 +42,7 @@ export const Menu: React.FC = () => {
 
       <aside
         id='sidebar'
-        className={`fixed right-0 top-0 z-40 flex h-screen w-full max-w-sm origin-right flex-col gap-y-8 border-l border-hairline bg-surface p-6 transition ${
+        className={`border-hairline bg-surface fixed top-0 right-0 z-40 flex h-screen w-full max-w-sm origin-right flex-col gap-y-8 border-l p-6 transition ${
           displayMenu ? '-translate-x-0 opacity-100 md:hidden' : 'translate-x-full opacity-0'
         }`}
       >
@@ -52,7 +52,7 @@ export const Menu: React.FC = () => {
           </Link>
 
           <button
-            className='flex h-8 w-8 cursor-pointer items-center justify-center text-content'
+            className='text-content flex h-8 w-8 cursor-pointer items-center justify-center'
             onClick={() => handleMenu(false)}
             aria-label={t('close-menu-al')}
           >
@@ -63,9 +63,7 @@ export const Menu: React.FC = () => {
         <Links isMobile closeMenu={() => handleMenu(false)} />
       </aside>
 
-      <div
-        className={displayMenu ? 'fixed inset-0 z-30 h-screen w-full bg-ink/20 backdrop-blur-xs md:hidden' : ''}
-      />
+      <div className={displayMenu ? 'bg-ink/20 fixed inset-0 z-30 h-screen w-full backdrop-blur-xs md:hidden' : ''} />
 
       <button className='text-content md:hidden' onClick={() => handleMenu()} aria-label={t('burger-menu-al')}>
         <BurgerMenu />

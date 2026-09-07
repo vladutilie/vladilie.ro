@@ -11,15 +11,15 @@ export const Education: React.FC = () => {
 
   return (
     <SplitSection id={NavLinks.Education} index='04' label={t('tag')} lead={t('lead')}>
-      <ul className='grid gap-px border border-hairline bg-hairline'>
+      <ul className='border-hairline bg-hairline grid gap-px border'>
         {stages.map((stage) => (
           <li key={stage} className='bg-surface p-6 md:p-8'>
             <div className='flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between md:gap-6'>
               <h3 className='my-0 text-xl'>{t(`${stage}.title`)}</h3>
-              <span className='shrink-0 font-mono text-xs tracking-[0.06em] text-accent'>{t(`${stage}.interval`)}</span>
+              <span className='text-accent shrink-0 font-mono text-xs tracking-[0.06em]'>{t(`${stage}.interval`)}</span>
             </div>
 
-            <p className='mb-2 mt-1.5 text-sm font-medium text-content/70'>{t(`${stage}.subtitle`)}</p>
+            <p className='text-content/70 mt-1.5 mb-2 text-sm font-medium'>{t(`${stage}.subtitle`)}</p>
 
             <p className='my-0 text-[15px] leading-[1.65]'>
               {t.rich(`${stage}.description`, {

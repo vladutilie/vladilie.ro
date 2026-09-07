@@ -1,7 +1,7 @@
 const createNextIntlPlugin = require('next-intl/plugin');
 const withNextIntl = createNextIntlPlugin();
 
-const { withContentlayer } = require('next-contentlayer');
+const { withContentlayer } = require('next-contentlayer2');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

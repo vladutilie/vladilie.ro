@@ -1,5 +1,8 @@
-import { BoardgameState, BookState, PrismaClient } from '@/../generated/prisma';
+import { PrismaPg } from '@prisma/adapter-pg';
 import { getPlaiceholder } from 'plaiceholder';
+
+import { PrismaClient } from '../generated/prisma/client';
+import { BoardgameState, BookState } from '../generated/prisma/enums';
 
 const getImageData = async (imageUrl: string): Promise<string> => {
   if (!imageUrl) {
@@ -18,7 +21,7 @@ const getImageData = async (imageUrl: string): Promise<string> => {
   }
 };
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL! }) });
 
 const seedBoardgames = async () => {
   console.info('🏁 seedBoardgames started...');

@@ -11,11 +11,11 @@ type Props = {
 
 /** The label-on-the-left section layout used across the homepage. */
 export const SplitSection: React.FC<Props> = ({ id, index, label, lead, aside, children }) => (
-  <section id={id} className='border-t border-hairline py-16 md:py-20 lg:py-[88px]'>
+  <section id={id} className='border-hairline border-t py-16 md:py-20 lg:py-[88px]'>
     <div className='grid grid-cols-1 gap-10 lg:grid-cols-[260px_1fr] lg:gap-[72px]'>
       <div>
         <SectionLabel index={index}>{label}</SectionLabel>
-        {lead && <p className='mt-[18px] text-[15px] leading-relaxed text-content/60'>{lead}</p>}
+        {lead && <p className='text-content/60 mt-[18px] text-[15px] leading-relaxed'>{lead}</p>}
         {aside}
       </div>
 

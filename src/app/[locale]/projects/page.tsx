@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { allProjects, type Project as ProjectT } from 'contentlayer/generated';
+import { allProjects, type Project as ProjectT } from 'contentlayer2/generated';
 
 import { getPathname } from '@/i18n/routing';
 import { Project } from './ui/project';
@@ -40,7 +40,7 @@ export default async function Projects({ params }: { params: Promise<{ locale: s
     .sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
 
   return (
-    <main className='container mx-auto max-w-7xl gap-8 px-4 py-32'>
+    <main className='mx-auto max-w-[1180px] gap-8 px-5 py-16 md:px-8 md:py-24'>
       <h1>{t('title')}</h1>
 
       {projects.length ? (

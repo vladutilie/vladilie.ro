@@ -50,7 +50,7 @@ export const SoftwareLocalization: React.FC = () => {
         </Link>
       }
     >
-      <div className='grid grid-cols-1 gap-px border border-hairline bg-hairline sm:grid-cols-2 lg:grid-cols-3'>
+      <div className='border-hairline bg-hairline grid grid-cols-1 gap-px border sm:grid-cols-2 lg:grid-cols-3'>
         {localizedSw.map((item) => (
           <LocalizedCard key={item.name} {...item} />
         ))}

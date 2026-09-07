@@ -4,7 +4,7 @@ export default async function NotFound() {
   const t = await getTranslations('not-found');
 
   return (
-    <main className='container mx-auto max-w-7xl gap-8 px-4 py-32'>
+    <main className='mx-auto max-w-[1180px] gap-8 px-5 py-16 md:px-8 md:py-24'>
       <h1>{t('title')}</h1>
       <p>{t('description')}</p>
     </main>

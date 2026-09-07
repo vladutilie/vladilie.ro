@@ -19,7 +19,7 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
       <div>
         <Availability />
 
-        <h1 className='mb-7 mt-8 text-5xl leading-[0.98] lg:text-7xl'>
+        <h1 className='mt-8 mb-7 text-5xl leading-[0.98] lg:text-7xl'>
           {t.rich('title', {
             accent: (chunk: ReactNode): JSX.Element => <span className='text-accent'>{chunk}</span>,
             br: (): JSX.Element => <br />
@@ -28,28 +28,26 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
 
         <p className='mb-10 max-w-[52ch] text-lg leading-relaxed md:text-[19px]'>
           {t.rich('intro', {
-            strong: (chunk: ReactNode): JSX.Element => (
-              <strong className='font-semibold text-content'>{chunk}</strong>
-            )
+            strong: (chunk: ReactNode): JSX.Element => <strong className='text-content font-semibold'>{chunk}</strong>
           })}
         </p>
 
         <div className='flex flex-wrap items-center gap-3.5'>
           <Link
             href={`/${Pages.Projects}`}
-            className='rounded-full border border-ink bg-ink px-6 py-[15px] text-[15px] font-semibold text-paper transition-colors hover:border-accent hover:bg-accent hover:text-white dark:border-paper dark:bg-paper dark:text-ink dark:hover:border-accent dark:hover:bg-accent dark:hover:text-white'
+            className='border-ink bg-ink text-paper hover:border-accent hover:bg-accent dark:border-paper dark:bg-paper dark:text-ink dark:hover:border-accent dark:hover:bg-accent rounded-full border px-6 py-[15px] text-[15px] font-semibold transition-colors hover:text-white dark:hover:text-white'
           >
             {t('cta-work')}
           </Link>
           <Link
             href={`/${Pages.Contact}`}
-            className='rounded-full border border-hairline-strong px-6 py-[15px] text-[15px] font-semibold text-content transition-colors hover:border-accent hover:text-accent'
+            className='border-hairline-strong text-content hover:border-accent hover:text-accent rounded-full border px-6 py-[15px] text-[15px] font-semibold transition-colors'
           >
             {t('cta-quote')}
           </Link>
         </div>
 
-        <div className='mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-hairline pt-8 font-mono text-[12.5px] text-content/60'>
+        <div className='border-hairline text-content/60 mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 border-t pt-8 font-mono text-[12.5px]'>
           <span>{location}</span>
           {!!commits && (
             <span>
@@ -69,7 +67,7 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
       </div>
 
       <div className='mx-auto w-full max-w-sm lg:max-w-none'>
-        <div className='relative aspect-4/5 overflow-hidden rounded-[4px] border border-hairline-strong'>
+        <div className='border-hairline-strong relative aspect-4/5 overflow-hidden rounded-[4px] border'>
           <Image
             alt='Vlad Ilie'
             className='h-full w-full object-cover'
@@ -79,7 +77,7 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
             src={vlad}
             sizes='(max-width: 1024px) 90vw, 380px'
           />
-          <span className='absolute bottom-0 left-0 h-[46px] w-[46px] bg-accent' aria-hidden />
+          <span className='bg-accent absolute bottom-0 left-0 h-[46px] w-[46px]' aria-hidden />
         </div>
       </div>
     </section>

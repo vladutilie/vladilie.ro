@@ -1,5 +1,5 @@
 import { useLocale, useTranslations } from 'next-intl';
-import { allProjects } from 'contentlayer/generated';
+import { allProjects } from 'contentlayer2/generated';
 
 import { Link } from '@/i18n/routing';
 import { NavLinks, Pages } from '@/lib/constants';
@@ -19,18 +19,18 @@ export const Projects: React.FC = () => {
   }
 
   return (
-    <section id={NavLinks.Work} className='border-t border-hairline py-16 md:py-20 lg:py-[88px]'>
+    <section id={NavLinks.Work} className='border-hairline border-t py-16 md:py-20 lg:py-[88px]'>
       <div className='mb-11 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between'>
         <div>
           <SectionLabel index='05'>{t('tag')}</SectionLabel>
-          <p className='my-0 mt-[18px] max-w-[24ch] text-3xl font-semibold leading-tight tracking-[-0.03em] text-content'>
+          <p className='text-content my-0 mt-[18px] max-w-[24ch] text-3xl leading-tight font-semibold tracking-[-0.03em]'>
             {t('title')}
           </p>
         </div>
 
         <Link
           href={`/${Pages.Projects}`}
-          className='self-start border-b border-accent pb-1 font-mono text-xs uppercase tracking-[0.06em] sm:self-auto'
+          className='border-accent self-start border-b pb-1 font-mono text-xs tracking-[0.06em] uppercase sm:self-auto'
         >
           {t('see-all')} →
         </Link>
