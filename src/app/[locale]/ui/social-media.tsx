@@ -23,7 +23,7 @@ export const SocialMedia: React.FC = () => {
       {socialLinks.map(({ name, url, logo }) => (
         <li key={name}>
           <button
-            className='cursor-pointer rounded-md bg-gray-100/0 p-1.5 transition duration-200 hover:bg-gray-100/100 dark:hover:bg-slate-800'
+            className='hover:bg-hover-tint text-content/70 hover:text-accent cursor-pointer rounded-md p-1.5 transition-colors duration-200'
             onClick={() => window.open(url, '_blank')}
             aria-label={t('link-to-al', { socialNetwork: name })}
             title={t('link-to-al', { socialNetwork: name })}
