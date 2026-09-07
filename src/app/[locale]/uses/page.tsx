@@ -70,13 +70,13 @@ export default async function Uses() {
             return (
               <li key={item[0]}>
                 <p className='inline'>{t(item[0])}</p>
-                <span className='block text-sm text-gray-500'>{t(item[1])}</span>
+                <span className='block text-sm text-content/60'>{t(item[1])}</span>
               </li>
             );
           }
 
           return (
-            <li key={item} className='text-gray-600 dark:text-gray-300'>
+            <li key={item} className='text-content/70'>
               {t(item)}
             </li>
           );
@@ -90,13 +90,13 @@ export default async function Uses() {
             return (
               <li key={item[0]}>
                 <p className='inline'>{t(item[0])}</p>
-                <span className='block text-sm text-gray-500'>{t(item[1])}</span>
+                <span className='block text-sm text-content/60'>{t(item[1])}</span>
               </li>
             );
           }
 
           return (
-            <li key={item} className='text-gray-600 dark:text-gray-300'>
+            <li key={item} className='text-content/70'>
               {t(item)}
             </li>
           );
@@ -110,13 +110,13 @@ export default async function Uses() {
             return (
               <li key={item[0]}>
                 <p className='inline'>{t(item[0])}</p>
-                <span className='block text-sm text-gray-500'>{t(item[1])}</span>
+                <span className='block text-sm text-content/60'>{t(item[1])}</span>
               </li>
             );
           }
 
           return (
-            <li key={item} className='text-gray-600 dark:text-gray-300'>
+            <li key={item} className='text-content/70'>
               {t(item)}
             </li>
           );

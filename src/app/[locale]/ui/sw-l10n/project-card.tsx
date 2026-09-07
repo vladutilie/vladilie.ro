@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 
-export const ProjectCard: React.FC<{
+export const LocalizedCard: React.FC<{
   name: string;
   logo: StaticImport;
   darkLogo?: StaticImport;
@@ -14,30 +14,34 @@ export const ProjectCard: React.FC<{
   i18nKey: string;
 }> = ({ name, logo, darkLogo, url, i18nKey }) => {
   const t = useTranslations('homepage.sw-l10n');
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   return (
-    <div className='group flex w-4/5 shrink-0 snap-center snap-always flex-col justify-center gap-y-2 self-stretch rounded-lg border p-4 hover:bg-gray-50 dark:border-slate-700 dark:hover:bg-slate-900 sm:w-3/4 md:w-1/2 lg:col-span-2 lg:w-auto'>
-      {isValidElement(logo) ? (
-        logo
-      ) : (
-        <Image
-          src={'dark' === theme && darkLogo ? darkLogo : logo}
-          alt={name}
-          className='h-20 w-auto self-center object-contain grayscale transition group-hover:grayscale-0'
-        />
-      )}
+    <a
+      href={url}
+      target='_blank'
+      rel='noreferrer'
+      className='group block bg-surface p-6 text-content transition-colors hover:bg-hover-tint hover:text-content'
+    >
+      <div className='mb-3 flex items-center gap-2.5'>
+        <span className='grid h-[22px] w-[22px] shrink-0 place-items-center overflow-hidden rounded-[5px] border border-hairline-strong'>
+          {isValidElement(logo) ? (
+            logo
+          ) : (
+            <Image
+              src={'dark' === resolvedTheme && darkLogo ? darkLogo : logo}
+              alt={name}
+              className='h-full w-full object-contain grayscale transition group-hover:grayscale-0'
+            />
+          )}
+        </span>
 
-      <h4 className='my-0 text-xl font-semibold'>
-        <a
-          href={url}
-          target='_blank'
-          className="text-inherit after:opacity-0 after:transition-opacity after:content-['_↗'] group-hover:after:opacity-100"
-        >
+        <h3 className="my-0 text-base font-semibold after:opacity-0 after:transition-opacity after:content-['_↗'] group-hover:after:opacity-100">
           {name}
-        </a>
-      </h4>
-      <p className='my-0 text-sm text-gray-600'>{t(i18nKey)}</p>
-    </div>
+        </h3>
+      </div>
+
+      <p className='my-0 text-[13.5px] leading-[1.55] text-content/62'>{t(i18nKey)}</p>
+    </a>
   );
 };

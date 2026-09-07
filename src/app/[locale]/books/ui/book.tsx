@@ -9,7 +9,7 @@ export const Book: React.FC<BookT> = ({ title, author, cover, state, link, blurD
     href={link}
     target='_blank'
   >
-    <div className='flex w-full items-stretch gap-x-4 rounded-md bg-gray-50 p-4 dark:bg-slate-900'>
+    <div className='flex w-full items-stretch gap-x-4 rounded-md bg-surface-raised p-4 dark:bg-surface-raised'>
       <div className='relative h-20 w-12'>
         <Image
           alt={title}
@@ -46,7 +46,7 @@ export const Book: React.FC<BookT> = ({ title, author, cover, state, link, blurD
 
       <div className='flex flex-col py-2'>
         <p className="my-0 grow font-semibold group-hover:after:content-['_↗']">{title}</p>
-        <span className='text-xs text-gray-600'>{author}</span>
+        <span className='text-xs text-content/70'>{author}</span>
       </div>
     </div>
   </a>

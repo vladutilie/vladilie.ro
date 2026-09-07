@@ -4,80 +4,112 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import { Link } from '@/i18n/routing';
-import { Logo } from './icons';
-import { Pages } from '@/lib/constants';
+import { Wordmark } from './wordmark';
 import sal from '@/../public/images/anpc-sal.webp';
 import sol from '@/../public/images/anpc-sol.webp';
+
+const columns = [
+  { key: 'site', pages: ['/projects', '/blog', '/contact', '/locations'] },
+  { key: 'personal', pages: ['/uses', '/books', '/boardgames', '/colophon'] }
+] as const;
+
+const linkClasses = 'text-content/75 transition-colors hover:text-accent';
 
 export const Footer: React.FC = () => {
   const t = useTranslations();
 
   return (
-    <footer className='bg-gray-50 dark:bg-slate-900'>
-      <div className='container mx-auto grid max-w-7xl grid-cols-3 gap-4 px-4 py-16 md:py-20 2xl:py-24'>
-        <div className='col-span-3 flex flex-col gap-y-4 md:col-span-1'>
-          <Logo />
-          <div>
-            <p className='my-0 text-sm font-medium'>{process.env.NEXT_PUBLIC_COMPANY_NAME}</p>
-            <p className='my-0 text-sm'>{process.env.NEXT_PUBLIC_ADDRESS}</p>
-            <p className='my-0 text-sm'>{t('footer.vat-id', { vatId: process.env.NEXT_PUBLIC_VAT_ID! })}</p>
-            <p className='my-0 text-sm'>{t('footer.trade-reg-no', { regNo: process.env.NEXT_PUBLIC_REG_NO! })}</p>
+    <footer className='border-t border-hairline'>
+      <div className='mx-auto grid max-w-[1180px] grid-cols-1 gap-10 px-5 pb-10 pt-14 sm:grid-cols-2 md:px-8 lg:grid-cols-[1.4fr_1fr_1fr_1fr]'>
+        <div>
+          <div className='mb-4'>
+            <Wordmark />
           </div>
+
+          <p className='my-0 font-mono text-xs leading-[1.8] text-content/55'>
+            {process.env.NEXT_PUBLIC_COMPANY_NAME}
+            <br />
+            {process.env.NEXT_PUBLIC_ADDRESS}
+            <br />
+            {t('footer.vat-id', { vatId: process.env.NEXT_PUBLIC_VAT_ID! })}
+            <br />
+            {t('footer.trade-reg-no', { regNo: process.env.NEXT_PUBLIC_REG_NO! })}
+          </p>
         </div>
 
-        <ul className='col-span-3 flex flex-col gap-y-2 md:col-span-1'>
-          {Object.values(Pages).map((page) => (
-            <li key={page}>
-              <Link href={`/${page}`}>{t(`${page}.title`)}</Link>
+        {columns.map(({ key, pages }) => (
+          <div key={key}>
+            <div className='mb-4 font-mono text-[11px] uppercase tracking-[0.12em] text-content/45'>
+              {t(`footer.${key}`)}
+            </div>
+
+            <ul className='grid gap-2.5 text-[14.5px]'>
+              {pages.map((page) => (
+                <li key={page}>
+                  <Link href={page} className={linkClasses}>
+                    {t(`${page.slice(1)}.title`)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+
+        <div>
+          <div className='mb-4 font-mono text-[11px] uppercase tracking-[0.12em] text-content/45'>
+            {t('footer.legal')}
+          </div>
+
+          <ul className='grid gap-2.5 text-[14.5px]'>
+            <li>
+              <Link href='/terms' className={linkClasses}>
+                {t('terms.title')}
+              </Link>
             </li>
-          ))}
-        </ul>
+            <li>
+              <Link href='/privacy' className={linkClasses}>
+                {t('privacy.title')}
+              </Link>
+            </li>
+            <li>
+              <a href='https://anpc.ro' target='_blank' rel='noreferrer' className={linkClasses}>
+                ANPC
+              </a>
+            </li>
+            <li className='mt-2 flex flex-col gap-2'>
+              <a href='https://anpc.ro/ce-este-sal' target='_blank' rel='noreferrer' aria-label={t('footer.sal-al')}>
+                <Image
+                  src={sal}
+                  alt=''
+                  placeholder='blur'
+                  width={200}
+                  height={50}
+                  className='opacity-40 transition-opacity duration-300 hover:opacity-100'
+                />
+              </a>
+              <a
+                href='https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO'
+                target='_blank'
+                rel='noreferrer'
+                aria-label={t('footer.sol-al')}
+              >
+                <Image
+                  src={sol}
+                  alt=''
+                  placeholder='blur'
+                  width={200}
+                  height={50}
+                  className='opacity-40 transition-opacity duration-300 hover:opacity-100'
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-        <ul className='col-span-3 flex flex-col gap-y-2 md:col-span-1'>
-          <li>
-            <Link href='/terms'>{t('terms.title')}</Link>
-          </li>
-          <li>
-            <Link href='/privacy'>{t('privacy.title')}</Link>
-          </li>
-          <li>
-            <a href='https://anpc.ro' target='_blank' className="after:content-['_↗']">
-              ANPC
-            </a>
-          </li>
-          <li>
-            <a href='https://anpc.ro/ce-este-sal' target='_blank' aria-label={t('footer.sal-al')}>
-              <Image
-                src={sal}
-                alt=''
-                placeholder='blur'
-                width={250}
-                height={62}
-                className='opacity-40 transition-opacity duration-300 hover:opacity-100'
-              />
-            </a>
-          </li>
-          <li>
-            <a
-              href='https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO'
-              target='_blank'
-              aria-label={t('footer.sol-al')}
-            >
-              <Image
-                src={sol}
-                alt=''
-                placeholder='blur'
-                width={250}
-                height={62}
-                className='opacity-40 transition-opacity duration-300 hover:opacity-100'
-              />
-            </a>
-          </li>
-        </ul>
-
-        <p className='col-span-3 mt-4 border-t pt-4 text-center text-sm text-gray-500'>
-          {t('footer.copyright', { year: new Date().getFullYear(), siteName: process.env.NEXT_PUBLIC_SITE_NAME! })}
-        </p>
+      <div className='mx-auto flex max-w-[1180px] flex-col justify-between gap-3 border-t border-hairline px-5 pb-12 pt-5 font-mono text-[11.5px] text-content/50 sm:flex-row md:px-8'>
+        <span>{t('footer.copyright', { year: new Date().getFullYear(), siteName: process.env.NEXT_PUBLIC_SITE_NAME! })}</span>
+        <span>{t('footer.built-with')}</span>
       </div>
     </footer>
   );

@@ -4,7 +4,7 @@
     "burger-menu-al": "Meniu burger",
     "about": "Despre",
     "education": "Educație",
-    "skills": "Abilități",
+    "skills": "Tehnologii",
     "projects": "Proiecte",
     "testimonials": "Testimoniale",
     "services": "Servicii",
@@ -12,7 +12,14 @@
     "contact": "Contact",
     "switch-theme": "Schimbă temă",
     "change-language": "Schimbă limba",
-    "change-language-to": "Change language to {lang}"
+    "change-language-to": "Change language to {lang}",
+    "work": "Proiecte",
+    "localization": "Localizare",
+    "writing": "Scrieri",
+    "lets-talk": "Hai să vorbim",
+    "light": "Luminos",
+    "dark": "Întunecat",
+    "close-menu-al": "Închide meniul"
   },
   "homepage": {
     "metadata": {
@@ -28,20 +35,41 @@
       "commits": "{count, plural, =0 {<commits>0</commits> comiteri} =1 {<commits>1</commits> comitere} few {<commits>#</commits> comiteri} other {<commits>#</commits> de comiteri}} în ultimele 7 zile",
       "link-to-al": "Legătură către {socialNetwork}",
       "neo4j-certificate": "Certificat Neo4j",
-      "location-history": "Istoric locații"
+      "location-history": "Istoric locații",
+      "title": "Inginer software<br></br>care construiește soluții<br></br>web <accent>dedicate</accent>.",
+      "intro": "Sunt Vlad — inginer software din România, construiesc cu <strong>WordPress</strong> și <strong>NextJS</strong>. Fac magazine online și produse digitale, apoi le țin — pe ele și infrastructura din spate — în funcțiune.",
+      "cta-work": "Vezi proiectele",
+      "cta-quote": "Cere o ofertă",
+      "meta-stack": "WordPress · NextJS",
+      "meta-gte": "GTE WordPress ro_RO"
     },
     "about": {
-      "tag": "Despre mine",
+      "tag": "Despre",
       "title": "Mai multe despre mine",
       "image-alt": "Vlad în munți",
-      "p1": "În ultimii cinci ani, am lucrat cu tehnologii bazate pe JavaScript, cu accent pe NextJS, NodeJS și Tailwind CSS. Această perioadă a fost marcată de dezvoltarea și integrarea unui spectru divers de soluții pentru baze de date, stocare, managementul utilizatorilor și analiza datelor.",
-      "p2": "Am lucrat cu startup-uri, ajutând la crearea de MVP-uri și la lansarea lor pe piață. În același timp, am cultivat proiecte personale de tip SaaS în care am investit creativitate și inovație.",
-      "p3": "În sfera web, mi-am asumat responsabilitatea pentru întreținerea site-urilor WordPress cu angajamentul de a asigura buna funcționare a acestora. În plus, sunt implicat pro-bono în întreținerea infrastructurii web a Asociației Culturale Carțile pe Față.",
+      "p1": "WordPress și NextJS sunt locul în care îmi petrec cea mai mare parte din timp: magazine online, pluginuri personalizate și interfețe de produs — plus stocarea, managementul utilizatorilor și analiza datelor din spatele lor.",
+      "p2": "Am lucrat cu startup-uri la MVP-uri pe care le-am dus pe piață, cultivând în paralel propriile proiecte SaaS. Pe partea de web întrețin site-uri WordPress cu angajamentul de a le asigura buna funcționare și mă ocup pro-bono de infrastructura Asociației Culturale <cpf>Cărțile pe Față</cpf>.",
+      "p3": "Mă atrag proiectele cu impact real în societate — mediu, educație, activism, ONG-uri. Tehnologie în slujba unor cauze care merită efortul.",
       "p4": "Sunt implicat în comunitatea WordPress în diverse moduri: sunt Editor General de Traduceri (GTE) pentru limba română, și contribui la eliminarea barierei lingvistice și la facilitarea accesului la WordPress pentru un public mai larg. De asemenea, prin implicarea mea și în echipa WP-Translations PRO, promovez traduceri de înaltă calitate. De asemenea, contribui la localizarea altor software-uri open-source pe diverse platforme precum Crowdin, Weblate, Transifex, Lokalise și chiar GitHub.",
       "p5": "Mențin biblioteca NPM „euplatesc” pentru integrarea serviciului de plată EuPlătesc.",
       "p6": "Sunt atras de proiecte care au un impact semnificativ asupra societății, în special în domenii precum mediul, educația, activismul și ONG-urile. Sunt hotărât să pun tehnologia în slujba unor cauze mari și să ajut la construirea unui viitor mai bun pentru toți.",
       "see-more": "Vezi mai mult ˅",
-      "see-less": "Vezi mai puțin ˄"
+      "see-less": "Vezi mai puțin ˄",
+      "lead": "Cinci ani de JavaScript, o singură constantă: lucruri livrate care rămân în picioare.",
+      "stats": {
+        "gte": {
+          "value": "2019",
+          "label": "Editor General de Traduceri pentru WordPress România"
+        },
+        "euplatesc": {
+          "value": "euplatesc",
+          "label": "Biblioteca NPM pe care o mențin pentru plățile EuPlătesc"
+        },
+        "experience": {
+          "value": "5+ ani",
+          "label": "WordPress și NextJS livrate în producție"
+        }
+      }
     },
     "education": {
       "tag": "Educație",
@@ -68,16 +96,27 @@
         "subtitle": "Liceul Teoretic \"Mihai Viteazul\" | Caracal, România",
         "interval": "2009-2013",
         "description": "Am studiat matematica și informatica intensiv."
-      }
+      },
+      "lead": "De unde vin fundamentele."
     },
     "skills": {
-      "tag": "Abilități",
-      "description": "Tehnologiile pe care le folosesc și cu care m-am format ca dezvoltator software de-a lungul timpului:"
+      "tag": "Tehnologii",
+      "description": "Tehnologiile pe care le folosesc și cu care m-am format de-a lungul timpului.",
+      "groups": {
+        "core": "De bază",
+        "also": "De asemenea",
+        "data": "Date",
+        "tooling": "Unelte"
+      }
     },
-    "projects": { "tag": "Proiecte", "see-all": "Vezi toate proiectele" },
+    "projects": {
+      "tag": "Proiecte selectate",
+      "see-all": "Toate proiectele",
+      "title": "Studii de caz, nu capturi de ecran."
+    },
     "sw-l10n": {
-      "title": "Localizare software",
-      "description": "Proiecte software pentru care întrețin traducerile în limba română.",
+      "title": "Localizare",
+      "description": "Proiecte open-source pentru care mențin traducerile în română.",
       "cron-job": "De peste 15 ani, asigură ritmul inimii pentru zeci de mii de site-uri web și execută milioane de cronjob-uri în fiecare zi.",
       "discourse": "Software open-source pentru forumuri, care alimentează peste 20 000 de comunități online de toate formele și dimensiunile.",
       "homebrew": "Homebrew instalează lucrurile de care ai nevoie și pe care Apple (sau sistemul tău Linux) nu le are. Poate fi folosit pentru a instala aplicații macOS, fonturi, module și alte software-uri non-open-source.",
@@ -87,11 +126,46 @@
       "wordpress": "Din 2019, sunt Editor general de traduceri, furnizând traduceri în română pentru nucleul WordPress, teme, module, aplicații mobile și site-uri web secundare WordPress.",
       "wp-cli": "WP-CLI este interfața de linie de comandă pentru WordPress. Poți actualiza module, configura instalări multisite și multe altele, fără a utiliza un navigator web.",
       "wp-translations": "Fac parte din echipa WP-Translations.PRO și ofer traduceri în limba română și corecții pentru companii precum Yoast, MailPoet, Polylang, ThemeIsle.",
-      "quote": "<contact>Scrie-mi</contact> dacă ai nevoie de o ofertă cu privire la traducerile proiectului tău în limba română."
+      "quote": "Ai nevoie de o ofertă pentru traduceri?"
+    },
+    "services": {
+      "tag": "Ce fac",
+      "lead": "Patru moduri în care încep de obicei colaborările.",
+      "wordpress": {
+        "title": "WordPress și WooCommerce",
+        "body": "Pluginuri personalizate, magazine online, automatizări cu WP-CLI și mentenanță pe termen lung pentru magazine care nu au voie să cadă."
+      },
+      "nextjs": {
+        "title": "Produse cu NextJS",
+        "body": "Aplicații NextJS și NodeJS de la MVP la producție — autentificare, stocare, plăți și analiză integrate."
+      },
+      "infrastructure": {
+        "title": "Infrastructură și mentenanță",
+        "body": "Găzduire, lansări, copii de siguranță, monitorizare și email pentru site-urile și magazinele de care mă ocup."
+      },
+      "localization": {
+        "title": "Localizare în română",
+        "body": "Traducere și corectură pentru produse open-source și comerciale, cu un control al calității la nivel de GTE."
+      }
+    },
+    "elsewhere": {
+      "tag": "Scrieri și altele",
+      "blog": "Însemnări despre JavaScript, WordPress și viața de studio cu un singur om.",
+      "uses": "Echipamentele, editorul și uneltele pe care le folosesc zilnic.",
+      "books": "Ce citesc și ce mi-a rămas în minte.",
+      "boardgames": "Rafturile mele și jocurile care ajung cel mai des pe masă."
+    },
+    "contact": {
+      "title": "Ai un proiect care chiar trebuie livrat?",
+      "body": "Spune-mi ce construiești — MVP, un WordPress de salvat, un magazin online sau o localizare în română. Răspund într-o zi lucrătoare.",
+      "cta": "Începe o discuție",
+      "note": "{location} · adeseori călătoresc"
     }
   },
   "locations": {
-    "metadata": { "keywords": "lucru de la distanță,locuri,românia,locație,istoric,cluj-napoca" },
+    "metadata": {
+      "keywords": "lucru de la distanță,locuri,românia,locație,istoric,cluj-napoca"
+    },
     "title": "Istoric locații",
     "description": "Locuri în care am fost, din care am lucrat sau pe care le-am vizitat. Din decembrie 2022 🎁.",
     "visited": "{visitCounter, plural, =1 {Vizitat: o dată} few {Vizitat de: # ori} other {Vizitat de: # de ori}} · Ultima vizită: <lastVisit>{lastVisitAt}</lastVisit>"
@@ -161,19 +235,33 @@
     "p3": "Codul sursă este disponibil pe <new>GitHub</new>. Poți găsi versiunea veche pe <old>această ramură</old>."
   },
   "uses": {
-    "metadata": { "keywords": "mediu de lucru,programe software,lucru la distanță,birou,echipament,instrumente" },
+    "metadata": {
+      "keywords": "mediu de lucru,programe software,lucru la distanță,birou,echipament,instrumente"
+    },
     "title": "Utilizări",
     "description": "Nu pot face magie de unul singur, dar instrumentele software potrivite în mâinile potrivite fac o treabă grozavă.",
     "environment": {
       "title": "🗄️ Mediu de lucru",
-      "desk": { "name": "Birou ajustabil manual pe înălțime", "description": "1600x800x36 mm, negru" },
-      "chair": { "name": "2 x scaun Notus", "description": "Scaun ergonomic cu mesh" },
-      "laptop-stand": { "name": "Stand laptop", "description": "Portabil, ajustabil pe înălțime, pliabil" },
+      "desk": {
+        "name": "Birou ajustabil manual pe înălțime",
+        "description": "1600x800x36 mm, negru"
+      },
+      "chair": {
+        "name": "2 x scaun Notus",
+        "description": "Scaun ergonomic cu mesh"
+      },
+      "laptop-stand": {
+        "name": "Stand laptop",
+        "description": "Portabil, ajustabil pe înălțime, pliabil"
+      },
       "monitors-support": {
         "name": "Suport de birou pentru 2 monitoare",
         "description": "Arc cu gaz, A+ SMLC24, 17-32 țoli"
       },
-      "mousepad": { "name": "Mousepad Floston WORLD", "description": "900x400x3 mm" },
+      "mousepad": {
+        "name": "Mousepad Floston WORLD",
+        "description": "900x400x3 mm"
+      },
       "lamp": "Veioză FORSÅ, nichelată"
     },
     "hardware": {
@@ -182,7 +270,10 @@
         "name": "MacBook Pro 15 Retina cu Touch Bar",
         "description": "2019, Coffee Lake 8-core i9 2.3GHz, 16GB DDR4, 512GB SSD, Radeon Pro 560X 4GB"
       },
-      "monitors": { "name": "2 x monitor LED LG", "description": "27 țoli, 4K, 60Hz" },
+      "monitors": {
+        "name": "2 x monitor LED LG",
+        "description": "27 țoli, 4K, 60Hz"
+      },
       "mouse": "Maus Apple Magic 2",
       "keyboard": "Tastatură Mac LOGITECH MX Keys",
       "mic": "Microfon VONYX CMS300B"
@@ -204,7 +295,9 @@
     }
   },
   "books": {
-    "metadata": { "keywords": "cărți,listă cărți,lectură,ce să citești,recomandări cărți" },
+    "metadata": {
+      "keywords": "cărți,listă cărți,lectură,ce să citești,recomandări cărți"
+    },
     "title": "Cărți",
     "description": "O parte din colecția mea de cărți. O călătorie prin cunoștințele și poveștile vieții mele.",
     "currently-reading": "Acum citesc 📖",
@@ -212,7 +305,9 @@
     "wishlist": "Vreau să citesc 🧞‍♂️"
   },
   "boardgames": {
-    "metadata": { "keywords": "jocuri de societate,azul,pandemic,ticket to ride,zestrea" },
+    "metadata": {
+      "keywords": "jocuri de societate,azul,pandemic,ticket to ride,zestrea"
+    },
     "title": "Jocuri de societate",
     "description": "Dincolo de a învăța și de a lucra, îmi asigur și experiențe distractive. Iată jocurile de societate pe care le joc cu prietenii și cei dragi.",
     "all-categories": "Toate",
@@ -312,7 +407,14 @@
     "trade-reg-no": "Nr.reg.com.: {regNo}",
     "sal-al": "Detalii Soluționarea alternativă a litigiilor",
     "sol-al": "Soluționarea online a litigiilor",
-    "copyright": "© 2019 – {year} · {siteName} · Toate drepturile rezervate."
+    "copyright": "© 2019 – {year} · {siteName} · Toate drepturile rezervate.",
+    "site": "Site",
+    "personal": "Personal",
+    "legal": "Legal",
+    "built-with": "Construit cu NextJS · Tailwind CSS v4"
   },
-  "not-found": { "title": "Eroare 404", "description": "Pagina pe care o cauți nu există." }
+  "not-found": {
+    "title": "Eroare 404",
+    "description": "Pagina pe care o cauți nu există."
+  }
 }

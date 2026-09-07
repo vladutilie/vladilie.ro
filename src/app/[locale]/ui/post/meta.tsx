@@ -47,7 +47,7 @@ export const Meta: React.FC<Props> = ({ date, readingTime, slug }) => {
   }, []);
 
   return (
-    <div className='text-sm text-gray-500'>
+    <div className='text-sm text-content/60'>
       <span>{format(date, locale)} · </span>
       <span ref={intersectionRef}>
         {viewsIsError || viewsIsLoading ? <LoadingDots /> : t('views', { count: numberFormat(Number(views)) })}

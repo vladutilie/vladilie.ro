@@ -61,7 +61,7 @@ export default async function Locations({ params }: { params: Promise<{ locale: 
         {locations.map(({ name, visitCounter, lastVisitAt }) => (
           <div key={name}>
             <h3 className='my-0 text-xl'>{name}</h3>
-            <div className='text-sm text-gray-500'>
+            <div className='text-sm text-content/60'>
               {t.rich('visited', {
                 visitCounter,
                 lastVisitAt,

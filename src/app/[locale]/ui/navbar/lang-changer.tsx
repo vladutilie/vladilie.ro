@@ -10,20 +10,19 @@ export const LangChanger: React.FC = () => {
   const locale = useLocale();
   const pathname = usePathname();
   const params = useParams();
+  const isEnglish = routing.locales[0] === locale;
 
   return (
-    <div className='flex items-center justify-between'>
-      <span className='md:hidden'>{t('change-language')}</span>
-
-      <Link
-        // @ts-ignore
-        href={{ pathname, params }}
-        locale={routing.locales[0] === locale ? 'ro' : 'en'}
-        className={`px-2 text-2xl md:px-0 ${notAllowedPaths.includes(pathname) ? 'pointer-events-none grayscale' : ''}`}
-        title={t('change-language-to', { lang: routing.locales[0] === locale ? 'română' : 'English' })}
-      >
-        {routing.locales[0] === locale ? '🇷🇴' : '🇺🇸'}
-      </Link>
-    </div>
+    <Link
+      // @ts-ignore
+      href={{ pathname, params }}
+      locale={isEnglish ? 'ro' : 'en'}
+      className={`font-mono text-[11px] uppercase tracking-[0.06em] text-content/60 transition-colors hover:text-accent ${
+        notAllowedPaths.includes(pathname) ? 'pointer-events-none opacity-40' : ''
+      }`}
+      title={t('change-language-to', { lang: isEnglish ? 'română' : 'English' })}
+    >
+      {isEnglish ? 'RO' : 'EN'}
+    </Link>
   );
 };

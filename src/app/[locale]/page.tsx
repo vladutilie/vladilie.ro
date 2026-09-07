@@ -6,10 +6,13 @@ import { getPathname } from '@/i18n/routing';
 import { UpdateLocation } from './ui/update-location';
 import { Hero } from './ui/hero';
 import { About } from './ui/about';
-import { Education } from './ui/education/';
-import { Experience } from './ui/experience';
+import { Services } from './ui/services';
+import { Stack } from './ui/stack';
+import { Education } from './ui/education';
 import { Projects } from './ui/projects';
 import { SoftwareLocalization } from './ui/sw-l10n';
+import { Elsewhere } from './ui/elsewhere';
+import { ContactCta } from './ui/contact-cta';
 import prisma from '@/lib/prisma';
 
 export const dynamic = 'force-static';
@@ -96,14 +99,17 @@ export default async function Home() {
   const [location, totalCommits] = await Promise.all([getLocation(), getCommits()]);
 
   return (
-    <>
+    <main className='mx-auto max-w-[1180px] px-5 md:px-8'>
       <UpdateLocation />
       <Hero location={location} commits={totalCommits} />
       <About />
+      <Services />
+      <Stack />
       <Education />
-      <Experience />
       <Projects />
       <SoftwareLocalization />
-    </>
+      <Elsewhere />
+      <ContactCta location={location} />
+    </main>
   );
 }

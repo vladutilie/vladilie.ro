@@ -1,5 +1,6 @@
 import { Analytics } from '@vercel/analytics/next';
 import { Metadata } from 'next';
+import { Instrument_Sans, JetBrains_Mono } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -9,6 +10,19 @@ import './globals.css';
 import { Footer } from './ui/footer';
 import { Navbar } from './ui/navbar';
 import { ThemeProvider } from './ui/theme-provider';
+
+const instrumentSans = Instrument_Sans({
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+  variable: '--font-instrument-sans'
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+  weight: ['400', '500'],
+  variable: '--font-jetbrains-mono'
+});
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -51,8 +65,12 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body className='transition-colors dark:bg-gray-950'>
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      className={`${instrumentSans.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className='bg-surface font-sans text-content transition-colors duration-300'>
         <NextIntlClientProvider locale={locale} messages={messages} timeZone='Europe/Bucharest'>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
             <Navbar />

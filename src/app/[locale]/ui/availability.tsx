@@ -5,18 +5,12 @@ export const Availability: React.FC = () => {
   const isAvailable = 'true' === process.env.NEXT_PUBLIC_AVAILABLE_FOR_WORK;
 
   return (
-    <div className='flex items-center gap-x-2'>
-      <div className='flex h-6 w-6 items-center justify-center'>
-        <span className='relative flex h-3 w-3 items-center'>
-          <span
-            className={`absolute inline-flex h-full w-full animate-ping rounded-full ${isAvailable ? 'bg-green-400' : 'bg-red-500'} opacity-75`}
-          />
-          <span
-            className={`relative inline-flex h-3 w-3 rounded-full ${isAvailable ? 'bg-green-400' : 'bg-red-500'}`}
-          />
-        </span>
-      </div>
-      <p className='my-0'>{isAvailable ? t('available') : t('not-available')}</p>
+    <div className='inline-flex items-center gap-2.5 rounded-full border border-hairline px-3.5 py-[7px] font-mono text-[11.5px] uppercase tracking-[0.1em] text-content/85'>
+      <span
+        className={`h-[7px] w-[7px] animate-pulse-dot rounded-full ${isAvailable ? 'bg-accent' : 'bg-red-500'}`}
+        aria-hidden
+      />
+      {isAvailable ? t('available') : t('not-available')}
     </div>
   );
 };

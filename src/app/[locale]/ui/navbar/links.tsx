@@ -6,71 +6,82 @@ import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { ThemeSwitcher } from './theme-switcher';
 import { LangChanger } from './lang-changer';
 import { scrollTo } from '@/lib/utils';
-import { NavLinks, Pages } from '@/lib/constants';
+import { HeaderLinks, Pages } from '@/lib/constants';
 
 export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = ({ isMobile = false, closeMenu }) => {
   const t = useTranslations('navbar');
   const pathname = usePathname();
   const { replace } = useRouter();
 
+  const goToAnchor = (anchor: string): void => {
+    if (isMobile && closeMenu) {
+      closeMenu();
+    }
+
+    if ('/' !== pathname) {
+      // @ts-ignore
+      replace(`/#${anchor}`);
+    } else {
+      scrollTo(anchor);
+    }
+  };
+
   return (
     <ul
-      className={`flex-col gap-x-6 after:absolute after:left-0 after:w-full after:border-b dark:after:border-gray-600 md:flex-row md:after:hidden ${
-        isMobile ? 'flex gap-y-4 overflow-y-auto text-base' : 'hidden items-center md:flex'
-      }`}
+      className={
+        isMobile
+          ? 'flex flex-col gap-y-5 overflow-y-auto text-lg'
+          : 'hidden items-center gap-7 text-sm md:flex lg:gap-8'
+      }
     >
-      {Object.values(NavLinks).map((item, idx) => (
-        <li
-          className={`cursor-pointer hover:text-blue-500 ${!idx ? 'pt-4 md:pt-0' : ''}`}
-          key={idx}
-          onClick={() => {
-            if (isMobile && closeMenu) {
-              closeMenu();
-            }
-            if (pathname !== '/') {
-              // @ts-ignore
-              replace(`/#${item}`);
-            } else {
-              scrollTo(item);
-            }
-          }}
-        >
-          {t(item)}
+      {HeaderLinks.map((anchor) => (
+        <li key={anchor}>
+          <button
+            className='cursor-pointer text-content/70 transition-colors hover:text-accent'
+            onClick={() => goToAnchor(anchor)}
+          >
+            {t(anchor)}
+          </button>
         </li>
       ))}
-      <li>
-        <Link
-          className='text-inherit'
-          href={`/${Pages.Projects}`}
-          onClick={() => (isMobile && closeMenu ? closeMenu() : null)}
-        >
-          {t(Pages.Projects)}
-        </Link>
-      </li>
-      <li>
-        <Link
-          className='text-inherit'
-          href={`/${Pages.Blog}`}
-          onClick={() => (isMobile && closeMenu ? closeMenu() : null)}
-        >
-          {t(Pages.Blog)}
-        </Link>
-      </li>
-      <li>
-        <Link
-          className='text-inherit'
-          href={`/${Pages.Contact}`}
-          onClick={() => (isMobile && closeMenu ? closeMenu() : null)}
-        >
-          {t(Pages.Contact)}
-        </Link>
-      </li>
-      <li className='hidden h-6 w-0.5 bg-gray-100 md:block' />
-      <li className='before:absolute before:left-0 before:w-full before:border-b dark:before:border-gray-600 md:before:hidden'>
+
+      {isMobile && (
+        <>
+          <li>
+            <Link
+              href={`/${Pages.Projects}`}
+              className='text-content/70 hover:text-accent'
+              onClick={() => closeMenu?.()}
+            >
+              {t(Pages.Projects)}
+            </Link>
+          </li>
+          <li>
+            <Link href={`/${Pages.Blog}`} className='text-content/70 hover:text-accent' onClick={() => closeMenu?.()}>
+              {t(Pages.Blog)}
+            </Link>
+          </li>
+        </>
+      )}
+
+      <li className='hidden h-[18px] w-px bg-hairline md:block' aria-hidden />
+
+      <li className={isMobile ? 'mt-2 border-t border-hairline pt-5' : ''}>
         <ThemeSwitcher />
       </li>
+
       <li>
         <LangChanger />
+      </li>
+
+      <li className={isMobile ? 'mt-2' : ''}>
+        <Link
+          href={`/${Pages.Contact}`}
+          className='block rounded-full bg-accent px-[18px] py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-ink hover:text-white dark:hover:bg-white dark:hover:text-ink'
+          onClick={() => closeMenu?.()}
+        >
+          {t('lets-talk')}
+        </Link>
       </li>
     </ul>
   );

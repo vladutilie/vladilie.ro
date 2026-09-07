@@ -3,23 +3,70 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
+/*
+  Design tokens — the palette of the 2026 design: paper/ink surfaces,
+  a single electric-blue accent and hairline rules instead of shadows.
+*/
+:root {
+  --paper: #f8f8f6;
+  --ink: #0b0b0d;
+
+  --surface: var(--paper);
+  --surface-raised: #ffffff;
+  --content: var(--ink);
+  --header: rgb(248 248 246 / 78%);
+  --hairline: rgb(11 11 13 / 11%);
+  --hairline-strong: rgb(11 11 13 / 20%);
+  --stripe: rgb(11 11 13 / 9%);
+  --hover-tint: rgb(27 86 224 / 6%);
+  --cta-surface: #0b0b0d;
+}
+
+.dark {
+  --surface: var(--ink);
+  --surface-raised: #111114;
+  --content: #f2f2f0;
+  --header: rgb(11 11 13 / 78%);
+  --hairline: rgb(242 242 240 / 13%);
+  --hairline-strong: rgb(242 242 240 / 24%);
+  --stripe: rgb(242 242 240 / 11%);
+  --hover-tint: rgb(27 86 224 / 12%);
+  --cta-surface: #111114;
+}
+
+@theme inline {
   --font-*: initial;
-  --font-sans: Inter, sans-serif;
+  --font-sans: var(--font-instrument-sans), Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
 
-  --color-blue-450: #3598db;
+  --color-accent: #1b56e0;
+  --color-paper: #f8f8f6;
+  --color-ink: #0b0b0d;
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-content: var(--content);
+  --color-header: var(--header);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+  --color-hover-tint: var(--hover-tint);
+  --color-cta-surface: var(--cta-surface);
 
+  --animate-pulse-dot: pulse-dot 2.4s ease-in-out infinite;
   --animate-slide: slide 50s linear infinite;
   --animate-slide2: slide2 50s linear infinite;
   --animate-text-bg: bg-animate 3s ease infinite;
 
-  --shadow-surface-glass:
-    inset 0.25px 1px 0 0 color-mix(in oklab, oklch(0.892 0.058 10.001) 3%, transparent),
-    0px 0.3px 0.3px rgba(3, 2, 2, 0.02), 0px 2.2px 2.5px -0.4px rgba(3, 2, 2, 0.02),
-    0px 4.3px 4.8px -0.8px rgba(3, 2, 2, 0.02), 0px 7.5px 8.4px -1.2px rgba(3, 2, 2, 0.02),
-    0px 12.8px 14.4px -1.7px rgba(3, 2, 2, 0.02), 0px 21px 23.6px -2.1px rgba(3, 2, 2, 0.02),
-    0px 33.2px 37.4px -2.5px rgba(3, 2, 2, 0.02);
-
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.35;
+      transform: scale(0.7);
+    }
+  }
   @keyframes slide {
     from {
       transform: translateX(0%);
@@ -59,98 +106,96 @@
   }
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--hairline);
   }
-}
 
-@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    color-scheme: light;
+  }
+
+  .dark html,
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--surface);
+    color: var(--content);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: #fff;
+  }
+
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    @apply text-gray-800 dark:text-gray-50;
-    @apply transition-colors;
-    @apply my-2.5;
+    @apply my-2.5 text-content transition-colors;
+    letter-spacing: -0.03em;
+    text-wrap: pretty;
   }
 
   h1 {
-    @apply text-4xl;
-    @apply font-bold;
+    @apply text-5xl font-semibold;
+    letter-spacing: -0.045em;
   }
 
   h2 {
-    @apply text-3xl;
-    @apply font-semibold;
+    @apply text-3xl font-semibold;
   }
 
   h3 {
-    @apply text-2xl;
+    @apply text-2xl font-semibold;
   }
 
   h4 {
-    @apply text-xl;
+    @apply text-xl font-semibold;
   }
 
   h5 {
-    @apply text-lg;
+    @apply text-lg font-semibold;
   }
 
   p {
-    @apply text-base;
-    @apply text-gray-600 dark:text-gray-300;
-    @apply transition-colors;
-    @apply my-2;
+    @apply my-2 text-base transition-colors;
+    color: color-mix(in srgb, var(--content) 74%, transparent);
+    text-wrap: pretty;
   }
 
   ul > li,
   ol > li {
-    @apply text-gray-600 dark:text-gray-300;
     @apply transition-colors;
+    color: color-mix(in srgb, var(--content) 74%, transparent);
   }
 
   a {
-    @apply text-blue-600;
+    @apply text-accent transition-colors;
   }
 
   a:hover {
-    @apply text-blue-500;
+    @apply text-accent/80;
   }
 
   @media (width >= theme(--breakpoint-lg)) {
     h1 {
-      @apply text-6xl;
+      @apply text-7xl;
     }
 
     h2 {
-      @apply text-5xl;
-    }
-
-    h3 {
       @apply text-4xl;
-    }
-
-    h4 {
-      @apply text-3xl;
-    }
-
-    h5 {
-      @apply text-2xl;
     }
   }
 

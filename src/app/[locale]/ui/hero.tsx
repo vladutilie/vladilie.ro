@@ -3,90 +3,84 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import { Link } from '@/i18n/routing';
+import { Availability } from './availability';
 import { SocialMedia } from './social-media';
-import { Commit, Pin } from '../ui/icons';
-import { Availability } from '../ui/availability';
+import { Pages } from '@/lib/constants';
 import vlad from '@/../public/images/vlad-ilie-portrait.webp';
 
 export const Hero: React.FC<{ location: string; commits: number }> = ({ location, commits }) => {
   const t = useTranslations('homepage.hero');
 
   return (
-    <section className='container mx-auto grid max-w-7xl grid-cols-6 gap-8 px-4 py-20 md:py-32'>
-      <div className='order-last col-span-6 flex flex-col gap-y-8 md:order-first md:col-span-4'>
-        <div className='flex flex-col gap-y-4'>
-          <h1>{t('hello', { emoji: '👋' })}</h1>
+    <section
+      id='top'
+      className='grid grid-cols-1 items-center gap-12 py-20 md:py-24 lg:grid-cols-[1.35fr_1fr] lg:gap-[72px] lg:py-[108px]'
+    >
+      <div>
+        <Availability />
 
-          <p>
-            {t.rich('about', {
-              strong: (chunk: ReactNode): JSX.Element => <strong>{chunk}</strong>,
-              neo4j: (chunk: ReactNode): JSX.Element => (
-                <a
-                  href={process.env.NEXT_PUBLIC_NEO4J}
-                  target='_blank'
-                  className="after:content-['_↗']"
-                  title={t('neo4j-certificate')}
-                >
-                  {chunk}
-                </a>
-              ),
-              cpf: (chunk: ReactNode) => (
-                <a
-                  href='https://cartilepefata.ro'
-                  target='_blank'
-                  className="after:content-['_↗']"
-                  title='Cărțile pe Față'
-                >
-                  {chunk}
-                </a>
-              ),
-              city: location,
-              locations: (chunk: ReactNode) => (
-                <Link href={'/locations'} title={t('location-history')}>
-                  {chunk}
-                </Link>
-              )
-            })}
-          </p>
+        <h1 className='mb-7 mt-8 text-5xl leading-[0.98] lg:text-7xl'>
+          {t.rich('title', {
+            accent: (chunk: ReactNode): JSX.Element => <span className='text-accent'>{chunk}</span>,
+            br: (): JSX.Element => <br />
+          })}
+        </h1>
+
+        <p className='mb-10 max-w-[52ch] text-lg leading-relaxed md:text-[19px]'>
+          {t.rich('intro', {
+            strong: (chunk: ReactNode): JSX.Element => (
+              <strong className='font-semibold text-content'>{chunk}</strong>
+            )
+          })}
+        </p>
+
+        <div className='flex flex-wrap items-center gap-3.5'>
+          <Link
+            href={`/${Pages.Projects}`}
+            className='rounded-full border border-ink bg-ink px-6 py-[15px] text-[15px] font-semibold text-paper transition-colors hover:border-accent hover:bg-accent hover:text-white dark:border-paper dark:bg-paper dark:text-ink dark:hover:border-accent dark:hover:bg-accent dark:hover:text-white'
+          >
+            {t('cta-work')}
+          </Link>
+          <Link
+            href={`/${Pages.Contact}`}
+            className='rounded-full border border-hairline-strong px-6 py-[15px] text-[15px] font-semibold text-content transition-colors hover:border-accent hover:text-accent'
+          >
+            {t('cta-quote')}
+          </Link>
         </div>
 
-        <div className='flex flex-col gap-y-2'>
-          <div className='flex items-center gap-x-2'>
-            <Pin />
-            <p className='my-0'>{location}</p>
-          </div>
-
-          <Availability />
-
+        <div className='mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-hairline pt-8 font-mono text-[12.5px] text-content/60'>
+          <span>{location}</span>
           {!!commits && (
-            <div className='flex items-center gap-x-2'>
-              <Commit />
-              <p className='my-0'>
-                {t.rich('commits', {
-                  count: commits,
-                  commits: (chunk: ReactNode): JSX.Element => (
-                    <code className='rounded-sm bg-gray-500 p-0.5 text-gray-50'>{chunk}</code>
-                  )
-                })}
-              </p>
-            </div>
+            <span>
+              {t.rich('commits', {
+                count: commits,
+                commits: (chunk: ReactNode): JSX.Element => <span className='text-accent'>{chunk}</span>
+              })}
+            </span>
           )}
+          <span>{t('meta-stack')}</span>
+          <span>{t('meta-gte')}</span>
         </div>
 
-        <SocialMedia />
+        <div className='mt-8'>
+          <SocialMedia />
+        </div>
       </div>
 
-      <div className='col-span-6 place-self-center md:col-span-2'>
-        <Image
-          alt='Vlad Ilie'
-          className='rounded-full'
-          height={400}
-          placeholder='blur'
-          priority
-          fetchPriority='high'
-          src={vlad}
-          width={400}
-        />
+      <div className='mx-auto w-full max-w-sm lg:max-w-none'>
+        <div className='relative aspect-4/5 overflow-hidden rounded-[4px] border border-hairline-strong'>
+          <Image
+            alt='Vlad Ilie'
+            className='h-full w-full object-cover'
+            placeholder='blur'
+            priority
+            fetchPriority='high'
+            src={vlad}
+            sizes='(max-width: 1024px) 90vw, 380px'
+          />
+          <span className='absolute bottom-0 left-0 h-[46px] w-[46px] bg-accent' aria-hidden />
+        </div>
       </div>
     </section>
   );

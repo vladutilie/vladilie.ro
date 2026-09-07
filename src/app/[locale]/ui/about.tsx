@@ -1,38 +1,45 @@
+import { ReactNode, JSX } from 'react';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 
 import { NavLinks } from '@/lib/constants';
-import vlad from '@/../public/images/vlad-ilie.webp';
+import { SplitSection } from './split-section';
+
+const stats = ['gte', 'euplatesc', 'experience'] as const;
 
 export const About: React.FC = () => {
   const t = useTranslations('homepage.about');
 
   return (
-    <section id={NavLinks.About} className='bg-gray-50 transition-colors dark:bg-slate-900'>
-      <div className='container mx-auto grid max-w-7xl grid-cols-3 gap-8 px-4 py-16 md:py-20 2xl:py-24'>
-        <div className='col-span-3 text-center'>
-          <span className='rounded-xl bg-gray-600 px-4 py-1 text-sm text-gray-200'>{t('tag')}</span>
-        </div>
+    <SplitSection id={NavLinks.About} index='01' label={t('tag')} lead={t('lead')}>
+      <div className='grid max-w-[68ch] gap-6'>
+        <p className='my-0 text-xl leading-[1.55] tracking-[-0.015em] text-content'>{t('p1')}</p>
 
-        <div className='col-span-3 mx-auto self-center lg:col-span-1'>
-          <Image src={vlad} alt={t('image-alt')} width={300} height={400} priority placeholder='blur' />
-        </div>
+        <p className='my-0 text-[17px] leading-[1.7]'>
+          {t.rich('p2', {
+            cpf: (chunk: ReactNode): JSX.Element => (
+              <a
+                href='https://cartilepefata.ro'
+                target='_blank'
+                className='underline decoration-1 underline-offset-[3px]'
+                title='Cărțile pe Față'
+              >
+                {chunk}
+              </a>
+            )
+          })}
+        </p>
 
-        <div className='col-span-3 flex flex-col lg:col-span-2'>
-          <h2>{t('title')}</h2>
+        <p className='my-0 text-[17px] leading-[1.7]'>{t('p3')}</p>
 
-          <div className='relative'>
-            <div>
-              <p>{t('p1')}</p>
-              <p>{t('p2')}</p>
-              <p>{t('p3')}</p>
-              <p>{t('p4')}</p>
-              <p>{t('p5')}</p>
-              <p>{t('p6')}</p>
+        <div className='mt-3.5 grid grid-cols-1 gap-px border border-hairline bg-hairline sm:grid-cols-3'>
+          {stats.map((stat) => (
+            <div key={stat} className='bg-surface p-6'>
+              <div className='mb-2 font-mono text-[26px] text-accent'>{t(`stats.${stat}.value`)}</div>
+              <div className='text-sm leading-normal text-content/65'>{t(`stats.${stat}.label`)}</div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
-    </section>
+    </SplitSection>
   );
 };

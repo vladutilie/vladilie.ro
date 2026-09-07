@@ -34,7 +34,7 @@ export const Project: React.FC<ProjectT> = ({
   return (
     <Link
       href={{ pathname: '/projects/[slug]', params: { slug } }}
-      className='col-span-6 rounded-lg border bg-gray-50 sm:col-span-3 lg:col-span-2 dark:border-slate-800 dark:bg-slate-900'
+      className='col-span-6 rounded-lg border bg-surface-raised sm:col-span-3 lg:col-span-2  dark:bg-surface-raised'
     >
       <div className='relative h-52 border-b'>
         <Image
@@ -50,9 +50,9 @@ export const Project: React.FC<ProjectT> = ({
 
       <div className='flex flex-col px-4 py-2'>
         <h2 className='line-clamp-1 text-xl'>{title}</h2>
-        <p className='line-clamp-2 text-sm text-gray-500'>{description}</p>
+        <p className='line-clamp-2 text-sm text-content/60'>{description}</p>
 
-        <div className='flex justify-between text-xs text-gray-500'>
+        <div className='flex justify-between text-xs text-content/60'>
           <span>{t('reading-time', { minutes: Math.ceil(readingTime) })}</span>
           <span>{isError || isLoading ? <LoadingDots /> : t('views', { count: numberFormat(Number(views)) })}</span>
           <span>{format(date, locale)}</span>

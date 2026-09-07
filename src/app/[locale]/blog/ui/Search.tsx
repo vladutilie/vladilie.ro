@@ -20,7 +20,7 @@ export const Search: React.FC = () => {
       type='text'
       autoFocus
       placeholder={t('search-placeholder')}
-      className='h-10 rounded-md bg-gray-50 px-2 py-1 outline-hidden dark:bg-slate-900'
+      className='h-10 rounded-md bg-surface-raised px-2 py-1 outline-hidden dark:bg-surface-raised'
       value={query}
       onChange={({ currentTarget }) => handleInput(currentTarget.value)}
     />
