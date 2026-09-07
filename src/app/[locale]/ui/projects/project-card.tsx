@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Project } from 'contentlayer2/generated';
+import type { Project } from '@/lib/content.types';
 
 import { Link } from '@/i18n/routing';
 

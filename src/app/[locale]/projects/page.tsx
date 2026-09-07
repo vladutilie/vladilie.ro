@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { allProjects, type Project as ProjectT } from 'contentlayer2/generated';
+import { allProjects } from '@/lib/content';
+import type { Project as ProjectT } from '@/lib/content.types';
 
 import { getPathname } from '@/i18n/routing';
 import { Project } from './ui/project';
@@ -35,9 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
 export default async function Projects({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations('projects');
-  const projects = allProjects
-    .filter(({ locale: l }) => l === locale)
-    .sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
+  const projects = allProjects().filter(({ locale: l }) => l === locale);
 
   return (
     <main className='mx-auto max-w-[1180px] gap-8 px-5 py-16 md:px-8 md:py-24'>
@@ -48,7 +47,7 @@ export default async function Projects({ params }: { params: Promise<{ locale: s
           <p>{t('description')}</p>
           <div className='grid grid-cols-6 gap-8'>
             {projects.map((project: ProjectT) => (
-              <Project key={project._id} {...project} />
+              <Project key={project.slug} {...project} />
             ))}
           </div>
         </>

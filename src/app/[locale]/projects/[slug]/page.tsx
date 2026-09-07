@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
-import { allProjects, type Project } from 'contentlayer2/generated';
+import { getProject } from '@/lib/content';
 
 import { getPathname } from '@/i18n/routing';
 import { Header, Content, Footer } from '../../ui/post';
@@ -12,7 +12,7 @@ export async function generateMetadata({
   params: Promise<{ locale: 'en' | 'ro'; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const project = allProjects.find((p: Project) => p.slug === slug && p.locale === locale);
+  const project = getProject(slug, locale);
   const t = await getTranslations('projects');
   if (!project) {
     return { title: `${t('metadata.404-error')} | ${t('title')}` };
@@ -51,7 +51,7 @@ export async function generateMetadata({
 
 export default async function Post({ params }: { params: Promise<{ slug: string; locale: string }> }) {
   const { slug, locale } = await params;
-  const project = allProjects.find((p: Project) => p.slug === slug && p.locale === locale);
+  const project = getProject(slug, locale);
 
   if (!project) {
     notFound();
@@ -60,7 +60,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string;
   return (
     <article className='mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-24'>
       <Header {...project} />
-      <Content content={project.body.code} />
+      <Content content={project.body} />
       <Footer {...project} />
     </article>
   );

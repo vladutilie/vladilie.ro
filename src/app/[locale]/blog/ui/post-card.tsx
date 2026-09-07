@@ -4,7 +4,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { format, register } from 'timeago.js';
 import roFunc from 'timeago.js/lib/lang/ro';
 import enFunc from 'timeago.js/lib/lang/en_US';
-import { type Post as PostT } from 'contentlayer2/generated';
+import type { Post as PostT } from '@/lib/content.types';
 
 import { Link } from '@/i18n/routing';
 import { LoadingDots } from '../../ui/loading-dots';

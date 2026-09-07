@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { format, register } from 'timeago.js';
 import roFunc from 'timeago.js/lib/lang/ro';
 import enFunc from 'timeago.js/lib/lang/en_US';
-import { type Project as ProjectT } from 'contentlayer2/generated';
+import type { Project as ProjectT } from '@/lib/content.types';
 
 import { Link } from '@/i18n/routing';
 import { usePostViews } from '@/hooks/usePostViews';

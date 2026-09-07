@@ -1,5 +1,5 @@
 import { useLocale, useTranslations } from 'next-intl';
-import { allProjects } from 'contentlayer2/generated';
+import { allProjects } from '@/lib/content';
 
 import { Link } from '@/i18n/routing';
 import { NavLinks, Pages } from '@/lib/constants';
@@ -9,9 +9,8 @@ import { ProjectCard } from './project-card';
 export const Projects: React.FC = () => {
   const t = useTranslations('homepage.projects');
   const locale = useLocale();
-  const projects = allProjects
+  const projects = allProjects()
     .filter(({ locale: l }) => l === locale)
-    .sort((a, b) => +new Date(b.date) - +new Date(a.date))
     .slice(0, 3);
 
   if (!projects.length) {
@@ -38,7 +37,7 @@ export const Projects: React.FC = () => {
 
       <ul className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
         {projects.map((project) => (
-          <ProjectCard key={project._id} {...project} />
+          <ProjectCard key={project.slug} {...project} />
         ))}
       </ul>
     </section>

@@ -1,8 +1,6 @@
 const createNextIntlPlugin = require('next-intl/plugin');
 const withNextIntl = createNextIntlPlugin();
 
-const { withContentlayer } = require('next-contentlayer2');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -36,4 +34,4 @@ const nextConfig = {
   }
 };
 
-module.exports = withContentlayer(withNextIntl(nextConfig));
+module.exports = withNextIntl(nextConfig);

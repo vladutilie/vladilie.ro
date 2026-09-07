@@ -11,9 +11,9 @@ export const sendMail: SubmitHandler<Inputs> = async (data) => {
 
   try {
     const name = [data.firstName, data.lastName].join(' ');
-    const budget = Number(data.budget);
+    const budget = Number.isFinite(Number(data.budget)) ? Number(data.budget) : undefined;
 
-    ContactSchema.validateSync({ ...data, budget });
+    ContactSchema.parse({ ...data, budget });
 
     const request = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
@@ -29,7 +29,7 @@ export const sendMail: SubmitHandler<Inputs> = async (data) => {
         params: {
           name,
           service: t(data.service as string),
-          budget: new Intl.NumberFormat('ro-RO', { style: 'currency', currency: 'EUR' }).format(budget),
+          budget: new Intl.NumberFormat('ro-RO', { style: 'currency', currency: 'EUR' }).format(budget ?? 0),
           content: data.message,
           email: data.email,
           phone: data.phone

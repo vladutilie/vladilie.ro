@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Post, Project } from 'contentlayer2/generated';
+import type { Post, Project } from '@/lib/content.types';
 
 import { Meta } from './meta';
 import { Reactions } from '../reactions';

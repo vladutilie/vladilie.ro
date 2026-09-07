@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
-import { allPosts, type Post } from 'contentlayer2/generated';
+import { getPost } from '@/lib/content';
 
 import { getPathname } from '@/i18n/routing';
 import { Header, Content, Footer } from '../../ui/post';
@@ -12,7 +12,7 @@ export async function generateMetadata({
   params: Promise<{ locale: 'en' | 'ro'; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const post = allPosts.find((p: Post) => p.slug === slug && p.locale === locale);
+  const post = getPost(slug, locale);
   const t = await getTranslations('blog');
   if (!post) {
     return { title: `${t('metadata.404-error')} | ${t('title')}` };
@@ -50,7 +50,7 @@ export async function generateMetadata({
 
 export default async function Post({ params }: { params: Promise<{ slug: string; locale: string }> }) {
   const { slug, locale } = await params;
-  const post = allPosts.find((p: Post) => p.slug === slug && p.locale === locale);
+  const post = getPost(slug, locale);
 
   if (!post) {
     notFound();
@@ -59,7 +59,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string;
   return (
     <article className='mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-24'>
       <Header {...post} />
-      <Content content={post.body.code} />
+      <Content content={post.body} />
       <Footer {...post} />
     </article>
   );

@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { allPosts, type Post as PostType } from 'contentlayer2/generated';
+import { allPosts } from '@/lib/content';
+import type { Post as PostType } from '@/lib/content.types';
 
 import { getPathname } from '@/i18n/routing';
 import { PostCard } from './ui/post-card';
@@ -37,9 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
 export default async function Blog({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations('blog');
-  const posts = allPosts
-    .filter(({ locale: l }) => l === locale)
-    .sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
+  const posts = allPosts().filter(({ locale: l }) => l === locale);
 
   return (
     <main className='mx-auto flex max-w-[1180px] flex-col gap-8 px-5 py-16 md:px-8 md:py-24'>

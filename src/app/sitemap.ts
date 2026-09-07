@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
-import { Post, Project, allPosts, allProjects } from 'contentlayer2/generated';
+import { allPosts, allProjects } from '@/lib/content';
+import type { Post, Project } from '@/lib/content.types';
 
 import { getPathname } from '@/i18n/routing';
 
@@ -43,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     item.url = new URL(item.url, process.env.NEXT_PUBLIC_SITE_URL).toString();
   });
 
-  allPosts.map(({ slug, date, locale }: Post) =>
+  allPosts().map(({ slug, date, locale }: Post) =>
     links.push({
       url: new URL(
         ('ro' === locale ? '/ro' : '') + getPathname({ href: { pathname: '/blog/[slug]', params: { slug } }, locale }),
@@ -55,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
-  allProjects.map(({ slug, date, locale }: Project) =>
+  allProjects().map(({ slug, date, locale }: Project) =>
     links.push({
       url: new URL(
         ('ro' === locale ? '/ro' : '') +
