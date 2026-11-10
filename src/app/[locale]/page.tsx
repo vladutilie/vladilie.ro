@@ -11,9 +11,10 @@ import { Process } from './ui/home/process';
 import { About } from './ui/home/about';
 import { Contact } from './ui/home/contact';
 import prisma from '@/lib/prisma';
+import { getWeeklyCommits } from '@/lib/github';
 
 export const dynamic = 'force-static';
-// Revalidate the page cache to pick up the latest location.
+// Revalidate the page cache to pick up the latest location and GitHub commits.
 export const revalidate = 3600;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
@@ -53,12 +54,12 @@ const getLocation = async (): Promise<string> => {
 };
 
 export default async function Home() {
-  const location = await getLocation();
+  const [location, commits] = await Promise.all([getLocation(), getWeeklyCommits()]);
 
   return (
     <main>
       <UpdateLocation />
-      <Hero location={location} />
+      <Hero location={location} commits={commits} />
       <ProofStrip />
       <CaseStudies />
       <MoreWork />

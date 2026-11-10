@@ -46,7 +46,8 @@
           "backup": "backup · nightly snapshot complete"
         },
         "caption": "Illustration of the monitoring I run behind client shops — errors and mail problems reach Slack before customers notice."
-      }
+      },
+      "commits": "{count, plural, =1 {<commits>1</commits> commit} other {<commits>#</commits> commits}} pushed to GitHub in the last 7 days"
     },
     "proof": {
       "label": "At a glance",

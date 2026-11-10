@@ -46,7 +46,8 @@
           "backup": "backup · copia de noapte e completă"
         },
         "caption": "Ilustrație a monitorizării pe care o rulez în spatele magazinelor clienților — erorile și problemele de e-mail ajung pe Slack înainte să le observe clienții."
-      }
+      },
+      "commits": "{count, plural, =1 {<commits>1</commits> commit} few {<commits>#</commits> commituri} other {<commits>#</commits> de commituri}} pe GitHub în ultimele 7 zile"
     },
     "proof": {
       "label": "Pe scurt",

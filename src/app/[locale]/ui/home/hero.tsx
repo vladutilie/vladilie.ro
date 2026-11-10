@@ -6,7 +6,7 @@ import { OpsPanel } from './ops-panel';
 
 const promises = ['fixed-scope', 'invoice', 'reply'] as const;
 
-export const Hero: React.FC<{ location: string }> = ({ location }) => {
+export const Hero: React.FC<{ location: string; commits: number }> = ({ location, commits }) => {
   const t = useTranslations('homepage.hero');
   const isAvailable = 'true' === process.env.NEXT_PUBLIC_AVAILABLE_FOR_WORK;
 
@@ -51,6 +51,21 @@ export const Hero: React.FC<{ location: string }> = ({ location }) => {
             </li>
           ))}
         </ul>
+
+        {commits > 0 && (
+          <a
+            href={process.env.NEXT_PUBLIC_GITHUB}
+            target='_blank'
+            rel='noreferrer'
+            className='text-content/70 hover:text-content mt-6 inline-flex items-center gap-2 font-mono text-[12.5px] transition-colors'
+          >
+            {t.rich('commits', {
+              count: commits,
+              commits: (chunk: ReactNode): JSX.Element => <span className='text-accent font-medium'>{chunk}</span>
+            })}{' '}
+            ↗
+          </a>
+        )}
       </div>
 
       <OpsPanel />
