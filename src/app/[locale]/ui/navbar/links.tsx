@@ -42,13 +42,23 @@ export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = (
         </li>
       ))}
 
-      <li className={isMobile ? 'border-hairline mt-2 border-t pt-5' : ''}>
-        <ThemeSwitcher />
-      </li>
+      {isMobile ? (
+        // On mobile both preferences share one row under the anchors.
+        <li className='border-hairline mt-2 flex items-center gap-5 border-t pt-5'>
+          <ThemeSwitcher />
+          <LangChanger />
+        </li>
+      ) : (
+        <>
+          <li>
+            <ThemeSwitcher />
+          </li>
 
-      <li>
-        <LangChanger />
-      </li>
+          <li>
+            <LangChanger />
+          </li>
+        </>
+      )}
 
       <li className={isMobile ? 'mt-2' : ''}>
         <button
