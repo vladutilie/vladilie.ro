@@ -47,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   allPosts().map(({ slug, date, locale }: Post) =>
     links.push({
       url: new URL(
-        ('ro' === locale ? '/ro' : '') + getPathname({ href: { pathname: '/blog/[slug]', params: { slug } }, locale }),
+        getPathname({ href: { pathname: '/blog/[slug]', params: { slug } }, locale }),
         process.env.NEXT_PUBLIC_SITE_URL
       ).toString(),
       priority: 0.7,
@@ -59,8 +59,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   allProjects().map(({ slug, date, locale }: Project) =>
     links.push({
       url: new URL(
-        ('ro' === locale ? '/ro' : '') +
-          getPathname({ href: { pathname: '/projects/[slug]', params: { slug } }, locale }),
+        getPathname({ href: { pathname: '/projects/[slug]', params: { slug } }, locale }),
         process.env.NEXT_PUBLIC_SITE_URL
       ).toString(),
       priority: 0.7,

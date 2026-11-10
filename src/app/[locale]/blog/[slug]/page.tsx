@@ -22,8 +22,7 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical:
-        ('ro' === locale ? '/ro/' : '') + getPathname({ locale, href: { pathname: '/blog/[slug]', params: { slug } } })
+      canonical: getPathname({ locale, href: { pathname: '/blog/[slug]', params: { slug } } })
     },
     ...commonFields,
     keywords: post?.keywords,

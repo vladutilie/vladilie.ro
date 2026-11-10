@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   const commonFields = { title: t('title'), description: `${t('metadata.description')} ${t('last-update')}` };
 
   return {
-    alternates: { canonical: ('ro' === locale ? '/ro/' : '') + getPathname({ locale, href: '/privacy' }) },
+    alternates: { canonical: getPathname({ locale, href: '/privacy' }) },
     ...commonFields,
     keywords: t('metadata.keywords'),
     openGraph: {

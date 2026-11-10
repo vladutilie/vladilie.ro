@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   const commonFields = { title: t('title'), description: t('description') };
 
   return {
-    alternates: { canonical: ('ro' === locale ? '/ro/' : '') + getPathname({ locale, href: '/boardgames' }) },
+    alternates: { canonical: getPathname({ locale, href: '/boardgames' }) },
     ...commonFields,
     keywords: t('metadata.keywords'),
     openGraph: {
