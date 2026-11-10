@@ -4,11 +4,12 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import { Link } from '@/i18n/routing';
+import { CookieSettingsButton } from './consent/cookie-banner';
 import sal from '@/../public/images/anpc-sal.webp';
 import sol from '@/../public/images/anpc-sol.webp';
 
 const pages = ['/projects', '/blog', '/contact', '/uses', '/books', '/boardgames', '/locations', '/colophon'] as const;
-const legal = ['/terms', '/privacy'] as const;
+const legal = ['/terms', '/privacy', '/cookie-policy'] as const;
 
 const linkClasses = 'text-content/85 transition-colors hover:text-accent';
 
@@ -38,6 +39,7 @@ export const Footer: React.FC = () => {
               {t(`${page.slice(1)}.title`)}
             </Link>
           ))}
+          <CookieSettingsButton className={linkClasses} />
           <a href='https://anpc.ro' target='_blank' rel='noreferrer' className={linkClasses}>
             ANPC
           </a>

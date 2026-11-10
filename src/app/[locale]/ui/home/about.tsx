@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { NavLinks } from '@/lib/constants';
 import { SectionHeading } from './section-heading';
 
-const credentials = ['wporg', 'agency', 'neo4j', 'npm', 'degree', 'team'] as const;
+const credentials = ['wporg', 'neo4j', 'npm', 'degree', 'team'] as const;
 
 const localizedSoftware = [
   { name: 'WordPress', url: 'https://make.wordpress.org/polyglots/teams/?locale=ro_RO' },

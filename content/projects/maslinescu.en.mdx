@@ -3,9 +3,9 @@ title: Măslinescu® — a WooCommerce olive-oil shop with its own ops room
 locale: en
 kind: WooCommerce · Ops · ongoing
 url: https://maslinescu.ro
-description: Custom WooCommerce plugins, a loyalty club that also counts in-store purchases, and monitoring that reports problems before customers do.
-technologies: [WooCommerce, PHP 8.3, REST API, Grafana, Loki, Prometheus, Bunny Stream, GitHub Actions]
-keywords: [maslinescu,woocommerce,loyalty program,wordpress plugin,grafana,loki,monitoring,hpos]
+description: Custom WooCommerce plugins, an AI shopping assistant, order statuses synced with Fan Courier and monitoring that reports problems first.
+technologies: [WooCommerce, PHP 8.3, REST API, Fan Courier API, Cloudflare Workers, Grafana, Loki, GitHub Actions]
+keywords: [maslinescu,woocommerce,loyalty program,wordpress plugin,ai shopping assistant,fan courier,grafana,loki,monitoring,hpos]
 date: November 2, 2026 12:00:00
 ---
 
@@ -20,6 +20,8 @@ A growing store gets fragile in quiet ways. A PHP fatal on checkout or an order 
 ## What I built
 
 - **Măslinescu® Club** — a loyalty program with tiers based on spend over a rolling 12 months. Members are promoted, warned, given a grace period and only then moved down a tier. Rewards are real WooCommerce coupons locked to the member's email. There are eight transactional emails, an early-return nudge for new members, a cohort report for first-to-second order conversion and a club box on user and order screens.
+- **An AI shopping assistant** — a chat on the shop that searches products by taste, use or cultivar, checks live stock and pre-orders, recommends oils like a sommelier (with pairings and recipes), answers shipping and returns questions from the shop's own policy pages and adds products to the cart. It is read-only: it never sees customer or order data, never invents discounts or delivery dates, and sends complaints to the contact page. The model runs behind a Cloudflare Worker, with signed requests, bot protection and daily usage caps.
+- **Order statuses that follow the parcel.** A WP-CLI job, run by cron, reads the AWB tracking from the Fan Courier API in batches and moves each order along: processed → handed to the courier → completed, or to a custom *refused delivery* status, which also asks the team to refund card payments. Every change leaves an order note, each run reports to Loki and errors reach Slack. Re-running it is safe: an order only ever moves one step forward.
 - **A cash-register REST API** so purchases made in the physical store count towards the club. It uses Application Passwords and a dedicated role that can only reach the club routes, and in-store sales become orders in the customer's account without touching web stock or invoicing.
 - **Photo and video reviews** — images are re-encoded and stripped of metadata; videos upload straight from the browser to Bunny Stream, so large files never pass through PHP.
 - **Customer restrictions** managed from wp-admin, with normalised email matching and an HPOS-compatible order box.
@@ -34,8 +36,8 @@ For operations, a small mu-plugin sends every event to **Loki** and only errors 
 
 ## Result
 
-Problems now show up in Slack before they reach customers, and store purchases finally count in the same loyalty program as online orders. Every change ships through the same checks and the same pipeline, which makes a fast-moving shop much safer to change. Next up: an AI shopping assistant.
+Problems now show up in Slack before they reach customers, orders update themselves as parcels move, customers get product advice at any hour, and store purchases finally count in the same loyalty program as online orders. Every change ships through the same checks and the same pipeline, which makes a fast-moving shop much safer to change.
 
 ## Stack
 
-WordPress, WooCommerce (HPOS), PHP 8.3+, WooCommerce REST API, Action Scheduler, WP-CLI, Bunny Storage & Stream, Grafana, Loki, Prometheus, Docker, Cloudflare Tunnel, GitHub Actions.
+WordPress, WooCommerce (HPOS), PHP 8.3+, WooCommerce REST API, Action Scheduler, WP-CLI, Fan Courier API, Cloudflare Workers, Turnstile, Bunny Storage & Stream, Grafana, Loki, Prometheus, Docker, Cloudflare Tunnel, GitHub Actions.

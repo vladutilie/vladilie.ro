@@ -11,12 +11,12 @@
     "change-language": "Schimbă limba",
     "change-language-to": "Change language to {lang}",
     "work": "Proiecte",
-    "light": "Luminos",
-    "dark": "Întunecat",
     "close-menu-al": "Închide meniul",
     "get-a-quote": "Cere o ofertă",
     "process": "Proces",
-    "not-translated": "This page isn't available in {lang}."
+    "not-translated": "This page isn't available in {lang}.",
+    "switch-to-light": "Treci pe tema luminoasă",
+    "switch-to-dark": "Treci pe tema întunecată"
   },
   "homepage": {
     "metadata": {
@@ -67,7 +67,7 @@
         },
         "senior": {
           "value": "Senior",
-          "label": "Inginer software pe proiecte enterprise în agenție (EFSA, Garanti BBVA)"
+          "label": "Inginer software senior în echipe de agenție, de la Zitec la Platri IT GmbH"
         }
       },
       "clients": "Clienți și parteneri",
@@ -86,8 +86,8 @@
           "kicker": "WooCommerce · Operațiuni · în desfășurare",
           "title": "Măslinescu® — un magazin de ulei de măsline cu propria cameră de control",
           "problem": "Un magazin în creștere, în care o eroare PHP tăcută sau un e-mail de comandă blocat înseamnă vânzări pierdute — și nimeni nu află până nu sună un client.",
-          "built": "Șase module la comandă — un club de fidelitate pe niveluri care numără și cumpărăturile din magazinul fizic printr-un API pentru casa de marcat, recenzii cu poze și video, restricții pentru clienți, mesaje de felicitare — plus Grafana, Loki și Prometheus cu alerte pe Slack.",
-          "result": "Problemele apar întâi pe Slack, iar listele negre de e-mail sunt prinse de monitorizare, nu de reclamații. Fiecare modul trece prin PHPStan, teste și deploy automat. Urmează: un asistent de cumpărături AI."
+          "built": "Module la comandă — un asistent de cumpărături AI, statusuri de comandă sincronizate automat cu Fan Courier, un club de fidelitate pe niveluri care numără și cumpărăturile din magazinul fizic, recenzii cu poze și video — plus Grafana și Loki cu alerte pe Slack.",
+          "result": "Comenzile se actualizează singure pe măsură ce coletele se mișcă, clienții primesc recomandări la orice oră, iar problemele apar pe Slack înainte să sune cineva. Fiecare modul trece prin PHPStan, teste și deploy automat."
         },
         "tablouri": {
           "kicker": "Modul WordPress · JavaScript simplu",
@@ -237,16 +237,12 @@
     "about": {
       "tag": "Cu cine ai lucra",
       "title": "Un singur inginer, de la început până la final. Fără account manageri, fără predări.",
-      "p1": "Am livrat software în producție ca inginer senior în echipe de agenție pentru clienți enterprise și ca studio de un singur om pentru magazine, startup-uri și ONG-uri. Aceeași persoană care îți scrie codul îți răspunde la e-mailuri și îți urmărește log-urile.",
+      "p1": "Am livrat software în producție ca inginer senior în echipele unor agenții — Zitec, Platri IT GmbH, Mihaidev, Serchis, Brainic și 7Code — și ca studio de un singur om pentru magazine, startup-uri și ONG-uri. Aceeași persoană care îți scrie codul îți răspunde la e-mailuri și îți urmărește log-urile.",
       "p2": "Mă atrag proiectele cu impact social — educație, cultură, mediu — și administrez pro bono infrastructura asociației <cpf>Cărțile pe Față</cpf>.",
       "credentials": {
         "wporg": {
           "key": "WP.org",
           "value": "General Translation Editor, WordPress în română (ro_RO), din 2019"
-        },
-        "agency": {
-          "key": "Agenție",
-          "value": "Senior Software Engineer la Zitec — EFSA, Profiduciaria, Garanti BBVA"
         },
         "neo4j": {
           "key": "Neo4j",
@@ -357,7 +353,6 @@
       "email": "Email",
       "phone": "Telefon",
       "service": "Serviciu necesar",
-      "choose-service": "Alege...",
       "service-custom-development": "👨🏼‍💻 Dezvoltare personalizată",
       "service-landing-page": "🚀 Pagină de prezentare",
       "sw-i18n-l10n": "🌐 Internaționalizare/localizare software",
@@ -370,7 +365,33 @@
       "submit": "Trimite",
       "please-wait": "Te rog așteaptă...",
       "message-sent": "Mulțumesc! 🙏🏻 Mesajul tău a fost trimis.",
-      "send-failed": "Din păcate trimiterea a eșuat. Te rog reîncearcă."
+      "send-failed": "Din păcate trimiterea a eșuat. Te rog reîncearcă.",
+      "cards": {
+        "service-custom-development": {
+          "title": "Dezvoltare la comandă",
+          "description": "Un magazin, un modul sau o aplicație web construite pentru nevoile tale."
+        },
+        "service-landing-page": {
+          "title": "Site de prezentare",
+          "description": "Un site rapid și clar pentru o firmă, un eveniment sau o cauză."
+        },
+        "service-maintenance": {
+          "title": "Mentenanță",
+          "description": "Actualizări, backup-uri, monitorizare și reparații pentru un site existent."
+        },
+        "sw-i18n-l10n": {
+          "title": "Localizare în română",
+          "description": "Traducere și corectură pentru software și module."
+        },
+        "service-job-opportunity": {
+          "title": "Oportunitate de job",
+          "description": "Un post sau o colaborare pe termen lung despre care vrei să vorbim."
+        },
+        "just-say-hi": {
+          "title": "Doar un salut",
+          "description": "Fără proiect — doar o întrebare sau un salut."
+        }
+      }
     }
   },
   "colophon": {
@@ -383,7 +404,7 @@
     "lead": "Cum e făcut site-ul: designul, tehnologiile pe care rulează și unde se află codul.",
     "design": {
       "title": "Design",
-      "p1": "Designul actual îmi aparține și e din 2026: dovezile pe primul loc — studii de caz cu problema, ce am construit și ce s-a schimbat — pe fundaluri de tip hârtie și cerneală, cu linii fine în loc de umbre și un singur albastru, #3598DB. Fiecare pagină are temă luminoasă și întunecată.",
+      "p1": "Designul actual, din 2026, a fost generat de Claude și transpus în cod cu Claude Code: dovezile pe primul loc — studii de caz cu problema, ce am construit și ce s-a schimbat — pe fundaluri de tip hârtie și cerneală, cu linii fine în loc de umbre și un singur albastru, #3598DB. Fiecare pagină are temă luminoasă și întunecată.",
       "p2": "Titlurile și textul folosesc <schibsted>Schibsted Grotesk</schibsted>, iar etichetele, cifrele și codul <plex>IBM Plex Mono</plex>. Ambele sunt servite prin next/font, fără cereri către Google în timpul navigării."
     },
     "stack": {
@@ -480,6 +501,25 @@
       "keyboard": "Tastatură Mac LOGITECH MX Keys",
       "mic": "Microfon VONYX CMS300B"
     },
+    "ai": {
+      "title": "✨ AI",
+      "claude": {
+        "name": "Claude",
+        "description": "Partener de gândire pentru documentare, scris și design — designul din 2026 al acestui site a pornit de la un artefact Claude."
+      },
+      "claude-code": {
+        "name": "Claude Code (CLI)",
+        "description": "Agent în terminal: refactorizări, actualizări de dependențe, migrări, teste și code review în proiectele mele."
+      },
+      "claude-in-chrome": {
+        "name": "Claude in Chrome",
+        "description": "Extensie de browser prin care Claude deschide pagini, parcurge fluxuri și citește consola în timp ce lucrez."
+      },
+      "chatgpt": {
+        "name": "ChatGPT",
+        "description": "A doua părere, întrebări rapide și prime variante de text."
+      }
+    },
     "software": {
       "title": "🤖 Software",
       "vscode": {
@@ -489,11 +529,14 @@
       "postman": "Postman",
       "chrome": {
         "name": "Google Chrome",
-        "description": "Extensii: AdBlock, Claude, CSS Grid Overlay, GoFullPage - Full Page Screen Capture, JSON Formatter, Wappalyzer - Technology profiler, WordPress Browser Extension"
+        "description": "Extensii: AdBlock, CSS Grid Overlay, GoFullPage - Full Page Screen Capture, JSON Formatter, Wappalyzer - Technology profiler, WordPress Browser Extension"
       },
-      "neo4j": "Neo4j Desktop",
       "signal": "Signal",
-      "slack": "Slack"
+      "slack": "Slack",
+      "ddev": {
+        "name": "DDEV",
+        "description": "Medii locale WordPress în Docker (Colima): PHP 8.5, Apache-FPM, MySQL 8.4, Node 24, Composer 2 și WP-CLI, HTTPS prin Traefik, Mailpit pentru e-mailuri, Mutagen pentru sincronizare rapidă a fișierelor, phpMyAdmin ca add-on, Xdebug și XHGui la nevoie."
+      }
     }
   },
   "books": {
@@ -618,5 +661,84 @@
     "title": "Eroare 404",
     "description": "Pagina pe care o cauți nu există.",
     "back-home": "Înapoi la prima pagină"
+  },
+  "cookies": {
+    "title": "Cookie-uri",
+    "banner": "Site-ul stochează doar ce îi trebuie ca să funcționeze. Cu acordul tău, numără și vizitele anonim, prin Vercel Web Analytics, care nu folosește cookie-uri. Îți poți schimba oricând alegerea din subsolul paginii. <link>Politica de cookie-uri</link>",
+    "accept": "Accept",
+    "reject": "Refuz",
+    "save": "Salvează alegerile",
+    "customize": "Personalizează",
+    "close": "Închide",
+    "settings-title": "Setări cookie-uri",
+    "settings-lead": "Alege ce poate folosi site-ul pe lângă ce îi trebuie ca să funcționeze. Detalii în <link>politica de cookie-uri</link>.",
+    "necessary": {
+      "title": "Strict necesare",
+      "description": "Rețin această alegere și tema luminoasă, întunecată sau a sistemului. Mereu active."
+    },
+    "analytics": {
+      "title": "Statistici",
+      "description": "Vercel Web Analytics: afișări de pagină anonime și agregate, fără cookie-uri și fără urmărire între site-uri."
+    }
+  },
+  "cookie-policy": {
+    "metadata": {
+      "description": "Ce cookie-uri și ce stocare în browser folosește vladilie.ro, de ce, cât timp și cum îți schimbi alegerea."
+    },
+    "title": "Politica de cookie-uri",
+    "updated": "Actualizată la: 10 noiembrie 2026",
+    "lead": "Pe scurt: un cookie care îți reține alegerea, o setare pentru temă și statistici anonime doar dacă ești de acord. Fără publicitate, fără urmărire între site-uri.",
+    "what": {
+      "title": "Ce sunt cookie-urile",
+      "p1": "Cookie-urile sunt fișiere text mici pe care un site le salvează în browserul tău. Tehnologii asemănătoare, precum localStorage, păstrează date în browser în același mod. Pagina de față le acoperă pe amândouă, pentru că legea le tratează la fel."
+    },
+    "used": {
+      "title": "Ce folosește acest site",
+      "p1": "Elementele strict necesare sunt mereu active, pentru că fără ele site-ul nu îți poate respecta alegerile. Statisticile pornesc doar după ce le accepți."
+    },
+    "fields": {
+      "type": "Tip",
+      "provider": "Furnizor",
+      "purpose": "Scop",
+      "duration": "Durată",
+      "category": "Categorie"
+    },
+    "items": {
+      "consent": {
+        "type": "Cookie propriu",
+        "provider": "vladilie.ro",
+        "purpose": "Reține dacă ai acceptat sau ai refuzat statisticile, ca bannerul să nu reapară pe fiecare pagină.",
+        "duration": "6 luni",
+        "category": "Strict necesar"
+      },
+      "theme": {
+        "type": "localStorage",
+        "provider": "vladilie.ro",
+        "purpose": "Reține tema: „system” (urmează setarea dispozitivului) până când alegi tu luminos sau întunecat.",
+        "duration": "Până ștergi datele din browser",
+        "category": "Strict necesar"
+      },
+      "analytics": {
+        "type": "Fără cookie sau stocare — un script care trimite afișările de pagină",
+        "provider": "Vercel Inc.",
+        "purpose": "Numără vizitele pe fiecare pagină, cu site-ul de proveniență, țara, browserul și tipul de dispozitiv, ca să știu ce pagini sunt utile. Vizitatorii nu sunt identificați și nu sunt urmăriți pe alte site-uri.",
+        "duration": "Nu se păstrează nimic în browserul tău",
+        "category": "Statistici — doar cu acordul tău"
+      }
+    },
+    "not-used": {
+      "title": "Ce nu folosește acest site",
+      "p1": "Nu există cookie-uri de publicitate sau de rețele sociale, nici Google Analytics, nici videoclipuri încorporate sau widgeturi de la terți. Fonturile sunt servite chiar de site, iar imaginile trec tot prin el, deci încărcarea unei pagini nu contactează alte companii. Formularul de contact îți trimite mesajul pe e-mail și nu setează cookie-uri."
+    },
+    "choice": {
+      "title": "Cum îți schimbi alegerea",
+      "p1": "Îți poți schimba sau retrage oricând acordul, la fel de ușor cum l-ai dat:",
+      "p2": "Poți șterge cookie-urile și datele site-ului și din setările browserului; bannerul te va întreba din nou la următoarea vizită."
+    },
+    "contact": {
+      "title": "Întrebări",
+      "p1": "Pentru orice ține de datele tale, vezi <privacy>politica de confidențialitate</privacy> sau scrie-mi prin pagina de contact."
+    },
+    "nav": "Politica de cookie-uri"
   }
 }

@@ -2,17 +2,18 @@ import { useTranslations } from 'next-intl';
 
 const stats = ['studio', 'maintained', 'gte', 'senior'] as const;
 
-const clients = [
-  'Măslinescu®',
-  'Cărțile pe Față',
-  'TEDxZorilor',
-  '17 Seconds™',
-  'Tablouri Colorate',
-  'Baschet Club SLAM',
-  'Abarai',
-  'Marina Bîra',
-  'DRI UPT',
-  'ContaExpert'
+// Partners without a URL yet are shown as plain text.
+const clients: { name: string; url?: string }[] = [
+  { name: 'Măslinescu®', url: 'https://maslinescu.ro' },
+  { name: 'Cărțile pe Față', url: 'https://cartilepefata.ro' },
+  { name: 'TEDxZorilor', url: 'https://tedxzorilor.com' },
+  { name: '17 Seconds™', url: 'https://17sec.co.uk' },
+  { name: 'Tablouri Colorate', url: 'https://tablouricolorate.ro' },
+  { name: 'Baschet Club SLAM', url: 'https://baschetclubslam.ro' },
+  { name: 'Abarai', url: 'https://www.abarai.ro' },
+  { name: 'Marina Bîra', url: 'https://marinabira.ro' },
+  { name: 'DRI UPT', url: 'https://international.upt.ro' },
+  { name: 'ContaExpert', url: 'https://contaexpert.ro' }
 ];
 
 const tech = [
@@ -50,11 +51,23 @@ export const ProofStrip: React.FC = () => {
 
       <div className='border-hairline mx-auto flex max-w-[1200px] flex-wrap items-center gap-x-[34px] gap-y-3 border-t px-6 py-[22px]'>
         <span className={rowLabel}>{t('clients')}</span>
-        {clients.map((client) => (
-          <span key={client} className='text-content/85 text-[17px] font-bold tracking-[-0.02em]'>
-            {client}
-          </span>
-        ))}
+        {clients.map(({ name, url }) =>
+          url ? (
+            <a
+              key={name}
+              href={url}
+              target='_blank'
+              rel='noopener'
+              className='text-content/85 hover:text-accent text-[17px] font-bold tracking-[-0.02em] transition-colors'
+            >
+              {name}
+            </a>
+          ) : (
+            <span key={name} className='text-content/85 text-[17px] font-bold tracking-[-0.02em]'>
+              {name}
+            </span>
+          )
+        )}
       </div>
 
       <div className='border-hairline mx-auto flex max-w-[1200px] flex-wrap items-center gap-x-7 gap-y-2.5 border-t px-6 pt-[18px] pb-5'>

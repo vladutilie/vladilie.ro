@@ -21,11 +21,18 @@ const hardware = [
   'hardware.mic'
 ];
 
+const ai = [
+  ['ai.claude.name', 'ai.claude.description'],
+  ['ai.claude-code.name', 'ai.claude-code.description'],
+  ['ai.claude-in-chrome.name', 'ai.claude-in-chrome.description'],
+  ['ai.chatgpt.name', 'ai.chatgpt.description']
+];
+
 const software = [
   ['software.vscode.name', 'software.vscode.description'],
   'software.postman',
   ['software.chrome.name', 'software.chrome.description'],
-  'software.neo4j',
+  ['software.ddev.name', 'software.ddev.description'],
   'software.signal',
   'software.slack'
 ];
@@ -72,6 +79,7 @@ export default async function Uses({ params }: { params: Promise<{ locale: strin
           [
             ['environment', environment],
             ['hardware', hardware],
+            ['ai', ai],
             ['software', software]
           ] as const
         ).map(([key, items]) => (

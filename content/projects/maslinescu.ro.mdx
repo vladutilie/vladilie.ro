@@ -3,8 +3,8 @@ title: Măslinescu® — un magazin WooCommerce de ulei de măsline cu propria c
 locale: ro
 kind: WooCommerce · Ops · în desfășurare
 url: https://maslinescu.ro
-description: Module WooCommerce dedicate, un club de fidelitate care numără și cumpărăturile din magazin și monitorizare care semnalează problemele înaintea clienților.
-technologies: [WooCommerce, PHP 8.3, REST API, Grafana, Loki, Prometheus, Bunny Stream, GitHub Actions]
+description: Module WooCommerce dedicate, un asistent de cumpărături AI, statusuri de comandă sincronizate cu Fan Courier și monitorizare care anunță prima problemele.
+technologies: [WooCommerce, PHP 8.3, REST API, Fan Courier API, Cloudflare Workers, Grafana, Loki, GitHub Actions]
 keywords: [maslinescu,woocommerce,program de fidelizare,modul wordpress,grafana,loki,monitorizare,hpos]
 date: November 2, 2026 12:00:00
 ---
@@ -20,6 +20,8 @@ Un magazin care crește devine fragil pe tăcute. O eroare fatală PHP în check
 ## Ce am construit
 
 - **Clubul Măslinescu®** — un program de fidelitate cu niveluri calculate după valoarea cumpărăturilor din ultimele 12 luni. Membrii avansează, primesc un avertisment, apoi o perioadă de grație și abia după aceea coboară un nivel. Recompensele sunt cupoane WooCommerce reale, legate de adresa de e-mail a membrului. Există opt e-mailuri tranzacționale, un impuls de revenire pentru membrii noi, un raport pe cohorte pentru conversia de la prima la a doua comandă și o casetă a clubului pe paginile de utilizator și de comandă.
+- **Un asistent de cumpărături AI** — un chat pe magazin care caută produse după gust, întrebuințare sau soi, verifică stocul în timp real și precomenzile, recomandă uleiuri ca un somelier (cu asocieri și rețete), răspunde la întrebări despre livrare și retur din paginile de politici ale magazinului și adaugă produse în coș. Are acces doar de citire: nu vede datele clienților sau comenzile, nu inventează reduceri ori termene de livrare și trimite reclamațiile spre pagina de contact. Modelul rulează în spatele unui Cloudflare Worker, cu cereri semnate, protecție anti-bot și limite zilnice de utilizare.
+- **Statusuri de comandă care urmăresc coletul.** Un job WP-CLI, rulat prin cron, citește în loturi urmărirea AWB-urilor din API-ul Fan Courier și mută fiecare comandă mai departe: procesată → predată curierului → finalizată, sau într-un status propriu, *livrare refuzată*, care cere echipei și rambursarea plăților cu cardul. Fiecare schimbare lasă o notă pe comandă, fiecare rulare se raportează în Loki, iar erorile ajung pe Slack. Poate fi rulat oricând din nou: o comandă avansează mereu doar un pas.
 - **Un API REST pentru casa de marcat**, astfel încât cumpărăturile din magazinul fizic să conteze în club. Folosește Application Passwords și un rol dedicat care are acces doar la rutele clubului, iar vânzările din magazin devin comenzi în contul clientului fără să afecteze stocul online sau facturarea.
 - **Recenzii cu poze și video** — imaginile sunt re-codate și curățate de metadate, iar videoclipurile se încarcă direct din browser în Bunny Stream, deci fișierele mari nu trec niciodată prin PHP.
 - **Restricții pentru clienți** gestionate din wp-admin, cu potrivirea normalizată a adreselor de e-mail și o casetă compatibilă HPOS pe comenzi.
@@ -34,8 +36,8 @@ Pentru operațiuni, un mu-plugin mic trimite fiecare eveniment în **Loki** și 
 
 ## Rezultat
 
-Problemele apar acum pe Slack înainte să ajungă la clienți, iar cumpărăturile din magazinul fizic se adună în același program de fidelitate ca și comenzile online. Fiecare modificare trece prin aceleași verificări și același pipeline, ceea ce face ca un magazin care se schimbă des să fie mult mai sigur de modificat. Urmează: un asistent de cumpărături bazat pe AI.
+Problemele apar acum pe Slack înainte să ajungă la clienți, comenzile se actualizează singure pe măsură ce coletele se mișcă, clienții primesc recomandări la orice oră, iar cumpărăturile din magazinul fizic se adună în același program de fidelitate ca și comenzile online. Fiecare modificare trece prin aceleași verificări și același pipeline, ceea ce face ca un magazin care se schimbă des să fie mult mai sigur de modificat.
 
 ## Tehnologii
 
-WordPress, WooCommerce (HPOS), PHP 8.3+, WooCommerce REST API, Action Scheduler, WP-CLI, Bunny Storage & Stream, Grafana, Loki, Prometheus, Docker, Cloudflare Tunnel, GitHub Actions.
+WordPress, WooCommerce (HPOS), PHP 8.3+, WooCommerce REST API, Action Scheduler, WP-CLI, Fan Courier API, Cloudflare Workers, Turnstile, Bunny Storage & Stream, Grafana, Loki, Prometheus, Docker, Cloudflare Tunnel, GitHub Actions.

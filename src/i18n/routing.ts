@@ -11,6 +11,8 @@ export const routing = defineRouting({
   // No redirects based on the browser language or a cookie: every URL always serves the same language,
   // which is what search engines expect. Visitors switch with the language toggle.
   localeDetection: false,
+  // With detection off the NEXT_LOCALE cookie would never be read, so don't set it.
+  localeCookie: false,
   pathnames: {
     '/': '/',
     '/locations': { en: '/locations', ro: '/locatii' },
@@ -24,7 +26,8 @@ export const routing = defineRouting({
     '/books': { en: '/books', ro: '/carti' },
     '/boardgames': { en: '/boardgames', ro: '/jocuri-societate' },
     '/terms': { en: '/terms', ro: '/termeni' },
-    '/privacy': { en: '/privacy', ro: '/confidentialitate' }
+    '/privacy': { en: '/privacy', ro: '/confidentialitate' },
+    '/cookie-policy': { en: '/cookie-policy', ro: '/politica-cookie-uri' }
   }
 });
 

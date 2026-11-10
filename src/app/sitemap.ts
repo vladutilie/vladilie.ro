@@ -43,7 +43,11 @@ const pages: { href: Parameters<typeof everyLocale>[0]; fields: Fields }[] = [
   { href: '/books', fields: { priority: 0.7, changeFrequency: 'monthly', lastModified: new Date() } },
   { href: '/boardgames', fields: { priority: 0.7, changeFrequency: 'monthly', lastModified: new Date() } },
   { href: '/terms', fields: { priority: 0.5, changeFrequency: 'yearly', lastModified: legalUpdatedAt } },
-  { href: '/privacy', fields: { priority: 0.5, changeFrequency: 'yearly', lastModified: legalUpdatedAt } }
+  { href: '/privacy', fields: { priority: 0.5, changeFrequency: 'yearly', lastModified: legalUpdatedAt } },
+  {
+    href: '/cookie-policy',
+    fields: { priority: 0.5, changeFrequency: 'yearly', lastModified: '2026-11-10T12:00:00.000Z' }
+  }
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

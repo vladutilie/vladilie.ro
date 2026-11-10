@@ -1,4 +1,3 @@
-import { Analytics } from '@vercel/analytics/next';
 import { Metadata } from 'next';
 import { IBM_Plex_Mono, Schibsted_Grotesk } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
@@ -10,6 +9,7 @@ import './globals.css';
 import { Footer } from './ui/footer';
 import { Navbar } from './ui/navbar';
 import { ThemeProvider } from './ui/theme-provider';
+import { ConsentProvider } from './ui/consent/consent-provider';
 import { TranslationsProvider } from './ui/navbar/translations';
 import { documentTranslations } from '@/lib/content';
 
@@ -69,12 +69,13 @@ export default async function LocaleLayout({
       <body className='bg-surface text-content font-sans transition-colors duration-300'>
         <NextIntlClientProvider locale={locale} messages={messages} timeZone='Europe/Bucharest'>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-            <TranslationsProvider translations={documentTranslations()}>
-              <Navbar />
-            </TranslationsProvider>
-            {children}
-            <Footer />
-            <Analytics />
+            <ConsentProvider>
+              <TranslationsProvider translations={documentTranslations()}>
+                <Navbar />
+              </TranslationsProvider>
+              {children}
+              <Footer />
+            </ConsentProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

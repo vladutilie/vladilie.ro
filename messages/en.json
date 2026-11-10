@@ -11,12 +11,12 @@
     "change-language": "Change language",
     "change-language-to": "Schimbă limba în {lang}",
     "work": "Work",
-    "light": "Light",
-    "dark": "Dark",
     "close-menu-al": "Close menu",
     "get-a-quote": "Get a quote",
     "process": "Process",
-    "not-translated": "Această pagină nu există în {lang}."
+    "not-translated": "Această pagină nu există în {lang}.",
+    "switch-to-light": "Switch to light theme",
+    "switch-to-dark": "Switch to dark theme"
   },
   "homepage": {
     "metadata": {
@@ -67,7 +67,7 @@
         },
         "senior": {
           "value": "Senior",
-          "label": "Software engineer on enterprise agency projects (EFSA, Garanti BBVA)"
+          "label": "Senior software engineer in agency teams, from Zitec to Platri IT GmbH"
         }
       },
       "clients": "Clients & partners",
@@ -86,8 +86,8 @@
           "kicker": "WooCommerce · Ops · ongoing",
           "title": "Măslinescu® — an olive-oil shop with its own ops room",
           "problem": "A growing store where a silent PHP error or a blocked order email means lost sales — and nobody finds out until a customer calls.",
-          "built": "Six custom plugins — a tiered loyalty club that also counts in-store purchases through a cash-register API, photo & video reviews, customer restrictions, gift messages — plus a Grafana + Loki + Prometheus stack with Slack alerts.",
-          "result": "Problems surface in Slack first, and mail-blacklist issues are caught by monitoring, not by complaints. Every plugin ships through PHPStan, tests and an automated deploy. Next up: an AI shopping assistant."
+          "built": "Custom plugins — an AI shopping assistant, order statuses synced automatically with Fan Courier, a tiered loyalty club that also counts in-store purchases, photo & video reviews — plus a Grafana + Loki stack with Slack alerts.",
+          "result": "Orders update themselves as parcels move, customers get product advice at any hour, and problems surface in Slack before anyone calls. Every plugin ships through PHPStan, tests and an automated deploy."
         },
         "tablouri": {
           "kicker": "WordPress plugin · Vanilla JS",
@@ -237,16 +237,12 @@
     "about": {
       "tag": "Who you'd work with",
       "title": "One engineer, start to finish. No account managers, no hand-offs.",
-      "p1": "I've shipped production software as a senior engineer on agency teams for enterprise clients, and as a one-person studio for shops, startups and NGOs. The same person who writes your code answers your email and watches your logs.",
+      "p1": "I've shipped production software as a senior engineer in agency teams — Zitec, Platri IT GmbH, Mihaidev, Serchis, Brainic and 7Code — and as a one-person studio for shops, startups and NGOs. The same person who writes your code answers your email and watches your logs.",
       "p2": "I'm drawn to work with social impact — education, culture, environment — and I run the infrastructure of the <cpf>Cărțile pe Față</cpf> association pro-bono.",
       "credentials": {
         "wporg": {
           "key": "WP.org",
           "value": "General Translation Editor, WordPress Romanian (ro_RO), since 2019"
-        },
-        "agency": {
-          "key": "Agency",
-          "value": "Senior Software Engineer at Zitec — EFSA, Profiduciaria, Garanti BBVA"
         },
         "neo4j": {
           "key": "Neo4j",
@@ -357,7 +353,6 @@
       "email": "Email",
       "phone": "Phone",
       "service": "Needed service",
-      "choose-service": "Choose...",
       "service-custom-development": "👨🏼‍💻 Custom development",
       "service-landing-page": "🚀 Landing page",
       "sw-i18n-l10n": "🌐 Software internationalization/localization",
@@ -370,7 +365,33 @@
       "submit": "Submit",
       "please-wait": "Please wait...",
       "message-sent": "Thank you! 🙏🏻 Your message has been sent.",
-      "send-failed": "Unfortunately, the submission failed. Please try again."
+      "send-failed": "Unfortunately, the submission failed. Please try again.",
+      "cards": {
+        "service-custom-development": {
+          "title": "Custom development",
+          "description": "A shop, a plugin or a web app built for what you need."
+        },
+        "service-landing-page": {
+          "title": "Presentation site",
+          "description": "A fast, clear site for a business, event or cause."
+        },
+        "service-maintenance": {
+          "title": "Maintenance",
+          "description": "Updates, backups, monitoring and fixes for an existing site."
+        },
+        "sw-i18n-l10n": {
+          "title": "Romanian localization",
+          "description": "Translation and proofreading for software and plugins."
+        },
+        "service-job-opportunity": {
+          "title": "Job opportunity",
+          "description": "A role or a longer collaboration you’d like to discuss."
+        },
+        "just-say-hi": {
+          "title": "Just saying hi",
+          "description": "No project — just a question or a hello."
+        }
+      }
     }
   },
   "colophon": {
@@ -383,7 +404,7 @@
     "lead": "How this site is put together: the design, what it runs on and where the code lives.",
     "design": {
       "title": "Design",
-      "p1": "The current design is my own, from 2026: proof first — case studies with the problem, what I built and what changed — on paper and ink surfaces, hairline rules instead of shadows and a single blue, #3598DB. Every page has a light and a dark theme.",
+      "p1": "The current design, from 2026, was generated by Claude and put into code with Claude Code: proof first — case studies with the problem, what I built and what changed — on paper and ink surfaces, hairline rules instead of shadows and a single blue, #3598DB. Every page has a light and a dark theme.",
       "p2": "Headings and body text are set in <schibsted>Schibsted Grotesk</schibsted>; labels, numbers and code in <plex>IBM Plex Mono</plex>. Both are served by next/font, without requests to Google at runtime."
     },
     "stack": {
@@ -480,6 +501,25 @@
       "keyboard": "Keyboard Mac LOGITECH MX Keys",
       "mic": "Microphone VONYX CMS300B"
     },
+    "ai": {
+      "title": "✨ AI",
+      "claude": {
+        "name": "Claude",
+        "description": "Thinking partner for research, writing and design — this site’s 2026 design started as a Claude artifact."
+      },
+      "claude-code": {
+        "name": "Claude Code (CLI)",
+        "description": "Agent in the terminal: refactors, dependency upgrades, migrations, tests and code reviews across my projects."
+      },
+      "claude-in-chrome": {
+        "name": "Claude in Chrome",
+        "description": "Browser extension that lets Claude open pages, click through flows and read the console while I build."
+      },
+      "chatgpt": {
+        "name": "ChatGPT",
+        "description": "Second opinions, quick questions and first drafts."
+      }
+    },
     "software": {
       "title": "🤖 Software",
       "vscode": {
@@ -489,11 +529,14 @@
       "postman": "Postman",
       "chrome": {
         "name": "Google Chrome",
-        "description": "Extensions: AdBlock, Claude, CSS Grid Overlay, GoFullPage - Full Page Screen Capture, JSON Formatter, Wappalyzer - Technology profiler, WordPress Browser Extension"
+        "description": "Extensions: AdBlock, CSS Grid Overlay, GoFullPage - Full Page Screen Capture, JSON Formatter, Wappalyzer - Technology profiler, WordPress Browser Extension"
       },
-      "neo4j": "Neo4j Desktop",
       "signal": "Signal",
-      "slack": "Slack"
+      "slack": "Slack",
+      "ddev": {
+        "name": "DDEV",
+        "description": "Local WordPress environments in Docker (Colima): PHP 8.5, Apache-FPM, MySQL 8.4, Node 24, Composer 2 and WP-CLI, HTTPS through Traefik, Mailpit for e-mail, Mutagen for fast file sync, phpMyAdmin as an add-on, Xdebug and XHGui on demand."
+      }
     }
   },
   "books": {
@@ -618,5 +661,84 @@
     "title": "404 Error",
     "description": "The page you are looking for does not exist.",
     "back-home": "Back to the homepage"
+  },
+  "cookies": {
+    "title": "Cookies",
+    "banner": "The site only stores what it needs to work. With your consent, it also counts visits anonymously with Vercel Web Analytics, which uses no cookies. You can change your mind any time from the footer. <link>Cookie policy</link>",
+    "accept": "Accept",
+    "reject": "Reject",
+    "save": "Save choices",
+    "customize": "Customize",
+    "close": "Close",
+    "settings-title": "Cookie settings",
+    "settings-lead": "Choose what the site may use besides what it needs to work. Details in the <link>cookie policy</link>.",
+    "necessary": {
+      "title": "Strictly necessary",
+      "description": "Remember this choice and your light, dark or system theme. Always on."
+    },
+    "analytics": {
+      "title": "Statistics",
+      "description": "Vercel Web Analytics: anonymous, aggregated page views, without cookies or tracking across sites."
+    }
+  },
+  "cookie-policy": {
+    "metadata": {
+      "description": "Which cookies and browser storage vladilie.ro uses, why, for how long, and how to change your choice."
+    },
+    "title": "Cookie policy",
+    "updated": "Last updated: 10 November 2026",
+    "lead": "Short version: one cookie that remembers your choice, one setting for the theme, and anonymous statistics only if you agree. No advertising, no tracking across sites.",
+    "what": {
+      "title": "What cookies are",
+      "p1": "Cookies are small text files a website saves in your browser. Similar technologies, such as localStorage, keep data in the browser in the same way. This page covers both, because the law treats them the same."
+    },
+    "used": {
+      "title": "What this site uses",
+      "p1": "Strictly necessary items are always on, because the site can’t respect your choices without them. Statistics run only after you accept them."
+    },
+    "fields": {
+      "type": "Type",
+      "provider": "Provider",
+      "purpose": "Purpose",
+      "duration": "Duration",
+      "category": "Category"
+    },
+    "items": {
+      "consent": {
+        "type": "First-party cookie",
+        "provider": "vladilie.ro",
+        "purpose": "Remembers whether you accepted or rejected statistics, so the banner doesn’t come back on every page.",
+        "duration": "6 months",
+        "category": "Strictly necessary"
+      },
+      "theme": {
+        "type": "localStorage",
+        "provider": "vladilie.ro",
+        "purpose": "Remembers the theme: “system” (follow your device) until you switch to light or dark yourself.",
+        "duration": "Until you clear your browser data",
+        "category": "Strictly necessary"
+      },
+      "analytics": {
+        "type": "No cookie or storage — a script that sends page views",
+        "provider": "Vercel Inc.",
+        "purpose": "Counts visits per page, with the referring site, country, browser and device type, so I know which pages are useful. Visitors are not identified or followed across sites.",
+        "duration": "Nothing is kept in your browser",
+        "category": "Statistics — only with your consent"
+      }
+    },
+    "not-used": {
+      "title": "What this site doesn’t use",
+      "p1": "No advertising or social media cookies, no Google Analytics, no embedded videos or third-party widgets. Fonts are served by the site itself and images go through it too, so loading a page doesn’t contact other companies. The contact form sends your message by e-mail and sets no cookies."
+    },
+    "choice": {
+      "title": "Changing your choice",
+      "p1": "You can change or withdraw your consent at any time, just as easily as you gave it:",
+      "p2": "You can also delete cookies and site data from your browser settings; the banner will then ask again on your next visit."
+    },
+    "contact": {
+      "title": "Questions",
+      "p1": "For anything about your data, see the <privacy>privacy policy</privacy> or write to me through the contact page."
+    },
+    "nav": "Cookie policy"
   }
 }

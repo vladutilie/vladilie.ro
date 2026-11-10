@@ -13,6 +13,15 @@ const fieldClasses =
 
 const labelClasses = 'mb-1.5 text-[13.5px] font-bold';
 
+const serviceCards = [
+  Services.CustomDevelopment,
+  Services.LandingPage,
+  Services.Maintenance,
+  Services.SwI18nL10n,
+  Services.JobOpportunity,
+  Services.JustSayHi
+] as const;
+
 export const Form: React.FC = () => {
   const [state, setState] = useState<{ isLoading: boolean; response: string; success: boolean }>({
     isLoading: false,
@@ -48,7 +57,7 @@ export const Form: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='grid max-w-xl grid-cols-2 gap-5'>
+    <form onSubmit={handleSubmit(onSubmit)} className='grid max-w-4xl grid-cols-2 gap-5'>
       <div className='col-span-2 flex flex-col sm:col-span-1'>
         <label
           htmlFor='firstName'
@@ -97,30 +106,34 @@ export const Form: React.FC = () => {
         {errors.phone && <span className='mt-1 text-xs text-red-400'>{t('required-field')}</span>}
       </div>
 
-      <div className='col-span-2 flex flex-col'>
-        <label htmlFor='service' className={`${labelClasses} ${errors.service ? 'text-red-400' : 'text-content/60'}`}>
+      <fieldset className='col-span-2 m-0 border-0 p-0'>
+        <legend className={`${labelClasses} ${errors.service ? 'text-red-400' : 'text-content'}`}>
           {t('service')}
-        </label>
-        <select
-          {...register('service', { required: true })}
-          className={`${fieldClasses} min-h-[42px] ${!service ? 'text-content/50' : ''}`}
-          id='service'
-          defaultValue=''
-        >
-          <option value='' hidden disabled>
-            {t('choose-service')}
-          </option>
-          <option defaultChecked={false} value={Services.CustomDevelopment}>
-            {t('service-custom-development')}
-          </option>
-          <option value={Services.LandingPage}>{t('service-landing-page')}</option>
-          <option value={Services.SwI18nL10n}>{t('sw-i18n-l10n')}</option>
-          <option value={Services.Maintenance}>{t('service-maintenance')}</option>
-          <option value={Services.JobOpportunity}>{t('service-job-opportunity')}</option>
-          <option value={Services.JustSayHi}>{t('just-say-hi')}</option>
-        </select>
-        {errors.service && <span className='mt-1 text-xs text-red-400'>{t('required-field')}</span>}
-      </div>
+        </legend>
+
+        <div className='mt-1 grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
+          {serviceCards.map((value) => (
+            <label
+              key={value}
+              className='group border-hairline bg-surface-raised hover:border-content has-checked:border-signal has-checked:bg-hover-tint has-focus-visible:outline-signal relative flex cursor-pointer flex-col gap-1.5 rounded-[14px] border p-5 transition-colors has-focus-visible:outline-2 has-focus-visible:outline-offset-2'
+            >
+              <input {...register('service', { required: true })} type='radio' value={value} className='peer sr-only' />
+              <span
+                aria-hidden
+                className='border-hairline-strong peer-checked:border-signal peer-checked:bg-signal peer-checked:text-ink absolute top-5 right-5 grid h-5 w-5 place-items-center rounded-full border text-[11px] text-transparent transition-colors'
+              >
+                ✓
+              </span>
+              <span className='text-content pr-8 text-base font-bold tracking-[-0.01em]'>
+                {t(`cards.${value}.title`)}
+              </span>
+              <span className='text-content/70 text-sm leading-normal'>{t(`cards.${value}.description`)}</span>
+            </label>
+          ))}
+        </div>
+
+        {errors.service && <span className='mt-2 block text-xs text-red-400'>{t('required-field')}</span>}
+      </fieldset>
 
       {service && ![Services.JobOpportunity, Services.JustSayHi].includes(service as Services) ? (
         <div className='col-span-2 flex flex-col'>
