@@ -15,7 +15,7 @@ export default async function NotFound() {
 
         <Link
           href='/'
-          className='border-hairline-strong text-content hover:border-accent hover:text-accent mt-2 rounded-full border px-6 py-3 text-[15px] font-semibold transition-colors'
+          className='border-hairline-strong text-content hover:border-signal hover:text-accent mt-2 rounded-full border px-6 py-3 text-[15px] font-semibold transition-colors'
         >
           {t('back-home')}
         </Link>

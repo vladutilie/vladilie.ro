@@ -3,8 +3,6 @@
     "go-to-homepage-al": "Go to homepage",
     "burger-menu-al": "Burger menu",
     "about": "About",
-    "education": "Education",
-    "skills": "Skills",
     "projects": "Projects",
     "services": "Services",
     "blog": "Blog",
@@ -13,151 +11,299 @@
     "change-language": "Change language",
     "change-language-to": "Schimbă limba în {lang}",
     "work": "Work",
-    "localization": "Localization",
-    "lets-talk": "Let's talk",
     "light": "Light",
     "dark": "Dark",
-    "close-menu-al": "Close menu"
+    "close-menu-al": "Close menu",
+    "get-a-quote": "Get a quote",
+    "process": "Process"
   },
   "homepage": {
     "metadata": {
-      "title": "Software Engineer · Work with NodeJS, WordPress, Neo4j",
-      "description": "I build dedicated software solutions with JavaScript, WordPress, Neo4j, Tailwind CSS, and many other related platforms and technologies.",
-      "keywords": "vlad,ilie,software,engineer,web developer,wordpress,nodejs,nextjs,tailwind,javascript"
+      "title": "WooCommerce shops & Next.js products, built and kept running",
+      "description": "Software engineer from Romania. I build WooCommerce shops, custom WordPress plugins and Next.js products — and stay on after launch for updates, security and monitoring.",
+      "keywords": "vlad ilie,software engineer,woocommerce,wordpress plugin,next.js,web developer romania,website maintenance,romanian localization"
     },
     "hero": {
-      "hello": "Hi there, Vlad here {emoji}",
-      "about": "I'm a <strong>Software Engineer</strong> from Romania. I am <strong><neo4j>Neo4j</neo4j> Certified</strong>, a fan of Next.js and passionate about <strong>WordPress</strong> and JavaScript. I maintain the <strong><cpf>Cărțile pe Față</cpf></strong> websites. I am currently in <locations>{city}</locations>, but I often travel.",
       "available": "Available for new projects",
-      "not-available": "Not available for new projects",
-      "commits": "{count, plural, =0 {<commits>0</commits> commits} =1 {<commits>1</commits> commit} other {<commits>#</commits> commits}} in the last 7 days",
-      "link-to-al": "Link to {socialNetwork}",
-      "neo4j-certificate": "Neo4j Certificate",
-      "location-history": "Location history",
-      "title": "Software engineer building <accent>dedicated</accent> web solutions.",
-      "intro": "I'm Vlad — an engineer from Romania building with <strong>WordPress</strong> and <strong>Next.js</strong>. I build shops and products, then keep them — and the infrastructure under them — running.",
-      "cta-work": "View selected work",
-      "cta-quote": "Request a quote",
-      "meta-stack": "WordPress · Next.js",
-      "meta-gte": "GTE WordPress ro_RO"
+      "not-available": "Not taking new projects right now",
+      "title": "WooCommerce shops & Next.js products — built right, then <accent>kept running.</accent>",
+      "intro": "I'm Vlad, a software engineer. I build online shops, custom plugins and web products for businesses and NGOs — and stay on after launch to handle updates, security, monitoring and the 3 a.m. alerts.",
+      "cta-primary": "Tell me about your project",
+      "cta-secondary": "See case studies",
+      "promises": {
+        "fixed-scope": "Fixed-scope quotes",
+        "invoice": "Romanian company, VAT invoice",
+        "reply": "Reply within one working day"
+      },
+      "panel": {
+        "title": "shop-ops · last 24h",
+        "healthy": "healthy",
+        "chart": "Orders / hour",
+        "logs": {
+          "checkout": "checkout · 0 PHP fatals in 24h",
+          "stock": "stock low → posted to #shop-alerts",
+          "mail": "mail · sending IP not blacklisted",
+          "backup": "backup · nightly snapshot complete"
+        },
+        "caption": "Illustration of the monitoring I run behind client shops — errors and mail problems reach Slack before customers notice."
+      }
     },
-    "about": {
-      "tag": "About",
-      "title": "More about me",
-      "image-alt": "Vlad in the mountains",
-      "p1": "WordPress and Next.js are where I spend most of my time: online shops, custom plugins and product front ends — plus the storage, user management and analytics behind them.",
-      "p2": "I've worked with startups on MVPs and taken them to market, while cultivating my own SaaS projects on the side. On the web side I maintain WordPress sites with a commitment to keeping them running smoothly, and I look after the infrastructure of the <cpf>Cărțile pe Față</cpf> cultural association pro-bono.",
-      "p3": "I'm drawn to projects with real social impact — environment, education, activism, NGOs. Technology in service of causes worth the effort.",
-      "p4": "I am involved in the WordPress community in various ways: I am a General Translation Editor (GTE) in Romania, and I contribute to removing the language barrier and facilitating access to WordPress for a wider audience. Also, through my involvement in the WP-Translations PRO team, I promote high-quality translations. I also contribute to other open-source software localization on various platforms like Crowdin, Weblate, Transifex, Lokalise, and even GitHub.",
-      "p5": "I maintain the \"euplatesc\" NPM library for the integration of the EuPlătesc payment service.",
-      "p6": "I am attracted to projects that have a significant impact on society, especially in areas such as the environment, education, activism, and NGOs. I am determined to put technology at the service of great causes and help build a better future for all.",
-      "see-more": "See more ˅",
-      "see-less": "See less ˄",
-      "lead": "Five years of JavaScript, one constant: shipping things that stay shipped.",
+    "proof": {
+      "label": "At a glance",
       "stats": {
-        "gte": {
+        "studio": {
           "value": "2019",
-          "label": "General Translation Editor for WordPress Romania"
+          "label": "Running my own studio — Vlad Ilie Development SRL"
         },
-        "euplatesc": {
-          "value": "euplatesc",
-          "label": "NPM library I maintain for EuPlătesc payments"
+        "maintained": {
+          "value": "8+",
+          "label": "Client WordPress & WooCommerce sites under active maintenance"
         },
-        "experience": {
-          "value": "5+ yrs",
-          "label": "Shipping WordPress and Next.js in production"
+        "gte": {
+          "value": "GTE",
+          "label": "General Translation Editor for WordPress in Romanian since 2019"
+        },
+        "senior": {
+          "value": "Senior",
+          "label": "Software engineer on enterprise agency projects (EFSA, Garanti BBVA)"
+        }
+      },
+      "clients": "Clients & partners",
+      "built-with": "Built with"
+    },
+    "work": {
+      "tag": "Selected work",
+      "title": "The problem, what I built, what changed.",
+      "all": "All projects",
+      "problem": "Problem",
+      "built": "Built",
+      "result": "Result",
+      "read": "Read the case study",
+      "cases": {
+        "maslinescu": {
+          "kicker": "WooCommerce · Ops · ongoing",
+          "title": "Măslinescu® — an olive-oil shop with its own ops room",
+          "problem": "A growing store where a silent PHP error or a blocked order email means lost sales — and nobody finds out until a customer calls.",
+          "built": "Six custom plugins — a tiered loyalty club that also counts in-store purchases through a cash-register API, photo & video reviews, customer restrictions, gift messages — plus a Grafana + Loki + Prometheus stack with Slack alerts.",
+          "result": "Problems surface in Slack first, and mail-blacklist issues are caught by monitoring, not by complaints. Every plugin ships through PHPStan, tests and an automated deploy. Next up: an AI shopping assistant."
+        },
+        "tablouri": {
+          "kicker": "WordPress plugin · Vanilla JS",
+          "title": "TablouriColorate — a product configurator customers actually finish",
+          "problem": "After moving to WooCommerce, the canvas-print shop needed far richer product options. The jQuery version crawled during photo uploads, and the React rewrite that followed shipped 520–730 KB of JavaScript per page.",
+          "built": "One dependency-free configurator for six product types — canvas, multicanvas, collage, poster, banner and sticker — with crop previews drawn on canvas, prices computed on the server and hardened uploads.",
+          "result": "About 12 KB gzipped instead of 520–730 KB per page, one price formula shared by browser and server, and a new product that splits one photo across up to 12 canvases. On a maintenance plan since 2018."
+        },
+        "lumea": {
+          "kicker": "Next.js · Pro-bono · NGO",
+          "title": "Lumea BookTruck — volunteers upload from the field, no accounts needed",
+          "problem": "The BookTruck mobile library of Cărțile pe Față lends books to children in rural schools — and every trip leaves hundreds of photos scattered across volunteers' phones and WhatsApp groups.",
+          "built": "A Next.js + Prisma + Better Auth panel for the catalogue, stock and loans (with ISBN scanning in the browser), plus one-link upload sessions that send files straight to the NGO's Google Drive in resumable chunks.",
+          "result": "One link per trip, files land organised in Drive, and large uploads never pass through — or overload — the server. Librarians and volunteers share one panel with role-based permissions."
+        }
+      },
+      "visuals": {
+        "maslinescu": {
+          "tier": "Connoisseur",
+          "spent": "lei this year",
+          "progress": "Free shipping unlocked · Ambassador is next",
+          "log-stock": "stock low · Extra virgin 3L → #shop-alerts",
+          "log-mail": "dnsbl · sending IP clean"
+        },
+        "tablouri": {
+          "photo": "Your photo",
+          "size": "Size",
+          "options": "Finish · Filter · Design",
+          "finish": "Matte",
+          "filter": "B&W",
+          "design": "Design service",
+          "add-to-cart": "Add to cart"
+        },
+        "lumea": {
+          "volunteer": "volunteer",
+          "trip": "Trip #14 · Uploads",
+          "folder": "Trip-14"
         }
       }
     },
-    "education": {
-      "tag": "Education",
-      "neo4j": {
-        "title": "Neo4j Certified Professional",
-        "subtitle": "Neo4j",
-        "interval": "2022",
-        "description": "Driven by the excitement of a project based on relational information recommendations, I took and graduated from the GraphAcademy courses offered by Neo4j. You can see <url>the certificate</url>."
-      },
-      "bachelor-degree": {
-        "title": "Bachelor degree",
-        "subtitle": "Politehnica University Timișoara | Romania",
-        "interval": "2013-2017",
-        "description": "I attended the full-time courses of the Faculty of Automation and Computers within the university, studying Automation and Applied Informatics for four years."
-      },
-      "oracle": {
-        "title": "Database Design and Programming with SQL",
-        "subtitle": "\"Mihai Viteazul\" Theoretical High School | Caracal, Romania",
-        "interval": "2012-2013",
-        "description": "During high school, I took a crash course offered by Oracle. It was not only an opportunity to develop my solid technical skills, but also a significant step in the direction of my passion for information technology."
-      },
-      "high-school": {
-        "title": "High School",
-        "subtitle": "\"Mihai Viteazul\" High School | Caracal, Romania",
-        "interval": "2009-2013",
-        "description": "I studied mathematics and computer science intensively."
-      },
-      "lead": "Where the fundamentals come from."
-    },
-    "skills": {
-      "tag": "Stack",
-      "description": "The technologies I use and trained with over time.",
-      "groups": {
-        "core": "Core",
-        "also": "Also",
-        "data": "Data",
-        "tooling": "Tooling"
+    "more": {
+      "title": "Also shipped",
+      "items": {
+        "booktruck": {
+          "kind": "NGO · Fundraising",
+          "title": "BookTruck",
+          "body": "Fundraising site for the mobile library: one-off and monthly donations synced nightly, book orders with automatic invoices, and an admin panel."
+        },
+        "tedx": {
+          "kind": "Event · Next.js",
+          "title": "TEDxZorilor",
+          "body": "Archive of every edition, speaker and talk, with a dashboard where volunteers edit only the conferences they're given."
+        },
+        "slam": {
+          "kind": "Sports · WordPress plugin",
+          "title": "Baschet Club SLAM",
+          "body": "Sign-ups for a youth basketball academy: SMS-verified registrations, medical certificates in private storage, fee tracking and reminders."
+        },
+        "transilvaniacar": {
+          "kind": "Car rental · Next.js",
+          "title": "TransilvaniaCar",
+          "body": "A booking wizard in three languages with instant quotes the server re-checks, and a panel for the fleet, prices and bookings."
+        },
+        "ebikerent": {
+          "kind": "Rentals · Next.js",
+          "title": "E-BikeRent",
+          "body": "E-bike rentals in Bran–Moeciu: online booking and card payments, automatic invoices, refunds and stock in one admin panel."
+        },
+        "gosup": {
+          "kind": "Own product · Maps",
+          "title": "GoSUP",
+          "body": "A community map of stand-up paddle launch spots, with search that ignores diacritics, reviews and a moderation queue."
+        },
+        "movelo": {
+          "kind": "Prototype · Marketplace",
+          "title": "movelo",
+          "body": "A bike-rental marketplace for several companies, where each company is paid straight into its own account."
+        },
+        "contadocs": {
+          "kind": "SaaS · past",
+          "title": "ContaDocs",
+          "body": "Accountants collected client documents straight into dated Google Drive folders. Next.js, SMS login."
+        }
       }
-    },
-    "projects": {
-      "tag": "Selected work",
-      "see-all": "All projects",
-      "title": "Case studies, not screenshots."
-    },
-    "sw-l10n": {
-      "title": "Localization",
-      "description": "Open-source projects for which I maintain the Romanian translations.",
-      "cron-job": "For over 15 years, it has been providing the heartbeat for tens of thousands of websites and executes millions of cronjobs every day.",
-      "discourse": "Open-source forum software that powers over 20,000 online communities of all shapes and sizes.",
-      "homebrew": "Homebrew installs the stuff you need that Apple (or your Linux system) didn't. It can be used to install macOS apps, fonts, plugins, and other non-open-source software.",
-      "poedit": "A powerful and intuitive translation editor for Windows, macOS, and Linux, used by over 66,000 people every month.",
-      "tldraw": "A collaborative digital whiteboard. You can use tldraw to create a drop-in whiteboard for your product or as the foundation on which to build your own infinite canvas applications.",
-      "weblate": "Hosted service and standalone translation tool with tight version control integration. Used by over 2,500 software projects and companies in over 165 countries.",
-      "wordpress": "Since 2019, I have been a General Translation Editor providing translations into Romanian for WordPress Core, themes, plugins, mobile apps, and secondary WordPress websites.",
-      "wp-cli": "WP-CLI is the command-line interface for WordPress. You can update plugins, configure multisite installations and much more, without using a web browser.",
-      "wp-translations": "I am part of the WP-Translations.PRO team and providing translations into Romanian and proofreading strings for companies like Yoast, MailPoet, Polylang, ThemeIsle.",
-      "quote": "Need a Romanian quote?"
     },
     "services": {
-      "tag": "What I do",
-      "lead": "Four ways engagements usually start.",
-      "wordpress": {
-        "title": "WordPress & WooCommerce",
-        "body": "Custom plugins, e-commerce builds, WP-CLI automation and long-term maintenance of stores that must not break."
+      "tag": "How I can help",
+      "title": "Four ways to work together. Pick the one that sounds like your week.",
+      "fit": "Good fit if",
+      "build": {
+        "label": "Build",
+        "title": "New shop or web product",
+        "body": "WooCommerce stores, custom plugins and Next.js apps — from MVP to production.",
+        "i1": "Custom WooCommerce features",
+        "i2": "Payments (incl. EuPlătesc)",
+        "i3": "Auth, storage, analytics",
+        "fit": "you have a clear idea and need someone to ship it properly."
       },
-      "nextjs": {
-        "title": "Next.js product work",
-        "body": "Next.js and NodeJS applications from MVP to production — auth, storage, payments and analytics wired in."
+      "rescue": {
+        "label": "Rescue",
+        "title": "Hacked, slow or broken site",
+        "body": "Incident response and fixes for WordPress sites that are hurting the business.",
+        "i1": "Malware cleanup & hardening",
+        "i2": "Database & speed fixes",
+        "i3": "Email deliverability",
+        "fit": "something is broken right now and you need it fixed this week."
       },
-      "infrastructure": {
-        "title": "Infrastructure & upkeep",
-        "body": "Hosting, deployments, backups, monitoring and email for the sites and shops I look after."
+      "care": {
+        "label": "Care",
+        "title": "Monthly maintenance",
+        "body": "I look after the site so you can stop thinking about it.",
+        "i1": "Updates & backups",
+        "i2": "Uptime & error monitoring",
+        "i3": "Small changes included",
+        "fit": "the site makes money and can't afford to go down."
       },
-      "localization": {
+      "localize": {
+        "label": "Localize",
         "title": "Romanian localization",
-        "body": "Translation and proofreading for open-source and commercial products, with GTE-level quality control."
+        "body": "Translation and proofreading for software, plugins and products.",
+        "i1": "WordPress / Weblate / Crowdin",
+        "i2": "GTE-level QA",
+        "i3": "Glossary consistency",
+        "fit": "you're launching a product for Romanian users."
       }
     },
-    "elsewhere": {
-      "tag": "Blog & elsewhere",
-      "blog": "Notes on JavaScript, WordPress and running a one-person studio.",
-      "uses": "Hardware, editor and the tools I reach for daily.",
-      "books": "What I'm reading and what stayed with me.",
-      "boardgames": "The shelf, and what hits the table most."
+    "process": {
+      "tag": "Process",
+      "title": "No surprises on scope, price or handover.",
+      "call": {
+        "title": "Short call",
+        "body": "30 minutes to understand the goal, the constraints and what “done” means."
+      },
+      "scope": {
+        "title": "Written scope",
+        "body": "A fixed-scope proposal with price and timeline. You know the cost before any work starts."
+      },
+      "build": {
+        "title": "Build in the open",
+        "body": "Staging site from week one and regular updates, so feedback happens early."
+      },
+      "launch": {
+        "title": "Launch & care",
+        "body": "Deploy, monitoring and documentation. Then an optional care plan — not a disappearing act."
+      }
+    },
+    "about": {
+      "tag": "Who you'd work with",
+      "title": "One engineer, start to finish. No account managers, no hand-offs.",
+      "p1": "I've shipped production software as a senior engineer on agency teams for enterprise clients, and as a one-person studio for shops, startups and NGOs. The same person who writes your code answers your email and watches your logs.",
+      "p2": "I'm drawn to work with social impact — education, culture, environment — and I run the infrastructure of the <cpf>Cărțile pe Față</cpf> association pro-bono.",
+      "credentials": {
+        "wporg": {
+          "key": "WP.org",
+          "value": "General Translation Editor, WordPress Romanian (ro_RO), since 2019"
+        },
+        "agency": {
+          "key": "Agency",
+          "value": "Senior Software Engineer at Zitec — EFSA, Profiduciaria, Garanti BBVA"
+        },
+        "neo4j": {
+          "key": "Neo4j",
+          "value": "Neo4j Certified Professional, 2022"
+        },
+        "npm": {
+          "key": "npm",
+          "value": "Maintainer of the euplatesc library for EuPlătesc payments"
+        },
+        "degree": {
+          "key": "Degree",
+          "value": "Automation & Applied Informatics, Politehnica Timișoara"
+        },
+        "team": {
+          "key": "Team",
+          "value": "WP-Translations.PRO member — Yoast, MailPoet, Polylang, ThemeIsle"
+        }
+      },
+      "localization": "Open-source tools I translate into Romanian"
     },
     "contact": {
-      "title": "Have a project that needs to actually ship?",
-      "body": "Tell me what you're building — MVP, WordPress rescue, an online shop or a Romanian localization pass. I reply within a working day.",
-      "cta": "Start a conversation",
-      "note": "{location} · often travelling"
+      "title": "What are you working on?",
+      "body": "Pick what fits, write two lines, and you'll get a reply within one working day — with questions or a first estimate.",
+      "need-help-with": "I need help with",
+      "services": {
+        "build": {
+          "label": "New shop or product",
+          "hint": "Tell me what you sell or what the product does, and roughly when you want to launch. I'll come back with a fixed-scope proposal."
+        },
+        "rescue": {
+          "label": "Hacked / slow site",
+          "hint": "Send the URL and what you're seeing. For a compromised site I start with containment the same day, then a written report of what happened."
+        },
+        "care": {
+          "label": "Monthly maintenance",
+          "hint": "Send the site URL. I'll do a quick health check and suggest a care plan that fits — updates, backups, monitoring and small changes."
+        },
+        "l10n": {
+          "label": "Romanian translation",
+          "hint": "Share the project or the string files. I translate and proofread with the standards I apply as WordPress Romanian GTE."
+        },
+        "other": {
+          "label": "Something else",
+          "hint": "MVP idea, integration, a second opinion on an offer you got — write two lines and we'll see if I'm the right fit."
+        }
+      },
+      "form": {
+        "name": "Name",
+        "email": "Email",
+        "message": "Project in two lines",
+        "submit": "Send — reply within 1 working day",
+        "sending": "Sending…",
+        "sent": "Thanks! Your message is on its way — I'll reply within one working day.",
+        "failed": "The message couldn't be sent. Please try again or write to me by email.",
+        "required": "This field is required.",
+        "invalid-email": "Please enter a valid email address.",
+        "too-short": "A couple of lines, please (at least 10 characters).",
+        "or-write": "Or write to <email>hello@vladilie.ro</email>"
+      }
     }
   },
   "locations": {
@@ -188,7 +334,7 @@
       "404-error": "404 Error"
     },
     "title": "Projects",
-    "description": "Outstanding projects I have implemented:",
+    "description": "Case studies: the problem, what I built and what changed — from WooCommerce shops to Next.js products and NGO tools.",
     "no-projects": "There are currently no articles about projects. 🤷🏻‍♂️",
     "reading-time": "{minutes} min read",
     "views": "{count, plural, =0 {0 views} =1 {1 view} other {# views}}",
@@ -411,10 +557,7 @@
     "sal-al": "Details Alternative Dispute Resolution",
     "sol-al": "Online dispute resolution",
     "copyright": "© 2019 — {year} · {siteName} · All rights reserved.",
-    "site": "Site",
-    "personal": "Personal",
-    "legal": "Legal",
-    "built-with": "Built with Next.js · Tailwind CSS v4"
+    "nav-al": "Footer"
   },
   "not-found": {
     "title": "404 Error",

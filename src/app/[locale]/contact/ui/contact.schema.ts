@@ -21,3 +21,15 @@ export const ContactSchema = z
   });
 
 export type ContactInput = z.infer<typeof ContactSchema>;
+
+// The short form on the homepage: what the visitor needs help with, and two lines about it.
+export const QuickServices = ['build', 'rescue', 'care', 'l10n', 'other'] as const;
+
+export const QuickContactSchema = z.object({
+  name: z.string().trim().min(1).max(100),
+  email: z.email(),
+  service: z.enum(QuickServices),
+  message: z.string().trim().min(10).max(5000)
+});
+
+export type QuickContactInput = z.infer<typeof QuickContactSchema>;

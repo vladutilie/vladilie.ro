@@ -1,5 +1,5 @@
 export const Tag: React.FC<{ label: string }> = ({ label }) => (
-  <span className='border-hairline text-content/60 rounded-[3px] border px-2.5 py-1 font-mono text-[11px]'>
+  <span className='border-hairline-strong text-content rounded-full border px-2.5 py-[5px] font-mono text-xs'>
     {label}
   </span>
 );

@@ -13,8 +13,8 @@ export const Categories: React.FC<{ list: string[] }> = ({ list }) => {
   const pill = (isActive: boolean): string =>
     `cursor-pointer rounded-full border px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.08em] transition-colors ${
       isActive
-        ? 'border-accent bg-accent text-white'
-        : 'border-hairline-strong text-content/70 hover:border-accent hover:text-accent'
+        ? 'border-signal bg-signal text-ink'
+        : 'border-hairline-strong text-content/70 hover:border-signal hover:text-accent'
     }`;
 
   return (

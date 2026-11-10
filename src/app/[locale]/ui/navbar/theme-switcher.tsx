@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 
 const pillClasses =
-  'cursor-pointer rounded-full border border-hairline px-3 py-[7px] font-mono text-[11px] uppercase tracking-[0.06em] text-content transition-colors hover:border-accent hover:text-accent';
+  'cursor-pointer rounded-full border border-hairline-strong px-[11px] py-1.5 font-mono text-[11.5px] uppercase tracking-[0.06em] text-content transition-colors hover:border-content';
 
 export const ThemeSwitcher: React.FC = () => {
   const { resolvedTheme, setTheme } = useTheme();

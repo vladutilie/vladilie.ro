@@ -4,54 +4,58 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
-  Design tokens — the palette of the 2026 design: paper/ink surfaces,
-  a single electric-blue accent and hairline rules instead of shadows.
+  Design tokens — the "proof-first" 2026 design: paper/ink surfaces, a single
+  blue (#3598DB) used for fills and rules, a darker blue for text on light
+  backgrounds, and hairline borders instead of shadows.
 */
 :root {
-  --paper: #f8f8f6;
-  --ink: #0b0b0d;
+  --paper: #eeeeee;
+  --ink: #141a1a;
 
   --surface: var(--paper);
-  --surface-raised: #ffffff;
+  --surface-raised: #f7f7f7;
+  --surface-inverse: var(--ink);
   --content: var(--ink);
-  --header: rgb(248 248 246 / 78%);
-  --hairline: rgb(11 11 13 / 11%);
-  --hairline-strong: rgb(11 11 13 / 20%);
-  --stripe: rgb(11 11 13 / 9%);
-  --hover-tint: rgb(27 86 224 / 6%);
-  --cta-surface: #0b0b0d;
+  --accent: #1d6aa3;
+  --header: rgb(238 238 238 / 85%);
+  --hairline: rgb(20 26 26 / 12%);
+  --hairline-strong: rgb(20 26 26 / 28%);
+  --hover-tint: rgb(53 152 219 / 8%);
 }
 
 .dark {
   --surface: var(--ink);
-  --surface-raised: #111114;
-  --content: #f2f2f0;
-  --header: rgb(11 11 13 / 78%);
-  --hairline: rgb(242 242 240 / 13%);
-  --hairline-strong: rgb(242 242 240 / 24%);
-  --stripe: rgb(242 242 240 / 11%);
-  --hover-tint: rgb(27 86 224 / 12%);
-  --cta-surface: #111114;
+  --surface-raised: #1b2323;
+  --surface-inverse: #0d1212;
+  --content: var(--paper);
+  --accent: #3598db;
+  --header: rgb(20 26 26 / 85%);
+  --hairline: rgb(238 238 238 / 13%);
+  --hairline-strong: rgb(238 238 238 / 30%);
+  --hover-tint: rgb(53 152 219 / 12%);
 }
 
 @theme inline {
   --font-*: initial;
-  --font-sans: var(--font-instrument-sans), Helvetica, Arial, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-sans: var(--font-schibsted-grotesk), Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, monospace;
 
-  --color-accent: #1b56e0;
-  --color-paper: #f8f8f6;
-  --color-ink: #0b0b0d;
+  /* Text-safe accent: dark blue on paper, signal blue on ink. */
+  --color-accent: var(--accent);
+  /* The brand blue for fills, rules and dots — never for small text on paper. */
+  --color-signal: #3598db;
+  --color-paper: #eeeeee;
+  --color-ink: #141a1a;
   --color-surface: var(--surface);
   --color-surface-raised: var(--surface-raised);
+  --color-surface-inverse: var(--surface-inverse);
   --color-content: var(--content);
   --color-header: var(--header);
   --color-hairline: var(--hairline);
   --color-hairline-strong: var(--hairline-strong);
   --color-hover-tint: var(--hover-tint);
-  --color-cta-surface: var(--cta-surface);
 
-  --animate-pulse-dot: pulse-dot 2.4s ease-in-out infinite;
+  --animate-pulse-dot: pulse-dot 2.2s ease-in-out infinite;
   --animate-slide: slide 50s linear infinite;
   --animate-slide2: slide2 50s linear infinite;
   --animate-text-bg: bg-animate 3s ease infinite;
@@ -60,11 +64,9 @@
     0%,
     100% {
       opacity: 1;
-      transform: scale(1);
     }
     50% {
-      opacity: 0.35;
-      transform: scale(0.7);
+      opacity: 0.3;
     }
   }
   @keyframes slide {
@@ -133,8 +135,8 @@
   }
 
   ::selection {
-    background-color: var(--color-accent);
-    color: #fff;
+    background-color: var(--color-signal);
+    color: var(--color-ink);
   }
 
   h1,
@@ -145,28 +147,29 @@
   h6 {
     @apply my-2.5 text-content transition-colors;
     letter-spacing: -0.03em;
+    font-weight: 800;
     text-wrap: pretty;
   }
 
   h1 {
-    @apply text-5xl font-semibold;
+    @apply text-5xl;
     letter-spacing: -0.045em;
   }
 
   h2 {
-    @apply text-3xl font-semibold;
+    @apply text-3xl;
   }
 
   h3 {
-    @apply text-2xl font-semibold;
+    @apply text-2xl;
   }
 
   h4 {
-    @apply text-xl font-semibold;
+    @apply text-xl;
   }
 
   h5 {
-    @apply text-lg font-semibold;
+    @apply text-lg;
   }
 
   p {

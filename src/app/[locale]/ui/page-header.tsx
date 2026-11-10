@@ -9,14 +9,16 @@ type Props = {
 };
 
 export const PageHeader: React.FC<Props> = ({ meta, title, lead, children }) => (
-  <header className='border-hairline mb-12 border-b pb-10'>
+  <header className='mb-12 md:mb-[52px]'>
     {meta ? (
-      <div className='text-content/50 mb-4 font-mono text-[11.5px] tracking-[0.14em] uppercase'>{meta}</div>
+      <div className='text-accent mb-3.5 font-mono text-xs font-medium tracking-[0.14em] uppercase'>{meta}</div>
     ) : null}
 
-    <h1 className='my-0 text-5xl lg:text-6xl'>{title}</h1>
+    <h1 className='my-0 text-[clamp(40px,6vw,64px)] leading-[1.02] tracking-[-0.045em] text-balance'>{title}</h1>
 
-    {lead ? <p className='mt-5 mb-0 max-w-[60ch] text-lg leading-relaxed'>{lead}</p> : null}
+    {lead ? (
+      <p className='text-content/80 mt-5 mb-0 max-w-[60ch] text-lg leading-[1.6] md:text-[19px]'>{lead}</p>
+    ) : null}
 
     {children}
   </header>
@@ -24,12 +26,10 @@ export const PageHeader: React.FC<Props> = ({ meta, title, lead, children }) => 
 
 /** The mono heading used for the groups inside a page. */
 export const GroupHeading: React.FC<{ children: ReactNode }> = ({ children }) => (
-  <h2 className='text-content/50 my-0 mb-5 font-mono text-[11.5px] font-medium tracking-[0.14em] uppercase'>
-    {children}
-  </h2>
+  <h2 className='text-accent my-0 mb-5 font-mono text-xs font-medium tracking-[0.14em] uppercase'>{children}</h2>
 );
 
 /** The page shell: the same measure and rhythm as the homepage. */
 export const Page: React.FC<{ children: ReactNode; narrow?: boolean }> = ({ children, narrow = false }) => (
-  <main className={`mx-auto px-5 py-16 md:px-8 md:py-24 ${narrow ? 'max-w-3xl' : 'max-w-[1180px]'}`}>{children}</main>
+  <main className={`mx-auto px-6 py-16 md:py-[88px] ${narrow ? 'max-w-3xl' : 'max-w-[1200px]'}`}>{children}</main>
 );

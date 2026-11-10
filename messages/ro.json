@@ -3,8 +3,6 @@
     "go-to-homepage-al": "Mergi la prima pagină",
     "burger-menu-al": "Meniu burger",
     "about": "Despre",
-    "education": "Educație",
-    "skills": "Tehnologii",
     "projects": "Proiecte",
     "services": "Servicii",
     "blog": "Blog",
@@ -13,151 +11,299 @@
     "change-language": "Schimbă limba",
     "change-language-to": "Change language to {lang}",
     "work": "Proiecte",
-    "localization": "Localizare",
-    "lets-talk": "Hai să vorbim",
     "light": "Luminos",
     "dark": "Întunecat",
-    "close-menu-al": "Închide meniul"
+    "close-menu-al": "Închide meniul",
+    "get-a-quote": "Cere o ofertă",
+    "process": "Proces"
   },
   "homepage": {
     "metadata": {
-      "title": "Inginer software · Lucrez cu NodeJS, WordPress, Neo4j",
-      "description": "Construiesc soluții software dedicate cu JavaScript, WordPress, Neo4j, Tailwind CSS și multe alte platforme și tehnologii conexe.",
-      "keywords": "vlad,ilie,software,inginer,web developer,wordpress,nodejs,nextjs,tailwind,javascript"
+      "title": "Magazine WooCommerce și produse Next.js, construite și întreținute",
+      "description": "Inginer software din România. Construiesc magazine WooCommerce, module WordPress la comandă și produse Next.js — și rămân după lansare pentru actualizări, securitate și monitorizare.",
+      "keywords": "vlad ilie,inginer software,woocommerce,modul wordpress,next.js,programator web,mentenanță site,localizare în română"
     },
     "hero": {
-      "hello": "Salut, aici Vlad {emoji}",
-      "about": "Sunt <strong>Inginer Software</strong> și locuiesc în România. <strong>Certificat <neo4j>Neo4j</neo4j></strong>, fan Next.js, pasionat de <strong>WordPress</strong> și JavaScript. Întrețin site-urile <strong><cpf>Cărțile pe Față</cpf></strong>. Acum mă aflu în <locations>{city}</locations>, dar adeseori călătoresc.",
       "available": "Disponibil pentru proiecte noi",
-      "not-available": "Indisponibil pentru proiecte noi",
-      "commits": "{count, plural, =0 {<commits>0</commits> comiteri} =1 {<commits>1</commits> comitere} few {<commits>#</commits> comiteri} other {<commits>#</commits> de comiteri}} în ultimele 7 zile",
-      "link-to-al": "Legătură către {socialNetwork}",
-      "neo4j-certificate": "Certificat Neo4j",
-      "location-history": "Istoric locații",
-      "title": "Inginer software. Construiesc soluții web <accent>dedicate</accent>.",
-      "intro": "Sunt Vlad — inginer software din România, construiesc cu <strong>WordPress</strong> și <strong>Next.js</strong>. Fac magazine online și produse digitale, apoi le țin — pe ele și infrastructura din spate — în funcțiune.",
-      "cta-work": "Vezi proiectele",
-      "cta-quote": "Cere o ofertă",
-      "meta-stack": "WordPress · Next.js",
-      "meta-gte": "GTE WordPress ro_RO"
+      "not-available": "Momentan nu preiau proiecte noi",
+      "title": "Magazine WooCommerce și produse Next.js — construite cum trebuie, apoi <accent>ținute în funcțiune.</accent>",
+      "intro": "Sunt Vlad, inginer software. Construiesc magazine online, module la comandă și produse web pentru firme și ONG-uri — și rămân și după lansare pentru actualizări, securitate, monitorizare și alertele de la 3 noaptea.",
+      "cta-primary": "Spune-mi despre proiectul tău",
+      "cta-secondary": "Vezi studiile de caz",
+      "promises": {
+        "fixed-scope": "Oferte cu scop fix",
+        "invoice": "Firmă din România, factură cu TVA",
+        "reply": "Răspuns în cel mult o zi lucrătoare"
+      },
+      "panel": {
+        "title": "shop-ops · ultimele 24h",
+        "healthy": "funcțional",
+        "chart": "Comenzi / oră",
+        "logs": {
+          "checkout": "checkout · 0 erori PHP fatale în 24h",
+          "stock": "stoc redus → trimis în #shop-alerts",
+          "mail": "e-mail · IP-ul de trimitere nu e pe liste negre",
+          "backup": "backup · copia de noapte e completă"
+        },
+        "caption": "Ilustrație a monitorizării pe care o rulez în spatele magazinelor clienților — erorile și problemele de e-mail ajung pe Slack înainte să le observe clienții."
+      }
     },
-    "about": {
-      "tag": "Despre",
-      "title": "Mai multe despre mine",
-      "image-alt": "Vlad în munți",
-      "p1": "WordPress și Next.js sunt locul în care îmi petrec cea mai mare parte din timp: magazine online, module personalizate și interfețe de produs — plus stocarea, managementul utilizatorilor și analiza datelor din spatele lor.",
-      "p2": "Am lucrat cu startup-uri la MVP-uri pe care le-am dus pe piață, cultivând în paralel propriile proiecte SaaS. Pe partea de web întrețin site-uri WordPress cu angajamentul de a le asigura buna funcționare și mă ocup pro-bono de infrastructura Asociației Culturale <cpf>Cărțile pe Față</cpf>.",
-      "p3": "Mă atrag proiectele cu impact real în societate — mediu, educație, activism, ONG-uri. Tehnologie în slujba unor cauze care merită efortul.",
-      "p4": "Sunt implicat în comunitatea WordPress în diverse moduri: sunt Editor General de Traduceri (GTE) pentru limba română, și contribui la eliminarea barierei lingvistice și la facilitarea accesului la WordPress pentru un public mai larg. De asemenea, prin implicarea mea și în echipa WP-Translations PRO, promovez traduceri de înaltă calitate. De asemenea, contribui la localizarea altor software-uri open-source pe diverse platforme precum Crowdin, Weblate, Transifex, Lokalise și chiar GitHub.",
-      "p5": "Mențin biblioteca NPM „euplatesc” pentru integrarea serviciului de plată EuPlătesc.",
-      "p6": "Sunt atras de proiecte care au un impact semnificativ asupra societății, în special în domenii precum mediul, educația, activismul și ONG-urile. Sunt hotărât să pun tehnologia în slujba unor cauze mari și să ajut la construirea unui viitor mai bun pentru toți.",
-      "see-more": "Vezi mai mult ˅",
-      "see-less": "Vezi mai puțin ˄",
-      "lead": "Cinci ani de JavaScript, o singură constantă: lucruri livrate care rămân în picioare.",
+    "proof": {
+      "label": "Pe scurt",
       "stats": {
-        "gte": {
+        "studio": {
           "value": "2019",
-          "label": "Editor General de Traduceri pentru WordPress România"
+          "label": "Anul de când am propriul studio — Vlad Ilie Development SRL"
         },
-        "euplatesc": {
-          "value": "euplatesc",
-          "label": "Biblioteca NPM pe care o mențin pentru plățile EuPlătesc"
+        "maintained": {
+          "value": "8+",
+          "label": "Site-uri WordPress și WooCommerce ale clienților în mentenanță activă"
         },
-        "experience": {
-          "value": "5+ ani",
-          "label": "WordPress și Next.js livrate în producție"
+        "gte": {
+          "value": "GTE",
+          "label": "General Translation Editor pentru WordPress în limba română din 2019"
+        },
+        "senior": {
+          "value": "Senior",
+          "label": "Inginer software pe proiecte enterprise în agenție (EFSA, Garanti BBVA)"
+        }
+      },
+      "clients": "Clienți și parteneri",
+      "built-with": "Construit cu"
+    },
+    "work": {
+      "tag": "Proiecte alese",
+      "title": "Problema, ce am construit, ce s-a schimbat.",
+      "all": "Toate proiectele",
+      "problem": "Problema",
+      "built": "Ce am construit",
+      "result": "Rezultatul",
+      "read": "Citește studiul de caz",
+      "cases": {
+        "maslinescu": {
+          "kicker": "WooCommerce · Operațiuni · în desfășurare",
+          "title": "Măslinescu® — un magazin de ulei de măsline cu propria cameră de control",
+          "problem": "Un magazin în creștere, în care o eroare PHP tăcută sau un e-mail de comandă blocat înseamnă vânzări pierdute — și nimeni nu află până nu sună un client.",
+          "built": "Șase module la comandă — un club de fidelitate pe niveluri care numără și cumpărăturile din magazinul fizic printr-un API pentru casa de marcat, recenzii cu poze și video, restricții pentru clienți, mesaje de felicitare — plus Grafana, Loki și Prometheus cu alerte pe Slack.",
+          "result": "Problemele apar întâi pe Slack, iar listele negre de e-mail sunt prinse de monitorizare, nu de reclamații. Fiecare modul trece prin PHPStan, teste și deploy automat. Urmează: un asistent de cumpărături AI."
+        },
+        "tablouri": {
+          "kicker": "Modul WordPress · JavaScript simplu",
+          "title": "TablouriColorate — un configurator de produse pe care clienții chiar îl duc la capăt",
+          "problem": "După trecerea pe WooCommerce, magazinul de tablouri canvas avea nevoie de mult mai multe opțiuni. Versiunea în jQuery se târa la încărcarea pozelor, iar rescrierea în React care a urmat aducea 520–730 KB de JavaScript pe pagină.",
+          "built": "Un singur configurator fără dependențe pentru șase tipuri de produse — canvas, multicanvas, colaj, poster, banner și autocolant — cu previzualizarea decupajului desenată pe canvas, prețuri calculate pe server și încărcări securizate.",
+          "result": "Circa 12 KB comprimat în loc de 520–730 KB pe pagină, aceeași formulă de preț în browser și pe server, plus un produs nou care împarte o poză pe până la 12 tablouri. În mentenanță din 2018."
+        },
+        "lumea": {
+          "kicker": "Next.js · Pro bono · ONG",
+          "title": "Lumea BookTruck — voluntarii încarcă poze de pe teren, fără conturi",
+          "problem": "Biblioteca mobilă BookTruck a asociației Cărțile pe Față împrumută cărți copiilor din școlile rurale — iar după fiecare drum rămân sute de poze împrăștiate prin telefoanele voluntarilor și grupurile de WhatsApp.",
+          "built": "Un panou Next.js + Prisma + Better Auth pentru catalog, stoc și împrumuturi (cu scanarea ISBN-ului direct în browser), plus sesiuni de încărcare printr-un singur link care trimit fișierele direct în Google Drive-ul asociației, în bucăți reluabile.",
+          "result": "Un link pentru fiecare drum, fișierele ajung organizate în Drive, iar încărcările mari nu trec niciodată prin server și nici nu-l supraîncarcă. Bibliotecarii și voluntarii lucrează în același panou, cu permisiuni pe roluri."
+        }
+      },
+      "visuals": {
+        "maslinescu": {
+          "tier": "Cunoscător",
+          "spent": "lei anul acesta",
+          "progress": "Transport gratuit deblocat · urmează Ambasador",
+          "log-stock": "stoc redus · Extravirgin 3L → #shop-alerts",
+          "log-mail": "dnsbl · IP-ul de trimitere e curat"
+        },
+        "tablouri": {
+          "photo": "Poza ta",
+          "size": "Dimensiune",
+          "options": "Finisaj · Filtru · Design",
+          "finish": "Mat",
+          "filter": "Alb-negru",
+          "design": "Serviciu de design",
+          "add-to-cart": "Adaugă în coș"
+        },
+        "lumea": {
+          "volunteer": "voluntar",
+          "trip": "Drumul #14 · Încărcări",
+          "folder": "Drum-14"
         }
       }
     },
-    "education": {
-      "tag": "Educație",
-      "neo4j": {
-        "title": "Profesionist certificat Neo4j",
-        "subtitle": "Neo4j",
-        "interval": "2022",
-        "description": "Împins de entuziasmul unui proiect bazat pe recomandări de informații relaționale, am urmat și absolvit cursurile GraphAcademy oferite de Neo4j. Poți vedea <url>certificatul</url>."
-      },
-      "bachelor-degree": {
-        "title": "Diplomă de licență",
-        "subtitle": "Universitatea Politehnica Timișoara | România",
-        "interval": "2013-2017",
-        "description": "Am urmat cursurile de zi ale Facultății de Automatică și Calculatoare din cadrul universității, studiind Automatică și Informatică Aplicată timp de 4 ani."
-      },
-      "oracle": {
-        "title": "Arhitectura și programarea bazelor de date cu SQL",
-        "subtitle": "Liceul Teoretic \"Mihai Viteazul\" | Caracal, România",
-        "interval": "2009-2013",
-        "description": "În timpul liceului, am participat la un curs intensiv oferit de Oracle. Acesta a reprezentat nu doar o oportunitate de a-mi dezvolta abilități tehnice solide, dar și un pas semnificativ în direcția pasiunii mele pentru tehnologia informației."
-      },
-      "high-school": {
-        "title": "Liceu",
-        "subtitle": "Liceul Teoretic \"Mihai Viteazul\" | Caracal, România",
-        "interval": "2009-2013",
-        "description": "Am studiat matematica și informatica intensiv."
-      },
-      "lead": "De unde vin fundamentele."
-    },
-    "skills": {
-      "tag": "Tehnologii",
-      "description": "Tehnologiile pe care le folosesc și cu care m-am format de-a lungul timpului.",
-      "groups": {
-        "core": "De bază",
-        "also": "De asemenea",
-        "data": "Date",
-        "tooling": "Unelte"
+    "more": {
+      "title": "Am mai livrat",
+      "items": {
+        "booktruck": {
+          "kind": "ONG · Strângere de fonduri",
+          "title": "BookTruck",
+          "body": "Site de strângere de fonduri pentru biblioteca mobilă: donații unice și lunare sincronizate în fiecare noapte, comenzi de carte cu facturi automate și panou de administrare."
+        },
+        "tedx": {
+          "kind": "Eveniment · Next.js",
+          "title": "TEDxZorilor",
+          "body": "Arhiva tuturor edițiilor, invitaților și discursurilor, cu un panou în care voluntarii editează doar conferințele care le-au fost date."
+        },
+        "slam": {
+          "kind": "Sport · Modul WordPress",
+          "title": "Baschet Club SLAM",
+          "body": "Înscrieri pentru o academie de baschet pentru copii: confirmare prin SMS, adeverințe medicale în stocare privată, evidența cotizațiilor și reamintiri."
+        },
+        "transilvaniacar": {
+          "kind": "Închirieri auto · Next.js",
+          "title": "TransilvaniaCar",
+          "body": "Rezervare în trei limbi cu preț instant, verificat din nou pe server, și un panou pentru flotă, prețuri și rezervări."
+        },
+        "ebikerent": {
+          "kind": "Închirieri · Next.js",
+          "title": "E-BikeRent",
+          "body": "Închirieri de biciclete electrice în Bran–Moeciu: rezervare și plată online cu cardul, facturi automate, rambursări și stoc într-un singur panou."
+        },
+        "gosup": {
+          "kind": "Produs propriu · Hărți",
+          "title": "GoSUP",
+          "body": "O hartă a comunității cu locuri de lansare pentru stand-up paddle, cu căutare care ignoră diacriticele, recenzii și moderare."
+        },
+        "movelo": {
+          "kind": "Prototip · Marketplace",
+          "title": "movelo",
+          "body": "Un marketplace de închirieri de biciclete pentru mai multe firme, în care fiecare firmă încasează direct în contul ei."
+        },
+        "contadocs": {
+          "kind": "SaaS · încheiat",
+          "title": "ContaDocs",
+          "body": "Contabilii primeau documentele clienților direct în dosare Google Drive organizate pe luni. Next.js, autentificare prin SMS."
+        }
       }
-    },
-    "projects": {
-      "tag": "Proiecte selectate",
-      "see-all": "Toate proiectele",
-      "title": "Studii de caz, nu capturi de ecran."
-    },
-    "sw-l10n": {
-      "title": "Localizare",
-      "description": "Proiecte open-source pentru care mențin traducerile în română.",
-      "cron-job": "De peste 15 ani, asigură ritmul inimii pentru zeci de mii de site-uri web și execută milioane de cronjob-uri în fiecare zi.",
-      "discourse": "Software open-source pentru forumuri, care alimentează peste 20 000 de comunități online de toate formele și dimensiunile.",
-      "homebrew": "Homebrew instalează lucrurile de care ai nevoie și pe care Apple (sau sistemul tău Linux) nu le are. Poate fi folosit pentru a instala aplicații macOS, fonturi, module și alte software-uri non-open-source.",
-      "poedit": "Un editor de traducere puternic și intuitiv pentru Windows, macOS și Linux, folosit de peste 66 000 de oameni în fiecare lună.",
-      "tldraw": "O tablă digitală colaborativă. Poți folosi tldraw pentru a crea o tablă albă integrată pentru produsul tău sau ca bază pe care să îți construiești aplicațiile pe o pânză infinită.",
-      "weblate": "Serviciu găzduit și instrument autonom de traducere cu strânsă integrare a controlului versiunilor. Folosit de peste 2 500 de proiecte software și companii din peste 165 de țări.",
-      "wordpress": "Din 2019, sunt Editor general de traduceri, furnizând traduceri în română pentru nucleul WordPress, teme, module, aplicații mobile și site-uri web secundare WordPress.",
-      "wp-cli": "WP-CLI este interfața de linie de comandă pentru WordPress. Poți actualiza module, configura instalări multisite și multe altele, fără a utiliza un navigator web.",
-      "wp-translations": "Fac parte din echipa WP-Translations.PRO și ofer traduceri în limba română și corecții pentru companii precum Yoast, MailPoet, Polylang, ThemeIsle.",
-      "quote": "Ai nevoie de o ofertă pentru traduceri?"
     },
     "services": {
-      "tag": "Ce fac",
-      "lead": "Patru moduri în care încep de obicei colaborările.",
-      "wordpress": {
-        "title": "WordPress și WooCommerce",
-        "body": "Module personalizate, magazine online, automatizări cu WP-CLI și mentenanță pe termen lung pentru magazine care nu au voie să cadă."
+      "tag": "Cum te pot ajuta",
+      "title": "Patru moduri de a lucra împreună. Alege-l pe cel care seamănă cu săptămâna ta.",
+      "fit": "Potrivit dacă",
+      "build": {
+        "label": "Construire",
+        "title": "Magazin sau produs web nou",
+        "body": "Magazine WooCommerce, module la comandă și aplicații Next.js — de la MVP la producție.",
+        "i1": "Funcționalități WooCommerce la comandă",
+        "i2": "Plăți (inclusiv EuPlătesc)",
+        "i3": "Autentificare, stocare, statistici",
+        "fit": "ai o idee clară și ai nevoie de cineva care s-o livreze cum trebuie."
       },
-      "nextjs": {
-        "title": "Produse cu Next.js",
-        "body": "Aplicații Next.js și NodeJS de la MVP la producție — autentificare, stocare, plăți și analiză integrate."
+      "rescue": {
+        "label": "Salvare",
+        "title": "Site spart, lent sau stricat",
+        "body": "Intervenție și reparații pentru site-uri WordPress care afectează afacerea.",
+        "i1": "Curățare malware și securizare",
+        "i2": "Reparații de bază de date și viteză",
+        "i3": "Livrabilitatea e-mailurilor",
+        "fit": "ceva e stricat chiar acum și trebuie reparat săptămâna asta."
       },
-      "infrastructure": {
-        "title": "Infrastructură și mentenanță",
-        "body": "Găzduire, lansări, copii de siguranță, monitorizare și email pentru site-urile și magazinele de care mă ocup."
+      "care": {
+        "label": "Mentenanță",
+        "title": "Mentenanță lunară",
+        "body": "Am grijă de site ca să nu mai fie nevoie să te gândești la el.",
+        "i1": "Actualizări și backup-uri",
+        "i2": "Monitorizarea disponibilității și a erorilor",
+        "i3": "Modificări mici incluse",
+        "fit": "site-ul aduce bani și nu își permite să cadă."
       },
-      "localization": {
-        "title": "Localizare în română",
-        "body": "Traducere și corectură pentru produse open-source și comerciale, cu un control al calității la nivel de GTE."
+      "localize": {
+        "label": "Localizare",
+        "title": "Localizare în limba română",
+        "body": "Traducere și corectură pentru software, module și produse.",
+        "i1": "WordPress / Weblate / Crowdin",
+        "i2": "Verificare la nivel de GTE",
+        "i3": "Glosar consecvent",
+        "fit": "lansezi un produs pentru utilizatori din România."
       }
     },
-    "elsewhere": {
-      "tag": "Blog și altele",
-      "blog": "Însemnări despre JavaScript, WordPress și viața de studio cu un singur om.",
-      "uses": "Echipamentele, editorul și uneltele pe care le folosesc zilnic.",
-      "books": "Ce citesc și ce mi-a rămas în minte.",
-      "boardgames": "Rafturile mele și jocurile care ajung cel mai des pe masă."
+    "process": {
+      "tag": "Proces",
+      "title": "Fără surprize la scop, preț sau predare.",
+      "call": {
+        "title": "Un apel scurt",
+        "body": "30 de minute ca să înțeleg obiectivul, constrângerile și ce înseamnă „gata”."
+      },
+      "scope": {
+        "title": "Scop scris",
+        "body": "O propunere cu scop fix, preț și termen. Știi costul înainte să înceapă lucrul."
+      },
+      "build": {
+        "title": "Lucru la vedere",
+        "body": "Site de test din prima săptămână și actualizări regulate, ca feedback-ul să vină devreme."
+      },
+      "launch": {
+        "title": "Lansare și mentenanță",
+        "body": "Publicare, monitorizare și documentație. Apoi, opțional, un plan de mentenanță — nu dispar după lansare."
+      }
+    },
+    "about": {
+      "tag": "Cu cine ai lucra",
+      "title": "Un singur inginer, de la început până la final. Fără account manageri, fără predări.",
+      "p1": "Am livrat software în producție ca inginer senior în echipe de agenție pentru clienți enterprise și ca studio de un singur om pentru magazine, startup-uri și ONG-uri. Aceeași persoană care îți scrie codul îți răspunde la e-mailuri și îți urmărește log-urile.",
+      "p2": "Mă atrag proiectele cu impact social — educație, cultură, mediu — și administrez pro bono infrastructura asociației <cpf>Cărțile pe Față</cpf>.",
+      "credentials": {
+        "wporg": {
+          "key": "WP.org",
+          "value": "General Translation Editor, WordPress în română (ro_RO), din 2019"
+        },
+        "agency": {
+          "key": "Agenție",
+          "value": "Senior Software Engineer la Zitec — EFSA, Profiduciaria, Garanti BBVA"
+        },
+        "neo4j": {
+          "key": "Neo4j",
+          "value": "Neo4j Certified Professional, 2022"
+        },
+        "npm": {
+          "key": "npm",
+          "value": "Autorul bibliotecii euplatesc pentru plăți prin EuPlătesc"
+        },
+        "degree": {
+          "key": "Studii",
+          "value": "Automatică și Informatică Aplicată, Politehnica Timișoara"
+        },
+        "team": {
+          "key": "Echipă",
+          "value": "Membru WP-Translations.PRO — Yoast, MailPoet, Polylang, ThemeIsle"
+        }
+      },
+      "localization": "Unelte open-source pe care le traduc în română"
     },
     "contact": {
-      "title": "Ai un proiect care chiar trebuie livrat?",
-      "body": "Spune-mi ce construiești — MVP, un WordPress de salvat, un magazin online sau o localizare în română. Răspund într-o zi lucrătoare.",
-      "cta": "Începe o discuție",
-      "note": "{location} · adeseori călătoresc"
+      "title": "La ce lucrezi?",
+      "body": "Alege ce ți se potrivește, scrie două rânduri și primești răspuns în cel mult o zi lucrătoare — cu întrebări sau o primă estimare.",
+      "need-help-with": "Am nevoie de ajutor cu",
+      "services": {
+        "build": {
+          "label": "Magazin sau produs nou",
+          "hint": "Spune-mi ce vinzi sau ce face produsul și cam când vrei să-l lansezi. Revin cu o propunere cu scop fix."
+        },
+        "rescue": {
+          "label": "Site spart / lent",
+          "hint": "Trimite adresa site-ului și ce observi. La un site compromis încep cu izolarea problemei în aceeași zi, apoi îți trimit un raport scris despre ce s-a întâmplat."
+        },
+        "care": {
+          "label": "Mentenanță lunară",
+          "hint": "Trimite adresa site-ului. Fac o verificare rapidă și îți propun un plan de mentenanță potrivit — actualizări, backup-uri, monitorizare și modificări mici."
+        },
+        "l10n": {
+          "label": "Traducere în română",
+          "hint": "Trimite proiectul sau fișierele de traducere. Traduc și corectez cu standardele pe care le aplic ca GTE pentru WordPress în română."
+        },
+        "other": {
+          "label": "Altceva",
+          "hint": "O idee de MVP, o integrare, o a doua părere despre o ofertă primită — scrie două rânduri și vedem dacă sunt omul potrivit."
+        }
+      },
+      "form": {
+        "name": "Nume",
+        "email": "E-mail",
+        "message": "Proiectul în două rânduri",
+        "submit": "Trimite — răspuns în 1 zi lucrătoare",
+        "sending": "Se trimite…",
+        "sent": "Mulțumesc! Mesajul a plecat — îți răspund în cel mult o zi lucrătoare.",
+        "failed": "Mesajul nu a putut fi trimis. Încearcă din nou sau scrie-mi pe e-mail.",
+        "required": "Câmpul este obligatoriu.",
+        "invalid-email": "Introdu o adresă de e-mail validă.",
+        "too-short": "Câteva rânduri, te rog (minimum 10 caractere).",
+        "or-write": "Sau scrie-mi la <email>hello@vladilie.ro</email>"
+      }
     }
   },
   "locations": {
@@ -188,7 +334,7 @@
       "404-error": "Eroare 404"
     },
     "title": "Proiecte",
-    "description": "Proiecte remarcabile pe care le-am implementat:",
+    "description": "Studii de caz: problema, ce am construit și ce s-a schimbat — de la magazine WooCommerce la produse Next.js și unelte pentru ONG-uri.",
     "no-projects": "Momentan nu sunt articole despre proiecte.  🤷🏻‍♂️",
     "reading-time": "{minutes} min de citit",
     "views": "{count, plural, =0 {0 vizualizări} =1 {o vizualizare} few {# vizualizări} other {# de vizualizări}}",
@@ -411,10 +557,7 @@
     "sal-al": "Detalii Soluționarea alternativă a litigiilor",
     "sol-al": "Soluționarea online a litigiilor",
     "copyright": "© 2019 – {year} · {siteName} · Toate drepturile rezervate.",
-    "site": "Site",
-    "personal": "Personal",
-    "legal": "Legal",
-    "built-with": "Construit cu Next.js · Tailwind CSS v4"
+    "nav-al": "Subsol"
   },
   "not-found": {
     "title": "Eroare 404",

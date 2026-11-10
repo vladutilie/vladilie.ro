@@ -2,8 +2,8 @@
 type Document = {
   title: string;
   locale: 'en' | 'ro';
-  featuredImage: string;
-  blurDataImage: string;
+  featuredImage?: string;
+  blurDataImage?: string;
   description: string;
   keywords: string[];
   date: string;
@@ -17,4 +17,10 @@ type Document = {
 
 export type Post = Document;
 
-export type Project = Document & { technologies: string[] };
+export type Project = Document & {
+  technologies: string[];
+  /** Short mono kicker shown on cards, e.g. "WooCommerce · Ops". */
+  kind?: string;
+  /** Public URL of the project, when there is one. */
+  url?: string;
+};

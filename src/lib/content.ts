@@ -23,7 +23,8 @@ const read = <T>(collection: 'blog' | 'projects'): T[] => {
       return {
         ...data,
         date: new Date(data.date).toISOString(),
-        slug: fileName.replace(/\.mdx$/, ''),
+        // `name.mdx`, or `name.<locale>.mdx` when the same document exists in several languages.
+        slug: fileName.replace(/(\.(en|ro))?\.mdx$/, ''),
         readingTime: readingTime(content).minutes,
         body: content
       } as T;

@@ -2,13 +2,13 @@
 
 import { useTranslations } from 'next-intl';
 
-import { Link, usePathname, useRouter } from '@/i18n/routing';
+import { usePathname, useRouter } from '@/i18n/routing';
 import { ThemeSwitcher } from './theme-switcher';
 import { LangChanger } from './lang-changer';
 import { scrollTo } from '@/lib/utils';
-import { HeaderAnchors, Pages } from '@/lib/constants';
+import { HeaderAnchors, NavLinks } from '@/lib/constants';
 
-const itemClasses = 'text-content/70 transition-colors hover:text-accent';
+const itemClasses = 'text-content/78 transition-colors hover:text-content';
 
 export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = ({ isMobile = false, closeMenu }) => {
   const t = useTranslations('navbar');
@@ -31,7 +31,7 @@ export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = (
       className={
         isMobile
           ? 'flex flex-col gap-y-5 overflow-y-auto text-lg'
-          : 'hidden items-center gap-6 text-sm md:flex lg:gap-7'
+          : 'hidden items-center gap-[22px] text-[14.5px] font-medium md:flex'
       }
     >
       {HeaderAnchors.map((anchor) => (
@@ -42,20 +42,6 @@ export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = (
         </li>
       ))}
 
-      <li>
-        <Link href={`/${Pages.Projects}`} className={itemClasses} onClick={() => closeMenu?.()}>
-          {t(Pages.Projects)}
-        </Link>
-      </li>
-
-      <li>
-        <Link href={`/${Pages.Blog}`} className={itemClasses} onClick={() => closeMenu?.()}>
-          {t(Pages.Blog)}
-        </Link>
-      </li>
-
-      <li className='bg-hairline hidden h-[18px] w-px md:block' aria-hidden />
-
       <li className={isMobile ? 'border-hairline mt-2 border-t pt-5' : ''}>
         <ThemeSwitcher />
       </li>
@@ -65,13 +51,12 @@ export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = (
       </li>
 
       <li className={isMobile ? 'mt-2' : ''}>
-        <Link
-          href={`/${Pages.Contact}`}
-          className='bg-accent hover:bg-ink dark:hover:text-ink block rounded-full px-[18px] py-2.5 text-center text-sm font-semibold text-white transition-colors hover:text-white dark:hover:bg-white'
-          onClick={() => closeMenu?.()}
+        <button
+          className='bg-content text-surface hover:bg-signal hover:text-ink block w-full cursor-pointer rounded-full px-[18px] py-2.5 text-center font-semibold transition-colors'
+          onClick={() => goToAnchor(NavLinks.Contact)}
         >
-          {t('lets-talk')}
-        </Link>
+          {t('get-a-quote')}
+        </button>
       </li>
     </ul>
   );

@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next';
 import { Metadata } from 'next';
-import { Instrument_Sans, JetBrains_Mono } from 'next/font/google';
+import { IBM_Plex_Mono, Schibsted_Grotesk } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -11,17 +11,17 @@ import { Footer } from './ui/footer';
 import { Navbar } from './ui/navbar';
 import { ThemeProvider } from './ui/theme-provider';
 
-const instrumentSans = Instrument_Sans({
+const schibstedGrotesk = Schibsted_Grotesk({
   subsets: ['latin', 'latin-ext'],
   display: 'swap',
-  variable: '--font-instrument-sans'
+  variable: '--font-schibsted-grotesk'
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const ibmPlexMono = IBM_Plex_Mono({
   subsets: ['latin', 'latin-ext'],
   display: 'swap',
   weight: ['400', '500'],
-  variable: '--font-jetbrains-mono'
+  variable: '--font-ibm-plex-mono'
 });
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
@@ -65,7 +65,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning className={`${instrumentSans.variable} ${jetbrainsMono.variable}`}>
+    <html lang={locale} suppressHydrationWarning className={`${schibstedGrotesk.variable} ${ibmPlexMono.variable}`}>
       <body className='bg-surface text-content font-sans transition-colors duration-300'>
         <NextIntlClientProvider locale={locale} messages={messages} timeZone='Europe/Bucharest'>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>

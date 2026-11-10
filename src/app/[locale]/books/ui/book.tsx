@@ -30,7 +30,7 @@ export const Book: React.FC<BookT> = ({ title, author, cover, state, link, blurD
               ? 'bg-red-400' // Favorite
               : BookState.Completed === state
                 ? 'bg-green-400' // Completed
-                : 'bg-accent' // Wishlist
+                : 'bg-signal' // Wishlist
         }`}
       >
         {BookState.Reading === state ? (
