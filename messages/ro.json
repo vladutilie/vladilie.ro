@@ -47,7 +47,7 @@
         },
         "caption": "Ilustrație a monitorizării pe care o rulez în spatele magazinelor clienților — erorile și problemele de e-mail ajung pe Slack înainte să le observe clienții."
       },
-      "commits": "{count, plural, =1 {<commits>1</commits> commit} few {<commits>#</commits> commituri} other {<commits>#</commits> de commituri}} pe GitHub în ultimele 7 zile"
+      "commits": "{count, plural, =1 {<commits>1</commits> comitere} few {<commits>#</commits> comiteri} other {<commits>#</commits> de comiteri}} pe GitHub în ultimele 7 zile"
     },
     "proof": {
       "label": "Pe scurt",
@@ -374,13 +374,66 @@
   },
   "colophon": {
     "metadata": {
-      "description": "Despre cum a fost construit site-ul, stiva de tehnologii folosite și codul sursă.",
-      "keywords": "colofon,design,cod sursă site,nextjs,supabase,planetscale,mdx,tailwind,typescript,vercel"
+      "description": "Cum este construit site-ul: designul, tehnologiile folosite și codul sursă.",
+      "keywords": "colofon,design,cod sursă site,nextjs,react,tailwind,typescript,next-intl,prisma,supabase,vercel"
     },
     "title": "Colofon",
-    "p1": "Designul site-ului meu este inspirat de <url>Sagar Shah</url>.",
-    "p2": "Stiva tehnologică folosită este formată din <nextjs>Next.js</nextjs>, <planet>PlanetScale</planet>, <supa>Supabase</supa>, <mdx>MDX</mdx>, <tailwind>Tailwind CSS</tailwind> și <typescript>TypeScript</typescript>, lansat pe <vercel>Vercel</vercel>.",
-    "p3": "Codul sursă este disponibil pe <new>GitHub</new>. Poți găsi versiunea veche pe <old>această ramură</old>."
+    "meta": "Din august 2022",
+    "lead": "Cum e făcut site-ul: designul, tehnologiile pe care rulează și unde se află codul.",
+    "design": {
+      "title": "Design",
+      "p1": "Designul actual îmi aparține și e din 2026: dovezile pe primul loc — studii de caz cu problema, ce am construit și ce s-a schimbat — pe fundaluri de tip hârtie și cerneală, cu linii fine în loc de umbre și un singur albastru, #3598DB. Fiecare pagină are temă luminoasă și întunecată.",
+      "p2": "Titlurile și textul folosesc <schibsted>Schibsted Grotesk</schibsted>, iar etichetele, cifrele și codul <plex>IBM Plex Mono</plex>. Ambele sunt servite prin next/font, fără cereri către Google în timpul navigării."
+    },
+    "stack": {
+      "title": "Tehnologii",
+      "items": {
+        "framework": {
+          "label": "Framework",
+          "note": "App Router și Server Components, construit cu Turbopack."
+        },
+        "language": {
+          "label": "Limbaj",
+          "note": "Mod strict, peste tot."
+        },
+        "styling": {
+          "label": "Stilizare",
+          "note": "Tokenuri de design ca variabile CSS, comutate pentru tema întunecată."
+        },
+        "content": {
+          "label": "Conținut",
+          "note": "Articolele și studiile de caz sunt fișiere MDX, randate pe server."
+        },
+        "highlighting": {
+          "label": "Cod",
+          "note": "Evidențierea sintaxei se face la build, fără JavaScript în browser."
+        },
+        "i18n": {
+          "label": "Limbi",
+          "note": "Engleză și română, cu URL-uri traduse."
+        },
+        "database": {
+          "label": "Date",
+          "note": "Vizualizările și reacțiile articolelor, cărțile, jocurile de societate și locurile prin care am fost."
+        },
+        "forms": {
+          "label": "Formulare",
+          "note": "Formularele de contact, validate în browser și din nou pe server."
+        },
+        "email": {
+          "label": "E-mail",
+          "note": "Mesajele din formularele de contact, prin șabloane tranzacționale."
+        },
+        "hosting": {
+          "label": "Găzduire",
+          "note": "Publicare din GitHub, plus Vercel Analytics."
+        }
+      }
+    },
+    "source": {
+      "title": "Cod sursă",
+      "p1": "Codul sursă este public pe <new>GitHub</new>. Versiunea anterioară se află pe <old>această ramură</old>."
+    }
   },
   "uses": {
     "metadata": {
@@ -415,8 +468,8 @@
     "hardware": {
       "title": "💻 Hardware",
       "macbook": {
-        "name": "MacBook Pro 15 Retina cu Touch Bar",
-        "description": "2019, Coffee Lake 8-core i9 2.3GHz, 16GB DDR4, 512GB SSD, Radeon Pro 560X 4GB"
+        "name": "Apple MacBook Pro 16 A3428",
+        "description": "2026, Apple M5 Pro 18-Core, 24GB RAM Unified Memory, SSD 1 Tb NVMe, Apple 20-core GPU"
       },
       "monitors": {
         "name": "2 x monitor LED LG",
@@ -435,7 +488,7 @@
       "postman": "Postman",
       "chrome": {
         "name": "Google Chrome",
-        "description": "Extensii: AdBlock, GoFullPage - Full Page Screen Capture, Grammarly, JSON Viewer, React Developer Tools, SWR DevTools, Tab Suspender, Xdebug helper"
+        "description": "Extensii: AdBlock, Claude, CSS Grid Overlay, GoFullPage - Full Page Screen Capture, JSON Formatter, Wappalyzer - Technology profiler, WordPress Browser Extension"
       },
       "neo4j": "Neo4j Desktop",
       "signal": "Signal",
