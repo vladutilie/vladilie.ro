@@ -1,0 +1,43 @@
+---
+title: TEDxZorilor — an event site with a multi-year archive and a volunteer-safe dashboard
+locale: en
+kind: Event · Next.js
+url: https://tedxzorilor.com
+description: A Next.js site for the TEDxZorilor conferences in Cluj-Napoca, with Oveit ticketing and a dashboard where volunteers edit only what they're granted.
+technologies: [Next.js, Prisma, PostgreSQL, Better Auth, Supabase, Tailwind CSS, Vercel]
+keywords: [tedxzorilor,tedx,cluj-napoca,event website,nextjs,admin dashboard,better auth]
+date: September 30, 2026 12:00:00
+---
+
+## Context
+
+[TEDxZorilor](https://tedxzorilor.com) organises TEDx conferences in Cluj-Napoca. I built the first version of their site in 2023, and in 2026 I extended it with a full admin dashboard. The site has to serve two audiences: people deciding whether to buy a ticket for the next edition, and people looking for a talk from a past one.
+
+## The problem
+
+Every edition brings new speakers, partners, an agenda and a ticketing setup, and the archive of previous editions keeps growing. The organisers are volunteers who change from year to year, so editing content had to be easy, but also safe: each person should touch only the conferences they're responsible for, every change should be traceable, and there should be no passwords to share or lose.
+
+## What I built
+
+- **A public site** built around the newest published conference: countdown, speakers, agenda, tickets, partner strips, the previous edition, a newsletter signup and an animated "our numbers" section.
+- **A page for every conference and every guest** — speakers, performers, hosts and facilitators — with intro and talk videos. Drafts never appear publicly.
+- **Ticketing through Oveit**, chosen per conference, with a sold-out switch.
+- **A `/dashboard`** with an overview, a searchable conference grid and an editor with tabs for guests, partners, agenda and change log. Guests and partners can be reordered by dragging, and partners can be copied from the previous edition in one click.
+- **Two roles**: admins see everything, moderators only the conferences they've been granted. Admins can temporarily act as a moderator to see exactly what they see.
+
+## Under the hood
+
+- **Passwordless login** with magic links (Better Auth, emails via Brevo). Sign-up is closed, and the login form doesn't reveal which addresses have accounts.
+- **Two independent guards**: the dashboard layout checks the session and every server action checks permissions again.
+- **Rate limiting in Redis**, per IP and per email.
+- **An append-only audit log** that records who changed what — crediting the real admin when they act as a moderator — and never blocks an edit if logging fails.
+- **An image pipeline**: sharp rotates, resizes and converts to WebP, Tinify compresses each image once, and files are named by content hash so re-uploads are free.
+- Each edit revalidates every public page it affects through one shared helper, and talk views are totalled from the YouTube Data API.
+
+## Result
+
+The organisers can run a new edition from the dashboard — guests, partners, agenda and tickets — without a developer and without shared passwords. The site keeps every edition since the first one online, with its speakers and talks.
+
+## Stack
+
+Next.js 16 (App Router), React 19, TypeScript, Prisma 7 on PostgreSQL, Better Auth, Supabase Storage, Redis, Tailwind CSS 4, shadcn/ui, Brevo, Oveit, YouTube Data API, Vercel.

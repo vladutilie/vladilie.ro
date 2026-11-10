@@ -1,0 +1,41 @@
+---
+title: Măslinescu® — a WooCommerce olive-oil shop with its own ops room
+locale: en
+kind: WooCommerce · Ops · ongoing
+url: https://maslinescu.ro
+description: Custom WooCommerce plugins, a loyalty club that also counts in-store purchases, and monitoring that reports problems before customers do.
+technologies: [WooCommerce, PHP 8.3, REST API, Grafana, Loki, Prometheus, Bunny Stream, GitHub Actions]
+keywords: [maslinescu,woocommerce,loyalty program,wordpress plugin,grafana,loki,monitoring,hpos]
+date: November 2, 2026 12:00:00
+---
+
+## Context
+
+Măslinescu® sells olive oil online at [maslinescu.ro](https://maslinescu.ro) and in a physical store. The shop runs on WooCommerce with HPOS enabled and a custom theme I've been building since April 2024. In 2026 the work moved from the theme to a set of dedicated plugins, each with its own repository, tests and deploy pipeline.
+
+## The problem
+
+A growing store gets fragile in quiet ways. A PHP fatal on checkout or an order email that never arrives costs sales, and usually nobody notices until a customer calls. At the same time the business wanted more from the shop itself: a loyalty program that works both online and at the till, richer reviews, and tools the team can manage without asking a developer.
+
+## What I built
+
+- **Măslinescu® Club** — a loyalty program with tiers based on spend over a rolling 12 months. Members are promoted, warned, given a grace period and only then moved down a tier. Rewards are real WooCommerce coupons locked to the member's email. There are eight transactional emails, an early-return nudge for new members, a cohort report for first-to-second order conversion and a club box on user and order screens.
+- **A cash-register REST API** so purchases made in the physical store count towards the club. It uses Application Passwords and a dedicated role that can only reach the club routes, and in-store sales become orders in the customer's account without touching web stock or invoicing.
+- **Photo and video reviews** — images are re-encoded and stripped of metadata; videos upload straight from the browser to Bunny Stream, so large files never pass through PHP.
+- **Customer restrictions** managed from wp-admin, with normalised email matching and an HPOS-compatible order box.
+- **Greeting cards** for orders sent as gifts, and a tool that prints the store's physical gift cards as A4 PDF sheets.
+- **An Overview dashboard** in wp-admin where every plugin contributes a card.
+
+## Under the hood
+
+Every plugin is namespaced, requires PHP 8.3+ and passes `composer check`: PHPCS with WordPress Coding Standards, PHPStan level 5 and PHPUnit with WP_Mock. GitHub Actions runs the checks on PHP 8.4 and 8.5, builds a clean `dist/` and deploys `stage` to staging and `main` to production.
+
+For operations, a small mu-plugin sends every event to **Loki** and only errors to **Slack**, keeping labels low-cardinality and personal data out of indexed fields. **Grafana** and **Prometheus** run in Docker behind a Cloudflare Tunnel, with dashboards provisioned from files. The same server also hosts the store's Typesense search.
+
+## Result
+
+Problems now show up in Slack before they reach customers, and store purchases finally count in the same loyalty program as online orders. Every change ships through the same checks and the same pipeline, which makes a fast-moving shop much safer to change. Next up: an AI shopping assistant.
+
+## Stack
+
+WordPress, WooCommerce (HPOS), PHP 8.3+, WooCommerce REST API, Action Scheduler, WP-CLI, Bunny Storage & Stream, Grafana, Loki, Prometheus, Docker, Cloudflare Tunnel, GitHub Actions.

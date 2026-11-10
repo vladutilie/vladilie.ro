@@ -1,0 +1,45 @@
+---
+title: "Lumea BookTruck — catalog, împrumuturi și încărcări din teren pentru o bibliotecă mobilă"
+locale: ro
+kind: "Next.js · Pro-bono · ONG"
+description: "O aplicație Next.js pentru catalogul și împrumuturile bibliotecii mobile BookTruck, cu încărcare de poze direct în Google Drive."
+technologies: [Next.js, Prisma, Better Auth, Google Drive API, Supabase, Redis, Vitest, Vercel]
+keywords: [lumea booktruck,cărțile pe față,bibliotecă mobilă,gestiune bibliotecă,google drive,better auth,nextjs]
+date: October 7, 2026 12:00:00
+---
+
+## Context
+
+BookTruck este biblioteca mobilă a asociației [Cărțile pe Față](https://cartilepefata.ro), căreia îi întrețin pro-bono infrastructura IT de câțiva ani buni. Mașinile duc cărți copiilor din școlile din mediul rural, așa că în spatele fiecărei ture există un stoc de urmărit, împrumuturi de notat, returnări de recuperat — și foarte multe poze și filmări.
+
+Lumea BookTruck este aplicația internă care le ține pe toate laolaltă. Partea publică e un catalog în care oricine poate căuta cărțile care circulă cu BookTruck-urile, iar panoul de administrare e locul în care bibliotecarii și voluntarii își fac treaba de zi cu zi.
+
+## Problema
+
+Erau două lucruri împrăștiate. Catalogul, stocul și împrumuturile către școli stăteau parțial în tabele și parțial în memoria oamenilor. Iar pozele și filmările de la fiecare tură ajungeau, cum spune chiar asociația, „haotic pe grupul de WhatsApp” — comprimate, nesortate și imposibil de găsit după o lună, deși organizația avea deja spațiu din belșug în Google Drive.
+
+## Ce am construit
+
+- **Un catalog public**: căutare de cărți, statistici, cele mai noi titluri, cele mai împrumutate cărți în total și pe luni și câte o pagină pentru fiecare carte.
+- **Panoul de administrare**: cărți, autori, genuri, școli și locații; stoc și mișcări de stoc; împrumuturi și returnări printr-o fereastră rapidă de tranzacții.
+- **Adăugare rapidă de cărți**: scanarea codului de bare ISBN direct din browser (inclusiv pe iPhone-uri cu mai multe camere), preluarea automată a datelor după ISBN și coperți procesate, cu placeholder blurhash.
+- **Sesiuni de încărcare pentru voluntari**: un administrator creează o sesiune cu o etichetă și o dată de expirare. Asta creează automat un subdosar în Shared Drive-ul asociației și un link lung, aleatoriu. Voluntarii deschid linkul, își scriu opțional numele și încarcă fișierele — fără cont. Sesiunea poate fi închisă sau prelungită oricând.
+- **Echipa**: invitații pe email, roluri, blocare, jurnal de autentificări și de impersonări și prezență în timp real, ca să vezi cine mai e în panou.
+
+Permisiunile sunt o matrice pe resurse (cărți, stoc, împrumuturi, returnări, școli, statistici, echipă…) pentru trei roluri: administrator, bibliotecar și voluntar.
+
+## Sub capotă
+
+Decizia interesantă ține de încărcări: fișierele **nu trec niciodată prin server**. Serverul doar deschide o sesiune de *resumable upload* în Google Drive cu un cont de serviciu și îi dă browserului adresa ei. Browserul trimite apoi fișierul în bucăți de 8 MB cu `Content-Range` și reîncearcă fiecare bucată separat. Dacă fișierele ar fi trecut prin server, ne loveam de limita de 4,5 MB pe cerere și de timeout-urile din Vercel Functions; așa, un video de 2 GB filmat în curtea școlii e la fel de sigur ca o poză. Voluntarii nu primesc niciodată acces la Drive, iar fiecare fișier încheiat se înregistrează (dimensiune, tip, durată) și alimentează widget-urile din panou.
+
+Autentificarea a trecut de la Supabase Auth la Better Auth, cu magic link fără parolă și fără înregistrare liberă. Am păstrat toate ID-urile de utilizator și cheile străine existente printr-un backfill aditiv, așa că nu a trebuit remapat nimic. Linkurile de autentificare au limită de trimitere în Redis, pe email și pe IP — fiecare email costă credite — iar limitarea se dezactivează singură dacă Redis nu răspunde. Tot Redis ține în cache statisticile publice și semnalele de prezență.
+
+Modificările de schemă sunt migrări SQL scrise de mână, iar toate datele calendaristice sunt fixate pe ora României, ca serverul și browserul să afișeze mereu aceeași oră. Regulile de bază — mișcări de stoc, împrumuturi, invitații, jurnale — sunt acoperite de teste Vitest.
+
+## Rezultat
+
+Un singur link pentru fiecare tură, iar fișierele ajung ordonate în Drive, nu pe un grup de chat. Filmările mari se încarcă sigur de pe telefon fără să atingă — sau să sufoce — serverul. Bibliotecarii și voluntarii lucrează în același panou, fiecare văzând doar ce îi permite rolul, iar catalogul din care împrumută copiii poate fi, în sfârșit, căutat de oricine.
+
+## Tehnologii
+
+Next.js 16 (App Router), React 19, TypeScript, Prisma 7 pe Supabase Postgres, Better Auth, Tailwind CSS 4 cu shadcn/ui, TanStack Table, react-hook-form + zod, Recharts, Redis, Google Drive API, Brevo, Supabase Storage, Vitest, Vercel.

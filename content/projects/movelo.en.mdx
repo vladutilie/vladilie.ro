@@ -1,0 +1,35 @@
+---
+title: "movelo — a prototype marketplace for bike rental companies"
+locale: en
+kind: "Prototype · Marketplace · Next.js"
+description: "A prototype marketplace where several bike rental companies list bikes by city and each company is paid directly into its own account."
+technologies: [Next.js, Supabase, Prisma, EuPlătesc, Brevo, TanStack Table]
+keywords: [movelo,bike rental marketplace,multi-tenant,euplatesc,supabase,nextjs]
+date: August 22, 2025 12:00:00
+---
+
+## Context
+
+After a year of building online rentals for a single e-bike business, I wondered what it would look like for many rental companies at once. movelo is that experiment: a Romanian marketplace where you pick a city, a date and a duration, and see bikes from every company renting there. It's a prototype, built mostly in 2023 and refreshed in 2025, not a launched product.
+
+## The problem
+
+Small rental companies each need the same things — a booking flow, card payments, invoices, emails — and building them separately for every company doesn't scale. A shared platform has to solve one hard question first: how do customers pay the company directly, rather than a middleman?
+
+## What I built
+
+- **The customer flow**: choose a city, then date, time and duration (from 2 hours to 2 days, with discounts for longer rentals), see the available bikes, add them to the cart, pay and get a confirmation.
+- **An account area**: customers see their bookings and profile; providers manage their company, locations, bikes and bookings, with Owner and Moderator roles.
+- **Payments and paperwork**: each company is paid into its own EuPlătesc account. After payment, the invoice is issued through an external billing API — every location has its own invoice series — and Brevo emails a summary to both the customer and the provider.
+
+## Under the hood
+
+Supabase Auth (SSR) handles sign-in, with admin rights as custom claims, and Prisma talks to Postgres. Bike photos live in Supabase Storage, the cart is a reducer-based store, and provider tables use TanStack Table. The 2025 refresh moved it to Tailwind 4, removed SWR, replaced dinero.js with a small money class and switched to soft deletes.
+
+## Status
+
+A working prototype, around 500 commits, that shaped how I think about multi-company bookings. Many of its pieces live on in the rental projects I've built since.
+
+## Stack
+
+Next.js 15, React 19, TypeScript, Supabase (Auth, Storage), Prisma, Tailwind CSS 4, shadcn/ui, TanStack Table, react-hook-form, EuPlătesc, Brevo, Cloudflare Turnstile.

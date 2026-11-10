@@ -1,0 +1,45 @@
+---
+title: "Lumea BookTruck — catalogue, loans and field uploads for a mobile library"
+locale: en
+kind: "Next.js · Pro-bono · NGO"
+description: "A Next.js app that runs the BookTruck mobile library's catalogue and loans, and lets volunteers upload trip photos straight to Google Drive."
+technologies: [Next.js, Prisma, Better Auth, Google Drive API, Supabase, Redis, Vitest, Vercel]
+keywords: [lumea booktruck,cărțile pe față,library management,google drive resumable upload,better auth,nextjs]
+date: October 7, 2026 12:00:00
+---
+
+## Context
+
+BookTruck is the mobile library of [Cărțile pe Față](https://cartilepefata.ro), the reading association whose IT infrastructure I've looked after pro-bono for years. The trucks lend books to children in rural schools, so behind every trip there is stock to track, loans to record, returns to chase — and a lot of photos and videos.
+
+Lumea BookTruck is the internal app that holds all of that together. The public side is a searchable catalogue of the books that travel with the trucks; the panel is where librarians and volunteers do their day-to-day work.
+
+## The problem
+
+Two things were scattered. The catalogue, stock and loans to schools lived in a mix of spreadsheets and memory. And the media from each trip ended up, in the association's own words, chaotically in a WhatsApp group — compressed, unsorted and impossible to find a month later, even though the organisation already had plenty of Google Drive space.
+
+## What I built
+
+- **A public catalogue**: book search, catalogue stats, the latest books, the most borrowed titles overall and per month, and a page for every book.
+- **The panel**: books, authors, genres, schools and locations; stock and stock movements; loans and returns through a quick transaction modal.
+- **Fast book entry**: ISBN barcode scanning right in the browser (including iPhones with several cameras), automatic metadata lookup by ISBN, and processed covers with blurhash placeholders.
+- **Volunteer upload sessions**: an admin creates a session with a label and an expiry date. That automatically creates a subfolder in the association's Shared Drive and a long random link. Volunteers open the link, optionally type their name and upload — no account needed. Admins can close or extend a session at any time.
+- **A team area**: email invitations, roles, banning, a sign-in and impersonation log, and live presence so you can see who else is in the panel.
+
+Permissions are a matrix per resource (books, stock, loans, returns, schools, stats, team…) for three roles: admin, librarian and volunteer.
+
+## Under the hood
+
+The interesting decision is in the uploads. Files **never pass through the server**. The server only opens a Google Drive *resumable upload* session with a service account and hands its URI to the browser, which then sends the file in 8 MB chunks with `Content-Range`, retrying each chunk on its own. Proxying the files would have hit the 4.5 MB request-body limit and the timeouts of Vercel Functions; this way a 2 GB video from a school courtyard is just as safe as a photo. Volunteers never get browse access to the Drive, and each completed file is logged (size, type, duration), which feeds the dashboard widgets.
+
+Authentication moved from Supabase Auth to Better Auth with passwordless magic links and sign-up disabled. I kept every existing user id and foreign key with an additive backfill, so nothing had to be remapped. Magic links are rate limited in Redis per email and per IP — every email costs credits — and the limiter fails open if Redis is down. Redis also caches the public stats and carries the presence heartbeats.
+
+Schema changes are hand-written SQL migrations, and every date is pinned to Europe/Bucharest so the server and the browser always show the same time. The core rules — stock movements, loans, invitations, logs — are covered by Vitest.
+
+## Result
+
+One link per trip, and files land organised in Drive instead of a chat group. Large videos upload reliably from a phone without ever touching — or overloading — the server. Librarians and volunteers share one panel, each seeing only what their role allows, and the catalogue the children borrow from is finally searchable by anyone.
+
+## Stack
+
+Next.js 16 (App Router), React 19, TypeScript, Prisma 7 on Supabase Postgres, Better Auth, Tailwind CSS 4 with shadcn/ui, TanStack Table, react-hook-form + zod, Recharts, Redis, Google Drive API, Brevo, Supabase Storage, Vitest, Vercel.

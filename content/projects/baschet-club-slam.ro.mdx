@@ -1,0 +1,46 @@
+---
+title: Baschet Club SLAM — înscrieri la baschet pentru copii, construite în jurul confidențialității
+locale: ro
+kind: Sport · Modul WordPress
+url: https://www.baschetclubslam.ro
+description: Modul WordPress pentru înscrierile unei academii de baschet pentru copii — confirmare prin SMS, adeverințe medicale private și remindere de plată.
+technologies: [WordPress, PHP 8.3, Cloudflare R2, Cloudflare Turnstile, Brevo, PHPUnit, GitHub Actions]
+keywords: [baschet club slam,modul wordpress,formular înscriere,club sportiv,confidențialitate,cloudflare r2,verificare sms]
+date: September 22, 2026 12:00:00
+---
+
+## Context
+
+Slam Basketball Academy este un club de baschet pentru copii. Din 2024 construiesc și întrețin modulul WordPress care gestionează tot procesul de înscriere, de la formularul public completat de părinte până la ecranele din care lucrează clubul în fiecare zi.
+
+## Problema
+
+Aproape toți cei din sistem sunt minori. Înscrierea unui copil înseamnă datele de contact ale unui părinte și o adeverință medicală, apoi urmărirea cotizațiilor lunare și reamintirea familiilor când una este scadentă. Sunt date sensibile, așa că provocarea nu era doar să construiesc formulare, ci să păstrez cât mai puține date, să le stochez în siguranță pe cele necesare și să mă asigur că nimeni nu poate afla din sistem cine este înscris.
+
+## Ce am construit
+
+- **Un formular de înscriere** pentru copil și părinte, cu acordurile obligatorii. Fiecare înscriere rămâne neconfirmată până când părintele introduce un cod de 6 cifre primit **prin SMS, cu trecere automată pe e-mail** dacă SMS-ul nu poate fi trimis. Urmează un e-mail de confirmare prin Brevo.
+- **Adeverințe medicale**, încărcate ca document sau înlocuite de declarația pe proprie răspundere acceptată de părinte, al cărei text exact este păstrat.
+- **Un portal pentru părinți**, accesat printr-un link magic de unică folosință, din care părinții confirmă înscrierile în așteptare și încarcă adeverințe — fără cont și fără parolă.
+- **Evidența cotizațiilor** pe fiecare copil, cu istoric, export CSV și remindere lunare pe e-mail și SMS trimise prin WP-CLI, plus o pagină de dezabonare.
+- **Ecrane de administrare și un widget de dashboard** desenat în SVG: înscrieri confirmate și în așteptare, activitatea recentă, cotizațiile din luna curentă și starea adeverințelor, cu legături către listele filtrate.
+
+## Sub capotă
+
+Confidențialitatea a dictat majoritatea deciziilor tehnice:
+
+- **Adeverințele nu ajung niciodată pe web-ul public.** Sunt validate în memorie și trimise într-un bucket privat Cloudflare R2, printr-un client S3 minimal scris de mână și semnat cu SigV4. Administratorii le văd prin linkuri presemnate care expiră după cinci minute.
+- **Fișierele sunt verificate după conținut, nu după nume.** PDF-urile cu JavaScript, fișiere atașate sau acțiuni automate sunt respinse, iar imaginile sunt re-codate, ceea ce elimină datele EXIF, inclusiv locația GPS.
+- **Se păstrează doar hash-uri** pentru codurile de verificare și pentru tokenurile linkurilor magice, cu durată scurtă de viață și încercări numărate.
+- **Fără enumerare**: portalul răspunde la fel indiferent dacă adresa este înscrisă sau nu, este protejat de Cloudflare Turnstile și limitat pe e-mail și pe IP.
+- Exporturile CSV sunt protejate împotriva injectării de formule, iar ștergerea unui copil elimină toate copiile adeverinței sale.
+
+Codul are namespace propriu și PSR-4, respectă WordPress Coding Standards, trece de PHPStan nivel 5 și are în jur de 180 de teste PHPUnit. GitHub Actions rulează verificările și publică pe staging sau în producție.
+
+## Rezultat
+
+Clubul își gestionează tot sezonul de înscrieri din WordPress: părinții se înscriu și confirmă de pe telefon, adeverințele sunt stocate privat, iar cotizațiile sunt urmărite într-un singur loc, cu remindere trimise automat.
+
+## Tehnologii
+
+WordPress, PHP 8.3, Cloudflare R2 și Turnstile, Brevo, gateway SMS, WP-CLI, Tailwind CSS 4, PHPStan, PHPUnit, GitHub Actions.

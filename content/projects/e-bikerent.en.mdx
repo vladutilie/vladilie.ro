@@ -1,0 +1,46 @@
+---
+title: "E-BikeRent — online e-bike rentals with payments, invoices and an admin panel"
+locale: en
+kind: "Next.js · Rental · Payments"
+url: https://e-bikerent.ro
+description: "Site and admin panel for e-bike rentals in Bran–Moeciu: online booking, card payments, automatic invoices, refunds and stock in one place."
+technologies: [Next.js, Prisma, Better Auth, next-intl, EuPlătesc, Oblio, Brevo, Vitest]
+keywords: [e-bikerent,e-bike rental,bran,moeciu,booking,euplatesc,oblio,nextjs]
+date: September 16, 2026 12:00:00
+---
+
+## Context
+
+[E-BikeRent](https://e-bikerent.ro) rents electric bikes in the Bran–Moeciu area. I built the site and the admin panel behind it, and I've been working on it since March 2022 — over 1,700 commits so far.
+
+## The problem
+
+Renting a bike online sounds simple until you add everything around it: picking bikes and accessories for a date and duration, paying by card, issuing an invoice, emailing the customer, and later cancelling, refunding or reversing that invoice without leaving the books in a mess. On top of that, the team wanted to manage stock, gift coupons, local trails and SEO themselves.
+
+## What I built
+
+- **A bilingual public site (RO/EN)**: home, bikes, cart, checkout, gift coupons, local trails with their own pages, about, FAQ, contact and legal pages, plus a payment-link page for orders paid later.
+- **Gift coupons**, including a Christmas campaign with its own payment webhook.
+- **An admin panel**: dashboard, bookings, bikes, accessories, stock, coupons, trails, SEO and settings.
+- **Order operations** that are safe to repeat: cancel, invoice reversal, regenerate, full or partial refund, payment links and a sync with EuPlătesc. Every operation is idempotent and written to an order log.
+- **Trails** with GPX files and a gallery with drag-and-drop ordering and per-file upload progress.
+
+## Under the hood
+
+A few rules keep the money and the stock honest:
+
+- **Money is always an integer in bani** and goes through dinero.js. Prices are copied onto the order line when it's saved, so an issued invoice never changes later.
+- **Availability has one formula**, in one file: stock + extra − blocked − reserved. It was consolidated after two separate calculations disagreed, which is exactly the kind of bug that lets a bike in for service still be booked.
+- **Writes go through server actions** that check the session and validate with zod. In the 2026 rebuild, 29 API routes were removed and only 5 kept — among them auth, the EuPlătesc webhooks and an upload with a progress bar. A repository layer was removed too: 496 lines, 73% of which were single Prisma calls.
+- **Login is a magic link** via Better Auth, rate limited in Redis per IP and per email, and the form answers the same way whether or not the address exists.
+- **Migrations are safe to re-run**, because the production database had been changed by hand over the years.
+
+The 2026 v3 rebuild, planned in 15 phases, moved the project from the Pages Router to the App Router on Next.js 16 and React 19, from Tailwind 3 to 4, from next-i18next to next-intl, from Supabase Auth to Better Auth, from nodemailer to Brevo and from next-seo to the Metadata API, with SEO editable from the panel. The panel itself was rebuilt on shadcn/ui and recharts. Public URLs stay translated and unchanged, so pages already indexed keep their rankings.
+
+## Status
+
+The live site has been taking bookings for years. The v3 rebuild is complete on its own branch, with Vitest covering money, availability, cart capacity, coupons, bikes and login throttling.
+
+## Stack
+
+Next.js 16, React 19, TypeScript, Prisma 7 (PostgreSQL), Better Auth, next-intl, Tailwind CSS 4, shadcn/ui, zustand, zod, react-hook-form, dinero.js, recharts, Leaflet, Redis, EuPlătesc, Oblio, Brevo, Supabase Storage, Google Maps, Cloudflare Turnstile, Vitest.

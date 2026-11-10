@@ -1,0 +1,42 @@
+---
+title: TransilvaniaCar — închirieri auto în trei limbi, cu prețuri instant verificate de server
+locale: ro
+kind: Închirieri auto · Next.js
+url: https://transilvaniacar.com
+description: Un site Next.js pentru o firmă de închirieri auto din Transilvania — rezervare în trei pași, prețuri instant recalculate pe server și panou de administrare.
+technologies: [Next.js, Prisma, PostgreSQL, Better Auth, next-intl, Zustand, Jest]
+keywords: [transilvaniacar,închirieri auto,rezervare online,nextjs,next-intl,panou administrare,cluj-napoca]
+date: November 9, 2026 12:00:00
+---
+
+## Context
+
+TransilvaniaCar închiriază mașini în Cluj-Napoca, Târgu Mureș, Sibiu și Brașov. Lucrez la site-ul lor din 2023, iar în noiembrie 2026 a trecut printr-un redesign și o refactorizare mare: aspect nou, un nou flux de rezervare, autentificare fără parolă în panou și o hartă a orașelor de preluare.
+
+## Problema
+
+Clienții vin din România și din străinătate, așa că site-ul trebuie să funcționeze în română, engleză și germană, cu URL-uri traduse. Ei vor să vadă imediat un preț real, iar acesta depinde de mulți factori deodată: durata închirierii, sezonul, locațiile de preluare și predare, preluarea în afara programului, extraopțiunile și pachetele de kilometri. Personalul, în schimb, are nevoie de un singur loc din care să gestioneze flota, prețurile, locațiile, extraopțiunile, clienții și rezervările.
+
+## Ce am construit
+
+- **Un site public în trei limbi** (româna la rădăcină, engleza și germana cu prefix propriu, cu căi localizate precum `/masini`, `/cars`, `/autos`): prima pagină cu „cum funcționează” în trei pași, întrebări frecvente, rating-ul Google și recenzii, paginile mașinilor, o pagină de contact cu protecție anti-spam și o hartă a celor patru orașe.
+- **Un blog de călătorie** cu ghiduri despre Transfăgărășan, castele, itinerarii și aeroporturi, scris în MDX.
+- **Rezervare în trei pași** — date și locații, mașină și extraopțiuni, datele clientului — cu filtre generate din flota reală. Starea rezervării este păstrată în session storage, așa că rezistă la reîmprospătarea paginii.
+- **Un panou de administrare** cu indicatori, un grafic al rezervărilor și tabele pentru mașini, extraopțiuni, locații, clienți și rezervări. Personalul mută fiecare rezervare din „în așteptare” în aprobată, finalizată sau respinsă.
+
+## Sub capotă
+
+- **O singură funcție pură de calcul al prețului** combină tranșele pe număr de zile, perioadele sezoniere, taxa de relocare când locația de predare diferă, taxa pentru preluarea în afara programului, extraopțiunile și pachetele de kilometri. Browserul o folosește pentru prețul instant, iar **serverul rulează exact același calcul și respinge rezervarea dacă totalurile diferă**.
+- Sumele sunt gestionate în bani, printr-o clasă `Money`.
+- **Rezervările sunt idempotente**: un identificator de cerere împiedică o dublă trimitere să creeze a doua rezervare, iar fiecare rezervare păstrează o copie a mașinii și a taxelor din momentul în care a fost făcută.
+- Autentificarea în panou folosește linkuri magice Better Auth, cu înregistrarea dezactivată; proxy-ul din Next.js 16 se ocupă atât de rutarea pe limbi, cât și de o verificare rapidă a sesiunii.
+- Traducerile sunt în fișiere JSON sincronizate cu Crowdin, iar descrierile mașinilor sunt salvate pe fiecare limbă.
+- **13 suite Jest** acoperă calculul prețului, sumele, tranșele, duratele, programul de lucru, starea rezervării, acordul pentru cookie-uri și validarea.
+
+## Rezultat
+
+Clienții văd prețul final pe măsură ce aleg, în limba lor, iar prețul afișat este exact cel salvat. Personalul gestionează toată activitatea de închirieri — flotă, prețuri și rezervări — dintr-un singur panou.
+
+## Tehnologii
+
+Next.js 16, React 19, TypeScript, Prisma 7 pe PostgreSQL (Supabase), Better Auth, next-intl, Zustand, react-hook-form, zod, Recharts, Leaflet, Brevo, Cloudflare Turnstile, Crowdin, Jest.

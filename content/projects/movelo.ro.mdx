@@ -1,0 +1,35 @@
+---
+title: "movelo — prototipul unui marketplace pentru firmele de închirieri de biciclete"
+locale: ro
+kind: "Prototip · Marketplace · Next.js"
+description: "Un prototip de marketplace în care mai multe firme de închirieri își listează bicicletele pe orașe și fiecare încasează direct în contul ei."
+technologies: [Next.js, Supabase, Prisma, EuPlătesc, Brevo, TanStack Table]
+keywords: [movelo,marketplace închirieri biciclete,multi-tenant,euplătesc,supabase,nextjs]
+date: August 22, 2025 12:00:00
+---
+
+## Context
+
+După un an în care am construit închirieri online pentru o singură afacere cu biciclete electrice, m-am întrebat cum ar arăta totul pentru mai multe firme deodată. movelo este experimentul acesta: un marketplace românesc în care alegi un oraș, o dată și o durată și vezi bicicletele tuturor firmelor care închiriază acolo. Este un prototip, construit în mare parte în 2023 și reîmprospătat în 2025, nu un produs lansat.
+
+## Problema
+
+Firmele mici de închirieri au nevoie, fiecare, de aceleași lucruri — rezervări, plăți cu cardul, facturi, emailuri — iar construirea lor separat pentru fiecare firmă nu se scalează. O platformă comună trebuie să rezolve întâi o întrebare grea: cum plătește clientul direct firma, nu un intermediar?
+
+## Ce am construit
+
+- **Fluxul clientului**: alegi orașul, apoi data, ora și durata (de la 2 ore la 2 zile, cu reduceri pentru perioade mai lungi), vezi bicicletele disponibile, le pui în coș, plătești și primești confirmarea.
+- **Contul**: clienții își văd rezervările și profilul; furnizorii își administrează firma, locațiile, bicicletele și rezervările, cu rolurile Proprietar și Moderator.
+- **Plăți și acte**: fiecare firmă încasează în propriul cont EuPlătesc. După plată, factura se emite printr-un API extern de facturare — fiecare locație are propria serie — iar Brevo trimite un rezumat atât clientului, cât și furnizorului.
+
+## Sub capotă
+
+Autentificarea se face cu Supabase Auth (SSR), cu drepturile de administrator ca custom claims, iar Prisma vorbește cu Postgres. Pozele bicicletelor stau în Supabase Storage, coșul este un store bazat pe reducer, iar tabelele furnizorilor folosesc TanStack Table. Reîmprospătarea din 2025 l-a mutat pe Tailwind 4, a eliminat SWR, a înlocuit dinero.js cu o clasă proprie pentru bani și a trecut la ștergeri logice.
+
+## Stadiu
+
+Un prototip funcțional, în jur de 500 de commit-uri, care mi-a format felul în care gândesc rezervările pentru mai multe firme. Multe dintre piesele lui trăiesc mai departe în proiectele de închirieri pe care le-am construit de atunci.
+
+## Tehnologii
+
+Next.js 15, React 19, TypeScript, Supabase (Auth, Storage), Prisma, Tailwind CSS 4, shadcn/ui, TanStack Table, react-hook-form, EuPlătesc, Brevo, Cloudflare Turnstile.

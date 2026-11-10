@@ -1,0 +1,42 @@
+---
+title: TransilvaniaCar — a three-language car rental site with instant, server-checked quotes
+locale: en
+kind: Car rental · Next.js
+url: https://transilvaniacar.com
+description: A Next.js booking site for a car rental company in Transylvania — a three-step booking wizard, instant quotes the server re-checks and an admin panel.
+technologies: [Next.js, Prisma, PostgreSQL, Better Auth, next-intl, Zustand, Jest]
+keywords: [transilvaniacar,car rental,booking wizard,nextjs,next-intl,admin panel,cluj-napoca]
+date: November 9, 2026 12:00:00
+---
+
+## Context
+
+TransilvaniaCar rents cars in Cluj-Napoca, Târgu Mureș, Sibiu and Brașov. I've worked on their site since 2023, and in November 2026 it went through a large redesign and refactor: a new look, a new booking flow, passwordless admin login and a map of the pickup cities.
+
+## The problem
+
+Customers come from Romania and abroad, so the site has to work in Romanian, English and German, with translated URLs. They want to see a real price immediately, and that price depends on many things at once: rental length, season, pickup and return locations, out-of-hours pickup, extras and mileage packages. The staff, meanwhile, need one place to manage the fleet, prices, locations, extras, customers and bookings.
+
+## What I built
+
+- **A public site in three languages** (Romanian at the root, English and German under their own prefixes, with localised paths such as `/masini`, `/cars`, `/autos`): homepage with "how it works" in three steps, FAQ, Google rating and testimonials, car pages, a contact page with spam protection and a map of the four cities.
+- **A travel blog** with guides on the Transfăgărășan, castles, itineraries and airports, written in MDX.
+- **A three-step booking wizard** — dates and locations, car and extras, customer details — with filters built from the actual fleet. Its state lives in a store kept in session storage, so the booking survives a page refresh.
+- **An admin panel** with stat cards, a bookings chart and data tables for cars, extras, locations, customers and bookings. Staff move each booking from waiting to approved, completed or rejected.
+
+## Under the hood
+
+- **One pure pricing function** combines day-range tiers, seasonal periods, a relocation fee when the return location differs, an out-of-hours fee, extras and mileage packages. The browser uses it for the instant quote; the **server runs the same calculation and rejects the booking if the totals differ**.
+- Money is handled in cents through a small `Money` class.
+- **Bookings are idempotent**: a request ID stops a double submit from creating a second booking, and each booking stores a snapshot of the car and fees at the time it was made.
+- Admin login uses Better Auth magic links with sign-up disabled; the Next.js 16 proxy handles both language routing and a quick session check.
+- Translations live in JSON files synced with Crowdin; car descriptions are stored per language.
+- **13 Jest suites** cover the quote, money, price tiers, durations, working hours, the booking store, consent and validation.
+
+## Result
+
+Customers get a final price as they choose, in their own language, and the price they see is the price that's stored. Staff manage the whole rental business — fleet, prices and bookings — from one panel.
+
+## Stack
+
+Next.js 16, React 19, TypeScript, Prisma 7 on PostgreSQL (Supabase), Better Auth, next-intl, Zustand, react-hook-form, zod, Recharts, Leaflet, Brevo, Cloudflare Turnstile, Crowdin, Jest.

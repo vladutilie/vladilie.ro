@@ -1,0 +1,46 @@
+---
+title: TablouriColorate — un configurator foto WooCommerce, de la React la 12 KB de JavaScript simplu
+locale: ro
+kind: Modul WordPress · Vanilla JS
+url: https://tablouricolorate.ro
+featuredImage: https://res.cloudinary.com/vladilie-ro/image/upload/v1702310608/projects/wordpress-plugin-woocommerce-custom-paintings/mgg5qngfe10gj5ehmkx5.jpg
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAmElEQVR4nGO4dxcE3r179/v3z7t37509c/r///83r13dsmDuq1evGG7dvPn79+//SODz1697t23bNHfOm7dvGV69evX////fYACRvnXzRl9fz7efv948fcLw7t27////fwMDiPTVK5eK83J+/PmzrK2ZASIK0Q0x4Mr5c3lpKW/evn16+zYDssV/wOzlHW0qDAwWDAzGDAwAajSZZYaVdA0AAAAASUVORK5CYII=
+description: Cum a ajuns un configurator de produse WooCommerce de la jQuery și React la un singur script de 12 KB, fără dependențe, cu prețuri calculate pe server.
+technologies: [WooCommerce, PHP 8.3, Vanilla JS, Canvas API, PHPStan, PHPUnit, GitHub Actions]
+keywords: [modul wordpress,produse personalizate woocommerce,configurator produse,încărcare poze woocommerce,tablouri canvas]
+date: November 9, 2026 12:00:00
+---
+
+## Context
+
+[TablouriColorate](https://tablouricolorate.ro) este o afacere mică din Târgu Mureș care tipărește fotografiile clienților pe canvas, postere, bannere și stickere. Magazinul rulează pe WooCommerce, iar inima lui este un configurator în care clientul încarcă o poză, alege dimensiunea și finisajul și vede prețul înainte să adauge produsul în coș. Construiesc și întrețin acest configurator, sub forma unui modul dedicat, din 2018.
+
+## Problema
+
+După mutarea de pe o platformă de e-commerce proprie și limitată pe WooCommerce, magazinul avea nevoie de opțiuni mult mai bogate: poze din dispozitiv sau de pe Facebook, dimensiuni, finisaje, ambalaje, filtre și un serviciu de design, totul într-o interfață plăcută. Prima versiune, scrisă în jQuery, devenea foarte lentă la încărcarea pozelor. Rescrierea în ReactJS + Material-UI a rezolvat experiența, dar în timp s-a transformat în cinci aplicații React separate care încărcau **520–730 KB de JavaScript pe pagină**, împreună cu Redux, webpack, Babel și Sentry.
+
+## Ce am construit
+
+În 2026 am înlocuit cele cinci aplicații React cu **un singur configurator în JavaScript simplu, fără dependențe**, de aproximativ 12 KB comprimat. Acesta deservește șase tipuri de produse, fiecare cu propriul shortcode: canvas, multicanvas, colaj, poster, banner și sticker.
+
+- Încărcare din dispozitiv sau de pe Facebook; SDK-ul Facebook se încarcă abia când se deschide fereastra de upload.
+- Previzualizarea decupajului și cele 8 machete de colaj sunt desenate cu `<canvas>` și CSS grid, fără biblioteci suplimentare.
+- După încărcare, serverul recomandă dimensiuni în funcție de proporțiile și rezoluția pozei.
+- **Multicanvas**, un produs nou: o singură poză tipărită pe până la 12 piese de canvas. Clientul trage poza peste toate piesele, iar fiecare linie de comandă păstrează exact zona din poză care ajunge pe fiecare piesă, pentru echipa de tipar.
+- În wp-admin: câte o secțiune de setări pentru fiecare tip de produs, un selector de dimensiuni, casete pe produse, acțiuni în masă și detaliile comenzii cu poza și opțiunile alese.
+
+## Sub capotă
+
+- **Prețul se calculează pe server**, din aceeași listă de opțiuni pe care o folosește browserul pentru afișare, așa că ce vede clientul este exact ce ajunge în coș.
+- **Încărcările sunt securizate**: listă de tipuri MIME permise, validarea imaginii, limită de încărcări pe IP, iar pozele de la distanță se descarcă doar de pe domeniile CDN ale Facebook, ca protecție SSRF.
+- Dimensiunile s-au mutat dintr-un tabel propriu în meta-datele produsului, extrase din titlu, printr-o migrare unică ce păstrează vechiul tabel pentru revenire.
+- WordPress Coding Standards, **PHPStan nivel 5** fără excepții și teste PHPUnit + WP_Mock pentru încărcări, prețuri, dimensiuni și multicanvas.
+- **GitHub Actions** rulează PHPCS, PHPStan, PHPUnit și verificări de sintaxă pe PHP 8.4 și 8.5, apoi construiește și publică pe staging sau în producție.
+
+## Rezultat
+
+Configuratorul a coborât de la 520–730 KB la aproximativ 12 KB comprimat pe pagină, fără pas de build și fără biblioteci externe. Prețul afișat și cel încasat vin din aceeași formulă, iar noul produs multicanvas a fost lansat peste rescriere. Magazinul este în mentenanță la mine din 2018.
+
+## Tehnologii
+
+WordPress, WooCommerce, PHP 8.3+, JavaScript simplu, Canvas API, Facebook JS SDK, PHPStan, PHPUnit, GitHub Actions.

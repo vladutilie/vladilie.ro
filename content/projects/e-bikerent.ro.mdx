@@ -1,0 +1,46 @@
+---
+title: "E-BikeRent — închirieri online de biciclete electrice, cu plăți, facturi și panou de administrare"
+locale: ro
+kind: "Next.js · Închirieri · Plăți"
+url: https://e-bikerent.ro
+description: "Site și panou de administrare pentru închirieri de biciclete electrice în Bran–Moeciu: rezervări, plăți cu cardul, facturi, rambursări și stoc."
+technologies: [Next.js, Prisma, Better Auth, next-intl, EuPlătesc, Oblio, Brevo, Vitest]
+keywords: [e-bikerent,închirieri biciclete electrice,bran,moeciu,rezervări online,euplătesc,oblio,nextjs]
+date: September 16, 2026 12:00:00
+---
+
+## Context
+
+[E-BikeRent](https://e-bikerent.ro) închiriază biciclete electrice în zona Bran–Moeciu. Eu am construit site-ul și panoul de administrare din spatele lui și lucrez la el din martie 2022 — peste 1.700 de commit-uri până acum.
+
+## Problema
+
+O închiriere online pare simplă până adaugi tot ce vine cu ea: alegerea bicicletelor și a accesoriilor pentru o dată și o durată, plata cu cardul, factura, emailul către client și, mai târziu, anularea, rambursarea sau stornarea facturii fără să lași contabilitatea în dezordine. Pe deasupra, echipa voia să-și administreze singură stocul, cupoanele cadou, traseele din zonă și SEO-ul.
+
+## Ce am construit
+
+- **Un site public în română și engleză**: prima pagină, biciclete, coș, finalizarea comenzii, cupoane cadou, trasee locale cu pagini proprii, despre, întrebări frecvente, contact și paginile legale, plus o pagină de plată prin link pentru comenzile achitate ulterior.
+- **Cupoane cadou**, inclusiv o campanie de Crăciun cu webhook de plată separat.
+- **Un panou de administrare**: dashboard, rezervări, biciclete, accesorii, stoc, cupoane, trasee, SEO și setări.
+- **Operațiuni pe comenzi** care pot fi repetate fără griji: anulare, stornare, regenerare de factură, rambursare totală sau parțială, linkuri de plată și sincronizare cu EuPlătesc. Fiecare operațiune este idempotentă și se scrie într-un jurnal al comenzii.
+- **Trasee** cu fișiere GPX și galerie ordonabilă prin drag-and-drop, cu progres de încărcare pe fiecare fișier.
+
+## Sub capotă
+
+Câteva reguli țin banii și stocul în ordine:
+
+- **Banii sunt mereu numere întregi, în bani**, și trec prin dinero.js. Prețurile se copiază pe linia comenzii la salvare, așa că o factură emisă nu se mai schimbă ulterior.
+- **Disponibilitatea are o singură formulă**, într-un singur fișier: stoc + suplimentar − blocat − rezervat. Am unificat-o după ce două calcule separate au ajuns să nu mai fie de acord — exact genul de eroare care permite rezervarea unei biciclete aflate în service.
+- **Scrierile trec prin server actions** care verifică sesiunea și validează cu zod. În refacerea din 2026 am eliminat 29 de rute API și am păstrat doar 5 — printre ele autentificarea, webhook-urile EuPlătesc și o încărcare cu bară de progres. A dispărut și un strat de repository: 496 de linii, din care 73% erau simple apeluri Prisma.
+- **Autentificarea se face prin magic link** cu Better Auth, cu limitare în Redis pe IP și pe email, iar formularul răspunde la fel indiferent dacă adresa există sau nu.
+- **Migrările pot fi rulate de mai multe ori** fără efecte, pentru că baza de date de producție fusese modificată manual de-a lungul anilor.
+
+Versiunea 3, planificată în 15 etape, a mutat proiectul de pe Pages Router pe App Router, pe Next.js 16 și React 19, de la Tailwind 3 la 4, de la next-i18next la next-intl, de la Supabase Auth la Better Auth, de la nodemailer la Brevo și de la next-seo la Metadata API, cu SEO editabil din panou. Panoul a fost refăcut cu shadcn/ui și recharts. URL-urile publice rămân traduse și neschimbate, ca paginile deja indexate să nu-și piardă pozițiile.
+
+## Stadiu
+
+Site-ul primește rezervări de ani buni. Versiunea 3 este finalizată pe o ramură separată, cu teste Vitest pentru bani, disponibilitate, capacitatea coșului, cupoane, biciclete și limitarea autentificărilor.
+
+## Tehnologii
+
+Next.js 16, React 19, TypeScript, Prisma 7 (PostgreSQL), Better Auth, next-intl, Tailwind CSS 4, shadcn/ui, zustand, zod, react-hook-form, dinero.js, recharts, Leaflet, Redis, EuPlătesc, Oblio, Brevo, Supabase Storage, Google Maps, Cloudflare Turnstile, Vitest.

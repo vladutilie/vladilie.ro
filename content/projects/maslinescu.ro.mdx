@@ -1,0 +1,41 @@
+---
+title: Măslinescu® — un magazin WooCommerce de ulei de măsline cu propria cameră de control
+locale: ro
+kind: WooCommerce · Ops · în desfășurare
+url: https://maslinescu.ro
+description: Module WooCommerce dedicate, un club de fidelitate care numără și cumpărăturile din magazin și monitorizare care semnalează problemele înaintea clienților.
+technologies: [WooCommerce, PHP 8.3, REST API, Grafana, Loki, Prometheus, Bunny Stream, GitHub Actions]
+keywords: [maslinescu,woocommerce,program de fidelizare,modul wordpress,grafana,loki,monitorizare,hpos]
+date: November 2, 2026 12:00:00
+---
+
+## Context
+
+Măslinescu® vinde ulei de măsline online, pe [maslinescu.ro](https://maslinescu.ro), și într-un magazin fizic. Site-ul rulează pe WooCommerce cu HPOS activ și o temă proprie la care lucrez din aprilie 2024. În 2026 am mutat logica din temă într-un set de module dedicate, fiecare cu repository, teste și pipeline de publicare proprii.
+
+## Problema
+
+Un magazin care crește devine fragil pe tăcute. O eroare fatală PHP în checkout sau un e-mail de comandă care nu mai ajunge înseamnă vânzări pierdute, iar de obicei nimeni nu află până nu sună un client. În paralel, afacerea avea nevoie de mai mult: un program de fidelitate care să funcționeze și online, și la casa de marcat, recenzii mai bogate și unelte pe care echipa să le poată gestiona fără un programator.
+
+## Ce am construit
+
+- **Clubul Măslinescu®** — un program de fidelitate cu niveluri calculate după valoarea cumpărăturilor din ultimele 12 luni. Membrii avansează, primesc un avertisment, apoi o perioadă de grație și abia după aceea coboară un nivel. Recompensele sunt cupoane WooCommerce reale, legate de adresa de e-mail a membrului. Există opt e-mailuri tranzacționale, un impuls de revenire pentru membrii noi, un raport pe cohorte pentru conversia de la prima la a doua comandă și o casetă a clubului pe paginile de utilizator și de comandă.
+- **Un API REST pentru casa de marcat**, astfel încât cumpărăturile din magazinul fizic să conteze în club. Folosește Application Passwords și un rol dedicat care are acces doar la rutele clubului, iar vânzările din magazin devin comenzi în contul clientului fără să afecteze stocul online sau facturarea.
+- **Recenzii cu poze și video** — imaginile sunt re-codate și curățate de metadate, iar videoclipurile se încarcă direct din browser în Bunny Stream, deci fișierele mari nu trec niciodată prin PHP.
+- **Restricții pentru clienți** gestionate din wp-admin, cu potrivirea normalizată a adreselor de e-mail și o casetă compatibilă HPOS pe comenzi.
+- **Felicitări** pentru comenzile trimise cadou și o unealtă care tipărește cardurile cadou fizice ale magazinului pe coli A4, în PDF.
+- **Un panou de ansamblu** în wp-admin, în care fiecare modul își adaugă propriul card.
+
+## Sub capotă
+
+Fiecare modul are namespace propriu, cere PHP 8.3+ și trece de `composer check`: PHPCS cu WordPress Coding Standards, PHPStan nivel 5 și PHPUnit cu WP_Mock. GitHub Actions rulează verificările pe PHP 8.4 și 8.5, construiește un `dist/` curat și publică ramura `stage` pe staging și `main` în producție.
+
+Pentru operațiuni, un mu-plugin mic trimite fiecare eveniment în **Loki** și doar erorile pe **Slack**, cu etichete puține și fără date personale în câmpurile indexate. **Grafana** și **Prometheus** rulează în Docker, în spatele unui Cloudflare Tunnel, cu dashboard-uri definite în fișiere. Pe același server rulează și căutarea Typesense a magazinului.
+
+## Rezultat
+
+Problemele apar acum pe Slack înainte să ajungă la clienți, iar cumpărăturile din magazinul fizic se adună în același program de fidelitate ca și comenzile online. Fiecare modificare trece prin aceleași verificări și același pipeline, ceea ce face ca un magazin care se schimbă des să fie mult mai sigur de modificat. Urmează: un asistent de cumpărături bazat pe AI.
+
+## Tehnologii
+
+WordPress, WooCommerce (HPOS), PHP 8.3+, WooCommerce REST API, Action Scheduler, WP-CLI, Bunny Storage & Stream, Grafana, Loki, Prometheus, Docker, Cloudflare Tunnel, GitHub Actions.

@@ -1,0 +1,43 @@
+---
+title: TEDxZorilor — site de eveniment cu arhivă pe mai mulți ani și un panou sigur pentru voluntari
+locale: ro
+kind: Eveniment · Next.js
+url: https://tedxzorilor.com
+description: Un site Next.js pentru conferințele TEDxZorilor din Cluj-Napoca, cu bilete prin Oveit și un panou în care voluntarii editează doar ce li s-a dat acces.
+technologies: [Next.js, Prisma, PostgreSQL, Better Auth, Supabase, Tailwind CSS, Vercel]
+keywords: [tedxzorilor,tedx,cluj-napoca,site eveniment,nextjs,panou administrare,better auth]
+date: September 30, 2026 12:00:00
+---
+
+## Context
+
+[TEDxZorilor](https://tedxzorilor.com) organizează conferințe TEDx în Cluj-Napoca. Prima versiune a site-ului am construit-o în 2023, iar în 2026 am extins-o cu un panou de administrare complet. Site-ul are două tipuri de public: cei care se gândesc să-și ia bilet la ediția următoare și cei care caută un discurs dintr-o ediție trecută.
+
+## Problema
+
+Fiecare ediție vine cu speakeri, parteneri, agendă și bilete noi, iar arhiva edițiilor anterioare crește de la an la an. Organizatorii sunt voluntari care se schimbă des, așa că editarea conținutului trebuia să fie simplă, dar și sigură: fiecare să modifice doar conferințele de care răspunde, orice schimbare să poată fi urmărită și să nu existe parole de împărțit sau de pierdut.
+
+## Ce am construit
+
+- **Un site public** construit în jurul celei mai noi conferințe publicate: numărătoare inversă, speakeri, agendă, bilete, parteneri, ediția anterioară, abonare la newsletter și o secțiune animată cu cifrele evenimentului.
+- **O pagină pentru fiecare conferință și pentru fiecare invitat** — speakeri, artiști, gazde și facilitatori — cu video de prezentare și înregistrarea discursului. Ciornele nu apar niciodată public.
+- **Bilete prin Oveit**, configurate pentru fiecare conferință, cu opțiunea de „sold out”.
+- **Un `/dashboard`** cu o privire de ansamblu, o listă de conferințe cu căutare și un editor cu tab-uri pentru invitați, parteneri, agendă și jurnalul modificărilor. Invitații și partenerii se reordonează prin drag-and-drop, iar partenerii se pot copia dintr-un clic de la ediția anterioară.
+- **Două roluri**: administratorii văd tot, moderatorii doar conferințele la care au primit acces. Un administrator poate acționa temporar ca moderator, ca să vadă exact ce vede acesta.
+
+## Sub capotă
+
+- **Autentificare fără parolă**, cu link magic (Better Auth, e-mailuri prin Brevo). Înregistrarea este închisă, iar formularul de autentificare nu dezvăluie ce adrese au cont.
+- **Două verificări independente**: layout-ul panoului verifică sesiunea, iar fiecare server action verifică din nou permisiunile.
+- **Limitarea cererilor în Redis**, pe IP și pe adresă de e-mail.
+- **Un jurnal de audit** în care doar se adaugă înregistrări: cine a schimbat ce, cu atribuirea către administratorul real atunci când acționează ca moderator. Dacă jurnalizarea eșuează, editarea nu este blocată.
+- **Procesarea imaginilor**: sharp rotește, redimensionează și convertește în WebP, Tinify comprimă fiecare imagine o singură dată, iar fișierele sunt denumite după hash-ul conținutului, deci reîncărcările nu costă nimic.
+- Fiecare modificare revalidează toate paginile publice afectate printr-o singură funcție comună, iar vizualizările discursurilor sunt adunate din YouTube Data API.
+
+## Rezultat
+
+Organizatorii pot pregăti o ediție nouă direct din panou — invitați, parteneri, agendă și bilete — fără programator și fără parole comune. Site-ul păstrează online fiecare ediție de la prima încoace, cu speakerii și discursurile ei.
+
+## Tehnologii
+
+Next.js 16 (App Router), React 19, TypeScript, Prisma 7 pe PostgreSQL, Better Auth, Supabase Storage, Redis, Tailwind CSS 4, shadcn/ui, Brevo, Oveit, YouTube Data API, Vercel.

@@ -1,0 +1,44 @@
+---
+title: "BookTruck — presentation, donations and book orders for a mobile library"
+locale: en
+kind: "Next.js · Fundraising · NGO"
+url: https://booktruck.cartilepefata.ro
+featuredImage: https://res.cloudinary.com/vladilie-ro/image/upload/v1702312046/projects/site-prezentare-strangere-fonduri-booktruck/hja42tde489lrwp6gtqz.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAuUlEQVR4nGMIaZoU0jAxtnlKQMOEyJapCZ0zYzqmxbZOSemdG9I0ieHfz8+vH9xeNWXS2aMH///5dujU8eNnT3x99+zPj/f//3xj+P3tw76d6/0djSUZGLavX75gw+aMtkkfXz1BSN+7dXx6V0JrRerFI5uu7d6ytqJsdWnx/98fQdL//3z7/e3Dx3fP37168vTGxac3Lr579eTdqye/v32ASv/88u7i6aMXTx89c/wQnPz55d3/P98ATc2Hyw6ARn0AAAAASUVORK5CYII=
+description: "The BookTruck site: one-off and monthly EuPlătesc donations synced nightly, book orders with Stripe and Oblio, and an admin panel."
+technologies: [Next.js, next-intl, Prisma, Better Auth, EuPlătesc, Stripe, Oblio, Vitest]
+keywords: [booktruck,cărțile pe față,fundraising website,donations,euplatesc,nextjs]
+date: October 7, 2026 12:00:00
+---
+
+## Context
+
+I met [Victor Miron](https://victormiron.com) in December 2016 at a book event in Timișoara. That's how I found out about the [Cărțile pe Față](https://cartilepefata.ro) cultural association and its mission to get Romanians reading more. I started as a volunteer at their "Vocea cititorului" reading clubs, co-organised two editions, and after moving to Cluj-Napoca I gradually took over the association's IT infrastructure.
+
+BookTruck is the association's library on wheels, bringing books to children in villages without a working library. The site started in March 2022 on Next.js 12 as a presentation site with a donation form. It has grown a lot since.
+
+## The problem
+
+A fundraising site has to be trustworthy above all: a monthly donation must show up in the records even when the payment processor doesn't notify the site, and a refund made from the merchant account must show up in the panel too. Beyond donations, the association started selling the book "Dana și verișoarele", runs Christmas campaigns, and needs to update its own partners, gallery and map of adopted schools — without emailing me for every logo.
+
+## What I built
+
+- **A public site in Romanian and English**: presentation, a map of adopted schools, donations, the Christmas campaign, volunteering, gallery, press coverage, partners, the "Biblioteca vie cu Raluca Anton" page and the interactive county map of book-donation points.
+- **Donations**, one-off or monthly, through EuPlătesc, plus information on the 3.5% tax redirection and sponsorships.
+- **Book orders** paid with Stripe, invoiced automatically through Oblio, with courier delivery or personal pickup.
+- **An admin panel** (since October 2026): donors, with refunds and cancelling monthly donations; statistics; orders flowing from Received → Being prepared → Shipped; products; partners in three tiers with drag-and-drop ordering; gallery, press, donation points and adopted schools; team, invitations, activity log and settings. Roles are Editor, Coordinator and Administrator.
+- **Gallery import from Google Drive**: paste the link to a public folder and pick the photos; uploads from a computer, logos and avatars go to Cloudinary.
+
+## Under the hood
+
+The piece I'm happiest with is the **EuPlătesc donation sync**. It runs every night on Vercel Cron (or on demand from the panel) and catches exactly the cases where an ordinary site loses data: monthly charges EuPlătesc makes without calling the site, payments whose callback never arrived, and refunds or cancellations made directly in the EuPlătesc account. The first run imported the full history back to 2018. It can run any number of times without duplicates; an incremental run covers the last 35 days and takes a few seconds. Because the merchant account is shared with other sites, it only imports BookTruck transactions. The integration uses the [EuPlătesc library for Node.js](/ro/blog/euplatesc-nodejs) that I maintain.
+
+The site moved from the Pages Router to the App Router in 2024, gained a Prisma database on Supabase Postgres (30+ models), swapped Formik and Yup for react-hook-form and zod, and now does i18n with next-intl. The panel uses Better Auth magic links with Redis rate limiting, public forms are protected by Cloudflare Turnstile, and non-production deployments redirect to production and are never indexed. Donation rules, the sync, statistics, permissions and the Stripe webhook are covered by Vitest.
+
+## Result
+
+The association manages its own content and sees donations, active monthly donors and orders in one place, with records that reconcile themselves every night. The site does its job every day: people donate, order books and sign up as volunteers, and the BookTrucks keep heading out to schools.
+
+## Stack
+
+Next.js 16 (App Router), React 19, TypeScript, next-intl, Prisma 7 on Supabase Postgres, Better Auth, Redis, Tailwind CSS 4, shadcn/ui, Headless UI, framer-motion, react-hook-form + zod, EuPlătesc, Stripe, Oblio, Brevo, Cloudflare Turnstile, Cloudinary, Google Drive API, Vitest, Vercel.
