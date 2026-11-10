@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 
 import { Link } from '@/i18n/routing';
 import { CookieSettingsButton } from './consent/cookie-banner';
+import { SocialLinks } from './social-links';
 import sal from '@/../public/images/anpc-sal.webp';
 import sol from '@/../public/images/anpc-sol.webp';
 
@@ -19,14 +20,20 @@ export const Footer: React.FC = () => {
   return (
     <footer className='border-hairline border-t'>
       <div className='mx-auto flex max-w-[1200px] flex-wrap justify-between gap-8 px-6 py-12 text-sm'>
-        <p className='text-content/75 my-0 font-mono text-[12.5px] leading-[1.8]'>
-          {process.env.NEXT_PUBLIC_COMPANY_NAME}
-          <br />
-          {t('footer.vat-id', { vatId: process.env.NEXT_PUBLIC_VAT_ID! })} ·{' '}
-          {t('footer.trade-reg-no', { regNo: process.env.NEXT_PUBLIC_REG_NO! })}
-          <br />
-          {process.env.NEXT_PUBLIC_ADDRESS}
-        </p>
+        <div>
+          <p className='text-content/75 my-0 font-mono text-[12.5px] leading-[1.8]'>
+            {process.env.NEXT_PUBLIC_COMPANY_NAME}
+            <br />
+            {t('footer.vat-id', { vatId: process.env.NEXT_PUBLIC_VAT_ID! })} ·{' '}
+            {t('footer.trade-reg-no', { regNo: process.env.NEXT_PUBLIC_REG_NO! })}
+            <br />
+            {process.env.NEXT_PUBLIC_ADDRESS}
+          </p>
+
+          <div className='mt-4 -ml-2'>
+            <SocialLinks />
+          </div>
+        </div>
 
         <nav aria-label={t('footer.nav-al')} className='flex max-w-[640px] flex-wrap content-start gap-x-6 gap-y-2.5'>
           {pages.map((page) => (
@@ -42,9 +49,6 @@ export const Footer: React.FC = () => {
           <CookieSettingsButton className={linkClasses} />
           <a href='https://anpc.ro' target='_blank' rel='noreferrer' className={linkClasses}>
             ANPC
-          </a>
-          <a href={process.env.NEXT_PUBLIC_X} target='_blank' rel='noreferrer' className={linkClasses}>
-            @vladilie94
           </a>
         </nav>
       </div>

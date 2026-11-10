@@ -655,7 +655,8 @@
     "sal-al": "Detalii Soluționarea alternativă a litigiilor",
     "sol-al": "Soluționarea online a litigiilor",
     "copyright": "© 2019 – {year} · {siteName} · Toate drepturile rezervate.",
-    "nav-al": "Subsol"
+    "nav-al": "Subsol",
+    "profile-al": "Profilul de {network}"
   },
   "not-found": {
     "title": "Eroare 404",

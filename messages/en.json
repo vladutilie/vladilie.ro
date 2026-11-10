@@ -655,7 +655,8 @@
     "sal-al": "Details Alternative Dispute Resolution",
     "sol-al": "Online dispute resolution",
     "copyright": "© 2019 — {year} · {siteName} · All rights reserved.",
-    "nav-al": "Footer"
+    "nav-al": "Footer",
+    "profile-al": "{network} profile"
   },
   "not-found": {
     "title": "404 Error",
