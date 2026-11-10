@@ -21,7 +21,7 @@ export const Hero: React.FC<{ location: string }> = ({ location }) => {
           {isAvailable ? t('available') : t('not-available')} · {location}
         </div>
 
-        <h1 className='my-0 mb-[26px] text-[clamp(42px,6.4vw,78px)] leading-[0.98] tracking-[-0.045em] text-balance'>
+        <h1 className='my-0 mb-[26px] text-[clamp(36px,4.6vw,58px)] leading-[1.02] tracking-[-0.04em] text-balance'>
           {t.rich('title', {
             accent: (chunk: ReactNode): JSX.Element => <span className='text-accent'>{chunk}</span>
           })}
