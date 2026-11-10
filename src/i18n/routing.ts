@@ -5,9 +5,12 @@ export const routing = defineRouting({
   // A list of all locales that are supported
   locales: ['en', 'ro'],
 
-  // Used when no locale matches
-  defaultLocale: 'en',
+  // Romanian is served at the root, English under /en.
+  defaultLocale: 'ro',
   localePrefix: 'as-needed',
+  // No redirects based on the browser language or a cookie: every URL always serves the same language,
+  // which is what search engines expect. Visitors switch with the language toggle.
+  localeDetection: false,
   pathnames: {
     '/': '/',
     '/locations': { en: '/locations', ro: '/locatii' },

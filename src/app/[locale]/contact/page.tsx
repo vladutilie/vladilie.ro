@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';
+import { everyLocale, localeAlternates } from '@/lib/alternates';
 import { Form } from './ui/form';
 import { Page, PageHeader } from '../ui/page-header';
 
@@ -11,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   const commonFields = { title: t('title'), description: t('description') };
 
   return {
-    alternates: { canonical: getPathname({ locale, href: '/contact' }) },
+    alternates: localeAlternates(locale, everyLocale('/contact')),
     ...commonFields,
     keywords: t('metadata.keywords'),
     openGraph: {

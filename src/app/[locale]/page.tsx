@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { getPathname } from '@/i18n/routing';
+import { everyLocale, localeAlternates } from '@/lib/alternates';
 import { UpdateLocation } from './ui/update-location';
 import { Hero } from './ui/home/hero';
 import { ProofStrip } from './ui/home/proof-strip';
@@ -23,6 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   const commonFields = { title: `${process.env.NEXT_PUBLIC_SITE_NAME} | ${t('title')}`, description: t('description') };
 
   return {
+    alternates: localeAlternates(locale, everyLocale('/')),
     ...commonFields,
     keywords: t('keywords'),
     openGraph: {

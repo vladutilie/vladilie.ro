@@ -6,6 +6,7 @@ import roFunc from 'timeago.js/lib/lang/ro';
 import enFunc from 'timeago.js/lib/lang/en_US';
 
 import { getPathname } from '@/i18n/routing';
+import { everyLocale, localeAlternates } from '@/lib/alternates';
 import prisma from '@/lib/prisma';
 import { Page, PageHeader } from '../ui/page-header';
 
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   const commonFields = { title: t('title'), description: t('description') };
 
   return {
-    alternates: { canonical: getPathname({ locale, href: '/locations' }) },
+    alternates: localeAlternates(locale, everyLocale('/locations')),
     ...commonFields,
     keywords: t('metadata.keywords'),
     openGraph: {

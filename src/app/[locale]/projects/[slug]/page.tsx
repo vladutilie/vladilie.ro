@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
-import { getProject } from '@/lib/content';
+import { getProject, projectVersions } from '@/lib/content';
+import { localeAlternates } from '@/lib/alternates';
 
 import { getPathname } from '@/i18n/routing';
 import { Header, Content, Footer } from '../../ui/post';
@@ -21,9 +22,15 @@ export async function generateMetadata({
   const commonFields = { title: `${project?.title} | ${t('title')}`, description: project?.description };
 
   return {
-    alternates: {
-      canonical: getPathname({ locale, href: { pathname: '/projects/[slug]', params: { slug } } })
-    },
+    alternates: localeAlternates(
+      locale,
+      Object.fromEntries(
+        Object.entries(projectVersions(slug, locale)).map(([l, s]) => [
+          l,
+          { pathname: '/projects/[slug]', params: { slug: s! } }
+        ])
+      )
+    ),
     ...commonFields,
     keywords: project?.keywords,
     openGraph: {

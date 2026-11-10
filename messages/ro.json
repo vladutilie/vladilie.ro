@@ -15,7 +15,8 @@
     "dark": "Întunecat",
     "close-menu-al": "Închide meniul",
     "get-a-quote": "Cere o ofertă",
-    "process": "Proces"
+    "process": "Proces",
+    "not-translated": "This page isn't available in {lang}."
   },
   "homepage": {
     "metadata": {

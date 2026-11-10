@@ -10,6 +10,8 @@ import './globals.css';
 import { Footer } from './ui/footer';
 import { Navbar } from './ui/navbar';
 import { ThemeProvider } from './ui/theme-provider';
+import { TranslationsProvider } from './ui/navbar/translations';
+import { documentTranslations } from '@/lib/content';
 
 const schibstedGrotesk = Schibsted_Grotesk({
   subsets: ['latin', 'latin-ext'],
@@ -24,14 +26,12 @@ const ibmPlexMono = IBM_Plex_Mono({
   variable: '--font-ibm-plex-mono'
 });
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
-  const { locale } = await params;
+export async function generateMetadata(): Promise<Metadata> {
   const title = { template: `%s | ${process.env.NEXT_PUBLIC_SITE_NAME}`, default: process.env.NEXT_PUBLIC_SITE_NAME! };
 
   return {
     title,
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL!),
-    alternates: { canonical: 'ro' === locale ? '/ro' : '/', languages: { 'en-US': '/', 'ro-RO': '/ro' } },
     verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SEARCH_CONSOLE_ID },
 
     // Keep the title template for child pages format.
@@ -69,7 +69,9 @@ export default async function LocaleLayout({
       <body className='bg-surface text-content font-sans transition-colors duration-300'>
         <NextIntlClientProvider locale={locale} messages={messages} timeZone='Europe/Bucharest'>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-            <Navbar />
+            <TranslationsProvider translations={documentTranslations()}>
+              <Navbar />
+            </TranslationsProvider>
             {children}
             <Footer />
             <Analytics />

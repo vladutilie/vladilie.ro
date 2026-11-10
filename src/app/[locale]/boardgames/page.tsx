@@ -3,6 +3,7 @@ import type { BoardgameModel as Boardgame } from '@/../generated/prisma/models';
 import { getTranslations } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';
+import { everyLocale, localeAlternates } from '@/lib/alternates';
 import prisma from '@/lib/prisma';
 import { Categories } from './ui/categories';
 import { List } from './ui/list';
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   const commonFields = { title: t('title'), description: t('description') };
 
   return {
-    alternates: { canonical: getPathname({ locale, href: '/boardgames' }) },
+    alternates: localeAlternates(locale, everyLocale('/boardgames')),
     ...commonFields,
     keywords: t('metadata.keywords'),
     openGraph: {

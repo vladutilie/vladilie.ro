@@ -40,7 +40,7 @@ export async function GET(): Promise<Response> {
     '',
     `> ${t('metadata.description')}`,
     '',
-    `Vlad Ilie runs Vlad Ilie Development SRL, a one-person software studio in Romania (since 2019). He builds WooCommerce shops, custom WordPress plugins and Next.js products for businesses and NGOs, and maintains them after launch. He has been General Translation Editor for WordPress in Romanian since 2019. The site is available in English and Romanian; Romanian pages live under /ro.`,
+    `Vlad Ilie runs Vlad Ilie Development SRL, a one-person software studio in Romania (since 2019). He builds WooCommerce shops, custom WordPress plugins and Next.js products for businesses and NGOs, and maintains them after launch. He has been General Translation Editor for WordPress in Romanian since 2019. The site is available in Romanian (the default, at the root) and English (under /en).`,
     '',
     '## Services',
     '',

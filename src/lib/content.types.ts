@@ -7,6 +7,8 @@ type Document = {
   description: string;
   keywords: string[];
   date: string;
+  /** Slug of the same document in the other language, when it differs from this one. */
+  translation?: string;
   /** File name without the extension. */
   slug: string;
   /** Estimated reading time, in minutes. */

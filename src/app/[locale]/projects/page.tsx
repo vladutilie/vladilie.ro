@@ -4,6 +4,7 @@ import { allProjects } from '@/lib/content';
 import type { Project as ProjectT } from '@/lib/content.types';
 
 import { getPathname } from '@/i18n/routing';
+import { everyLocale, localeAlternates } from '@/lib/alternates';
 import { Project } from './ui/project';
 import { Page, PageHeader } from '../ui/page-header';
 
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   const commonFields = { title: t('title'), description: t('description') };
 
   return {
-    alternates: { canonical: getPathname({ locale, href: '/projects' }) },
+    alternates: localeAlternates(locale, everyLocale('/projects')),
     ...commonFields,
     keywords: t('metadata.keywords'),
     openGraph: {

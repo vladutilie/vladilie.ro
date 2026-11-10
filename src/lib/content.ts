@@ -41,3 +41,57 @@ export const getPost = (slug: string, locale: string): Post | undefined =>
 
 export const getProject = (slug: string, locale: string): Project | undefined =>
   allProjects().find((project) => project.slug === slug && project.locale === locale);
+
+/** The slug of every language version of a document, keyed by locale. */
+const versions = <T extends Post | Project>(
+  items: T[],
+  slug: string,
+  locale: string
+): Partial<Record<string, string>> => {
+  const item = items.find((i) => i.slug === slug && i.locale === locale);
+
+  if (!item) {
+    return {};
+  }
+
+  const result: Partial<Record<string, string>> = { [locale]: slug };
+
+  // The other language shares the slug, or the two documents point at each other with `translation`.
+  for (const other of items) {
+    if (
+      other.locale !== locale &&
+      (other.slug === slug || other.slug === item.translation || other.translation === slug)
+    ) {
+      result[other.locale] = other.slug;
+    }
+  }
+
+  return result;
+};
+
+export const postVersions = (slug: string, locale: string) => versions(allPosts(), slug, locale);
+
+export const projectVersions = (slug: string, locale: string) => versions(allProjects(), slug, locale);
+
+/**
+ * For the language toggle: maps `blog/<locale>/<slug>` and `projects/<locale>/<slug>` to the slug of
+ * the same document in the other language. Documents without a translation are left out.
+ */
+export const documentTranslations = (): Record<string, string> => {
+  const map: Record<string, string> = {};
+
+  for (const [collection, items, versionsOf] of [
+    ['blog', allPosts(), postVersions],
+    ['projects', allProjects(), projectVersions]
+  ] as const) {
+    for (const { slug, locale } of items) {
+      for (const [otherLocale, otherSlug] of Object.entries(versionsOf(slug, locale))) {
+        if (otherLocale !== locale && otherSlug) {
+          map[`${collection}/${locale}/${slug}`] = otherSlug;
+        }
+      }
+    }
+  }
+
+  return map;
+};

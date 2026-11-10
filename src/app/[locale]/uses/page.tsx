@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';
+import { everyLocale, localeAlternates } from '@/lib/alternates';
 import { GroupHeading, Page, PageHeader } from '../ui/page-header';
 const environment = [
   ['environment.desk.name', 'environment.desk.description'],
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   const commonFields = { title: t('title'), description: t('description') };
 
   return {
-    alternates: { canonical: getPathname({ locale, href: '/uses' }) },
+    alternates: localeAlternates(locale, everyLocale('/uses')),
     ...commonFields,
     keywords: t('metadata.keywords'),
     openGraph: {

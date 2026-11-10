@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';
+import { everyLocale, localeAlternates } from '@/lib/alternates';
 import { GroupHeading, Page, PageHeader } from '../ui/page-header';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
@@ -11,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   const commonFields = { title: t('title'), description: t('metadata.description') };
 
   return {
-    alternates: { canonical: getPathname({ locale, href: '/colophon' }) },
+    alternates: localeAlternates(locale, everyLocale('/colophon')),
     ...commonFields,
     keywords: t('metadata.keywords'),
     openGraph: {

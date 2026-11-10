@@ -15,7 +15,8 @@
     "dark": "Dark",
     "close-menu-al": "Close menu",
     "get-a-quote": "Get a quote",
-    "process": "Process"
+    "process": "Process",
+    "not-translated": "Această pagină nu există în {lang}."
   },
   "homepage": {
     "metadata": {
