@@ -4,11 +4,15 @@ const stats = ['studio', 'maintained', 'gte', 'senior'] as const;
 
 const clients = [
   'Măslinescu®',
-  'TablouriColorate',
   'Cărțile pe Față',
   'TEDxZorilor',
+  '17 Seconds™',
+  'Tablouri Colorate',
   'Baschet Club SLAM',
-  'Electrica Furnizare'
+  'Abarai',
+  'Marina Bîra',
+  'DRI UPT',
+  'ContaExpert'
 ];
 
 const tech = [
