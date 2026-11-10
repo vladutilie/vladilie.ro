@@ -22,24 +22,24 @@ Live at **[vladilie.ro](https://vladilie.ro)**.
 
 ## Getting started
 
-Requires Node.js 20+ and Yarn.
+Requires Node.js 20+ and npm.
 
 ```bash
-yarn install
+npm install
 cp .env.example .env    # then fill it in
-yarn prisma generate    # writes the client to generated/prisma
-yarn dev                # http://localhost:3000
+npx prisma generate     # writes the client to generated/prisma
+npm run dev             # http://localhost:3000
 ```
 
 ### Scripts
 
-| Script         | What it does                                             |
-| -------------- | -------------------------------------------------------- |
-| `yarn dev`     | Development server                                       |
-| `yarn build`   | Production build                                         |
-| `yarn start`   | Serves the production build                              |
-| `yarn lint`    | ESLint (flat config, `eslint.config.mjs`)                |
-| `yarn db:seed` | Seeds books, boardgames and locations (`prisma/seed.ts`) |
+| Script            | What it does                                             |
+| ----------------- | -------------------------------------------------------- |
+| `npm run dev`     | Development server                                       |
+| `npm run build`   | Production build                                         |
+| `npm start`       | Serves the production build                              |
+| `npm run lint`    | ESLint (flat config, `eslint.config.mjs`)                |
+| `npm run db:seed` | Seeds books, boardgames and locations (`prisma/seed.ts`) |
 
 ### Environment
 
