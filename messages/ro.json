@@ -99,8 +99,8 @@
         "lumea": {
           "kicker": "Next.js · Pro bono · ONG",
           "title": "Lumea BookTruck – voluntarii încarcă poze de pe teren, fără conturi",
-          "problem": "Biblioteca mobilă BookTruck a asociației Cărțile pe Față împrumută cărți copiilor din școlile rurale – iar după fiecare drum rămân sute de poze împrăștiate prin telefoanele voluntarilor și grupurile de WhatsApp.",
-          "built": "Un panou Next.js + Prisma + Better Auth pentru catalog, stoc și împrumuturi (cu scanarea ISBN-ului direct în browser), plus sesiuni de încărcare printr-un singur link care trimit fișierele direct în Google Drive-ul asociației, în bucăți care se pot relua în caz de eroare.",
+          "problem": "Biblioteca mobilă BookTruck a asociației Cărțile pe Față împrumută cărți copiilor din școlile rurale – iar după fiecare drum rămân stoc de urmărit, restituiri de recuperat și poze împrăștiate prin telefoanele voluntarilor și grupurile de WhatsApp.",
+          "built": "Un panou Next.js + Prisma + Better Auth pentru catalog, stoc pe locații și împrumuturi – un ISBN scanat direct din browser și o confirmare –, plus sesiuni de încărcare printr-un singur link care trimit fișierele direct în Google Drive-ul asociației, în bucăți care se reiau după o eroare.",
           "result": "Un link pentru fiecare drum, fișierele ajung organizate în Drive, iar încărcările mari nu trec niciodată prin server și nici nu-l supraîncarcă. Bibliotecarii și voluntarii lucrează în același panou, cu permisiuni pe roluri."
         }
       },
@@ -134,7 +134,7 @@
         "booktruck": {
           "kind": "ONG · Strângere de fonduri",
           "title": "BookTruck",
-          "body": "Site de strângere de fonduri pentru biblioteca mobilă: donații unice și lunare sincronizate în fiecare noapte, comenzi de carte cu facturi automate și panou de administrare."
+          "body": "Site de strângere de fonduri pentru biblioteca mobilă: donații unice și lunare sincronizate în fiecare noapte, campanii de donații cu aprobare, licitații caritabile online, comenzi de carte cu facturi automate și panou de administrare."
         },
         "tedx": {
           "kind": "Eveniment · Next.js",
@@ -164,7 +164,7 @@
         "movelo": {
           "kind": "Prototip · Marketplace",
           "title": "movelo",
-          "body": "Un marketplace de închirieri de biciclete pentru mai multe firme, în care fiecare firmă încasează direct în contul ei."
+          "body": "Un marketplace de închirieri de biciclete pentru mai multe firme: fiecare încasează direct în contul ei EuPlătesc sau Stripe și facturează automat prin Oblio."
         },
         "contadocs": {
           "kind": "SaaS · încheiat",

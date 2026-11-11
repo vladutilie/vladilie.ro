@@ -99,8 +99,8 @@
         "lumea": {
           "kicker": "Next.js · Pro-bono · NGO",
           "title": "Lumea BookTruck — volunteers upload from the field, no accounts needed",
-          "problem": "The BookTruck mobile library of Cărțile pe Față lends books to children in rural schools — and every trip leaves hundreds of photos scattered across volunteers' phones and WhatsApp groups.",
-          "built": "A Next.js + Prisma + Better Auth panel for the catalogue, stock and loans (with ISBN scanning in the browser), plus one-link upload sessions that send files straight to the NGO's Google Drive in chunks that resume after an error.",
+          "problem": "The BookTruck mobile library of Cărțile pe Față lends books to children in rural schools — and every trip leaves stock to track, returns to chase and photos scattered across volunteers' phones and WhatsApp groups.",
+          "built": "A Next.js + Prisma + Better Auth panel for the catalogue, stock per location and loans — one ISBN scanned in the browser and one confirmation — plus one-link upload sessions that send files straight to the NGO's Google Drive in chunks that resume after an error.",
           "result": "One link per trip, files land organised in Drive, and large uploads never pass through — or overload — the server. Librarians and volunteers share one panel with role-based permissions."
         }
       },
@@ -134,7 +134,7 @@
         "booktruck": {
           "kind": "NGO · Fundraising",
           "title": "BookTruck",
-          "body": "Fundraising site for the mobile library: one-off and monthly donations synced nightly, book orders with automatic invoices, and an admin panel."
+          "body": "Fundraising site for the mobile library: one-off and monthly donations synced nightly, fundraising campaigns with approval, online charity auctions, book orders with automatic invoices, and an admin panel."
         },
         "tedx": {
           "kind": "Event · Next.js",
@@ -164,7 +164,7 @@
         "movelo": {
           "kind": "Prototype · Marketplace",
           "title": "movelo",
-          "body": "A bike-rental marketplace for several companies, where each company is paid straight into its own account."
+          "body": "A bike-rental marketplace for several companies: each is paid straight into its own EuPlătesc or Stripe account and invoices automatically through Oblio."
         },
         "contadocs": {
           "kind": "SaaS · past",

@@ -1,35 +1,49 @@
 ---
-title: "movelo — prototipul unui marketplace pentru firmele de închirieri de biciclete"
+title: "movelo – un marketplace pentru firmele de închirieri de biciclete, reconstruit în 2026"
 locale: ro
 kind: "Prototip · Marketplace · Next.js"
-description: "Un prototip de marketplace în care mai multe firme de închirieri își listează bicicletele pe orașe și fiecare încasează direct în contul ei."
-technologies: [Next.js, Supabase, Prisma, EuPlătesc, Brevo, TanStack Table]
-keywords: [movelo,marketplace închirieri biciclete,multi-tenant,euplătesc,supabase,nextjs]
-date: August 22, 2025 12:00:00
+url: https://movelo.ro
+description: "Mai multe firme de închirieri își listează bicicletele pe orașe și puncte de ridicare, iar fiecare încasează în contul ei EuPlătesc sau Stripe și facturează automat din contul ei Oblio."
+technologies: [Next.js, PostgreSQL, Prisma, better-auth, EuPlătesc, Stripe, Oblio]
+keywords: [movelo,marketplace închirieri biciclete,multi-tenant,euplătesc,stripe,oblio,facturare automată,nextjs,prisma,postgresql]
+date: October 27, 2026 12:00:00
 ---
 
 ## Context
 
-După un an în care am construit închirieri online pentru o singură afacere cu biciclete electrice, m-am întrebat cum ar arăta totul pentru mai multe firme deodată. movelo este experimentul acesta: un marketplace românesc în care alegi un oraș, o dată și o durată și vezi bicicletele tuturor firmelor care închiriază acolo. Este un prototip, construit în mare parte în 2023 și reîmprospătat în 2025, nu un produs lansat.
+După un an în care am construit închirieri online pentru o singură afacere cu biciclete electrice, m-am întrebat cum ar arăta totul pentru mai multe firme deodată. [movelo](https://movelo.ro) este răspunsul: un marketplace românesc în care alegi un oraș, o oră de ridicare și o durată și vezi bicicletele tuturor firmelor care închiriază acolo. Prima versiune a fost un prototip, construit în mare parte în 2023. În octombrie 2026 l-am reconstruit aproape de la zero, pe baza a tot ce învățasem între timp din proiectele de închirieri de după el.
 
 ## Problema
 
-Firmele mici de închirieri au nevoie, fiecare, de aceleași lucruri — rezervări, plăți cu cardul, facturi, emailuri — iar construirea lor separat pentru fiecare firmă nu se scalează. O platformă comună trebuie să rezolve întâi o întrebare grea: cum plătește clientul direct firma, nu un intermediar?
+Firmele mici de închirieri au nevoie, fiecare, de aceleași lucruri: rezervări, plăți cu cardul, facturi, e-mailuri și o evidență a bicicletelor. Construirea lor separat pentru fiecare firmă nu se scalează. O platformă comună trebuie însă să rezolve câteva întrebări grele: cum plătește clientul direct firma, nu un intermediar; cine emite factura; și cum te asiguri că aceeași bicicletă nu e închiriată de două ori, când doi clienți plătesc în aceeași secundă.
 
 ## Ce am construit
 
-- **Fluxul clientului**: alegi orașul, apoi data, ora și durata (de la 2 ore la 2 zile, cu reduceri pentru perioade mai lungi), vezi bicicletele disponibile, le pui în coș, plătești și primești confirmarea.
-- **Contul**: clienții își văd rezervările și profilul; furnizorii își administrează firma, locațiile, bicicletele și rezervările, cu rolurile Proprietar și Moderator.
-- **Plăți și acte**: fiecare firmă încasează în propriul cont EuPlătesc. După plată, factura se emite printr-un API extern de facturare — fiecare locație are propria serie — iar Brevo trimite un rezumat atât clientului, cât și furnizorului.
+- **Rezervarea, pentru client.** Alegi orașul dintr-o listă așezată lângă o hartă desenată a României, apoi firma, punctul de ridicare, ora și durata. Prețurile și numărul de biciclete libere se actualizează pentru perioada aleasă, fără să se reîncarce pagina. Ora de ridicare și cea de retur trebuie să cadă în programul punctului, iar o zi de închiriere înseamnă aceeași oră locală a doua zi, inclusiv la trecerea la ora de vară sau de iarnă.
+- **Coșul este și pagina de plată.** Un coș conține bicicletele unei singure firme și ale unui singur punct de ridicare; dacă adaugi ceva de la altă firmă, ești întrebat dacă vrei să golești coșul. Accesoriile se adaugă la bicicleta lor. Poți plăti și fără cont: coșul se păstrează 30 de zile, se unește cu cel din cont la logare, iar comanda are o pagină proprie, accesibilă printr-un link privat primit pe e-mail. Totalul se recalculează pe server, iar dacă un preț s-a schimbat între timp ești întrebat din nou.
+- **Disponibilitate fără suprarezervări.** Fiecare bicicletă fizică este o unitate cu propriul calendar. La „Plătește”, unitățile sunt reținute 15 minute, iar după fiecare închiriere rămâne un timp de pregătire configurabil (pe firmă sau pe produs) înainte de următoarea. Baza de date însăși refuză două închirieri suprapuse pe aceeași unitate. Dacă o plată sosește după ce rezervarea a expirat, platforma încearcă să realoce bicicletele, iar dacă nu mai sunt libere, rambursează automat clientul.
+- **Plăți direct în contul firmei.** Fiecare firmă își conectează contul EuPlătesc sau Stripe din panou. Cheile se verifică la procesator la salvare, se păstrează criptate, iar în panou apare doar un indiciu mascat. Notificările de plată sunt verificate și procesate o singură dată, chiar dacă procesatorul le trimite de mai multe ori, iar o sumă diferită de cea cerută nu e acceptată ca plată.
+- **Facturi automate prin Oblio.** Fiecare firmă facturează din propriul cont Oblio și își alege seria dintr-o listă, cu posibilitatea unei serii diferite pentru fiecare punct de ridicare. După plată, factura se emite automat, în limba comenzii; la o rambursare totală sau parțială se emite stornarea. Factura, e-mailurile și rambursările trec printr-o coadă de joburi care reîncearcă singură, iar firma poate relua manual emiterea unei facturi din pagina comenzii.
+- **O firmă apare public doar când e gata.** Abia după ce are o metodă de plată și un cont Oblio verificate, firma și bicicletele ei devin vizibile clienților.
+- **Panoul firmei.** Produse (biciclete și accesorii) cu poze, stoc și pachete de durată proprii, de la o oră la o săptămână, cu preț redus opțional; puncte de ridicare cu adresă, coordonate și program; comenzi cu căutare, filtre, sortare și paginare; o agendă „Azi și mâine” cu ridicările și retururile pe ore și telefonul clientului; confirmarea comenzilor (automată sau manuală, la alegerea firmei), predarea și returul bicicletelor, anulări și rambursări parțiale.
+- **Roluri în echipă.** Proprietarul invită moderatori pe e-mail. Moderatorii lucrează cu agenda, comenzile și produsele, dar nu văd sumele, nu schimbă prețurile și pot rambursa doar până la o limită stabilită de proprietar. Cine lucrează pentru mai multe firme comută între ele dintr-un meniu.
+- **Rapoarte de vânzări.** Proprietarul vede încasările nete zi cu zi, pe un grafic, comenzile pe status, rata de anulare, plățile eșuate, top produse, gradul de ocupare al bicicletelor raportat la programul punctului și comenzile plătite fără factură, cu intervale rapide și export CSV.
+- **Panoul de administrare al platformei.** Vânzările pe toată platforma și topul orașelor, un tabel cu partenerii și stadiul fiecăruia (plăți, Oblio, produse, vizibil public), lista utilizatorilor cu posibilitatea de a vedea contul unui utilizator ca el, pentru suport, și un jurnal de audit al acțiunilor importante.
+- **Două limbi și cookie-uri cu acord.** Site-ul, e-mailurile și facturile sunt în română și engleză, cu adrese traduse pentru fiecare limbă. Statisticile (Umami) pornesc doar după acordul vizitatorului, iar paginile legale listează cookie-urile reale și durata lor.
+- **Un design propriu.** Identitatea vizuală pornește de la marcajele turistice de pe traseele montane din România: fiecare oraș are semnul lui, iar perioada aleasă stă pe un indicator de traseu fixat sus pe pagină. Paginile publice sunt gândite întâi pentru telefon, iar panourile au și temă întunecată.
 
 ## Sub capotă
 
-Autentificarea se face cu Supabase Auth (SSR), cu drepturile de administrator ca custom claims, iar Prisma vorbește cu Postgres. Pozele bicicletelor stau în Supabase Storage, coșul este un store bazat pe reducer, iar tabelele furnizorilor folosesc TanStack Table. Reîmprospătarea din 2025 l-a mutat pe Tailwind 4, a eliminat SWR, a înlocuit dinero.js cu o clasă proprie pentru bani și a trecut la ștergeri logice.
+Reconstrucția din 2026 a mutat proiectul pe Next.js 16, cu server actions, React 19 și Prisma 7 pe PostgreSQL. Autentificarea se face cu better-auth, fără parole: magic link pe e-mail, cu Google și Facebook opțional. Fiecare scriere trece printr-un singur strat care validează datele, verifică permisiunile pe firma activă și scrie în jurnalul de audit. Statusurile comenzii urmează o mașină de stări declarată o singură dată, așa că o comandă nu poate sări peste pași.
+
+Disponibilitatea se bazează pe intervale de timp în PostgreSQL și pe o constrângere de excludere, cu blocarea rândurilor la rezervare. Timpul se calculează mereu în ora României, iar banii printr-o clasă proprie, cu împărțire exactă la rambursări parțiale. Catalogul public stă în cache și se reîmprospătează la fiecare modificare din panou, deci paginile orașelor sunt statice și doar disponibilitatea se calculează live.
+
+Testele acoperă funcțiile de timp, bani și disponibilitate, procesatorii de plată și facturile, iar testele de integrare rulează pe un PostgreSQL real, inclusiv 20 de rezervări simultane pentru o singură bicicletă, din care trebuie să reușească exact una. Testele Playwright parcurg fluxul complet, de la alegerea orașului la plată, predare, retur și raportul de vânzări, pe desktop și pe mobil.
 
 ## Stadiu
 
-Un prototip funcțional, în jur de 500 de commit-uri, care mi-a format felul în care gândesc rezervările pentru mai multe firme. Multe dintre piesele lui trăiesc mai departe în proiectele de închirieri pe care le-am construit de atunci.
+Un prototip funcțional, în jur de 570 de commit-uri, dintre care aproape 200 în reconstrucția din 2026. Nu a fost lansat cu firme și clienți reali. Multe dintre piesele lui trăiesc mai departe în proiectele de închirieri pe care le-am construit, iar altele s-au întors în el din acele proiecte, cum e integrarea cu Oblio.
 
 ## Tehnologii
 
-Next.js 15, React 19, TypeScript, Supabase (Auth, Storage), Prisma, Tailwind CSS 4, shadcn/ui, TanStack Table, react-hook-form, EuPlătesc, Brevo, Cloudflare Turnstile.
+Next.js 16, React 19, TypeScript, PostgreSQL (Supabase), Prisma 7, better-auth, next-intl, Tailwind CSS 4, shadcn/ui, zustand, zod, react-hook-form, React Email, Brevo, EuPlătesc, Stripe, Oblio, Supabase Storage, Umami, Cloudflare Turnstile, Vitest, Playwright, Vercel.
