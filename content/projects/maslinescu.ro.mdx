@@ -1,10 +1,10 @@
 ---
-title: Măslinescu® — un magazin WooCommerce de ulei de măsline cu propria cameră de control
+title: Măslinescu® – un magazin WooCommerce de ulei de măsline cu propria cameră de control
 locale: ro
 kind: WooCommerce · Ops · în desfășurare
 url: https://maslinescu.ro
 description: Module WooCommerce dedicate, un asistent de cumpărături AI, statusuri de comandă sincronizate cu Fan Courier și monitorizare care anunță prima problemele.
-technologies: [WooCommerce, PHP 8.3, REST API, Fan Courier API, Cloudflare Workers, Grafana, Loki, GitHub Actions]
+technologies: [WooCommerce, PHP, REST API, Fan Courier API, Cloudflare Workers, Grafana, Loki, GitHub Actions]
 keywords: [maslinescu,woocommerce,program de fidelizare,modul wordpress,grafana,loki,monitorizare,hpos]
 date: November 2, 2026 12:00:00
 ---
@@ -30,7 +30,7 @@ Un magazin care crește devine fragil pe tăcute. O eroare fatală PHP în check
 
 ## Sub capotă
 
-Fiecare modul are namespace propriu, cere PHP 8.3+ și trece de `composer check`: PHPCS cu WordPress Coding Standards, PHPStan nivel 5 și PHPUnit cu WP_Mock. GitHub Actions rulează verificările pe PHP 8.4 și 8.5, construiește un `dist/` curat și publică ramura `stage` pe staging și `main` în producție.
+Fiecare modul are namespace propriu și trece de `composer check`: PHPCS cu WordPress Coding Standards, PHPStan nivel 5 și PHPUnit cu WP_Mock. GitHub Actions rulează verificările, construiește un `dist/` curat și publică ramura `stage` pe staging și `main` în producție.
 
 Pentru operațiuni, un mu-plugin mic trimite fiecare eveniment în **Loki** și doar erorile pe **Slack**, cu etichete puține și fără date personale în câmpurile indexate. **Grafana** și **Prometheus** rulează în Docker, în spatele unui Cloudflare Tunnel, cu dashboard-uri definite în fișiere. Pe același server rulează și căutarea Typesense a magazinului.
 
@@ -40,4 +40,4 @@ Problemele apar acum pe Slack înainte să ajungă la clienți, comenzile se act
 
 ## Tehnologii
 
-WordPress, WooCommerce (HPOS), PHP 8.3+, WooCommerce REST API, Action Scheduler, WP-CLI, Fan Courier API, Cloudflare Workers, Turnstile, Bunny Storage & Stream, Grafana, Loki, Prometheus, Docker, Cloudflare Tunnel, GitHub Actions.
+WordPress, WooCommerce (HPOS), PHP, WooCommerce REST API, Action Scheduler, WP-CLI, Fan Courier API, Cloudflare Workers, Turnstile, Bunny Storage & Stream, Grafana, Loki, Prometheus, Docker, Cloudflare Tunnel, GitHub Actions.

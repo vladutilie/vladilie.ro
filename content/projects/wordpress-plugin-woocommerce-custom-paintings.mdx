@@ -6,7 +6,7 @@ url: https://tablouricolorate.ro
 featuredImage: https://res.cloudinary.com/vladilie-ro/image/upload/v1702310608/projects/wordpress-plugin-woocommerce-custom-paintings/mgg5qngfe10gj5ehmkx5.jpg
 blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAmElEQVR4nGO4dxcE3r179/v3z7t37509c/r///83r13dsmDuq1evGG7dvPn79+//SODz1697t23bNHfOm7dvGV69evX////fYACRvnXzRl9fz7efv948fcLw7t27////fwMDiPTVK5eK83J+/PmzrK2ZASIK0Q0x4Mr5c3lpKW/evn16+zYDssV/wOzlHW0qDAwWDAzGDAwAajSZZYaVdA0AAAAASUVORK5CYII=
 description: How a WooCommerce product configurator went from jQuery to React to one dependency-free 12 KB script with server-side pricing.
-technologies: [WooCommerce, PHP 8.3, Vanilla JS, Canvas API, PHPStan, PHPUnit, GitHub Actions]
+technologies: [WooCommerce, PHP, Vanilla JS, Canvas API, PHPStan, PHPUnit, GitHub Actions]
 keywords: [wordpress plugin,woocommerce custom products,product configurator,photo upload woocommerce,vanilla javascript]
 date: November 9, 2026 12:00:00
 ---
@@ -35,7 +35,7 @@ In 2026 I replaced the five React apps with **one dependency-free vanilla JavaSc
 - **Uploads are hardened**: a MIME allowlist, image validation, a per-IP rate limit, and remote photos downloaded only from Facebook's CDN domains as SSRF protection.
 - Sizes moved from a custom table to product meta parsed from the product title, with a one-time migration that keeps the old table for rollback.
 - WordPress Coding Standards, **PHPStan level 5** with an empty baseline, and PHPUnit + WP_Mock tests for uploads, prices, sizes and multicanvas.
-- **GitHub Actions** runs PHPCS, PHPStan, PHPUnit and syntax checks on PHP 8.4 and 8.5, then builds and deploys to staging or production.
+- **GitHub Actions** runs PHPCS, PHPStan, PHPUnit and syntax checks, then builds and deploys to staging or production.
 
 ## Result
 
@@ -43,4 +43,4 @@ The configurator went from 520–730 KB to about 12 KB gzipped per page, with no
 
 ## Stack
 
-WordPress, WooCommerce, PHP 8.3+, vanilla JavaScript, Canvas API, Facebook JS SDK, PHPStan, PHPUnit, GitHub Actions.
+WordPress, WooCommerce, PHP, vanilla JavaScript, Canvas API, Facebook JS SDK, PHPStan, PHPUnit, GitHub Actions.

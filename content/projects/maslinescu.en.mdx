@@ -4,7 +4,7 @@ locale: en
 kind: WooCommerce · Ops · ongoing
 url: https://maslinescu.ro
 description: Custom WooCommerce plugins, an AI shopping assistant, order statuses synced with Fan Courier and monitoring that reports problems first.
-technologies: [WooCommerce, PHP 8.3, REST API, Fan Courier API, Cloudflare Workers, Grafana, Loki, GitHub Actions]
+technologies: [WooCommerce, PHP, REST API, Fan Courier API, Cloudflare Workers, Grafana, Loki, GitHub Actions]
 keywords: [maslinescu,woocommerce,loyalty program,wordpress plugin,ai shopping assistant,fan courier,grafana,loki,monitoring,hpos]
 date: November 2, 2026 12:00:00
 ---
@@ -30,7 +30,7 @@ A growing store gets fragile in quiet ways. A PHP fatal on checkout or an order 
 
 ## Under the hood
 
-Every plugin is namespaced, requires PHP 8.3+ and passes `composer check`: PHPCS with WordPress Coding Standards, PHPStan level 5 and PHPUnit with WP_Mock. GitHub Actions runs the checks on PHP 8.4 and 8.5, builds a clean `dist/` and deploys `stage` to staging and `main` to production.
+Every plugin is namespaced and passes `composer check`: PHPCS with WordPress Coding Standards, PHPStan level 5 and PHPUnit with WP_Mock. GitHub Actions runs the checks, builds a clean `dist/` and deploys `stage` to staging and `main` to production.
 
 For operations, a small mu-plugin sends every event to **Loki** and only errors to **Slack**, keeping labels low-cardinality and personal data out of indexed fields. **Grafana** and **Prometheus** run in Docker behind a Cloudflare Tunnel, with dashboards provisioned from files. The same server also hosts the store's Typesense search.
 
@@ -40,4 +40,4 @@ Problems now show up in Slack before they reach customers, orders update themsel
 
 ## Stack
 
-WordPress, WooCommerce (HPOS), PHP 8.3+, WooCommerce REST API, Action Scheduler, WP-CLI, Fan Courier API, Cloudflare Workers, Turnstile, Bunny Storage & Stream, Grafana, Loki, Prometheus, Docker, Cloudflare Tunnel, GitHub Actions.
+WordPress, WooCommerce (HPOS), PHP, WooCommerce REST API, Action Scheduler, WP-CLI, Fan Courier API, Cloudflare Workers, Turnstile, Bunny Storage & Stream, Grafana, Loki, Prometheus, Docker, Cloudflare Tunnel, GitHub Actions.
