@@ -54,6 +54,7 @@
     "jsxSingleQuote": true,
     "printWidth": 120,
     "trailingComma": "none",
+    "tailwindStylesheet": "./src/app/[locale]/globals.css",
     "plugins": [
       "prettier-plugin-tailwindcss"
     ]
