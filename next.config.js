@@ -12,7 +12,12 @@ const nextConfig = {
       { protocol: 'https', hostname: 'images-na.ssl-images-amazon.com' },
       { protocol: 'https', hostname: 'cf.geekdo-images.com' },
       { protocol: 'https', hostname: 'res.cloudinary.com' },
-      { protocol: 'https', hostname: 'gravatar.com' }
+      { protocol: 'https', hostname: 'gravatar.com' },
+      {
+        protocol: 'https',
+        hostname: 'cbibpkpntrsbliyvvjde.supabase.co',
+        pathname: '/storage/v1/object/public/projects/**'
+      }
     ]
   },
   redirects() {
