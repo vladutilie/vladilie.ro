@@ -20,15 +20,17 @@ const tech = [
   'WordPress',
   'WooCommerce',
   'PHP',
+  'WP-CLI',
   'Next.js',
   'React',
   'TypeScript',
   'Tailwind CSS',
-  'Prisma',
   'PostgreSQL',
   'Supabase',
   'Cloudflare',
-  'Docker'
+  'Docker',
+  'Git',
+  'Vercel'
 ];
 
 const rowLabel = 'text-content/70 font-mono text-[11.5px] tracking-[0.12em] uppercase';

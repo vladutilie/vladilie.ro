@@ -17,7 +17,7 @@ Live at **[vladilie.ro](https://vladilie.ro)**.
 | Database     | PostgreSQL (Supabase) via [Prisma 7](https://prisma.io) + `@prisma/adapter-pg`                            |
 | Validation   | [zod](https://zod.dev)                                                                                    |
 | Forms        | [react-hook-form](https://react-hook-form.com)                                                            |
-| Email        | [Brevo](https://brevo.com) transactional templates                                                        |
+| E-mail       | [Brevo](https://brevo.com) transactional templates                                                        |
 | Hosting      | [Vercel](https://vercel.com)                                                                              |
 
 ## Getting started

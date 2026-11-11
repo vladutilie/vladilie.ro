@@ -9,7 +9,7 @@ const cases = [
   {
     key: 'maslinescu',
     slug: 'maslinescu',
-    tags: ['WooCommerce', 'HPOS', 'AI assistant', 'Fan Courier API', 'Grafana', 'Loki'],
+    tags: ['WooCommerce', 'HPOS', 'AI assistant', 'Fan Courier API', 'WP-CLI', 'Cloudflare', 'Grafana', 'Loki'],
     visual: <MaslinescuVisual />,
     visualClassName: 'bg-ink flex-col justify-center gap-3.5'
   },

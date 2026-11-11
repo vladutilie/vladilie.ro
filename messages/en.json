@@ -20,15 +20,15 @@
   },
   "homepage": {
     "metadata": {
-      "title": "WooCommerce shops & Next.js products, built and kept running",
+      "title": "WooCommerce shops & Next.js projects, built and kept running",
       "description": "Software engineer from Romania. I build WooCommerce shops, custom WordPress plugins and Next.js products — and stay on after launch for updates, security and monitoring.",
       "keywords": "vlad ilie,software engineer,woocommerce,wordpress plugin,next.js,web developer romania,website maintenance,romanian localization"
     },
     "hero": {
       "available": "Available for new projects",
       "not-available": "Not taking new projects right now",
-      "title": "WooCommerce shops & Next.js products — built right, then <accent>kept running.</accent>",
-      "intro": "I'm Vlad, a software engineer. I build online shops, custom plugins and web products for businesses and NGOs — and stay on after launch to handle updates, security, monitoring and the 3 a.m. alerts.",
+      "title": "WooCommerce shops & Next.js projects — built right, then <accent>kept running.</accent>",
+      "intro": "I'm Vlad, a software engineer. I build online shops, custom WordPress plugins and web products for businesses and NGOs — and stay on after launch to handle updates, security, monitoring and the 3 a.m. alerts.",
       "cta-primary": "Tell me about your project",
       "cta-secondary": "See case studies",
       "promises": {
@@ -39,7 +39,7 @@
       "panel": {
         "title": "shop-ops · last 24h",
         "healthy": "healthy",
-        "chart": "Orders / hour",
+        "chart": "Orders/hour",
         "logs": {
           "checkout": "checkout · 0 PHP fatals in 24h",
           "stock": "stock low → posted to #shop-alerts",
@@ -67,11 +67,11 @@
         },
         "senior": {
           "value": "Senior",
-          "label": "Senior software engineer in agency teams, from Zitec to Platri IT GmbH"
+          "label": "Senior software engineer in agency teams, from Platri IT GmbH to Zitec"
         }
       },
       "clients": "Clients & partners",
-      "built-with": "Built with"
+      "built-with": "I build with"
     },
     "work": {
       "tag": "Selected work",
@@ -86,21 +86,21 @@
           "kicker": "WooCommerce · Ops · ongoing",
           "title": "Măslinescu® — an olive-oil shop with its own ops room",
           "problem": "A growing store where a silent PHP error or a blocked order email means lost sales — and nobody finds out until a customer calls.",
-          "built": "Custom plugins — an AI shopping assistant, order statuses synced automatically with Fan Courier, a tiered loyalty club that also counts in-store purchases, photo & video reviews — plus a Grafana + Loki stack with Slack alerts.",
+          "built": "Custom WP plugins — an AI shopping assistant, order statuses synced automatically with Fan Courier, a tiered loyalty club that also counts in-store purchases, photo & video reviews — plus a Grafana + Loki stack with Slack alerts.",
           "result": "Orders update themselves as parcels move, customers get product advice at any hour, and problems surface in Slack before anyone calls. Every plugin ships through PHPStan, tests and an automated deploy."
         },
         "tablouri": {
           "kicker": "WordPress plugin · Vanilla JS",
           "title": "TablouriColorate — a product configurator customers actually finish",
-          "problem": "After moving to WooCommerce, the canvas-print shop needed far richer product options. The jQuery version crawled during photo uploads, and the React rewrite that followed shipped 520–730 KB of JavaScript per page.",
+          "problem": "After moving to WooCommerce, the canvas-print shop needed far richer product options. The jQuery version crawled during photo uploads, and the React rewrite that followed shipped 520 – 730 KB of JavaScript per page.",
           "built": "One dependency-free configurator for six product types — canvas, multicanvas, collage, poster, banner and sticker — with crop previews drawn on canvas, prices computed on the server and hardened uploads.",
-          "result": "About 12 KB gzipped instead of 520–730 KB per page, one price formula shared by browser and server, and a new product that splits one photo across up to 12 canvases. On a maintenance plan since 2018."
+          "result": "About 12 KB gzipped instead of 520–730 KB per page, one price formula shared by browser and server, and a new product, the multi-panel canvas: one photo printed across several canvases (up to 12), with the customer choosing what each panel shows. On a maintenance plan since 2018."
         },
         "lumea": {
           "kicker": "Next.js · Pro-bono · NGO",
           "title": "Lumea BookTruck — volunteers upload from the field, no accounts needed",
           "problem": "The BookTruck mobile library of Cărțile pe Față lends books to children in rural schools — and every trip leaves hundreds of photos scattered across volunteers' phones and WhatsApp groups.",
-          "built": "A Next.js + Prisma + Better Auth panel for the catalogue, stock and loans (with ISBN scanning in the browser), plus one-link upload sessions that send files straight to the NGO's Google Drive in resumable chunks.",
+          "built": "A Next.js + Prisma + Better Auth panel for the catalogue, stock and loans (with ISBN scanning in the browser), plus one-link upload sessions that send files straight to the NGO's Google Drive in chunks that resume after an error.",
           "result": "One link per trip, files land organised in Drive, and large uploads never pass through — or overload — the server. Librarians and volunteers share one panel with role-based permissions."
         }
       },
@@ -154,7 +154,7 @@
         "ebikerent": {
           "kind": "Rentals · Next.js",
           "title": "E-BikeRent",
-          "body": "E-bike rentals in Bran–Moeciu: online booking and card payments, automatic invoices, refunds and stock in one admin panel."
+          "body": "E-bike rentals in Predeluț, Bran: online booking and card payments, automatic invoices, refunds and stock in one admin panel."
         },
         "gosup": {
           "kind": "Own product · Maps",
@@ -175,12 +175,12 @@
     },
     "services": {
       "tag": "How I can help",
-      "title": "Four ways to work together. Pick the one that sounds like your week.",
+      "title": "Four ways to work together. Pick the one that suits you",
       "fit": "Good fit if",
       "build": {
         "label": "Build",
         "title": "New shop or web product",
-        "body": "WooCommerce stores, custom plugins and Next.js apps — from MVP to production.",
+        "body": "WooCommerce stores, custom WP plugins and Next.js apps — from MVP to production.",
         "i1": "Custom WooCommerce features",
         "i2": "Payments (incl. EuPlătesc)",
         "i3": "Auth, storage, analytics",
@@ -207,7 +207,7 @@
       "localize": {
         "label": "Localize",
         "title": "Romanian localization",
-        "body": "Translation and proofreading for software, plugins and products.",
+        "body": "Translation and proofreading for software, WP plugins and products.",
         "i1": "WordPress / Weblate / Crowdin",
         "i2": "GTE-level QA",
         "i3": "Glossary consistency",
@@ -237,12 +237,12 @@
     "about": {
       "tag": "Who you'd work with",
       "title": "One engineer, start to finish. No account managers, no hand-offs.",
-      "p1": "I've shipped production software as a senior engineer in agency teams — Zitec, Platri IT GmbH, Mihaidev, Serchis, Brainic and 7Code — and as a one-person studio for shops, startups and NGOs. The same person who writes your code answers your email and watches your logs.",
+      "p1": "I've shipped production software as a senior engineer in agency teams — Zitec, Platri IT GmbH, MihaiDev, Serchis, Brainic and 7Code — and as a one-person studio for shops, startups and NGOs. The same person who writes your code answers your email and watches your logs.",
       "p2": "I'm drawn to work with social impact — education, culture, environment — and I run the infrastructure of the <cpf>Cărțile pe Față</cpf> association pro-bono.",
       "credentials": {
         "wporg": {
           "key": "WP.org",
-          "value": "General Translation Editor, WordPress Romanian (ro_RO), since 2019"
+          "value": "General Translation Editor, <link>WordPress Romanian (ro_RO)</link>, since 2019"
         },
         "neo4j": {
           "key": "Neo4j",
@@ -250,15 +250,15 @@
         },
         "npm": {
           "key": "npm",
-          "value": "Maintainer of the euplatesc library for EuPlătesc payments"
+          "value": "Maintainer of the euplatesc library for <link>EuPlătesc</link> payments"
         },
         "degree": {
           "key": "Degree",
-          "value": "Automation & Applied Informatics, Politehnica Timișoara"
+          "value": "Automation & Applied Informatics, <link>Politehnica Timișoara</link>"
         },
         "team": {
           "key": "Team",
-          "value": "WP-Translations.PRO member — Yoast, MailPoet, Polylang, ThemeIsle"
+          "value": "<link>WP-Translations.PRO</link> member — Yoast, MailPoet, Polylang, ThemeIsle"
         }
       },
       "localization": "Open-source tools I translate into Romanian"
@@ -273,7 +273,7 @@
           "hint": "Tell me what you sell or what the product does, and roughly when you want to launch. I'll come back with a fixed-scope proposal."
         },
         "rescue": {
-          "label": "Hacked / slow site",
+          "label": "Hacked/slow site",
           "hint": "Send the URL and what you're seeing. For a compromised site I start with containment the same day, then a written report of what happened."
         },
         "care": {
@@ -293,14 +293,14 @@
         "name": "Name",
         "email": "Email",
         "message": "Project in two lines",
-        "submit": "Send — reply within 1 working day",
+        "submit": "Send",
         "sending": "Sending…",
         "sent": "Thanks! Your message is on its way — I'll reply within one working day.",
         "failed": "The message couldn't be sent. Please try again or write to me by email.",
         "required": "This field is required.",
         "invalid-email": "Please enter a valid email address.",
         "too-short": "A couple of lines, please (at least 10 characters).",
-        "or-write": "Or write to <email>hello@vladilie.ro</email>"
+        "or-write": "I reply within one working day. Or write to <email>hello@vladilie.ro</email>"
       }
     }
   },
@@ -369,7 +369,7 @@
       "cards": {
         "service-custom-development": {
           "title": "Custom development",
-          "description": "A shop, a plugin or a web app built for what you need."
+          "description": "A shop, a WP plugin or a web app built for what you need."
         },
         "service-landing-page": {
           "title": "Presentation site",
@@ -381,7 +381,7 @@
         },
         "sw-i18n-l10n": {
           "title": "Romanian localization",
-          "description": "Translation and proofreading for software and plugins."
+          "description": "Translation and proofreading for software and WP plugins."
         },
         "service-job-opportunity": {
           "title": "Job opportunity",

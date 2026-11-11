@@ -20,15 +20,15 @@
   },
   "homepage": {
     "metadata": {
-      "title": "Magazine WooCommerce și produse Next.js, construite și întreținute",
-      "description": "Inginer software din România. Construiesc magazine WooCommerce, module WordPress la comandă și produse Next.js — și rămân după lansare pentru actualizări, securitate și monitorizare.",
+      "title": "Magazine WooCommerce și proiecte Next.js, construite și întreținute",
+      "description": "Inginer software din România. Construiesc magazine WooCommerce, module WordPress personalizate și produse Next.js – rămân după lansare pentru actualizări, securitate și monitorizare.",
       "keywords": "vlad ilie,inginer software,woocommerce,modul wordpress,next.js,programator web,mentenanță site,localizare în română"
     },
     "hero": {
       "available": "Disponibil pentru proiecte noi",
       "not-available": "Momentan nu preiau proiecte noi",
-      "title": "Magazine WooCommerce și produse Next.js — construite cum trebuie, apoi <accent>ținute în funcțiune.</accent>",
-      "intro": "Sunt Vlad, inginer software. Construiesc magazine online, module la comandă și produse web pentru firme și ONG-uri — și rămân și după lansare pentru actualizări, securitate, monitorizare și alertele de la 3 noaptea.",
+      "title": "Magazine WooCommerce și proiecte Next.js – construite cum trebuie, apoi <accent>ținute în funcțiune.</accent>",
+      "intro": "Sunt Vlad, inginer software. Construiesc magazine online, module WordPress personalizate și produse web pentru firme și ONG-uri – rămân și după lansare pentru actualizări, securitate, monitorizare și alertele de la 3 noaptea.",
       "cta-primary": "Spune-mi despre proiectul tău",
       "cta-secondary": "Vezi studiile de caz",
       "promises": {
@@ -39,23 +39,23 @@
       "panel": {
         "title": "shop-ops · ultimele 24h",
         "healthy": "funcțional",
-        "chart": "Comenzi / oră",
+        "chart": "Comenzi/oră",
         "logs": {
           "checkout": "checkout · 0 erori PHP fatale în 24h",
           "stock": "stoc redus → trimis în #shop-alerts",
           "mail": "e-mail · IP-ul de trimitere nu e pe liste negre",
           "backup": "backup · copia de noapte e completă"
         },
-        "caption": "Ilustrație a monitorizării pe care o rulez în spatele magazinelor clienților — erorile și problemele de e-mail ajung pe Slack înainte să le observe clienții."
+        "caption": "Ilustrație a monitorizării pe care o rulez în spatele magazinelor clienților – erorile și problemele de e-mail ajung pe Slack înainte să le observe clienții."
       },
-      "commits": "{count, plural, =1 {<commits>1</commits> comitere} few {<commits>#</commits> comiteri} other {<commits>#</commits> de comiteri}} pe GitHub în ultimele 7 zile"
+      "commits": "{count, plural, =1 {<commits>1</commits> comitere} few {<commits>#</commits> comiteri} other {<commits>#</commits> de comiteri}} în GitHub în ultimele 7 zile"
     },
     "proof": {
       "label": "Pe scurt",
       "stats": {
         "studio": {
           "value": "2019",
-          "label": "Anul de când am propriul studio — Vlad Ilie Development SRL"
+          "label": "Anul de când am propriul studio – Vlad Ilie Development SRL"
         },
         "maintained": {
           "value": "8+",
@@ -67,11 +67,11 @@
         },
         "senior": {
           "value": "Senior",
-          "label": "Inginer software senior în echipe de agenție, de la Zitec la Platri IT GmbH"
+          "label": "Inginer software senior în echipe de agenție, de la Platri IT GmbH la Zitec"
         }
       },
       "clients": "Clienți și parteneri",
-      "built-with": "Construit cu"
+      "built-with": "Construiesc cu"
     },
     "work": {
       "tag": "Proiecte alese",
@@ -84,23 +84,23 @@
       "cases": {
         "maslinescu": {
           "kicker": "WooCommerce · Operațiuni · în desfășurare",
-          "title": "Măslinescu® — un magazin de ulei de măsline cu propria cameră de control",
-          "problem": "Un magazin în creștere, în care o eroare PHP tăcută sau un e-mail de comandă blocat înseamnă vânzări pierdute — și nimeni nu află până nu sună un client.",
-          "built": "Module la comandă — un asistent de cumpărături AI, statusuri de comandă sincronizate automat cu Fan Courier, un club de fidelitate pe niveluri care numără și cumpărăturile din magazinul fizic, recenzii cu poze și video — plus Grafana și Loki cu alerte pe Slack.",
+          "title": "Măslinescu® – un magazin de ulei de măsline cu propria cameră de control",
+          "problem": "Un magazin în creștere, în care o eroare PHP tăcută sau un e-mail de comandă blocat înseamnă vânzări pierdute – și nimeni nu află până nu sună un client.",
+          "built": "Module WP personalizate – un asistent de cumpărături AI, statusuri de comandă sincronizate automat cu Fan Courier, un club de fidelitate pe niveluri care numără și cumpărăturile din magazinul fizic, recenzii cu poze și video – plus Grafana și Loki cu alerte pe Slack.",
           "result": "Comenzile se actualizează singure pe măsură ce coletele se mișcă, clienții primesc recomandări la orice oră, iar problemele apar pe Slack înainte să sune cineva. Fiecare modul trece prin PHPStan, teste și deploy automat."
         },
         "tablouri": {
           "kicker": "Modul WordPress · JavaScript simplu",
-          "title": "TablouriColorate — un configurator de produse pe care clienții chiar îl duc la capăt",
-          "problem": "După trecerea pe WooCommerce, magazinul de tablouri canvas avea nevoie de mult mai multe opțiuni. Versiunea în jQuery se târa la încărcarea pozelor, iar rescrierea în React care a urmat aducea 520–730 KB de JavaScript pe pagină.",
-          "built": "Un singur configurator fără dependențe pentru șase tipuri de produse — canvas, multicanvas, colaj, poster, banner și autocolant — cu previzualizarea decupajului desenată pe canvas, prețuri calculate pe server și încărcări securizate.",
-          "result": "Circa 12 KB comprimat în loc de 520–730 KB pe pagină, aceeași formulă de preț în browser și pe server, plus un produs nou care împarte o poză pe până la 12 tablouri. În mentenanță din 2018."
+          "title": "TablouriColorate – un configurator de produse pe care clienții chiar îl duc la capăt",
+          "problem": "După trecerea pe WooCommerce, magazinul de tablouri canvas avea nevoie de mult mai multe opțiuni. Versiunea în jQuery se târa la încărcarea pozelor, iar rescrierea în React care a urmat aducea 520 – 730 KB de JavaScript pe pagină.",
+          "built": "Un singur configurator fără dependențe pentru șase tipuri de produse – canvas, multicanvas, colaj, poster, banner și autocolant – cu previzualizarea decupajului desenată pe canvas, prețuri calculate pe server și încărcări securizate.",
+          "result": "Circa 12 KB comprimat în loc de 520 – 730 KB pe pagină, aceeași formulă de preț în browser și pe server, plus un produs nou, tabloul multicanvas: o singură fotografie printată pe mai multe pânze (până la 12), cu zona fiecărei piese aleasă de client. În mentenanță din 2018."
         },
         "lumea": {
           "kicker": "Next.js · Pro bono · ONG",
-          "title": "Lumea BookTruck — voluntarii încarcă poze de pe teren, fără conturi",
-          "problem": "Biblioteca mobilă BookTruck a asociației Cărțile pe Față împrumută cărți copiilor din școlile rurale — iar după fiecare drum rămân sute de poze împrăștiate prin telefoanele voluntarilor și grupurile de WhatsApp.",
-          "built": "Un panou Next.js + Prisma + Better Auth pentru catalog, stoc și împrumuturi (cu scanarea ISBN-ului direct în browser), plus sesiuni de încărcare printr-un singur link care trimit fișierele direct în Google Drive-ul asociației, în bucăți reluabile.",
+          "title": "Lumea BookTruck – voluntarii încarcă poze de pe teren, fără conturi",
+          "problem": "Biblioteca mobilă BookTruck a asociației Cărțile pe Față împrumută cărți copiilor din școlile rurale – iar după fiecare drum rămân sute de poze împrăștiate prin telefoanele voluntarilor și grupurile de WhatsApp.",
+          "built": "Un panou Next.js + Prisma + Better Auth pentru catalog, stoc și împrumuturi (cu scanarea ISBN-ului direct în browser), plus sesiuni de încărcare printr-un singur link care trimit fișierele direct în Google Drive-ul asociației, în bucăți care se pot relua în caz de eroare.",
           "result": "Un link pentru fiecare drum, fișierele ajung organizate în Drive, iar încărcările mari nu trec niciodată prin server și nici nu-l supraîncarcă. Bibliotecarii și voluntarii lucrează în același panou, cu permisiuni pe roluri."
         }
       },
@@ -154,7 +154,7 @@
         "ebikerent": {
           "kind": "Închirieri · Next.js",
           "title": "E-BikeRent",
-          "body": "Închirieri de biciclete electrice în Bran–Moeciu: rezervare și plată online cu cardul, facturi automate, rambursări și stoc într-un singur panou."
+          "body": "Închirieri de biciclete electrice în Predeluț, Bran: rezervare și plată online cu cardul, facturi automate, rambursări și stoc într-un singur panou."
         },
         "gosup": {
           "kind": "Produs propriu · Hărți",
@@ -175,13 +175,13 @@
     },
     "services": {
       "tag": "Cum te pot ajuta",
-      "title": "Patru moduri de a lucra împreună. Alege-l pe cel care seamănă cu săptămâna ta.",
+      "title": "Patru moduri de a lucra împreună. Alege-l pe cel care ți se potrivește",
       "fit": "Potrivit dacă",
       "build": {
         "label": "Construire",
         "title": "Magazin sau produs web nou",
-        "body": "Magazine WooCommerce, module la comandă și aplicații Next.js — de la MVP la producție.",
-        "i1": "Funcționalități WooCommerce la comandă",
+        "body": "Magazine WooCommerce, module WP personalizate și aplicații Next.js – de la MVP la producție.",
+        "i1": "Funcționalități WooCommerce personalizate",
         "i2": "Plăți (inclusiv EuPlătesc)",
         "i3": "Autentificare, stocare, statistici",
         "fit": "ai o idee clară și ai nevoie de cineva care s-o livreze cum trebuie."
@@ -207,7 +207,7 @@
       "localize": {
         "label": "Localizare",
         "title": "Localizare în limba română",
-        "body": "Traducere și corectură pentru software, module și produse.",
+        "body": "Traducere și corectură pentru software, module WP și produse.",
         "i1": "WordPress / Weblate / Crowdin",
         "i2": "Verificare la nivel de GTE",
         "i3": "Glosar consecvent",
@@ -231,18 +231,18 @@
       },
       "launch": {
         "title": "Lansare și mentenanță",
-        "body": "Publicare, monitorizare și documentație. Apoi, opțional, un plan de mentenanță — nu dispar după lansare."
+        "body": "Publicare, monitorizare și documentație. Apoi, opțional, un plan de mentenanță – nu dispar după lansare."
       }
     },
     "about": {
       "tag": "Cu cine ai lucra",
       "title": "Un singur inginer, de la început până la final. Fără account manageri, fără predări.",
-      "p1": "Am livrat software în producție ca inginer senior în echipele unor agenții — Zitec, Platri IT GmbH, Mihaidev, Serchis, Brainic și 7Code — și ca studio de un singur om pentru magazine, startup-uri și ONG-uri. Aceeași persoană care îți scrie codul îți răspunde la e-mailuri și îți urmărește log-urile.",
-      "p2": "Mă atrag proiectele cu impact social — educație, cultură, mediu — și administrez pro bono infrastructura asociației <cpf>Cărțile pe Față</cpf>.",
+      "p1": "Am livrat software în producție ca inginer senior în echipele unor agenții – Zitec, Platri IT GmbH, MihaiDev, Serchis, Brainic și 7Code – și ca studio de un singur om pentru magazine, startup-uri și ONG-uri. Aceeași persoană care îți scrie codul îți răspunde la e-mailuri și îți urmărește log-urile.",
+      "p2": "Mă atrag proiectele cu impact social – educație, cultură, mediu – și administrez pro bono infrastructura asociației <cpf>Cărțile pe Față</cpf>.",
       "credentials": {
         "wporg": {
           "key": "WP.org",
-          "value": "General Translation Editor, WordPress în română (ro_RO), din 2019"
+          "value": "General Translation Editor, <link>WordPress în română (ro_RO)</link>, din 2019"
         },
         "neo4j": {
           "key": "Neo4j",
@@ -250,22 +250,22 @@
         },
         "npm": {
           "key": "npm",
-          "value": "Autorul bibliotecii euplatesc pentru plăți prin EuPlătesc"
+          "value": "Autorul bibliotecii euplatesc pentru plăți prin <link>EuPlătesc</link>"
         },
         "degree": {
           "key": "Studii",
-          "value": "Automatică și Informatică Aplicată, Politehnica Timișoara"
+          "value": "Automatică și Informatică Aplicată, <link>Politehnica Timișoara</link>"
         },
         "team": {
           "key": "Echipă",
-          "value": "Membru WP-Translations.PRO — Yoast, MailPoet, Polylang, ThemeIsle"
+          "value": "Membru <link>WP-Translations.PRO</link> – Yoast, MailPoet, Polylang, ThemeIsle"
         }
       },
       "localization": "Unelte open-source pe care le traduc în română"
     },
     "contact": {
       "title": "La ce lucrezi?",
-      "body": "Alege ce ți se potrivește, scrie două rânduri și primești răspuns în cel mult o zi lucrătoare — cu întrebări sau o primă estimare.",
+      "body": "Alege ce ți se potrivește, scrie două rânduri și primești răspuns în cel mult o zi lucrătoare – cu întrebări sau o primă estimare.",
       "need-help-with": "Am nevoie de ajutor cu",
       "services": {
         "build": {
@@ -273,12 +273,12 @@
           "hint": "Spune-mi ce vinzi sau ce face produsul și cam când vrei să-l lansezi. Revin cu o propunere cu scop fix."
         },
         "rescue": {
-          "label": "Site spart / lent",
+          "label": "Site spart/lent",
           "hint": "Trimite adresa site-ului și ce observi. La un site compromis încep cu izolarea problemei în aceeași zi, apoi îți trimit un raport scris despre ce s-a întâmplat."
         },
         "care": {
           "label": "Mentenanță lunară",
-          "hint": "Trimite adresa site-ului. Fac o verificare rapidă și îți propun un plan de mentenanță potrivit — actualizări, backup-uri, monitorizare și modificări mici."
+          "hint": "Trimite adresa site-ului. Fac o verificare rapidă și îți propun un plan de mentenanță potrivit – actualizări, backup-uri, monitorizare și modificări mici."
         },
         "l10n": {
           "label": "Traducere în română",
@@ -286,21 +286,21 @@
         },
         "other": {
           "label": "Altceva",
-          "hint": "O idee de MVP, o integrare, o a doua părere despre o ofertă primită — scrie două rânduri și vedem dacă sunt omul potrivit."
+          "hint": "O idee de MVP, o integrare, o a doua părere despre o ofertă primită – scrie două rânduri și vedem dacă sunt omul potrivit."
         }
       },
       "form": {
         "name": "Nume",
         "email": "E-mail",
         "message": "Proiectul în două rânduri",
-        "submit": "Trimite — răspuns în 1 zi lucrătoare",
-        "sending": "Se trimite…",
-        "sent": "Mulțumesc! Mesajul a plecat — îți răspund în cel mult o zi lucrătoare.",
+        "submit": "Trimite",
+        "sending": "Trimit…",
+        "sent": "Mulțumesc! Mesajul a plecat – îți răspund în cel mult o zi lucrătoare.",
         "failed": "Mesajul nu a putut fi trimis. Încearcă din nou sau scrie-mi pe e-mail.",
         "required": "Câmpul este obligatoriu.",
         "invalid-email": "Introdu o adresă de e-mail validă.",
         "too-short": "Câteva rânduri, te rog (minimum 10 caractere).",
-        "or-write": "Sau scrie-mi la <email>hello@vladilie.ro</email>"
+        "or-write": "Răspund într-o zi lucrătoare. Sau scrie-mi la <email>hello@vladilie.ro</email>"
       }
     }
   },
@@ -332,7 +332,7 @@
       "404-error": "Eroare 404"
     },
     "title": "Proiecte",
-    "description": "Studii de caz: problema, ce am construit și ce s-a schimbat — de la magazine WooCommerce la produse Next.js și unelte pentru ONG-uri.",
+    "description": "Studii de caz: problema, ce am construit și ce s-a schimbat – de la magazine WooCommerce la produse Next.js și unelte pentru ONG-uri.",
     "no-projects": "Momentan nu sunt articole despre proiecte.  🤷🏻‍♂️",
     "reading-time": "{minutes} min de citit",
     "views": "{count, plural, =0 {0 vizualizări} =1 {o vizualizare} few {# vizualizări} other {# de vizualizări}}",
@@ -350,7 +350,7 @@
     "form": {
       "first-name": "Prenume",
       "last-name": "Nume",
-      "email": "Email",
+      "email": "E-mail",
       "phone": "Telefon",
       "service": "Serviciu necesar",
       "service-custom-development": "👨🏼‍💻 Dezvoltare personalizată",
@@ -368,8 +368,8 @@
       "send-failed": "Din păcate trimiterea a eșuat. Te rog reîncearcă.",
       "cards": {
         "service-custom-development": {
-          "title": "Dezvoltare la comandă",
-          "description": "Un magazin, un modul sau o aplicație web construite pentru nevoile tale."
+          "title": "Dezvoltare personalizată",
+          "description": "Un magazin, un modul WP sau o aplicație web construite pentru nevoile tale."
         },
         "service-landing-page": {
           "title": "Site de prezentare",
@@ -381,7 +381,7 @@
         },
         "sw-i18n-l10n": {
           "title": "Localizare în română",
-          "description": "Traducere și corectură pentru software și module."
+          "description": "Traducere și corectură pentru software și module WP."
         },
         "service-job-opportunity": {
           "title": "Oportunitate de job",
@@ -389,7 +389,7 @@
         },
         "just-say-hi": {
           "title": "Doar un salut",
-          "description": "Fără proiect — doar o întrebare sau un salut."
+          "description": "Fără proiect – doar o întrebare sau un salut."
         }
       }
     }
@@ -404,7 +404,7 @@
     "lead": "Cum e făcut site-ul: designul, tehnologiile pe care rulează și unde se află codul.",
     "design": {
       "title": "Design",
-      "p1": "Designul actual, din 2026, a fost generat de Claude și transpus în cod cu Claude Code: dovezile pe primul loc — studii de caz cu problema, ce am construit și ce s-a schimbat — pe fundaluri de tip hârtie și cerneală, cu linii fine în loc de umbre și un singur albastru, #3598DB. Fiecare pagină are temă luminoasă și întunecată.",
+      "p1": "Designul actual, din 2026, a fost generat de Claude și transpus în cod cu Claude Code: dovezile pe primul loc – studii de caz cu problema, ce am construit și ce s-a schimbat – pe fundaluri de tip hârtie și cerneală, cu linii fine în loc de umbre și un singur albastru, #3598DB. Fiecare pagină are temă luminoasă și întunecată.",
       "p2": "Titlurile și textul folosesc <schibsted>Schibsted Grotesk</schibsted>, iar etichetele, cifrele și codul <plex>IBM Plex Mono</plex>. Ambele sunt servite prin next/font, fără cereri către Google în timpul navigării."
     },
     "stack": {
@@ -505,7 +505,7 @@
       "title": "✨ AI",
       "claude": {
         "name": "Claude",
-        "description": "Partener de gândire pentru documentare, scris și design — designul din 2026 al acestui site a pornit de la un artefact Claude."
+        "description": "Partener de gândire pentru documentare, scris și design – designul din 2026 al acestui site a pornit de la un artefact Claude."
       },
       "claude-code": {
         "name": "Claude Code (CLI)",
@@ -615,7 +615,7 @@
     "welcome": "Bine ai venit pe site-ul meu!",
     "cap1": {
       "title": "1. Informații colectate",
-      "p1": "Atunci când utilizezi formularul de contact de pe site-ul meu, îți solicit să furnizezi următoarele informații: prenume, nume, adresă de email, număr de telefon, mesaj.",
+      "p1": "Atunci când utilizezi formularul de contact de pe site-ul meu, îți solicit să furnizezi următoarele informații: prenume, nume, adresă de e-mail, număr de telefon, mesaj.",
       "p2": "Aceste informații sunt colectate exclusiv în scopul oferirii de servicii sau răspunsului la întrebările și solicitările tale.",
       "p3": "Pe măsură ce navighezi pe site-ul meu, pot fi colectate automat informații non-personale, cum ar fi adresele IP, tipul de browser, paginile vizitate și altele, în scopuri statistice și de îmbunătățire a experienței utilizatorilor."
     },
@@ -720,11 +720,11 @@
         "category": "Strict necesar"
       },
       "analytics": {
-        "type": "Fără cookie sau stocare — un script care trimite afișările de pagină",
+        "type": "Fără cookie sau stocare – un script care trimite afișările de pagină",
         "provider": "Vercel Inc.",
         "purpose": "Numără vizitele pe fiecare pagină, cu site-ul de proveniență, țara, browserul și tipul de dispozitiv, ca să știu ce pagini sunt utile. Vizitatorii nu sunt identificați și nu sunt urmăriți pe alte site-uri.",
         "duration": "Nu se păstrează nimic în browserul tău",
-        "category": "Statistici — doar cu acordul tău"
+        "category": "Statistici – doar cu acordul tău"
       }
     },
     "not-used": {
