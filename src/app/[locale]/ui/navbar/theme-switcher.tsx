@@ -1,54 +1,48 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 
-import moon from '@/../public/images/moon.svg';
-import sun from '@/../public/images/sun.svg';
+const Sun: React.FC = () => (
+  <svg viewBox='0 0 24 24' width='16' height='16' fill='none' stroke='currentColor' strokeWidth='2' aria-hidden>
+    <circle cx='12' cy='12' r='4' />
+    <path
+      strokeLinecap='round'
+      d='M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41'
+    />
+  </svg>
+);
+
+const Moon: React.FC = () => (
+  <svg viewBox='0 0 24 24' width='16' height='16' fill='none' stroke='currentColor' strokeWidth='2' aria-hidden>
+    <path strokeLinejoin='round' d='M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z' />
+  </svg>
+);
 
 export const ThemeSwitcher: React.FC = () => {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const t = useTranslations('navbar');
+  // The resolved theme is only known in the browser, so the icon has to wait
+  // for hydration to avoid a server/client mismatch.
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <div className='flex h-10 w-10 items-center justify-center'>
-        <Image src={sun} width={24} height={24} alt='moon' />
-      </div>
-    );
-  }
+  const isDark = 'dark' === resolvedTheme;
+  // The icon shows the theme you switch *to*: the sun in dark mode, the moon in light mode.
+  const label = mounted ? t(isDark ? 'switch-to-light' : 'switch-to-dark') : t('switch-theme');
 
   return (
-    <div className='flex items-center justify-between'>
-      <span className='md:hidden'>{t('switch-theme')}</span>
-      <button
-        className='relative flex cursor-pointer items-center justify-center gap-x-2 overflow-hidden p-2'
-        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      >
-        <Image
-          src={moon}
-          width={24}
-          height={24}
-          alt='moon'
-          className={`transition-transform duration-300 ${theme === 'light' ? 'translate-x-none' : '-translate-x-8'}`}
-        />
-        <Image
-          src={sun}
-          width={24}
-          height={24}
-          alt='sun'
-          className={`absolute w-6 transition-transform duration-300 ${
-            theme === 'light' ? '-translate-x-8' : 'translate-x-none'
-          }`}
-        />
-      </button>
-    </div>
+    <button
+      className='grid h-8 w-8 cursor-pointer place-items-center rounded-full border border-hairline-strong text-content transition-colors hover:border-content'
+      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      title={label}
+      aria-label={label}
+    >
+      {mounted ? isDark ? <Sun /> : <Moon /> : <span className='h-4 w-4' />}
+    </button>
   );
 };

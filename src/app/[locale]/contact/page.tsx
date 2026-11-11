@@ -1,8 +1,10 @@
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';
+import { everyLocale, localeAlternates } from '@/lib/alternates';
 import { Form } from './ui/form';
+import { Page, PageHeader } from '../ui/page-header';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -10,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   const commonFields = { title: t('title'), description: t('description') };
 
   return {
-    alternates: { canonical: ('ro' === locale ? '/ro/' : '') + getPathname({ locale, href: '/contact' }) },
+    alternates: localeAlternates(locale, everyLocale('/contact')),
     ...commonFields,
     keywords: t('metadata.keywords'),
     openGraph: {
@@ -31,15 +33,17 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   };
 }
 
-export default async function Contact() {
+export default async function Contact({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const t = await getTranslations('contact');
 
   return (
-    <main className='container mx-auto max-w-7xl gap-8 px-4 py-32'>
-      <h1>{t('title')}</h1>
-      <p>{t('description')}</p>
+    <Page>
+      <PageHeader title={t('title')} lead={t('description')} />
 
       <Form />
-    </main>
+    </Page>
   );
 }

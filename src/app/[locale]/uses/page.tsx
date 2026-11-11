@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';
+import { everyLocale, localeAlternates } from '@/lib/alternates';
+import { GroupHeading, Page, PageHeader } from '../ui/page-header';
 const environment = [
   ['environment.desk.name', 'environment.desk.description'],
   ['environment.chair.name', 'environment.chair.description'],
@@ -19,11 +21,18 @@ const hardware = [
   'hardware.mic'
 ];
 
+const ai = [
+  ['ai.claude.name', 'ai.claude.description'],
+  ['ai.claude-code.name', 'ai.claude-code.description'],
+  ['ai.claude-in-chrome.name', 'ai.claude-in-chrome.description'],
+  ['ai.chatgpt.name', 'ai.chatgpt.description']
+];
+
 const software = [
   ['software.vscode.name', 'software.vscode.description'],
   'software.postman',
   ['software.chrome.name', 'software.chrome.description'],
-  'software.neo4j',
+  ['software.ddev.name', 'software.ddev.description'],
   'software.signal',
   'software.slack'
 ];
@@ -34,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   const commonFields = { title: t('title'), description: t('description') };
 
   return {
-    alternates: { canonical: ('ro' === locale ? '/ro/' : '') + getPathname({ locale, href: '/uses' }) },
+    alternates: localeAlternates(locale, everyLocale('/uses')),
     ...commonFields,
     keywords: t('metadata.keywords'),
     openGraph: {
@@ -55,73 +64,41 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   };
 }
 
-export default async function Uses() {
+export default async function Uses({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const t = await getTranslations('uses');
 
   return (
-    <main className='container mx-auto max-w-7xl gap-8 px-4 py-32'>
-      <h1>{t('title')}</h1>
-      <p>{t('description')}</p>
+    <Page>
+      <PageHeader title={t('title')} lead={t('description')} />
 
-      <h2 className='mt-8 text-3xl'>{t('environment.title')}</h2>
-      <ul className='list-inside list-disc space-y-2'>
-        {environment.map((item) => {
-          if (Array.isArray(item)) {
-            return (
-              <li key={item[0]}>
-                <p className='inline'>{t(item[0])}</p>
-                <span className='block text-sm text-gray-500'>{t(item[1])}</span>
-              </li>
-            );
-          }
+      <div className='grid gap-14'>
+        {(
+          [
+            ['environment', environment],
+            ['hardware', hardware],
+            ['ai', ai],
+            ['software', software]
+          ] as const
+        ).map(([key, items]) => (
+          <section key={key}>
+            <GroupHeading>{t(`${key}.title`)}</GroupHeading>
 
-          return (
-            <li key={item} className='text-gray-600 dark:text-gray-300'>
-              {t(item)}
-            </li>
-          );
-        })}
-      </ul>
-
-      <h2 className='mt-8 text-3xl'>{t('hardware.title')}</h2>
-      <ul className='list-inside list-disc space-y-2'>
-        {hardware.map((item) => {
-          if (Array.isArray(item)) {
-            return (
-              <li key={item[0]}>
-                <p className='inline'>{t(item[0])}</p>
-                <span className='block text-sm text-gray-500'>{t(item[1])}</span>
-              </li>
-            );
-          }
-
-          return (
-            <li key={item} className='text-gray-600 dark:text-gray-300'>
-              {t(item)}
-            </li>
-          );
-        })}
-      </ul>
-
-      <h2 className='mt-8 text-3xl'>{t('software.title')}</h2>
-      <ul className='list-inside list-disc space-y-2'>
-        {software.map((item) => {
-          if (Array.isArray(item)) {
-            return (
-              <li key={item[0]}>
-                <p className='inline'>{t(item[0])}</p>
-                <span className='block text-sm text-gray-500'>{t(item[1])}</span>
-              </li>
-            );
-          }
-
-          return (
-            <li key={item} className='text-gray-600 dark:text-gray-300'>
-              {t(item)}
-            </li>
-          );
-        })}
-      </ul>
-    </main>
+            <ul className='grid gap-px border-y border-hairline bg-hairline'>
+              {items.map((item) => (
+                <li key={Array.isArray(item) ? item[0] : item} className='bg-surface px-4 py-4 sm:px-6'>
+                  <p className='my-0 font-medium text-content'>{t(Array.isArray(item) ? item[0] : item)}</p>
+                  {Array.isArray(item) ? (
+                    <span className='mt-1 block text-sm text-content/60'>{t(item[1])}</span>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </Page>
   );
 }

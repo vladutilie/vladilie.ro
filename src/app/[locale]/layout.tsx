@@ -1,5 +1,5 @@
-import { Analytics } from '@vercel/analytics/next';
 import { Metadata } from 'next';
+import { IBM_Plex_Mono, Schibsted_Grotesk } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -9,15 +9,29 @@ import './globals.css';
 import { Footer } from './ui/footer';
 import { Navbar } from './ui/navbar';
 import { ThemeProvider } from './ui/theme-provider';
+import { ConsentProvider } from './ui/consent/consent-provider';
+import { TranslationsProvider } from './ui/navbar/translations';
+import { documentTranslations } from '@/lib/content';
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
-  const { locale } = await params;
+const schibstedGrotesk = Schibsted_Grotesk({
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+  variable: '--font-schibsted-grotesk'
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+  weight: ['400', '500'],
+  variable: '--font-ibm-plex-mono'
+});
+
+export async function generateMetadata(): Promise<Metadata> {
   const title = { template: `%s | ${process.env.NEXT_PUBLIC_SITE_NAME}`, default: process.env.NEXT_PUBLIC_SITE_NAME! };
 
   return {
     title,
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL!),
-    alternates: { canonical: 'ro' === locale ? '/ro' : '/', languages: { 'en-US': '/', 'ro-RO': '/ro' } },
     verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SEARCH_CONSOLE_ID },
 
     // Keep the title template for child pages format.
@@ -51,14 +65,17 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body className='transition-colors dark:bg-gray-950'>
+    <html lang={locale} suppressHydrationWarning className={`${schibstedGrotesk.variable} ${ibmPlexMono.variable}`}>
+      <body className='bg-surface font-sans text-content transition-colors duration-300'>
         <NextIntlClientProvider locale={locale} messages={messages} timeZone='Europe/Bucharest'>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-            <Navbar />
-            {children}
-            <Footer />
-            <Analytics />
+            <ConsentProvider>
+              <TranslationsProvider translations={documentTranslations()}>
+                <Navbar />
+              </TranslationsProvider>
+              {children}
+              <Footer />
+            </ConsentProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

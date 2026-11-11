@@ -4,80 +4,87 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import { Link } from '@/i18n/routing';
-import { Logo } from './icons';
-import { Pages } from '@/lib/constants';
+import { CookieSettingsButton } from './consent/cookie-banner';
+import { SocialLinks } from './social-links';
 import sal from '@/../public/images/anpc-sal.webp';
 import sol from '@/../public/images/anpc-sol.webp';
+
+const pages = ['/projects', '/blog', '/contact', '/uses', '/books', '/boardgames', '/locations', '/colophon'] as const;
+const legal = ['/terms', '/privacy', '/cookie-policy'] as const;
+
+const linkClasses = 'text-content/85 transition-colors hover:text-accent';
 
 export const Footer: React.FC = () => {
   const t = useTranslations();
 
   return (
-    <footer className='bg-gray-50 dark:bg-slate-900'>
-      <div className='container mx-auto grid max-w-7xl grid-cols-3 gap-4 px-4 py-16 md:py-20 2xl:py-24'>
-        <div className='col-span-3 flex flex-col gap-y-4 md:col-span-1'>
-          <Logo />
-          <div>
-            <p className='my-0 text-sm font-medium'>{process.env.NEXT_PUBLIC_COMPANY_NAME}</p>
-            <p className='my-0 text-sm'>{process.env.NEXT_PUBLIC_ADDRESS}</p>
-            <p className='my-0 text-sm'>{t('footer.vat-id', { vatId: process.env.NEXT_PUBLIC_VAT_ID! })}</p>
-            <p className='my-0 text-sm'>{t('footer.trade-reg-no', { regNo: process.env.NEXT_PUBLIC_REG_NO! })}</p>
+    <footer className='border-t border-hairline'>
+      <div className='mx-auto flex max-w-[1200px] flex-wrap justify-between gap-8 px-6 py-12 text-sm'>
+        <div>
+          <p className='my-0 font-mono text-[12.5px] leading-[1.8] text-content/75'>
+            {process.env.NEXT_PUBLIC_COMPANY_NAME}
+            <br />
+            {t('footer.vat-id', { vatId: process.env.NEXT_PUBLIC_VAT_ID! })} ·{' '}
+            {t('footer.trade-reg-no', { regNo: process.env.NEXT_PUBLIC_REG_NO! })}
+            <br />
+            {process.env.NEXT_PUBLIC_ADDRESS}
+          </p>
+
+          <div className='mt-4 -ml-2'>
+            <SocialLinks />
           </div>
         </div>
 
-        <ul className='col-span-3 flex flex-col gap-y-2 md:col-span-1'>
-          {Object.values(Pages).map((page) => (
-            <li key={page}>
-              <Link href={`/${page}`}>{t(`${page}.title`)}</Link>
-            </li>
+        <nav aria-label={t('footer.nav-al')} className='flex max-w-[640px] flex-wrap content-start gap-x-6 gap-y-2.5'>
+          {pages.map((page) => (
+            <Link key={page} href={page} className={linkClasses}>
+              {t(`${page.slice(1)}.title`)}
+            </Link>
           ))}
-        </ul>
+          {legal.map((page) => (
+            <Link key={page} href={page} className={linkClasses}>
+              {t(`${page.slice(1)}.title`)}
+            </Link>
+          ))}
+          <CookieSettingsButton className={linkClasses} />
+          <a href='https://anpc.ro' target='_blank' rel='noreferrer' className={linkClasses}>
+            ANPC
+          </a>
+        </nav>
+      </div>
 
-        <ul className='col-span-3 flex flex-col gap-y-2 md:col-span-1'>
-          <li>
-            <Link href='/terms'>{t('terms.title')}</Link>
-          </li>
-          <li>
-            <Link href='/privacy'>{t('privacy.title')}</Link>
-          </li>
-          <li>
-            <a href='https://anpc.ro' target='_blank' className="after:content-['_↗']">
-              ANPC
-            </a>
-          </li>
-          <li>
-            <a href='https://anpc.ro/ce-este-sal' target='_blank' aria-label={t('footer.sal-al')}>
-              <Image
-                src={sal}
-                alt=''
-                placeholder='blur'
-                width={250}
-                height={62}
-                className='opacity-40 transition-opacity duration-300 hover:opacity-100'
-              />
-            </a>
-          </li>
-          <li>
-            <a
-              href='https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO'
-              target='_blank'
-              aria-label={t('footer.sol-al')}
-            >
-              <Image
-                src={sol}
-                alt=''
-                placeholder='blur'
-                width={250}
-                height={62}
-                className='opacity-40 transition-opacity duration-300 hover:opacity-100'
-              />
-            </a>
-          </li>
-        </ul>
-
-        <p className='col-span-3 mt-4 border-t pt-4 text-center text-sm text-gray-500'>
+      <div className='mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-4 px-6 pb-10'>
+        <span className='font-mono text-xs text-content/70'>
           {t('footer.copyright', { year: new Date().getFullYear(), siteName: process.env.NEXT_PUBLIC_SITE_NAME! })}
-        </p>
+        </span>
+
+        <div className='flex flex-wrap gap-2'>
+          <a href='https://anpc.ro/ce-este-sal' target='_blank' rel='noreferrer' aria-label={t('footer.sal-al')}>
+            <Image
+              src={sal}
+              alt=''
+              placeholder='blur'
+              width={160}
+              height={40}
+              className='opacity-40 transition-opacity duration-300 hover:opacity-100'
+            />
+          </a>
+          <a
+            href='https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO'
+            target='_blank'
+            rel='noreferrer'
+            aria-label={t('footer.sol-al')}
+          >
+            <Image
+              src={sol}
+              alt=''
+              placeholder='blur'
+              width={160}
+              height={40}
+              className='opacity-40 transition-opacity duration-300 hover:opacity-100'
+            />
+          </a>
+        </div>
       </div>
     </footer>
   );

@@ -3,98 +3,315 @@
     "go-to-homepage-al": "Mergi la prima pagină",
     "burger-menu-al": "Meniu burger",
     "about": "Despre",
-    "education": "Educație",
-    "skills": "Abilități",
     "projects": "Proiecte",
-    "testimonials": "Testimoniale",
     "services": "Servicii",
     "blog": "Blog",
     "contact": "Contact",
     "switch-theme": "Schimbă temă",
     "change-language": "Schimbă limba",
-    "change-language-to": "Change language to {lang}"
+    "change-language-to": "Change language to {lang}",
+    "work": "Proiecte",
+    "close-menu-al": "Închide meniul",
+    "get-a-quote": "Cere o ofertă",
+    "process": "Proces",
+    "not-translated": "This page isn't available in {lang}.",
+    "switch-to-light": "Treci pe tema luminoasă",
+    "switch-to-dark": "Treci pe tema întunecată"
   },
   "homepage": {
     "metadata": {
-      "title": "Inginer software · Lucrez cu NodeJS, WordPress, Neo4j",
-      "description": "Construiesc soluții software dedicate cu JavaScript, WordPress, Neo4j, Tailwind CSS și multe alte platforme și tehnologii conexe.",
-      "keywords": "vlad,ilie,software,inginer,web developer,wordpress,nodejs,nextjs,tailwind,javascript"
+      "title": "Magazine WooCommerce și proiecte Next.js, construite și întreținute",
+      "description": "Inginer software din România. Construiesc magazine WooCommerce, module WordPress personalizate și produse Next.js – rămân după lansare pentru actualizări, securitate și monitorizare.",
+      "keywords": "vlad ilie,inginer software,woocommerce,modul wordpress,next.js,programator web,mentenanță site,localizare în română"
     },
     "hero": {
-      "hello": "Salut, aici Vlad {emoji}",
-      "about": "Sunt <strong>Inginer Software</strong> și locuiesc în România. <strong>Certificat <neo4j>Neo4j</neo4j></strong>, fan NextJS, pasionat de <strong>WordPress</strong> și JavaScript. Întrețin site-urile <strong><cpf>Cărțile pe Față</cpf></strong>. Acum mă aflu în <locations>{city}</locations>, dar adeseori călătoresc.",
       "available": "Disponibil pentru proiecte noi",
-      "not-available": "Indisponibil pentru proiecte noi",
-      "commits": "{count, plural, =0 {<commits>0</commits> comiteri} =1 {<commits>1</commits> comitere} few {<commits>#</commits> comiteri} other {<commits>#</commits> de comiteri}} în ultimele 7 zile",
-      "link-to-al": "Legătură către {socialNetwork}",
-      "neo4j-certificate": "Certificat Neo4j",
-      "location-history": "Istoric locații"
+      "not-available": "Momentan nu preiau proiecte noi",
+      "title": "Magazine WooCommerce și proiecte Next.js – construite cum trebuie, apoi <accent>ținute în funcțiune.</accent>",
+      "intro": "Sunt Vlad, inginer software. Construiesc magazine online, module WordPress personalizate și produse web pentru firme și ONG-uri – rămân și după lansare pentru actualizări, securitate, monitorizare și alertele de la 3 noaptea.",
+      "cta-primary": "Spune-mi despre proiectul tău",
+      "cta-secondary": "Vezi studiile de caz",
+      "promises": {
+        "fixed-scope": "Oferte cu scop fix",
+        "invoice": "Firmă din România",
+        "reply": "Răspuns în cel mult o zi lucrătoare"
+      },
+      "panel": {
+        "title": "shop-ops · ultimele 24h",
+        "healthy": "funcțional",
+        "chart": "Comenzi/oră",
+        "logs": {
+          "checkout": "checkout · 0 erori PHP fatale în 24h",
+          "stock": "stoc redus → trimis în #shop-alerts",
+          "mail": "e-mail · IP-ul de trimitere nu e pe liste negre",
+          "backup": "backup · copia de noapte e completă"
+        },
+        "caption": "Ilustrație a monitorizării pe care o rulez în spatele magazinelor clienților – erorile și problemele de e-mail ajung pe Slack înainte să le observe clienții."
+      },
+      "commits": "{count, plural, =1 {<commits>1</commits> comitere} few {<commits>#</commits> comiteri} other {<commits>#</commits> de comiteri}} în GitHub în ultimele 7 zile"
     },
-    "about": {
-      "tag": "Despre mine",
-      "title": "Mai multe despre mine",
-      "image-alt": "Vlad în munți",
-      "p1": "În ultimii cinci ani, am lucrat cu tehnologii bazate pe JavaScript, cu accent pe NextJS, NodeJS și Tailwind CSS. Această perioadă a fost marcată de dezvoltarea și integrarea unui spectru divers de soluții pentru baze de date, stocare, managementul utilizatorilor și analiza datelor.",
-      "p2": "Am lucrat cu startup-uri, ajutând la crearea de MVP-uri și la lansarea lor pe piață. În același timp, am cultivat proiecte personale de tip SaaS în care am investit creativitate și inovație.",
-      "p3": "În sfera web, mi-am asumat responsabilitatea pentru întreținerea site-urilor WordPress cu angajamentul de a asigura buna funcționare a acestora. În plus, sunt implicat pro-bono în întreținerea infrastructurii web a Asociației Culturale Carțile pe Față.",
-      "p4": "Sunt implicat în comunitatea WordPress în diverse moduri: sunt Editor General de Traduceri (GTE) pentru limba română, și contribui la eliminarea barierei lingvistice și la facilitarea accesului la WordPress pentru un public mai larg. De asemenea, prin implicarea mea și în echipa WP-Translations PRO, promovez traduceri de înaltă calitate. De asemenea, contribui la localizarea altor software-uri open-source pe diverse platforme precum Crowdin, Weblate, Transifex, Lokalise și chiar GitHub.",
-      "p5": "Mențin biblioteca NPM „euplatesc” pentru integrarea serviciului de plată EuPlătesc.",
-      "p6": "Sunt atras de proiecte care au un impact semnificativ asupra societății, în special în domenii precum mediul, educația, activismul și ONG-urile. Sunt hotărât să pun tehnologia în slujba unor cauze mari și să ajut la construirea unui viitor mai bun pentru toți.",
-      "see-more": "Vezi mai mult ˅",
-      "see-less": "Vezi mai puțin ˄"
+    "proof": {
+      "label": "Pe scurt",
+      "stats": {
+        "studio": {
+          "value": "2019",
+          "label": "Anul de când am propriul studio – Vlad Ilie Development SRL"
+        },
+        "maintained": {
+          "value": "8+",
+          "label": "Site-uri WordPress și WooCommerce ale clienților în mentenanță activă"
+        },
+        "gte": {
+          "value": "GTE",
+          "label": "General Translation Editor pentru WordPress în limba română din 2019"
+        },
+        "senior": {
+          "value": "Senior",
+          "label": "Inginer software senior în echipe de agenție, de la Platri IT GmbH la Zitec"
+        }
+      },
+      "clients": "Clienți și parteneri",
+      "built-with": "Construiesc cu"
     },
-    "education": {
-      "tag": "Educație",
-      "neo4j": {
-        "title": "Profesionist certificat Neo4j",
-        "subtitle": "Neo4j",
-        "interval": "2022",
-        "description": "Împins de entuziasmul unui proiect bazat pe recomandări de informații relaționale, am urmat și absolvit cursurile GraphAcademy oferite de Neo4j. Poți vedea <url>certificatul</url>."
+    "work": {
+      "tag": "Proiecte alese",
+      "title": "Problema, ce am construit, ce s-a schimbat.",
+      "all": "Toate proiectele",
+      "problem": "Problema",
+      "built": "Ce am construit",
+      "result": "Rezultatul",
+      "read": "Citește studiul de caz",
+      "cases": {
+        "maslinescu": {
+          "kicker": "WooCommerce · Operațiuni · în desfășurare",
+          "title": "Măslinescu® – un magazin de ulei de măsline cu propria cameră de control",
+          "problem": "Un magazin în creștere, în care o eroare PHP tăcută sau un e-mail de comandă blocat înseamnă vânzări pierdute – și nimeni nu află până nu sună un client.",
+          "built": "Module WP personalizate – un asistent de cumpărături AI, statusuri de comandă sincronizate automat cu Fan Courier, un club de fidelitate pe niveluri care numără și cumpărăturile din magazinul fizic, recenzii cu poze și video – plus Grafana și Loki cu alerte pe Slack.",
+          "result": "Comenzile se actualizează singure pe măsură ce coletele se mișcă, clienții primesc recomandări la orice oră, iar problemele apar pe Slack înainte să sune cineva. Fiecare modul trece prin PHPStan, teste și deploy automat."
+        },
+        "tablouri": {
+          "kicker": "Modul WordPress · JavaScript simplu",
+          "title": "TablouriColorate – un configurator de produse pe care clienții chiar îl duc la capăt",
+          "problem": "După trecerea pe WooCommerce, magazinul de tablouri canvas avea nevoie de mult mai multe opțiuni. Versiunea în jQuery se târa la încărcarea pozelor, iar rescrierea în React care a urmat aducea 520 – 730 KB de JavaScript pe pagină.",
+          "built": "Un singur configurator fără dependențe pentru șase tipuri de produse – canvas, multicanvas, colaj, poster, banner și autocolant – cu previzualizarea decupajului desenată pe canvas, prețuri calculate pe server și încărcări securizate.",
+          "result": "Circa 12 KB comprimat în loc de 520 – 730 KB pe pagină, aceeași formulă de preț în browser și pe server, plus un produs nou, tabloul multicanvas: o singură fotografie printată pe mai multe pânze (până la 12), cu zona fiecărei piese aleasă de client. În mentenanță din 2018."
+        },
+        "lumea": {
+          "kicker": "Next.js · Pro bono · ONG",
+          "title": "Lumea BookTruck – voluntarii încarcă poze de pe teren, fără conturi",
+          "problem": "Biblioteca mobilă BookTruck a asociației Cărțile pe Față împrumută cărți copiilor din școlile rurale – iar după fiecare drum rămân stoc de urmărit, restituiri de recuperat și poze împrăștiate prin telefoanele voluntarilor și grupurile de WhatsApp.",
+          "built": "Un panou Next.js + Prisma + Better Auth pentru catalog, stoc pe locații și împrumuturi – un ISBN scanat direct din browser și o confirmare –, plus sesiuni de încărcare printr-un singur link care trimit fișierele direct în Google Drive-ul asociației, în bucăți care se reiau după o eroare.",
+          "result": "Un link pentru fiecare drum, fișierele ajung organizate în Drive, iar încărcările mari nu trec niciodată prin server și nici nu-l supraîncarcă. Bibliotecarii și voluntarii lucrează în același panou, cu permisiuni pe roluri."
+        }
       },
-      "bachelor-degree": {
-        "title": "Diplomă de licență",
-        "subtitle": "Universitatea Politehnica Timișoara | România",
-        "interval": "2013-2017",
-        "description": "Am urmat cursurile de zi ale Facultății de Automatică și Calculatoare din cadrul universității, studiind Automatică și Informatică Aplicată timp de 4 ani."
-      },
-      "oracle": {
-        "title": "Arhitectura și programarea bazelor de date cu SQL",
-        "subtitle": "Liceul Teoretic \"Mihai Viteazul\" | Caracal, România",
-        "interval": "2009-2013",
-        "description": "În timpul liceului, am participat la un curs intensiv oferit de Oracle. Acesta a reprezentat nu doar o oportunitate de a-mi dezvolta abilități tehnice solide, dar și un pas semnificativ în direcția pasiunii mele pentru tehnologia informației."
-      },
-      "high-school": {
-        "title": "Liceu",
-        "subtitle": "Liceul Teoretic \"Mihai Viteazul\" | Caracal, România",
-        "interval": "2009-2013",
-        "description": "Am studiat matematica și informatica intensiv."
+      "visuals": {
+        "maslinescu": {
+          "tier": "Cunoscător",
+          "spent": "lei anul acesta",
+          "progress": "Transport gratuit deblocat · urmează Ambasador",
+          "log-stock": "stoc redus · Extravirgin 3L → #shop-alerts",
+          "log-mail": "dnsbl · IP-ul de trimitere e curat"
+        },
+        "tablouri": {
+          "photo": "Poza ta",
+          "size": "Dimensiune",
+          "options": "Finisaj · Filtru · Design",
+          "finish": "Mat",
+          "filter": "Alb-negru",
+          "design": "Serviciu de design",
+          "add-to-cart": "Adaugă în coș"
+        },
+        "lumea": {
+          "volunteer": "voluntar",
+          "trip": "Drumul #14 · Încărcări",
+          "folder": "Drum-14"
+        }
       }
     },
-    "skills": {
-      "tag": "Abilități",
-      "description": "Tehnologiile pe care le folosesc și cu care m-am format ca dezvoltator software de-a lungul timpului:"
+    "more": {
+      "title": "Am mai livrat",
+      "items": {
+        "booktruck": {
+          "kind": "ONG · Strângere de fonduri",
+          "title": "BookTruck",
+          "body": "Site de strângere de fonduri pentru biblioteca mobilă: donații unice și lunare sincronizate în fiecare noapte, campanii de donații cu aprobare, licitații caritabile online, comenzi de carte cu facturi automate și panou de administrare."
+        },
+        "tedx": {
+          "kind": "Eveniment · Next.js",
+          "title": "TEDxZorilor",
+          "body": "Arhiva tuturor edițiilor, invitaților și discursurilor, cu un panou în care voluntarii editează doar conferințele care le-au fost date."
+        },
+        "slam": {
+          "kind": "Sport · Modul WordPress",
+          "title": "Baschet Club SLAM",
+          "body": "Înscrieri pentru o academie de baschet pentru copii: confirmare prin SMS, adeverințe medicale în stocare privată, evidența cotizațiilor și reamintiri."
+        },
+        "transilvaniacar": {
+          "kind": "Închirieri auto · Next.js",
+          "title": "TransilvaniaCar",
+          "body": "Rezervare în trei limbi cu preț instant, verificat din nou pe server, și un panou pentru flotă, prețuri și rezervări."
+        },
+        "ebikerent": {
+          "kind": "Închirieri · Next.js",
+          "title": "E-BikeRent",
+          "body": "Închirieri de biciclete electrice în Predeluț, Bran: rezervare și plată online cu cardul, facturi automate, rambursări și stoc într-un singur panou."
+        },
+        "gosup": {
+          "kind": "Produs propriu · Hărți",
+          "title": "GoSUP",
+          "body": "O hartă a comunității cu locuri de lansare pentru stand-up paddle, cu căutare care ignoră diacriticele, recenzii și moderare."
+        },
+        "movelo": {
+          "kind": "Prototip · Marketplace",
+          "title": "movelo",
+          "body": "Un marketplace de închirieri de biciclete pentru mai multe firme: fiecare încasează direct în contul ei EuPlătesc sau Stripe și facturează automat prin Oblio."
+        },
+        "contadocs": {
+          "kind": "SaaS · încheiat",
+          "title": "ContaDocs",
+          "body": "Contabilii primeau documentele clienților direct în dosare Google Drive organizate pe luni. Next.js, autentificare prin SMS."
+        }
+      }
     },
-    "projects": { "tag": "Proiecte", "see-all": "Vezi toate proiectele" },
-    "sw-l10n": {
-      "title": "Localizare software",
-      "description": "Proiecte software pentru care întrețin traducerile în limba română.",
-      "cron-job": "De peste 15 ani, asigură ritmul inimii pentru zeci de mii de site-uri web și execută milioane de cronjob-uri în fiecare zi.",
-      "discourse": "Software open-source pentru forumuri, care alimentează peste 20 000 de comunități online de toate formele și dimensiunile.",
-      "homebrew": "Homebrew instalează lucrurile de care ai nevoie și pe care Apple (sau sistemul tău Linux) nu le are. Poate fi folosit pentru a instala aplicații macOS, fonturi, module și alte software-uri non-open-source.",
-      "poedit": "Un editor de traducere puternic și intuitiv pentru Windows, macOS și Linux, folosit de peste 66 000 de oameni în fiecare lună.",
-      "tldraw": "O tablă digitală colaborativă. Poți folosi tldraw pentru a crea o tablă albă integrată pentru produsul tău sau ca bază pe care să îți construiești aplicațiile pe o pânză infinită.",
-      "weblate": "Serviciu găzduit și instrument autonom de traducere cu strânsă integrare a controlului versiunilor. Folosit de peste 2 500 de proiecte software și companii din peste 165 de țări.",
-      "wordpress": "Din 2019, sunt Editor general de traduceri, furnizând traduceri în română pentru nucleul WordPress, teme, module, aplicații mobile și site-uri web secundare WordPress.",
-      "wp-cli": "WP-CLI este interfața de linie de comandă pentru WordPress. Poți actualiza module, configura instalări multisite și multe altele, fără a utiliza un navigator web.",
-      "wp-translations": "Fac parte din echipa WP-Translations.PRO și ofer traduceri în limba română și corecții pentru companii precum Yoast, MailPoet, Polylang, ThemeIsle.",
-      "quote": "<contact>Scrie-mi</contact> dacă ai nevoie de o ofertă cu privire la traducerile proiectului tău în limba română."
+    "services": {
+      "tag": "Cum te pot ajuta",
+      "title": "Patru moduri de a lucra împreună. Alege-l pe cel care ți se potrivește",
+      "fit": "Potrivit dacă",
+      "build": {
+        "label": "Construire",
+        "title": "Magazin sau produs web nou",
+        "body": "Magazine WooCommerce, module WP personalizate și aplicații Next.js – de la MVP la producție.",
+        "i1": "Funcționalități WooCommerce personalizate",
+        "i2": "Plăți (inclusiv EuPlătesc)",
+        "i3": "Autentificare, stocare, statistici",
+        "fit": "ai o idee clară și ai nevoie de cineva care s-o livreze cum trebuie."
+      },
+      "rescue": {
+        "label": "Salvare",
+        "title": "Site spart, lent sau stricat",
+        "body": "Intervenție și reparații pentru site-uri WordPress care afectează afacerea.",
+        "i1": "Curățare malware și securizare",
+        "i2": "Reparații de bază de date și viteză",
+        "i3": "Livrabilitatea e-mailurilor",
+        "fit": "ceva e stricat chiar acum și trebuie reparat săptămâna asta."
+      },
+      "care": {
+        "label": "Mentenanță",
+        "title": "Mentenanță lunară",
+        "body": "Am grijă de site ca să nu mai fie nevoie să te gândești la el.",
+        "i1": "Actualizări și backup-uri",
+        "i2": "Monitorizarea disponibilității și a erorilor",
+        "i3": "Modificări mici incluse",
+        "fit": "site-ul aduce bani și nu își permite să cadă."
+      },
+      "localize": {
+        "label": "Localizare",
+        "title": "Localizare în limba română",
+        "body": "Traducere și corectură pentru software, module WP și produse.",
+        "i1": "WordPress / Weblate / Crowdin",
+        "i2": "Verificare la nivel de GTE",
+        "i3": "Glosar consecvent",
+        "fit": "lansezi un produs pentru utilizatori din România."
+      }
+    },
+    "process": {
+      "tag": "Proces",
+      "title": "Fără surprize la scop, preț sau predare.",
+      "call": {
+        "title": "Un apel scurt",
+        "body": "30 de minute ca să înțeleg obiectivul, constrângerile și ce înseamnă „gata”."
+      },
+      "scope": {
+        "title": "Scop scris",
+        "body": "O propunere cu scop fix, preț și termen. Știi costul înainte să înceapă lucrul."
+      },
+      "build": {
+        "title": "Lucru la vedere",
+        "body": "Site de test din prima săptămână și actualizări regulate, ca feedback-ul să vină devreme."
+      },
+      "launch": {
+        "title": "Lansare și mentenanță",
+        "body": "Publicare, monitorizare și documentație. Apoi, opțional, un plan de mentenanță – nu dispar după lansare."
+      }
+    },
+    "about": {
+      "tag": "Cu cine ai lucra",
+      "title": "Un singur inginer, de la început până la final. Fără account manageri, fără predări.",
+      "p1": "Am livrat software în producție ca inginer senior în echipele unor agenții – Zitec, Platri IT GmbH, MihaiDev, Serchis, Brainic și 7Code – și ca studio de un singur om pentru magazine, startup-uri și ONG-uri. Aceeași persoană care îți scrie codul îți răspunde la e-mailuri și îți urmărește log-urile.",
+      "p2": "Mă atrag proiectele cu impact social – educație, cultură, mediu – și administrez pro bono infrastructura asociației <cpf>Cărțile pe Față</cpf>.",
+      "credentials": {
+        "wporg": {
+          "key": "WP.org",
+          "value": "General Translation Editor, <link>WordPress în română (ro_RO)</link>, din 2019"
+        },
+        "neo4j": {
+          "key": "Neo4j",
+          "value": "Neo4j Certified Professional, 2022"
+        },
+        "npm": {
+          "key": "npm",
+          "value": "Autorul bibliotecii euplatesc pentru plăți prin <link>EuPlătesc</link>"
+        },
+        "degree": {
+          "key": "Studii",
+          "value": "Automatică și Informatică Aplicată, <link>Politehnica Timișoara</link>"
+        },
+        "team": {
+          "key": "Echipă",
+          "value": "Membru <link>WP-Translations.PRO</link> – Yoast, MailPoet, Polylang, ThemeIsle"
+        }
+      },
+      "localization": "Unelte open-source pe care le traduc în română"
+    },
+    "contact": {
+      "title": "La ce lucrezi?",
+      "body": "Alege ce ți se potrivește, scrie două rânduri și primești răspuns în cel mult o zi lucrătoare – cu întrebări sau o primă estimare.",
+      "need-help-with": "Am nevoie de ajutor cu",
+      "services": {
+        "build": {
+          "label": "Magazin sau produs nou",
+          "hint": "Spune-mi ce vinzi sau ce face produsul și cam când vrei să-l lansezi. Revin cu o propunere cu scop fix."
+        },
+        "rescue": {
+          "label": "Site spart/lent",
+          "hint": "Trimite adresa site-ului și ce observi. La un site compromis încep cu izolarea problemei în aceeași zi, apoi îți trimit un raport scris despre ce s-a întâmplat."
+        },
+        "care": {
+          "label": "Mentenanță lunară",
+          "hint": "Trimite adresa site-ului. Fac o verificare rapidă și îți propun un plan de mentenanță potrivit – actualizări, backup-uri, monitorizare și modificări mici."
+        },
+        "l10n": {
+          "label": "Traducere în română",
+          "hint": "Trimite proiectul sau fișierele de traducere. Traduc și corectez cu standardele pe care le aplic ca GTE pentru WordPress în română."
+        },
+        "other": {
+          "label": "Altceva",
+          "hint": "O idee de MVP, o integrare, o a doua părere despre o ofertă primită – scrie două rânduri și vedem dacă sunt omul potrivit."
+        }
+      },
+      "form": {
+        "name": "Nume",
+        "email": "E-mail",
+        "message": "Proiectul în două rânduri",
+        "submit": "Trimite",
+        "sending": "Trimit…",
+        "sent": "Mulțumesc! Mesajul a plecat – îți răspund în cel mult o zi lucrătoare.",
+        "failed": "Mesajul nu a putut fi trimis. Încearcă din nou sau scrie-mi pe e-mail.",
+        "required": "Câmpul este obligatoriu.",
+        "invalid-email": "Introdu o adresă de e-mail validă.",
+        "too-short": "Câteva rânduri, te rog (minimum 10 caractere).",
+        "or-write": "Răspund într-o zi lucrătoare. Sau scrie-mi la <email>hello@vladilie.ro</email>"
+      }
     }
   },
   "locations": {
-    "metadata": { "keywords": "lucru de la distanță,locuri,românia,locație,istoric,cluj-napoca" },
+    "metadata": {
+      "keywords": "lucru de la distanță,locuri,românia,locație,istoric,cluj-napoca"
+    },
     "title": "Istoric locații",
     "description": "Locuri în care am fost, din care am lucrat sau pe care le-am vizitat. Din decembrie 2022 🎁.",
-    "visited": "{visitCounter, plural, =1 {Vizitat: o dată} few {Vizitat de: # ori} other {Vizitat de: # de ori}} · Ultima vizită: <lastVisit>{lastVisitAt}</lastVisit>"
+    "visited": "{visitCounter, plural, =1 {Vizitat: o dată} few {Vizitat de: # ori} other {Vizitat de: # de ori}} · Ultima vizită: <lastVisit>{lastVisitAt}</lastVisit>",
+    "count": "{count, plural, =0 {Niciun loc} =1 {1 loc} few {# locuri} other {# de locuri}}"
   },
   "blog": {
     "metadata": {
@@ -106,7 +323,8 @@
     "search-placeholder": "Tastează și caută...",
     "views": "{count, plural, =0 {0 vizualizări} =1 {o vizualizare} few {# vizualizări} other {# de vizualizări}}",
     "no-posts": "Momentan nu există articole. Rămâi aproape.",
-    "reading-time": "{minutes} min de citit"
+    "reading-time": "{minutes} min de citit",
+    "count": "{count, plural, =0 {Niciun articol} =1 {1 articol} few {# articole} other {# de articole}}"
   },
   "projects": {
     "metadata": {
@@ -114,13 +332,14 @@
       "404-error": "Eroare 404"
     },
     "title": "Proiecte",
-    "description": "Proiecte remarcabile pe care le-am implementat:",
+    "description": "Studii de caz: problema, ce am construit și ce s-a schimbat – de la magazine WooCommerce la produse Next.js și unelte pentru ONG-uri.",
     "no-projects": "Momentan nu sunt articole despre proiecte.  🤷🏻‍♂️",
     "reading-time": "{minutes} min de citit",
     "views": "{count, plural, =0 {0 vizualizări} =1 {o vizualizare} few {# vizualizări} other {# de vizualizări}}",
     "technologies": "Tehnologii:",
     "share": "Partajează pe:",
-    "share-on": "Partajează pe {network}"
+    "share-on": "Partajează pe {network}",
+    "count": "{count, plural, =0 {Niciun studiu de caz} =1 {1 studiu de caz} few {# studii de caz} other {# de studii de caz}}"
   },
   "contact": {
     "metadata": {
@@ -131,10 +350,9 @@
     "form": {
       "first-name": "Prenume",
       "last-name": "Nume",
-      "email": "Email",
+      "email": "E-mail",
       "phone": "Telefon",
       "service": "Serviciu necesar",
-      "choose-service": "Alege...",
       "service-custom-development": "👨🏼‍💻 Dezvoltare personalizată",
       "service-landing-page": "🚀 Pagină de prezentare",
       "sw-i18n-l10n": "🌐 Internaționalizare/localizare software",
@@ -147,45 +365,160 @@
       "submit": "Trimite",
       "please-wait": "Te rog așteaptă...",
       "message-sent": "Mulțumesc! 🙏🏻 Mesajul tău a fost trimis.",
-      "send-failed": "Din păcate trimiterea a eșuat. Te rog reîncearcă."
+      "send-failed": "Din păcate trimiterea a eșuat. Te rog reîncearcă.",
+      "cards": {
+        "service-custom-development": {
+          "title": "Dezvoltare personalizată",
+          "description": "Un magazin, un modul WP sau o aplicație web construite pentru nevoile tale."
+        },
+        "service-landing-page": {
+          "title": "Site de prezentare",
+          "description": "Un site rapid și clar pentru o firmă, un eveniment sau o cauză."
+        },
+        "service-maintenance": {
+          "title": "Mentenanță",
+          "description": "Actualizări, backup-uri, monitorizare și reparații pentru un site existent."
+        },
+        "sw-i18n-l10n": {
+          "title": "Localizare în română",
+          "description": "Traducere și corectură pentru software și module WP."
+        },
+        "service-job-opportunity": {
+          "title": "Oportunitate de job",
+          "description": "Un post sau o colaborare pe termen lung despre care vrei să vorbim."
+        },
+        "just-say-hi": {
+          "title": "Doar un salut",
+          "description": "Fără proiect – doar o întrebare sau un salut."
+        }
+      }
     }
   },
   "colophon": {
     "metadata": {
-      "description": "Despre cum a fost construit site-ul, stiva de tehnologii folosite și codul sursă.",
-      "keywords": "colofon,design,cod sursă site,nextjs,supabase,planetscale,mdx,tailwind,typescript,vercel"
+      "description": "Cum este construit site-ul: designul, tehnologiile folosite și codul sursă.",
+      "keywords": "colofon,design,cod sursă site,nextjs,react,tailwind,typescript,next-intl,prisma,supabase,vercel"
     },
     "title": "Colofon",
-    "p1": "Designul site-ului meu este inspirat de <url>Sagar Shah</url>.",
-    "p2": "Stiva tehnologică folosită este formată din <nextjs>NextJS</nextjs>, <planet>PlanetScale</planet>, <supa>Supabase</supa>, <mdx>MDX</mdx>, <tailwind>Tailwind CSS</tailwind> și <typescript>TypeScript</typescript>, lansat pe <vercel>Vercel</vercel>.",
-    "p3": "Codul sursă este disponibil pe <new>GitHub</new>. Poți găsi versiunea veche pe <old>această ramură</old>."
+    "meta": "Din august 2022",
+    "lead": "Cum e făcut site-ul: designul, tehnologiile pe care rulează și unde se află codul.",
+    "design": {
+      "title": "Design",
+      "p1": "Designul actual, din 2026, a fost generat de Claude și transpus în cod cu Claude Code: dovezile pe primul loc – studii de caz cu problema, ce am construit și ce s-a schimbat – pe fundaluri de tip hârtie și cerneală, cu linii fine în loc de umbre și un singur albastru, #3598DB. Fiecare pagină are temă luminoasă și întunecată.",
+      "p2": "Titlurile și textul folosesc <schibsted>Schibsted Grotesk</schibsted>, iar etichetele, cifrele și codul <plex>IBM Plex Mono</plex>. Ambele sunt servite prin next/font, fără cereri către Google în timpul navigării."
+    },
+    "stack": {
+      "title": "Tehnologii",
+      "items": {
+        "framework": {
+          "label": "Framework",
+          "note": "App Router și Server Components, construit cu Turbopack."
+        },
+        "language": {
+          "label": "Limbaj",
+          "note": "Mod strict, peste tot."
+        },
+        "styling": {
+          "label": "Stilizare",
+          "note": "Tokenuri de design ca variabile CSS, comutate pentru tema întunecată."
+        },
+        "content": {
+          "label": "Conținut",
+          "note": "Articolele și studiile de caz sunt fișiere MDX, randate pe server."
+        },
+        "highlighting": {
+          "label": "Cod",
+          "note": "Evidențierea sintaxei se face la build, fără JavaScript în browser."
+        },
+        "i18n": {
+          "label": "Limbi",
+          "note": "Engleză și română, cu URL-uri traduse."
+        },
+        "database": {
+          "label": "Date",
+          "note": "Vizualizările și reacțiile articolelor, cărțile, jocurile de societate și locurile prin care am fost."
+        },
+        "forms": {
+          "label": "Formulare",
+          "note": "Formularele de contact, validate în browser și din nou pe server."
+        },
+        "email": {
+          "label": "E-mail",
+          "note": "Mesajele din formularele de contact, prin șabloane tranzacționale."
+        },
+        "hosting": {
+          "label": "Găzduire",
+          "note": "Publicare din GitHub, plus Vercel Analytics."
+        }
+      }
+    },
+    "source": {
+      "title": "Cod sursă",
+      "p1": "Codul sursă este public pe <new>GitHub</new>. Versiunea anterioară se află pe <old>această ramură</old>."
+    }
   },
   "uses": {
-    "metadata": { "keywords": "mediu de lucru,programe software,lucru la distanță,birou,echipament,instrumente" },
+    "metadata": {
+      "keywords": "mediu de lucru,programe software,lucru la distanță,birou,echipament,instrumente"
+    },
     "title": "Utilizări",
     "description": "Nu pot face magie de unul singur, dar instrumentele software potrivite în mâinile potrivite fac o treabă grozavă.",
     "environment": {
       "title": "🗄️ Mediu de lucru",
-      "desk": { "name": "Birou ajustabil manual pe înălțime", "description": "1600x800x36 mm, negru" },
-      "chair": { "name": "2 x scaun Notus", "description": "Scaun ergonomic cu mesh" },
-      "laptop-stand": { "name": "Stand laptop", "description": "Portabil, ajustabil pe înălțime, pliabil" },
+      "desk": {
+        "name": "Birou ajustabil manual pe înălțime",
+        "description": "1600x800x36 mm, negru"
+      },
+      "chair": {
+        "name": "2 x scaun Notus",
+        "description": "Scaun ergonomic cu mesh"
+      },
+      "laptop-stand": {
+        "name": "Stand laptop",
+        "description": "Portabil, ajustabil pe înălțime, pliabil"
+      },
       "monitors-support": {
         "name": "Suport de birou pentru 2 monitoare",
         "description": "Arc cu gaz, A+ SMLC24, 17-32 țoli"
       },
-      "mousepad": { "name": "Mousepad Floston WORLD", "description": "900x400x3 mm" },
+      "mousepad": {
+        "name": "Mousepad Floston WORLD",
+        "description": "900x400x3 mm"
+      },
       "lamp": "Veioză FORSÅ, nichelată"
     },
     "hardware": {
       "title": "💻 Hardware",
       "macbook": {
-        "name": "MacBook Pro 15 Retina cu Touch Bar",
-        "description": "2019, Coffee Lake 8-core i9 2.3GHz, 16GB DDR4, 512GB SSD, Radeon Pro 560X 4GB"
+        "name": "Apple MacBook Pro 16 A3428",
+        "description": "2026, Apple M5 Pro 18-Core, 24GB RAM Unified Memory, SSD 1 Tb NVMe, Apple 20-core GPU"
       },
-      "monitors": { "name": "2 x monitor LED LG", "description": "27 țoli, 4K, 60Hz" },
+      "monitors": {
+        "name": "2 x monitor LED LG",
+        "description": "27 țoli, 4K, 60Hz"
+      },
       "mouse": "Maus Apple Magic 2",
       "keyboard": "Tastatură Mac LOGITECH MX Keys",
       "mic": "Microfon VONYX CMS300B"
+    },
+    "ai": {
+      "title": "✨ AI",
+      "claude": {
+        "name": "Claude",
+        "description": "Partener de gândire pentru documentare, scris și design – designul din 2026 al acestui site a pornit de la un artefact Claude."
+      },
+      "claude-code": {
+        "name": "Claude Code (CLI)",
+        "description": "Agent în terminal: refactorizări, actualizări de dependențe, migrări, teste și code review în proiectele mele."
+      },
+      "claude-in-chrome": {
+        "name": "Claude in Chrome",
+        "description": "Extensie de browser prin care Claude deschide pagini, parcurge fluxuri și citește consola în timp ce lucrez."
+      },
+      "chatgpt": {
+        "name": "ChatGPT",
+        "description": "A doua părere, întrebări rapide și prime variante de text."
+      }
     },
     "software": {
       "title": "🤖 Software",
@@ -196,29 +529,38 @@
       "postman": "Postman",
       "chrome": {
         "name": "Google Chrome",
-        "description": "Extensii: AdBlock, GoFullPage - Full Page Screen Capture, Grammarly, JSON Viewer, React Developer Tools, SWR DevTools, Tab Suspender, Xdebug helper"
+        "description": "Extensii: AdBlock, CSS Grid Overlay, GoFullPage - Full Page Screen Capture, JSON Formatter, Wappalyzer - Technology profiler, WordPress Browser Extension"
       },
-      "neo4j": "Neo4j Desktop",
       "signal": "Signal",
-      "slack": "Slack"
+      "slack": "Slack",
+      "ddev": {
+        "name": "DDEV",
+        "description": "Medii locale WordPress în Docker (Colima): PHP 8.5, Apache-FPM, MySQL 8.4, Node 24, Composer 2 și WP-CLI, HTTPS prin Traefik, Mailpit pentru e-mailuri, Mutagen pentru sincronizare rapidă a fișierelor, phpMyAdmin ca add-on, Xdebug și XHGui la nevoie."
+      }
     }
   },
   "books": {
-    "metadata": { "keywords": "cărți,listă cărți,lectură,ce să citești,recomandări cărți" },
+    "metadata": {
+      "keywords": "cărți,listă cărți,lectură,ce să citești,recomandări cărți"
+    },
     "title": "Cărți",
     "description": "O parte din colecția mea de cărți. O călătorie prin cunoștințele și poveștile vieții mele.",
     "currently-reading": "Acum citesc 📖",
     "read": "Am citit 📚",
-    "wishlist": "Vreau să citesc 🧞‍♂️"
+    "wishlist": "Vreau să citesc 🧞‍♂️",
+    "count": "{count, plural, =0 {Nicio carte} =1 {1 carte} few {# cărți} other {# de cărți}}"
   },
   "boardgames": {
-    "metadata": { "keywords": "jocuri de societate,azul,pandemic,ticket to ride,zestrea" },
+    "metadata": {
+      "keywords": "jocuri de societate,azul,pandemic,ticket to ride,zestrea"
+    },
     "title": "Jocuri de societate",
     "description": "Dincolo de a învăța și de a lucra, îmi asigur și experiențe distractive. Iată jocurile de societate pe care le joc cu prietenii și cei dragi.",
     "all-categories": "Toate",
     "own": "Dețin ({count})",
     "wishlist": "Îmi doresc ({count})",
-    "age": "Vârstă: {age}"
+    "age": "Vârstă: {age}",
+    "count": "{count, plural, =0 {Niciun joc} =1 {1 joc} few {# jocuri} other {# de jocuri}}"
   },
   "terms": {
     "metadata": {
@@ -273,7 +615,7 @@
     "welcome": "Bine ai venit pe site-ul meu!",
     "cap1": {
       "title": "1. Informații colectate",
-      "p1": "Atunci când utilizezi formularul de contact de pe site-ul meu, îți solicit să furnizezi următoarele informații: prenume, nume, adresă de email, număr de telefon, mesaj.",
+      "p1": "Atunci când utilizezi formularul de contact de pe site-ul meu, îți solicit să furnizezi următoarele informații: prenume, nume, adresă de e-mail, număr de telefon, mesaj.",
       "p2": "Aceste informații sunt colectate exclusiv în scopul oferirii de servicii sau răspunsului la întrebările și solicitările tale.",
       "p3": "Pe măsură ce navighezi pe site-ul meu, pot fi colectate automat informații non-personale, cum ar fi adresele IP, tipul de browser, paginile vizitate și altele, în scopuri statistice și de îmbunătățire a experienței utilizatorilor."
     },
@@ -312,7 +654,92 @@
     "trade-reg-no": "Nr.reg.com.: {regNo}",
     "sal-al": "Detalii Soluționarea alternativă a litigiilor",
     "sol-al": "Soluționarea online a litigiilor",
-    "copyright": "© 2019 – {year} · {siteName} · Toate drepturile rezervate."
+    "copyright": "© 2019 – {year} · {siteName} · Toate drepturile rezervate.",
+    "nav-al": "Subsol",
+    "profile-al": "Profilul de {network}"
   },
-  "not-found": { "title": "Eroare 404", "description": "Pagina pe care o cauți nu există." }
+  "not-found": {
+    "title": "Eroare 404",
+    "description": "Pagina pe care o cauți nu există.",
+    "back-home": "Înapoi la prima pagină"
+  },
+  "cookies": {
+    "title": "Cookie-uri",
+    "banner": "Site-ul stochează doar ce îi trebuie ca să funcționeze. Cu acordul tău, numără și vizitele anonim, prin Vercel Web Analytics, care nu folosește cookie-uri. Îți poți schimba oricând alegerea din subsolul paginii. <link>Politica de cookie-uri</link>",
+    "accept": "Accept",
+    "reject": "Refuz",
+    "save": "Salvează alegerile",
+    "customize": "Personalizează",
+    "close": "Închide",
+    "settings-title": "Setări cookie-uri",
+    "settings-lead": "Alege ce poate folosi site-ul pe lângă ce îi trebuie ca să funcționeze. Detalii în <link>politica de cookie-uri</link>.",
+    "necessary": {
+      "title": "Strict necesare",
+      "description": "Rețin această alegere și tema luminoasă, întunecată sau a sistemului. Mereu active."
+    },
+    "analytics": {
+      "title": "Statistici",
+      "description": "Vercel Web Analytics: afișări de pagină anonime și agregate, fără cookie-uri și fără urmărire între site-uri."
+    }
+  },
+  "cookie-policy": {
+    "metadata": {
+      "description": "Ce cookie-uri și ce stocare în browser folosește vladilie.ro, de ce, cât timp și cum îți schimbi alegerea."
+    },
+    "title": "Politica de cookie-uri",
+    "updated": "Actualizată la: 10 noiembrie 2026",
+    "lead": "Pe scurt: un cookie care îți reține alegerea, o setare pentru temă și statistici anonime doar dacă ești de acord. Fără publicitate, fără urmărire între site-uri.",
+    "what": {
+      "title": "Ce sunt cookie-urile",
+      "p1": "Cookie-urile sunt fișiere text mici pe care un site le salvează în browserul tău. Tehnologii asemănătoare, precum localStorage, păstrează date în browser în același mod. Pagina de față le acoperă pe amândouă, pentru că legea le tratează la fel."
+    },
+    "used": {
+      "title": "Ce folosește acest site",
+      "p1": "Elementele strict necesare sunt mereu active, pentru că fără ele site-ul nu îți poate respecta alegerile. Statisticile pornesc doar după ce le accepți."
+    },
+    "fields": {
+      "type": "Tip",
+      "provider": "Furnizor",
+      "purpose": "Scop",
+      "duration": "Durată",
+      "category": "Categorie"
+    },
+    "items": {
+      "consent": {
+        "type": "Cookie propriu",
+        "provider": "vladilie.ro",
+        "purpose": "Reține dacă ai acceptat sau ai refuzat statisticile, ca bannerul să nu reapară pe fiecare pagină.",
+        "duration": "6 luni",
+        "category": "Strict necesar"
+      },
+      "theme": {
+        "type": "localStorage",
+        "provider": "vladilie.ro",
+        "purpose": "Reține tema: „system” (urmează setarea dispozitivului) până când alegi tu luminos sau întunecat.",
+        "duration": "Până ștergi datele din browser",
+        "category": "Strict necesar"
+      },
+      "analytics": {
+        "type": "Fără cookie sau stocare – un script care trimite afișările de pagină",
+        "provider": "Vercel Inc.",
+        "purpose": "Numără vizitele pe fiecare pagină, cu site-ul de proveniență, țara, browserul și tipul de dispozitiv, ca să știu ce pagini sunt utile. Vizitatorii nu sunt identificați și nu sunt urmăriți pe alte site-uri.",
+        "duration": "Nu se păstrează nimic în browserul tău",
+        "category": "Statistici – doar cu acordul tău"
+      }
+    },
+    "not-used": {
+      "title": "Ce nu folosește acest site",
+      "p1": "Nu există cookie-uri de publicitate sau de rețele sociale, nici Google Analytics, nici videoclipuri încorporate sau widgeturi de la terți. Fonturile sunt servite chiar de site, iar imaginile trec tot prin el, deci încărcarea unei pagini nu contactează alte companii. Formularul de contact îți trimite mesajul pe e-mail și nu setează cookie-uri."
+    },
+    "choice": {
+      "title": "Cum îți schimbi alegerea",
+      "p1": "Îți poți schimba sau retrage oricând acordul, la fel de ușor cum l-ai dat:",
+      "p2": "Poți șterge cookie-urile și datele site-ului și din setările browserului; bannerul te va întreba din nou la următoarea vizită."
+    },
+    "contact": {
+      "title": "Întrebări",
+      "p1": "Pentru orice ține de datele tale, vezi <privacy>politica de confidențialitate</privacy> sau scrie-mi prin pagina de contact."
+    },
+    "nav": "Politica de cookie-uri"
+  }
 }

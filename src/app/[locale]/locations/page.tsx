@@ -6,7 +6,9 @@ import roFunc from 'timeago.js/lib/lang/ro';
 import enFunc from 'timeago.js/lib/lang/en_US';
 
 import { getPathname } from '@/i18n/routing';
+import { everyLocale, localeAlternates } from '@/lib/alternates';
 import prisma from '@/lib/prisma';
+import { Page, PageHeader } from '../ui/page-header';
 
 export const revalidate = 3600;
 
@@ -17,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   const commonFields = { title: t('title'), description: t('description') };
 
   return {
-    alternates: { canonical: ('ro' === locale ? '/ro/' : '') + getPathname({ locale, href: '/locations' }) },
+    alternates: localeAlternates(locale, everyLocale('/locations')),
     ...commonFields,
     keywords: t('metadata.keywords'),
     openGraph: {
@@ -53,15 +55,14 @@ export default async function Locations({ params }: { params: Promise<{ locale: 
   }
 
   return (
-    <main className='container mx-auto max-w-7xl gap-8 px-4 py-32'>
-      <h1>{t('title')}</h1>
-      <p>{t('description')}</p>
+    <Page>
+      <PageHeader meta={t('count', { count: locations.length })} title={t('title')} lead={t('description')} />
 
-      <div className='flex flex-col gap-y-2'>
+      <ul className='grid gap-px border-y border-hairline bg-hairline'>
         {locations.map(({ name, visitCounter, lastVisitAt }) => (
-          <div key={name}>
-            <h3 className='my-0 text-xl'>{name}</h3>
-            <div className='text-sm text-gray-500'>
+          <li key={name} className='bg-surface px-4 py-5 sm:px-6'>
+            <h2 className='my-0 text-xl'>{name}</h2>
+            <div className='mt-1 font-mono text-[11px] tracking-[0.08em] text-content/50 uppercase'>
               {t.rich('visited', {
                 visitCounter,
                 lastVisitAt,
@@ -72,9 +73,9 @@ export default async function Locations({ params }: { params: Promise<{ locale: 
                 )
               })}
             </div>
-          </div>
+          </li>
         ))}
-      </div>
-    </main>
+      </ul>
+    </Page>
   );
 }

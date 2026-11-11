@@ -1,11 +1,10 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import { format, register } from 'timeago.js';
 import roFunc from 'timeago.js/lib/lang/ro';
 import enFunc from 'timeago.js/lib/lang/en_US';
-import { type Project as ProjectT } from 'contentlayer/generated';
+import type { Project as ProjectT } from '@/lib/content.types';
 
 import { Link } from '@/i18n/routing';
 import { usePostViews } from '@/hooks/usePostViews';
@@ -15,9 +14,9 @@ import { LoadingDots } from '../../ui/loading-dots';
 export const Project: React.FC<ProjectT> = ({
   title,
   locale,
-  featuredImage,
-  blurDataImage,
+  kind,
   description,
+  technologies,
   date,
   slug,
   readingTime
@@ -32,32 +31,38 @@ export const Project: React.FC<ProjectT> = ({
   }
 
   return (
-    <Link
-      href={{ pathname: '/projects/[slug]', params: { slug } }}
-      className='col-span-6 rounded-lg border bg-gray-50 sm:col-span-3 lg:col-span-2 dark:border-slate-800 dark:bg-slate-900'
-    >
-      <div className='relative h-52 border-b'>
-        <Image
-          alt={title}
-          blurDataURL={blurDataImage}
-          className='rounded-t-lg object-cover'
-          fill
-          placeholder='blur'
-          sizes='(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw'
-          src={featuredImage}
-        />
-      </div>
-
-      <div className='flex flex-col px-4 py-2'>
-        <h2 className='line-clamp-1 text-xl'>{title}</h2>
-        <p className='line-clamp-2 text-sm text-gray-500'>{description}</p>
-
-        <div className='flex justify-between text-xs text-gray-500'>
-          <span>{t('reading-time', { minutes: Math.ceil(readingTime) })}</span>
-          <span>{isError || isLoading ? <LoadingDots /> : t('views', { count: numberFormat(Number(views)) })}</span>
-          <span>{format(date, locale)}</span>
+    <li>
+      <Link
+        href={{ pathname: '/projects/[slug]', params: { slug } }}
+        className='group flex h-full flex-col rounded-[14px] border border-hairline bg-surface-raised p-7 text-content transition-colors hover:border-signal hover:text-content'
+      >
+        <div className='mb-3.5 font-mono text-xs tracking-[0.08em] text-accent uppercase'>
+          {kind ?? technologies.slice(0, 2).join(' · ')}
         </div>
-      </div>
-    </Link>
+
+        <h2 className='my-0 mb-3 text-[22px] leading-[1.15] tracking-[-0.03em]'>{title}</h2>
+
+        <p className='my-0 mb-5 text-[15px] leading-[1.6] text-content/80'>{description}</p>
+
+        <ul className='m-0 mb-6 flex list-none flex-wrap gap-1.5 p-0'>
+          {technologies.slice(0, 5).map((technology) => (
+            <li
+              key={technology}
+              className='rounded-full border border-hairline-strong px-2.5 py-1 font-mono text-[11.5px] text-content'
+            >
+              {technology}
+            </li>
+          ))}
+        </ul>
+
+        <div className='mt-auto flex flex-wrap items-center gap-x-2 border-t border-hairline pt-4 font-mono text-[11.5px] text-content/60'>
+          <span>{format(date, locale)}</span>
+          <span aria-hidden>·</span>
+          <span>{t('reading-time', { minutes: Math.ceil(readingTime) })}</span>
+          <span aria-hidden>·</span>
+          {isError || isLoading ? <LoadingDots /> : <span>{t('views', { count: numberFormat(Number(views)) })}</span>}
+        </div>
+      </Link>
+    </li>
   );
 };

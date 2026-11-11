@@ -2,75 +2,71 @@
 
 import { useTranslations } from 'next-intl';
 
-import { Link, usePathname, useRouter } from '@/i18n/routing';
+import { usePathname, useRouter } from '@/i18n/routing';
 import { ThemeSwitcher } from './theme-switcher';
 import { LangChanger } from './lang-changer';
 import { scrollTo } from '@/lib/utils';
-import { NavLinks, Pages } from '@/lib/constants';
+import { HeaderAnchors, NavLinks } from '@/lib/constants';
+
+const itemClasses = 'text-content/78 transition-colors hover:text-content';
 
 export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = ({ isMobile = false, closeMenu }) => {
   const t = useTranslations('navbar');
   const pathname = usePathname();
   const { replace } = useRouter();
 
+  const goToAnchor = (anchor: string): void => {
+    closeMenu?.();
+
+    if ('/' !== pathname) {
+      // @ts-ignore
+      replace(`/#${anchor}`);
+    } else {
+      scrollTo(anchor);
+    }
+  };
+
   return (
     <ul
-      className={`flex-col gap-x-6 after:absolute after:left-0 after:w-full after:border-b dark:after:border-gray-600 md:flex-row md:after:hidden ${
-        isMobile ? 'flex gap-y-4 overflow-y-auto text-base' : 'hidden items-center md:flex'
-      }`}
+      className={
+        isMobile
+          ? 'flex flex-col gap-y-5 overflow-y-auto text-lg'
+          : 'hidden items-center gap-[22px] text-[14.5px] font-medium md:flex'
+      }
     >
-      {Object.values(NavLinks).map((item, idx) => (
-        <li
-          className={`cursor-pointer hover:text-blue-500 ${!idx ? 'pt-4 md:pt-0' : ''}`}
-          key={idx}
-          onClick={() => {
-            if (isMobile && closeMenu) {
-              closeMenu();
-            }
-            if (pathname !== '/') {
-              // @ts-ignore
-              replace(`/#${item}`);
-            } else {
-              scrollTo(item);
-            }
-          }}
-        >
-          {t(item)}
+      {HeaderAnchors.map((anchor) => (
+        <li key={anchor}>
+          <button className={`cursor-pointer ${itemClasses}`} onClick={() => goToAnchor(anchor)}>
+            {t(anchor)}
+          </button>
         </li>
       ))}
-      <li>
-        <Link
-          className='text-inherit'
-          href={`/${Pages.Projects}`}
-          onClick={() => (isMobile && closeMenu ? closeMenu() : null)}
+
+      {isMobile ? (
+        // On mobile both preferences share one row under the anchors.
+        <li className='mt-2 flex items-center gap-5 border-t border-hairline pt-5'>
+          <ThemeSwitcher />
+          <LangChanger />
+        </li>
+      ) : (
+        <>
+          <li>
+            <ThemeSwitcher />
+          </li>
+
+          <li>
+            <LangChanger />
+          </li>
+        </>
+      )}
+
+      <li className={isMobile ? 'mt-2' : ''}>
+        <button
+          className='block w-full cursor-pointer rounded-full bg-content px-[18px] py-2.5 text-center font-semibold text-surface transition-colors hover:bg-signal hover:text-ink'
+          onClick={() => goToAnchor(NavLinks.Contact)}
         >
-          {t(Pages.Projects)}
-        </Link>
-      </li>
-      <li>
-        <Link
-          className='text-inherit'
-          href={`/${Pages.Blog}`}
-          onClick={() => (isMobile && closeMenu ? closeMenu() : null)}
-        >
-          {t(Pages.Blog)}
-        </Link>
-      </li>
-      <li>
-        <Link
-          className='text-inherit'
-          href={`/${Pages.Contact}`}
-          onClick={() => (isMobile && closeMenu ? closeMenu() : null)}
-        >
-          {t(Pages.Contact)}
-        </Link>
-      </li>
-      <li className='hidden h-6 w-0.5 bg-gray-100 md:block' />
-      <li className='before:absolute before:left-0 before:w-full before:border-b dark:before:border-gray-600 md:before:hidden'>
-        <ThemeSwitcher />
-      </li>
-      <li>
-        <LangChanger />
+          {t('get-a-quote')}
+        </button>
       </li>
     </ul>
   );

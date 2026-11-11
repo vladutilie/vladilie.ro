@@ -5,9 +5,17 @@ export const routing = defineRouting({
   // A list of all locales that are supported
   locales: ['en', 'ro'],
 
-  // Used when no locale matches
-  defaultLocale: 'en',
+  // Romanian is served at the root, English under /en.
+  defaultLocale: 'ro',
   localePrefix: 'as-needed',
+  // No redirects based on the browser language or a cookie: every URL always serves the same language,
+  // which is what search engines expect. Visitors switch with the language toggle.
+  localeDetection: false,
+  // With detection off the NEXT_LOCALE cookie would never be read, so don't set it.
+  localeCookie: false,
+  // The pages declare their own hreflang alternates in <head>; the middleware's Link header would
+  // duplicate them with the request host and a different x-default.
+  alternateLinks: false,
   pathnames: {
     '/': '/',
     '/locations': { en: '/locations', ro: '/locatii' },
@@ -21,7 +29,8 @@ export const routing = defineRouting({
     '/books': { en: '/books', ro: '/carti' },
     '/boardgames': { en: '/boardgames', ro: '/jocuri-societate' },
     '/terms': { en: '/terms', ro: '/termeni' },
-    '/privacy': { en: '/privacy', ro: '/confidentialitate' }
+    '/privacy': { en: '/privacy', ro: '/confidentialitate' },
+    '/cookie-policy': { en: '/cookie-policy', ro: '/politica-cookie-uri' }
   }
 });
 

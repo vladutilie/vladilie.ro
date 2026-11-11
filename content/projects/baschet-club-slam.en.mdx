@@ -1,0 +1,48 @@
+---
+title: Baschet Club SLAM — youth basketball registrations built around privacy
+locale: en
+kind: Sports · WordPress plugin
+url: https://www.baschetclubslam.ro
+featuredImage: https://cbibpkpntrsbliyvvjde.supabase.co/storage/v1/object/public/projects/sba-en.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAmklEQVQImWP48+v/icOPXrz4/+3b/+8/oOjru/9v73389+c/AwODBQSxMFhZyPmJSUUxMLnABSHSVgwMViwMVqwM1gwMtgwMjhARqLSsfFhacn+AX11MZFt4aEuAX114aIuIuB9Uml/Q08w8y8w8y8g4TUcnCYLYed2h0qammevXn1++/MTSJUeWLz8xe/bepcuP6uklMzBYAAAhtD7B7KGn4QAAAABJRU5ErkJggg==
+description: A WordPress plugin that runs a youth basketball academy's sign-ups end to end — SMS-verified registrations, private medical certificates and fee reminders.
+technologies: [WordPress, PHP, Cloudflare R2, Cloudflare Turnstile, Brevo, PHPUnit, GitHub Actions]
+keywords: [baschet club slam,wordpress plugin,registration form,sports club,privacy,cloudflare r2,sms verification]
+date: September 22, 2026 12:00:00
+---
+
+## Context
+
+Slam Basketball Academy is a youth basketball club. Since 2024 I've built and maintained the WordPress plugin that runs its sign-up process end to end, from the public form a parent fills in to the screens the club works from every day.
+
+## The problem
+
+Almost everyone in the system is a minor. Registering a child means collecting a parent's contact details and a medical certificate, then tracking monthly fees and reminding families when one is due. That data is sensitive, so the challenge wasn't just building forms — it was keeping as little as possible, storing what's needed safely and making sure nobody can probe the system for who is registered.
+
+## What I built
+
+- **A registration form** for the child and the parent, with the required consents. Each registration stays unconfirmed until the parent enters a 6-digit code sent **by SMS, with an automatic fallback to email**. A confirmation email follows through Brevo.
+- **Medical certificates**, uploaded either as a document or replaced by the self-declaration the parent accepts, with the exact accepted text stored.
+- **A parent portal** reached through a one-time magic link, where parents confirm pending registrations and upload certificates — no account or password needed.
+- **Fee tracking** per child, with history, CSV export and monthly email and SMS reminders sent through WP-CLI, plus an unsubscribe page.
+- **Admin screens and a dashboard widget** drawn as inline SVG: confirmed and pending registrations, recent activity, fees this month and certificate status, with links to filtered lists.
+
+## Under the hood
+
+Privacy shaped most of the technical decisions:
+
+- **Certificates never touch the public web.** They are validated in memory and pushed to a private Cloudflare R2 bucket through a small hand-written S3 client signed with SigV4. Admins view them through presigned links that expire after five minutes.
+- **Files are checked by content, not by name.** PDFs with JavaScript, embedded files or auto-actions are rejected; images are re-encoded, which strips EXIF data, including GPS.
+- **Only hashes are stored** for verification codes and magic-link tokens, with short lifetimes and counted attempts.
+- **No enumeration**: the portal answers the same way whether or not an address is registered, sits behind Cloudflare Turnstile and is rate-limited per email and per IP.
+- CSV exports escape formula injection, and deleting a child removes every stored copy of their certificate.
+
+The code is namespaced and PSR-4, follows WordPress Coding Standards, passes PHPStan level 5 and has around 180 PHPUnit tests. GitHub Actions runs the checks and deploys to staging or production.
+
+## Result
+
+The club runs its whole registration season from WordPress: parents sign up and confirm from their phones, certificates are stored privately and fees are tracked in one place, with reminders going out automatically.
+
+## Stack
+
+WordPress, PHP, Cloudflare R2 and Turnstile, Brevo, SMS gateway, WP-CLI, Tailwind CSS 4, PHPStan, PHPUnit, GitHub Actions.

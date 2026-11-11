@@ -1,11 +1,13 @@
 import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { allPosts, type Post as PostType } from 'contentlayer/generated';
+import { allPosts } from '@/lib/content';
+import type { Post as PostType } from '@/lib/content.types';
 
 import { getPathname } from '@/i18n/routing';
+import { everyLocale, localeAlternates } from '@/lib/alternates';
 import { PostCard } from './ui/post-card';
-import { Search } from './ui/Search';
+import { Page, PageHeader } from '../ui/page-header';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -13,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   const commonFields = { title: t('title'), description: t('metadata.description') };
 
   return {
-    alternates: { canonical: ('ro' === locale ? '/ro/' : '') + getPathname({ locale, href: '/blog' }) },
+    alternates: localeAlternates(locale, everyLocale('/blog')),
     ...commonFields,
     keywords: t('metadata.keywords'),
     openGraph: {
@@ -37,26 +39,21 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
 export default async function Blog({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations('blog');
-  const posts = allPosts
-    .filter(({ locale: l }) => l === locale)
-    .sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
+  const posts = allPosts().filter(({ locale: l }) => l === locale);
 
   return (
-    <main className='container mx-auto flex max-w-7xl flex-col gap-8 px-4 py-20 md:py-32'>
-      <div className='flex items-center justify-between gap-x-4'>
-        <h1>Blog</h1>
-        {/* <Search /> */}
-      </div>
+    <Page>
+      <PageHeader meta={t('count', { count: posts.length })} title={t('title')} lead={t('metadata.description')} />
 
       {posts.length ? (
-        <ul className='flex flex-col gap-y-4'>
-          {posts.map((post: PostType, idx: number) => (
-            <PostCard key={idx} {...post} />
+        <ul className='grid gap-px border-y border-hairline bg-hairline'>
+          {posts.map((post: PostType) => (
+            <PostCard key={post.slug} {...post} />
           ))}
         </ul>
       ) : (
         <p>{t('no-posts')}</p>
       )}
-    </main>
+    </Page>
   );
 }

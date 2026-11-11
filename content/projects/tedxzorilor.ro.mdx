@@ -1,0 +1,63 @@
+---
+title: TEDxZorilor – site de eveniment cu arhivă pe mai mulți ani și un panou sigur pentru voluntari
+locale: ro
+kind: Eveniment · Next.js
+url: https://tedxzorilor.com
+featuredImage: https://cbibpkpntrsbliyvvjde.supabase.co/storage/v1/object/public/projects/tedxzorilor.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAvElEQVQImSXHXQvBUBgA4HPstam3+dhEk5LcyI0fwUiulis/RX4Hkpiyi5W2FcfXf5oLxNhOTVLPzUNEAap5FREFQUhKPwBAKW3kZFnRCNDEqFwYV7Rhs67rrcHA6Pd7nW47lUIKIgGAnJxGRABARDUti0AzAEapqEhI2M5bzGfWxjyy/ZHtPWc7n07WqyWzrfOBkZgHPHrFPPj7BPf77RqFz39J+H64jn057Xj44ZxvTLOmZl3X9X0/5sEXNapQKJI8ihoAAAAASUVORK5CYII=
+description: Un site Next.js pentru conferințele TEDxZorilor din Cluj-Napoca, cu bilete prin Oveit, o arhivă a tuturor edițiilor, linkuri de încărcare a pozelor direct în Google Drive și un panou în care voluntarii editează doar ce li s-a dat acces.
+technologies: [Next.js, Prisma, PostgreSQL, Better Auth, Supabase, Google Drive API, Redis, Tailwind CSS, Vercel]
+keywords: [tedxzorilor,tedx,cluj-napoca,site eveniment,nextjs,panou administrare,better auth,google drive,oveit]
+date: September 30, 2026 12:00:00
+---
+
+## Context
+
+[TEDxZorilor](https://tedxzorilor.com) organizează conferințe TEDx în Cluj-Napoca – ediția principală, dar și formatele Salon și Women. Prima versiune a site-ului am construit-o în 2023. În 2026 am adăugat un panou de administrare complet, iar în toamnă am refăcut tot site-ul public pe un design nou. Site-ul are două tipuri de public: cei care se gândesc să-și ia bilet la ediția următoare și cei care caută un discurs dintr-o ediție trecută.
+
+## Problema
+
+Fiecare ediție vine cu speakeri, parteneri, agendă și bilete noi, iar arhiva edițiilor anterioare crește de la an la an. Organizatorii sunt voluntari care se schimbă des, așa că editarea conținutului trebuia să fie simplă, dar și sigură: fiecare să modifice doar conferințele de care răspunde, orice schimbare să poată fi urmărită și să nu existe parole de împărțit sau de pierdut. După fiecare eveniment mai apare o problemă: sute de poze și clipuri de la fotografi și voluntari, care trebuie strânse într-un singur loc fără ca fiecare să primească acces la tot Drive-ul echipei.
+
+## Ce am construit
+
+### Site-ul public
+
+- **O pagină principală construită în jurul celei mai noi conferințe publicate**: copertă, numărătoare inversă, agendă, speakeri și ceilalți invitați (artiști, gazde, facilitatori), bilete, o selecție de discursuri din arhivă, cifrele evenimentului și partenerii, grupați pe tipuri. Fiecare secțiune apare doar când are conținut – agenda, de exemplu, stă ascunsă până se adaugă prima intrare.
+- **Bilete prin Oveit**, setate pentru fiecare conferință. Site-ul recunoaște singur dacă ID-ul vine din Oveit Hub (edițiile din 2026 încoace) sau din vechiul sistem de evenimente și încarcă widgetul potrivit. Secțiunea de bilete dispare automat când conferința e marcată „sold out” sau după ce s-a încheiat ziua evenimentului, după ora României.
+- **Cifrele evenimentului** – ediții, invitați, participanți și vizualizări ale discursurilor – sunt calculate din baza de date, nu scrise de mână. Vizualizările se adună periodic din YouTube Data API.
+- **O arhivă a conferințelor**, cu ediția următoare evidențiată sus și edițiile trecute dedesubt, filtrabile după format (TEDxZorilor, Salon, Women).
+- **O pagină pentru fiecare conferință**: discursurile, cine a mai urcat pe scenă, facilitatorii, after movie-ul și navigare către ediția anterioară și următoare.
+- **O pagină pentru fiecare invitat**, cu discursul sau, dacă încă nu există, video-ul de prezentare, un buton de copiere a linkului și alți speakeri din aceeași ediție, cu cei care au discurs publicat primii. Video-urile YouTube se încarcă doar la clic, ca paginile să rămână ușoare.
+- **Consimțământ pentru cookie-uri pe categorii** (analiză și marketing). Scripturile de analiză și de publicitate se încarcă doar după acord, iar retragerea acordului reîncarcă pagina și șterge cookie-urile de analiză.
+
+### Panoul de administrare
+
+- **O privire de ansamblu** cu numărul de conferințe, invitați și parteneri, cele mai recente conferințe și linkul de încărcare activ.
+- **O listă de conferințe** cu căutare, filtre și sortare, și un editor cu tab-uri: detalii (temă, locație, dată și oră, ID-ul Oveit, numărul de participanți, after movie, copertă, ciornă, sold out), invitați, parteneri, agendă și jurnal.
+- **Invitați și parteneri reordonați prin drag-and-drop.** Partenerii sunt ordonați în cadrul grupului lor (principali, media, ambasadori), exact cum apar pe site.
+- **Copierea partenerilor de la ediția anterioară**, dintr-un clic: tipul, ordinea și linkurile se păstrează, iar logo-urile sunt copiate fizic în folderul noii conferințe, ca aceasta să nu depindă de fișierele altei ediții. Un dublu clic nu dublează lista.
+- **Agenda** se scrie ca ore în ora României, legate de ziua conferinței, deci dacă evenimentul se mută, agenda se mută cu el.
+- **Utilizatori și roluri**: administratorii văd tot, iar moderatorii pot edita doar conferințele la care au primit acces. Administratorii creează conturile de moderator și dau accesul din panou. Un administrator poate acționa temporar ca un moderator, ca să vadă exact ce vede acesta; sesiunea expiră singură după 30 de minute, iar un banner permanent oferă calea de întoarcere.
+- **Un jurnal al modificărilor**, vizibil doar administratorilor: o pagină cu căutare și filtre după entitate, acțiune, autor și conferință, plus câte un tab „Jurnal” pe fiecare conferință și pe pagina de utilizatori.
+- **Linkuri de încărcare pentru galerie.** Un administrator generează un link cu termen de expirare și alege dosarul din Google Drive-ul comun al organizației. Oricine are linkul încarcă poze și clipuri de pe telefon sau laptop, fără cont și fără să vadă restul Drive-ului. Linkul poate fi prelungit, închis sau redeschis, iar panoul arată ce fișiere au sosit și cât ocupă.
+
+## Sub capotă
+
+- **Autentificare fără parolă**, cu link magic valabil 10 minute (Better Auth, e-mailuri prin Brevo). Înregistrarea este închisă, iar formularul de autentificare nu dezvăluie ce adrese au cont.
+- **Două verificări independente**: layout-ul panoului verifică sesiunea, iar fiecare server action verifică din nou permisiunile. Când o modificare poate muta un invitat sau un partener între conferințe, accesul se verifică la ambele capete.
+- **Limitarea cererilor în Redis**, pe IP și pe adresă de e-mail la autentificare și pe IP pentru linkurile publice de încărcare.
+- **Un jurnal de audit** în care doar se adaugă înregistrări: cine a schimbat ce, cu diferențele câmp cu câmp, și cu atribuirea către administratorul real atunci când acționează ca moderator. Fiecare înregistrare păstrează o copie a numelor de la momentul scrierii, deci rămâne lizibilă și după ce contul sau conferința au fost șterse. Se înregistrează și autentificările, deconectările și linkurile magice trimise. Dacă jurnalizarea eșuează, editarea nu este blocată.
+- **Încărcări care nu trec prin server.** Pentru galerie, serverul deschide o sesiune de încărcare reluabilă în Google Drive, iar browserul trimite fișierul direct la Google, în bucăți de 8 MB. Dacă se pierde conexiunea, încărcarea continuă de unde a rămas. Așa se ocolește limita de dimensiune a cererilor pe Vercel, iar clipurile mari ajung întregi. La final, serverul verifică fișierul direct în Drive, nu se bazează pe ce raportează browserul. Dacă cineva șterge sau mută dosarul unui link, acesta se recreează automat, deci linkurile deja trimise continuă să funcționeze.
+- **Procesarea imaginilor din panou**: sharp rotește, redimensionează și convertește în WebP, Tinify comprimă fiecare imagine o singură dată, iar fișierele sunt denumite după hash-ul conținutului, deci reîncărcările nu costă nimic. Serverul alege folderul (coperți, invitați, parteneri), nu browserul.
+- **Ora României peste tot.** Toate datele și orele sunt afișate în fusul Europe/Bucharest pentru orice vizitator, ca serverul și browserul să nu arate ore diferite.
+- **Pagini statice, actualizate la salvare.** Paginile conferințelor și ale invitaților sunt generate static. Fiecare modificare din panou revalidează toate paginile publice afectate printr-o singură funcție comună, iar pagina principală se regenerează și din oră în oră, ca vânzarea biletelor să se închidă singură după eveniment.
+- **SEO**: titluri și descrieri generate pentru fiecare conferință și fiecare invitat, URL-uri canonice, imagini Open Graph și Twitter și un sitemap construit din baza de date. Ciornele nu apar niciodată public.
+
+## Rezultat
+
+Organizatorii pot pregăti o ediție nouă direct din panou – invitați, parteneri, agendă și bilete – fără programator și fără parole comune, iar orice modificare rămâne în jurnal. După eveniment, pozele și clipurile ajung în Drive-ul echipei printr-un singur link, fără conturi și fără acces la restul fișierelor. Site-ul păstrează online fiecare ediție de la prima încoace, cu speakerii și discursurile ei.
+
+## Tehnologii
+
+Next.js 16 (App Router), React 19, TypeScript, Prisma 7 pe PostgreSQL, Better Auth, Supabase Storage, Google Drive API, Redis, Tailwind CSS 4, shadcn/ui pe Base UI, sharp, Tinify, Brevo, Oveit, YouTube Data API, Vercel.

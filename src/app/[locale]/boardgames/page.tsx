@@ -1,11 +1,13 @@
 import { Metadata } from 'next';
-import { Boardgame } from '@/../generated/prisma';
+import type { BoardgameModel as Boardgame } from '@/../generated/prisma/models';
 import { getTranslations } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';
+import { everyLocale, localeAlternates } from '@/lib/alternates';
 import prisma from '@/lib/prisma';
 import { Categories } from './ui/categories';
 import { List } from './ui/list';
+import { Page, PageHeader } from '../ui/page-header';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -13,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   const commonFields = { title: t('title'), description: t('description') };
 
   return {
-    alternates: { canonical: ('ro' === locale ? '/ro/' : '') + getPathname({ locale, href: '/boardgames' }) },
+    alternates: localeAlternates(locale, everyLocale('/boardgames')),
     ...commonFields,
     keywords: t('metadata.keywords'),
     openGraph: {
@@ -50,13 +52,14 @@ export default async function Boardgames() {
   const { boardgames, categories } = await getBoardgames();
 
   return (
-    <main className='container mx-auto max-w-7xl gap-8 px-4 py-20 md:py-32'>
-      <h1>{t('title')}</h1>
-      <p>{t('description')}</p>
-
-      <Categories list={categories} />
+    <Page>
+      <PageHeader meta={t('count', { count: boardgames.length })} title={t('title')} lead={t('description')}>
+        <div className='mt-8'>
+          <Categories list={categories} />
+        </div>
+      </PageHeader>
 
       <List list={boardgames} />
-    </main>
+    </Page>
   );
 }

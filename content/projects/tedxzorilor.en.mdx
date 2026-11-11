@@ -1,0 +1,63 @@
+---
+title: TEDxZorilor — an event site with a multi-year archive and a volunteer-safe dashboard
+locale: en
+kind: Event · Next.js
+url: https://tedxzorilor.com
+featuredImage: https://cbibpkpntrsbliyvvjde.supabase.co/storage/v1/object/public/projects/tedxzorilor.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAvElEQVQImSXHXQvBUBgA4HPstam3+dhEk5LcyI0fwUiulis/RX4Hkpiyi5W2FcfXf5oLxNhOTVLPzUNEAap5FREFQUhKPwBAKW3kZFnRCNDEqFwYV7Rhs67rrcHA6Pd7nW47lUIKIgGAnJxGRABARDUti0AzAEapqEhI2M5bzGfWxjyy/ZHtPWc7n07WqyWzrfOBkZgHPHrFPPj7BPf77RqFz39J+H64jn057Xj44ZxvTLOmZl3X9X0/5sEXNapQKJI8ihoAAAAASUVORK5CYII=
+description: A Next.js site for the TEDxZorilor conferences in Cluj-Napoca, with Oveit ticketing, an archive of every edition, photo upload links that go straight to Google Drive, and a dashboard where volunteers edit only what they're granted.
+technologies: [Next.js, Prisma, PostgreSQL, Better Auth, Supabase, Google Drive API, Redis, Tailwind CSS, Vercel]
+keywords: [tedxzorilor,tedx,cluj-napoca,event website,nextjs,admin dashboard,better auth,google drive,oveit]
+date: September 30, 2026 12:00:00
+---
+
+## Context
+
+[TEDxZorilor](https://tedxzorilor.com) organises TEDx conferences in Cluj-Napoca — the main edition as well as the Salon and Women formats. I built the first version of their site in 2023. In 2026 I added a full admin dashboard, and in the autumn I rebuilt the whole public site on a new design. The site has to serve two audiences: people deciding whether to buy a ticket for the next edition, and people looking for a talk from a past one.
+
+## The problem
+
+Every edition brings new speakers, partners, an agenda and a ticketing setup, and the archive of previous editions keeps growing. The organisers are volunteers who change from year to year, so editing content had to be easy, but also safe: each person should touch only the conferences they're responsible for, every change should be traceable, and there should be no passwords to share or lose. Each event also leaves one more problem behind: hundreds of photos and clips from photographers and volunteers that need to end up in one place, without giving everyone access to the team's whole Drive.
+
+## What I built
+
+### The public site
+
+- **A home page built around the newest published conference**: cover, countdown, agenda, speakers and the other guests (performers, hosts, facilitators), tickets, a selection of talks from the archive, the event's numbers, and partners grouped by type. Each section appears only when it has content — the agenda, for instance, stays hidden until the first entry is added.
+- **Ticketing through Oveit**, set per conference. The site tells on its own whether the id comes from Oveit Hub (editions from 2026 onwards) or from the older events system and loads the matching widget. The ticket section disappears by itself once the conference is marked sold out or once the event day has ended, in Romanian time.
+- **The event's numbers** — editions, guests, attendees and talk views — are computed from the database rather than typed in. Views are totalled periodically from the YouTube Data API.
+- **A conference archive**, with the next edition highlighted at the top and past editions below, filterable by format (TEDxZorilor, Salon, Women).
+- **A page for every conference**: its talks, who else was on stage, the facilitators, the after movie, and links to the previous and next edition.
+- **A page for every guest**, with their talk or, until it's published, their intro video, a copy-link button, and other speakers from the same edition, those with a published talk first. YouTube videos load only on click, so pages stay light.
+- **Cookie consent by category** (analytics and marketing). Analytics and advertising scripts load only after consent, and withdrawing it reloads the page and clears the analytics cookies.
+
+### The dashboard
+
+- **An overview** with counts of conferences, guests and partners, the most recent conferences, and the currently active upload link.
+- **A conference list** with search, filters and sorting, and a tabbed editor: details (theme, location, date and time, Oveit id, attendee count, after movie, cover, draft, sold out), guests, partners, agenda and change log.
+- **Guests and partners reordered by dragging.** Partners are ordered within their group (main, media, ambassadors), exactly as they appear on the site.
+- **Copying partners from the previous edition** in one click: type, order and links are kept, and logos are physically copied into the new conference's folder, so it never depends on another edition's files. A double click doesn't duplicate the list.
+- **The agenda** is entered as times in Romanian time, tied to the conference day, so if the event moves, the agenda moves with it.
+- **Users and roles**: admins see everything, moderators can edit only the conferences they've been granted. Admins create moderator accounts and grant access from the dashboard. An admin can temporarily act as a moderator to see exactly what they see; the session expires on its own after 30 minutes, and a persistent banner is the way back.
+- **A change log**, visible to admins only: a page with search and filters by entity, action, author and conference, plus a "Journal" tab on every conference and on the users page.
+- **Gallery upload links.** An admin generates a link with an expiry date and picks a folder in the organisation's shared Google Drive. Anyone with the link can upload photos and clips from a phone or laptop, with no account and no view of the rest of the Drive. A link can be extended, closed or reopened, and the dashboard shows which files arrived and how much space they take.
+
+## Under the hood
+
+- **Passwordless login** with magic links valid for 10 minutes (Better Auth, emails via Brevo). Sign-up is closed, and the login form doesn't reveal which addresses have accounts.
+- **Two independent guards**: the dashboard layout checks the session and every server action checks permissions again. When an edit could move a guest or partner between conferences, access is checked on both ends.
+- **Rate limiting in Redis**, per IP and per email address for sign-in, and per IP for the public upload links.
+- **An append-only audit log**: who changed what, with field-by-field diffs, crediting the real admin when they act as a moderator. Each entry keeps a snapshot of the names at write time, so it stays readable after the account or conference is deleted. Sign-ins, sign-outs and magic links sent are recorded too. If logging fails, the edit still goes through.
+- **Uploads that bypass the server.** For the gallery, the server opens a resumable Google Drive upload session and the browser sends the file straight to Google in 8 MB chunks. If the connection drops, the upload carries on where it stopped. This gets around Vercel's request size limit, so large clips arrive whole. At the end, the server checks the file in Drive itself rather than trusting what the browser reports. If someone deletes or moves a link's folder, it is recreated automatically, so links already handed out keep working.
+- **An image pipeline for the dashboard**: sharp rotates, resizes and converts to WebP, Tinify compresses each image once, and files are named by content hash so re-uploads are free. The server picks the folder (covers, guests, partners), not the browser.
+- **Romanian time everywhere.** Every date and time is shown in the Europe/Bucharest time zone for every visitor, so server and browser never disagree.
+- **Static pages, refreshed on save.** Conference and guest pages are statically generated. Each dashboard edit revalidates every public page it affects through one shared helper, and the home page also regenerates hourly so ticket sales close on their own after the event.
+- **SEO**: generated titles and descriptions for every conference and guest, canonical URLs, Open Graph and Twitter images, and a sitemap built from the database. Drafts never appear publicly.
+
+## Result
+
+The organisers can prepare a new edition from the dashboard — guests, partners, agenda and tickets — without a developer and without shared passwords, and every change stays in the log. After the event, photos and clips land in the team's Drive through a single link, with no accounts and no access to the rest of the files. The site keeps every edition since the first one online, with its speakers and talks.
+
+## Stack
+
+Next.js 16 (App Router), React 19, TypeScript, Prisma 7 on PostgreSQL, Better Auth, Supabase Storage, Google Drive API, Redis, Tailwind CSS 4, shadcn/ui on Base UI, sharp, Tinify, Brevo, Oveit, YouTube Data API, Vercel.

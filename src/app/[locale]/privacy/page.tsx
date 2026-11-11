@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getPathname } from '@/i18n/routing';
+import { everyLocale, localeAlternates } from '@/lib/alternates';
+import { Page, PageHeader } from '../ui/page-header';
 
 const texts = [
   'last-update',
@@ -21,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   const commonFields = { title: t('title'), description: `${t('metadata.description')} ${t('last-update')}` };
 
   return {
-    alternates: { canonical: ('ro' === locale ? '/ro/' : '') + getPathname({ locale, href: '/privacy' }) },
+    alternates: localeAlternates(locale, everyLocale('/privacy')),
     ...commonFields,
     keywords: t('metadata.keywords'),
     openGraph: {
@@ -42,19 +44,22 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   };
 }
 
-export default async function Privacy() {
+export default async function Privacy({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const t = await getTranslations('privacy');
 
   return (
-    <main className='container mx-auto max-w-7xl gap-8 px-4 py-32'>
-      <h1>{t('title')}</h1>
+    <Page narrow>
+      <PageHeader title={t('title')} />
 
       {texts.map((item) => {
         if (Array.isArray(item)) {
           return item.map((text) => {
             if (text.includes('title')) {
               return (
-                <h2 key={text} className='text-2xl'>
+                <h2 key={text} className='mt-10 mb-3 text-2xl'>
                   {t(text)}
                 </h2>
               );
@@ -66,6 +71,6 @@ export default async function Privacy() {
 
         return <p key={item[0]}>{t(item)}</p>;
       })}
-    </main>
+    </Page>
   );
 }

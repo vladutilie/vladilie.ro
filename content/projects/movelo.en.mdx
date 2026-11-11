@@ -1,0 +1,51 @@
+---
+title: "movelo — a marketplace for bike rental companies, rebuilt in 2026"
+locale: en
+kind: "Prototype · Marketplace · Next.js"
+url: https://movelo.ro
+featuredImage: https://cbibpkpntrsbliyvvjde.supabase.co/storage/v1/object/public/projects/movelo-en.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAi0lEQVQImWNoamty93RnYGAQlRC1tLbMLciNiAqXlpOubahtamtiaGprqmtsSExKWrV2bf/EXj0TXQZWBnUdtdyCXKh0U1tTXl7et2/ftu/eLqMoA0FhMREI6aKSsp27dy9dsbi2oRaCIOIg6dKK0oio8NKK0qa2JggDwoZK1zbUpmakwHXUNtTCpQFHTE5KWME+UAAAAABJRU5ErkJggg==
+description: "Several rental companies list their bikes by city and pickup point; each is paid into its own EuPlătesc or Stripe account and invoices automatically from its own Oblio account."
+technologies: [Next.js, PostgreSQL, Prisma, better-auth, EuPlătesc, Stripe, Oblio]
+keywords: [movelo,bike rental marketplace,multi-tenant,euplatesc,stripe,oblio,automatic invoicing,nextjs,prisma,postgresql]
+date: October 27, 2026 12:00:00
+---
+
+## Context
+
+After a year of building online rentals for a single e-bike business, I wondered what it would look like for many rental companies at once. [movelo](https://movelo.ro) is the answer: a Romanian marketplace where you pick a city, a pickup time and a duration, and see bikes from every company renting there. The first version was a prototype, built mostly in 2023. In October 2026 I rebuilt it almost from scratch, using everything I had learned from the rental projects that came after it.
+
+## The problem
+
+Small rental companies each need the same things: bookings, card payments, invoices, emails and a record of their bikes. Building them separately for every company doesn't scale. A shared platform, though, has to answer a few hard questions: how does the customer pay the company directly rather than a middleman; who issues the invoice; and how do you make sure the same bike isn't rented twice when two customers pay in the same second?
+
+## What I built
+
+- **Booking, for the customer.** You pick a city from a list set next to a drawn map of Romania, then the company, the pickup point, the time and the duration. Prices and the number of free bikes update for the chosen period without reloading the page. Pickup and return must both fall within the pickup point's opening hours, and a one-day rental means the same local time the next day, even across the switch to or from daylight saving time.
+- **The cart is the checkout.** A cart holds bikes from one company and one pickup point; add something from another company and you're asked whether to empty the cart. Accessories are added to their bike. You can pay without an account: the cart is kept for 30 days, merges with your account's cart when you sign in, and the order has its own page, reachable through a private link sent by email. The total is recalculated on the server, and if a price changed in the meantime you're asked again.
+- **Availability without double bookings.** Every physical bike is a unit with its own calendar. At "Pay", the units are held for 15 minutes, and each rental is followed by a configurable preparation time (per company or per product) before the next one. The database itself refuses two overlapping rentals on the same unit. If a payment arrives after the hold has expired, the platform tries to reallocate the bikes, and if they're no longer free it refunds the customer automatically.
+- **Payments straight into the company's account.** Each company connects its EuPlătesc or Stripe account from the panel. Keys are verified with the processor on save and stored encrypted, and the panel only shows a masked hint. Payment notifications are verified and processed exactly once, even when the processor sends them more than once, and an amount different from the one requested is never accepted as a payment.
+- **Automatic invoices through Oblio.** Each company invoices from its own Oblio account and picks its series from a list, with an optional different series per pickup point. After payment the invoice is issued automatically, in the order's language; a full or partial refund issues a credit note. Invoices, emails and refunds run through a job queue that retries on its own, and the company can re-issue an invoice by hand from the order page.
+- **A company only goes public when it's ready.** Only once it has a verified payment method and a verified Oblio account do the company and its bikes become visible to customers.
+- **The company panel.** Products (bikes and accessories) with photos, stock and their own duration packages, from one hour to a week, with an optional sale price; pickup points with address, coordinates and opening hours; orders with search, filters, sorting and pagination; a "Today and tomorrow" agenda with pickups and returns by the hour and the customer's phone; order confirmation (automatic or manual, as the company prefers), bike handover and return, cancellations and partial refunds.
+- **Team roles.** The owner invites moderators by email. Moderators work with the agenda, orders and products, but don't see amounts, can't change prices and can only refund up to a limit the owner sets. People who work for several companies switch between them from a menu.
+- **Sales reports.** The owner sees net revenue day by day on a chart, orders by status, cancellation rate, failed payments, top products, bike utilisation measured against the pickup point's opening hours and paid orders without an invoice, with quick date ranges and CSV export.
+- **The platform admin panel.** Sales across the whole platform and the top cities, a partners table with each partner's setup status (payments, Oblio, products, publicly visible), a user list with the option to view the site as a given user for support, and an audit log of important actions.
+- **Two languages and consent-based cookies.** The site, emails and invoices are in Romanian and English, with translated URLs for each language. Analytics (Umami) only load after the visitor agrees, and the legal pages list the actual cookies and how long they last.
+- **A design of its own.** The visual identity comes from the trail markings on Romania's mountain paths: each city has its own mark, and the chosen period sits on a trail signpost pinned to the top of the page. Public pages are designed for phones first, and the panels also have a dark theme.
+
+## Under the hood
+
+The 2026 rebuild moved the project to Next.js 16 with server actions, React 19 and Prisma 7 on PostgreSQL. Sign-in uses better-auth with no passwords: an email magic link, with optional Google and Facebook. Every write goes through a single layer that validates the input, checks permissions against the active company and records the action in the audit log. Order statuses follow a state machine declared once, so an order can't skip steps.
+
+Availability is built on PostgreSQL time ranges and an exclusion constraint, with row locking when units are reserved. Time is always calculated in Romanian local time, and money through a small class of its own that splits partial refunds exactly. The public catalog is cached and refreshed on every change made in the panel, so city pages are static and only availability is calculated live.
+
+Tests cover the time, money and availability functions, the payment processors and invoices, and integration tests run on a real PostgreSQL database, including 20 simultaneous bookings for a single bike, of which exactly one must succeed. Playwright tests walk the full flow, from choosing a city to payment, handover, return and the sales report, on desktop and mobile.
+
+## Status
+
+A working prototype, around 570 commits, nearly 200 of them in the 2026 rebuild. It hasn't been launched with real companies and customers. Many of its pieces live on in the rental projects I've built since, and some came back into it from those projects, such as the Oblio integration.
+
+## Stack
+
+Next.js 16, React 19, TypeScript, PostgreSQL (Supabase), Prisma 7, better-auth, next-intl, Tailwind CSS 4, shadcn/ui, zustand, zod, react-hook-form, React Email, Brevo, EuPlătesc, Stripe, Oblio, Supabase Storage, Umami, Cloudflare Turnstile, Vitest, Playwright, Vercel.

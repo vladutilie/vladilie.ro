@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useIntersection, useInterval } from 'react-use';
 
 // 1. only poll when intersecting (in view)
@@ -26,16 +26,19 @@ export const usePollIfInView = (interval: number = 1000, max: number = 3) => {
     shouldPoll ? interval : null
   );
 
-  useEffect(() => {
-    if (intersection?.isIntersecting) {
-      // reset state when in view
-      setShouldPoll(true);
+  // Reset when the element scrolls into view, stop when it leaves. Adjusting state during
+  // render (instead of in an effect) avoids an extra cascading render.
+  const isIntersecting = !!intersection?.isIntersecting;
+  const [wasIntersecting, setWasIntersecting] = useState<boolean>(false);
+
+  if (isIntersecting !== wasIntersecting) {
+    setWasIntersecting(isIntersecting);
+    setShouldPoll(isIntersecting);
+
+    if (isIntersecting) {
       setPolledCount(0);
-    } else {
-      // stop polling when not in view
-      setShouldPoll(false);
     }
-  }, [intersection?.isIntersecting]);
+  }
 
   return {
     intersectionRef,

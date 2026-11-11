@@ -1,0 +1,43 @@
+---
+title: "GoSUP — a community map of stand-up paddle launch spots"
+locale: en
+kind: "Own product · Maps · PostGIS"
+url: https://gosup.ro
+featuredImage: https://cbibpkpntrsbliyvvjde.supabase.co/storage/v1/object/public/projects/gosup-en.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAxUlEQVQImQG6AEX/ACQ/RkdcXV1ublxucD1MSjpKQzpIPDpIPD5LPj5KQQBdf4acrK/AxcTn7euXn5Vtd2lxfG6KkYeSlo2WmpMAgaSxwtXY+fv62ejjr7qvMDwzAAsDnamkwsO7sru0AHaXn5KkpqCopJKkqYacnZCblImalomfn5iimY2howA+XWUlOjsTIh4UKCkNIiMLICEYKCYZLCU7T0ZcaWgA2t/gz9TS3ODf2tzc193czNLT1dvb0tjW3uLh3uLhwMde06h3+vMAAAAASUVORK5CYII=
+description: "My own product: a map of SUP launch spots added by paddlers, with PostGIS search, reviews and a moderation queue."
+technologies: [Next.js, PostGIS, Prisma, Better Auth, Leaflet, next-intl, Supabase]
+keywords: [gosup,stand up paddle,sup spots,map,postgis,leaflet,nextjs]
+date: October 11, 2026 12:00:00
+---
+
+## Context
+
+[GoSUP](https://gosup.ro) is my own product, not a client project. I paddle, and finding a good place to put the board in the water usually means scrolling through old forum posts or asking around. So I built a map of stand-up paddle launch spots, contributed by paddlers themselves. It covers Romania and a growing list of countries around it — the Balkans, Spain and Greece — 12 country codes so far.
+
+## The problem
+
+Launch spots are local knowledge: where you can park, whether the bank is muddy, if the river is calm enough for beginners. That knowledge needs a place where anyone can add it, where it's easy to find by region or by name, and where someone checks it before it goes public.
+
+## What I built
+
+- **Spot pages** at clean URLs — country, region, spot — with a map, gallery, YouTube video, coordinates, "navigate with" buttons for Waze and other apps, nearby spots and reviews with a rating breakdown. Each spot is a lake, river, sea or delta.
+- **Search and discovery**: search that ignores diacritics, a world map on the home page, stats, curated collections and spots near the visitor's location.
+- **Contributions**: signed-in users add spots and write reviews, and have their own area with their spots and a profile with an avatar.
+- **Moderation**: admins get an approve/reject queue and manage spots, users, reviews, countries and regions. Users can be banned temporarily or permanently, their sessions can be managed, and an admin can sign in as a user to see exactly what they see, with a banner to switch back.
+
+## Under the hood
+
+The data lives in Postgres with **PostGIS** (`geography(Point, 4326)`), accessed through Prisma 7 with the pg adapter in a dedicated schema. Search runs through a SQL function that combines PostGIS with `unaccent`, which is what makes diacritics irrelevant when you type. Supabase is only used for avatar storage.
+
+Authentication moved from Supabase Auth to Better Auth with magic links, keeping every existing user id. Translations are written inline in English and extracted to `.po` files with next-intl, and Romanian is the default language, with English under `/en`.
+
+In October 2026 I spent a round on performance: ISR for country and region pages, a static app shell and server-rendered map tiles. For SEO there's a sitemap with hreflang, canonical URLs, noindex on account and admin pages, and an `llms.txt` route regenerated daily with live stats.
+
+## Status
+
+Built in bursts since September 2025 — around 300 commits — and still growing. The next steps are more spots and more countries.
+
+## Stack
+
+Next.js 16, React 19, TypeScript, Prisma 7, PostgreSQL + PostGIS, Better Auth, next-intl, Tailwind CSS 4, shadcn/ui, Leaflet + react-leaflet (OpenStreetMap), motion, zod, Brevo, Supabase Storage, Vercel.

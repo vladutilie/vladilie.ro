@@ -1,0 +1,43 @@
+---
+title: "GoSUP – harta comunității pentru locurile de lansare stand-up paddle"
+locale: ro
+kind: "Produs propriu · Hărți · PostGIS"
+url: https://gosup.ro
+featuredImage: https://cbibpkpntrsbliyvvjde.supabase.co/storage/v1/object/public/projects/gosup-ro.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAxUlEQVQImQG6AEX/ACQ/RklfX11ublttbj1MSjlIQjpIPDpIPD5LPj5KQQBdf4altLjS2Nb19fWVm5Jtd2pxfG6KkYeSlo2WmpMAgaSxwtXY+/393uzor7qvMDwzAAYAnamkwsO7sru0AHKYn4WcmYeUim6IjIOZmpCblImalomfn5iimY2howA+XWUlOjsQHhwUKCkNIiMNIiMYKCgbLyg+UEdcaWgA193fz9TS297e2NrZ1dvZzNLT1dvb0tjW3ODf3uLhvS1eZAxS6b8AAAAASUVORK5CYII=
+description: "Produsul meu: o hartă a locurilor de lansare SUP adăugate de pasionați, cu căutare PostGIS, recenzii și moderare."
+technologies: [Next.js, PostGIS, Prisma, Better Auth, Leaflet, next-intl, Supabase]
+keywords: [gosup,stand up paddle,locuri sup,hartă,postgis,leaflet,nextjs]
+date: October 11, 2026 12:00:00
+---
+
+## Context
+
+[GoSUP](https://gosup.ro) este produsul meu, nu un proiect pentru un client. Fac stand-up paddle, iar ca să găsești un loc bun de pus placa pe apă de obicei trebuie să răsfoiești postări vechi de pe forumuri sau să întrebi în stânga și-n dreapta. Așa că am construit o hartă a locurilor de lansare, completată chiar de cei care vâslesc. Acoperă România și o listă tot mai lungă de țări din jur — Balcanii, Spania și Grecia — 12 coduri de țară deocamdată.
+
+## Problema
+
+Locurile de lansare sunt cunoaștere locală: unde poți parca, dacă malul e mâlos, dacă râul e destul de liniștit pentru începători. Informația asta are nevoie de un loc în care oricine o poate adăuga, în care se găsește ușor după regiune sau după nume și în care cineva o verifică înainte să devină publică.
+
+## Ce am construit
+
+- **Pagini pentru fiecare loc**, la adrese curate — țară, regiune, loc — cu hartă, galerie, video YouTube, coordonate, butoane „navighează cu” Waze și alte aplicații, locuri din apropiere și recenzii cu distribuția notelor. Fiecare loc este lac, râu, mare sau deltă.
+- **Căutare și descoperire**: căutare care ignoră diacriticele, o hartă a lumii pe prima pagină, statistici, colecții și locuri aflate aproape de vizitator.
+- **Contribuții**: utilizatorii autentificați adaugă locuri și scriu recenzii și au propria zonă, cu locurile lor și un profil cu avatar.
+- **Moderare**: administratorii au o coadă de aprobare/respingere și gestionează locuri, utilizatori, recenzii, țări și regiuni. Utilizatorii pot fi blocați temporar sau definitiv, li se pot gestiona sesiunile, iar un administrator poate intra în cont ca un anumit utilizator ca să vadă exact ce vede acesta, cu un banner pentru a reveni.
+
+## Sub capotă
+
+Datele stau în Postgres cu **PostGIS** (`geography(Point, 4326)`), accesat prin Prisma 7 cu adaptorul pg, într-o schemă dedicată. Căutarea rulează printr-o funcție SQL care combină PostGIS cu `unaccent` — de aceea nu contează dacă scrii cu sau fără diacritice. Supabase e folosit doar pentru stocarea avatarelor.
+
+Autentificarea a trecut de la Supabase Auth la Better Auth cu magic link, păstrând toate ID-urile de utilizator. Textele se scriu direct în engleză în cod și se extrag în fișiere `.po` cu next-intl, iar limba implicită este româna, cu engleza sub `/en`.
+
+În octombrie 2026 am făcut o rundă de performanță: ISR pentru paginile de țară și de regiune, un shell static al aplicației și dale de hartă randate pe server. Pentru SEO există sitemap cu hreflang, URL-uri canonice, noindex pe paginile de cont și de administrare și o rută `llms.txt` regenerată zilnic, cu statistici la zi.
+
+## Stadiu
+
+Construit în etape începând cu septembrie 2025 — în jur de 300 de commit-uri — și în continuă creștere. Următorii pași: mai multe locuri și mai multe țări.
+
+## Tehnologii
+
+Next.js 16, React 19, TypeScript, Prisma 7, PostgreSQL + PostGIS, Better Auth, next-intl, Tailwind CSS 4, shadcn/ui, Leaflet + react-leaflet (OpenStreetMap), motion, zod, Brevo, Supabase Storage, Vercel.

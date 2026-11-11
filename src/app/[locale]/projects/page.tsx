@@ -1,9 +1,12 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { allProjects, type Project as ProjectT } from 'contentlayer/generated';
+import { allProjects } from '@/lib/content';
+import type { Project as ProjectT } from '@/lib/content.types';
 
 import { getPathname } from '@/i18n/routing';
+import { everyLocale, localeAlternates } from '@/lib/alternates';
 import { Project } from './ui/project';
+import { Page, PageHeader } from '../ui/page-header';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: 'en' | 'ro' }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -11,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
   const commonFields = { title: t('title'), description: t('description') };
 
   return {
-    alternates: { canonical: ('ro' === locale ? '/ro/' : '') + getPathname({ locale, href: '/projects' }) },
+    alternates: localeAlternates(locale, everyLocale('/projects')),
     ...commonFields,
     keywords: t('metadata.keywords'),
     openGraph: {
@@ -35,26 +38,21 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: '
 export default async function Projects({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations('projects');
-  const projects = allProjects
-    .filter(({ locale: l }) => l === locale)
-    .sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
+  const projects = allProjects().filter(({ locale: l }) => l === locale);
 
   return (
-    <main className='container mx-auto max-w-7xl gap-8 px-4 py-32'>
-      <h1>{t('title')}</h1>
+    <Page>
+      <PageHeader meta={t('count', { count: projects.length })} title={t('title')} lead={t('description')} />
 
       {projects.length ? (
-        <>
-          <p>{t('description')}</p>
-          <div className='grid grid-cols-6 gap-8'>
-            {projects.map((project: ProjectT) => (
-              <Project key={project._id} {...project} />
-            ))}
-          </div>
-        </>
+        <ul className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+          {projects.map((project: ProjectT) => (
+            <Project key={project.slug} {...project} />
+          ))}
+        </ul>
       ) : (
         <p>{t('no-projects')}</p>
       )}
-    </main>
+    </Page>
   );
 }

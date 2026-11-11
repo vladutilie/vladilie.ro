@@ -3,98 +3,315 @@
     "go-to-homepage-al": "Go to homepage",
     "burger-menu-al": "Burger menu",
     "about": "About",
-    "education": "Education",
-    "skills": "Skills",
     "projects": "Projects",
-    "testimonials": "Testimonials",
     "services": "Services",
     "blog": "Blog",
     "contact": "Contact",
     "switch-theme": "Switch theme",
     "change-language": "Change language",
-    "change-language-to": "Schimbă limba în {lang}"
+    "change-language-to": "Schimbă limba în {lang}",
+    "work": "Work",
+    "close-menu-al": "Close menu",
+    "get-a-quote": "Get a quote",
+    "process": "Process",
+    "not-translated": "Această pagină nu există în {lang}.",
+    "switch-to-light": "Switch to light theme",
+    "switch-to-dark": "Switch to dark theme"
   },
   "homepage": {
     "metadata": {
-      "title": "Software Engineer · Work with NodeJS, WordPress, Neo4j",
-      "description": "I build dedicated software solutions with JavaScript, WordPress, Neo4j, Tailwind CSS, and many other related platforms and technologies.",
-      "keywords": "vlad,ilie,software,engineer,web developer,wordpress,nodejs,nextjs,tailwind,javascript"
+      "title": "WooCommerce shops & Next.js projects, built and kept running",
+      "description": "Software engineer from Romania. I build WooCommerce shops, custom WordPress plugins and Next.js products — and stay on after launch for updates, security and monitoring.",
+      "keywords": "vlad ilie,software engineer,woocommerce,wordpress plugin,next.js,web developer romania,website maintenance,romanian localization"
     },
     "hero": {
-      "hello": "Hi there, Vlad here {emoji}",
-      "about": "I'm a <strong>Software Engineer</strong> from Romania. I am <strong><neo4j>Neo4j</neo4j> Certified</strong>, a fan of NextJS and passionate about <strong>WordPress</strong> and JavaScript. I maintain the <strong><cpf>Cărțile pe Față</cpf></strong> websites. I am currently in <locations>{city}</locations>, but I often travel.",
       "available": "Available for new projects",
-      "not-available": "Not available for new projects",
-      "commits": "{count, plural, =0 {<commits>0</commits> commits} =1 {<commits>1</commits> commit} other {<commits>#</commits> commits}} in the last 7 days",
-      "link-to-al": "Link to {socialNetwork}",
-      "neo4j-certificate": "Neo4j Certificate",
-      "location-history": "Location history"
+      "not-available": "Not taking new projects right now",
+      "title": "WooCommerce shops & Next.js projects — built right, then <accent>kept running.</accent>",
+      "intro": "I'm Vlad, a software engineer. I build online shops, custom WordPress plugins and web products for businesses and NGOs — and stay on after launch to handle updates, security, monitoring and the 3 a.m. alerts.",
+      "cta-primary": "Tell me about your project",
+      "cta-secondary": "See case studies",
+      "promises": {
+        "fixed-scope": "Fixed-scope quotes",
+        "invoice": "Romanian company",
+        "reply": "Reply within one working day"
+      },
+      "panel": {
+        "title": "shop-ops · last 24h",
+        "healthy": "healthy",
+        "chart": "Orders/hour",
+        "logs": {
+          "checkout": "checkout · 0 PHP fatals in 24h",
+          "stock": "stock low → posted to #shop-alerts",
+          "mail": "mail · sending IP not blacklisted",
+          "backup": "backup · nightly snapshot complete"
+        },
+        "caption": "Illustration of the monitoring I run behind client shops — errors and mail problems reach Slack before customers notice."
+      },
+      "commits": "{count, plural, =1 {<commits>1</commits> commit} other {<commits>#</commits> commits}} pushed to GitHub in the last 7 days"
     },
-    "about": {
-      "tag": "About me",
-      "title": "More about me",
-      "image-alt": "Vlad in the mountains",
-      "p1": "For the past five years, I have been working with JavaScript-based technologies with a focus on NextJS, NodeJS, and Tailwind CSS. This period was marked by the development and integration of a diverse spectrum of solutions for databases, storage, user management, and data analysis.",
-      "p2": "I have worked with startups, helping to create MVPs and take them to market. At the same time, I cultivated personal SaaS projects in which I invested creativity and innovation.",
-      "p3": "In the web sphere, I have taken responsibility for the maintenance of WordPress sites with the commitment to ensure their smooth operation. In addition, I am involved pro-bono in maintaining the infrastructure of the Cultural Association Carțile pe Față.",
-      "p4": "I am involved in the WordPress community in various ways: I am a General Translation Editor (GTE) in Romania, and I contribute to removing the language barrier and facilitating access to WordPress for a wider audience. Also, through my involvement in the WP-Translations PRO team, I promote high-quality translations. I also contribute to other open-source software localization on various platforms like Crowdin, Weblate, Transifex, Lokalise, and even GitHub.",
-      "p5": "I maintain the \"euplatesc\" NPM library for the integration of the EuPlătesc payment service.",
-      "p6": "I am attracted to projects that have a significant impact on society, especially in areas such as the environment, education, activism, and NGOs. I am determined to put technology at the service of great causes and help build a better future for all.",
-      "see-more": "See more ˅",
-      "see-less": "See less ˄"
+    "proof": {
+      "label": "At a glance",
+      "stats": {
+        "studio": {
+          "value": "2019",
+          "label": "Running my own studio — Vlad Ilie Development SRL"
+        },
+        "maintained": {
+          "value": "8+",
+          "label": "Client WordPress & WooCommerce sites under active maintenance"
+        },
+        "gte": {
+          "value": "GTE",
+          "label": "General Translation Editor for WordPress in Romanian since 2019"
+        },
+        "senior": {
+          "value": "Senior",
+          "label": "Senior software engineer in agency teams, from Platri IT GmbH to Zitec"
+        }
+      },
+      "clients": "Clients & partners",
+      "built-with": "I build with"
     },
-    "education": {
-      "tag": "Education",
-      "neo4j": {
-        "title": "Neo4j Certified Professional",
-        "subtitle": "Neo4j",
-        "interval": "2022",
-        "description": "Driven by the excitement of a project based on relational information recommendations, I took and graduated from the GraphAcademy courses offered by Neo4j. You can see <url>the certificate</url>."
+    "work": {
+      "tag": "Selected work",
+      "title": "The problem, what I built, what changed.",
+      "all": "All projects",
+      "problem": "Problem",
+      "built": "Built",
+      "result": "Result",
+      "read": "Read the case study",
+      "cases": {
+        "maslinescu": {
+          "kicker": "WooCommerce · Ops · ongoing",
+          "title": "Măslinescu® — an olive-oil shop with its own ops room",
+          "problem": "A growing store where a silent PHP error or a blocked order email means lost sales — and nobody finds out until a customer calls.",
+          "built": "Custom WP plugins — an AI shopping assistant, order statuses synced automatically with Fan Courier, a tiered loyalty club that also counts in-store purchases, photo & video reviews — plus a Grafana + Loki stack with Slack alerts.",
+          "result": "Orders update themselves as parcels move, customers get product advice at any hour, and problems surface in Slack before anyone calls. Every plugin ships through PHPStan, tests and an automated deploy."
+        },
+        "tablouri": {
+          "kicker": "WordPress plugin · Vanilla JS",
+          "title": "TablouriColorate — a product configurator customers actually finish",
+          "problem": "After moving to WooCommerce, the canvas-print shop needed far richer product options. The jQuery version crawled during photo uploads, and the React rewrite that followed shipped 520 – 730 KB of JavaScript per page.",
+          "built": "One dependency-free configurator for six product types — canvas, multicanvas, collage, poster, banner and sticker — with crop previews drawn on canvas, prices computed on the server and hardened uploads.",
+          "result": "About 12 KB gzipped instead of 520–730 KB per page, one price formula shared by browser and server, and a new product, the multi-panel canvas: one photo printed across several canvases (up to 12), with the customer choosing what each panel shows. On a maintenance plan since 2018."
+        },
+        "lumea": {
+          "kicker": "Next.js · Pro-bono · NGO",
+          "title": "Lumea BookTruck — volunteers upload from the field, no accounts needed",
+          "problem": "The BookTruck mobile library of Cărțile pe Față lends books to children in rural schools — and every trip leaves stock to track, returns to chase and photos scattered across volunteers' phones and WhatsApp groups.",
+          "built": "A Next.js + Prisma + Better Auth panel for the catalogue, stock per location and loans — one ISBN scanned in the browser and one confirmation — plus one-link upload sessions that send files straight to the NGO's Google Drive in chunks that resume after an error.",
+          "result": "One link per trip, files land organised in Drive, and large uploads never pass through — or overload — the server. Librarians and volunteers share one panel with role-based permissions."
+        }
       },
-      "bachelor-degree": {
-        "title": "Bachelor degree",
-        "subtitle": "Politehnica University Timișoara | Romania",
-        "interval": "2013-2017",
-        "description": "I attended the full-time courses of the Faculty of Automation and Computers within the university, studying Automation and Applied Informatics for four years."
-      },
-      "oracle": {
-        "title": "Database Design and Programming with SQL",
-        "subtitle": "\"Mihai Viteazul\" Theoretical High School | Caracal, Romania",
-        "interval": "2012-2013",
-        "description": "During high school, I took a crash course offered by Oracle. It was not only an opportunity to develop my solid technical skills, but also a significant step in the direction of my passion for information technology."
-      },
-      "high-school": {
-        "title": "High School",
-        "subtitle": "\"Mihai Viteazul\" High School | Caracal, Romania",
-        "interval": "2009-2013",
-        "description": "I studied mathematics and computer science intensively."
+      "visuals": {
+        "maslinescu": {
+          "tier": "Connoisseur",
+          "spent": "lei this year",
+          "progress": "Free shipping unlocked · Ambassador is next",
+          "log-stock": "stock low · Extra virgin 3L → #shop-alerts",
+          "log-mail": "dnsbl · sending IP clean"
+        },
+        "tablouri": {
+          "photo": "Your photo",
+          "size": "Size",
+          "options": "Finish · Filter · Design",
+          "finish": "Matte",
+          "filter": "B&W",
+          "design": "Design service",
+          "add-to-cart": "Add to cart"
+        },
+        "lumea": {
+          "volunteer": "volunteer",
+          "trip": "Trip #14 · Uploads",
+          "folder": "Trip-14"
+        }
       }
     },
-    "skills": {
-      "tag": "Skills",
-      "description": "The technologies I use and trained with as a software developer over time:"
+    "more": {
+      "title": "Also shipped",
+      "items": {
+        "booktruck": {
+          "kind": "NGO · Fundraising",
+          "title": "BookTruck",
+          "body": "Fundraising site for the mobile library: one-off and monthly donations synced nightly, fundraising campaigns with approval, online charity auctions, book orders with automatic invoices, and an admin panel."
+        },
+        "tedx": {
+          "kind": "Event · Next.js",
+          "title": "TEDxZorilor",
+          "body": "Archive of every edition, speaker and talk, with a dashboard where volunteers edit only the conferences they're given."
+        },
+        "slam": {
+          "kind": "Sports · WordPress plugin",
+          "title": "Baschet Club SLAM",
+          "body": "Sign-ups for a youth basketball academy: SMS-verified registrations, medical certificates in private storage, fee tracking and reminders."
+        },
+        "transilvaniacar": {
+          "kind": "Car rental · Next.js",
+          "title": "TransilvaniaCar",
+          "body": "A booking wizard in three languages with instant quotes the server re-checks, and a panel for the fleet, prices and bookings."
+        },
+        "ebikerent": {
+          "kind": "Rentals · Next.js",
+          "title": "E-BikeRent",
+          "body": "E-bike rentals in Predeluț, Bran: online booking and card payments, automatic invoices, refunds and stock in one admin panel."
+        },
+        "gosup": {
+          "kind": "Own product · Maps",
+          "title": "GoSUP",
+          "body": "A community map of stand-up paddle launch spots, with search that ignores diacritics, reviews and a moderation queue."
+        },
+        "movelo": {
+          "kind": "Prototype · Marketplace",
+          "title": "movelo",
+          "body": "A bike-rental marketplace for several companies: each is paid straight into its own EuPlătesc or Stripe account and invoices automatically through Oblio."
+        },
+        "contadocs": {
+          "kind": "SaaS · past",
+          "title": "ContaDocs",
+          "body": "Accountants collected client documents straight into dated Google Drive folders. Next.js, SMS login."
+        }
+      }
     },
-    "projects": { "tag": "Projects", "see-all": "See all projects" },
-    "sw-l10n": {
-      "title": "Software localization",
-      "description": "Software projects for which I maintain the Romanian translations.",
-      "cron-job": "For over 15 years, it has been providing the heartbeat for tens of thousands of websites and executes millions of cronjobs every day.",
-      "discourse": "Open-source forum software that powers over 20,000 online communities of all shapes and sizes.",
-      "homebrew": "Homebrew installs the stuff you need that Apple (or your Linux system) didn't. It can be used to install macOS apps, fonts, plugins, and other non-open-source software.",
-      "poedit": "A powerful and intuitive translation editor for Windows, macOS, and Linux, used by over 66,000 people every month.",
-      "tldraw": "A collaborative digital whiteboard. You can use tldraw to create a drop-in whiteboard for your product or as the foundation on which to build your own infinite canvas applications.",
-      "weblate": "Hosted service and standalone translation tool with tight version control integration. Used by over 2,500 software projects and companies in over 165 countries.",
-      "wordpress": "Since 2019, I have been a General Translation Editor providing translations into Romanian for WordPress Core, themes, plugins, mobile apps, and secondary WordPress websites.",
-      "wp-cli": "WP-CLI is the command-line interface for WordPress. You can update plugins, configure multisite installations and much more, without using a web browser.",
-      "wp-translations": "I am part of the WP-Translations.PRO team and providing translations into Romanian and proofreading strings for companies like Yoast, MailPoet, Polylang, ThemeIsle.",
-      "quote": "<contact>Drop me a line</contact> if you need a quote regarding your project translations into Romanian."
+    "services": {
+      "tag": "How I can help",
+      "title": "Four ways to work together. Pick the one that suits you",
+      "fit": "Good fit if",
+      "build": {
+        "label": "Build",
+        "title": "New shop or web product",
+        "body": "WooCommerce stores, custom WP plugins and Next.js apps — from MVP to production.",
+        "i1": "Custom WooCommerce features",
+        "i2": "Payments (incl. EuPlătesc)",
+        "i3": "Auth, storage, analytics",
+        "fit": "you have a clear idea and need someone to ship it properly."
+      },
+      "rescue": {
+        "label": "Rescue",
+        "title": "Hacked, slow or broken site",
+        "body": "Incident response and fixes for WordPress sites that are hurting the business.",
+        "i1": "Malware cleanup & hardening",
+        "i2": "Database & speed fixes",
+        "i3": "Email deliverability",
+        "fit": "something is broken right now and you need it fixed this week."
+      },
+      "care": {
+        "label": "Care",
+        "title": "Monthly maintenance",
+        "body": "I look after the site so you can stop thinking about it.",
+        "i1": "Updates & backups",
+        "i2": "Uptime & error monitoring",
+        "i3": "Small changes included",
+        "fit": "the site makes money and can't afford to go down."
+      },
+      "localize": {
+        "label": "Localize",
+        "title": "Romanian localization",
+        "body": "Translation and proofreading for software, WP plugins and products.",
+        "i1": "WordPress / Weblate / Crowdin",
+        "i2": "GTE-level QA",
+        "i3": "Glossary consistency",
+        "fit": "you're launching a product for Romanian users."
+      }
+    },
+    "process": {
+      "tag": "Process",
+      "title": "No surprises on scope, price or handover.",
+      "call": {
+        "title": "Short call",
+        "body": "30 minutes to understand the goal, the constraints and what “done” means."
+      },
+      "scope": {
+        "title": "Written scope",
+        "body": "A fixed-scope proposal with price and timeline. You know the cost before any work starts."
+      },
+      "build": {
+        "title": "Build in the open",
+        "body": "Staging site from week one and regular updates, so feedback happens early."
+      },
+      "launch": {
+        "title": "Launch & care",
+        "body": "Deploy, monitoring and documentation. Then an optional care plan — not a disappearing act."
+      }
+    },
+    "about": {
+      "tag": "Who you'd work with",
+      "title": "One engineer, start to finish. No account managers, no hand-offs.",
+      "p1": "I've shipped production software as a senior engineer in agency teams — Zitec, Platri IT GmbH, MihaiDev, Serchis, Brainic and 7Code — and as a one-person studio for shops, startups and NGOs. The same person who writes your code answers your email and watches your logs.",
+      "p2": "I'm drawn to work with social impact — education, culture, environment — and I run the infrastructure of the <cpf>Cărțile pe Față</cpf> association pro-bono.",
+      "credentials": {
+        "wporg": {
+          "key": "WP.org",
+          "value": "General Translation Editor, <link>WordPress Romanian (ro_RO)</link>, since 2019"
+        },
+        "neo4j": {
+          "key": "Neo4j",
+          "value": "Neo4j Certified Professional, 2022"
+        },
+        "npm": {
+          "key": "npm",
+          "value": "Maintainer of the euplatesc library for <link>EuPlătesc</link> payments"
+        },
+        "degree": {
+          "key": "Degree",
+          "value": "Automation & Applied Informatics, <link>Politehnica Timișoara</link>"
+        },
+        "team": {
+          "key": "Team",
+          "value": "<link>WP-Translations.PRO</link> member — Yoast, MailPoet, Polylang, ThemeIsle"
+        }
+      },
+      "localization": "Open-source tools I translate into Romanian"
+    },
+    "contact": {
+      "title": "What are you working on?",
+      "body": "Pick what fits, write two lines, and you'll get a reply within one working day — with questions or a first estimate.",
+      "need-help-with": "I need help with",
+      "services": {
+        "build": {
+          "label": "New shop or product",
+          "hint": "Tell me what you sell or what the product does, and roughly when you want to launch. I'll come back with a fixed-scope proposal."
+        },
+        "rescue": {
+          "label": "Hacked/slow site",
+          "hint": "Send the URL and what you're seeing. For a compromised site I start with containment the same day, then a written report of what happened."
+        },
+        "care": {
+          "label": "Monthly maintenance",
+          "hint": "Send the site URL. I'll do a quick health check and suggest a care plan that fits — updates, backups, monitoring and small changes."
+        },
+        "l10n": {
+          "label": "Romanian translation",
+          "hint": "Share the project or the string files. I translate and proofread with the standards I apply as WordPress Romanian GTE."
+        },
+        "other": {
+          "label": "Something else",
+          "hint": "MVP idea, integration, a second opinion on an offer you got — write two lines and we'll see if I'm the right fit."
+        }
+      },
+      "form": {
+        "name": "Name",
+        "email": "Email",
+        "message": "Project in two lines",
+        "submit": "Send",
+        "sending": "Sending…",
+        "sent": "Thanks! Your message is on its way — I'll reply within one working day.",
+        "failed": "The message couldn't be sent. Please try again or write to me by email.",
+        "required": "This field is required.",
+        "invalid-email": "Please enter a valid email address.",
+        "too-short": "A couple of lines, please (at least 10 characters).",
+        "or-write": "I reply within one working day. Or write to <email>hello@vladilie.ro</email>"
+      }
     }
   },
   "locations": {
-    "metadata": { "keywords": "remote work,places,romania,location,history,cluj-napoca" },
+    "metadata": {
+      "keywords": "remote work,places,romania,location,history,cluj-napoca"
+    },
     "title": "Location history",
     "description": "Places I've been, worked from or visited. Since December 2022 🎁.",
-    "visited": "Visited: {visitCounter, plural, =0 {0 times} =1 {1 time} other {# times}} · Last visit: <lastVisit>{lastVisitAt}</lastVisit>"
+    "visited": "Visited: {visitCounter, plural, =0 {0 times} =1 {1 time} other {# times}} · Last visit: <lastVisit>{lastVisitAt}</lastVisit>",
+    "count": "{count, plural, =0 {No places} =1 {1 place} other {# places}}"
   },
   "blog": {
     "metadata": {
@@ -106,7 +323,8 @@
     "search-placeholder": "Type and search...",
     "views": "{count, plural, =0 {0 views} =1 {1 view} other {# views}}",
     "no-posts": "There are no blog posts for now. Stay close.",
-    "reading-time": "{minutes} min read"
+    "reading-time": "{minutes} min read",
+    "count": "{count, plural, =0 {No articles} =1 {1 article} other {# articles}}"
   },
   "projects": {
     "metadata": {
@@ -114,13 +332,14 @@
       "404-error": "404 Error"
     },
     "title": "Projects",
-    "description": "Outstanding projects I have implemented:",
+    "description": "Case studies: the problem, what I built and what changed — from WooCommerce shops to Next.js products and NGO tools.",
     "no-projects": "There are currently no articles about projects. 🤷🏻‍♂️",
     "reading-time": "{minutes} min read",
     "views": "{count, plural, =0 {0 views} =1 {1 view} other {# views}}",
     "technologies": "Technologies:",
     "share": "Share on:",
-    "share-on": "Share on {network}"
+    "share-on": "Share on {network}",
+    "count": "{count, plural, =0 {No case studies} =1 {1 case study} other {# case studies}}"
   },
   "contact": {
     "metadata": {
@@ -134,7 +353,6 @@
       "email": "Email",
       "phone": "Phone",
       "service": "Needed service",
-      "choose-service": "Choose...",
       "service-custom-development": "👨🏼‍💻 Custom development",
       "service-landing-page": "🚀 Landing page",
       "sw-i18n-l10n": "🌐 Software internationalization/localization",
@@ -147,42 +365,160 @@
       "submit": "Submit",
       "please-wait": "Please wait...",
       "message-sent": "Thank you! 🙏🏻 Your message has been sent.",
-      "send-failed": "Unfortunately, the submission failed. Please try again."
+      "send-failed": "Unfortunately, the submission failed. Please try again.",
+      "cards": {
+        "service-custom-development": {
+          "title": "Custom development",
+          "description": "A shop, a WP plugin or a web app built for what you need."
+        },
+        "service-landing-page": {
+          "title": "Presentation site",
+          "description": "A fast, clear site for a business, event or cause."
+        },
+        "service-maintenance": {
+          "title": "Maintenance",
+          "description": "Updates, backups, monitoring and fixes for an existing site."
+        },
+        "sw-i18n-l10n": {
+          "title": "Romanian localization",
+          "description": "Translation and proofreading for software and WP plugins."
+        },
+        "service-job-opportunity": {
+          "title": "Job opportunity",
+          "description": "A role or a longer collaboration you’d like to discuss."
+        },
+        "just-say-hi": {
+          "title": "Just saying hi",
+          "description": "No project — just a question or a hello."
+        }
+      }
     }
   },
   "colophon": {
     "metadata": {
-      "description": "About how the site was built, the technology stack used and the source code.",
-      "keywords": "colophon,design,site source code,nextjs,supabase,planetscale,mdx,tailwind,typescript,vercel"
+      "description": "How this site is built: the design, the technology stack and the source code.",
+      "keywords": "colophon,design,site source code,nextjs,react,tailwind,typescript,next-intl,prisma,supabase,vercel"
     },
     "title": "Colophon",
-    "p1": "My website's design is inspired by <url>Sagar Shah</url>.",
-    "p2": "The technology stack used consists of <nextjs>NextJS</nextjs>, <planet>PlanetScale</planet>, <supa>Supabase</supa>, <mdx>MDX</mdx>, <tailwind>Tailwind CSS</tailwind>, and <typescript>TypeScript</typescript>, deployed on <vercel>Vercel</vercel>.",
-    "p3": "The source code is open-sourced on <new>GitHub</new>. You can find the old version on <old>this branch</old>."
+    "meta": "Since August 2022",
+    "lead": "How this site is put together: the design, what it runs on and where the code lives.",
+    "design": {
+      "title": "Design",
+      "p1": "The current design, from 2026, was generated by Claude and put into code with Claude Code: proof first — case studies with the problem, what I built and what changed — on paper and ink surfaces, hairline rules instead of shadows and a single blue, #3598DB. Every page has a light and a dark theme.",
+      "p2": "Headings and body text are set in <schibsted>Schibsted Grotesk</schibsted>; labels, numbers and code in <plex>IBM Plex Mono</plex>. Both are served by next/font, without requests to Google at runtime."
+    },
+    "stack": {
+      "title": "Stack",
+      "items": {
+        "framework": {
+          "label": "Framework",
+          "note": "App Router and Server Components, built with Turbopack."
+        },
+        "language": {
+          "label": "Language",
+          "note": "Strict mode, everywhere."
+        },
+        "styling": {
+          "label": "Styling",
+          "note": "Design tokens as CSS variables, switched for the dark theme."
+        },
+        "content": {
+          "label": "Content",
+          "note": "Articles and case studies are MDX files, rendered on the server."
+        },
+        "highlighting": {
+          "label": "Code",
+          "note": "Syntax highlighting at build time, no JavaScript in the browser."
+        },
+        "i18n": {
+          "label": "Languages",
+          "note": "English and Romanian, with translated URLs."
+        },
+        "database": {
+          "label": "Data",
+          "note": "Article views and reactions, books, boardgames and the places I have been."
+        },
+        "forms": {
+          "label": "Forms",
+          "note": "The contact forms, validated on the client and again on the server."
+        },
+        "email": {
+          "label": "Email",
+          "note": "Messages from the contact forms, through transactional templates."
+        },
+        "hosting": {
+          "label": "Hosting",
+          "note": "Deploys from GitHub, plus Vercel Analytics."
+        }
+      }
+    },
+    "source": {
+      "title": "Source code",
+      "p1": "The source code is open on <new>GitHub</new>. The previous version lives on <old>this branch</old>."
+    }
   },
   "uses": {
-    "metadata": { "keywords": "working environment,software,remote work,desk,equipment,tools" },
+    "metadata": {
+      "keywords": "working environment,software,remote work,desk,equipment,tools"
+    },
     "title": "Uses",
     "description": "I can't do magic by myself, but the right software tools in the right hands are doing a great job.",
     "environment": {
       "title": "🗄️ Working environment",
-      "desk": { "name": "Manually adjustable desk", "description": "1600x800x36 mm, black" },
-      "chair": { "name": "2 x Notus chair", "description": "Ergonomic chair with mesh" },
-      "laptop-stand": { "name": "Laptop stand", "description": "Portable, height adjustable, folding" },
-      "monitors-support": { "name": "Desk support for 2 monitors", "description": "Gas spring, A+ SMLC24, 17-32 inch" },
-      "mousepad": { "name": "Mousepad Floston WORLD", "description": "900x400x3 mm" },
+      "desk": {
+        "name": "Manually adjustable desk",
+        "description": "1600x800x36 mm, black"
+      },
+      "chair": {
+        "name": "2 x Notus chair",
+        "description": "Ergonomic chair with mesh"
+      },
+      "laptop-stand": {
+        "name": "Laptop stand",
+        "description": "Portable, height adjustable, folding"
+      },
+      "monitors-support": {
+        "name": "Desk support for 2 monitors",
+        "description": "Gas spring, A+ SMLC24, 17-32 inch"
+      },
+      "mousepad": {
+        "name": "Mousepad Floston WORLD",
+        "description": "900x400x3 mm"
+      },
       "lamp": "FORSÅ lamp, nickel-plated"
     },
     "hardware": {
       "title": "💻 Hardware",
       "macbook": {
-        "name": "MacBook Pro 15 Retina with Touch Bar",
-        "description": "2019, Coffee Lake 8-core i9 2.3GHz, 16GB DDR4, 512GB SSD, Radeon Pro 560X 4GB"
+        "name": "Apple MacBook Pro 16 A3428",
+        "description": "2026, Apple M5 Pro 18-Core, 24GB RAM Unified Memory, SSD 1 Tb NVMe, Apple 20-core GPU"
       },
-      "monitors": { "name": "2 x Monitor LED LG", "description": "27 inch, 4K, 60Hz" },
+      "monitors": {
+        "name": "2 x Monitor LED LG",
+        "description": "27 inch, 4K, 60Hz"
+      },
       "mouse": "Mouse Apple Magic 2",
       "keyboard": "Keyboard Mac LOGITECH MX Keys",
       "mic": "Microphone VONYX CMS300B"
+    },
+    "ai": {
+      "title": "✨ AI",
+      "claude": {
+        "name": "Claude",
+        "description": "Thinking partner for research, writing and design — this site’s 2026 design started as a Claude artifact."
+      },
+      "claude-code": {
+        "name": "Claude Code (CLI)",
+        "description": "Agent in the terminal: refactors, dependency upgrades, migrations, tests and code reviews across my projects."
+      },
+      "claude-in-chrome": {
+        "name": "Claude in Chrome",
+        "description": "Browser extension that lets Claude open pages, click through flows and read the console while I build."
+      },
+      "chatgpt": {
+        "name": "ChatGPT",
+        "description": "Second opinions, quick questions and first drafts."
+      }
     },
     "software": {
       "title": "🤖 Software",
@@ -193,29 +529,38 @@
       "postman": "Postman",
       "chrome": {
         "name": "Google Chrome",
-        "description": "Extensions: AdBlock, GoFullPage - Full Page Screen Capture, Grammarly, JSON Viewer, React Developer Tools, SWR DevTools, Tab Suspender, Xdebug helper"
+        "description": "Extensions: AdBlock, CSS Grid Overlay, GoFullPage - Full Page Screen Capture, JSON Formatter, Wappalyzer - Technology profiler, WordPress Browser Extension"
       },
-      "neo4j": "Neo4j Desktop",
       "signal": "Signal",
-      "slack": "Slack"
+      "slack": "Slack",
+      "ddev": {
+        "name": "DDEV",
+        "description": "Local WordPress environments in Docker (Colima): PHP 8.5, Apache-FPM, MySQL 8.4, Node 24, Composer 2 and WP-CLI, HTTPS through Traefik, Mailpit for e-mail, Mutagen for fast file sync, phpMyAdmin as an add-on, Xdebug and XHGui on demand."
+      }
     }
   },
   "books": {
-    "metadata": { "keywords": "books,book list,reading,what to read,book recommendation" },
+    "metadata": {
+      "keywords": "books,book list,reading,what to read,book recommendation"
+    },
     "title": "Books",
     "description": "A part of my book collection. A journey through my knowledge and stories along life.",
     "currently-reading": "Curently reading 📖",
     "read": "Read 📚",
-    "wishlist": "Wishlist 🧞‍♂️"
+    "wishlist": "Wishlist 🧞‍♂️",
+    "count": "{count, plural, =0 {No books} =1 {1 book} other {# books}}"
   },
   "boardgames": {
-    "metadata": { "keywords": "boardgames,azul,pandemic,ticket to ride,zestrea" },
+    "metadata": {
+      "keywords": "boardgames,azul,pandemic,ticket to ride,zestrea"
+    },
     "title": "Boardgames",
     "description": "Beyond learning and working, I also ensure myself fun experiences. Here are the board games I play with friends and dear ones.",
     "all-categories": "All",
     "own": "Own ({count})",
     "wishlist": "Wishlist ({count})",
-    "age": "Age: {age}"
+    "age": "Age: {age}",
+    "count": "{count, plural, =0 {No games} =1 {1 game} other {# games}}"
   },
   "terms": {
     "metadata": {
@@ -309,7 +654,92 @@
     "trade-reg-no": "Tr.reg.no: {regNo}",
     "sal-al": "Details Alternative Dispute Resolution",
     "sol-al": "Online dispute resolution",
-    "copyright": "© 2019 — {year} · {siteName} · All rights reserved."
+    "copyright": "© 2019 — {year} · {siteName} · All rights reserved.",
+    "nav-al": "Footer",
+    "profile-al": "{network} profile"
   },
-  "not-found": { "title": "404 Error", "description": "The page you are looking for does not exist." }
+  "not-found": {
+    "title": "404 Error",
+    "description": "The page you are looking for does not exist.",
+    "back-home": "Back to the homepage"
+  },
+  "cookies": {
+    "title": "Cookies",
+    "banner": "The site only stores what it needs to work. With your consent, it also counts visits anonymously with Vercel Web Analytics, which uses no cookies. You can change your mind any time from the footer. <link>Cookie policy</link>",
+    "accept": "Accept",
+    "reject": "Reject",
+    "save": "Save choices",
+    "customize": "Customize",
+    "close": "Close",
+    "settings-title": "Cookie settings",
+    "settings-lead": "Choose what the site may use besides what it needs to work. Details in the <link>cookie policy</link>.",
+    "necessary": {
+      "title": "Strictly necessary",
+      "description": "Remember this choice and your light, dark or system theme. Always on."
+    },
+    "analytics": {
+      "title": "Statistics",
+      "description": "Vercel Web Analytics: anonymous, aggregated page views, without cookies or tracking across sites."
+    }
+  },
+  "cookie-policy": {
+    "metadata": {
+      "description": "Which cookies and browser storage vladilie.ro uses, why, for how long, and how to change your choice."
+    },
+    "title": "Cookie policy",
+    "updated": "Last updated: 10 November 2026",
+    "lead": "Short version: one cookie that remembers your choice, one setting for the theme, and anonymous statistics only if you agree. No advertising, no tracking across sites.",
+    "what": {
+      "title": "What cookies are",
+      "p1": "Cookies are small text files a website saves in your browser. Similar technologies, such as localStorage, keep data in the browser in the same way. This page covers both, because the law treats them the same."
+    },
+    "used": {
+      "title": "What this site uses",
+      "p1": "Strictly necessary items are always on, because the site can’t respect your choices without them. Statistics run only after you accept them."
+    },
+    "fields": {
+      "type": "Type",
+      "provider": "Provider",
+      "purpose": "Purpose",
+      "duration": "Duration",
+      "category": "Category"
+    },
+    "items": {
+      "consent": {
+        "type": "First-party cookie",
+        "provider": "vladilie.ro",
+        "purpose": "Remembers whether you accepted or rejected statistics, so the banner doesn’t come back on every page.",
+        "duration": "6 months",
+        "category": "Strictly necessary"
+      },
+      "theme": {
+        "type": "localStorage",
+        "provider": "vladilie.ro",
+        "purpose": "Remembers the theme: “system” (follow your device) until you switch to light or dark yourself.",
+        "duration": "Until you clear your browser data",
+        "category": "Strictly necessary"
+      },
+      "analytics": {
+        "type": "No cookie or storage — a script that sends page views",
+        "provider": "Vercel Inc.",
+        "purpose": "Counts visits per page, with the referring site, country, browser and device type, so I know which pages are useful. Visitors are not identified or followed across sites.",
+        "duration": "Nothing is kept in your browser",
+        "category": "Statistics — only with your consent"
+      }
+    },
+    "not-used": {
+      "title": "What this site doesn’t use",
+      "p1": "No advertising or social media cookies, no Google Analytics, no embedded videos or third-party widgets. Fonts are served by the site itself and images go through it too, so loading a page doesn’t contact other companies. The contact form sends your message by e-mail and sets no cookies."
+    },
+    "choice": {
+      "title": "Changing your choice",
+      "p1": "You can change or withdraw your consent at any time, just as easily as you gave it:",
+      "p2": "You can also delete cookies and site data from your browser settings; the banner will then ask again on your next visit."
+    },
+    "contact": {
+      "title": "Questions",
+      "p1": "For anything about your data, see the <privacy>privacy policy</privacy> or write to me through the contact page."
+    },
+    "nav": "Cookie policy"
+  }
 }

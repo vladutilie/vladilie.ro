@@ -1,92 +1,59 @@
 ---
-title: Site de prezentare și de strângere de fonduri pentru BookTruck
+title: "BookTruck – site de prezentare, donații și campanii de strângere de fonduri pentru biblioteca mobilă"
 locale: ro
-featuredImage: https://res.cloudinary.com/vladilie-ro/image/upload/v1702312046/projects/site-prezentare-strangere-fonduri-booktruck/hja42tde489lrwp6gtqz.webp
-blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAuUlEQVR4nGMIaZoU0jAxtnlKQMOEyJapCZ0zYzqmxbZOSemdG9I0ieHfz8+vH9xeNWXS2aMH///5dujU8eNnT3x99+zPj/f//3xj+P3tw76d6/0djSUZGLavX75gw+aMtkkfXz1BSN+7dXx6V0JrRerFI5uu7d6ytqJsdWnx/98fQdL//3z7/e3Dx3fP37168vTGxac3Lr579eTdqye/v32ASv/88u7i6aMXTx89c/wQnPz55d3/P98ATc2Hyw6ARn0AAAAASUVORK5CYII=
-description: Implementare design Adobe XD cu NextJS și Tailwind CSS. Integrare EuPlătesc, Brevo, i18n și alte servicii externe.
-technologies: [NextJS, Tailwind CSS, HeadlessUI, EuPlătesc, Brevo, Formik, Cloudinary, i18n]
-keywords: [booktruck,cărțile pe față,site prezentare,strângere fonduri]
-date: December 11, 2023 18:40:55
+kind: "Next.js · Strângere de fonduri · ONG"
+url: https://booktruck.cartilepefata.ro
+featuredImage: https://cbibpkpntrsbliyvvjde.supabase.co/storage/v1/object/public/projects/booktruck-ro.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAl0lEQVQImWPQ0rUxMLI1NHDQNnQ0sXS3svUxsXQ3NnG0tfHQ0rVh+P/n6/GNaw5tXH1826aPrx9PmbvoxeM7X94+/fn51f8/X0HSDVVFKXHhWkrSu7dtNPRLaJs679XT+wjpvCzn1FALKQaGhRPqGnzdp2Yl9yfF3D5+ACqNjP7++ARBEC5C+tndqxcO7b1++siL+9fhggC07XtzV4dHRwAAAABJRU5ErkJggg==
+description: "Site-ul BookTruck: donații unice și lunare prin EuPlătesc sincronizate în fiecare noapte, campanii de strângere de fonduri cu aprobare, licitații online, conturi pentru donatori, comenzi de carte cu Stripe și Oblio și un panou de administrare."
+technologies: [Next.js, next-intl, Prisma, Supabase, Better Auth, EuPlătesc, Stripe, Oblio, Vitest]
+keywords: [booktruck,cărțile pe față,site prezentare,strângere fonduri,donații,campanii de donații,licitații caritabile,euplătesc]
+date: October 7, 2026 12:00:00
 ---
 
-## Introducere
+## Context
 
-Pe <a href="https://victormiron.com" title="Site-ul lui Victor Miron" target="_blank" className="after:content-['_↗']">Victor Miron</a> l-am cunoscut în decembrie 2016 la un eveniment în Timișoara la care a vorbit, evident, despre cărți.
-Atunci aflasem pentru prima dată despre <a href="https://cartilepefata.ro" title="Site-ul Cărțile pe față" target="_blank" className="after:content-['_↗']">Asociația culturală Cărțile pe față</a>, despre promovarea lecturii și misiunea lui Victor de a avea un impact în ridicarea procentului de cărți citite de români într-un an.
-Cam de 3 ani știam atunci despre voluntariat, activând în <a href="https://ligaac.ro" title="Site-ul Liga AC" target="_blank" className="after:content-['_↗']">Liga AC</a> din cadrul Facultății de Automatică și Calculatoare, facultate pe care o urmam.
-Chiar și cu acea experiență în voluntariat, am luat legătura cu Victor, timid și i-am propus să-l ajut cu diverse prin asociația pe care o fondase.
+Pe [Victor Miron](https://victormiron.com) l-am cunoscut în decembrie 2016, la un eveniment din Timișoara despre cărți. Atunci am aflat de [Asociația culturală Cărțile pe Față](https://cartilepefata.ro) și de misiunea ei de a-i face pe români să citească mai mult. Am început ca voluntar la cluburile de lectură „Vocea cititorului”, am co-organizat două ediții, iar după mutarea în Cluj-Napoca am preluat, treptat, infrastructura IT a asociației.
 
-Astfel am participat cluburile de lectură ale Cărțile pe față, „Vocea cititorului”, iar edițiile <a href="https://www.facebook.com/events/802888169892442/?active_tab=discussion" title="Pagină eveniment Facebook" target="_blank" className="after:content-['_↗']">#3</a> și <a href="https://www.facebook.com/events/129070054341063/?active_tab=discussion" title="Pagină eveniment Facebook" target="_blank" className="after:content-['_↗']">#4</a> le-am co-organizat.
+BookTruck este biblioteca pe roți a asociației, care duce cărți copiilor din satele fără bibliotecă funcțională. Site-ul a pornit în martie 2022, pe Next.js 12, ca un site de prezentare cu formular de donații. De atunci a devenit locul prin care asociația strânge bani, primește cărți și voluntari și își vinde propriile cărți, iar în toamna lui 2026 a primit un panou de administrare, campanii de strângere de fonduri și conturi pentru donatori.
 
-Timpul a trecut și odată cu mutarea mea în Cluj-Napoca am preluat încet partea de infrastructură IT a asociației.
+## Problema
 
-## Design
+Un site de strângere de fonduri trebuie să fie, în primul rând, de încredere: o donație lunară trebuie să apară în evidențe chiar dacă procesatorul de plăți nu anunță site-ul, iar o rambursare făcută din contul de comerciant trebuie să se vadă și în panou. Asociația voia și campanii de tipul „dăruiește-ți ziua de naștere”, create de echipă sau chiar de susținători, dar fără ca orice pagină să ajungă publică nevăzută de nimeni. Pe lângă asta, vinde cărțile BookTruck, organizează în fiecare an o campanie de Crăciun și are nevoie să-și actualizeze singură partenerii, galeria, presa, punctele de donare și harta școlilor adoptate – fără să-mi scrie mie pentru fiecare logo.
 
-        <a href="https://xd.adobe.com/view/b594b14b-16fc-460e-9ac7-acbb35ecfcc9-e0c7" title="Design BookTruck în Adobe XD" target="_blank" className="after:content-['_↗']">Design-ul</a> pe care l-am urmat și pe care l-am adaptat ușor, a fost realizat în Adobe XD de o persoană specializată din Cluj-Napoca.
+## Ce am construit
 
-Spun că l-am adaptat ușor pentru că am schimbat familia de fonturi din cauză că fontul din design, „Clab” nu accepta diacritice, iar site-ul urma să fie multilingv, limba română fiind una dintre limbi.
-Și cum îmi place mie să spun mereu „nu există limba română fără diacritice”, l-am înlocuit cu cel implicit din Tailwind.
-Apoi animațiile de pe butoane la `hover` nu le-am putut implementa la acea vreme și nici <del>nu sunt un vreun zeu CSS</del> nu am vrut să insist 😁.
+- **Un site public în română și engleză**, cu adrese traduse pentru fiecare pagină (de exemplu `/doneaza-carti` și `/en/donate-books`). Prima pagină are formularul de donații cu un contor al sumei strânse, ultima campanie activă, licitația care se încheie cel mai curând și harta școlilor adoptate; varianta în română adaugă redirecționarea a 3,5% din impozit (scoasă în față în sezonul declarațiilor), sponsorizările, susținerea prin SMS și abonarea la newsletterul de pe Substack.
+- **Donații unice sau lunare** prin EuPlătesc, cu card, sau prin ordin de plată. Sumele propuse, moneda și textele formularului se editează din panou; un text lăsat gol folosește traducerea implicită.
+- **Campanii de strângere de fonduri** („Dăruiește-ți ziua de naștere”): fiecare campanie are pagina ei, cu poze și video, descriere, sumă țintă, bară de progres, timp rămas, butoane de distribuire și lista donațiilor. Donatorii pot dona o dată sau lunar, pot rămâne anonimi și pot lăsa un mesaj. Avatarul vine din Gravatar, iar dacă nu există, site-ul desenează o carte generată din donație. O donație anonimă nu folosește niciodată Gravatar, ca poza să nu-l dea de gol pe donator. Campaniile încheiate rămân online, cu rezultatul final, dar nu mai primesc donații.
+- **Un flux de aprobare** pentru campanii: ciornă, previzualizare (vizibilă doar autorului și administratorilor), trimitere spre aprobare, aprobare sau respingere cu motiv. Administratorii primesc e-mail la fiecare trimitere, iar autorul află rezultatul tot prin e-mail.
+- **Licitații caritabile**: actori, scriitori, muzicieni și alți susținători donează obiecte, iar publicul licitează online. Fiecare licitație e un singur obiect, cu pagina, pozele și ora ei de închidere, iar pagina `/licitatii` le grupează pe colecții. Oferta se face din cont, cu bifa de angajament, și e un angajament, nu o plată: nu se reține niciun ban cât timp licitația rulează. Fiecare ofertă trebuie să urce peste cea curentă cu cel puțin un pas și cel mult un plafon, ambele stabilite pentru fiecare obiect, iar același cont nu poate face două oferte la rând. Cine nu vrea să-i apară numele licitează ca „Licitator #47”, cu un număr care rămâne același pe toată licitația. O ofertă în ultimele minute prelungește licitația, ca nimeni să nu câștige doar pentru că a apăsat ultimul. Vizitatorii pot urmări o licitație și primesc e-mail cu o zi și cu o oră înainte de final, iar cine intră în cont de pe o licitație se întoarce direct la ea. În „Contul meu”, la „Ofertele mele”, fiecare își vede ofertele și licitațiile câștigate.
+- **Conturi pentru susținători**, cu înregistrare protejată de Cloudflare Turnstile și autentificare prin magic link, fără parolă. În „Contul meu” fiecare își vede donațiile, ofertele (inclusiv cele anonime și cele lunare), își editează datele și își poate porni propriile campanii, care trec prin același flux de aprobare, cu limite pentru numărul de campanii deschise și durata lor.
+- **Campania de Crăciun**: o pagină cu progresul strângerii de fonduri, numărătoare inversă până la Crăciun, galerie și un mesaj de mulțumire după donație. Când ținta e atinsă, pagina trece singură la mulțumiri și parteneri. Din septembrie până după Crăciun, o bară din meniu numără zilele rămase.
+- **Donații de cărți**: o hartă interactivă a județelor cu punctele unde se pot lăsa cărți, cu telefon și link de hartă pentru fiecare.
+- **Harta școlilor adoptate**: județul Cluj desenat pe unități administrativ-teritoriale, cu școlile adoptate și cele care așteaptă un adoptator ca puncte pe satele lor.
+- **Comenzi pentru cărțile BookTruck**, printre ele „Dana și verișoarele”, plătite cu Stripe și facturate automat prin Oblio, pe persoană fizică sau pe firmă, cu livrare prin curier sau ridicare personală. Formularul se ascunde când nu mai e nimic în stoc, iar o comandă trimisă de două ori reia plata deja începută în loc să creeze alta.
+- **Voluntariat**: un formular cu disponibilitatea fiecăruia, trimis prin Brevo direct coordonatorilor.
+- **Galerie, apariții în presă, parteneri** pe trei niveluri și pagina „Biblioteca vie cu Raluca Anton”, cu bilete prin Oveit. Pozele din galerie au adrese proprii, ca să poată fi distribuite.
+- **Detalii de sezon**: între 20 octombrie și 2 noiembrie, pe site apar personaje de Halloween.
+- **Consimțământ pentru cookie-uri pe categorii**: statisticile (Google Analytics, Smartlook, Vercel Analytics) și conținutul extern (YouTube, Substack) se încarcă doar după acord. La refuz, cookie-urile de statistică se șterg, iar alegerea se cere din nou după șase luni.
+- **Un panou de administrare**: un tablou de bord cu donațiile lunii, donatorii lunari activi și comenzile de procesat; donatori, cu istoricul plăților, rambursare pe plată și anularea donațiilor lunare; statistici cu grafice care compară perioade; editorul formularului de donații; campanii, cu aprobare și moderarea mesajelor; licitații, oferte și adjudecări, cu cifrele lor pe tabloul de bord și export CSV; comenzi (Primită → În pregătire → Expediată) și produse; parteneri pe niveluri, cu ordine stabilită din panou; galerie, cu ordonare prin drag-and-drop; presă; punctele de donare și școlile de pe hartă; utilizatori (echipă și conturi publice), invitații, roluri, jurnal de activitate și setări. Rolurile sunt Editor, Coordonator și Administrator, iar fiecare acțiune e verificată pe server, nu doar ascunsă în interfață.
+- **Import de galerie din Google Drive**: lipești linkul unui dosar public și alegi pozele. Celelalte imagini – încărcări de pe calculator, sigle, produse, avatare și pozele campaniilor – stau în Supabase Storage.
 
-                <video
-                                        autoPlay
-                                        loop
-                                        controls
-                                        preload='none'
-                                        playsInline
-                                        poster='https://res.cloudinary.com/vladilie-ro/image/upload/v1702312046/projects/site-prezentare-strangere-fonduri-booktruck/hja42tde489lrwp6gtqz.webp'
-                                >
-                                        <source
-                                                        src='https://res.cloudinary.com/vladilie-ro/video/upload/v1702328248/projects/site-prezentare-strangere-fonduri-booktruck/ql0ogpf7vtyjz5gts5pb.mp4'
-                                                        type='video/mp4'
-                                                />
-                                        </video>
+## Sub capotă
 
-## Tehnologie
+Piesa de care sunt cel mai mulțumit este **sincronizarea donațiilor cu EuPlătesc**. Rulează în fiecare noapte prin Vercel Cron (sau manual, din panou) și prinde exact cazurile în care un site obișnuit pierde date: plățile lunare pe care EuPlătesc le face fără să cheme site-ul, plățile al căror callback nu a ajuns, rambursările și anulările făcute direct din contul EuPlătesc. La prima rulare a adus tot istoricul, din 2018 încoace. Poate rula de oricâte ori fără duplicate; o rulare incrementală acoperă ultimele 35 de zile și durează câteva secunde. Pentru că același cont de comerciant e folosit și de alte site-uri, importă doar tranzacțiile BookTruck, iar descrierea plății păstrează campania, deci și plățile lunare ale unei campanii ajung înapoi la ea. Integrarea folosește [biblioteca EuPlătesc pentru Node.js](/ro/blog/euplatesc-nodejs) pe care o întrețin.
 
-Site-ul <a href="https://booktruck.ro" title="Site-ul BookTruck" target="_blank" className="after:content-['_↗']">BookTruck</a> a fost printre primele mele site-uri realizate cu <a href="https://nextjs.org" title="Site-ul NextJS" target="_blank" className="after:content-['_↗']">NextJS</a> (început cu versiunea 12.1.1 în 7 martie 2022), framework React, și Tailwind CSS.
-Până acum nu l-am migrat către `App Router`, încă este pe structura `Pages Router`.
-Probabil voi face asta la un moment dat.
+Campaniile refolosesc aceleași donații și aceeași sincronizare, nu un sistem paralel. Suma strânsă nu se salvează, ci se calculează din plățile încasate până la încheierea campaniei, minus rambursările: o donație lunară contribuie cu fiecare plată cât timp campania e activă, iar plățile de după nu mai mișcă progresul afișat. Pozele și videoclipurile se încarcă direct din browser în Supabase Storage, cu URL-uri semnate, deci fișierele mari nu trec prin server, iar un job săptămânal șterge fișierele rămase fără campanie. Descrierea se scrie cu Tiptap și se curăță pe server, cu o listă scurtă de taguri permise.
 
-Am folosit <a href="https://vercel.com" title="Site-ul Vercel" target="_blank" className="after:content-['_↗']">Vercel</a> pentru lansarea site-ului.
+Pentru **licitații**, plasarea unei oferte se face într-o singură tranzacție care blochează rândul licitației în Postgres. Minimul, plafonul, timpul rămas și liderul se recitesc acolo, nu se iau de la browser, pentru că două oferte egale la câteva milisecunde distanță sunt un caz real, iar un index unic pe sumă e ultima barieră. Tot acolo se alocă numărul de licitator. Un job Vercel Cron închide în fiecare minut licitațiile expirate și altul trimite reminderele, iar orice vizită pe o pagină publică închide și ea o licitație al cărei termen a trecut, deci nimeni nu poate licita după final chiar dacă o rulare e ratată. Închiderea poate rula de mai multe ori fără efecte duble. La final, câștigătorul primește e-mail, ceilalți află rezultatul, iar echipa preia adjudecarea din panou: notițe de discuție, link de plată sau plată offline, predarea obiectului și, dacă un câștigător renunță, reatribuirea către următorul clasat, la prețul ofertei lui. Linkul de plată creează o donație obișnuită prin EuPlătesc, deci banii apar în aceleași evidențe și statistici ca restul donațiilor. Membrii echipei nu pot licita, iar o ofertă aberantă se poate anula din panou, cu motiv, fără să fie ștearsă. Regulile licitațiilor sunt funcții pure, testate, folosite și de server, și de pagini, ca interfața să arate exact limitele pe care le aplică serverul.
 
-## Formular de donații
+Site-ul a trecut de la Pages Router la App Router în 2024, are o bază de date Prisma pe Supabase Postgres, react-hook-form și zod în loc de Formik și Yup, iar i18n-ul se face cu next-intl. Prima pagină e generată static și se reîmprospătează singură, ca o campanie care se încheie să dispară fără nicio editare. Autentificarea folosește Better Auth cu magic link și limite în Redis, formularele publice sunt protejate cu Cloudflare Turnstile, iar mediile de test nu sunt indexate. Paginile au adrese canonice, variante de limbă, sitemap și imagini pentru distribuire. Regulile de donații, campanii și licitații, sincronizarea, statisticile, permisiunile, consimțământul pentru cookie-uri, rutele de plată și joburile licitațiilor au teste Vitest.
 
-Furnizorul de servicii ales pentru plățile online ale donațiilor a fost <a href="https://euplatesc.ro" title="Site-ul EuPlătesc" target="_blank" className="after:content-['_↗']">euplatesc.ro</a>.
-Probabil este furnizorul de plăți din România cu cele mai mici comisioane și cred că în topul celor mai utilizați.
-Evident, pentru integrarea API-ului am folosit biblioteca npm pe care am dezvoltat-o pentru Node.js și despre care am scris <a href="/ro/blog/euplatesc-nodejs" title="Articol despre Biblioteca EuPlătesc pentru Node.js">un articol</a> pe blog.
-Donația poate fi singulară sau recurentă (o dată pe lună) pe o perioadă de 5 ani cu posibilitate, bineînțeles, de anulare.
-De asemenea, în formularul de donație există și informații pentru a efectua direct un transfer bancar către Cărțile pe față.
-Iar pentru utilizatorii străini există posibilitatea de a <a href="https://www.paypal.com/donate/?hosted_button_id=WNGBETHCMVHJJ" title="Pagină de donații PayPal pentru Cărțile pe față" target="_blank" className="after:content-['_↗']">dona prin PayPal</a>.
+## Rezultat
 
-## Hartă interactivă
+Asociația își administrează singură conținutul, campaniile, licitațiile și comenzile și vede, într-un singur loc, donațiile, recurențele active și progresul fiecărei campanii, cu evidențe care se reconciliază singure în fiecare noapte. Susținătorii își pot porni propria strângere de fonduri, pot licita pentru obiecte donate și își pot urmări donațiile și ofertele fără să scrie cuiva. Site-ul își face treaba zilnic: oamenii donează, comandă cărți și se înscriu ca voluntari, iar BookTruck-urile pleacă spre școli.
 
-Un lucru de care sunt mândru, este <a href="https://booktruck.cartilepefata.ro/doneaza-carti" title="Pagina de donare cărți BookTruck" target="_blank" className="after:content-['_↗']">harta SVG</a> cu județe și centre de donare de cărți.
-Se poate da clic pe fiecare județ și apoi va apărea sub hartă o listă cu centrele și datele de contact în care se pot dona cărți din județul respectiv.
-Harta pare foarte flexibilă și m-am gândit să o fac și mai interesantă la un moment dat.
-Am reușit să o pun în perspectivă și să încep să desenez niște săgeți dintre județul Cluj către celelalte.
-Momentan nu este disponibilă aceasă versiune, dar sper că în curând o voi termina.
-                <img src="https://res.cloudinary.com/vladilie-ro/image/upload/v1702368617/projects/site-prezentare-strangere-fonduri-booktruck/hfuvaou0eykivtofy5se.webp" alt="Harta României cu județe și centre de donare cărți pentru BookTruck" />
+## Tehnologii
 
-## Formular de înscriere ca voluntar
-
-Pentru formularul de înscriere ca voluntar am folosit biblioteca <a href="https://formik.org" title="Site-ul Formik" target="_blank" className="after:content-['_↗']">Formik</a>, iar validarea am făcut-o cu o schemă <a href="https://www.npmjs.com/package/yup" title="Pagina bibliotecii Yup" target="_blank" className="after:content-['_↗']">Yup</a>.
-La trimiterea formularului, acesta execută o cerere către o rută de API prin care se trimite un email prin serivciul Brevo (fost Sendinblue) pe care l-am integrat și, bineînțeles, face și o validare cu Turnstile de la Cloudflare, un fel de CAPTCHA de la Google.
-Așa se evită spam-ul făcut de boți.
-
-## Galerie foto
-
-O altă pagină interesantă este galeria de poze care a fost inspirată de galeria conferinței „<a href="https://nextjsconf-pics.vercel.app" title="Galeria foto a conferinței NextJS 2022" target="_blank" className="after:content-['_↗']">Next.js Conf 2022</a>”.
-Chestia faină care-mi place la ea este că fiecare poză are o legătură unică ce poate fi partajată pe rețelele sociale.
-Iar pentru poze și legăturile lor URL nu a fost nevoie de o bază de date.
-De fapt, tot site-ul în sine nu are o bază de date.
-Pozele sunt preluate cu biblioteca <a href="https://cloudinary.com" title="Site-ul Cloudinary" target="_blank" className="after:content-['_↗']">`cloudinary`</a> din platforma lor și servite din CDN-ul lor.
-Acest lucru se face o singură dată la `build` când site-ul este generat static.
-Pentru animațiile din galerie am folosit biblioteca <a href="https://www.framer.com/motion" title="Pagina Framer Motion" target="_blank" className="after:content-['_↗']">framer-motion</a>.
-
-## Concluzie
-
-În altă ordine de idei site-ul își atinge scopul în fiecare zi, oamenii donează pentru Cărțile pe față, BookTruck-urile rulează kilometri către școlile din județul Cluj, dar și spre evenimentele din restul țării.
-De asemenea sunt tot mai multe cereri de voluntariat, oamenii se implică și crește impactul în rândul copiiilor care nu au acces la cărți.
-
-Așa am pus tehnologia să lucreze pentru o cauză nobilă. 😌
+Next.js 16 (App Router), React 19, TypeScript, next-intl, Prisma 7 pe Supabase Postgres, Supabase Storage, Better Auth, Redis, Tailwind CSS 4, shadcn/ui, Headless UI, framer-motion, Tiptap, dnd-kit, Recharts, react-hook-form + zod, EuPlătesc, Stripe, Oblio, Brevo, Cloudflare Turnstile, Google Drive API, Vitest, Vercel.
