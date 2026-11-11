@@ -1,0 +1,43 @@
+---
+title: "ContaDocs — accounting documents straight into the accountant's Google Drive"
+locale: en
+kind: "SaaS · Discontinued"
+featuredImage: https://res.cloudinary.com/vladilie-ro/image/upload/v1702388808/projects/contadocs-platforma-gestiune-documente-contabile/zenrqfjw248khtdjojlt.webp
+blurDataImage: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAjUlEQVR4nGP4////o+ev/8PA8zfvudyT6pJCd6+Y9///f4b///93d3cXFxefPn36169f33//unbvybV7TyCqQdJBcRkW7kETJkzo7u4+cuIsl7E9g4DyxfuPoNIRprKO0gxvXr/5////lEXLGRgYGJRM5m/aDZW+cevu06dPIaa9//oNYvjHz9+g0ngAADLQjXK82VK7AAAAAElFTkSuQmCC
+description: "A SaaS platform where clients upload their accounting documents straight into their accountant's Google Drive, sorted by company, year and month. Discontinued."
+technologies: [Next.js, TypeScript, Tailwind CSS, NextAuth, Google Drive API, Firebase, Prisma, Docker]
+keywords: [contadocs,accounting documents,accounting,google drive,document management,saas]
+date: December 12, 2023 18:14:21
+---
+
+## Context
+
+ContaDocs was my own SaaS product, built between October 2021 and January 2024 (over 900 commits). **The project didn't continue:** the market showed too little interest, and similar tools for accountants already existed. The platform is no longer online; this page stays as a case study.
+
+## The problem
+
+Every month, an accountant's clients have to send invoices, receipts and bank statements, and the accountant has to collect them and sort them by company and month. The idea was a deliberately minimal platform: as few actions as possible for the accountant, no more chasing documents for the client, and no documents passing through someone else's servers.
+
+## What I built
+
+- **Two separate apps**, one for the accountant and one for their clients.
+- **The accountant account**, created with a Google account. The app asks for access only to the Google Drive files it creates, not to the whole Drive.
+- **Company management:** the accountant adds their clients' companies, with the phone number of each company's representative, and can upload monthly reports for them.
+- **An automatic folder structure** in the accountant's Drive: `ContaDocs / Company / Year / Month`, and inside each month `Invoices` (`Clients`, `Suppliers`), `Bank statements` and `Reports`. If a folder is deleted by mistake, the platform recreates it the next time it's used.
+- **Passwordless client accounts:** clients sign in with the phone number the accountant added and a one-time code sent by SMS (Firebase). No extra password to remember for an app used once a month.
+- **Several companies per client:** a representative picks the company, then browses down to the destination folder, e.g. `2023 › December › Invoices › Suppliers`.
+- **Document upload** into `Clients`, `Suppliers` and `Bank statements`: JPG, PNG, PDF, DOC and DOCX. On a phone, clients can photograph receipts and invoices page by page, and the photos are merged into one PDF before upload.
+
+## Under the hood
+
+The app ran on Next.js, with NextAuth for the accountant's Google account and Firebase for the SMS codes, and Prisma for accounts, companies and sign-in sessions. Every file operation (the folder structure, uploads, downloads and deletes) went through the Google Drive API, with the accountant's tokens refreshed on the server. ContaDocs never kept a copy of any document, not even temporarily: files went straight into the accountant's Drive, to remove any privacy concerns. It ran in a Docker container.
+
+The one limit I couldn't work around: for free Google accounts, an app can't lock the folders it creates, so I went with recreating the structure automatically.
+
+## Status
+
+The project is discontinued. Development took a long time and visibility among accountants stayed low, so it never got real feedback from the market. With little interest and similar solutions already available, I didn't build the planned notifications, monetization and other features, and shut the platform down.
+
+## Stack
+
+Next.js, TypeScript, Tailwind CSS, NextAuth, Google Drive API, Firebase Authentication (SMS), Prisma, Docker.
