@@ -6,6 +6,16 @@ import { SectionHeading } from './section-heading';
 
 const credentials = ['wporg', 'neo4j', 'npm', 'degree', 'team'] as const;
 
+/** Where the `<link>` in a credential's value points; credentials without one stay plain text. */
+const credentialLinks: Partial<Record<(typeof credentials)[number], string>> = {
+  wporg: 'https://make.wordpress.org/polyglots/teams/?locale=ro_RO',
+  npm: 'https://www.npmjs.com/package/euplatesc',
+  degree: 'https://ac.upt.ro',
+  team: 'https://wp-translations.pro/team/'
+};
+
+const linkClasses = 'text-content hover:text-accent underline decoration-1 underline-offset-[3px]';
+
 const localizedSoftware = [
   { name: 'WordPress', url: 'https://make.wordpress.org/polyglots/teams/?locale=ro_RO' },
   { name: 'WP-CLI', url: 'https://wp-cli.org' },
@@ -29,12 +39,7 @@ export const About: React.FC = () => {
           <p className='text-content/80 my-0 text-[17px] leading-[1.7]'>
             {t.rich('p2', {
               cpf: (chunk: ReactNode): JSX.Element => (
-                <a
-                  href='https://cartilepefata.ro'
-                  target='_blank'
-                  rel='noreferrer'
-                  className='text-content hover:text-accent underline decoration-1 underline-offset-[3px]'
-                >
+                <a href='https://cartilepefata.ro' target='_blank' rel='noreferrer' className={linkClasses}>
                   {chunk}
                 </a>
               )
@@ -46,7 +51,21 @@ export const About: React.FC = () => {
           {credentials.map((credential) => (
             <div key={credential} className='bg-surface flex items-baseline gap-[18px] px-[22px] py-[18px]'>
               <dt className='text-accent min-w-[72px] font-mono text-[12.5px]'>{t(`credentials.${credential}.key`)}</dt>
-              <dd className='text-content m-0 text-[15.5px] leading-normal'>{t(`credentials.${credential}.value`)}</dd>
+              <dd className='text-content m-0 text-[15.5px] leading-normal'>
+                {t.rich(`credentials.${credential}.value`, {
+                  link: (chunk: ReactNode): ReactNode => {
+                    const url = credentialLinks[credential];
+
+                    return url ? (
+                      <a href={url} target='_blank' rel='noreferrer' className={linkClasses}>
+                        {chunk}
+                      </a>
+                    ) : (
+                      chunk
+                    );
+                  }
+                })}
+              </dd>
             </div>
           ))}
         </dl>
