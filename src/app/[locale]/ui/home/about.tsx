@@ -31,12 +31,12 @@ export const About: React.FC = () => {
   const t = useTranslations('homepage.about');
 
   return (
-    <section id={NavLinks.About} className='border-hairline bg-surface-raised border-t'>
+    <section id={NavLinks.About} className='border-t border-hairline bg-surface-raised'>
       <div className='mx-auto flex max-w-[1200px] flex-wrap gap-14 px-6 py-20 md:py-[104px]'>
         <div className='min-w-0 flex-[1_1_420px]'>
           <SectionHeading eyebrow={t('tag')} title={t('title')} className='mb-[22px] text-[30px]! leading-[1.12]!' />
-          <p className='text-content/80 my-0 mb-4 text-[17px] leading-[1.7]'>{t('p1')}</p>
-          <p className='text-content/80 my-0 text-[17px] leading-[1.7]'>
+          <p className='my-0 mb-4 text-[17px] leading-[1.7] text-content/80'>{t('p1')}</p>
+          <p className='my-0 text-[17px] leading-[1.7] text-content/80'>
             {t.rich('p2', {
               cpf: (chunk: ReactNode): JSX.Element => (
                 <a href='https://cartilepefata.ro' target='_blank' rel='noreferrer' className={linkClasses}>
@@ -47,11 +47,11 @@ export const About: React.FC = () => {
           </p>
         </div>
 
-        <dl className='border-hairline bg-hairline m-0 grid min-w-0 flex-[1_1_420px] gap-px self-start overflow-hidden rounded-xl border'>
+        <dl className='m-0 grid min-w-0 flex-[1_1_420px] gap-px self-start overflow-hidden rounded-xl border border-hairline bg-hairline'>
           {credentials.map((credential) => (
-            <div key={credential} className='bg-surface flex items-baseline gap-[18px] px-[22px] py-[18px]'>
-              <dt className='text-accent min-w-[72px] font-mono text-[12.5px]'>{t(`credentials.${credential}.key`)}</dt>
-              <dd className='text-content m-0 text-[15.5px] leading-normal'>
+            <div key={credential} className='flex items-baseline gap-[18px] bg-surface px-[22px] py-[18px]'>
+              <dt className='min-w-[72px] font-mono text-[12.5px] text-accent'>{t(`credentials.${credential}.key`)}</dt>
+              <dd className='m-0 text-[15.5px] leading-normal text-content'>
                 {t.rich(`credentials.${credential}.value`, {
                   link: (chunk: ReactNode): ReactNode => {
                     const url = credentialLinks[credential];
@@ -80,7 +80,7 @@ export const About: React.FC = () => {
               href={url}
               target='_blank'
               rel='noreferrer'
-              className='border-hairline-strong text-content hover:border-signal hover:text-content rounded-full border px-[15px] py-2 text-sm font-medium transition-colors'
+              className='rounded-full border border-hairline-strong px-[15px] py-2 text-sm font-medium text-content transition-colors hover:border-signal hover:text-content'
             >
               {name}
             </a>

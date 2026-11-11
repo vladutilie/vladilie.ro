@@ -86,7 +86,7 @@ export const SocialLinks: React.FC = () => {
               rel='me noopener'
               aria-label={t('profile-al', { network: name })}
               title={t('profile-al', { network: name })}
-              className='text-content/70 hover:bg-hover-tint hover:text-content grid h-9 w-9 place-items-center rounded-full transition-colors'
+              className='grid h-9 w-9 place-items-center rounded-full text-content/70 transition-colors hover:bg-hover-tint hover:text-content'
             >
               {icon}
             </a>

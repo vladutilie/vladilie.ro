@@ -37,7 +37,7 @@ export const ThemeSwitcher: React.FC = () => {
 
   return (
     <button
-      className='border-hairline-strong text-content hover:border-content grid h-8 w-8 cursor-pointer place-items-center rounded-full border transition-colors'
+      className='grid h-8 w-8 cursor-pointer place-items-center rounded-full border border-hairline-strong text-content transition-colors hover:border-content'
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       title={label}
       aria-label={label}

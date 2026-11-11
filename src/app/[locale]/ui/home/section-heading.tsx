@@ -24,7 +24,7 @@ export const SectionHeading: React.FC<Props> = ({ eyebrow, title, inverse = fals
 
 /** The small rounded mono tag used under case studies. */
 export const Pill: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <span className='border-hairline-strong text-content rounded-full border px-2.5 py-[5px] font-mono text-xs'>
+  <span className='rounded-full border border-hairline-strong px-2.5 py-[5px] font-mono text-xs text-content'>
     {children}
   </span>
 );

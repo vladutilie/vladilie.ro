@@ -105,21 +105,21 @@ export default async function Colophon({ params }: { params: Promise<{ locale: s
 
       <section className='mb-14'>
         <GroupHeading>{t('design.title')}</GroupHeading>
-        <p className='text-content/80 my-0 mb-4 text-[17px] leading-[1.7]'>{t('design.p1')}</p>
-        <p className='text-content/80 my-0 text-[17px] leading-[1.7]'>
+        <p className='my-0 mb-4 text-[17px] leading-[1.7] text-content/80'>{t('design.p1')}</p>
+        <p className='my-0 text-[17px] leading-[1.7] text-content/80'>
           {t.rich('design.p2', { schibsted: external(fonts.schibsted), plex: external(fonts.plex) })}
         </p>
       </section>
 
       <section className='mb-14'>
         <GroupHeading>{t('stack.title')}</GroupHeading>
-        <dl className='border-hairline bg-hairline m-0 grid gap-px overflow-hidden rounded-xl border'>
+        <dl className='m-0 grid gap-px overflow-hidden rounded-xl border border-hairline bg-hairline'>
           {stack.map(({ key, tools }) => (
             <div
               key={key}
-              className='bg-surface-raised grid gap-1 px-[22px] py-[18px] sm:grid-cols-[140px_1fr] sm:items-baseline sm:gap-[18px]'
+              className='grid gap-1 bg-surface-raised px-[22px] py-[18px] sm:grid-cols-[140px_1fr] sm:items-baseline sm:gap-[18px]'
             >
-              <dt className='text-accent font-mono text-[12.5px]'>{t(`stack.items.${key}.label`)}</dt>
+              <dt className='font-mono text-[12.5px] text-accent'>{t(`stack.items.${key}.label`)}</dt>
               <dd className='m-0'>
                 <div className='flex flex-wrap items-baseline gap-x-2'>
                   {tools.map(({ name, url }, idx) => (
@@ -133,14 +133,14 @@ export default async function Colophon({ params }: { params: Promise<{ locale: s
                         href={url}
                         target='_blank'
                         rel='noreferrer'
-                        className="text-content hover:text-accent text-[15.5px] font-semibold after:content-['_↗']"
+                        className="text-[15.5px] font-semibold text-content after:content-['_↗'] hover:text-accent"
                       >
                         {name}
                       </a>
                     </span>
                   ))}
                 </div>
-                <div className='text-content/70 mt-0.5 text-sm leading-normal'>{t(`stack.items.${key}.note`)}</div>
+                <div className='mt-0.5 text-sm leading-normal text-content/70'>{t(`stack.items.${key}.note`)}</div>
               </dd>
             </div>
           ))}
@@ -149,7 +149,7 @@ export default async function Colophon({ params }: { params: Promise<{ locale: s
 
       <section>
         <GroupHeading>{t('source.title')}</GroupHeading>
-        <p className='text-content/80 my-0 text-[17px] leading-[1.7]'>
+        <p className='my-0 text-[17px] leading-[1.7] text-content/80'>
           {t.rich('source.p1', {
             new: external('https://github.com/vladutilie/vladilie.ro'),
             old: external('https://github.com/vladutilie/vladilie.ro/tree/old-version-2023')

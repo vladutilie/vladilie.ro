@@ -16,12 +16,12 @@ export const Services: React.FC = () => {
 
         <div className='grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4'>
           {services.map((service, idx) => (
-            <div key={service} className='border-paper/16 flex flex-col gap-3.5 rounded-[14px] border bg-white/3 p-7'>
-              <div className='text-signal font-mono text-xs'>
+            <div key={service} className='flex flex-col gap-3.5 rounded-[14px] border border-paper/16 bg-white/3 p-7'>
+              <div className='font-mono text-xs text-signal'>
                 {String(idx + 1).padStart(2, '0')} · {t(`${service}.label`)}
               </div>
-              <h3 className='text-paper my-0 text-[22px] tracking-[-0.02em]'>{t(`${service}.title`)}</h3>
-              <p className='text-paper/82 my-0 text-[15px] leading-[1.55]'>{t(`${service}.body`)}</p>
+              <h3 className='my-0 text-[22px] tracking-[-0.02em] text-paper'>{t(`${service}.title`)}</h3>
+              <p className='my-0 text-[15px] leading-[1.55] text-paper/82'>{t(`${service}.body`)}</p>
 
               <ul className='m-0 grid list-none gap-[7px] p-0 text-[14.5px]'>
                 {items.map((item) => (
@@ -31,7 +31,7 @@ export const Services: React.FC = () => {
                 ))}
               </ul>
 
-              <div className='border-paper/14 text-paper/78 mt-auto border-t pt-3.5 text-[13.5px] leading-normal'>
+              <div className='mt-auto border-t border-paper/14 pt-3.5 text-[13.5px] leading-normal text-paper/78'>
                 <strong className='text-paper'>{t('fit')}</strong> {t(`${service}.fit`)}
               </div>
             </div>

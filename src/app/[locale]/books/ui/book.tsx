@@ -6,7 +6,7 @@ import { Done, Favorite, Glasses, Wishlist } from '@/icons';
 
 export const Book: React.FC<BookT> = ({ title, author, cover, state, link, blurData, isFavorite }) => (
   <a
-    className='group bg-surface hover:bg-hover-tint flex items-stretch gap-x-4 p-5 transition-colors'
+    className='group flex items-stretch gap-x-4 bg-surface p-5 transition-colors hover:bg-hover-tint'
     href={link}
     target='_blank'
     rel='noreferrer'
@@ -46,10 +46,10 @@ export const Book: React.FC<BookT> = ({ title, author, cover, state, link, blurD
     </div>
 
     <div className='flex flex-col justify-center'>
-      <p className="text-content group-hover:text-accent my-0 font-semibold transition-colors group-hover:after:content-['_↗']">
+      <p className="my-0 font-semibold text-content transition-colors group-hover:text-accent group-hover:after:content-['_↗']">
         {title}
       </p>
-      <span className='text-content/50 mt-1 font-mono text-[11px] tracking-[0.08em] uppercase'>{author}</span>
+      <span className='mt-1 font-mono text-[11px] tracking-[0.08em] text-content/50 uppercase'>{author}</span>
     </div>
   </a>
 );

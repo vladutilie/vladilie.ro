@@ -16,7 +16,7 @@ export const OpsPanel: React.FC = () => {
 
   return (
     <figure className='m-0 min-w-0 flex-[1_1_400px]'>
-      <div className='bg-ink overflow-hidden rounded-[14px] border border-white/8 text-[#e9e7e1] shadow-[0_30px_60px_-30px_rgba(0,0,0,.45)]'>
+      <div className='overflow-hidden rounded-[14px] border border-white/8 bg-ink text-[#e9e7e1] shadow-[0_30px_60px_-30px_rgba(0,0,0,.45)]'>
         <div className='flex items-center justify-between border-b border-white/9 px-[18px] py-3.5 font-mono text-xs'>
           <span aria-hidden className='flex gap-1.5'>
             {[0, 1, 2].map((dot) => (
@@ -54,7 +54,7 @@ export const OpsPanel: React.FC = () => {
         </div>
       </div>
 
-      <figcaption className='text-content/72 mt-3 text-[13.5px]'>{t('caption')}</figcaption>
+      <figcaption className='mt-3 text-[13.5px] text-content/72'>{t('caption')}</figcaption>
     </figure>
   );
 };

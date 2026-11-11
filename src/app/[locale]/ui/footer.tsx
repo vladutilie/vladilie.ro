@@ -18,10 +18,10 @@ export const Footer: React.FC = () => {
   const t = useTranslations();
 
   return (
-    <footer className='border-hairline border-t'>
+    <footer className='border-t border-hairline'>
       <div className='mx-auto flex max-w-[1200px] flex-wrap justify-between gap-8 px-6 py-12 text-sm'>
         <div>
-          <p className='text-content/75 my-0 font-mono text-[12.5px] leading-[1.8]'>
+          <p className='my-0 font-mono text-[12.5px] leading-[1.8] text-content/75'>
             {process.env.NEXT_PUBLIC_COMPANY_NAME}
             <br />
             {t('footer.vat-id', { vatId: process.env.NEXT_PUBLIC_VAT_ID! })} ·{' '}
@@ -54,7 +54,7 @@ export const Footer: React.FC = () => {
       </div>
 
       <div className='mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-4 px-6 pb-10'>
-        <span className='text-content/70 font-mono text-xs'>
+        <span className='font-mono text-xs text-content/70'>
           {t('footer.copyright', { year: new Date().getFullYear(), siteName: process.env.NEXT_PUBLIC_SITE_NAME! })}
         </span>
 

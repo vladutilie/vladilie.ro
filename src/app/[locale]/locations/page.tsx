@@ -58,11 +58,11 @@ export default async function Locations({ params }: { params: Promise<{ locale: 
     <Page>
       <PageHeader meta={t('count', { count: locations.length })} title={t('title')} lead={t('description')} />
 
-      <ul className='border-hairline bg-hairline grid gap-px border-y'>
+      <ul className='grid gap-px border-y border-hairline bg-hairline'>
         {locations.map(({ name, visitCounter, lastVisitAt }) => (
           <li key={name} className='bg-surface px-4 py-5 sm:px-6'>
             <h2 className='my-0 text-xl'>{name}</h2>
-            <div className='text-content/50 mt-1 font-mono text-[11px] tracking-[0.08em] uppercase'>
+            <div className='mt-1 font-mono text-[11px] tracking-[0.08em] text-content/50 uppercase'>
               {t.rich('visited', {
                 visitCounter,
                 lastVisitAt,

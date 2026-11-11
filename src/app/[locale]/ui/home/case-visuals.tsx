@@ -24,7 +24,7 @@ export const MaslinescuVisual: React.FC = () => {
         <div className='text-[12.5px] opacity-80'>{t('progress')}</div>
       </div>
 
-      <div className='bg-ink rounded-[10px] px-4 py-3.5 font-mono text-xs leading-[1.9] text-[#e9e7e1]'>
+      <div className='rounded-[10px] bg-ink px-4 py-3.5 font-mono text-xs leading-[1.9] text-[#e9e7e1]'>
         <div>
           <span className='text-amber-400'>warn</span> {t('log-stock')}
         </div>
@@ -86,7 +86,7 @@ export const LumeaVisual: React.FC = () => {
             <span className='font-mono'>{pct}%</span>
           </div>
           <div className='h-1.5 rounded-full bg-[#e4ecef]'>
-            <div className='bg-signal h-full rounded-full' style={{ width: `${pct}%` }} />
+            <div className='h-full rounded-full bg-signal' style={{ width: `${pct}%` }} />
           </div>
         </div>
       ))}

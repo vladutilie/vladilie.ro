@@ -46,7 +46,7 @@ export default async function Blog({ params }: { params: Promise<{ locale: strin
       <PageHeader meta={t('count', { count: posts.length })} title={t('title')} lead={t('metadata.description')} />
 
       {posts.length ? (
-        <ul className='border-hairline bg-hairline grid gap-px border-y'>
+        <ul className='grid gap-px border-y border-hairline bg-hairline'>
           {posts.map((post: PostType) => (
             <PostCard key={post.slug} {...post} />
           ))}

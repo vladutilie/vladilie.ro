@@ -86,12 +86,12 @@ export default async function Uses({ params }: { params: Promise<{ locale: strin
           <section key={key}>
             <GroupHeading>{t(`${key}.title`)}</GroupHeading>
 
-            <ul className='border-hairline bg-hairline grid gap-px border-y'>
+            <ul className='grid gap-px border-y border-hairline bg-hairline'>
               {items.map((item) => (
                 <li key={Array.isArray(item) ? item[0] : item} className='bg-surface px-4 py-4 sm:px-6'>
-                  <p className='text-content my-0 font-medium'>{t(Array.isArray(item) ? item[0] : item)}</p>
+                  <p className='my-0 font-medium text-content'>{t(Array.isArray(item) ? item[0] : item)}</p>
                   {Array.isArray(item) ? (
-                    <span className='text-content/60 mt-1 block text-sm'>{t(item[1])}</span>
+                    <span className='mt-1 block text-sm text-content/60'>{t(item[1])}</span>
                   ) : null}
                 </li>
               ))}

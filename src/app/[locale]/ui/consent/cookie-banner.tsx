@@ -61,21 +61,21 @@ const Settings: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           type='button'
           onClick={onClose}
           aria-label={t('close')}
-          className='text-content/70 hover:text-content -mt-1 cursor-pointer text-lg'
+          className='-mt-1 cursor-pointer text-lg text-content/70 hover:text-content'
         >
           ✕
         </button>
       </div>
-      <p className='text-content/75 my-0 mb-4 text-sm leading-relaxed'>
+      <p className='my-0 mb-4 text-sm leading-relaxed text-content/75'>
         {t.rich('settings-lead', { link: policyLink })}
       </p>
 
-      <ul className='border-hairline m-0 list-none divide-y divide-[var(--hairline)] border-y p-0'>
+      <ul className='m-0 list-none divide-y divide-[var(--hairline)] border-y border-hairline p-0'>
         {categories.map(({ key, checked, disabled }) => (
           <li key={key} className='flex items-start justify-between gap-5 py-4'>
             <div>
-              <p className='text-content my-0 font-semibold'>{t(`${key}.title`)}</p>
-              <p className='text-content/70 my-0 mt-1 text-sm leading-relaxed'>{t(`${key}.description`)}</p>
+              <p className='my-0 font-semibold text-content'>{t(`${key}.title`)}</p>
+              <p className='my-0 mt-1 text-sm leading-relaxed text-content/70'>{t(`${key}.description`)}</p>
             </div>
 
             <Toggle
@@ -126,10 +126,10 @@ export const CookieBanner: React.FC<{
       {showBanner && !settingsOpen && (
         <section
           aria-label={t('title')}
-          className='border-hairline bg-surface-raised fixed inset-x-4 bottom-4 z-50 rounded-[14px] border p-5 shadow-[0_24px_60px_-20px_rgb(0_0_0/0.45)] sm:inset-x-auto sm:left-6 sm:max-w-md'
+          className='fixed inset-x-4 bottom-4 z-50 rounded-[14px] border border-hairline bg-surface-raised p-5 shadow-[0_24px_60px_-20px_rgb(0_0_0/0.45)] sm:inset-x-auto sm:left-6 sm:max-w-md'
         >
-          <p className='text-content my-0 text-lg font-bold tracking-[-0.02em]'>{t('title')}</p>
-          <p className='text-content/75 my-0 mt-2 text-sm leading-relaxed'>{t.rich('banner', { link: policyLink })}</p>
+          <p className='my-0 text-lg font-bold tracking-[-0.02em] text-content'>{t('title')}</p>
+          <p className='my-0 mt-2 text-sm leading-relaxed text-content/75'>{t.rich('banner', { link: policyLink })}</p>
 
           <div className='mt-4 flex flex-wrap gap-2.5'>
             <button type='button' className={outline} onClick={() => save(NO_CONSENT)}>
@@ -142,7 +142,7 @@ export const CookieBanner: React.FC<{
 
           <button
             type='button'
-            className='text-content/70 hover:text-content mt-3 cursor-pointer text-sm underline underline-offset-4 transition-colors'
+            className='mt-3 cursor-pointer text-sm text-content/70 underline underline-offset-4 transition-colors hover:text-content'
             onClick={() => onSettingsOpenChange(true)}
           >
             {t('customize')}
@@ -153,7 +153,7 @@ export const CookieBanner: React.FC<{
       <dialog
         ref={dialog}
         onClose={() => onSettingsOpenChange(false)}
-        className='border-hairline bg-surface-raised text-content m-auto w-[calc(100%-2rem)] max-w-lg rounded-[14px] border p-6 backdrop:bg-black/40 backdrop:backdrop-blur-xs'
+        className='m-auto w-[calc(100%-2rem)] max-w-lg rounded-[14px] border border-hairline bg-surface-raised p-6 text-content backdrop:bg-black/40 backdrop:backdrop-blur-xs'
       >
         {/* Remounted on every open, so the toggles start from the saved choice. */}
         {settingsOpen && <Settings onClose={() => onSettingsOpenChange(false)} />}

@@ -40,12 +40,12 @@ export const Contact: React.FC = () => {
 
   return (
     <section id={NavLinks.Contact} className='mx-auto max-w-[1200px] px-6 py-20 md:py-[104px]'>
-      <div className='bg-signal text-ink flex flex-wrap gap-12 rounded-[18px] p-[clamp(28px,5vw,56px)]'>
+      <div className='flex flex-wrap gap-12 rounded-[18px] bg-signal p-[clamp(28px,5vw,56px)] text-ink'>
         <div className='min-w-0 flex-[1_1_380px]'>
-          <h2 className='text-ink my-0 mb-[18px] text-[clamp(34px,4.6vw,52px)] leading-[1.02] tracking-[-0.04em]'>
+          <h2 className='my-0 mb-[18px] text-[clamp(34px,4.6vw,52px)] leading-[1.02] tracking-[-0.04em] text-ink'>
             {t('title')}
           </h2>
-          <p className='text-ink my-0 mb-[26px] max-w-[42ch] text-[17.5px] leading-[1.6]'>{t('body')}</p>
+          <p className='my-0 mb-[26px] max-w-[42ch] text-[17.5px] leading-[1.6] text-ink'>{t('body')}</p>
 
           <div id='service-label' className='mb-2.5 text-sm font-bold'>
             {t('need-help-with')}
@@ -57,8 +57,8 @@ export const Contact: React.FC = () => {
                 type='button'
                 aria-pressed={id === service}
                 onClick={() => setService(id)}
-                className={`border-ink cursor-pointer rounded-full border-[1.5px] px-[15px] py-[9px] text-[14.5px] font-semibold transition-colors ${
-                  id === service ? 'bg-ink text-white' : 'text-ink hover:bg-ink/10 bg-transparent'
+                className={`cursor-pointer rounded-full border-[1.5px] border-ink px-[15px] py-[9px] text-[14.5px] font-semibold transition-colors ${
+                  id === service ? 'bg-ink text-white' : 'bg-transparent text-ink hover:bg-ink/10'
                 }`}
               >
                 {t(`services.${id}.label`)}
@@ -68,7 +68,7 @@ export const Contact: React.FC = () => {
 
           <p
             aria-live='polite'
-            className='text-ink my-0 rounded-[10px] bg-white/40 px-4 py-3.5 text-[15px] leading-[1.55]'
+            className='my-0 rounded-[10px] bg-white/40 px-4 py-3.5 text-[15px] leading-[1.55] text-ink'
           >
             {t(`services.${service}.hint`)}
           </p>
@@ -77,7 +77,7 @@ export const Contact: React.FC = () => {
         <form
           onSubmit={handleSubmit(onSubmit)}
           noValidate
-          className='text-ink grid min-w-0 flex-[1_1_360px] gap-3.5 rounded-[14px] bg-white p-7'
+          className='grid min-w-0 flex-[1_1_360px] gap-3.5 rounded-[14px] bg-white p-7 text-ink'
         >
           <div className='grid gap-1.5'>
             <label htmlFor='c-name' className='text-[13.5px] font-bold'>
@@ -126,7 +126,7 @@ export const Contact: React.FC = () => {
           <button
             type='submit'
             disabled={'sending' === status}
-            className='bg-ink hover:bg-ink/85 cursor-pointer rounded-full border-0 px-[22px] py-[15px] text-base font-bold text-white transition-colors disabled:cursor-not-allowed disabled:opacity-60'
+            className='cursor-pointer rounded-full border-0 bg-ink px-[22px] py-[15px] text-base font-bold text-white transition-colors hover:bg-ink/85 disabled:cursor-not-allowed disabled:opacity-60'
           >
             {'sending' === status ? t('form.sending') : t('form.submit')}
           </button>
@@ -143,7 +143,7 @@ export const Contact: React.FC = () => {
           <p className='my-0 text-[13px] text-[#55524b]'>
             {t.rich('form.or-write', {
               email: (chunk) => (
-                <a href={`mailto:${chunk}`} className='text-ink hover:text-ink underline'>
+                <a href={`mailto:${chunk}`} className='text-ink underline hover:text-ink'>
                   {chunk}
                 </a>
               )

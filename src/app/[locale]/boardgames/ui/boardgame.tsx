@@ -10,15 +10,15 @@ export const Boardgame: React.FC<BoardgameT> = ({ age, blurData, duration, image
   return (
     <a
       href={link}
-      className='group bg-surface hover:bg-hover-tint flex flex-col gap-4 p-5 transition-colors'
+      className='group flex flex-col gap-4 bg-surface p-5 transition-colors hover:bg-hover-tint'
       target='_blank'
       rel='noreferrer'
     >
       <div className='flex items-start justify-between gap-3'>
-        <h3 className="text-content group-hover:text-accent my-0 text-base leading-snug font-semibold transition-colors group-hover:after:content-['_↗']">
+        <h3 className="my-0 text-base leading-snug font-semibold text-content transition-colors group-hover:text-accent group-hover:after:content-['_↗']">
           {name}
         </h3>
-        <span className='text-content/50 shrink-0 font-mono text-[11px] tracking-[0.08em] uppercase'>
+        <span className='shrink-0 font-mono text-[11px] tracking-[0.08em] text-content/50 uppercase'>
           {t('age', { age })}
         </span>
       </div>
@@ -35,7 +35,7 @@ export const Boardgame: React.FC<BoardgameT> = ({ age, blurData, duration, image
         />
       </div>
 
-      <div className='border-hairline text-content/50 flex justify-between border-t pt-3 font-mono text-[11px]'>
+      <div className='flex justify-between border-t border-hairline pt-3 font-mono text-[11px] text-content/50'>
         <span className='flex items-center gap-x-2'>
           <Players className='w-4 fill-current' /> {players}
         </span>

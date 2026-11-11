@@ -43,7 +43,7 @@ export const CaseStudies: React.FC = () => {
 
         <Link
           href={`/${Pages.Projects}`}
-          className='border-signal text-content hover:text-accent border-b-2 pb-[3px] font-semibold'
+          className='border-b-2 border-signal pb-[3px] font-semibold text-content hover:text-accent'
         >
           {t('all')} →
         </Link>
@@ -53,12 +53,12 @@ export const CaseStudies: React.FC = () => {
         {cases.map(({ key, slug, tags, visual, visualClassName }, idx) => (
           <article
             key={key}
-            className={`border-hairline bg-surface-raised flex overflow-hidden rounded-[14px] border ${
+            className={`flex overflow-hidden rounded-[14px] border border-hairline bg-surface-raised ${
               idx % 2 ? 'flex-row-reverse flex-wrap-reverse' : 'flex-wrap'
             }`}
           >
             <div className='min-w-0 flex-[1_1_460px] p-7 md:p-10'>
-              <div className='text-accent mb-3.5 font-mono text-xs tracking-[0.08em] uppercase'>
+              <div className='mb-3.5 font-mono text-xs tracking-[0.08em] text-accent uppercase'>
                 {t(`cases.${key}.kicker`)}
               </div>
               <h3 className='my-0 mb-[22px] text-[26px] leading-[1.1] tracking-[-0.03em] md:text-[30px]'>
@@ -69,7 +69,7 @@ export const CaseStudies: React.FC = () => {
                 {parts.map((part) => (
                   <div key={part}>
                     <dt className='mb-1 text-sm font-bold'>{t(part)}</dt>
-                    <dd className='text-content/80 m-0 text-base leading-[1.6]'>{t(`cases.${key}.${part}`)}</dd>
+                    <dd className='m-0 text-base leading-[1.6] text-content/80'>{t(`cases.${key}.${part}`)}</dd>
                   </div>
                 ))}
               </dl>
@@ -80,7 +80,7 @@ export const CaseStudies: React.FC = () => {
                 ))}
                 <Link
                   href={{ pathname: '/projects/[slug]', params: { slug } }}
-                  className='border-signal text-content hover:text-accent ml-2 border-b-2 font-semibold'
+                  className='ml-2 border-b-2 border-signal font-semibold text-content hover:text-accent'
                 >
                   {t('read')} →
                 </Link>

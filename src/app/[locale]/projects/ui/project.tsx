@@ -34,28 +34,28 @@ export const Project: React.FC<ProjectT> = ({
     <li>
       <Link
         href={{ pathname: '/projects/[slug]', params: { slug } }}
-        className='group border-hairline bg-surface-raised text-content hover:border-signal hover:text-content flex h-full flex-col rounded-[14px] border p-7 transition-colors'
+        className='group flex h-full flex-col rounded-[14px] border border-hairline bg-surface-raised p-7 text-content transition-colors hover:border-signal hover:text-content'
       >
-        <div className='text-accent mb-3.5 font-mono text-xs tracking-[0.08em] uppercase'>
+        <div className='mb-3.5 font-mono text-xs tracking-[0.08em] text-accent uppercase'>
           {kind ?? technologies.slice(0, 2).join(' · ')}
         </div>
 
         <h2 className='my-0 mb-3 text-[22px] leading-[1.15] tracking-[-0.03em]'>{title}</h2>
 
-        <p className='text-content/80 my-0 mb-5 text-[15px] leading-[1.6]'>{description}</p>
+        <p className='my-0 mb-5 text-[15px] leading-[1.6] text-content/80'>{description}</p>
 
         <ul className='m-0 mb-6 flex list-none flex-wrap gap-1.5 p-0'>
           {technologies.slice(0, 5).map((technology) => (
             <li
               key={technology}
-              className='border-hairline-strong text-content rounded-full border px-2.5 py-1 font-mono text-[11.5px]'
+              className='rounded-full border border-hairline-strong px-2.5 py-1 font-mono text-[11.5px] text-content'
             >
               {technology}
             </li>
           ))}
         </ul>
 
-        <div className='border-hairline text-content/60 mt-auto flex flex-wrap items-center gap-x-2 border-t pt-4 font-mono text-[11.5px]'>
+        <div className='mt-auto flex flex-wrap items-center gap-x-2 border-t border-hairline pt-4 font-mono text-[11.5px] text-content/60'>
           <span>{format(date, locale)}</span>
           <span aria-hidden>·</span>
           <span>{t('reading-time', { minutes: Math.ceil(readingTime) })}</span>

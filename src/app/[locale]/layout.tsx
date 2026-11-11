@@ -66,7 +66,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning className={`${schibstedGrotesk.variable} ${ibmPlexMono.variable}`}>
-      <body className='bg-surface text-content font-sans transition-colors duration-300'>
+      <body className='bg-surface font-sans text-content transition-colors duration-300'>
         <NextIntlClientProvider locale={locale} messages={messages} timeZone='Europe/Bucharest'>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
             <ConsentProvider>

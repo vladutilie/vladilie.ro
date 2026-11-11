@@ -65,13 +65,13 @@ export default async function CookiePolicy({ params }: { params: Promise<{ local
 
         <div className='grid gap-4'>
           {items.map(({ key, name }) => (
-            <article key={key} className='border-hairline bg-surface-raised rounded-[14px] border p-6'>
+            <article key={key} className='rounded-[14px] border border-hairline bg-surface-raised p-6'>
               <h3 className='my-0 mb-4 font-mono text-[15px] font-medium tracking-normal'>{name}</h3>
               <dl className='m-0 grid gap-2.5'>
                 {fields.map((field) => (
                   <div key={field} className='grid gap-0.5 sm:grid-cols-[120px_1fr] sm:gap-4'>
-                    <dt className='text-accent font-mono text-[12.5px]'>{t(`fields.${field}`)}</dt>
-                    <dd className='text-content/85 m-0 text-[15px] leading-normal'>{t(`items.${key}.${field}`)}</dd>
+                    <dt className='font-mono text-[12.5px] text-accent'>{t(`fields.${field}`)}</dt>
+                    <dd className='m-0 text-[15px] leading-normal text-content/85'>{t(`items.${key}.${field}`)}</dd>
                   </div>
                 ))}
               </dl>
@@ -88,7 +88,7 @@ export default async function CookiePolicy({ params }: { params: Promise<{ local
       <section className='mb-14'>
         <GroupHeading>{t('choice.title')}</GroupHeading>
         <p className={paragraph}>{t('choice.p1')}</p>
-        <CookieSettingsButton className='bg-content text-surface hover:bg-signal hover:text-ink rounded-full px-5 py-2.5 text-sm font-semibold transition-colors' />
+        <CookieSettingsButton className='rounded-full bg-content px-5 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-signal hover:text-ink' />
         <p className={`${paragraph} mt-6`}>{t('choice.p2')}</p>
       </section>
 

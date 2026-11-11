@@ -13,10 +13,10 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
   return (
     <section className='mx-auto flex max-w-[1200px] flex-wrap items-center gap-14 px-6 pt-16 pb-16 md:pt-[88px]'>
       <div className='min-w-0 flex-[1_1_540px]'>
-        <div className='text-accent mb-7 inline-flex items-center gap-[9px] font-mono text-xs tracking-[0.08em] uppercase'>
+        <div className='mb-7 inline-flex items-center gap-[9px] font-mono text-xs tracking-[0.08em] text-accent uppercase'>
           <span
             aria-hidden
-            className={`animate-pulse-dot h-2 w-2 rounded-full ${isAvailable ? 'bg-signal' : 'bg-red-500'}`}
+            className={`h-2 w-2 animate-pulse-dot rounded-full ${isAvailable ? 'bg-signal' : 'bg-red-500'}`}
           />
           {isAvailable ? t('available') : t('not-available')} · {location}
         </div>
@@ -27,18 +27,18 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
           })}
         </h1>
 
-        <p className='text-content/80 my-0 mb-[34px] max-w-[56ch] text-[19px] leading-[1.6]'>{t('intro')}</p>
+        <p className='my-0 mb-[34px] max-w-[56ch] text-[19px] leading-[1.6] text-content/80'>{t('intro')}</p>
 
         <div className='mb-10 flex flex-wrap gap-3'>
           <a
             href={`#${NavLinks.Contact}`}
-            className='bg-signal text-ink hover:bg-ink hover:text-paper dark:hover:bg-paper dark:hover:text-ink rounded-full px-[26px] py-4 text-base font-bold transition-colors'
+            className='rounded-full bg-signal px-[26px] py-4 text-base font-bold text-ink transition-colors hover:bg-ink hover:text-paper dark:hover:bg-paper dark:hover:text-ink'
           >
             {t('cta-primary')} →
           </a>
           <a
             href={`#${NavLinks.Work}`}
-            className='border-hairline-strong text-content hover:border-content hover:text-content rounded-full border-[1.5px] px-[26px] py-4 text-base font-semibold transition-colors'
+            className='rounded-full border-[1.5px] border-hairline-strong px-[26px] py-4 text-base font-semibold text-content transition-colors hover:border-content hover:text-content'
           >
             {t('cta-secondary')}
           </a>
@@ -57,11 +57,11 @@ export const Hero: React.FC<{ location: string; commits: number }> = ({ location
             href={process.env.NEXT_PUBLIC_GITHUB}
             target='_blank'
             rel='noreferrer'
-            className='text-content/70 hover:text-content mt-6 inline-flex items-center gap-2 font-mono text-[12.5px] transition-colors'
+            className='mt-6 inline-flex items-center gap-2 font-mono text-[12.5px] text-content/70 transition-colors hover:text-content'
           >
             {t.rich('commits', {
               count: commits,
-              commits: (chunk: ReactNode): JSX.Element => <span className='text-accent font-medium'>{chunk}</span>
+              commits: (chunk: ReactNode): JSX.Element => <span className='font-medium text-accent'>{chunk}</span>
             })}{' '}
             ↗
           </a>

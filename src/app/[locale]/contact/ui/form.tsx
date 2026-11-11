@@ -115,19 +115,19 @@ export const Form: React.FC = () => {
           {serviceCards.map((value) => (
             <label
               key={value}
-              className='group border-hairline bg-surface-raised hover:border-content has-checked:border-signal has-checked:bg-hover-tint has-focus-visible:outline-signal relative flex cursor-pointer flex-col gap-1.5 rounded-[14px] border p-5 transition-colors has-focus-visible:outline-2 has-focus-visible:outline-offset-2'
+              className='group relative flex cursor-pointer flex-col gap-1.5 rounded-[14px] border border-hairline bg-surface-raised p-5 transition-colors hover:border-content has-checked:border-signal has-checked:bg-hover-tint has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-signal'
             >
               <input {...register('service', { required: true })} type='radio' value={value} className='peer sr-only' />
               <span
                 aria-hidden
-                className='border-hairline-strong peer-checked:border-signal peer-checked:bg-signal peer-checked:text-ink absolute top-5 right-5 grid h-5 w-5 place-items-center rounded-full border text-[11px] text-transparent transition-colors'
+                className='absolute top-5 right-5 grid h-5 w-5 place-items-center rounded-full border border-hairline-strong text-[11px] text-transparent transition-colors peer-checked:border-signal peer-checked:bg-signal peer-checked:text-ink'
               >
                 ✓
               </span>
-              <span className='text-content pr-8 text-base font-bold tracking-[-0.01em]'>
+              <span className='pr-8 text-base font-bold tracking-[-0.01em] text-content'>
                 {t(`cards.${value}.title`)}
               </span>
-              <span className='text-content/70 text-sm leading-normal'>{t(`cards.${value}.description`)}</span>
+              <span className='text-sm leading-normal text-content/70'>{t(`cards.${value}.description`)}</span>
             </label>
           ))}
         </div>
@@ -182,7 +182,7 @@ export const Form: React.FC = () => {
         disabled={state.isLoading}
         type='submit'
         value={state.isLoading ? t('please-wait') : t('submit')}
-        className='bg-signal text-ink hover:bg-ink hover:text-paper disabled:bg-signal/50 dark:hover:bg-paper dark:hover:text-ink cursor-pointer justify-self-start rounded-full px-6 py-3.5 text-[15px] font-bold transition-colors disabled:cursor-not-allowed'
+        className='cursor-pointer justify-self-start rounded-full bg-signal px-6 py-3.5 text-[15px] font-bold text-ink transition-colors hover:bg-ink hover:text-paper disabled:cursor-not-allowed disabled:bg-signal/50 dark:hover:bg-paper dark:hover:text-ink'
       />
 
       {state.success ? (

@@ -38,10 +38,10 @@ export const Footer: React.FC<Project | Post> = (post) => {
   }, [post, locale]);
 
   return (
-    <div className='border-hairline mt-12 flex flex-col justify-between gap-6 border-t pt-8 sm:flex-row'>
+    <div className='mt-12 flex flex-col justify-between gap-6 border-t border-hairline pt-8 sm:flex-row'>
       {'technologies' in post && (
         <div className='flex w-full flex-col sm:w-4/5'>
-          <p className='text-content/45 my-0 mb-3 font-mono text-[11px] tracking-[0.12em] uppercase'>
+          <p className='my-0 mb-3 font-mono text-[11px] tracking-[0.12em] text-content/45 uppercase'>
             {t('technologies')}
           </p>
           <ul className='flex flex-wrap gap-2'>
@@ -56,7 +56,7 @@ export const Footer: React.FC<Project | Post> = (post) => {
 
       <div className='flex w-full flex-col sm:w-1/5'>
         <p
-          className={`text-content/45 my-0 mb-3 font-mono text-[11px] tracking-[0.12em] uppercase ${
+          className={`my-0 mb-3 font-mono text-[11px] tracking-[0.12em] text-content/45 uppercase ${
             'technologies' in post ? 'sm:text-right' : ''
           }`}
         >
@@ -66,7 +66,7 @@ export const Footer: React.FC<Project | Post> = (post) => {
           {socialLinks.map(({ name, url, logo }) => (
             <li key={name} className={'WhatsApp' === name ? 'md:hidden' : ''}>
               <button
-                className='hover:bg-hover-tint cursor-pointer rounded-md p-1.5 transition-colors duration-200'
+                className='cursor-pointer rounded-md p-1.5 transition-colors duration-200 hover:bg-hover-tint'
                 onClick={() =>
                   window.open(url, t('share-on', { network: name }), 'left=20,top=20,width=500,height=600,toolbar=1')
                 }

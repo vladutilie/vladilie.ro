@@ -27,11 +27,11 @@ export const MoreWork: React.FC = () => {
         {projects.map(({ key, slug }) => {
           const content = (
             <>
-              <div className='text-content/72 mb-2.5 font-mono text-[11.5px] tracking-[0.06em] uppercase'>
+              <div className='mb-2.5 font-mono text-[11.5px] tracking-[0.06em] text-content/72 uppercase'>
                 {t(`items.${key}.kind`)}
               </div>
               <div className='mb-2 text-lg font-bold tracking-[-0.02em]'>{t(`items.${key}.title`)}</div>
-              <div className='text-content/78 text-[14.5px] leading-[1.55]'>{t(`items.${key}.body`)}</div>
+              <div className='text-[14.5px] leading-[1.55] text-content/78'>{t(`items.${key}.body`)}</div>
             </>
           );
 

@@ -11,13 +11,13 @@ type Props = {
 export const PageHeader: React.FC<Props> = ({ meta, title, lead, children }) => (
   <header className='mb-12 md:mb-[52px]'>
     {meta ? (
-      <div className='text-accent mb-3.5 font-mono text-xs font-medium tracking-[0.14em] uppercase'>{meta}</div>
+      <div className='mb-3.5 font-mono text-xs font-medium tracking-[0.14em] text-accent uppercase'>{meta}</div>
     ) : null}
 
     <h1 className='my-0 text-[clamp(40px,6vw,64px)] leading-[1.02] tracking-[-0.045em] text-balance'>{title}</h1>
 
     {lead ? (
-      <p className='text-content/80 mt-5 mb-0 max-w-[60ch] text-lg leading-[1.6] md:text-[19px]'>{lead}</p>
+      <p className='mt-5 mb-0 max-w-[60ch] text-lg leading-[1.6] text-content/80 md:text-[19px]'>{lead}</p>
     ) : null}
 
     {children}
@@ -26,7 +26,7 @@ export const PageHeader: React.FC<Props> = ({ meta, title, lead, children }) => 
 
 /** The mono heading used for the groups inside a page. */
 export const GroupHeading: React.FC<{ children: ReactNode }> = ({ children }) => (
-  <h2 className='text-accent my-0 mb-5 font-mono text-xs font-medium tracking-[0.14em] uppercase'>{children}</h2>
+  <h2 className='my-0 mb-5 font-mono text-xs font-medium tracking-[0.14em] text-accent uppercase'>{children}</h2>
 );
 
 /** The page shell: the same measure and rhythm as the homepage. */

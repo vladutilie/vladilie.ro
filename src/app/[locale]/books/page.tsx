@@ -70,7 +70,7 @@ export default async function BookPage() {
             <section key={key}>
               <GroupHeading>{t(key)}</GroupHeading>
 
-              <div className='border-hairline bg-hairline grid grid-cols-1 gap-px border sm:grid-cols-2 lg:grid-cols-3'>
+              <div className='grid grid-cols-1 gap-px border border-hairline bg-hairline sm:grid-cols-2 lg:grid-cols-3'>
                 {list.map((book) => (
                   <Book key={book.id} {...book} />
                 ))}

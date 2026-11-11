@@ -34,7 +34,7 @@ export const List: React.FC<{ list: BoardgameT[] }> = ({ list }) => {
         <section>
           <GroupHeading>{t('own', { count: ownLength })}</GroupHeading>
 
-          <div className='border-hairline bg-hairline grid grid-cols-1 gap-px border sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+          <div className='grid grid-cols-1 gap-px border border-hairline bg-hairline sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
             {group(BoardgameState.Own).map((boardgame: BoardgameT) => (
               <Boardgame {...boardgame} key={boardgame.id} />
             ))}
@@ -46,7 +46,7 @@ export const List: React.FC<{ list: BoardgameT[] }> = ({ list }) => {
         <section>
           <GroupHeading>{t('wishlist', { count: wishLength })}</GroupHeading>
 
-          <div className='border-hairline bg-hairline grid grid-cols-1 gap-px border sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+          <div className='grid grid-cols-1 gap-px border border-hairline bg-hairline sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
             {group(BoardgameState.Wishlist).map((boardgame: BoardgameT) => (
               <Boardgame {...boardgame} key={boardgame.id} />
             ))}

@@ -44,7 +44,7 @@ export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = (
 
       {isMobile ? (
         // On mobile both preferences share one row under the anchors.
-        <li className='border-hairline mt-2 flex items-center gap-5 border-t pt-5'>
+        <li className='mt-2 flex items-center gap-5 border-t border-hairline pt-5'>
           <ThemeSwitcher />
           <LangChanger />
         </li>
@@ -62,7 +62,7 @@ export const Links: React.FC<{ isMobile?: boolean; closeMenu?: () => void }> = (
 
       <li className={isMobile ? 'mt-2' : ''}>
         <button
-          className='bg-content text-surface hover:bg-signal hover:text-ink block w-full cursor-pointer rounded-full px-[18px] py-2.5 text-center font-semibold transition-colors'
+          className='block w-full cursor-pointer rounded-full bg-content px-[18px] py-2.5 text-center font-semibold text-surface transition-colors hover:bg-signal hover:text-ink'
           onClick={() => goToAnchor(NavLinks.Contact)}
         >
           {t('get-a-quote')}
