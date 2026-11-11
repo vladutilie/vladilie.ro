@@ -152,7 +152,7 @@ export default async function Colophon({ params }: { params: Promise<{ locale: s
         <p className='my-0 text-[17px] leading-[1.7] text-content/80'>
           {t.rich('source.p1', {
             new: external('https://github.com/vladutilie/vladilie.ro'),
-            old: external('https://github.com/vladutilie/vladilie.ro/tree/old-version-2023')
+            old: external('https://github.com/vladutilie/vladilie.ro/tree/old-version-2024')
           })}
         </p>
       </section>

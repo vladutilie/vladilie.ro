@@ -97,7 +97,7 @@ Romanian is the default language and lives at the root; English lives under `/en
 
 The visual language lives in `src/app/[locale]/globals.css`: paper/ink surfaces, one blue (`#3598DB`, `signal`) for fills and rules with a darker text-safe variant (`accent`), hairline rules instead of shadows, Schibsted Grotesk for text and IBM Plex Mono for labels. Colors are CSS variables with light/dark values, exposed to Tailwind through `@theme inline` — so `bg-surface`, `text-content`, `border-hairline`, `bg-signal` and `text-accent` are all theme-aware.
 
-The previous design is preserved on the [`design/legacy-2019`](https://github.com/vladutilie/vladilie.ro/tree/design/legacy-2019) branch, and an older iteration on `old-version-2023`.
+The previous version is preserved on the [`old-version-2024`](https://github.com/vladutilie/vladilie.ro/tree/old-version-2024) branch, and an older iteration on [`old-version-2023`](https://github.com/vladutilie/vladilie.ro/tree/old-version-2023).
 
 ## License
 
