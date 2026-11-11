@@ -13,6 +13,9 @@ export const routing = defineRouting({
   localeDetection: false,
   // With detection off the NEXT_LOCALE cookie would never be read, so don't set it.
   localeCookie: false,
+  // The pages declare their own hreflang alternates in <head>; the middleware's Link header would
+  // duplicate them with the request host and a different x-default.
+  alternateLinks: false,
   pathnames: {
     '/': '/',
     '/locations': { en: '/locations', ro: '/locatii' },
