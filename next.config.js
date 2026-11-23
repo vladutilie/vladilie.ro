@@ -1,10 +1,15 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const createNextIntlPlugin = require('next-intl/plugin');
+const { SECURITY_HEADERS } = require('./src/lib/security-headers');
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  poweredByHeader: false,
+  headers() {
+    return [{ source: '/:path*', headers: SECURITY_HEADERS }];
+  },
   images: {
     minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year
     remotePatterns: [
